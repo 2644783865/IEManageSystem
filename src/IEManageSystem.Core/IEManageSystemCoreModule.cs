@@ -1,6 +1,8 @@
 ﻿using Abp.Modules;
 using Abp.Reflection.Extensions;
+using Abp.Resources.Embedded;
 using IEManageSystem.Localization;
+using System.Reflection;
 
 namespace IEManageSystem
 {

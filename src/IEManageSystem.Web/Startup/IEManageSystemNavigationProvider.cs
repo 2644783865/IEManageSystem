@@ -26,6 +26,65 @@ namespace IEManageSystem.Web.Startup
                         icon: "fa fa-info"
                         )
                 );
+
+            context.Manager.Menus.Add("ManageHomeMenu", 
+                new MenuDefinition(
+                    "ManageHome",
+                    L("ManageHome")
+                ).AddItem(
+                    new MenuItemDefinition(
+                        "Personal",
+                        L("Personal")
+                    ).AddItem(
+                        new MenuItemDefinition(
+                            "PersonalInfo",
+                            L("PersonalInfo"),
+                            url:""
+                        )    
+                    )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        "UserManage",
+                        L("UserManage")
+                    ).AddItem(
+                        new MenuItemDefinition(
+                            "NormalUser",
+                            L("NormalUser"),
+                            url:""
+                        )
+                    )
+                    .AddItem(
+                        new MenuItemDefinition(
+                            "AdminiUser",
+                            L("AdminiUser"),
+                            url: ""
+                        )
+                    )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        "AuthorizeManage",
+                        L("AuthorizeManage")
+                    ).AddItem(
+                        new MenuItemDefinition(
+                            "IdentityResource",
+                            L("IdentityResource"),
+                            url: "/AuthorizeManage/IdentityResource"
+                        )
+                    ).AddItem(
+                        new MenuItemDefinition(
+                            "ApiResource",
+                            L("ApiResource"),
+                            url: "/AuthorizeManage/ApiResource"
+                        )
+                    ).AddItem(
+                        new MenuItemDefinition(
+                            "Client",
+                            L("Client"),
+                            url: "/AuthorizeManage/Client"
+                        )
+                    )
+                )
+            );
         }
 
         private static ILocalizableString L(string name)

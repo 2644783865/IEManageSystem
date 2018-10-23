@@ -10,9 +10,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Help\TokenHelp\**" />
+    <Compile Remove="wwwroot\**" />
     <Content Remove="Help\TokenHelp\**" />
+    <Content Remove="wwwroot\**" />
     <EmbeddedResource Remove="Help\TokenHelp\**" />
+    <EmbeddedResource Remove="wwwroot\**" />
     <None Remove="Help\TokenHelp\**" />
+    <None Remove="wwwroot\**" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -21,9 +25,6 @@
     </None>
     <None Update="log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </None>
-    <None Update="wwwroot\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
   </ItemGroup>
@@ -60,12 +61,12 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\IEIdentityServer.EFCore\IEIdentityServer.EFCore.csproj" />
     <ProjectReference Include="..\IEManageSystem.Application\IEManageSystem.Application.csproj" />
     <ProjectReference Include="..\IEManageSystem.EntityFrameworkCore\IEManageSystem.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\UtilityAction\UtilityAction.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Help\IdentityServerHelp\IdentityResources\" />
-    <Folder Include="wwwroot\" />
   </ItemGroup>
 </Project>

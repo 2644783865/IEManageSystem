@@ -11,10 +11,14 @@
     <RootNamespace>IEManageSystem</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\IEIdentityServer.Core\IEIdentityServer.Core.csproj" />
     <ProjectReference Include="..\IEManageSystem.Core\IEManageSystem.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Abp.EntityFrameworkCore" Version="3.7.2" />
     <PackageReference Include="Abp.AutoMapper" Version="3.7.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dtos\Authorization\" />
   </ItemGroup>
 </Project>

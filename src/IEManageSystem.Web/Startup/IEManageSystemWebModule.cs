@@ -2,18 +2,18 @@
 using Abp.AspNetCore.Configuration;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
+using IEIdentityServer.EFCore;
 using IEManageSystem.Api.Startup;
 using IEManageSystem.Configuration;
 using IEManageSystem.EntityFrameworkCore;
+using IEManageSystem.EntityFrameworkCore.IEManageSystemEF;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 
 namespace IEManageSystem.Web.Startup
 {
     [DependsOn(
-        // typeof(IEManageSystemApplicationModule), 
         typeof(IEManageSystemWebHostModule),
-        typeof(IEManageSystemEntityFrameworkCoreModule), 
         typeof(AbpAspNetCoreModule))]
     public class IEManageSystemWebModule : AbpModule
     {

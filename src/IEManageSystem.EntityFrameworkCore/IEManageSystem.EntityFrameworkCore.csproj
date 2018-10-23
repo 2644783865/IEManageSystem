@@ -15,6 +15,11 @@
     <RootNamespace>IEManageSystem</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="EntityConfigurations\**" />
+    <EmbeddedResource Remove="EntityConfigurations\**" />
+    <None Remove="EntityConfigurations\**" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\IEManageSystem.Core\IEManageSystem.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
