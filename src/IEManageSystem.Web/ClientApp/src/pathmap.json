@@ -1,0 +1,9 @@
+{
+"react": "react.min.js",
+"react-dom": "react-dom.min.js",
+"babel": "babel.min.js",
+"jquery":"jquery-3.3.1.min.js",
+"bootstrap":"bootstrap.min.js",
+"popper":"popper.min",
+"jqueryform":"jquery.form.js"
+}

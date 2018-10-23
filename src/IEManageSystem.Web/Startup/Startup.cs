@@ -43,7 +43,13 @@ namespace IEManageSystem.Web.Startup
             {
                 options.SerializerSettings.ReferenceLoopHandling =
                                            Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-            }); ;
+            });
+
+            // In production, the React files will be served from this directory
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/build";
+            });
 
             services.AddSession();
 
