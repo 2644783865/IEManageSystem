@@ -20,6 +20,7 @@ using IdentityServer4.EntityFramework.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using IdentityServer4.EntityFramework.Mappers;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 
 namespace IEManageSystem.Web.Startup
 {
@@ -108,11 +109,23 @@ namespace IEManageSystem.Web.Startup
                 RequestPath = new PathString("/wwwroot")
             });
 
+            app.UseSpaStaticFiles();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp";
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseReactDevelopmentServer(npmScript: "start");
+                }
             });
         }
 
