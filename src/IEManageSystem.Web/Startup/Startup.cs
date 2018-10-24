@@ -40,17 +40,20 @@ namespace IEManageSystem.Web.Startup
             }).AddRazorOptions(opt =>
             {
                 opt.ViewLocationFormats.Add("/Views/ManageHome/{1}/{0}" + RazorViewEngine.ViewExtension);
+                opt.ViewLocationFormats.Add("/ClientApp/build/{1}/{0}" + RazorViewEngine.ViewExtension);
+                opt.ViewLocationFormats.Add("/ClientApp/build/ManageHome/{1}/{0}" + RazorViewEngine.ViewExtension);
+
             }).AddJsonOptions(options =>
             {
-                options.SerializerSettings.ReferenceLoopHandling =
-                                           Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
+            services.AddMvc();
 
             // In production, the React files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/build";
-            });
+            //services.AddSpaStaticFiles(configuration =>
+            //{
+            //    configuration.RootPath = "ClientApp/build";
+            //});
 
             services.AddSession();
 
@@ -109,7 +112,14 @@ namespace IEManageSystem.Web.Startup
                 RequestPath = new PathString("/wwwroot")
             });
 
-            app.UseSpaStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+                Path.Combine(Directory.GetCurrentDirectory(), @"ClientApp/build")),
+                RequestPath = new PathString("")
+            });
+
+            //app.UseSpaStaticFiles();
 
             app.UseMvc(routes =>
             {
@@ -118,15 +128,15 @@ namespace IEManageSystem.Web.Startup
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
+            //app.UseSpa(spa =>
+            //{
+            //    spa.Options.SourcePath = "ClientApp";
 
-                if (env.IsDevelopment())
-                {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
-                }
-            });
+            //    if (env.IsDevelopment())
+            //    {
+            //        spa.UseReactDevelopmentServer(npmScript: "start");
+            //    }
+            //});
         }
 
         private void InitializeDatabase(IApplicationBuilder app)
