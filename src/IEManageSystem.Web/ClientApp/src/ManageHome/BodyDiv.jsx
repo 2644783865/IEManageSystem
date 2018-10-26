@@ -3,22 +3,6 @@ import ReactDOM from 'react-dom';
 
 export default class BodyDiv extends React.Component
 {
-	// setLeftMenuHeight(){
-	//     var winheight = $(window).height() - 50 +"px";
-	//     $(".leftmenu_css").css("height",winheight);
-	// }
-
- //    // 组件更新时
- //    componentDidUpdate(){
- //        this.setLeftMenuHeight();
- //    }
-
- //    // 组件挂载时
- //    componentDidMount (){
- //        this.setLeftMenuHeight();
- //    }
-
-    // 服务单击
     serviceClick(e){
         var url = $(e.target).attr("data-url");
         $.get(url,function(data)

@@ -15,7 +15,8 @@ module.exports = {
         account:__dirname + "/src/Account/account.jsx",
         consent:__dirname + "/src/Consent/consent.jsx",
         adminiHome:__dirname + "/src/ManageHome/ManageHome.jsx",
-        selectSingleData:__dirname + "/src/SelectSingleData/SelectSingleData.js"
+        selectSingleData:__dirname + "/src/SelectSingleData/SelectSingleData.js",
+        client:__dirname + "/src/ManageHome/AuthorizeManage/Client/Client.jsx",
     },
     output: {
         path: __dirname + "/build",
@@ -41,6 +42,12 @@ module.exports = {
             template: __dirname + '/src/ManageHome/ManageHome.html', // html模板路径,模板路径是支持传参调用loader的,
             inject: 'body', //打包之后的js插入的位置，true/'head'/'body'/false,
             chunks: ['adminiHome']
+        }),
+        new HtmlWebpackPlugin({
+            filename: __dirname + '/build/ManageHome/AuthorizeManage/Client.cshtml',
+            template: __dirname + '/src/ManageHome/AuthorizeManage/Client/Client.html', // html模板路径,模板路径是支持传参调用loader的,
+            inject: 'body', //打包之后的js插入的位置，true/'head'/'body'/false,
+            chunks: ['client']
         }),
         new BomPlugin(true, /\.(cshtml)$/),//解决cshtml中文乱码的问题
     ],
