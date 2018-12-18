@@ -1,75 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Nav from './Nav.jsx';
-import BodyDiv from './BodyDiv.jsx';
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 
+import MenuProvider from "./MenuProvider.js";
+import Nav from './Nav/Nav.jsx';
+import SideNav from "./SideNav/SideNav.jsx";
+import BodyDiv from './BodyDiv/BodyDiv.jsx';
+
+require('./ManageHome.css');
 
 class UserHome extends React.Component{
     constructor(props) {
         super(props);
 
-        this.selectMenuItemsClick = this.selectMenuItemsClick.bind(this);
-
-        this.getNavigationForNameCall = this.getNavigationForNameCall.bind(this);
-
         this.getUserNameBackCall = this.getUserNameBackCall.bind(this);
-
+        
         this.state = 
         {
-            manageHomeMenu: null,          // 管理中心菜单
-            selectMenuName: null,        // 当前显示的服务列表的菜单名称
-            selectMenuItems:null,            // 当前显示的服务列表
             userName:null,              // 用户名称
         };
 
-        this.getNavigationForName();
-
         this.getUserName();
-    }
-
-    // 获取导航回调
-    getNavigationForNameCall(data){
-        if(data.isSuccess == true)
-        {
-            if(data.value.items.length > 0)
-            {
-                this.setState(
-                    {
-                        manageHomeMenu:data.value,
-                        selectMenuName:data.value.items[0].name,
-                        selectMenuItems:data.value.items[0].items,
-                    }
-                );
-            }
-        }
-    }
-    
-    // 获取导航
-    getNavigationForName()
-    {
-        let navName = $("#NavName").attr("value");
-        let url = "/api/Navigation/GetNavigationForName/?NavigationName=" + navName;
-        $.get(url, this.getNavigationForNameCall);
-    }
-
-    // 服务单击事件
-    selectMenuItemsClick(e){
-        let name = $(e.target).parent().attr("name");
-        
-        let selectMenuItems = null;
-        for(var item in this.state.manageHomeMenu.items){
-            if(this.state.manageHomeMenu.items[item].name == name){
-                selectMenuItems = this.state.manageHomeMenu.items[item].items;
-                break;
-            }
-        }
-
-        this.setState(
-            {
-                selectMenuName:name,
-                selectMenuItems:selectMenuItems,
-            }
-        );
     }
 
     // 获取用户名称回调
@@ -85,26 +36,24 @@ class UserHome extends React.Component{
     }
     
 
-    render(){
-        let menuList = null;
-        if(this.state.manageHomeMenu != null){
-            menuList = this.state.manageHomeMenu.items;
-        }
-
+    render()
+    {
         return (
         <div className="d-flex h-100">
-            <Nav 
-                selectMenuName={this.state.selectMenuName} 
-                selectMenuItemsClick={this.selectMenuItemsClick} 
-                userName={this.state.userName} 
-                menus={menuList} 
-            />
-            <BodyDiv selectMenuItems={this.state.selectMenuItems} />
+            <Nav userName={this.state.userName} />
+            <div className="container-fixed bodydiv_css">
+                <div className="row h-100">
+                    <Route path="/ManageHome/:menuId" component={SideNav} />
+                    <Route path="/ManageHome/:menuId/:menuItemId" component={BodyDiv} />
+                </div>
+            </div>
         </div>
         );
     }
 }
 
 ReactDOM.render( 
-    <UserHome /> , 
+    <BrowserRouter>
+        <UserHome></UserHome>
+    </BrowserRouter> , 
     document.getElementById('UserHome') );

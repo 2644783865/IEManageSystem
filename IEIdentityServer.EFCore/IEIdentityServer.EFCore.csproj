@@ -6,11 +6,16 @@
 
   <ItemGroup>
     <PackageReference Include="Abp" Version="3.7.2" />
+    <PackageReference Include="Abp.EntityFrameworkCore" Version="3.7.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\IEIdentityServer.Core\IEIdentityServer.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

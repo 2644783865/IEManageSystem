@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
-using IEIdentityServer.Core.RepositoriesI;
+using IEIdentityServer.Core.Repositories;
 using IdentityServer4.EntityFramework.Entities;
 using IEIdentityServer.Core.Entitys.IdentityService.IdentityResources;
 

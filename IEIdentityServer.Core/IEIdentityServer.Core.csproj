@@ -12,4 +12,8 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\src\IEManageSystem.Core\IEManageSystem.Core.csproj" />
+  </ItemGroup>
+
 </Project>

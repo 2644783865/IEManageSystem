@@ -1,0 +1,38 @@
+.data-list h5{
+    background: #343a40;
+    padding: 10px 20px 10px 20px;
+    margin-bottom: 0px;
+    border-radius: 10px 10px 0px 0px;
+    color: #ffffff; 
+}
+
+.data-paging ul{
+    margin-bottom: 0px;
+}
+
+.data-paging li a{
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.data-paging li a:hover{
+    background-color: #fff;
+    color: #000;
+}
+
+.data-form .modal-body>div{
+    margin-bottom: 10px;
+}
+
+.data-form ul{
+    padding: 0px;
+}
+
+.data-form li{
+    list-style: none;
+    display: inline-block;
+}
+
+.margin-buttom10{
+    margin-bottom: 10px;
+}

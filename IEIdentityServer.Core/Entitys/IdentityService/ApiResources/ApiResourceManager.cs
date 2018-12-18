@@ -1,7 +1,7 @@
 ﻿using Abp.Dependency;
 using IdentityServer4.EntityFramework.Entities;
 using IEIdentityServer.Core.Help.Exceptions;
-using IEIdentityServer.Core.RepositoriesI;
+using IEIdentityServer.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,7 +53,6 @@ namespace IEIdentityServer.Core.Entitys.IdentityService.ApiResources
             };
 
             _repository.Insert(resource);
-            _repository.SaveChange();
         }
 
         /// <summary>
@@ -94,8 +93,6 @@ namespace IEIdentityServer.Core.Entitys.IdentityService.ApiResources
             resource.DisplayName = dispalyName;
             resource.Description = description;
             resource.UserClaims = claims;
-
-            _repository.SaveChange();
         }
 
         /// <summary>
@@ -110,8 +107,6 @@ namespace IEIdentityServer.Core.Entitys.IdentityService.ApiResources
                 throw new Exception("未找到资源");
             }
             _repository.Remove(resource);
-
-            _repository.SaveChange();
         }
     }
 }

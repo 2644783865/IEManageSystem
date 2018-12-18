@@ -1,25 +1,25 @@
 ﻿using IdentityServer4.EntityFramework.DbContexts;
-using IEIdentityServer.Core.RepositoriesI;
+using IEIdentityServer.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 using System.Linq;
+using Abp.EntityFrameworkCore;
+using IEIdentityServer.EFCore.EntityFramework;
 
 namespace IEIdentityServer.EFCore.Repositories
 {
     public class IEIdentityServerRepository<TEntity> : IIEIdentityServerRepository<TEntity> where TEntity : class
     {
-        private DbContext _context { get; set; }
+        private IDbContextProvider<IEConfigurationDbContext> _dbContextProvider { get; set; }
 
-        private DbSet<TEntity> _entities { get; set; }
+        private DbSet<TEntity> _entities => _dbContextProvider.GetDbContext().Set<TEntity>();
 
-        public IEIdentityServerRepository(ConfigurationDbContext context)
+        public IEIdentityServerRepository(IDbContextProvider<IEConfigurationDbContext> dbContextProvider)
         {
-            _context = context;
-
-            _entities = _context.Set<TEntity>();
+            _dbContextProvider = dbContextProvider;
         }
 
         public TEntity FirstOrDefault(object id)
@@ -60,11 +60,6 @@ namespace IEIdentityServer.EFCore.Repositories
         public void Remove(TEntity entity)
         {
             _entities.Remove(entity);
-        }
-
-        public void SaveChange()
-        {
-            _context.SaveChanges();
         }
     }
 }

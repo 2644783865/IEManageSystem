@@ -10,18 +10,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using IEIdentityServer.Core.Configuration;
 using System.Collections.Generic;
 
-namespace IEIdentityServer.EFCore.EntityFrameworkCore.IdentityServiceEF
+namespace IEIdentityServer.EFCore.EntityFramework
 {
     public static class IdentityServerEFBuilderExtensions
     {
-        public static IIdentityServerBuilder AddConfigurationStore(
-            this IServiceCollection services)
+        public static IIdentityServerBuilder ConfigurationIdentityServer(
+            this IServiceCollection services, string connectionString)
         {
-            string connectionString = IEIdentityServerConfigurations.GetIEIdentityServerConnectionString();
-
             return services.AddIdentityServer()
                 .AddDeveloperSigningCredential()
                 .AddConfigurationStore(options =>
@@ -32,7 +29,6 @@ namespace IEIdentityServer.EFCore.EntityFrameworkCore.IdentityServiceEF
                 {
                     options.ConfigureDbContext = builder => builder.UseSqlServer(connectionString);
 
-                    // this enables automatic token cleanup. this is optional.
                     options.EnableTokenCleanup = true;
                     options.TokenCleanupInterval = 30;
                 });

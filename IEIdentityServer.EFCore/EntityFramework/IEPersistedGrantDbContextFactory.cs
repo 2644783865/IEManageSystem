@@ -1,5 +1,6 @@
 ﻿using IdentityServer4.EntityFramework.DbContexts;
-using IEIdentityServer.Core.Configuration;
+using IEManageSystem;
+using IEManageSystem.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
@@ -9,16 +10,18 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IEIdentityServer.EFCore.EntityFrameworkCore.IdentityServiceEF
+namespace IEIdentityServer.EFCore.EntityFramework
 {
     public class IEPersistedGrantDbContextFactory : IDesignTimeDbContextFactory<IEPersistedGrantDbContext>
     {
         public IEPersistedGrantDbContext CreateDbContext(string[] args)
         {
-            var builder = new DbContextOptionsBuilder<PersistedGrantDbContext>();
-            builder.UseSqlServer(IEIdentityServerConfigurations.GetIEIdentityServerConnectionString());
+            var builder = new DbContextOptionsBuilder<IEPersistedGrantDbContext>();
 
-            return new IEPersistedGrantDbContext(builder.Options, new IdentityServer4.EntityFramework.Options.OperationalStoreOptions());
+            var configuration = AppConfigurations.Get(WebContentDirectoryFinder.CalculateContentRootFolder());
+            builder.UseSqlServer(configuration.GetConnectionString("IdentityServer"));
+
+            return new IEPersistedGrantDbContext(builder.Options);
         }
     }
 }

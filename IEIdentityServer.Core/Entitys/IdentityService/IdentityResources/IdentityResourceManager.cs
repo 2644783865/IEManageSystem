@@ -1,6 +1,6 @@
 ﻿using Abp.Dependency;
 using IdentityServer4.EntityFramework.Entities;
-using IEIdentityServer.Core.RepositoriesI;
+using IEIdentityServer.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -43,7 +43,6 @@ namespace IEIdentityServer.Core.Entitys.IdentityService.IdentityResources
             };
 
             _repository.Insert(identityResource);
-            _repository.SaveChange();
         }
 
         public void UpdateIdentityResource(
@@ -85,8 +84,6 @@ namespace IEIdentityServer.Core.Entitys.IdentityService.IdentityResources
             identityResource.DisplayName = dispalyName;
             identityResource.Description = description;
             identityResource.UserClaims = identityClaims;
-
-            _repository.SaveChange();
         }
 
         public void RemoveIdentityResource(int id)
@@ -107,8 +104,6 @@ namespace IEIdentityServer.Core.Entitys.IdentityService.IdentityResources
             }
 
             _repository.Remove(identityResource);
-
-            _repository.SaveChange();
         }
     }
 }

@@ -96,6 +96,10 @@
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(/*! react */ "./src/lib/react.min.js");
@@ -140,7 +144,7 @@ var Client = function (_React$Component) {
 		value: function render() {
 			return _react2.default.createElement(
 				'div',
-				{ 'class': 'w-100' },
+				{ className: 'w-100' },
 				_react2.default.createElement(_ClientList2.default, null),
 				_react2.default.createElement(_DeleteDataModal2.default, null),
 				_react2.default.createElement(_ResourceDataModal2.default, null)
@@ -151,7 +155,7 @@ var Client = function (_React$Component) {
 	return Client;
 }(_react2.default.Component);
 
-_reactDom2.default.render(_react2.default.createElement(Client, null), document.getElementById('clientReactDOM'));
+exports.default = Client;
 
 /***/ }),
 
@@ -201,13 +205,13 @@ var ClientList = function (_React$Component) {
 		value: function render() {
 			return _react2.default.createElement(
 				'div',
-				{ 'class': 'd-flex flex-column h-100' },
+				{ className: 'd-flex flex-column h-100' },
 				_react2.default.createElement(
 					'table',
-					{ 'class': 'table table-hover resource' },
+					{ className: 'table table-hover resource' },
 					_react2.default.createElement(
 						'thead',
-						{ 'class': 'thead-dark' },
+						{ className: 'thead-dark' },
 						_react2.default.createElement(
 							'tr',
 							null,
@@ -265,12 +269,12 @@ var ClientList = function (_React$Component) {
 								null,
 								_react2.default.createElement(
 									'button',
-									{ type: 'button', 'class': 'btn btn-info', 'data-toggle': 'modal', 'data-target': '#resourceData', onclick: 'updateHandle(this)' },
+									{ type: 'button', className: 'btn btn-info', 'data-toggle': 'modal', 'data-target': '#resourceData', onclick: 'updateHandle(this)' },
 									'\u4FEE\u6539'
 								),
 								_react2.default.createElement(
 									'button',
-									{ type: 'button', 'class': 'btn btn-danger', 'data-toggle': 'modal', 'data-target': '#deleteData', onclick: 'deleteHandle(this)' },
+									{ type: 'button', className: 'btn btn-danger', 'data-toggle': 'modal', 'data-target': '#deleteData', onclick: 'deleteHandle(this)' },
 									'\u5220\u9664'
 								)
 							)
@@ -279,28 +283,28 @@ var ClientList = function (_React$Component) {
 				),
 				_react2.default.createElement(
 					'div',
-					{ 'class': 'w-100 d-flex justify-content-between' },
+					{ className: 'w-100 d-flex justify-content-between' },
 					_react2.default.createElement(
 						'div',
 						null,
 						_react2.default.createElement(
 							'ul',
-							{ 'class': 'pagination' },
+							{ className: 'pagination' },
 							_react2.default.createElement(
 								'li',
-								{ id: 'resourcePre', 'class': 'page-item' },
+								{ id: 'resourcePre', className: 'page-item' },
 								_react2.default.createElement(
 									'a',
-									{ 'class': 'page-link', href: '#', onclick: 'preClick()' },
+									{ className: 'page-link', href: '#', onclick: 'preClick()' },
 									'\u4E0A\u4E00\u9875'
 								)
 							),
 							_react2.default.createElement(
 								'li',
-								{ id: 'resourceNext', 'class': 'page-item' },
+								{ id: 'resourceNext', className: 'page-item' },
 								_react2.default.createElement(
 									'a',
-									{ 'class': 'page-link', href: '#', onclick: 'nextClick()' },
+									{ className: 'page-link', href: '#', onclick: 'nextClick()' },
 									'\u4E0B\u4E00\u9875'
 								)
 							)
@@ -308,10 +312,10 @@ var ClientList = function (_React$Component) {
 					),
 					_react2.default.createElement(
 						'div',
-						{ 'class': '' },
+						{ className: '' },
 						_react2.default.createElement(
 							'button',
-							{ type: 'button', 'class': 'btn btn-success', 'data-toggle': 'modal', 'data-target': '#resourceData', onclick: 'addHandle()' },
+							{ type: 'button', className: 'btn btn-success', 'data-toggle': 'modal', 'data-target': '#resourceData', onclick: 'addHandle()' },
 							'+\u6DFB\u52A0\u6570\u636E'
 						)
 					)
@@ -373,46 +377,46 @@ var DeleteDataModal = function (_React$Component) {
 		value: function render() {
 			return _react2.default.createElement(
 				'div',
-				{ 'class': 'modal fade', id: 'deleteData' },
+				{ className: 'modal fade', id: 'deleteData' },
 				_react2.default.createElement(
 					'div',
-					{ 'class': 'modal-dialog' },
+					{ className: 'modal-dialog' },
 					_react2.default.createElement(
 						'div',
-						{ 'class': 'modal-content' },
+						{ className: 'modal-content' },
 						_react2.default.createElement(
 							'div',
-							{ 'class': 'modal-header' },
+							{ className: 'modal-header' },
 							_react2.default.createElement(
 								'h4',
-								{ 'class': 'modal-title' },
+								{ className: 'modal-title' },
 								'\u786E\u8BA4\u5220\u9664\uFF1F'
 							),
 							_react2.default.createElement(
 								'button',
-								{ type: 'button', 'class': 'close', 'data-dismiss': 'modal' },
+								{ type: 'button', className: 'close', 'data-dismiss': 'modal' },
 								'\xD7'
 							)
 						),
 						_react2.default.createElement(
 							'div',
-							{ 'class': 'modal-body' },
-							_react2.default.createElement('div', { id: 'deleteDataError', 'class': 'text-danger error' }),
+							{ className: 'modal-body' },
+							_react2.default.createElement('div', { id: 'deleteDataError', className: 'text-danger error' }),
 							'\u4F60\u6B63\u5728\u5220\u9664[',
 							_react2.default.createElement('span', { id: 'deleteClientId' }),
 							']'
 						),
 						_react2.default.createElement(
 							'div',
-							{ 'class': 'modal-footer' },
+							{ className: 'modal-footer' },
 							_react2.default.createElement(
 								'button',
-								{ id: 'deleteDataDelete', 'data-resourceId': '', type: 'button', 'class': 'btn btn-danger', onclick: 'deleteResourceData()' },
+								{ id: 'deleteDataDelete', 'data-resourceId': '', type: 'button', className: 'btn btn-danger', onclick: 'deleteResourceData()' },
 								'\u5220\u9664'
 							),
 							_react2.default.createElement(
 								'button',
-								{ id: 'deleteDataClose', type: 'button', 'class': 'btn btn-secondary', 'data-dismiss': 'modal' },
+								{ id: 'deleteDataClose', type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
 								'\u5173\u95ED'
 							)
 						)
@@ -475,61 +479,61 @@ var ResourceDataModal = function (_React$Component) {
 		value: function render() {
 			return _react2.default.createElement(
 				'div',
-				{ 'class': 'modal fade', id: 'resourceData' },
+				{ className: 'modal fade', id: 'resourceData' },
 				_react2.default.createElement(
 					'div',
-					{ 'class': 'modal-dialog modal-lg' },
+					{ className: 'modal-dialog modal-lg' },
 					_react2.default.createElement(
 						'div',
-						{ 'class': 'modal-content' },
+						{ className: 'modal-content' },
 						_react2.default.createElement(
 							'div',
-							{ 'class': 'modal-header bg-info text-white' },
+							{ className: 'modal-header bg-info text-white' },
 							_react2.default.createElement(
 								'h4',
-								{ 'class': 'modal-title' },
+								{ className: 'modal-title' },
 								'\u5BA2\u6237\u7AEF\u6570\u636E'
 							),
 							_react2.default.createElement(
 								'button',
-								{ type: 'button', 'class': 'close', 'data-dismiss': 'modal' },
+								{ type: 'button', className: 'close', 'data-dismiss': 'modal' },
 								'\xD7'
 							)
 						),
 						_react2.default.createElement(
 							'div',
-							{ 'class': 'modal-body' },
+							{ className: 'modal-body' },
 							_react2.default.createElement(
 								'form',
 								{ id: 'resourceDataForm', 'data-element': 'dataElement', 'data-iP': 'true' },
-								_react2.default.createElement('input', { id: 'resourceId', type: 'text', 'class': 'form-control', value: '', 'data-element': 'dataElement', 'data-n': 'id', hidden: 'hidden' }),
-								_react2.default.createElement('div', { id: 'resourceDataError', 'class': 'text-danger error' }),
+								_react2.default.createElement('input', { id: 'resourceId', type: 'text', className: 'form-control', value: '', 'data-element': 'dataElement', 'data-n': 'id', hidden: 'hidden' }),
+								_react2.default.createElement('div', { id: 'resourceDataError', className: 'text-danger error' }),
 								_react2.default.createElement(
 									'div',
-									{ 'class': 'form-group' },
+									{ className: 'form-group' },
 									_react2.default.createElement(
 										'label',
 										{ 'for': 'text' },
 										'\u5BA2\u6237\u7AEFId'
 									),
-									_react2.default.createElement('input', { id: 'clientId', type: 'text', 'class': 'form-control', value: '', 'data-element': 'dataElement', 'data-n': 'clientId' })
+									_react2.default.createElement('input', { id: 'clientId', type: 'text', className: 'form-control', value: '', 'data-element': 'dataElement', 'data-n': 'clientId' })
 								),
 								_react2.default.createElement(
 									'div',
-									{ 'class': 'form-group' },
+									{ className: 'form-group' },
 									_react2.default.createElement(
 										'label',
 										{ 'for': 'text' },
 										'\u5BC6\u5319\uFF08\u5982\u679C\u65E0\u9700\u4FEE\u6539\uFF0C\u5219\u4E0D\u8981\u586B\u5199\u503C\uFF09'
 									),
-									_react2.default.createElement('input', { id: 'clientSecret', type: 'text', 'class': 'form-control', value: '', 'data-element': 'dataElement', 'data-n': 'clientSecret' })
+									_react2.default.createElement('input', { id: 'clientSecret', type: 'text', className: 'form-control', value: '', 'data-element': 'dataElement', 'data-n': 'clientSecret' })
 								),
 								_react2.default.createElement(
 									'div',
-									{ 'class': 'checkbox-list' },
+									{ className: 'checkbox-list' },
 									_react2.default.createElement(
 										'div',
-										{ 'class': 'form-group' },
+										{ className: 'form-group' },
 										_react2.default.createElement(
 											'label',
 											{ 'for': 'text' },
@@ -538,14 +542,14 @@ var ResourceDataModal = function (_React$Component) {
 									),
 									_react2.default.createElement(
 										'div',
-										{ 'class': 'overflowhidden', 'data-element': 'dataElement', 'data-n': 'allowedGrantType', 'data-iL': 'true' },
+										{ className: 'overflowhidden', 'data-element': 'dataElement', 'data-n': 'allowedGrantType', 'data-iL': 'true' },
 										_react2.default.createElement(
 											'label',
-											{ 'class': 'radio-inline col-md-6' },
-											_react2.default.createElement('input', { 'class': 'radio float-left', type: 'radio', name: 'allowedGrantType', value: '', 'data-element': 'dataElement', 'data-p-n': 'allowedGrantType' }),
+											{ className: 'radio-inline col-md-6' },
+											_react2.default.createElement('input', { className: 'radio float-left', type: 'radio', name: 'allowedGrantType', value: '', 'data-element': 'dataElement', 'data-p-n': 'allowedGrantType' }),
 											_react2.default.createElement(
 												'span',
-												{ 'class': 'float-left overflowhidden', 'data-element': 'dataElement', 'data-p-n': 'allowedGrantType' },
+												{ className: 'float-left overflowhidden', 'data-element': 'dataElement', 'data-p-n': 'allowedGrantType' },
 												'&nbsp'
 											)
 										)
@@ -553,10 +557,10 @@ var ResourceDataModal = function (_React$Component) {
 								),
 								_react2.default.createElement(
 									'div',
-									{ 'class': 'checkbox-list' },
+									{ className: 'checkbox-list' },
 									_react2.default.createElement(
 										'div',
-										{ 'class': 'form-group' },
+										{ className: 'form-group' },
 										_react2.default.createElement(
 											'label',
 											{ 'for': 'text' },
@@ -565,24 +569,24 @@ var ResourceDataModal = function (_React$Component) {
 									),
 									_react2.default.createElement(
 										'div',
-										{ id: 'identityResourceScopes', 'class': 'overflowhidden', 'data-element': 'dataElement', 'data-n': 'identityResourceScopes', 'data-iL': 'true' },
+										{ id: 'identityResourceScopes', className: 'overflowhidden', 'data-element': 'dataElement', 'data-n': 'identityResourceScopes', 'data-iL': 'true' },
 										_react2.default.createElement(
 											'label',
-											{ 'class': 'col-md-4 float-left input-text' },
+											{ className: 'col-md-4 float-left input-text' },
 											_react2.default.createElement(
 												'input',
-												{ 'class': 'checkbox', type: 'checkbox', value: '', 'data-element': 'dataElement', 'data-p-n': 'identityResourceScopes' },
-												_react2.default.createElement('span', { 'class': '', 'data-element': 'dataElement', 'data-p-n': 'identityResourceScopes' })
+												{ className: 'checkbox', type: 'checkbox', value: '', 'data-element': 'dataElement', 'data-p-n': 'identityResourceScopes' },
+												_react2.default.createElement('span', { className: '', 'data-element': 'dataElement', 'data-p-n': 'identityResourceScopes' })
 											)
 										)
 									)
 								),
 								_react2.default.createElement(
 									'div',
-									{ 'class': 'checkbox-list' },
+									{ className: 'checkbox-list' },
 									_react2.default.createElement(
 										'div',
-										{ 'class': 'form-group' },
+										{ className: 'form-group' },
 										_react2.default.createElement(
 											'label',
 											{ 'for': 'text' },
@@ -591,41 +595,41 @@ var ResourceDataModal = function (_React$Component) {
 									),
 									_react2.default.createElement(
 										'div',
-										{ id: 'apiResourceScopes', 'class': 'overflowhidden', 'data-element': 'dataElement', 'data-n': 'apiResourceScopes', 'data-iL': 'true' },
+										{ id: 'apiResourceScopes', className: 'overflowhidden', 'data-element': 'dataElement', 'data-n': 'apiResourceScopes', 'data-iL': 'true' },
 										_react2.default.createElement(
 											'label',
-											{ 'class': 'col-md-4 float-left input-text' },
+											{ className: 'col-md-4 float-left input-text' },
 											_react2.default.createElement(
 												'input',
-												{ 'class': 'checkbox', type: 'checkbox', value: '', 'data-element': 'dataElement', 'data-p-n': 'apiResourceScopes' },
-												_react2.default.createElement('span', { 'class': '', 'data-element': 'dataElement', 'data-p-n': 'apiResourceScopes' })
+												{ className: 'checkbox', type: 'checkbox', value: '', 'data-element': 'dataElement', 'data-p-n': 'apiResourceScopes' },
+												_react2.default.createElement('span', { className: '', 'data-element': 'dataElement', 'data-p-n': 'apiResourceScopes' })
 											)
 										)
 									)
 								),
 								_react2.default.createElement(
 									'div',
-									{ 'class': 'form-group' },
+									{ className: 'form-group' },
 									_react2.default.createElement(
 										'label',
 										{ 'for': 'text' },
 										'\u767B\u5F55\u91CD\u5B9A\u5411\u5730\u5740'
 									),
-									_react2.default.createElement('input', { id: 'redirectUri', type: 'text', 'class': 'form-control', value: '', 'data-element': 'dataElement', 'data-n': 'redirectUri' })
+									_react2.default.createElement('input', { id: 'redirectUri', type: 'text', className: 'form-control', value: '', 'data-element': 'dataElement', 'data-n': 'redirectUri' })
 								),
 								_react2.default.createElement(
 									'div',
-									{ 'class': 'form-group' },
+									{ className: 'form-group' },
 									_react2.default.createElement(
 										'label',
 										{ 'for': 'text' },
 										'\u767B\u51FA\u91CD\u5B9A\u5411\u5730\u5740'
 									),
-									_react2.default.createElement('input', { id: 'postLogoutRedirectUri', type: 'text', 'class': 'form-control', value: '', 'data-element': 'dataElement', 'data-n': 'postLogoutRedirectUri' })
+									_react2.default.createElement('input', { id: 'postLogoutRedirectUri', type: 'text', className: 'form-control', value: '', 'data-element': 'dataElement', 'data-n': 'postLogoutRedirectUri' })
 								),
 								_react2.default.createElement(
 									'div',
-									{ 'class': 'form-group' },
+									{ className: 'form-group' },
 									_react2.default.createElement(
 										'label',
 										{ 'for': 'text' },
@@ -636,22 +640,22 @@ var ResourceDataModal = function (_React$Component) {
 										null,
 										_react2.default.createElement(
 											'label',
-											{ 'class': 'radio-inline' },
-											_react2.default.createElement('input', { 'class': 'radio float-left', type: 'radio', name: 'allowOfflineAccess', value: 'true' }),
+											{ className: 'radio-inline' },
+											_react2.default.createElement('input', { className: 'radio float-left', type: 'radio', name: 'allowOfflineAccess', value: 'true' }),
 											_react2.default.createElement(
 												'span',
-												{ 'class': 'float-left' },
+												{ className: 'float-left' },
 												'&nbsp\u662F'
 											)
 										),
 										'&nbsp&nbsp&nbsp&nbsp&nbsp',
 										_react2.default.createElement(
 											'label',
-											{ 'class': 'radio-inline' },
-											_react2.default.createElement('input', { 'class': 'radio float-left', type: 'radio', name: 'allowOfflineAccess', value: 'false' }),
+											{ className: 'radio-inline' },
+											_react2.default.createElement('input', { className: 'radio float-left', type: 'radio', name: 'allowOfflineAccess', value: 'false' }),
 											_react2.default.createElement(
 												'span',
-												{ 'class': 'float-left' },
+												{ className: 'float-left' },
 												'&nbsp\u5426'
 											)
 										)
@@ -661,15 +665,15 @@ var ResourceDataModal = function (_React$Component) {
 						),
 						_react2.default.createElement(
 							'div',
-							{ 'class': 'modal-footer bg-info' },
+							{ className: 'modal-footer bg-info' },
 							_react2.default.createElement(
 								'button',
-								{ id: 'resourceDataSubmit', type: 'button', 'class': 'btn btn-primary', onclick: 'resourceDataSubmitHandle()' },
+								{ id: 'resourceDataSubmit', type: 'button', className: 'btn btn-primary', onclick: 'resourceDataSubmitHandle()' },
 								'\u63D0\u4EA4'
 							),
 							_react2.default.createElement(
 								'button',
-								{ id: 'resourceDataClose', type: 'button', 'class': 'btn btn-secondary', 'data-dismiss': 'modal' },
+								{ id: 'resourceDataClose', type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
 								'\u5173\u95ED'
 							)
 						)

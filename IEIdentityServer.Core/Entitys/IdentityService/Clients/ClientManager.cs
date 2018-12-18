@@ -3,7 +3,7 @@ using IdentityServer4.EntityFramework.Entities;
 using IdentityServer4.EntityFramework.Mappers;
 using IdentityServer4.Models;
 using IEIdentityServer.Core.Entitys.IdentityService.Clients.ClientGrantTypes;
-using IEIdentityServer.Core.RepositoriesI;
+using IEIdentityServer.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,8 +42,6 @@ namespace IEIdentityServer.Core.Entitys.IdentityService.Clients
             IdentityServer4.EntityFramework.Entities.Client client = CreateClient(clientId, allowedGrantTypes, clientSecrets, redirectUris, postLogoutRedirectUris, allowedScopes, allowOfflineAccess);
 
             _repository.Insert(client);
-
-            _repository.SaveChange();
         }
 
         public void RemoveClient(
@@ -56,8 +54,6 @@ namespace IEIdentityServer.Core.Entitys.IdentityService.Clients
             }
 
             _repository.Remove(client);
-
-            _repository.SaveChange();
         }
 
         public void UpdateClient(
@@ -92,8 +88,6 @@ namespace IEIdentityServer.Core.Entitys.IdentityService.Clients
             client.RedirectUris = newClient.RedirectUris;
             client.PostLogoutRedirectUris = newClient.PostLogoutRedirectUris;
             client.AllowOfflineAccess = newClient.AllowOfflineAccess;
-
-            _repository.SaveChange();
         }
 
         public void UpdateSecrets(
@@ -114,8 +108,6 @@ namespace IEIdentityServer.Core.Entitys.IdentityService.Clients
             var client = CreateClient("", "", clientSecrets, new List<string>(), new List<string>(), new List<string>(), true);
 
             newclient.ClientSecrets = client.ClientSecrets;
-
-            _repository.SaveChange();
         }
 
         private IdentityServer4.EntityFramework.Entities.Client CreateClient (

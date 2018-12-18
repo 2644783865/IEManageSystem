@@ -1,6 +1,6 @@
 ﻿using IdentityServer4.EntityFramework.Entities;
 using IEIdentityServer.Core.Entitys.IdentityService.Clients;
-using IEIdentityServer.Core.RepositoriesI;
+using IEIdentityServer.Core.Repositories;
 using IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages.Dto;
 using System;
 using System.Collections.Generic;

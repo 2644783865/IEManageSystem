@@ -1,20 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Route, NavLink, Link, Switch } from 'react-router-dom';
+
+import MenuProvider from "../MenuProvider.js";
 
 export default class Nav extends React.Component
 {
-    // 组件更新时
-    componentDidUpdate(){
-        $(".navbar_css li").removeClass("navbar_css_li_click");
-        let name="li[name="+this.props.selectMenuName+"]";
-        $(name).addClass("navbar_css_li_click");
-    }
+    constructor(props)
+    {
+        super(props);
 
-    // 组件挂载时
-    componentDidMount (){
-        $(".navbar_css li").removeClass("navbar_css_li_click");
-        let name="li[name="+this.props.selectMenuName+"]";
-        $(name).addClass("navbar_css_li_click");
+        this.menu = (new MenuProvider()).mainMenu;
     }
 
     // 退出登录单击
@@ -31,24 +27,15 @@ export default class Nav extends React.Component
         );
     }
     
-    render(){
-        let menus = this.props.menus;
-        let serviceInfoList = new Array();
-        if(menus != null){
-            for(let item in menus){
-                let li = 
-                    <li 
-                        name={menus[item].name} 
-                        onClick={this.props.selectMenuItemsClick} 
-                        className="nav-item"
-                    >
-                        <a className="nav-link" href="#">
-                            {menus[item].displayName}
-                        </a>
-                    </li>;
-
-                serviceInfoList.push(li);
-            }
+    render()
+    {
+        let menuItemLis = new Array();
+        for(let item in this.menu.menuItems){
+            let menuItemLi = 
+                <li className="nav-item">
+                    <NavLink activeClassName="navbar_css_li_click" className="nav-link" to={this.menu.menuItems[item].url}>{this.menu.menuItems[item].text}</NavLink>
+                </li>;
+            menuItemLis.push(menuItemLi);
         }
 
         return(
@@ -66,7 +53,7 @@ export default class Nav extends React.Component
                 </button>
                 <div className="collapse navbar-collapse" id="collapsibleNavbar">
                     <ul className="navbar-nav">
-                        {serviceInfoList}
+                        {menuItemLis}
                     </ul>
                     <span className="text-info float-right">你好，{this.props.userName}</span>
                     <input id="outLogin" data-url="/api/Account/Logout" onClick={this.logoutClick} type="button" value="退出登录" className="btn btn-info float-right" />

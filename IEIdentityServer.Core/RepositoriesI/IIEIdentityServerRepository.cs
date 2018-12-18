@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace IEIdentityServer.Core.RepositoriesI
+namespace IEIdentityServer.Core.Repositories
 {
     public interface IIEIdentityServerRepository<TEntity>: ITransientDependency where TEntity:class
     {
@@ -21,7 +21,5 @@ namespace IEIdentityServer.Core.RepositoriesI
         IEnumerable<TEntity> GetAll();
 
         IEnumerable<TEntity> GetAllInclude(Expression<Func<TEntity, object>>[] propertySelectors);
-
-        void SaveChange();
     }
 }

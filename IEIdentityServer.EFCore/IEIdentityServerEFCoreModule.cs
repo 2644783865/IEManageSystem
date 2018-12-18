@@ -2,7 +2,7 @@
 using Abp.Reflection.Extensions;
 using Castle.MicroKernel.Registration;
 using IEIdentityServer.Core;
-using IEIdentityServer.Core.RepositoriesI;
+using IEIdentityServer.Core.Repositories;
 using IEIdentityServer.EFCore.Repositories;
 using System;
 using System.Collections.Generic;

@@ -15,23 +15,41 @@ using IEManageSystem.Api.Help.IdentityServerHelp;
 using IEManageSystem.Api.Middlewares;
 using IEManageSystem.EntityFrameworkCore.IEManageSystemEF;
 using Microsoft.AspNetCore.Mvc.Razor;
-using IEIdentityServer.EFCore.EntityFrameworkCore.IdentityServiceEF;
 using IdentityServer4.EntityFramework.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using IdentityServer4.EntityFramework.Mappers;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.Extensions.Configuration;
+using IEManageSystem.Configuration;
+using IEIdentityServer.EFCore.EntityFramework;
 
 namespace IEManageSystem.Web.Startup
 {
     public class Startup
     {
+        private IHostingEnvironment _env { get; set; }
+
+        private IConfigurationRoot _configurationRoot { get; set; }
+
+        public Startup(IHostingEnvironment env)
+        {
+            _env = env;
+
+            _configurationRoot = AppConfigurations.Get(_env.ContentRootPath, _env.EnvironmentName);
+        }
+
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             //Configure DbContext
             services.AddAbpDbContext<IEManageSystemDbContext>(options =>
             {
-                DbContextOptionsConfigurer.Configure(options.DbContextOptions, options.ConnectionString);
+                IEManageSystem.EntityFrameworkCore.IEManageSystemEF.DbContextOptionsConfigurer.Configure(options.DbContextOptions, options.ConnectionString);
+            });
+
+            services.AddAbpDbContext<IEConfigurationDbContext>(options =>
+            {
+                IEIdentityServer.EFCore.EntityFramework.DbContextOptionsConfigurer.Configure(options.DbContextOptions, _configurationRoot.GetConnectionString("IdentityServer"));
             });
 
             services.AddMvc(options =>
@@ -47,19 +65,14 @@ namespace IEManageSystem.Web.Startup
             {
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
-            services.AddMvc();
 
-            // In production, the React files will be served from this directory
-            //services.AddSpaStaticFiles(configuration =>
-            //{
-            //    configuration.RootPath = "ClientApp/build";
-            //});
+            services.AddMvc();
 
             services.AddSession();
 
             // 配置IdentityService
             services
-                .AddConfigurationStore()
+                .ConfigurationIdentityServer(_configurationRoot.GetConnectionString("IdentityServer"))
                 .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>()
                 .AddProfileService<ProfileService>();
 
