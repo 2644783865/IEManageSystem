@@ -1,9 +1,10 @@
 {
-"react": "react.min.js",
-"react-dom": "react-dom.min.js",
-"babel": "babel.min.js",
-"jquery":"jquery-3.3.1.min.js",
-"bootstrap":"bootstrap.min.js",
-"popper":"popper.min",
-"jqueryform":"jquery.form.js"
+"react": "js/react.min.js",
+"react-dom": "js/react-dom.min.js",
+"babel": "js/babel.min.js",
+"jquery":"js/jquery-3.3.1.min.js",
+"bootstrap":"js/bootstrap.min.js",
+"popper":"js/popper.min",
+"jqueryform":"js/jquery.form.js",
+"jquerylabelauty": "js/jquery-labelauty.js"
 }

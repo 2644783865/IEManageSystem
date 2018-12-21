@@ -10,6 +10,7 @@ using System.Linq;
 using IEManageSystem.Dtos.IdentityService;
 using System.Linq.Expressions;
 using UtilityAction.Other;
+using IEIdentityServer.Core.Entitys.IdentityService.Clients.ClientGrantTypes;
 
 namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages
 {
@@ -19,14 +20,19 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages
 
         private IIEIdentityServerRepository<Client> _clientRepository { get; set; }
 
+        private ClientGrantTypeGroupManager _clientGrantTypeGroupManager { get; set; }
+
         public ClientManageAppService(
             ClientManager clientManager,
-            IIEIdentityServerRepository<Client> clientRepository
+            IIEIdentityServerRepository<Client> clientRepository,
+            ClientGrantTypeGroupManager clientGrantTypeGroupManager
             )
         {
             _clientManager = clientManager;
 
             _clientRepository = clientRepository;
+
+            _clientGrantTypeGroupManager = clientGrantTypeGroupManager;
         }
 
         public async Task<GetClientsOutput> GetClients(GetClientsInput input)
@@ -37,9 +43,36 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages
                 e=>e.PostLogoutRedirectUris,
                 e=>e.AllowedScopes,
             };
+
             var clients = _clientRepository.GetAllInclude(clientLoad).OrderByDescending(e => e.Id).Skip((input.PageIndex - 1) * input.PageSize).Take(input.PageSize).ToList();
 
-            return new GetClientsOutput() { Clients = AutoMapper.Mapper.Map<List<ClientDto>>(clients) };
+            List<ClientDto> clientDtos = new List<ClientDto>();
+            foreach (var item in clients) {
+                ClientDto clientDto = new ClientDto() {
+                    Id = item.Id,
+                    ClientId = item.ClientId,
+                    AccessTokenType = item.AccessTokenType == (int)IdentityServer4.Models.AccessTokenType.Jwt ? "jwt" : "reference",
+                    AllowAccessTokensViaBrowser = item.AllowAccessTokensViaBrowser,
+                    AllowedGrantTypes = item.AllowedGrantTypes.Select(e => e.GrantType).ToList(),
+                    AllowedScopes = item.AllowedScopes.Select(e=>e.Scope).ToList(),
+                    AllowOfflineAccess = item.AllowOfflineAccess,
+                    Enabled = item.Enabled,
+                    RedirectUris = item.RedirectUris.Select(e=>e.RedirectUri).ToList(),
+                    PostLogoutRedirectUris = item.PostLogoutRedirectUris.Select(e=>e.PostLogoutRedirectUri).ToList(),
+                    AllowedGrantType = _clientGrantTypeGroupManager.GetClientGrantTypeGroupNameForClientGrantTypes(item.AllowedGrantTypes.Select(e=>e.GrantType).ToList())
+                };
+
+                clientDtos.Add(clientDto);
+            }
+
+            return new GetClientsOutput() { Clients = clientDtos };
+        }
+
+        public async Task<GetClientNumOutput> GetClientNum(GetClientNumInput input)
+        {
+            int clientNum = _clientRepository.GetAll().Count();
+
+            return new GetClientNumOutput() { ClientNum = clientNum };
         }
 
         public async Task<AddClientOutput> AddClient(AddClientInput input)
@@ -54,14 +87,19 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages
                 return new AddClientOutput() { ErrorMessage = "密匙只能输入数字和字母" };
             }
 
-            _clientManager.AddClient(
-                input.ClientId, 
-                input.AllowedGrantType, 
-                new List<string>() { input.ClientSecret }, 
-                new List<string>() { input.RedirectUri }, 
-                new List<string>() { input.PostLogoutRedirectUri }, 
-                input.AllowedScopes, 
-                input.AllowOfflineAccess);
+            var client = _clientManager.CreateClient(input.ClientId,
+                input.AllowedGrantType,
+                new List<string>() { input.ClientSecret },
+                input.RedirectUris,
+                input.PostLogoutRedirectUris,
+                input.AllowedScopes);
+
+            client.AllowOfflineAccess = input.AllowOfflineAccess;
+            client.AccessTokenType = (int) ("jwt".Equals(input.AccessTokenType, StringComparison.OrdinalIgnoreCase) ? IdentityServer4.Models.AccessTokenType.Jwt: IdentityServer4.Models.AccessTokenType.Reference);
+            client.AllowAccessTokensViaBrowser = input.AllowAccessTokensViaBrowser;
+            client.Enabled = input.Enabled;
+
+            _clientManager.AddClient(client);
 
             return new AddClientOutput();
         }
@@ -88,22 +126,22 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages
                 return new UpdateClientOutput() { ErrorMessage = "客户端密匙长度必须大于或等于6，小于或等于50" };
             }
 
-            _clientManager.UpdateClient(
-                input.Id,
-                input.ClientId,
-                input.AllowedGrantType,
-                new List<string>() { input.RedirectUri },
-                new List<string>() { input.PostLogoutRedirectUri },
-                input.AllowedScopes,
-                input.AllowOfflineAccess);
+            var client = _clientManager.GetClient(input.Id);
+
+            _clientManager.UpdateAllowedGrantType(client, input.AllowedGrantType);
+            _clientManager.UpdateAllowedScopes(client, input.AllowedScopes);
+            _clientManager.UpdatePostLogoutRedirectUris(client, input.PostLogoutRedirectUris);
+            _clientManager.UpdateRedirectUris(client, input.RedirectUris);
 
             // 如果密匙不为空，则更新
             if (!string.IsNullOrEmpty(input.ClientSecret)) {
-                _clientManager.UpdateSecrets(
-                    input.Id,
-                    new List<string>() { input.ClientSecret }
-                    );
+                _clientManager.UpdateSecrets(client, new List<string>() { input.ClientSecret });
             }
+
+            client.ClientId = input.ClientId;
+            client.AllowAccessTokensViaBrowser = input.AllowAccessTokensViaBrowser;
+            client.AllowOfflineAccess = input.AllowOfflineAccess;
+            client.Enabled = input.Enabled;
 
             return new UpdateClientOutput();
         }

@@ -102,7 +102,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(/*! react */ "./src/lib/react.min.js");
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -489,7 +489,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(/*! react */ "./src/lib/react.min.js");
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -564,11 +564,11 @@ exports.default = Title;
 "use strict";
 
 
-var _react = __webpack_require__(/*! react */ "./src/lib/react.min.js");
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/react-dom.min.js");
+var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -591,10 +591,10 @@ _reactDom2.default.render(_react2.default.createElement(
 
 /***/ }),
 
-/***/ "./src/lib/react-dom.min.js":
-/*!**********************************!*\
-  !*** ./src/lib/react-dom.min.js ***!
-  \**********************************/
+/***/ "./src/lib/js/react-dom.min.js":
+/*!*************************************!*\
+  !*** ./src/lib/js/react-dom.min.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -615,7 +615,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  *
  */
 !function (e) {
-  if ("object" == ( false ? undefined : _typeof(exports)) && "undefined" != typeof module) module.exports = e(__webpack_require__(/*! react */ "./src/lib/react.min.js"));else if (true) !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! react */ "./src/lib/react.min.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (e),
+  if ("object" == ( false ? undefined : _typeof(exports)) && "undefined" != typeof module) module.exports = e(__webpack_require__(/*! react */ "./src/lib/js/react.min.js"));else if (true) !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! react */ "./src/lib/js/react.min.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (e),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));else { var t; }
@@ -3457,10 +3457,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 /***/ }),
 
-/***/ "./src/lib/react.min.js":
-/*!******************************!*\
-  !*** ./src/lib/react.min.js ***!
-  \******************************/
+/***/ "./src/lib/js/react.min.js":
+/*!*********************************!*\
+  !*** ./src/lib/js/react.min.js ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

@@ -1,0 +1,19 @@
+.inputfile-img{
+    position: absolute;
+}
+
+.inputfile-img button{
+    position: absolute;
+    padding: 10px;
+    width: 100px;
+    height: 45px;
+}
+
+.inputfile-img input{
+    position: absolute;
+    padding: 10px;
+    width: 100px;
+    height: 45px;
+    z-index: 9999;
+    opacity: 0;
+}

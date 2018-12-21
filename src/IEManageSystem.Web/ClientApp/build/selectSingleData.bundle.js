@@ -374,7 +374,7 @@ exports.BuildData = BuildData;
 exports.ReloadData = ReloadData;
 exports.AppendData = AppendData;
 
-var _jquery = __webpack_require__(/*! jquery */ "./src/lib/jquery-3.3.1.min.js");
+var _jquery = __webpack_require__(/*! jquery */ "./src/lib/js/jquery-3.3.1.min.js");
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -621,10 +621,10 @@ function AppendData(data, element, factoryId) {
 
 /***/ }),
 
-/***/ "./src/lib/jquery-3.3.1.min.js":
-/*!*************************************!*\
-  !*** ./src/lib/jquery-3.3.1.min.js ***!
-  \*************************************/
+/***/ "./src/lib/js/jquery-3.3.1.min.js":
+/*!****************************************!*\
+  !*** ./src/lib/js/jquery-3.3.1.min.js ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2921,7 +2921,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     return e.$ === w && (e.$ = Kt), t && e.jQuery === w && (e.jQuery = Jt), w;
   }, t || (e.jQuery = e.$ = w), w;
 });
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
 
 /***/ })
 

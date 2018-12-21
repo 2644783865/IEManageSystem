@@ -41,6 +41,17 @@ namespace IEManageSystem.Api.Controllers.ManageHome.AuthorizeManage
         }
 
         [HttpPost]
+        public async Task<ActionResult<ApiResultDataModel<GetClientNumOutput>>> GetClientNum([FromBody]GetClientNumInput input)
+        {
+            if (ValidateModel() == false)
+            {
+                return new ApiResultDataModel<GetClientNumOutput>(_ValidateModelErrors);
+            }
+
+            return new ApiResultDataModel<GetClientNumOutput>(await _clientManageAppService.GetClientNum(input));
+        }
+
+        [HttpPost]
         public async Task<ActionResult<ApiResultDataModel<AddClientOutput>>> AddClient([FromBody]AddClientInput input)
         {
             if (ValidateModel() == false)
@@ -74,9 +85,9 @@ namespace IEManageSystem.Api.Controllers.ManageHome.AuthorizeManage
         }
 
         [HttpPost]
-        public async Task<ActionResult<ApiResultDataModel>> GetGrantTypes()
+        public async Task<ActionResult<ApiResultDataModel>> GetClientGrantTypeGroupNames()
         {
-            return new ApiResultDataModel() { IsSuccess = true, Value = _clientGrantTypeManager.GetClientGrantTypesName() };
+            return new ApiResultDataModel() { IsSuccess = true, Value = _clientGrantTypeManager.GetClientGrantTypeGroupNames() };
         }
     }
 }

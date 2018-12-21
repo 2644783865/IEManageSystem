@@ -98,27 +98,45 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".data-list h5{\r\n    background: #343a40;\r\n    padding: 10px 20px 10px 20px;\r\n    margin-bottom: 0px;\r\n    border-radius: 10px 10px 0px 0px;\r\n    color: #ffffff; \r\n}\r\n\r\n.data-paging ul{\r\n    margin-bottom: 0px;\r\n}\r\n\r\n.data-paging li a{\r\n    background-color: #6c757d;\r\n    color: #fff;\r\n}\r\n\r\n.data-paging li a:hover{\r\n    background-color: #fff;\r\n    color: #000;\r\n}\r\n\r\n.data-form .modal-body>div{\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.data-form ul{\r\n    padding: 0px;\r\n}\r\n\r\n.data-form li{\r\n    list-style: none;\r\n    display: inline-block;\r\n}\r\n\r\n.margin-buttom10{\r\n    margin-bottom: 10px;\r\n}", ""]);
+exports.push([module.i, ".data-list h5{\r\n    background: #343a40;\r\n    padding: 10px 20px 10px 20px;\r\n    margin-bottom: 0px;\r\n    border-radius: 10px 10px 0px 0px;\r\n    color: #ffffff; \r\n}\r\n\r\n.data-paging ul{\r\n    margin-bottom: 0px;\r\n}\r\n\r\n.data-paging li a{\r\n    background-color: #6c757d;\r\n    color: #fff;\r\n}\r\n\r\n.data-paging li a:hover{\r\n    background-color: #fff;\r\n    color: #000;\r\n}\r\n\r\n.data-form .modal-body>div{\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.data-form ul{\r\n    padding: 0px;\r\n}\r\n\r\n.data-form li{\r\n    list-style: none;\r\n    display: inline-block;\r\n    padding: 0px 5px 0px 5px;\r\n}\r\n\r\n.margin-buttom10{\r\n    margin-bottom: 10px;\r\n}", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./src/ManageHome/BodyDiv/AuthorizeManage/Client/css/jquery-labelauty.css":
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./src/ManageHome/BodyDiv/AuthorizeManage/Client/css/jquery-labelauty.css ***!
-  \**********************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./src/ManageHome/BodyDiv/BodyDiv.css":
+/*!**********************************************************************!*\
+  !*** ./node_modules/css-loader!./src/ManageHome/BodyDiv/BodyDiv.css ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var escape = __webpack_require__(/*! ../../../../../../node_modules/css-loader/lib/url/escape.js */ "./node_modules/css-loader/lib/url/escape.js");
-exports = module.exports = __webpack_require__(/*! ../../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, "/*!\n * LABELAUTY jQuery Plugin Styles\n *\n * @file: jquery-labelauty.css\n * @author: Francisco Neves (@fntneves)\n * @site: www.francisconeves.com\n * @license: MIT License\n */\n\n/* Prevent text and blocks selection */\ninput.labelauty + label ::selection { background-color: rgba(255, 255, 255, 0); }\ninput.labelauty + label ::-moz-selection { background-color: rgba(255, 255, 255, 0); }\n\n/* Hide original checkboxes. They are ugly! */\ninput.labelauty { display: none !important; }\n\n/*\n * Let's style the input\n * Feel free to work with it as you wish!\n */\ninput.labelauty + label\n{\n\tdisplay: table;\n\tfont-size: 11px;\n\tpadding: 10px;\n\tbackground-color: #efefef;\n\tcolor: #b3b3b3;\n\tcursor: pointer;\n\n\tborder-radius: 3px 3px 3px 3px;\n\t-moz-border-radius: 3px 3px 3px 3px;\n\t-webkit-border-radius: 3px 3px 3px 3px;\n\n\n\ttransition: background-color 0.25s;\n\t-moz-transition: background-color 0.25s;\n\t-webkit-transition: background-color 0.25s;\n\t-o-transition: background-color 0.25s;\n\n\t-moz-user-select: none;\n\t-khtml-user-select: none;\n\t-webkit-user-select: none;\n\t-o-user-select: none;\n}\n\n/* Stylish text inside label */\n\ninput.labelauty + label > span.labelauty-unchecked,\ninput.labelauty + label > span.labelauty-checked\n{\n\tdisplay: inline-block;\n\tline-height: 16px;\n\tvertical-align: bottom;\n}\n\n/* Stylish icons inside label */\n\ninput.labelauty + label > span.labelauty-unchecked-image,\ninput.labelauty + label > span.labelauty-checked-image\n{\n\tdisplay: inline-block;\n\twidth: 16px;\n\theight: 16px;\n\tvertical-align: bottom;\n\tbackground-repeat: no-repeat;\n\tbackground-position: left center;\n\n\ttransition: background-image 0.5s linear;\n\t-moz-transition: background-image 0.5s linear;\n\t-webkit-transition: background-image 0.5s linear;\n\t-o-transition: background-image 0.5s linear;\n}\n\n/* When there's a label, add a little margin to the left */\ninput.labelauty + label > span.labelauty-unchecked-image + span.labelauty-unchecked,\ninput.labelauty + label > span.labelauty-checked-image + span.labelauty-checked\n{\n\tmargin-left: 7px;\n}\n\n/* When not Checked */\ninput.labelauty:not(:checked):not([disabled]) + label:hover\n{\n\tbackground-color: #eaeaea;\n\tcolor: #a7a7a7;\n}\ninput.labelauty:not(:checked) + label > span.labelauty-checked-image\n{\n\tdisplay: none;\n}\n\ninput.labelauty:not(:checked) + label > span.labelauty-checked\n{\n\tdisplay: none;\n}\n\n/* When Checked */\ninput.labelauty:checked + label\n{\n\tbackground-color: #3498db;\n\tcolor: #ffffff;\n}\n\ninput.labelauty:checked:not([disabled]) + label:hover\n{\n\tbackground-color: #72c5fd;\n}\ninput.labelauty:checked + label > span.labelauty-unchecked-image\n{\n\tdisplay: none;\n}\n\ninput.labelauty:checked + label > span.labelauty-unchecked\n{\n\tdisplay: none;\n}\n\ninput.labelauty:checked + label > span.labelauty-checked\n{\n\tdisplay: inline-block;\n}\n\ninput.labelauty.no-label:checked + label > span.labelauty-checked\n{\n\tdisplay: block;\n}\n\n/* When Disabled */\ninput.labelauty[disabled] + label\n{\n\topacity: 0.5;\n}\n\n/* Add a background to (un)checked images */\ninput.labelauty + label > span.labelauty-unchecked-image\n{\n\tbackground-image: url(" + escape(__webpack_require__(/*! ../images/input-unchecked.png */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/images/input-unchecked.png")) + ");\n}\n\ninput.labelauty + label > span.labelauty-checked-image\n{\n\tbackground-image: url(" + escape(__webpack_require__(/*! ../images/input-checked.png */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/images/input-checked.png")) + ");\n}", ""]);
+exports.push([module.i, ".content-container{\r\n\tpadding: 20px 40px 20px 40px;\r\n\toverflow-y: scroll;\r\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./src/ManageHome/BodyDiv/Personal/UserInfo/UserInfo.css":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/css-loader!./src/ManageHome/BodyDiv/Personal/UserInfo/UserInfo.css ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".inputfile-img{\r\n    position: absolute;\r\n}\r\n\r\n.inputfile-img button{\r\n    position: absolute;\r\n    padding: 10px;\r\n    width: 100px;\r\n    height: 45px;\r\n}\r\n\r\n.inputfile-img input{\r\n    position: absolute;\r\n    padding: 10px;\r\n    width: 100px;\r\n    height: 45px;\r\n    z-index: 9999;\r\n    opacity: 0;\r\n}", ""]);
 
 // exports
 
@@ -138,6 +156,26 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 // module
 exports.push([module.i, "html,body {\r\n            margin: 0;\r\n            width:100%;\r\n            height: 100%;\r\n\r\n            /*超出body范围部分隐藏*/\r\n            overflow: hidden;\r\n}\r\n\r\n.content{\r\n            height: 100%;\r\n}\r\n\r\n.bodydiv_css {\r\n    padding-top: 50px;\r\n    margin: 0px;\r\n    width: 100%;\r\n}\r\n\r\n.navbar_css {\r\n    background: linear-gradient(to right, #00C5CD, #00EEEE);\r\n}\r\n.navbar_logo_css{\r\n    width: 50px;\r\n}\r\n    .navbar_css .navbar-collapse {\r\n        display: -webkit-flex;\r\n        display: flex;\r\n    }\r\n    .navbar_css .navbar-collapse span {\r\n        margin-left: auto;\r\n        margin-right:20px;\r\n    }\r\n    .navbar_css a {\r\n        color: #FFFFFF;\r\n    }\r\n    .navbar_css li {\r\n        border-radius:5px;\r\n        overflow:hidden;\r\n    }\r\n    .navbar_css li a:hover {\r\n        background-color: #00E5CD;\r\n    }\r\n\r\n.navbar_css_li_click {\r\n    background-color: #00E5CD;\r\n}\r\n\r\n.navbar_css li a:focus {\r\n    background-color: #00E5CD;\r\n}\r\n\r\n.leftmenu_css {\r\n    border-right: 1px solid #00688B;\r\n    box-shadow: 0px 0px 5px grey;\r\n    padding:0px;\r\n}\r\n\r\n    .leftmenu_css ul {\r\n        padding-top: 10px;\r\n    }\r\n\r\n.leftmenu_css_li {\r\n    background-color: #00BED1;\r\n    position: relative;\r\n    display: block;\r\n    padding: 10px 15px;\r\n    margin-bottom: -1px;\r\n    border: 1px solid #ddd;\r\n    cursor: pointer;\r\n    color: #FFFFFF;\r\n}\r\n    .leftmenu_css_li a{\r\n        display: block;\r\n    }\r\n\r\n.leftmenu_css ul li:hover {\r\n    background-color: #00E5CD;\r\n}\r\n\r\n.leftmenu_css_li_click {\r\n    background-color: #00E5CD;\r\n}\r\n\r\n#servicecontainer {\r\n    padding:20px;\r\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./src/lib/css/jquery-labelauty.css":
+/*!********************************************************************!*\
+  !*** ./node_modules/css-loader!./src/lib/css/jquery-labelauty.css ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var escape = __webpack_require__(/*! ../../../node_modules/css-loader/lib/url/escape.js */ "./node_modules/css-loader/lib/url/escape.js");
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "/*!\n * LABELAUTY jQuery Plugin Styles\n *\n * @file: jquery-labelauty.css\n * @author: Francisco Neves (@fntneves)\n * @site: www.francisconeves.com\n * @license: MIT License\n */\n\n/* Prevent text and blocks selection */\ninput.labelauty + label ::selection { background-color: rgba(255, 255, 255, 0); }\ninput.labelauty + label ::-moz-selection { background-color: rgba(255, 255, 255, 0); }\n\n/* Hide original checkboxes. They are ugly! */\ninput.labelauty { display: none !important; }\n\n/*\n * Let's style the input\n * Feel free to work with it as you wish!\n */\ninput.labelauty + label\n{\n\tdisplay: table;\n\tfont-size: 11px;\n\tpadding: 10px;\n\tbackground-color: #efefef;\n\tcolor: #b3b3b3;\n\tcursor: pointer;\n\n\tborder-radius: 3px 3px 3px 3px;\n\t-moz-border-radius: 3px 3px 3px 3px;\n\t-webkit-border-radius: 3px 3px 3px 3px;\n\n\n\ttransition: background-color 0.25s;\n\t-moz-transition: background-color 0.25s;\n\t-webkit-transition: background-color 0.25s;\n\t-o-transition: background-color 0.25s;\n\n\t-moz-user-select: none;\n\t-khtml-user-select: none;\n\t-webkit-user-select: none;\n\t-o-user-select: none;\n}\n\n/* Stylish text inside label */\n\ninput.labelauty + label > span.labelauty-unchecked,\ninput.labelauty + label > span.labelauty-checked\n{\n\tdisplay: inline-block;\n\tline-height: 16px;\n\tvertical-align: bottom;\n}\n\n/* Stylish icons inside label */\n\ninput.labelauty + label > span.labelauty-unchecked-image,\ninput.labelauty + label > span.labelauty-checked-image\n{\n\tdisplay: inline-block;\n\twidth: 16px;\n\theight: 16px;\n\tvertical-align: bottom;\n\tbackground-repeat: no-repeat;\n\tbackground-position: left center;\n\n\ttransition: background-image 0.5s linear;\n\t-moz-transition: background-image 0.5s linear;\n\t-webkit-transition: background-image 0.5s linear;\n\t-o-transition: background-image 0.5s linear;\n}\n\n/* When there's a label, add a little margin to the left */\ninput.labelauty + label > span.labelauty-unchecked-image + span.labelauty-unchecked,\ninput.labelauty + label > span.labelauty-checked-image + span.labelauty-checked\n{\n\tmargin-left: 7px;\n}\n\n/* When not Checked */\ninput.labelauty:not(:checked):not([disabled]) + label:hover\n{\n\tbackground-color: #eaeaea;\n\tcolor: #a7a7a7;\n}\ninput.labelauty:not(:checked) + label > span.labelauty-checked-image\n{\n\tdisplay: none;\n}\n\ninput.labelauty:not(:checked) + label > span.labelauty-checked\n{\n\tdisplay: none;\n}\n\n/* When Checked */\ninput.labelauty:checked + label\n{\n\tbackground-color: #3498db;\n\tcolor: #ffffff;\n}\n\ninput.labelauty:checked:not([disabled]) + label:hover\n{\n\tbackground-color: #72c5fd;\n}\ninput.labelauty:checked + label > span.labelauty-unchecked-image\n{\n\tdisplay: none;\n}\n\ninput.labelauty:checked + label > span.labelauty-unchecked\n{\n\tdisplay: none;\n}\n\ninput.labelauty:checked + label > span.labelauty-checked\n{\n\tdisplay: inline-block;\n}\n\ninput.labelauty.no-label:checked + label > span.labelauty-checked\n{\n\tdisplay: block;\n}\n\n/* When Disabled */\ninput.labelauty[disabled] + label\n{\n\topacity: 0.5;\n}\n\n/* Add a background to (un)checked images */\ninput.labelauty + label > span.labelauty-unchecked-image\n{\n\tbackground-image: url(" + escape(__webpack_require__(/*! ../images/input-unchecked.png */ "./src/lib/images/input-unchecked.png")) + ");\n}\n\ninput.labelauty + label > span.labelauty-checked-image\n{\n\tbackground-image: url(" + escape(__webpack_require__(/*! ../images/input-checked.png */ "./src/lib/images/input-checked.png")) + ");\n}", ""]);
 
 // exports
 
@@ -3006,7 +3044,7 @@ module.exports = ReactPropTypesSecret;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var warning__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! warning */ "./node_modules/warning/warning.js");
 /* harmony import */ var warning__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(warning__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./src/lib/react.min.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
@@ -3078,7 +3116,7 @@ BrowserRouter.propTypes = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var warning__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! warning */ "./node_modules/warning/warning.js");
 /* harmony import */ var warning__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(warning__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./src/lib/react.min.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
@@ -3147,7 +3185,7 @@ HashRouter.propTypes = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./src/lib/react.min.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
@@ -3287,7 +3325,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./src/lib/react.min.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
@@ -3616,7 +3654,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var warning__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! warning */ "./node_modules/warning/warning.js");
 /* harmony import */ var warning__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(warning__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./src/lib/react.min.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
@@ -3686,7 +3724,7 @@ MemoryRouter.propTypes = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./src/lib/react.min.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
@@ -3783,7 +3821,7 @@ Prompt.contextTypes = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./src/lib/react.min.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
@@ -3922,7 +3960,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var warning__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(warning__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! invariant */ "./node_modules/invariant/browser.js");
 /* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(invariant__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./src/lib/react.min.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
@@ -4082,7 +4120,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var warning__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(warning__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! invariant */ "./node_modules/invariant/browser.js");
 /* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(invariant__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./src/lib/react.min.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
@@ -4207,7 +4245,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var warning__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(warning__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! invariant */ "./node_modules/invariant/browser.js");
 /* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(invariant__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./src/lib/react.min.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
@@ -4375,7 +4413,7 @@ StaticRouter.childContextTypes = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./src/lib/react.min.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
@@ -4610,7 +4648,7 @@ var matchPath = function matchPath(pathname) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./src/lib/react.min.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
@@ -5394,16 +5432,319 @@ if(false) {}
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(/*! react */ "./src/lib/react.min.js");
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/react-dom.min.js");
+var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _jqueryLabelauty = __webpack_require__(/*! jquery-labelauty.js */ "./src/lib/js/jquery-labelauty.js");
+
+var _jqueryLabelauty2 = _interopRequireDefault(_jqueryLabelauty);
+
+var _jqueryLabelauty3 = __webpack_require__(/*! jquery-labelauty.css */ "./src/lib/css/jquery-labelauty.css");
+
+var _jqueryLabelauty4 = _interopRequireDefault(_jqueryLabelauty3);
+
+var _ClientList = __webpack_require__(/*! ./ClientList.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientList.jsx");
+
+var _ClientList2 = _interopRequireDefault(_ClientList);
+
+var _Paging = __webpack_require__(/*! ./Paging.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Paging.jsx");
+
+var _Paging2 = _interopRequireDefault(_Paging);
+
+var _ClientDelete = __webpack_require__(/*! ./ClientDelete.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientDelete.jsx");
+
+var _ClientDelete2 = _interopRequireDefault(_ClientDelete);
+
+var _AddClientForm = __webpack_require__(/*! ./ClientForm/AddClientForm.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/AddClientForm.jsx");
+
+var _AddClientForm2 = _interopRequireDefault(_AddClientForm);
+
+var _LookupClientForm = __webpack_require__(/*! ./ClientForm/LookupClientForm.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/LookupClientForm.jsx");
+
+var _LookupClientForm2 = _interopRequireDefault(_LookupClientForm);
+
+var _EditClientForm = __webpack_require__(/*! ./ClientForm/EditClientForm.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/EditClientForm.jsx");
+
+var _EditClientForm2 = _interopRequireDefault(_EditClientForm);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+__webpack_require__(/*! ./Client.css */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Client.css");
+
+var operationState = {
+	none: "none",
+	add: "add",
+	delete: "delete",
+	edit: "edit",
+	lookup: "lookup"
+};
+
+var Client = function (_React$Component) {
+	_inherits(Client, _React$Component);
+
+	function Client(props) {
+		_classCallCheck(this, Client);
+
+		var _this = _possibleConstructorReturn(this, (Client.__proto__ || Object.getPrototypeOf(Client)).call(this, props));
+
+		_this.pageSize = 10;
+
+		_this.pageIndex = 1;
+
+		_this.state = {
+			curClient: null,
+			clients: new Array(),
+			clientNum: 0,
+			pageNum: 0,
+			operationState: operationState.none
+		};
+
+		_this.freshen = _this.freshen.bind(_this);
+
+		_this.pageIndexChange = _this.pageIndexChange.bind(_this);
+
+		_this.getClientListBackcall = _this.getClientListBackcall.bind(_this);
+		_this.getClientList(_this.pageIndex, _this.pageSize);
+
+		_this.getClientNumBackcall = _this.getClientNumBackcall.bind(_this);
+		_this.getClientNum();
+
+		_this.clientEditClick = _this.clientEditClick.bind(_this);
+		_this.clientDeleteClick = _this.clientDeleteClick.bind(_this);
+		_this.clientAddClick = _this.clientAddClick.bind(_this);
+		_this.clientLookupClick = _this.clientLookupClick.bind(_this);
+		return _this;
+	}
+
+	_createClass(Client, [{
+		key: 'componentWillUpdate',
+		value: function componentWillUpdate(nextProps, nextState) {
+			nextState.operationState = operationState.none;
+		}
+
+		// 刷新整个Client组件
+
+	}, {
+		key: 'freshen',
+		value: function freshen() {
+			this.getClientList(this.pageIndex, this.pageSize);
+			this.getClientNum();
+
+			this.setState({
+				curClient: null,
+				clients: new Array(),
+				clientNum: 0,
+				pageNum: 0,
+				operationState: operationState.none
+			});
+		}
+
+		// 页索引改变
+
+	}, {
+		key: 'pageIndexChange',
+		value: function pageIndexChange(pageIndex) {
+			this.pageIndex = pageIndex;
+			this.getClientList(this.pageIndex, this.pageSize);
+		}
+
+		// 获取客户端列表回调
+
+	}, {
+		key: 'getClientListBackcall',
+		value: function getClientListBackcall(data) {
+			if (data.isSuccess == true) {
+				this.setState({ clients: data.value.clients });
+			}
+		}
+
+		// 获取客户端列表
+
+	}, {
+		key: 'getClientList',
+		value: function getClientList(pageIndex, pageSize) {
+			var postData = {
+				pageIndex: pageIndex,
+				pageSize: pageSize
+			};
+
+			$.ajax({
+				url: "/api/ClientManage/GetClients",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: this.getClientListBackcall
+			});
+		}
+
+		// 获取客户端数量回调
+
+	}, {
+		key: 'getClientNumBackcall',
+		value: function getClientNumBackcall(data) {
+			if (data.isSuccess == true) {
+				var pageNum = parseInt(data.value.clientNum / this.pageSize);
+				if (data.value.clientNum % this.pageSize > 0) {
+					pageNum++;
+				}
+				this.setState({
+					clientNum: data.value.clientNum,
+					pageNum: pageNum });
+			}
+		}
+
+		// 获取客户端数量
+
+	}, {
+		key: 'getClientNum',
+		value: function getClientNum() {
+			var postData = {};
+
+			$.ajax({
+				url: "/api/ClientManage/GetClientNum",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: this.getClientNumBackcall
+			});
+		}
+
+		// 点击编辑按钮
+
+	}, {
+		key: 'clientEditClick',
+		value: function clientEditClick(id) {
+			var clients = this.state.clients;
+			for (var item in clients) {
+				if (clients[item].id == id) {
+					this.setState({
+						curClient: clients[item],
+						operationState: operationState.edit
+					});
+					break;
+				}
+			}
+		}
+
+		// 点击删除按钮
+
+	}, {
+		key: 'clientDeleteClick',
+		value: function clientDeleteClick(id) {
+			var clients = this.state.clients;
+			for (var item in clients) {
+				if (clients[item].id == id) {
+					this.setState({
+						curClient: clients[item],
+						operationState: operationState.delete
+					});
+					break;
+				}
+			}
+		}
+
+		// 点击添加按钮
+
+	}, {
+		key: 'clientAddClick',
+		value: function clientAddClick() {
+			var client = {};
+			this.setState({
+				curClient: client,
+				operationState: operationState.add
+			});
+		}
+
+		//点击查看按钮
+
+	}, {
+		key: 'clientLookupClick',
+		value: function clientLookupClick() {
+			var clients = this.state.clients;
+			for (var item in clients) {
+				if (clients[item].id == id) {
+					this.setState({
+						curClient: clients[item],
+						operationState: operationState.lookup
+					});
+					break;
+				}
+			}
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var clientList = _react2.default.createElement(_ClientList2.default, {
+				clients: this.state.clients,
+				clientEditClick: this.clientEditClick,
+				clientDeleteClick: this.clientDeleteClick,
+				clientLookupClick: this.clientLookupClick
+			});
+
+			var paging = _react2.default.createElement(_Paging2.default, {
+				clientAddClick: this.clientAddClick,
+				pageNum: this.state.pageNum,
+				pageIndexChange: this.pageIndexChange });
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'row' },
+				clientList,
+				paging,
+				this.state.operationState == operationState.add && _react2.default.createElement(_AddClientForm2.default, { client: this.state.curClient, freshen: this.freshen }),
+				this.state.operationState == operationState.edit && _react2.default.createElement(_EditClientForm2.default, { client: this.state.curClient, freshen: this.freshen }),
+				this.state.operationState == operationState.lookup && _react2.default.createElement(_LookupClientForm2.default, { client: this.state.curClient, freshen: this.freshen }),
+				this.state.operationState == operationState.delete && _react2.default.createElement(_ClientDelete2.default, { client: this.state.curClient, freshen: this.freshen })
+			);
+		}
+	}]);
+
+	return Client;
+}(_react2.default.Component);
+
+exports.default = Client;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientDelete.jsx":
+/*!************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientDelete.jsx ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -5415,699 +5756,1316 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-__webpack_require__(/*! ./js/jquery-labelauty.js */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/js/jquery-labelauty.js");
-__webpack_require__(/*! ./Client.css */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Client.css");
-__webpack_require__(/*! ./css/jquery-labelauty.css */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/css/jquery-labelauty.css");
+var ClientDelete = function (_React$Component) {
+  _inherits(ClientDelete, _React$Component);
 
-var Client = function (_React$Component) {
-    _inherits(Client, _React$Component);
+  function ClientDelete(props) {
+    _classCallCheck(this, ClientDelete);
 
-    function Client(props) {
-        _classCallCheck(this, Client);
+    var _this = _possibleConstructorReturn(this, (ClientDelete.__proto__ || Object.getPrototypeOf(ClientDelete)).call(this, props));
 
-        return _possibleConstructorReturn(this, (Client.__proto__ || Object.getPrototypeOf(Client)).call(this, props));
+    _this.deleteBackcall = _this.deleteBackcall.bind(_this);
+    return _this;
+  }
+
+  _createClass(ClientDelete, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      $("#dataDeleteBtn").click();
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      $("#dataDeleteBtn").click();
+    }
+  }, {
+    key: 'deleteBackcall',
+    value: function deleteBackcall(data) {
+      if (data.isSuccess == true) {}
+    }
+  }, {
+    key: 'delete',
+    value: function _delete(id) {
+      var postData = {
+        id: id
+      };
+
+      $.ajax({
+        url: "",
+        type: 'post',
+        data: JSON.stringify(postData),
+        contentType: 'application/json',
+        dataType: 'json',
+        success: this.deleteBackcall
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement('button', { id: 'dataDeleteBtn', className: 'btn', 'data-toggle': 'modal', 'data-target': '#dataDelete', hidden: 'hidden' }),
+        _react2.default.createElement(
+          'div',
+          { className: 'modal fade data-delete', id: 'dataDelete' },
+          _react2.default.createElement(
+            'div',
+            { className: 'modal-dialog' },
+            _react2.default.createElement(
+              'div',
+              { className: 'modal-content' },
+              _react2.default.createElement(
+                'div',
+                { className: 'modal-header' },
+                _react2.default.createElement(
+                  'h4',
+                  { className: 'modal-title' },
+                  '\u5220\u9664\u5BA2\u6237\u7AEF'
+                ),
+                _react2.default.createElement(
+                  'button',
+                  { type: 'button', className: 'close', 'data-dismiss': 'modal' },
+                  '\xD7'
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'modal-body' },
+                '\u4F60\u6B63\u8981\u5220\u9664 ',
+                this.props.client.name,
+                ' \uFF0C\u5220\u9664\u540E\u65E0\u6CD5\u6062\u590D\uFF0C\u786E\u5B9A\u5220\u9664\u5417\uFF1F'
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'modal-footer' },
+                _react2.default.createElement(
+                  'button',
+                  { type: 'button', className: 'btn btn-danger btn-sm', onClick: function onClick() {
+                      return _this2.delete(_this2.props.client.id);
+                    } },
+                  '\u5220\u9664'
+                ),
+                _react2.default.createElement(
+                  'button',
+                  { type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
+                  '\u5173\u95ED'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return ClientDelete;
+}(_react2.default.Component);
+
+exports.default = ClientDelete;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/AddClientForm.jsx":
+/*!************************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/AddClientForm.jsx ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _ClientForm2 = __webpack_require__(/*! ./ClientForm.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/ClientForm.jsx");
+
+var _ClientForm3 = _interopRequireDefault(_ClientForm2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AddClientForm = function (_ClientForm) {
+	_inherits(AddClientForm, _ClientForm);
+
+	function AddClientForm(props) {
+		_classCallCheck(this, AddClientForm);
+
+		var _this = _possibleConstructorReturn(this, (AddClientForm.__proto__ || Object.getPrototypeOf(AddClientForm)).call(this, props));
+
+		_this.submitUrl = "/api/ClientManage/AddClient";
+		return _this;
+	}
+
+	return AddClientForm;
+}(_ClientForm3.default);
+
+exports.default = AddClientForm;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/ClientForm.jsx":
+/*!*********************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/ClientForm.jsx ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ClientForm = function (_React$Component) {
+  _inherits(ClientForm, _React$Component);
+
+  function ClientForm(props) {
+    _classCallCheck(this, ClientForm);
+
+    var _this = _possibleConstructorReturn(this, (ClientForm.__proto__ || Object.getPrototypeOf(ClientForm)).call(this, props));
+
+    _this.submitUrl = "";
+
+    _this.state = {
+      grantTypeGroupNames: new Array(),
+      identityResources: new Array(),
+      apiResources: new Array(),
+      redirectUris: new Array(),
+      postLogoutRedirectUris: new Array()
+    };
+
+    _this.getClientGrantTypeGroupNamesBackcall = _this.getClientGrantTypeGroupNamesBackcall.bind(_this);
+    _this.getClientGrantTypeGroupNames();
+
+    _this.getIdentityResourcesBackcall = _this.getIdentityResourcesBackcall.bind(_this);
+    _this.getIdentityResources();
+
+    _this.getApiResourcesBackcall = _this.getApiResourcesBackcall.bind(_this);
+    _this.getApiResources();
+
+    _this.redirectUrisAddClick = _this.redirectUrisAddClick.bind(_this);
+    _this.redirectUrisDeleteClick = _this.redirectUrisDeleteClick.bind(_this);
+    _this.redirectUrisOnChange = _this.redirectUrisOnChange.bind(_this);
+    _this.postLogoutRedirectUrisAddClick = _this.postLogoutRedirectUrisAddClick.bind(_this);
+    _this.postLogoutRedirectUrisDeleteClick = _this.postLogoutRedirectUrisDeleteClick.bind(_this);
+    _this.postLogoutRedirectUrisOnChange = _this.postLogoutRedirectUrisOnChange.bind(_this);
+    _this.submitBackcall = _this.submitBackcall.bind(_this);
+    _this.submit = _this.submit.bind(_this);
+    return _this;
+  }
+
+  _createClass(ClientForm, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      $("#dataFormBtn").click();
+      $(':input:not(.labelauty)').labelauty();
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      $("#dataFormBtn").click();
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      $(':input:not(.labelauty)').labelauty();
     }
 
-    _createClass(Client, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            $(':input').labelauty();
+    // 获取认证类型组合回调
+
+  }, {
+    key: 'getClientGrantTypeGroupNamesBackcall',
+    value: function getClientGrantTypeGroupNamesBackcall(data) {
+      if (data.isSuccess == true) {
+        this.setState({ grantTypeGroupNames: data.value });
+      }
+    }
+
+    // 获取认证类型组合
+
+  }, {
+    key: 'getClientGrantTypeGroupNames',
+    value: function getClientGrantTypeGroupNames() {
+      var postData = {};
+
+      $.ajax({
+        url: "/api/ClientManage/GetClientGrantTypeGroupNames",
+        type: 'post',
+        data: JSON.stringify(postData),
+        contentType: 'application/json',
+        dataType: 'json',
+        success: this.getClientGrantTypeGroupNamesBackcall
+      });
+    }
+
+    // 获取身份资源回调
+
+  }, {
+    key: 'getIdentityResourcesBackcall',
+    value: function getIdentityResourcesBackcall(data) {
+      if (data.isSuccess == true) {
+        var identityResources = new Array();
+        for (var item in data.value.identityResources) {
+          identityResources.push(data.value.identityResources[item].name);
         }
-    }, {
-        key: 'componentDidUpdate',
-        value: function componentDidUpdate() {
-            $(':input').labelauty();
+        this.setState({ identityResources: identityResources });
+      }
+    }
+
+    // 获取身份资源
+
+  }, {
+    key: 'getIdentityResources',
+    value: function getIdentityResources() {
+      var postData = {
+        pageIndex: 1,
+        pageSize: 9999
+      };
+
+      $.ajax({
+        url: "/api/IdentityResourceManage/GetIdentityResources",
+        type: 'post',
+        data: JSON.stringify(postData),
+        contentType: 'application/json',
+        dataType: 'json',
+        success: this.getIdentityResourcesBackcall
+      });
+    }
+
+    // 获取Api资源回调
+
+  }, {
+    key: 'getApiResourcesBackcall',
+    value: function getApiResourcesBackcall(data) {
+      if (data.isSuccess == true) {
+        var resources = new Array();
+        for (var item in data.value.apiResources) {
+          resources.push(data.value.apiResources[item].name);
         }
-    }, {
+        this.setState({ apiResources: resources });
+      }
+    }
+
+    // 获取Api资源
+
+  }, {
+    key: 'getApiResources',
+    value: function getApiResources() {
+      var postData = {
+        pageIndex: 1,
+        pageSize: 9999
+      };
+
+      $.ajax({
+        url: "/api/ApiResourceManage/GetApiResources",
+        type: 'post',
+        data: JSON.stringify(postData),
+        contentType: 'application/json',
+        dataType: 'json',
+        success: this.getApiResourcesBackcall
+      });
+    }
+
+    // 登录重定向添加单击
+
+  }, {
+    key: 'redirectUrisAddClick',
+    value: function redirectUrisAddClick() {
+      this.setState(function (preState) {
+        preState.redirectUris.push("");
+        return { redirectUris: preState.redirectUris };
+      });
+    }
+
+    // 登录重定向删除单击
+
+  }, {
+    key: 'redirectUrisDeleteClick',
+    value: function redirectUrisDeleteClick(index) {
+      this.setState(function (preState) {
+        preState.redirectUris.splice(index, 1);
+        return { redirectUris: preState.redirectUris };
+      });
+    }
+
+    // 登录重定向表单输入
+
+  }, {
+    key: 'redirectUrisOnChange',
+    value: function redirectUrisOnChange(index, value) {
+      this.setState(function (preState) {
+        preState.redirectUris[index] = value;
+        return { redirectUris: preState.redirectUris };
+      });
+    }
+
+    // 退出登录重定向添加单击
+
+  }, {
+    key: 'postLogoutRedirectUrisAddClick',
+    value: function postLogoutRedirectUrisAddClick() {
+      this.setState(function (preState) {
+        preState.postLogoutRedirectUris.push("");
+        return { postLogoutRedirectUris: preState.postLogoutRedirectUris };
+      });
+    }
+
+    // 退出登录重定向删除单击
+
+  }, {
+    key: 'postLogoutRedirectUrisDeleteClick',
+    value: function postLogoutRedirectUrisDeleteClick(index) {
+      this.setState(function (preState) {
+        preState.postLogoutRedirectUris.splice(index, 1);
+        return { postLogoutRedirectUris: preState.postLogoutRedirectUris };
+      });
+    }
+
+    // 退出登录重定向表单输入
+
+  }, {
+    key: 'postLogoutRedirectUrisOnChange',
+    value: function postLogoutRedirectUrisOnChange(index, value) {
+      this.setState(function (preState) {
+        preState.postLogoutRedirectUris[index] = value;
+        return { postLogoutRedirectUris: preState.postLogoutRedirectUris };
+      });
+    }
+
+    // 提交回调
+
+  }, {
+    key: 'submitBackcall',
+    value: function submitBackcall(data) {
+      if (data.isSuccess == true) {
+        $("#dataFormCloseBtn").click();
+        this.props.freshen();
+      }
+    }
+
+    // 提交
+
+  }, {
+    key: 'submit',
+    value: function submit() {
+      var clientId = $("input[name=clientId]").val();
+      var clientSecret = $("input[name=clientSecret]").val();
+      var allowedGrantType = $("input[name=allowedGrantType]:checked").val();
+      var allowedScopes = Array();
+      var allowedScopeEqs = $("input[name=allowedScopes]:checked");
+      for (var item = 0; item < allowedScopeEqs.length; item++) {
+        allowedScopes.push(allowedScopeEqs.eq(item).val());
+      }
+      var redirectUris = this.state.redirectUris;
+      var postLogoutRedirectUris = this.state.postLogoutRedirectUris;
+      var allowAccessTokensViaBrowser = $("input[name=allowAccessTokensViaBrowser]:checked").val();
+      var accessTokenType = $("input[name=accessTokenType]:checked").val();
+      var enabled = $("input[name=enabled]:checked").val();
+      var allowOfflineAccess = $("input[name=allowOfflineAccess]:checked").val();
+
+      var postData = {
+        clientId: clientId,
+        clientSecret: clientSecret,
+        allowedGrantType: allowedGrantType,
+        allowedScopes: allowedScopes,
+        redirectUris: redirectUris,
+        postLogoutRedirectUris: postLogoutRedirectUris,
+        allowAccessTokensViaBrowser: allowAccessTokensViaBrowser,
+        accessTokenType: accessTokenType,
+        enabled: enabled,
+        allowOfflineAccess: allowOfflineAccess
+      };
+
+      $.ajax({
+        url: this.submitUrl,
+        type: 'post',
+        data: JSON.stringify(postData),
+        contentType: 'application/json',
+        dataType: 'json',
+        success: this.submitBackcall
+      });
+
+      console.log(postData);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var allowedGrantTypeLis = this.state.grantTypeGroupNames.map(function (item) {
+        return _react2.default.createElement(
+          'li',
+          null,
+          _react2.default.createElement('input', { type: 'radio', name: 'allowedGrantType', 'data-labelauty': item, defaultValue: item })
+        );
+      });
+
+      var identityResourceLis = this.state.identityResources.map(function (item) {
+        return _react2.default.createElement(
+          'li',
+          null,
+          _react2.default.createElement('input', { type: 'checkbox', name: 'allowedScopes', 'data-labelauty': item, defaultValue: item })
+        );
+      });
+
+      var apiResourceLis = this.state.apiResources.map(function (item) {
+        return _react2.default.createElement(
+          'li',
+          null,
+          _react2.default.createElement('input', { type: 'checkbox', name: 'allowedScopes', 'data-labelauty': item, defaultValue: item })
+        );
+      });
+
+      var redirectUriList = this.state.redirectUris.map(function (item, index) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'd-flex margin-buttom10' },
+          _react2.default.createElement('input', { name: 'redirectUris', type: 'text', className: 'form-control', value: item,
+            onChange: function onChange(event) {
+              return _this2.redirectUrisOnChange(index, event.target.value);
+            } }),
+          _react2.default.createElement(
+            'button',
+            { className: 'btn btn-danger btn-sm', onClick: function onClick() {
+                return _this2.redirectUrisDeleteClick(index);
+              } },
+            '\u5220\u9664'
+          )
+        );
+      });
+
+      var postLogoutRedirectUriList = this.state.postLogoutRedirectUris.map(function (item, index) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'd-flex margin-buttom10' },
+          _react2.default.createElement('input', { name: 'postLogoutRedirectUris', type: 'text', className: 'form-control', value: item,
+            onChange: function onChange(event) {
+              return _this2.postLogoutRedirectUrisOnChange(index, event.target.value);
+            } }),
+          _react2.default.createElement(
+            'button',
+            { className: 'btn btn-danger btn-sm', onClick: function onClick() {
+                return _this2.postLogoutRedirectUrisDeleteClick(index);
+              } },
+            '\u5220\u9664'
+          )
+        );
+      });
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'button',
+          { id: 'dataFormBtn', type: 'button', className: 'btn btn-info', 'data-toggle': 'modal', 'data-target': '#dataForm', hidden: 'hidden' },
+          '+\u6DFB\u52A0'
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'modal fade data-form', id: 'dataForm' },
+          _react2.default.createElement(
+            'div',
+            { className: 'modal-dialog modal-lg' },
+            _react2.default.createElement(
+              'div',
+              { className: 'modal-content' },
+              _react2.default.createElement(
+                'div',
+                { className: 'modal-header bg-info text-white' },
+                _react2.default.createElement(
+                  'h4',
+                  { className: 'modal-title' },
+                  '\u5BA2\u6237\u7AEF\u4FE1\u606F'
+                ),
+                _react2.default.createElement(
+                  'button',
+                  { type: 'button', className: 'close', 'data-dismiss': 'modal' },
+                  '\xD7'
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'modal-body jumbotron' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'input-group mb-3 col-md-12' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'input-group-prepend' },
+                    _react2.default.createElement(
+                      'span',
+                      { className: 'input-group-text' },
+                      '\u5BA2\u6237\u7AEFId'
+                    )
+                  ),
+                  _react2.default.createElement('input', { name: 'clientId', type: 'text', className: 'form-control', placeholder: '\u5BA2\u6237\u7AEFId' })
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'input-group mb-3 col-md-12' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'input-group-prepend' },
+                    _react2.default.createElement(
+                      'span',
+                      { className: 'input-group-text' },
+                      '\u5BA2\u6237\u7AEF\u5BC6\u94A5'
+                    )
+                  ),
+                  _react2.default.createElement('input', { name: 'clientSecret', type: 'text', className: 'form-control', placeholder: '\u5BC6\u94A5\uFF08\u5982\u4E0D\u586B\u5199\u5219\u65E0\u9700\u4FEE\u6539\uFF09' })
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-md-12 float-left' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'card' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'card-header bg-secondary text-white' },
+                      '\u8BA4\u8BC1\u7C7B\u578B'
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'card-body' },
+                      _react2.default.createElement(
+                        'ul',
+                        null,
+                        allowedGrantTypeLis
+                      )
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-md-12 float-left' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'card' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'card-header bg-secondary text-white' },
+                      '\u8EAB\u4EFD\u8D44\u6E90\u57DF'
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'card-body' },
+                      _react2.default.createElement(
+                        'ul',
+                        null,
+                        identityResourceLis
+                      )
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-md-12 float-left' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'card' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'card-header bg-secondary text-white' },
+                      'Api\u8D44\u6E90\u57DF'
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'card-body' },
+                      _react2.default.createElement(
+                        'ul',
+                        null,
+                        apiResourceLis
+                      )
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'w-100 float-left' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'col-md-6 float-left' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'card' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'card-header bg-secondary text-white' },
+                        '\u767B\u5F55\u91CD\u5B9A\u5411\u5730\u5740'
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'card-body' },
+                        redirectUriList,
+                        _react2.default.createElement(
+                          'button',
+                          { className: 'btn btn-success btn-sm', onClick: this.redirectUrisAddClick },
+                          '+\u6DFB\u52A0'
+                        )
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'col-md-6 float-left' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'card' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'card-header bg-secondary text-white' },
+                        '\u767B\u51FA\u91CD\u5B9A\u5411\u5730\u5740'
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'card-body' },
+                        postLogoutRedirectUriList,
+                        _react2.default.createElement(
+                          'button',
+                          { className: 'btn btn-success btn-sm', onClick: this.postLogoutRedirectUrisAddClick },
+                          '+\u6DFB\u52A0'
+                        )
+                      )
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-md-12 float-left' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'card' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'card-header bg-secondary text-white' },
+                      '\u5176\u4ED6\u9009\u9879'
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'card-body' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'col-md-6 float-left' },
+                        _react2.default.createElement(
+                          'h6',
+                          { className: 'margin-buttom10' },
+                          '\u5141\u8BB8\u6D4F\u89C8\u5668\u8BBF\u95EE'
+                        ),
+                        _react2.default.createElement(
+                          'ul',
+                          null,
+                          _react2.default.createElement(
+                            'li',
+                            null,
+                            _react2.default.createElement('input', { type: 'radio', name: 'allowAccessTokensViaBrowser', defaultValue: 'true', 'data-labelauty': '\u5141\u8BB8' })
+                          ),
+                          _react2.default.createElement(
+                            'li',
+                            null,
+                            _react2.default.createElement('input', { type: 'radio', name: 'allowAccessTokensViaBrowser', defaultValue: 'false', 'data-labelauty': '\u4E0D\u5141\u8BB8' })
+                          )
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'col-md-6 float-left' },
+                        _react2.default.createElement(
+                          'h6',
+                          { className: 'margin-buttom10' },
+                          'Token\u7C7B\u578B'
+                        ),
+                        _react2.default.createElement(
+                          'ul',
+                          null,
+                          _react2.default.createElement(
+                            'li',
+                            null,
+                            _react2.default.createElement('input', { type: 'radio', name: 'accessTokenType', defaultValue: 'jwt', 'data-labelauty': 'JWTToken' })
+                          ),
+                          _react2.default.createElement(
+                            'li',
+                            null,
+                            _react2.default.createElement('input', { type: 'radio', name: 'accessTokenType', defaultValue: 'reference', 'data-labelauty': 'ReferenceToken' })
+                          )
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'col-md-6 float-left' },
+                        _react2.default.createElement(
+                          'h6',
+                          { className: 'margin-buttom10' },
+                          '\u662F\u5426\u542F\u7528'
+                        ),
+                        _react2.default.createElement(
+                          'ul',
+                          null,
+                          _react2.default.createElement(
+                            'li',
+                            null,
+                            _react2.default.createElement('input', { type: 'radio', name: 'enabled', defaultValue: 'true', 'data-labelauty': '\u542F\u7528' })
+                          ),
+                          _react2.default.createElement(
+                            'li',
+                            null,
+                            _react2.default.createElement('input', { type: 'radio', name: 'enabled', defaultValue: 'false', 'data-labelauty': '\u7981\u7528' })
+                          )
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'col-md-6 float-left' },
+                        _react2.default.createElement(
+                          'h6',
+                          { className: 'margin-buttom10' },
+                          '\u79BB\u7EBF\u5171\u4EAB'
+                        ),
+                        _react2.default.createElement(
+                          'ul',
+                          null,
+                          _react2.default.createElement(
+                            'li',
+                            null,
+                            _react2.default.createElement('input', { type: 'radio', name: 'allowOfflineAccess', defaultValue: 'true', 'data-labelauty': '\u542F\u7528' })
+                          ),
+                          _react2.default.createElement(
+                            'li',
+                            null,
+                            _react2.default.createElement('input', { type: 'radio', name: 'allowOfflineAccess', defaultValue: 'false', 'data-labelauty': '\u7981\u7528' })
+                          )
+                        )
+                      )
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'modal-footer' },
+                _react2.default.createElement(
+                  'button',
+                  { type: 'button', className: 'btn btn-info', onClick: this.submit },
+                  '\u63D0\u4EA4'
+                ),
+                _react2.default.createElement(
+                  'button',
+                  { id: 'dataFormCloseBtn', type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
+                  '\u5173\u95ED'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return ClientForm;
+}(_react2.default.Component);
+
+exports.default = ClientForm;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/EditClientForm.jsx":
+/*!*************************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/EditClientForm.jsx ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _ClientForm2 = __webpack_require__(/*! ./ClientForm.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/ClientForm.jsx");
+
+var _ClientForm3 = _interopRequireDefault(_ClientForm2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var EditClientForm = function (_ClientForm) {
+	_inherits(EditClientForm, _ClientForm);
+
+	function EditClientForm(props) {
+		_classCallCheck(this, EditClientForm);
+
+		var _this = _possibleConstructorReturn(this, (EditClientForm.__proto__ || Object.getPrototypeOf(EditClientForm)).call(this, props));
+
+		_this.submitUrl = "";
+		return _this;
+	}
+
+	return EditClientForm;
+}(_ClientForm3.default);
+
+exports.default = EditClientForm;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/LookupClientForm.jsx":
+/*!***************************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/LookupClientForm.jsx ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _ClientForm2 = __webpack_require__(/*! ./ClientForm.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/ClientForm.jsx");
+
+var _ClientForm3 = _interopRequireDefault(_ClientForm2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var LookupClientForm = function (_ClientForm) {
+	_inherits(LookupClientForm, _ClientForm);
+
+	function LookupClientForm(props) {
+		_classCallCheck(this, LookupClientForm);
+
+		var _this = _possibleConstructorReturn(this, (LookupClientForm.__proto__ || Object.getPrototypeOf(LookupClientForm)).call(this, props));
+
+		_this.submitUrl = "";
+		return _this;
+	}
+
+	return LookupClientForm;
+}(_ClientForm3.default);
+
+exports.default = LookupClientForm;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientList.jsx":
+/*!**********************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientList.jsx ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ClientList = function (_React$Component) {
+    _inherits(ClientList, _React$Component);
+
+    function ClientList(props) {
+        _classCallCheck(this, ClientList);
+
+        return _possibleConstructorReturn(this, (ClientList.__proto__ || Object.getPrototypeOf(ClientList)).call(this, props));
+    }
+
+    _createClass(ClientList, [{
         key: 'render',
         value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { className: 'row' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'data-list w-100' },
+            var _this2 = this;
+
+            var clients = this.props.clients;
+
+            var clientTrs = new Array();
+
+            var _loop = function _loop(item) {
+                var clientTr = _react2.default.createElement(
+                    'tr',
+                    null,
                     _react2.default.createElement(
-                        'div',
-                        { className: 'input-group mb-3' },
-                        _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Search' }),
+                        'td',
+                        null,
+                        clients[item].clientId
+                    ),
+                    _react2.default.createElement(
+                        'td',
+                        null,
+                        clients[item].allowedGrantType
+                    ),
+                    _react2.default.createElement(
+                        'td',
+                        null,
+                        clients[item].accessTokenType
+                    ),
+                    _react2.default.createElement(
+                        'td',
+                        null,
+                        clients[item].enabled
+                    ),
+                    _react2.default.createElement(
+                        'td',
+                        null,
                         _react2.default.createElement(
                             'div',
-                            { className: 'input-group-append' },
+                            { className: 'btn-group btn-group-sm' },
                             _react2.default.createElement(
                                 'button',
-                                { className: 'btn btn-info', type: 'submit' },
-                                '\u641C\u7D22\u4E00\u4E0B'
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'h5',
-                        null,
-                        '\u5BA2\u6237\u7AEF\u5217\u8868'
-                    ),
-                    _react2.default.createElement(
-                        'table',
-                        { className: 'table table-hover table-dark table-striped text-white' },
-                        _react2.default.createElement(
-                            'thead',
-                            null,
-                            _react2.default.createElement(
-                                'tr',
-                                null,
-                                _react2.default.createElement(
-                                    'th',
-                                    null,
-                                    '\u5BA2\u6237\u7AEFId'
-                                ),
-                                _react2.default.createElement(
-                                    'th',
-                                    null,
-                                    '\u8BA4\u8BC1\u7C7B\u578B'
-                                ),
-                                _react2.default.createElement(
-                                    'th',
-                                    null,
-                                    'Token\u7C7B\u578B'
-                                ),
-                                _react2.default.createElement(
-                                    'th',
-                                    null,
-                                    '\u542F\u7528\u72B6\u6001'
-                                ),
-                                _react2.default.createElement(
-                                    'th',
-                                    null,
-                                    '\u64CD\u4F5C'
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'tbody',
-                            null,
-                            _react2.default.createElement(
-                                'tr',
-                                null,
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    'Default'
-                                ),
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    'Defaultson'
-                                ),
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    'Defaultson'
-                                ),
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    'def@somemail.com'
-                                ),
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'btn-group btn-group-sm' },
-                                        _react2.default.createElement(
-                                            'button',
-                                            { type: 'button', className: 'btn btn-primary' },
-                                            '\u7F16\u8F91'
-                                        ),
-                                        _react2.default.createElement(
-                                            'button',
-                                            { type: 'button', className: 'btn btn-danger', 'data-toggle': 'modal', 'data-target': '#dataDelete' },
-                                            '\u5220\u9664'
-                                        )
-                                    )
-                                )
+                                { type: 'button', className: 'btn btn-primary',
+                                    onClick: function onClick() {
+                                        return _this2.props.clientEditClick(clients[item].id);
+                                    } },
+                                '\u7F16\u8F91'
                             ),
                             _react2.default.createElement(
-                                'tr',
-                                null,
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    'Default'
-                                ),
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    'Defaultson'
-                                ),
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    'Defaultson'
-                                ),
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    'def@somemail.com'
-                                ),
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'btn-group btn-group-sm' },
-                                        _react2.default.createElement(
-                                            'button',
-                                            { type: 'button', className: 'btn btn-primary' },
-                                            '\u7F16\u8F91'
-                                        ),
-                                        _react2.default.createElement(
-                                            'button',
-                                            { type: 'button', className: 'btn btn-danger', 'data-toggle': 'modal', 'data-target': '#dataDelete' },
-                                            '\u5220\u9664'
-                                        )
-                                    )
-                                )
+                                'button',
+                                { type: 'button', className: 'btn btn-danger',
+                                    onClick: function onClick() {
+                                        return _this2.props.clientDeleteClick(clients[item].id);
+                                    } },
+                                '\u5220\u9664'
                             )
                         )
                     )
-                ),
+                );
+
+                clientTrs.push(clientTr);
+            };
+
+            for (var item in clients) {
+                _loop(item);
+            }
+
+            return _react2.default.createElement(
+                'div',
+                { className: 'data-list w-100' },
                 _react2.default.createElement(
                     'div',
-                    { className: 'data-paging d-flex justify-content-between w-100' },
-                    _react2.default.createElement(
-                        'ul',
-                        { className: 'pagination pagination-md' },
-                        _react2.default.createElement(
-                            'li',
-                            { className: 'page-item' },
-                            _react2.default.createElement(
-                                'a',
-                                { className: 'page-link', href: '#' },
-                                '\u4E0A\u4E00\u9875'
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'li',
-                            { className: 'page-item' },
-                            _react2.default.createElement(
-                                'a',
-                                { className: 'page-link', href: '#' },
-                                '1'
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'li',
-                            { className: 'page-item' },
-                            _react2.default.createElement(
-                                'a',
-                                { className: 'page-link', href: '#' },
-                                '2'
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'li',
-                            { className: 'page-item' },
-                            _react2.default.createElement(
-                                'a',
-                                { className: 'page-link', href: '#' },
-                                '3'
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'li',
-                            { className: 'page-item' },
-                            _react2.default.createElement(
-                                'a',
-                                { className: 'page-link', href: '#' },
-                                '\u4E0B\u4E00\u9875'
-                            )
-                        )
-                    ),
+                    { className: 'input-group mb-3' },
+                    _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Search' }),
                     _react2.default.createElement(
                         'div',
-                        null,
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'modal fade data-form', id: 'dataForm' },
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'modal-dialog modal-lg' },
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'modal-content' },
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'modal-header bg-info text-white' },
-                                        _react2.default.createElement(
-                                            'h4',
-                                            { className: 'modal-title' },
-                                            '\u5BA2\u6237\u7AEF\u4FE1\u606F'
-                                        ),
-                                        _react2.default.createElement(
-                                            'button',
-                                            { type: 'button', className: 'close', 'data-dismiss': 'modal' },
-                                            '\xD7'
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'modal-body jumbotron' },
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'input-group mb-3 col-md-12' },
-                                            _react2.default.createElement(
-                                                'div',
-                                                { className: 'input-group-prepend' },
-                                                _react2.default.createElement(
-                                                    'span',
-                                                    { className: 'input-group-text' },
-                                                    '\u5BA2\u6237\u7AEFId'
-                                                )
-                                            ),
-                                            _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: '\u5BA2\u6237\u7AEFId' })
-                                        ),
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'input-group mb-3 col-md-12' },
-                                            _react2.default.createElement(
-                                                'div',
-                                                { className: 'input-group-prepend' },
-                                                _react2.default.createElement(
-                                                    'span',
-                                                    { className: 'input-group-text' },
-                                                    '\u5BA2\u6237\u7AEF\u5BC6\u94A5'
-                                                )
-                                            ),
-                                            _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: '\u5BC6\u94A5\uFF08\u5982\u4E0D\u586B\u5199\u5219\u65E0\u9700\u4FEE\u6539\uFF09' })
-                                        ),
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'col-md-12 float-left' },
-                                            _react2.default.createElement(
-                                                'div',
-                                                { className: 'card' },
-                                                _react2.default.createElement(
-                                                    'div',
-                                                    { className: 'card-header bg-secondary text-white' },
-                                                    '\u8BA4\u8BC1\u7C7B\u578B'
-                                                ),
-                                                _react2.default.createElement(
-                                                    'div',
-                                                    { className: 'card-body' },
-                                                    _react2.default.createElement(
-                                                        'ul',
-                                                        null,
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'radio', name: 'radio0', 'data-labelauty': 'CSS' })
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'radio', name: 'radio0', 'data-labelauty': 'JavaScript' })
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'radio', name: 'radio0', 'data-labelauty': 'SEO' })
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'radio', name: 'radio0', 'data-labelauty': 'PHP' })
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'radio', name: 'radio0', 'data-labelauty': 'JAVA' })
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'radio', name: 'radio0', 'data-labelauty': '.NET' })
-                                                        )
-                                                    )
-                                                )
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'col-md-12 float-left' },
-                                            _react2.default.createElement(
-                                                'div',
-                                                { className: 'card' },
-                                                _react2.default.createElement(
-                                                    'div',
-                                                    { className: 'card-header bg-secondary text-white' },
-                                                    '\u8EAB\u4EFD\u8D44\u6E90\u57DF'
-                                                ),
-                                                _react2.default.createElement(
-                                                    'div',
-                                                    { className: 'card-body' },
-                                                    _react2.default.createElement(
-                                                        'ul',
-                                                        null,
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'checkbox', name: 'checkbox', disabled: true, checked: true, 'data-labelauty': 'HTML' })
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'checkbox', name: 'checkbox', 'data-labelauty': 'CSS' })
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'checkbox', name: 'checkbox', 'data-labelauty': 'JavaScript' })
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'checkbox', name: 'checkbox', 'data-labelauty': 'SEO' })
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'checkbox', name: 'checkbox', 'data-labelauty': 'PHP' })
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'checkbox', name: 'checkbox', 'data-labelauty': 'JAVA' })
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'checkbox', name: 'checkbox', 'data-labelauty': '.NET' })
-                                                        )
-                                                    )
-                                                )
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'col-md-12 float-left' },
-                                            _react2.default.createElement(
-                                                'div',
-                                                { className: 'card' },
-                                                _react2.default.createElement(
-                                                    'div',
-                                                    { className: 'card-header bg-secondary text-white' },
-                                                    'Api\u8D44\u6E90\u57DF'
-                                                ),
-                                                _react2.default.createElement(
-                                                    'div',
-                                                    { className: 'card-body' },
-                                                    _react2.default.createElement(
-                                                        'ul',
-                                                        null,
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'checkbox', name: 'checkbox', disabled: true, checked: true, 'data-labelauty': 'HTML' })
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'checkbox', name: 'checkbox', 'data-labelauty': 'CSS' })
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'checkbox', name: 'checkbox', 'data-labelauty': 'JavaScript' })
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'checkbox', name: 'checkbox', 'data-labelauty': 'SEO' })
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'checkbox', name: 'checkbox', 'data-labelauty': 'PHP' })
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'checkbox', name: 'checkbox', 'data-labelauty': 'JAVA' })
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'li',
-                                                            null,
-                                                            _react2.default.createElement('input', { type: 'checkbox', name: 'checkbox', 'data-labelauty': '.NET' })
-                                                        )
-                                                    )
-                                                )
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'w-100 float-left' },
-                                            _react2.default.createElement(
-                                                'div',
-                                                { className: 'col-md-6 float-left' },
-                                                _react2.default.createElement(
-                                                    'div',
-                                                    { className: 'card' },
-                                                    _react2.default.createElement(
-                                                        'div',
-                                                        { className: 'card-header bg-secondary text-white' },
-                                                        '\u767B\u5F55\u91CD\u5B9A\u5411\u5730\u5740'
-                                                    ),
-                                                    _react2.default.createElement(
-                                                        'div',
-                                                        { className: 'card-body' },
-                                                        _react2.default.createElement(
-                                                            'div',
-                                                            { className: 'd-flex margin-buttom10' },
-                                                            _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'pwd' }),
-                                                            _react2.default.createElement(
-                                                                'button',
-                                                                { className: 'btn btn-danger btn-sm' },
-                                                                '\u5220\u9664'
-                                                            )
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'button',
-                                                            { className: 'btn btn-success btn-sm' },
-                                                            '+\u6DFB\u52A0'
-                                                        )
-                                                    )
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                'div',
-                                                { className: 'col-md-6 float-left' },
-                                                _react2.default.createElement(
-                                                    'div',
-                                                    { className: 'card' },
-                                                    _react2.default.createElement(
-                                                        'div',
-                                                        { className: 'card-header bg-secondary text-white' },
-                                                        '\u767B\u51FA\u91CD\u5B9A\u5411\u5730\u5740'
-                                                    ),
-                                                    _react2.default.createElement(
-                                                        'div',
-                                                        { className: 'card-body' },
-                                                        _react2.default.createElement(
-                                                            'div',
-                                                            { className: 'd-flex margin-buttom10' },
-                                                            _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'pwd' }),
-                                                            _react2.default.createElement(
-                                                                'button',
-                                                                { className: 'btn btn-danger btn-sm' },
-                                                                '\u5220\u9664'
-                                                            )
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'button',
-                                                            { className: 'btn btn-success btn-sm' },
-                                                            '+\u6DFB\u52A0'
-                                                        )
-                                                    )
-                                                )
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'col-md-12 float-left' },
-                                            _react2.default.createElement(
-                                                'div',
-                                                { className: 'card' },
-                                                _react2.default.createElement(
-                                                    'div',
-                                                    { className: 'card-header bg-secondary text-white' },
-                                                    '\u5176\u4ED6\u9009\u9879'
-                                                ),
-                                                _react2.default.createElement(
-                                                    'div',
-                                                    { className: 'card-body' },
-                                                    _react2.default.createElement(
-                                                        'div',
-                                                        { className: 'col-md-6 float-left' },
-                                                        _react2.default.createElement(
-                                                            'h6',
-                                                            { className: 'margin-buttom10' },
-                                                            '\u5141\u8BB8\u6D4F\u89C8\u5668\u8BBF\u95EE'
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'ul',
-                                                            null,
-                                                            _react2.default.createElement(
-                                                                'li',
-                                                                null,
-                                                                _react2.default.createElement('input', { type: 'radio', name: 'radio1', 'data-labelauty': '\u5141\u8BB8' })
-                                                            ),
-                                                            _react2.default.createElement(
-                                                                'li',
-                                                                null,
-                                                                _react2.default.createElement('input', { type: 'radio', name: 'radio1', 'data-labelauty': '\u4E0D\u5141\u8BB8' })
-                                                            )
-                                                        )
-                                                    ),
-                                                    _react2.default.createElement(
-                                                        'div',
-                                                        { className: 'col-md-6 float-left' },
-                                                        _react2.default.createElement(
-                                                            'h6',
-                                                            { className: 'margin-buttom10' },
-                                                            'Token\u7C7B\u578B'
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'ul',
-                                                            null,
-                                                            _react2.default.createElement(
-                                                                'li',
-                                                                null,
-                                                                _react2.default.createElement('input', { type: 'radio', name: 'radio2', 'data-labelauty': 'JWTToken' })
-                                                            ),
-                                                            _react2.default.createElement(
-                                                                'li',
-                                                                null,
-                                                                _react2.default.createElement('input', { type: 'radio', name: 'radio2', 'data-labelauty': 'ReferenceToken' })
-                                                            )
-                                                        )
-                                                    ),
-                                                    _react2.default.createElement(
-                                                        'div',
-                                                        { className: 'col-md-6 float-left' },
-                                                        _react2.default.createElement(
-                                                            'h6',
-                                                            { className: 'margin-buttom10' },
-                                                            '\u662F\u5426\u542F\u7528'
-                                                        ),
-                                                        _react2.default.createElement(
-                                                            'ul',
-                                                            null,
-                                                            _react2.default.createElement(
-                                                                'li',
-                                                                null,
-                                                                _react2.default.createElement('input', { type: 'radio', name: 'radio3', 'data-labelauty': '\u542F\u7528' })
-                                                            ),
-                                                            _react2.default.createElement(
-                                                                'li',
-                                                                null,
-                                                                _react2.default.createElement('input', { type: 'radio', name: 'radio3', 'data-labelauty': '\u7981\u7528' })
-                                                            )
-                                                        )
-                                                    )
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'modal-footer' },
-                                        _react2.default.createElement(
-                                            'button',
-                                            { type: 'button', className: 'btn btn-info' },
-                                            '\u63D0\u4EA4'
-                                        ),
-                                        _react2.default.createElement(
-                                            'button',
-                                            { type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
-                                            '\u5173\u95ED'
-                                        )
-                                    )
-                                )
-                            )
-                        ),
+                        { className: 'input-group-append' },
                         _react2.default.createElement(
                             'button',
-                            { type: 'button', className: 'btn btn-info', 'data-toggle': 'modal', 'data-target': '#dataForm' },
-                            '+\u6DFB\u52A0'
+                            { className: 'btn btn-info', type: 'submit' },
+                            '\u641C\u7D22\u4E00\u4E0B'
                         )
                     )
                 ),
                 _react2.default.createElement(
-                    'div',
-                    { className: 'modal fade data-delete', id: 'dataDelete' },
+                    'h5',
+                    null,
+                    '\u5BA2\u6237\u7AEF\u5217\u8868'
+                ),
+                _react2.default.createElement(
+                    'table',
+                    { className: 'table table-hover table-dark table-striped text-white' },
                     _react2.default.createElement(
-                        'div',
-                        { className: 'modal-dialog' },
+                        'thead',
+                        null,
                         _react2.default.createElement(
-                            'div',
-                            { className: 'modal-content' },
+                            'tr',
+                            null,
                             _react2.default.createElement(
-                                'div',
-                                { className: 'modal-header' },
-                                _react2.default.createElement(
-                                    'h4',
-                                    { className: 'modal-title' },
-                                    '\u5220\u9664\u5BA2\u6237\u7AEF'
-                                ),
-                                _react2.default.createElement(
-                                    'button',
-                                    { type: 'button', className: 'close', 'data-dismiss': 'modal' },
-                                    '\xD7'
-                                )
+                                'th',
+                                null,
+                                '\u5BA2\u6237\u7AEFId'
                             ),
                             _react2.default.createElement(
-                                'div',
-                                { className: 'modal-body' },
-                                '\u4F60\u6B63\u8981\u5220\u9664XXXX\uFF0C\u5220\u9664\u540E\u65E0\u6CD5\u6062\u590D\uFF0C\u786E\u5B9A\u5220\u9664\u5417\uFF1F'
+                                'th',
+                                null,
+                                '\u8BA4\u8BC1\u7C7B\u578B'
                             ),
                             _react2.default.createElement(
-                                'div',
-                                { className: 'modal-footer' },
-                                _react2.default.createElement(
-                                    'button',
-                                    { type: 'button', className: 'btn btn-danger btn-sm' },
-                                    '\u5220\u9664'
-                                ),
-                                _react2.default.createElement(
-                                    'button',
-                                    { type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
-                                    '\u5173\u95ED'
-                                )
+                                'th',
+                                null,
+                                'Token\u7C7B\u578B'
+                            ),
+                            _react2.default.createElement(
+                                'th',
+                                null,
+                                '\u542F\u7528\u72B6\u6001'
+                            ),
+                            _react2.default.createElement(
+                                'th',
+                                null,
+                                '\u64CD\u4F5C'
                             )
                         )
+                    ),
+                    _react2.default.createElement(
+                        'tbody',
+                        null,
+                        clientTrs
                     )
                 )
             );
         }
     }]);
 
-    return Client;
+    return ClientList;
 }(_react2.default.Component);
 
-exports.default = Client;
+exports.default = ClientList;
 
 /***/ }),
 
-/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/css/jquery-labelauty.css":
-/*!********************************************************************************!*\
-  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/css/jquery-labelauty.css ***!
-  \********************************************************************************/
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Paging.jsx":
+/*!******************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/Paging.jsx ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Paging = function (_React$Component) {
+	_inherits(Paging, _React$Component);
+
+	function Paging(props) {
+		_classCallCheck(this, Paging);
+
+		var _this = _possibleConstructorReturn(this, (Paging.__proto__ || Object.getPrototypeOf(Paging)).call(this, props));
+
+		_this.state = {
+			pageIndex: 1
+		};
+
+		_this.prePageClick = _this.prePageClick.bind(_this);
+		_this.nextPageClick = _this.nextPageClick.bind(_this);
+		_this.pageIndexClick = _this.pageIndexClick.bind(_this);
+		return _this;
+	}
+
+	// 上一页单击
+
+
+	_createClass(Paging, [{
+		key: 'prePageClick',
+		value: function prePageClick() {
+			var _this2 = this;
+
+			if (this.state.pageIndex > 1) {
+				this.setState(function (prevState) {
+					return { pageIndex: prevState.pageIndex - 1 };
+				}, function () {
+					return _this2.props.pageIndexChange(_this2.state.pageIndex);
+				});
+				;
+			}
+		}
+
+		// 下一页单击
+
+	}, {
+		key: 'nextPageClick',
+		value: function nextPageClick() {
+			var _this3 = this;
+
+			if (this.state.pageIndex < this.props.pageNum) {
+				this.setState(function (prevState) {
+					return { pageIndex: prevState.pageIndex + 1 };
+				}, function () {
+					return _this3.props.pageIndexChange(_this3.state.pageIndex);
+				});
+			}
+		}
+
+		// 页索引单击
+
+	}, {
+		key: 'pageIndexClick',
+		value: function pageIndexClick(pageIndex) {
+			var _this4 = this;
+
+			this.setState({ pageIndex: pageIndex }, function () {
+				return _this4.props.pageIndexChange(_this4.state.pageIndex);
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this5 = this;
+
+			var pageNum = this.props.pageNum;
+			var clients = this.props.clients;
+
+			var minIndex = this.state.pageIndex - 4;
+			var maxIndex = this.state.pageIndex + 4;
+
+			var lis = new Array();
+			lis.push(_react2.default.createElement(
+				'li',
+				{ className: 'page-item' },
+				_react2.default.createElement(
+					'a',
+					{ onClick: this.prePageClick, className: 'page-link', href: 'javascript:void(0)' },
+					'\u4E0A\u4E00\u9875'
+				)
+			));
+
+			var _loop = function _loop(min) {
+				if (min > 0) {
+					var li = null;
+					if (min == _this5.state.pageIndex) {
+						li = _react2.default.createElement(
+							'li',
+							{ className: 'page-item' },
+							_react2.default.createElement(
+								'a',
+								{ onClick: function onClick() {
+										return _this5.pageIndexClick(min);
+									}, className: 'page-link bg-white text-dark', href: 'javascript:void(0)' },
+								min
+							)
+						);
+					} else {
+						li = _react2.default.createElement(
+							'li',
+							{ className: 'page-item' },
+							_react2.default.createElement(
+								'a',
+								{ onClick: function onClick() {
+										return _this5.pageIndexClick(min);
+									}, className: 'page-link', href: 'javascript:void(0)' },
+								min
+							)
+						);
+					}
+
+					lis.push(li);
+				}
+			};
+
+			for (var min = minIndex; min <= maxIndex && min <= pageNum; min++) {
+				_loop(min);
+			}
+
+			lis.push(_react2.default.createElement(
+				'li',
+				{ className: 'page-item' },
+				_react2.default.createElement(
+					'a',
+					{ onClick: this.nextPageClick, className: 'page-link', href: 'javascript:void(0)' },
+					'\u4E0B\u4E00\u9875'
+				)
+			));
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'data-paging d-flex justify-content-between w-100' },
+				_react2.default.createElement(
+					'ul',
+					{ className: 'pagination pagination-md' },
+					lis
+				),
+				_react2.default.createElement(
+					'button',
+					{ type: 'button', className: 'btn btn-info', onClick: this.props.clientAddClick },
+					'+\u6DFB\u52A0'
+				)
+			);
+		}
+	}]);
+
+	return Paging;
+}(_react2.default.Component);
+
+exports.default = Paging;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/BodyDiv.css":
+/*!********************************************!*\
+  !*** ./src/ManageHome/BodyDiv/BodyDiv.css ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader!./jquery-labelauty.css */ "./node_modules/css-loader/index.js!./src/ManageHome/BodyDiv/AuthorizeManage/Client/css/jquery-labelauty.css");
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!./BodyDiv.css */ "./node_modules/css-loader/index.js!./src/ManageHome/BodyDiv/BodyDiv.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -6121,7 +7079,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(/*! ../../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -6129,10 +7087,843 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/images/input-checked.png":
-/*!********************************************************************************!*\
-  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/images/input-checked.png ***!
-  \********************************************************************************/
+/***/ "./src/ManageHome/BodyDiv/BodyDiv.jsx":
+/*!********************************************!*\
+  !*** ./src/ManageHome/BodyDiv/BodyDiv.jsx ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+var _BodyDiv = __webpack_require__(/*! ./BodyDiv.css */ "./src/ManageHome/BodyDiv/BodyDiv.css");
+
+var _BodyDiv2 = _interopRequireDefault(_BodyDiv);
+
+var _Client = __webpack_require__(/*! ./AuthorizeManage/Client/Client.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Client.jsx");
+
+var _Client2 = _interopRequireDefault(_Client);
+
+var _UserInfo = __webpack_require__(/*! ./Personal/UserInfo/UserInfo.jsx */ "./src/ManageHome/BodyDiv/Personal/UserInfo/UserInfo.jsx");
+
+var _UserInfo2 = _interopRequireDefault(_UserInfo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var BodyDiv = function (_React$Component) {
+    _inherits(BodyDiv, _React$Component);
+
+    function BodyDiv(props) {
+        _classCallCheck(this, BodyDiv);
+
+        return _possibleConstructorReturn(this, (BodyDiv.__proto__ || Object.getPrototypeOf(BodyDiv)).call(this, props));
+    }
+
+    _createClass(BodyDiv, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'col-md-10 content-container' },
+                _react2.default.createElement(_reactRouterDom.Route, { path: '/ManageHome/AuthorizeManage/Client', component: _Client2.default }),
+                _react2.default.createElement(_reactRouterDom.Route, { path: '/ManageHome/Personal/UserInfo', component: _UserInfo2.default })
+            );
+        }
+    }]);
+
+    return BodyDiv;
+}(_react2.default.Component);
+
+exports.default = BodyDiv;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/Personal/UserInfo/UserInfo.css":
+/*!***************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/Personal/UserInfo/UserInfo.css ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader!./UserInfo.css */ "./node_modules/css-loader/index.js!./src/ManageHome/BodyDiv/Personal/UserInfo/UserInfo.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/Personal/UserInfo/UserInfo.jsx":
+/*!***************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/Personal/UserInfo/UserInfo.jsx ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+				value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _UserInfo = __webpack_require__(/*! ./UserInfo.css */ "./src/ManageHome/BodyDiv/Personal/UserInfo/UserInfo.css");
+
+var _UserInfo2 = _interopRequireDefault(_UserInfo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var UserInfo = function (_React$Component) {
+				_inherits(UserInfo, _React$Component);
+
+				function UserInfo(props) {
+								_classCallCheck(this, UserInfo);
+
+								return _possibleConstructorReturn(this, (UserInfo.__proto__ || Object.getPrototypeOf(UserInfo)).call(this, props));
+				}
+
+				_createClass(UserInfo, [{
+								key: 'render',
+								value: function render() {
+												return _react2.default.createElement(
+																'div',
+																{ className: 'row d-flex' },
+																_react2.default.createElement(
+																				'div',
+																				{ className: 'card w-25' },
+																				_react2.default.createElement(
+																								'div',
+																								{ className: 'w-100' },
+																								_react2.default.createElement(
+																												'div',
+																												{ className: 'inputfile-img' },
+																												_react2.default.createElement(
+																																'button',
+																																{ className: 'btn btn-outline-info text-white' },
+																																'\u4FEE\u6539\u5934\u50CF'
+																												),
+																												_react2.default.createElement('input', { type: 'file', id: 'customFile' })
+																								),
+																								_react2.default.createElement('img', { className: 'card-img-top w-100', src: "/" + __webpack_require__(/*! ./img_avatar.png */ "./src/ManageHome/BodyDiv/Personal/UserInfo/img_avatar.png"), alt: 'Card image' })
+																				),
+																				_react2.default.createElement(
+																								'div',
+																								{ className: 'card-body' },
+																								_react2.default.createElement(
+																												'h6',
+																												{ className: 'card-title' },
+																												'\u6635\u79F0'
+																								),
+																								_react2.default.createElement(
+																												'p',
+																												{ className: 'card-text' },
+																												'Some example text some example text. John Doe is an architect and engineer'
+																								)
+																				)
+																),
+																_react2.default.createElement(
+																				'div',
+																				{ className: 'card text-white flex-grow-1' },
+																				_react2.default.createElement(
+																								'div',
+																								{ className: 'card-body' },
+																								_react2.default.createElement(
+																												'div',
+																												{ className: 'input-group mb-3 w-75 float-left' },
+																												_react2.default.createElement(
+																																'div',
+																																{ className: 'input-group-prepend' },
+																																_react2.default.createElement(
+																																				'span',
+																																				{ className: 'input-group-text' },
+																																				'\u8D26\u53F7'
+																																)
+																												),
+																												_react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'AccountNo', readonly: 'readonly' }),
+																												_react2.default.createElement(
+																																'div',
+																																{ className: 'input-group-append' },
+																																_react2.default.createElement(
+																																				'button',
+																																				{ className: 'btn btn-outline-secondary', type: 'button' },
+																																				'\u4FEE\u6539\u767B\u5F55\u5BC6\u7801'
+																																)
+																												)
+																								),
+																								_react2.default.createElement(
+																												'div',
+																												{ className: 'input-group mb-3' },
+																												_react2.default.createElement(
+																																'div',
+																																{ className: 'input-group-prepend' },
+																																_react2.default.createElement(
+																																				'span',
+																																				{ className: 'input-group-text' },
+																																				'\u624B\u673A\u53F7'
+																																)
+																												),
+																												_react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'PhoneNum' }),
+																												_react2.default.createElement(
+																																'div',
+																																{ className: 'input-group-append' },
+																																_react2.default.createElement(
+																																				'button',
+																																				{ className: 'btn btn-info', type: 'button' },
+																																				'\u7F16\u8F91'
+																																)
+																												)
+																								),
+																								_react2.default.createElement(
+																												'div',
+																												{ className: 'input-group mb-3' },
+																												_react2.default.createElement(
+																																'div',
+																																{ className: 'input-group-prepend' },
+																																_react2.default.createElement(
+																																				'span',
+																																				{ className: 'input-group-text' },
+																																				'\u90AE\u7BB1\u53F7'
+																																)
+																												),
+																												_react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: '\u7535\u5B50\u90AE\u7BB1' }),
+																												_react2.default.createElement(
+																																'div',
+																																{ className: 'input-group-append' },
+																																_react2.default.createElement(
+																																				'button',
+																																				{ className: 'btn btn-info', type: 'button' },
+																																				'\u7F16\u8F91'
+																																)
+																												)
+																								)
+																				),
+																				_react2.default.createElement(
+																								'div',
+																								{ className: 'card-footer' },
+																								_react2.default.createElement(
+																												'button',
+																												{ className: 'btn btn-info float-right', type: 'button' },
+																												'\u63D0\u4EA4\u4FEE\u6539'
+																								)
+																				)
+																)
+												);
+								}
+				}]);
+
+				return UserInfo;
+}(_react2.default.Component);
+
+exports.default = UserInfo;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/Personal/UserInfo/img_avatar.png":
+/*!*****************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/Personal/UserInfo/img_avatar.png ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "a5e81f19cf2c587876fd1bb08ae0249f.png";
+
+/***/ }),
+
+/***/ "./src/ManageHome/ManageHome.css":
+/*!***************************************!*\
+  !*** ./src/ManageHome/ManageHome.css ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader!./ManageHome.css */ "./node_modules/css-loader/index.js!./src/ManageHome/ManageHome.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./src/ManageHome/ManageHome.jsx":
+/*!***************************************!*\
+  !*** ./src/ManageHome/ManageHome.jsx ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+var _MenuProvider = __webpack_require__(/*! ./MenuProvider.js */ "./src/ManageHome/MenuProvider.js");
+
+var _MenuProvider2 = _interopRequireDefault(_MenuProvider);
+
+var _Nav = __webpack_require__(/*! ./Nav/Nav.jsx */ "./src/ManageHome/Nav/Nav.jsx");
+
+var _Nav2 = _interopRequireDefault(_Nav);
+
+var _SideNav = __webpack_require__(/*! ./SideNav/SideNav.jsx */ "./src/ManageHome/SideNav/SideNav.jsx");
+
+var _SideNav2 = _interopRequireDefault(_SideNav);
+
+var _BodyDiv = __webpack_require__(/*! ./BodyDiv/BodyDiv.jsx */ "./src/ManageHome/BodyDiv/BodyDiv.jsx");
+
+var _BodyDiv2 = _interopRequireDefault(_BodyDiv);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+__webpack_require__(/*! ./ManageHome.css */ "./src/ManageHome/ManageHome.css");
+
+var UserHome = function (_React$Component) {
+    _inherits(UserHome, _React$Component);
+
+    function UserHome(props) {
+        _classCallCheck(this, UserHome);
+
+        var _this = _possibleConstructorReturn(this, (UserHome.__proto__ || Object.getPrototypeOf(UserHome)).call(this, props));
+
+        _this.getUserNameBackCall = _this.getUserNameBackCall.bind(_this);
+
+        _this.state = {
+            userName: null // 用户名称
+        };
+
+        _this.getUserName();
+        return _this;
+    }
+
+    // 获取用户名称回调
+
+
+    _createClass(UserHome, [{
+        key: 'getUserNameBackCall',
+        value: function getUserNameBackCall(data) {
+            if (data.isSuccess == true) {
+                this.setState({ userName: data.value.identityUser.name });
+            }
+        }
+
+        // 获取用户名称
+
+    }, {
+        key: 'getUserName',
+        value: function getUserName() {
+            $.get("/api/User/GetIdentity", this.getUserNameBackCall);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'd-flex h-100' },
+                _react2.default.createElement(_Nav2.default, { userName: this.state.userName }),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'container-fixed bodydiv_css' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'row h-100' },
+                        _react2.default.createElement(_reactRouterDom.Route, { path: '/ManageHome/:menuId', component: _SideNav2.default }),
+                        _react2.default.createElement(_reactRouterDom.Route, { path: '/ManageHome/:menuId/:menuItemId', component: _BodyDiv2.default })
+                    )
+                )
+            );
+        }
+    }]);
+
+    return UserHome;
+}(_react2.default.Component);
+
+_reactDom2.default.render(_react2.default.createElement(
+    _reactRouterDom.BrowserRouter,
+    null,
+    _react2.default.createElement(UserHome, null)
+), document.getElementById('UserHome'));
+
+/***/ }),
+
+/***/ "./src/ManageHome/Menu.js":
+/*!********************************!*\
+  !*** ./src/ManageHome/Menu.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Menu = function Menu() {
+	_classCallCheck(this, Menu);
+
+	this.id = "";
+	this.text = "";
+	this.url = "";
+	this.menuItems = new Array();
+};
+
+exports.default = Menu;
+
+/***/ }),
+
+/***/ "./src/ManageHome/MenuProvider.js":
+/*!****************************************!*\
+  !*** ./src/ManageHome/MenuProvider.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Menu = __webpack_require__(/*! ./Menu.js */ "./src/ManageHome/Menu.js");
+
+var _Menu2 = _interopRequireDefault(_Menu);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var menus = [{
+    id: "Personal",
+    text: "个人中心",
+    url: "/ManageHome/Personal",
+    menuItems: [{
+        text: "用户信息",
+        url: "/ManageHome/Personal/UserInfo"
+    }]
+}, {
+    id: "UserManage",
+    text: "用户管理",
+    url: "/ManageHome/UserManage",
+    menuItems: [{
+        text: "普通用户管理",
+        url: ""
+    }]
+}, {
+    id: "AuthorizeManage",
+    text: "认证管理",
+    url: "/ManageHome/AuthorizeManage",
+    menuItems: [{
+        text: "身份资源",
+        url: "/ManageHome/AuthorizeManage/IdentityResource"
+    }, {
+        text: "API资源",
+        url: "/ManageHome/AuthorizeManage/ApiResource"
+    }, {
+        text: "客户端",
+        url: "/ManageHome/AuthorizeManage/Client"
+    }]
+}];
+
+var MenuProvider = function () {
+    function MenuProvider() {
+        _classCallCheck(this, MenuProvider);
+
+        this.mainMenu = this.createMenu({ menuItems: menus });
+    }
+
+    _createClass(MenuProvider, [{
+        key: "createMenu",
+        value: function createMenu(menuData) {
+            var menu = new _Menu2.default();
+            menu.id = menuData.id;
+            menu.text = menuData.text;
+            menu.url = menuData.url;
+            if (menuData.menuItems != undefined && menuData.menuItems != null) {
+                for (var item in menuData.menuItems) {
+                    menu.menuItems.push(this.createMenu(menuData.menuItems[item]));
+                }
+            }
+
+            return menu;
+        }
+    }]);
+
+    return MenuProvider;
+}();
+
+exports.default = MenuProvider;
+
+/***/ }),
+
+/***/ "./src/ManageHome/Nav/Nav.jsx":
+/*!************************************!*\
+  !*** ./src/ManageHome/Nav/Nav.jsx ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+var _MenuProvider = __webpack_require__(/*! ../MenuProvider.js */ "./src/ManageHome/MenuProvider.js");
+
+var _MenuProvider2 = _interopRequireDefault(_MenuProvider);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Nav = function (_React$Component) {
+    _inherits(Nav, _React$Component);
+
+    function Nav(props) {
+        _classCallCheck(this, Nav);
+
+        var _this = _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).call(this, props));
+
+        _this.menu = new _MenuProvider2.default().mainMenu;
+        return _this;
+    }
+
+    // 退出登录单击
+
+
+    _createClass(Nav, [{
+        key: 'logoutClick',
+        value: function logoutClick(e) {
+            var url = $(e.target).attr("data-url");
+
+            $.get(url, function (data) {
+                if (data.isSuccess == true) {
+                    window.location.href = data.redirectHref;
+                }
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var menuItemLis = new Array();
+            for (var item in this.menu.menuItems) {
+                var menuItemLi = _react2.default.createElement(
+                    'li',
+                    { className: 'nav-item' },
+                    _react2.default.createElement(
+                        _reactRouterDom.NavLink,
+                        { activeClassName: 'navbar_css_li_click', className: 'nav-link', to: this.menu.menuItems[item].url },
+                        this.menu.menuItems[item].text
+                    )
+                );
+                menuItemLis.push(menuItemLi);
+            }
+
+            return _react2.default.createElement(
+                'nav',
+                { className: 'navbar navbar-expand-md bg-dark navbar-dark fixed-top navbar_css' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'float-left navbar_logo_css' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'logo' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'w-75' },
+                            _react2.default.createElement('img', { src: '/images/logo.png', alt: '', className: 'w-100' })
+                        )
+                    )
+                ),
+                _react2.default.createElement(
+                    'a',
+                    { className: 'navbar-brand', href: '#' },
+                    '\u51B0\u7EB9\u7BA1\u7406\u7CFB\u7EDF'
+                ),
+                _react2.default.createElement(
+                    'button',
+                    { className: 'navbar-toggler', type: 'button', 'data-toggle': 'collapse', 'data-target': '#collapsibleNavbar' },
+                    _react2.default.createElement('span', { className: 'navbar-toggler-icon' })
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'collapse navbar-collapse', id: 'collapsibleNavbar' },
+                    _react2.default.createElement(
+                        'ul',
+                        { className: 'navbar-nav' },
+                        menuItemLis
+                    ),
+                    _react2.default.createElement(
+                        'span',
+                        { className: 'text-info float-right' },
+                        '\u4F60\u597D\uFF0C',
+                        this.props.userName
+                    ),
+                    _react2.default.createElement('input', { id: 'outLogin', 'data-url': '/api/Account/Logout', onClick: this.logoutClick, type: 'button', value: '\u9000\u51FA\u767B\u5F55', className: 'btn btn-info float-right' })
+                )
+            );
+        }
+    }]);
+
+    return Nav;
+}(_react2.default.Component);
+
+exports.default = Nav;
+
+/***/ }),
+
+/***/ "./src/ManageHome/SideNav/SideNav.jsx":
+/*!********************************************!*\
+  !*** ./src/ManageHome/SideNav/SideNav.jsx ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+var _MenuProvider = __webpack_require__(/*! ../MenuProvider.js */ "./src/ManageHome/MenuProvider.js");
+
+var _MenuProvider2 = _interopRequireDefault(_MenuProvider);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SideNav = function (_React$Component) {
+    _inherits(SideNav, _React$Component);
+
+    function SideNav(props) {
+        _classCallCheck(this, SideNav);
+
+        var _this = _possibleConstructorReturn(this, (SideNav.__proto__ || Object.getPrototypeOf(SideNav)).call(this, props));
+
+        _this.menu = null;
+        return _this;
+    }
+
+    _createClass(SideNav, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            this.getMenu(this.props);
+        }
+    }, {
+        key: 'componentWillUpdate',
+        value: function componentWillUpdate(nextProps, nextState) {
+            this.getMenu(nextProps);
+        }
+    }, {
+        key: 'getMenu',
+        value: function getMenu(props) {
+            var mainMenu = new _MenuProvider2.default().mainMenu;
+            var menuId = props.match.params.menuId;
+
+            for (var item in mainMenu.menuItems) {
+                if (mainMenu.menuItems[item].id == menuId) {
+                    this.menu = mainMenu.menuItems[item];
+                }
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var lis = Array();
+            if (this.menu != null) {
+                for (var item in this.menu.menuItems) {
+                    var li = _react2.default.createElement(
+                        'li',
+                        { className: 'leftmenu_css_li' },
+                        _react2.default.createElement(
+                            _reactRouterDom.NavLink,
+                            { className: 'text-white', to: this.menu.menuItems[item].url },
+                            this.menu.menuItems[item].text
+                        )
+                    );
+
+                    lis.push(li);
+                }
+            }
+
+            return _react2.default.createElement(
+                'div',
+                { className: 'col-md-2 leftmenu_css' },
+                _react2.default.createElement(
+                    'ul',
+                    { className: 'list-group' },
+                    lis
+                )
+            );
+        }
+    }]);
+
+    return SideNav;
+}(_react2.default.Component);
+
+exports.default = SideNav;
+
+/***/ }),
+
+/***/ "./src/lib/css/jquery-labelauty.css":
+/*!******************************************!*\
+  !*** ./src/lib/css/jquery-labelauty.css ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!./jquery-labelauty.css */ "./node_modules/css-loader/index.js!./src/lib/css/jquery-labelauty.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./src/lib/images/input-checked.png":
+/*!******************************************!*\
+  !*** ./src/lib/images/input-checked.png ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6140,10 +7931,10 @@ module.exports = __webpack_require__.p + "61f5683c6a4823b5eb8aad1d0ac61e9d.png";
 
 /***/ }),
 
-/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/images/input-unchecked.png":
-/*!**********************************************************************************!*\
-  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/images/input-unchecked.png ***!
-  \**********************************************************************************/
+/***/ "./src/lib/images/input-unchecked.png":
+/*!********************************************!*\
+  !*** ./src/lib/images/input-unchecked.png ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6151,10 +7942,10 @@ module.exports = __webpack_require__.p + "b96b35f79cf720e6e62fc6686cb1e12a.png";
 
 /***/ }),
 
-/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/js/jquery-labelauty.js":
-/*!******************************************************************************!*\
-  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/js/jquery-labelauty.js ***!
-  \******************************************************************************/
+/***/ "./src/lib/js/jquery-labelauty.js":
+/*!****************************************!*\
+  !*** ./src/lib/js/jquery-labelauty.js ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6359,582 +8150,10 @@ module.exports = __webpack_require__.p + "b96b35f79cf720e6e62fc6686cb1e12a.png";
 
 /***/ }),
 
-/***/ "./src/ManageHome/BodyDiv/BodyDiv.jsx":
-/*!********************************************!*\
-  !*** ./src/ManageHome/BodyDiv/BodyDiv.jsx ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./src/lib/react.min.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/react-dom.min.js");
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-
-var _Client = __webpack_require__(/*! ./AuthorizeManage/Client/Client.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Client.jsx");
-
-var _Client2 = _interopRequireDefault(_Client);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var BodyDiv = function (_React$Component) {
-    _inherits(BodyDiv, _React$Component);
-
-    function BodyDiv(props) {
-        _classCallCheck(this, BodyDiv);
-
-        return _possibleConstructorReturn(this, (BodyDiv.__proto__ || Object.getPrototypeOf(BodyDiv)).call(this, props));
-    }
-
-    _createClass(BodyDiv, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { id: 'servicecontainer', className: 'col-md-10' },
-                _react2.default.createElement(_reactRouterDom.Route, { path: '/ManageHome/AuthorizeManage/Client', component: _Client2.default })
-            );
-        }
-    }]);
-
-    return BodyDiv;
-}(_react2.default.Component);
-
-exports.default = BodyDiv;
-
-/***/ }),
-
-/***/ "./src/ManageHome/ManageHome.css":
-/*!***************************************!*\
-  !*** ./src/ManageHome/ManageHome.css ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../node_modules/css-loader!./ManageHome.css */ "./node_modules/css-loader/index.js!./src/ManageHome/ManageHome.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./src/ManageHome/ManageHome.jsx":
-/*!***************************************!*\
-  !*** ./src/ManageHome/ManageHome.jsx ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./src/lib/react.min.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/react-dom.min.js");
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-
-var _MenuProvider = __webpack_require__(/*! ./MenuProvider.js */ "./src/ManageHome/MenuProvider.js");
-
-var _MenuProvider2 = _interopRequireDefault(_MenuProvider);
-
-var _Nav = __webpack_require__(/*! ./Nav/Nav.jsx */ "./src/ManageHome/Nav/Nav.jsx");
-
-var _Nav2 = _interopRequireDefault(_Nav);
-
-var _SideNav = __webpack_require__(/*! ./SideNav/SideNav.jsx */ "./src/ManageHome/SideNav/SideNav.jsx");
-
-var _SideNav2 = _interopRequireDefault(_SideNav);
-
-var _BodyDiv = __webpack_require__(/*! ./BodyDiv/BodyDiv.jsx */ "./src/ManageHome/BodyDiv/BodyDiv.jsx");
-
-var _BodyDiv2 = _interopRequireDefault(_BodyDiv);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-__webpack_require__(/*! ./ManageHome.css */ "./src/ManageHome/ManageHome.css");
-
-var UserHome = function (_React$Component) {
-    _inherits(UserHome, _React$Component);
-
-    function UserHome(props) {
-        _classCallCheck(this, UserHome);
-
-        var _this = _possibleConstructorReturn(this, (UserHome.__proto__ || Object.getPrototypeOf(UserHome)).call(this, props));
-
-        _this.getUserNameBackCall = _this.getUserNameBackCall.bind(_this);
-
-        _this.state = {
-            userName: null // 用户名称
-        };
-
-        _this.getUserName();
-        return _this;
-    }
-
-    // 获取用户名称回调
-
-
-    _createClass(UserHome, [{
-        key: 'getUserNameBackCall',
-        value: function getUserNameBackCall(data) {
-            if (data.isSuccess == true) {
-                this.setState({ userName: data.value.identityUser.name });
-            }
-        }
-
-        // 获取用户名称
-
-    }, {
-        key: 'getUserName',
-        value: function getUserName() {
-            $.get("/api/User/GetIdentity", this.getUserNameBackCall);
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { className: 'd-flex h-100' },
-                _react2.default.createElement(_Nav2.default, { userName: this.state.userName }),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'container-fixed bodydiv_css' },
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'row h-100' },
-                        _react2.default.createElement(_reactRouterDom.Route, { path: '/ManageHome/:menuId', component: _SideNav2.default }),
-                        _react2.default.createElement(_reactRouterDom.Route, { path: '/ManageHome/:menuId/:menuItemId', component: _BodyDiv2.default })
-                    )
-                )
-            );
-        }
-    }]);
-
-    return UserHome;
-}(_react2.default.Component);
-
-_reactDom2.default.render(_react2.default.createElement(
-    _reactRouterDom.BrowserRouter,
-    null,
-    _react2.default.createElement(UserHome, null)
-), document.getElementById('UserHome'));
-
-/***/ }),
-
-/***/ "./src/ManageHome/Menu.js":
-/*!********************************!*\
-  !*** ./src/ManageHome/Menu.js ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Menu = function Menu() {
-	_classCallCheck(this, Menu);
-
-	this.id = "";
-	this.text = "";
-	this.url = "";
-	this.menuItems = new Array();
-};
-
-exports.default = Menu;
-
-/***/ }),
-
-/***/ "./src/ManageHome/MenuProvider.js":
-/*!****************************************!*\
-  !*** ./src/ManageHome/MenuProvider.js ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Menu = __webpack_require__(/*! ./Menu.js */ "./src/ManageHome/Menu.js");
-
-var _Menu2 = _interopRequireDefault(_Menu);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var menus = [{
-    id: "Personal",
-    text: "个人中心",
-    url: "/ManageHome/Personal",
-    menuItems: [{
-        text: "用户信息",
-        url: ""
-    }]
-}, {
-    id: "UserManage",
-    text: "用户管理",
-    url: "/ManageHome/UserManage",
-    menuItems: [{
-        text: "普通用户管理",
-        url: ""
-    }]
-}, {
-    id: "AuthorizeManage",
-    text: "认证管理",
-    url: "/ManageHome/AuthorizeManage",
-    menuItems: [{
-        text: "身份资源",
-        url: "/ManageHome/AuthorizeManage/IdentityResource"
-    }, {
-        text: "API资源",
-        url: "/ManageHome/AuthorizeManage/ApiResource"
-    }, {
-        text: "客户端",
-        url: "/ManageHome/AuthorizeManage/Client"
-    }]
-}];
-
-var MenuProvider = function () {
-    function MenuProvider() {
-        _classCallCheck(this, MenuProvider);
-
-        this.mainMenu = this.createMenu({ menuItems: menus });
-    }
-
-    _createClass(MenuProvider, [{
-        key: "createMenu",
-        value: function createMenu(menuData) {
-            var menu = new _Menu2.default();
-            menu.id = menuData.id;
-            menu.text = menuData.text;
-            menu.url = menuData.url;
-            if (menuData.menuItems != undefined && menuData.menuItems != null) {
-                for (var item in menuData.menuItems) {
-                    menu.menuItems.push(this.createMenu(menuData.menuItems[item]));
-                }
-            }
-
-            return menu;
-        }
-    }]);
-
-    return MenuProvider;
-}();
-
-exports.default = MenuProvider;
-
-/***/ }),
-
-/***/ "./src/ManageHome/Nav/Nav.jsx":
-/*!************************************!*\
-  !*** ./src/ManageHome/Nav/Nav.jsx ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./src/lib/react.min.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/react-dom.min.js");
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-
-var _MenuProvider = __webpack_require__(/*! ../MenuProvider.js */ "./src/ManageHome/MenuProvider.js");
-
-var _MenuProvider2 = _interopRequireDefault(_MenuProvider);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Nav = function (_React$Component) {
-    _inherits(Nav, _React$Component);
-
-    function Nav(props) {
-        _classCallCheck(this, Nav);
-
-        var _this = _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).call(this, props));
-
-        _this.menu = new _MenuProvider2.default().mainMenu;
-        return _this;
-    }
-
-    // 退出登录单击
-
-
-    _createClass(Nav, [{
-        key: 'logoutClick',
-        value: function logoutClick(e) {
-            var url = $(e.target).attr("data-url");
-
-            $.get(url, function (data) {
-                if (data.isSuccess == true) {
-                    window.location.href = data.redirectHref;
-                }
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var menuItemLis = new Array();
-            for (var item in this.menu.menuItems) {
-                var menuItemLi = _react2.default.createElement(
-                    'li',
-                    { className: 'nav-item' },
-                    _react2.default.createElement(
-                        _reactRouterDom.NavLink,
-                        { activeClassName: 'navbar_css_li_click', className: 'nav-link', to: this.menu.menuItems[item].url },
-                        this.menu.menuItems[item].text
-                    )
-                );
-                menuItemLis.push(menuItemLi);
-            }
-
-            return _react2.default.createElement(
-                'nav',
-                { className: 'navbar navbar-expand-md bg-dark navbar-dark fixed-top navbar_css' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'float-left navbar_logo_css' },
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'logo' },
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'w-75' },
-                            _react2.default.createElement('img', { src: '/images/logo.png', alt: '', className: 'w-100' })
-                        )
-                    )
-                ),
-                _react2.default.createElement(
-                    'a',
-                    { className: 'navbar-brand', href: '#' },
-                    '\u51B0\u7EB9\u7BA1\u7406\u7CFB\u7EDF'
-                ),
-                _react2.default.createElement(
-                    'button',
-                    { className: 'navbar-toggler', type: 'button', 'data-toggle': 'collapse', 'data-target': '#collapsibleNavbar' },
-                    _react2.default.createElement('span', { className: 'navbar-toggler-icon' })
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'collapse navbar-collapse', id: 'collapsibleNavbar' },
-                    _react2.default.createElement(
-                        'ul',
-                        { className: 'navbar-nav' },
-                        menuItemLis
-                    ),
-                    _react2.default.createElement(
-                        'span',
-                        { className: 'text-info float-right' },
-                        '\u4F60\u597D\uFF0C',
-                        this.props.userName
-                    ),
-                    _react2.default.createElement('input', { id: 'outLogin', 'data-url': '/api/Account/Logout', onClick: this.logoutClick, type: 'button', value: '\u9000\u51FA\u767B\u5F55', className: 'btn btn-info float-right' })
-                )
-            );
-        }
-    }]);
-
-    return Nav;
-}(_react2.default.Component);
-
-exports.default = Nav;
-
-/***/ }),
-
-/***/ "./src/ManageHome/SideNav/SideNav.jsx":
-/*!********************************************!*\
-  !*** ./src/ManageHome/SideNav/SideNav.jsx ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./src/lib/react.min.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/react-dom.min.js");
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-
-var _MenuProvider = __webpack_require__(/*! ../MenuProvider.js */ "./src/ManageHome/MenuProvider.js");
-
-var _MenuProvider2 = _interopRequireDefault(_MenuProvider);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SideNav = function (_React$Component) {
-    _inherits(SideNav, _React$Component);
-
-    function SideNav(props) {
-        _classCallCheck(this, SideNav);
-
-        var _this = _possibleConstructorReturn(this, (SideNav.__proto__ || Object.getPrototypeOf(SideNav)).call(this, props));
-
-        _this.menu = null;
-        return _this;
-    }
-
-    _createClass(SideNav, [{
-        key: 'componentWillMount',
-        value: function componentWillMount() {
-            this.getMenu(this.props);
-        }
-    }, {
-        key: 'componentWillUpdate',
-        value: function componentWillUpdate(nextProps, nextState) {
-            this.getMenu(nextProps);
-        }
-    }, {
-        key: 'getMenu',
-        value: function getMenu(props) {
-            var mainMenu = new _MenuProvider2.default().mainMenu;
-            var menuId = props.match.params.menuId;
-
-            for (var item in mainMenu.menuItems) {
-                if (mainMenu.menuItems[item].id == menuId) {
-                    this.menu = mainMenu.menuItems[item];
-                }
-            }
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var lis = Array();
-            if (this.menu != null) {
-                for (var item in this.menu.menuItems) {
-                    var li = _react2.default.createElement(
-                        'li',
-                        { className: 'leftmenu_css_li' },
-                        _react2.default.createElement(
-                            _reactRouterDom.NavLink,
-                            { className: 'text-white', to: this.menu.menuItems[item].url },
-                            this.menu.menuItems[item].text
-                        )
-                    );
-
-                    lis.push(li);
-                }
-            }
-
-            return _react2.default.createElement(
-                'div',
-                { className: 'col-md-2 leftmenu_css' },
-                _react2.default.createElement(
-                    'ul',
-                    { className: 'list-group' },
-                    lis
-                )
-            );
-        }
-    }]);
-
-    return SideNav;
-}(_react2.default.Component);
-
-exports.default = SideNav;
-
-/***/ }),
-
-/***/ "./src/lib/react-dom.min.js":
-/*!**********************************!*\
-  !*** ./src/lib/react-dom.min.js ***!
-  \**********************************/
+/***/ "./src/lib/js/react-dom.min.js":
+/*!*************************************!*\
+  !*** ./src/lib/js/react-dom.min.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6955,7 +8174,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  *
  */
 !function (e) {
-  if ("object" == ( false ? undefined : _typeof(exports)) && "undefined" != typeof module) module.exports = e(__webpack_require__(/*! react */ "./src/lib/react.min.js"));else if (true) !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! react */ "./src/lib/react.min.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (e),
+  if ("object" == ( false ? undefined : _typeof(exports)) && "undefined" != typeof module) module.exports = e(__webpack_require__(/*! react */ "./src/lib/js/react.min.js"));else if (true) !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! react */ "./src/lib/js/react.min.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (e),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));else { var t; }
@@ -9797,10 +11016,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 /***/ }),
 
-/***/ "./src/lib/react.min.js":
-/*!******************************!*\
-  !*** ./src/lib/react.min.js ***!
-  \******************************/
+/***/ "./src/lib/js/react.min.js":
+/*!*********************************!*\
+  !*** ./src/lib/js/react.min.js ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

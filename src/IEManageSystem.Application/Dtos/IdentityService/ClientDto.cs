@@ -13,16 +13,22 @@ namespace IEManageSystem.Dtos.IdentityService
 
         public string ClientId { get; set; }
 
-        public List<ClientScopeDto> AllowedScopes { get; set; } 
+        public string AllowedGrantType { get; set; }
 
-        public List<ClientGrantTypeDto> AllowedGrantTypes { get; set; }
+        public List<string> AllowedGrantTypes { get; set; }
 
-        // public List<ClientSecretDto> ClientSecrets { get; set; }
+        public List<string> AllowedScopes { get; set; }
 
-        public List<ClientRedirectUriDto> RedirectUris { get; set; }
+        public List<string> RedirectUris { get; set; }
 
-        public List<ClientPostLogoutRedirectUriDto> PostLogoutRedirectUris { get; set; }
+        public List<string> PostLogoutRedirectUris { get; set; }
+
+        public bool AllowAccessTokensViaBrowser { get; set; }
+
+        public string AccessTokenType { get; set; }
 
         public bool AllowOfflineAccess { get; set; }
+
+        public bool Enabled { get; set; }
     }
 }

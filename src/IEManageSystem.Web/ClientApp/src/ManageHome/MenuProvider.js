@@ -9,7 +9,7 @@ const menus =
         menuItems: [
             {
                 text: "用户信息",
-                url: ""
+                url: "/ManageHome/Personal/UserInfo"
             }
         ]
     },

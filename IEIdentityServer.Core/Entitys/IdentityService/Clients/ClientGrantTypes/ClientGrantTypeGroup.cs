@@ -5,6 +5,9 @@ using System.Text;
 
 namespace IEIdentityServer.Core.Entitys.IdentityService.Clients.ClientGrantTypes
 {
+    /// <summary>
+    /// 认证类型组合（OAuth2.0认证类型的组合）
+    /// </summary>
     public class ClientGrantTypeGroup
     {
         public static ClientGrantTypeGroup ClientCredentials {

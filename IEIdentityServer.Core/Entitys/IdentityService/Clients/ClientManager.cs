@@ -28,107 +28,25 @@ namespace IEIdentityServer.Core.Entitys.IdentityService.Clients
             _clientGrantTypeManager = clientGrantTypeManager;
         }
 
-        
-        public void AddClient(
-            string clientId,
-            string allowedGrantTypes,
-            List<string> clientSecrets,
-            List<string> redirectUris,
-            List<string> postLogoutRedirectUris,
-            List<string> allowedScopes,
-            bool allowOfflineAccess
-            )
-        {
-            IdentityServer4.EntityFramework.Entities.Client client = CreateClient(clientId, allowedGrantTypes, clientSecrets, redirectUris, postLogoutRedirectUris, allowedScopes, allowOfflineAccess);
-
-            _repository.Insert(client);
-        }
-
-        public void RemoveClient(
-            int id
-            )
-        {
-            IdentityServer4.EntityFramework.Entities.Client client = _repository.FirstOrDefault(id);
-            if (client == null) {
-                throw new Exception("不存在的客户端");
-            }
-
-            _repository.Remove(client);
-        }
-
-        public void UpdateClient(
-            int id,
-            string clientId,
-            string allowedGrantType,
-            List<string> redirectUris,
-            List<string> postLogoutRedirectUris,
-            List<string> allowedScopes,
-            bool allowOfflineAccess
-            )
-        {
-            Expression<Func<IdentityServer4.EntityFramework.Entities.Client, object>>[] propertySelectors = new Expression<Func<IdentityServer4.EntityFramework.Entities.Client, object>>[] {
-                e=>e.AllowedScopes,
-                e=>e.AllowedGrantTypes,
-                e=>e.ClientSecrets,
-                e=>e.RedirectUris,
-                e=>e.PostLogoutRedirectUris,
-            };
-
-            IdentityServer4.EntityFramework.Entities.Client client = _repository.GetAllInclude(propertySelectors).FirstOrDefault(e => e.Id == id);
-            if (client == null)
-            {
-                throw new Exception("不存在的客户端");
-            }
-
-            IdentityServer4.EntityFramework.Entities.Client newClient = CreateClient(clientId, allowedGrantType, new List<string>(), redirectUris, postLogoutRedirectUris, allowedScopes, allowOfflineAccess);
-
-            client.ClientId = newClient.ClientId;
-            client.AllowedScopes = newClient.AllowedScopes;
-            client.AllowedGrantTypes = newClient.AllowedGrantTypes;
-            client.RedirectUris = newClient.RedirectUris;
-            client.PostLogoutRedirectUris = newClient.PostLogoutRedirectUris;
-            client.AllowOfflineAccess = newClient.AllowOfflineAccess;
-        }
-
-        public void UpdateSecrets(
-            int id,
-            List<string> clientSecrets
-            )
-        {
-            Expression<Func<IdentityServer4.EntityFramework.Entities.Client, object>>[] propertySelectors = new Expression<Func<IdentityServer4.EntityFramework.Entities.Client, object>>[] {
-                e=>e.ClientSecrets,
-            };
-
-            IdentityServer4.EntityFramework.Entities.Client newclient = _repository.GetAllInclude(propertySelectors).FirstOrDefault(e => e.Id == id);
-            if (newclient == null)
-            {
-                throw new Exception("不存在的客户端");
-            }
-
-            var client = CreateClient("", "", clientSecrets, new List<string>(), new List<string>(), new List<string>(), true);
-
-            newclient.ClientSecrets = client.ClientSecrets;
-        }
-
-        private IdentityServer4.EntityFramework.Entities.Client CreateClient (
+        public IdentityServer4.EntityFramework.Entities.Client CreateClient(
             string clientId,
             string allowedGrantType,
             List<string> clientSecrets,
             List<string> redirectUris,
             List<string> postLogoutRedirectUris,
-            List<string> allowedScopes,
-            bool allowOfflineAccess
-            ) 
+            List<string> allowedScopes
+            )
         {
             ICollection<string> clientGrantTypeList = new List<string>();
 
             // 认证客户端认证类型是否存在
-            if ( !string.IsNullOrEmpty(allowedGrantType) && !_clientGrantTypeManager.IsExistClientGrantType(allowedGrantType))
+            if (!string.IsNullOrEmpty(allowedGrantType) && !_clientGrantTypeManager.IsExistClientGrantTypeGroup(allowedGrantType))
             {
                 throw new Exception("不存在的客户端认证类型[" + allowedGrantType + "]");
             }
 
-            if (!string.IsNullOrEmpty(allowedGrantType)) {
+            if (!string.IsNullOrEmpty(allowedGrantType))
+            {
                 clientGrantTypeList = _clientGrantTypeManager.GetClientGrantTypesForName(allowedGrantType);
             }
 
@@ -145,10 +63,97 @@ namespace IEIdentityServer.Core.Entitys.IdentityService.Clients
                 RedirectUris = redirectUris,
                 PostLogoutRedirectUris = postLogoutRedirectUris,
                 AllowedScopes = allowedScopes,
-                AllowOfflineAccess = allowOfflineAccess,
             };
 
             return client.ToEntity();
+        }
+
+        public IdentityServer4.EntityFramework.Entities.Client GetClient(int id)
+        {
+            return _repository.FirstOrDefault(id);
+        }
+
+        public void AddClient(IdentityServer4.EntityFramework.Entities.Client client)
+        {
+            _repository.Insert(client);
+        }
+
+        public void RemoveClient(
+            int id
+            )
+        {
+            IdentityServer4.EntityFramework.Entities.Client client = _repository.FirstOrDefault(id);
+            if (client == null) {
+                throw new Exception("不存在的客户端");
+            }
+
+            _repository.Remove(client);
+        }
+
+        public void UpdateAllowedGrantType(
+            IdentityServer4.EntityFramework.Entities.Client client,
+            string allowedGrantType
+            )
+        {
+            ICollection<string> clientGrantTypeList = new List<string>();
+
+            if (!string.IsNullOrEmpty(allowedGrantType))
+            {
+                clientGrantTypeList = _clientGrantTypeManager.GetClientGrantTypesForName(allowedGrantType);
+            }
+
+            IdentityServer4.Models.Client clientModel = new IdentityServer4.Models.Client();
+            clientModel.AllowedGrantTypes = clientGrantTypeList;
+
+            client.AllowedGrantTypes = clientModel.ToEntity().AllowedGrantTypes;
+        }
+
+        public void UpdateAllowedScopes(
+            IdentityServer4.EntityFramework.Entities.Client client,
+            List<string> allowedScopes
+            )
+        {
+            IdentityServer4.Models.Client clientModel = new IdentityServer4.Models.Client();
+            clientModel.AllowedScopes = allowedScopes;
+
+            client.AllowedScopes = clientModel.ToEntity().AllowedScopes;
+        }
+
+        public void UpdatePostLogoutRedirectUris(
+            IdentityServer4.EntityFramework.Entities.Client client,
+            List<string> postLogoutRedirectUris)
+        {
+            IdentityServer4.Models.Client clientModel = new IdentityServer4.Models.Client();
+            clientModel.PostLogoutRedirectUris = postLogoutRedirectUris;
+
+            client.PostLogoutRedirectUris = clientModel.ToEntity().PostLogoutRedirectUris;
+        }
+
+        public void UpdateRedirectUris(
+            IdentityServer4.EntityFramework.Entities.Client client,
+            List<string> redirectUris
+            )
+        {
+            IdentityServer4.Models.Client clientModel = new IdentityServer4.Models.Client();
+            clientModel.RedirectUris = redirectUris;
+
+            client.RedirectUris = clientModel.ToEntity().RedirectUris;
+        }
+
+        public void UpdateSecrets(
+            IdentityServer4.EntityFramework.Entities.Client client,
+            List<string> clientSecrets
+            )
+        {
+            List<IdentityServer4.Models.Secret> SecretModels = new List<IdentityServer4.Models.Secret>();
+            clientSecrets.ForEach(e => {
+                SecretModels.Add(new IdentityServer4.Models.Secret(e.Sha256()));
+            });
+
+            IdentityServer4.Models.Client clientModel = new IdentityServer4.Models.Client();
+            clientModel.ClientSecrets = SecretModels;
+
+            client.ClientSecrets = clientModel.ToEntity().ClientSecrets;
         }
     }
 }

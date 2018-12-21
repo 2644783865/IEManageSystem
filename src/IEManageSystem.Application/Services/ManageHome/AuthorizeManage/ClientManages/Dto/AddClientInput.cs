@@ -25,20 +25,6 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages.Dto
         /// 
         /// </summary>
         [Required]
-        [Url]
-        public string RedirectUri { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Required]
-        [Url]
-        public string PostLogoutRedirectUri { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Required]
         public string AllowedGrantType { get; set; }
 
         /// <summary>
@@ -46,6 +32,31 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages.Dto
         /// </summary>
         [Required]
         public List<string> AllowedScopes { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<string> RedirectUris { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<string> PostLogoutRedirectUris { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool AllowAccessTokensViaBrowser { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string AccessTokenType { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool Enabled { get; set; }
 
         /// <summary>
         /// 

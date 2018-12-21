@@ -1,6 +1,8 @@
 var path = require("path");
 var pathMap = require('./src/pathmap.json');
 var libPath = path.resolve('./src/lib');
+var cssPath = path.resolve('./src/lib/css');
+var jsPath = path.resolve('./src/lib/js');
 var nodeModPath = path.resolve(__dirname, './node_modules');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -89,7 +91,7 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js',"*",".css"],
-        modules:[libPath, nodeModPath],
+        modules:[libPath, nodeModPath, cssPath, jsPath],
         alias: pathMap
     }
 }
