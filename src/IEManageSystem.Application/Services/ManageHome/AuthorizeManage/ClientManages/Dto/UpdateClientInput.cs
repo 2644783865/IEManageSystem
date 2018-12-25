@@ -7,6 +7,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages.Dto
 {
     public class UpdateClientInput
     {
+        [Required]
         public int Id { get; set; }
 
         /// <summary>
@@ -19,8 +20,6 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages.Dto
         /// <summary>
         /// 
         /// </summary>
-        [Required]
-        [StringLength(50, MinimumLength = 6)]
         public string ClientSecret { get; set; }
 
         /// <summary>

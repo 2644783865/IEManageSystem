@@ -4,6 +4,6 @@ export default class EditClientForm extends ClientForm{
 	constructor(props){
 		super(props);
 
-		this.submitUrl = "";
+		this.submitUrl = "/api/ClientManage/UpdateClient";
 	}
 }

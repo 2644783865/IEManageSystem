@@ -73,6 +73,11 @@ namespace IEIdentityServer.Core.Entitys.IdentityService.Clients
             return _repository.FirstOrDefault(id);
         }
 
+        public IdentityServer4.EntityFramework.Entities.Client GetClientInclude(int id, Expression<Func<IdentityServer4.EntityFramework.Entities.Client, object>>[] expressions)
+        {
+            return _repository.GetAllInclude(expressions).FirstOrDefault(e=>e.Id == id);
+        }
+
         public void AddClient(IdentityServer4.EntityFramework.Entities.Client client)
         {
             _repository.Insert(client);
@@ -102,8 +107,11 @@ namespace IEIdentityServer.Core.Entitys.IdentityService.Clients
                 clientGrantTypeList = _clientGrantTypeManager.GetClientGrantTypesForName(allowedGrantType);
             }
 
-            IdentityServer4.Models.Client clientModel = new IdentityServer4.Models.Client();
+            IdentityServer4.Models.Client clientModel = new IdentityServer4.Models.Client() {
+                ClientId = "ClientId"
+            };
             clientModel.AllowedGrantTypes = clientGrantTypeList;
+            var newclient = clientModel.ToEntity();
 
             client.AllowedGrantTypes = clientModel.ToEntity().AllowedGrantTypes;
         }

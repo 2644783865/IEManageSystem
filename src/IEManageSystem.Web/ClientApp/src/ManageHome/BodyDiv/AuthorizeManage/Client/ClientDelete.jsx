@@ -20,7 +20,12 @@ export default class ClientDelete extends React.Component
   deleteBackcall(data){
     if(data.isSuccess == true)
     {
-      
+      $("#dataDeleteCloseBtn").click();
+      this.props.freshen();
+    }
+    else{
+      $("#dataDeleteError").text(data.message);
+      setTimeout('$("#dataDeleteError").text("")',3000);
     }
   }
 
@@ -30,7 +35,7 @@ export default class ClientDelete extends React.Component
     };
 
     $.ajax({
-      url: "",
+      url: "/api/ClientManage/RemoveClient",
       type: 'post',
       data: JSON.stringify(postData),
       contentType: 'application/json',
@@ -53,12 +58,13 @@ export default class ClientDelete extends React.Component
                   </div>
              
                   <div className="modal-body">
-                    你正要删除 {this.props.client.name} ，删除后无法恢复，确定删除吗？
+                    你正要删除 {this.props.client.clientId} ，删除后无法恢复，确定删除吗？
                   </div>
              
                   <div className="modal-footer">
+                    <span id="dataDeleteError" className="text-danger"></span>
                     <button type="button" className="btn btn-danger btn-sm" onClick={()=>this.delete(this.props.client.id)}>删除</button>
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <button id="dataDeleteCloseBtn" type="button" className="btn btn-secondary" data-dismiss="modal">关闭</button>
                   </div>
              
                 </div>

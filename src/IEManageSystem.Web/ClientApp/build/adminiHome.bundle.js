@@ -5533,9 +5533,9 @@ var Client = function (_React$Component) {
 	}
 
 	_createClass(Client, [{
-		key: 'componentWillUpdate',
-		value: function componentWillUpdate(nextProps, nextState) {
-			nextState.operationState = operationState.none;
+		key: 'componentDidUpdate',
+		value: function componentDidUpdate() {
+			this.state.operationState = operationState.none;
 		}
 
 		// 刷新整个Client组件
@@ -5666,9 +5666,8 @@ var Client = function (_React$Component) {
 	}, {
 		key: 'clientAddClick',
 		value: function clientAddClick() {
-			var client = {};
 			this.setState({
-				curClient: client,
+				curClient: null,
 				operationState: operationState.add
 			});
 		}
@@ -5781,7 +5780,13 @@ var ClientDelete = function (_React$Component) {
   }, {
     key: 'deleteBackcall',
     value: function deleteBackcall(data) {
-      if (data.isSuccess == true) {}
+      if (data.isSuccess == true) {
+        $("#dataDeleteCloseBtn").click();
+        this.props.freshen();
+      } else {
+        $("#dataDeleteError").text(data.message);
+        setTimeout('$("#dataDeleteError").text("")', 3000);
+      }
     }
   }, {
     key: 'delete',
@@ -5791,7 +5796,7 @@ var ClientDelete = function (_React$Component) {
       };
 
       $.ajax({
-        url: "",
+        url: "/api/ClientManage/RemoveClient",
         type: 'post',
         data: JSON.stringify(postData),
         contentType: 'application/json',
@@ -5835,12 +5840,13 @@ var ClientDelete = function (_React$Component) {
                 'div',
                 { className: 'modal-body' },
                 '\u4F60\u6B63\u8981\u5220\u9664 ',
-                this.props.client.name,
+                this.props.client.clientId,
                 ' \uFF0C\u5220\u9664\u540E\u65E0\u6CD5\u6062\u590D\uFF0C\u786E\u5B9A\u5220\u9664\u5417\uFF1F'
               ),
               _react2.default.createElement(
                 'div',
                 { className: 'modal-footer' },
+                _react2.default.createElement('span', { id: 'dataDeleteError', className: 'text-danger' }),
                 _react2.default.createElement(
                   'button',
                   { type: 'button', className: 'btn btn-danger btn-sm', onClick: function onClick() {
@@ -5850,7 +5856,7 @@ var ClientDelete = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                   'button',
-                  { type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
+                  { id: 'dataDeleteCloseBtn', type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
                   '\u5173\u95ED'
                 )
               )
@@ -5937,6 +5943,18 @@ var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _FormRadio = __webpack_require__(/*! ./FormRadio.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/FormRadio.jsx");
+
+var _FormRadio2 = _interopRequireDefault(_FormRadio);
+
+var _FormCheck = __webpack_require__(/*! ./FormCheck.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/FormCheck.jsx");
+
+var _FormCheck2 = _interopRequireDefault(_FormCheck);
+
+var _TextGroup = __webpack_require__(/*! ./TextGroup.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/TextGroup.jsx");
+
+var _TextGroup2 = _interopRequireDefault(_TextGroup);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -5955,12 +5973,12 @@ var ClientForm = function (_React$Component) {
 
     _this.submitUrl = "";
 
+    _this.client = null;
+
     _this.state = {
       grantTypeGroupNames: new Array(),
       identityResources: new Array(),
-      apiResources: new Array(),
-      redirectUris: new Array(),
-      postLogoutRedirectUris: new Array()
+      apiResources: new Array()
     };
 
     _this.getClientGrantTypeGroupNamesBackcall = _this.getClientGrantTypeGroupNamesBackcall.bind(_this);
@@ -5972,32 +5990,54 @@ var ClientForm = function (_React$Component) {
     _this.getApiResourcesBackcall = _this.getApiResourcesBackcall.bind(_this);
     _this.getApiResources();
 
-    _this.redirectUrisAddClick = _this.redirectUrisAddClick.bind(_this);
-    _this.redirectUrisDeleteClick = _this.redirectUrisDeleteClick.bind(_this);
-    _this.redirectUrisOnChange = _this.redirectUrisOnChange.bind(_this);
-    _this.postLogoutRedirectUrisAddClick = _this.postLogoutRedirectUrisAddClick.bind(_this);
-    _this.postLogoutRedirectUrisDeleteClick = _this.postLogoutRedirectUrisDeleteClick.bind(_this);
-    _this.postLogoutRedirectUrisOnChange = _this.postLogoutRedirectUrisOnChange.bind(_this);
     _this.submitBackcall = _this.submitBackcall.bind(_this);
     _this.submit = _this.submit.bind(_this);
     return _this;
   }
 
   _createClass(ClientForm, [{
+    key: 'initClient',
+    value: function initClient(inputClient) {
+      if (inputClient == null) {
+        this.client = {
+          id: "",
+          clientId: "",
+          clientSecret: "",
+          allowedGrantType: "",
+          allowedScopes: new Array(),
+          redirectUris: new Array(),
+          postLogoutRedirectUris: new Array(),
+          allowAccessTokensViaBrowser: true,
+          accessTokenType: "jwt",
+          enabled: true,
+          allowOfflineAccess: true
+        };
+        return;
+      }
+
+      this.client = Object.assign({}, inputClient);
+      this.client.allowedScopes = Object.assign([], inputClient.allowedScopes);
+      this.client.redirectUris = Object.assign([], inputClient.redirectUris);
+      this.client.postLogoutRedirectUris = Object.assign([], inputClient.postLogoutRedirectUris);
+    }
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.initClient(this.props.client);
+    }
+  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
       $("#dataFormBtn").click();
-      $(':input:not(.labelauty)').labelauty();
+
+      // this.client = Object.assign({}, this.props.client);
     }
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       $("#dataFormBtn").click();
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      $(':input:not(.labelauty)').labelauty();
+
+      this.initClient(nextProps.client);
     }
 
     // 获取认证类型组合回调
@@ -6095,72 +6135,6 @@ var ClientForm = function (_React$Component) {
       });
     }
 
-    // 登录重定向添加单击
-
-  }, {
-    key: 'redirectUrisAddClick',
-    value: function redirectUrisAddClick() {
-      this.setState(function (preState) {
-        preState.redirectUris.push("");
-        return { redirectUris: preState.redirectUris };
-      });
-    }
-
-    // 登录重定向删除单击
-
-  }, {
-    key: 'redirectUrisDeleteClick',
-    value: function redirectUrisDeleteClick(index) {
-      this.setState(function (preState) {
-        preState.redirectUris.splice(index, 1);
-        return { redirectUris: preState.redirectUris };
-      });
-    }
-
-    // 登录重定向表单输入
-
-  }, {
-    key: 'redirectUrisOnChange',
-    value: function redirectUrisOnChange(index, value) {
-      this.setState(function (preState) {
-        preState.redirectUris[index] = value;
-        return { redirectUris: preState.redirectUris };
-      });
-    }
-
-    // 退出登录重定向添加单击
-
-  }, {
-    key: 'postLogoutRedirectUrisAddClick',
-    value: function postLogoutRedirectUrisAddClick() {
-      this.setState(function (preState) {
-        preState.postLogoutRedirectUris.push("");
-        return { postLogoutRedirectUris: preState.postLogoutRedirectUris };
-      });
-    }
-
-    // 退出登录重定向删除单击
-
-  }, {
-    key: 'postLogoutRedirectUrisDeleteClick',
-    value: function postLogoutRedirectUrisDeleteClick(index) {
-      this.setState(function (preState) {
-        preState.postLogoutRedirectUris.splice(index, 1);
-        return { postLogoutRedirectUris: preState.postLogoutRedirectUris };
-      });
-    }
-
-    // 退出登录重定向表单输入
-
-  }, {
-    key: 'postLogoutRedirectUrisOnChange',
-    value: function postLogoutRedirectUrisOnChange(index, value) {
-      this.setState(function (preState) {
-        preState.postLogoutRedirectUris[index] = value;
-        return { postLogoutRedirectUris: preState.postLogoutRedirectUris };
-      });
-    }
-
     // 提交回调
 
   }, {
@@ -6169,6 +6143,9 @@ var ClientForm = function (_React$Component) {
       if (data.isSuccess == true) {
         $("#dataFormCloseBtn").click();
         this.props.freshen();
+      } else {
+        $("#dataFormError").text(data.message);
+        setTimeout('$("#dataFormError").text("")', 3000);
       }
     }
 
@@ -6177,33 +6154,7 @@ var ClientForm = function (_React$Component) {
   }, {
     key: 'submit',
     value: function submit() {
-      var clientId = $("input[name=clientId]").val();
-      var clientSecret = $("input[name=clientSecret]").val();
-      var allowedGrantType = $("input[name=allowedGrantType]:checked").val();
-      var allowedScopes = Array();
-      var allowedScopeEqs = $("input[name=allowedScopes]:checked");
-      for (var item = 0; item < allowedScopeEqs.length; item++) {
-        allowedScopes.push(allowedScopeEqs.eq(item).val());
-      }
-      var redirectUris = this.state.redirectUris;
-      var postLogoutRedirectUris = this.state.postLogoutRedirectUris;
-      var allowAccessTokensViaBrowser = $("input[name=allowAccessTokensViaBrowser]:checked").val();
-      var accessTokenType = $("input[name=accessTokenType]:checked").val();
-      var enabled = $("input[name=enabled]:checked").val();
-      var allowOfflineAccess = $("input[name=allowOfflineAccess]:checked").val();
-
-      var postData = {
-        clientId: clientId,
-        clientSecret: clientSecret,
-        allowedGrantType: allowedGrantType,
-        allowedScopes: allowedScopes,
-        redirectUris: redirectUris,
-        postLogoutRedirectUris: postLogoutRedirectUris,
-        allowAccessTokensViaBrowser: allowAccessTokensViaBrowser,
-        accessTokenType: accessTokenType,
-        enabled: enabled,
-        allowOfflineAccess: allowOfflineAccess
-      };
+      var postData = this.client;
 
       $.ajax({
         url: this.submitUrl,
@@ -6221,65 +6172,81 @@ var ClientForm = function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var allowedGrantTypeLis = this.state.grantTypeGroupNames.map(function (item) {
-        return _react2.default.createElement(
-          'li',
-          null,
-          _react2.default.createElement('input', { type: 'radio', name: 'allowedGrantType', 'data-labelauty': item, defaultValue: item })
-        );
-      });
+      var allowedGrantTypeUl = _react2.default.createElement(_FormRadio2.default, {
+        name: 'allowedGrantType',
+        values: this.state.grantTypeGroupNames.map(function (item) {
+          return { text: item, value: item };
+        }),
+        selectValue: this.client.allowedGrantType,
+        onChange: function onChange(name, selectValue) {
+          _this2.client.allowedGrantType = selectValue;
+        } });
 
-      var identityResourceLis = this.state.identityResources.map(function (item) {
-        return _react2.default.createElement(
-          'li',
-          null,
-          _react2.default.createElement('input', { type: 'checkbox', name: 'allowedScopes', 'data-labelauty': item, defaultValue: item })
-        );
-      });
+      var identityResourceUl = _react2.default.createElement(_FormCheck2.default, {
+        name: 'allowedScopes',
+        values: this.state.identityResources.map(function (item) {
+          return { text: item, value: item };
+        }),
+        selectValues: this.client.allowedScopes,
+        onChange: function onChange(name, selectValues) {
+          _this2.client.allowedScopes = selectValues;
+        } });
 
-      var apiResourceLis = this.state.apiResources.map(function (item) {
-        return _react2.default.createElement(
-          'li',
-          null,
-          _react2.default.createElement('input', { type: 'checkbox', name: 'allowedScopes', 'data-labelauty': item, defaultValue: item })
-        );
-      });
+      var apiResourceUl = _react2.default.createElement(_FormCheck2.default, {
+        name: 'allowedScopes',
+        values: this.state.apiResources.map(function (item) {
+          return { text: item, value: item };
+        }),
+        selectValues: this.client.allowedScopes,
+        onChange: function onChange(name, selectValues) {
+          _this2.client.allowedScopes = selectValues;
+        } });
 
-      var redirectUriList = this.state.redirectUris.map(function (item, index) {
-        return _react2.default.createElement(
-          'div',
-          { className: 'd-flex margin-buttom10' },
-          _react2.default.createElement('input', { name: 'redirectUris', type: 'text', className: 'form-control', value: item,
-            onChange: function onChange(event) {
-              return _this2.redirectUrisOnChange(index, event.target.value);
-            } }),
-          _react2.default.createElement(
-            'button',
-            { className: 'btn btn-danger btn-sm', onClick: function onClick() {
-                return _this2.redirectUrisDeleteClick(index);
-              } },
-            '\u5220\u9664'
-          )
-        );
-      });
+      var redirectUriGroup = _react2.default.createElement(_TextGroup2.default, {
+        name: 'redirectUris',
+        values: this.client.redirectUris,
+        onChange: function onChange(name, values) {
+          _this2.client.redirectUris = values;
+        } });
 
-      var postLogoutRedirectUriList = this.state.postLogoutRedirectUris.map(function (item, index) {
-        return _react2.default.createElement(
-          'div',
-          { className: 'd-flex margin-buttom10' },
-          _react2.default.createElement('input', { name: 'postLogoutRedirectUris', type: 'text', className: 'form-control', value: item,
-            onChange: function onChange(event) {
-              return _this2.postLogoutRedirectUrisOnChange(index, event.target.value);
-            } }),
-          _react2.default.createElement(
-            'button',
-            { className: 'btn btn-danger btn-sm', onClick: function onClick() {
-                return _this2.postLogoutRedirectUrisDeleteClick(index);
-              } },
-            '\u5220\u9664'
-          )
-        );
-      });
+      var postLogoutRedirectUrisGroup = _react2.default.createElement(_TextGroup2.default, {
+        name: 'postLogoutRedirectUris',
+        values: this.client.postLogoutRedirectUris,
+        onChange: function onChange(name, values) {
+          _this2.client.postLogoutRedirectUris = values;
+        } });
+
+      var allowAccessTokensViaBrowserUl = _react2.default.createElement(_FormRadio2.default, {
+        name: 'allowAccessTokensViaBrowser',
+        values: [{ text: "启用", value: "true" }, { text: "禁用", value: "false" }],
+        selectValue: this.client.allowAccessTokensViaBrowser.toString(),
+        onChange: function onChange(name, selectValue) {
+          _this2.client.allowAccessTokensViaBrowser = selectValue;
+        } });
+
+      var accessTokenTypeUl = _react2.default.createElement(_FormRadio2.default, {
+        name: 'accessTokenType',
+        values: [{ text: "JWT", value: "jwt" }, { text: "Reference", value: "reference" }],
+        selectValue: this.client.accessTokenType,
+        onChange: function onChange(name, selectValue) {
+          _this2.client.accessTokenType = selectValue;
+        } });
+
+      var enabledUl = _react2.default.createElement(_FormRadio2.default, {
+        name: 'enabled',
+        values: [{ text: "启用", value: "true" }, { text: "禁用", value: "false" }],
+        selectValue: this.client.enabled.toString(),
+        onChange: function onChange(name, selectValue) {
+          _this2.client.enabled = selectValue;
+        } });
+
+      var allowOfflineAccessUl = _react2.default.createElement(_FormRadio2.default, {
+        name: 'allowOfflineAccess',
+        values: [{ text: "启用", value: "true" }, { text: "禁用", value: "false" }],
+        selectValue: this.client.allowOfflineAccess.toString(),
+        onChange: function onChange(name, selectValue) {
+          _this2.client.allowOfflineAccess = selectValue;
+        } });
 
       return _react2.default.createElement(
         'div',
@@ -6291,7 +6258,7 @@ var ClientForm = function (_React$Component) {
         ),
         _react2.default.createElement(
           'div',
-          { className: 'modal fade data-form', id: 'dataForm' },
+          { className: 'modal fade data-form show', id: 'dataForm' },
           _react2.default.createElement(
             'div',
             { className: 'modal-dialog modal-lg' },
@@ -6327,7 +6294,11 @@ var ClientForm = function (_React$Component) {
                       '\u5BA2\u6237\u7AEFId'
                     )
                   ),
-                  _react2.default.createElement('input', { name: 'clientId', type: 'text', className: 'form-control', placeholder: '\u5BA2\u6237\u7AEFId' })
+                  _react2.default.createElement('input', { name: 'clientId', type: 'text', className: 'form-control', placeholder: '\u5BA2\u6237\u7AEFId',
+                    value: this.client.clientId,
+                    onChange: function onChange(event) {
+                      _this2.client.clientId = event.target.value;_this2.setState();
+                    } })
                 ),
                 _react2.default.createElement(
                   'div',
@@ -6341,7 +6312,11 @@ var ClientForm = function (_React$Component) {
                       '\u5BA2\u6237\u7AEF\u5BC6\u94A5'
                     )
                   ),
-                  _react2.default.createElement('input', { name: 'clientSecret', type: 'text', className: 'form-control', placeholder: '\u5BC6\u94A5\uFF08\u5982\u4E0D\u586B\u5199\u5219\u65E0\u9700\u4FEE\u6539\uFF09' })
+                  _react2.default.createElement('input', { name: 'clientSecret', type: 'text', className: 'form-control', placeholder: '\u5BC6\u94A5\uFF08\u5982\u4E0D\u586B\u5199\u5219\u65E0\u9700\u4FEE\u6539\uFF09',
+                    value: this.client.clientSecret,
+                    onChange: function onChange(event) {
+                      _this2.client.clientSecret = event.target.value;_this2.setState();
+                    } })
                 ),
                 _react2.default.createElement(
                   'div',
@@ -6357,11 +6332,7 @@ var ClientForm = function (_React$Component) {
                     _react2.default.createElement(
                       'div',
                       { className: 'card-body' },
-                      _react2.default.createElement(
-                        'ul',
-                        null,
-                        allowedGrantTypeLis
-                      )
+                      allowedGrantTypeUl
                     )
                   )
                 ),
@@ -6379,11 +6350,7 @@ var ClientForm = function (_React$Component) {
                     _react2.default.createElement(
                       'div',
                       { className: 'card-body' },
-                      _react2.default.createElement(
-                        'ul',
-                        null,
-                        identityResourceLis
-                      )
+                      identityResourceUl
                     )
                   )
                 ),
@@ -6401,11 +6368,7 @@ var ClientForm = function (_React$Component) {
                     _react2.default.createElement(
                       'div',
                       { className: 'card-body' },
-                      _react2.default.createElement(
-                        'ul',
-                        null,
-                        apiResourceLis
-                      )
+                      apiResourceUl
                     )
                   )
                 ),
@@ -6415,48 +6378,12 @@ var ClientForm = function (_React$Component) {
                   _react2.default.createElement(
                     'div',
                     { className: 'col-md-6 float-left' },
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'card' },
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'card-header bg-secondary text-white' },
-                        '\u767B\u5F55\u91CD\u5B9A\u5411\u5730\u5740'
-                      ),
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'card-body' },
-                        redirectUriList,
-                        _react2.default.createElement(
-                          'button',
-                          { className: 'btn btn-success btn-sm', onClick: this.redirectUrisAddClick },
-                          '+\u6DFB\u52A0'
-                        )
-                      )
-                    )
+                    redirectUriGroup
                   ),
                   _react2.default.createElement(
                     'div',
                     { className: 'col-md-6 float-left' },
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'card' },
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'card-header bg-secondary text-white' },
-                        '\u767B\u51FA\u91CD\u5B9A\u5411\u5730\u5740'
-                      ),
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'card-body' },
-                        postLogoutRedirectUriList,
-                        _react2.default.createElement(
-                          'button',
-                          { className: 'btn btn-success btn-sm', onClick: this.postLogoutRedirectUrisAddClick },
-                          '+\u6DFB\u52A0'
-                        )
-                      )
-                    )
+                    postLogoutRedirectUrisGroup
                   )
                 ),
                 _react2.default.createElement(
@@ -6481,20 +6408,7 @@ var ClientForm = function (_React$Component) {
                           { className: 'margin-buttom10' },
                           '\u5141\u8BB8\u6D4F\u89C8\u5668\u8BBF\u95EE'
                         ),
-                        _react2.default.createElement(
-                          'ul',
-                          null,
-                          _react2.default.createElement(
-                            'li',
-                            null,
-                            _react2.default.createElement('input', { type: 'radio', name: 'allowAccessTokensViaBrowser', defaultValue: 'true', 'data-labelauty': '\u5141\u8BB8' })
-                          ),
-                          _react2.default.createElement(
-                            'li',
-                            null,
-                            _react2.default.createElement('input', { type: 'radio', name: 'allowAccessTokensViaBrowser', defaultValue: 'false', 'data-labelauty': '\u4E0D\u5141\u8BB8' })
-                          )
-                        )
+                        allowAccessTokensViaBrowserUl
                       ),
                       _react2.default.createElement(
                         'div',
@@ -6504,20 +6418,7 @@ var ClientForm = function (_React$Component) {
                           { className: 'margin-buttom10' },
                           'Token\u7C7B\u578B'
                         ),
-                        _react2.default.createElement(
-                          'ul',
-                          null,
-                          _react2.default.createElement(
-                            'li',
-                            null,
-                            _react2.default.createElement('input', { type: 'radio', name: 'accessTokenType', defaultValue: 'jwt', 'data-labelauty': 'JWTToken' })
-                          ),
-                          _react2.default.createElement(
-                            'li',
-                            null,
-                            _react2.default.createElement('input', { type: 'radio', name: 'accessTokenType', defaultValue: 'reference', 'data-labelauty': 'ReferenceToken' })
-                          )
-                        )
+                        accessTokenTypeUl
                       ),
                       _react2.default.createElement(
                         'div',
@@ -6527,20 +6428,7 @@ var ClientForm = function (_React$Component) {
                           { className: 'margin-buttom10' },
                           '\u662F\u5426\u542F\u7528'
                         ),
-                        _react2.default.createElement(
-                          'ul',
-                          null,
-                          _react2.default.createElement(
-                            'li',
-                            null,
-                            _react2.default.createElement('input', { type: 'radio', name: 'enabled', defaultValue: 'true', 'data-labelauty': '\u542F\u7528' })
-                          ),
-                          _react2.default.createElement(
-                            'li',
-                            null,
-                            _react2.default.createElement('input', { type: 'radio', name: 'enabled', defaultValue: 'false', 'data-labelauty': '\u7981\u7528' })
-                          )
-                        )
+                        enabledUl
                       ),
                       _react2.default.createElement(
                         'div',
@@ -6550,20 +6438,7 @@ var ClientForm = function (_React$Component) {
                           { className: 'margin-buttom10' },
                           '\u79BB\u7EBF\u5171\u4EAB'
                         ),
-                        _react2.default.createElement(
-                          'ul',
-                          null,
-                          _react2.default.createElement(
-                            'li',
-                            null,
-                            _react2.default.createElement('input', { type: 'radio', name: 'allowOfflineAccess', defaultValue: 'true', 'data-labelauty': '\u542F\u7528' })
-                          ),
-                          _react2.default.createElement(
-                            'li',
-                            null,
-                            _react2.default.createElement('input', { type: 'radio', name: 'allowOfflineAccess', defaultValue: 'false', 'data-labelauty': '\u7981\u7528' })
-                          )
-                        )
+                        allowOfflineAccessUl
                       )
                     )
                   )
@@ -6572,6 +6447,7 @@ var ClientForm = function (_React$Component) {
               _react2.default.createElement(
                 'div',
                 { className: 'modal-footer' },
+                _react2.default.createElement('span', { id: 'dataFormError', className: 'text-danger' }),
                 _react2.default.createElement(
                   'button',
                   { type: 'button', className: 'btn btn-info', onClick: this.submit },
@@ -6631,7 +6507,7 @@ var EditClientForm = function (_ClientForm) {
 
 		var _this = _possibleConstructorReturn(this, (EditClientForm.__proto__ || Object.getPrototypeOf(EditClientForm)).call(this, props));
 
-		_this.submitUrl = "";
+		_this.submitUrl = "/api/ClientManage/UpdateClient";
 		return _this;
 	}
 
@@ -6639,6 +6515,243 @@ var EditClientForm = function (_ClientForm) {
 }(_ClientForm3.default);
 
 exports.default = EditClientForm;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/FormCheck.jsx":
+/*!********************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/FormCheck.jsx ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var FormCheck = function (_React$Component) {
+	_inherits(FormCheck, _React$Component);
+
+	// props.name
+	// props.values
+	// props.selectValues
+	// props.onChange(name, selectValues)
+	function FormCheck(props) {
+		_classCallCheck(this, FormCheck);
+
+		var _this = _possibleConstructorReturn(this, (FormCheck.__proto__ || Object.getPrototypeOf(FormCheck)).call(this, props));
+
+		_this.state = {
+			selectValues: props.selectValues
+		};
+
+		_this.onChange = _this.onChange.bind(_this);
+		return _this;
+	}
+
+	_createClass(FormCheck, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			$(':input:not(.labelauty)').labelauty();
+		}
+	}, {
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(nextProps) {
+			this.state.selectValues = nextProps.selectValues;
+		}
+	}, {
+		key: 'componentDidUpdate',
+		value: function componentDidUpdate() {
+			$(':input:not(.labelauty)').labelauty();
+		}
+	}, {
+		key: 'onChange',
+		value: function onChange(event, index) {
+			var _this2 = this;
+
+			if (event.target.checked) {
+				this.state.selectValues.push(event.target.value);
+				this.setState({ selectValues: this.state.selectValues }, function () {
+					return _this2.props.onChange(_this2.props.name, _this2.state.selectValues);
+				});
+			} else {
+				var i = this.state.selectValues.indexOf(this.props.values[index].value);
+				this.state.selectValues.splice(i, 1);
+				this.setState({ selectValues: this.state.selectValues }, function () {
+					return _this2.props.onChange(_this2.props.name, _this2.state.selectValues);
+				});
+			}
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this3 = this;
+
+			var checkboxLis = this.props.values.map(function (item, index) {
+				if (_this3.state.selectValues.indexOf(item.value) >= 0) {
+					return _react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement('input', { type: 'checkbox', name: _this3.props.name, 'data-labelauty': item.text, value: item.value, checked: true, onChange: function onChange(event) {
+								return _this3.onChange(event, index);
+							} })
+					);
+				} else {
+					return _react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement('input', { type: 'checkbox', name: _this3.props.name, 'data-labelauty': item.text, value: item.value, checked: false, onChange: function onChange(event) {
+								return _this3.onChange(event, index);
+							} })
+					);
+				}
+			});
+
+			return _react2.default.createElement(
+				'ul',
+				null,
+				checkboxLis
+			);
+		}
+	}]);
+
+	return FormCheck;
+}(_react2.default.Component);
+
+exports.default = FormCheck;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/FormRadio.jsx":
+/*!********************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/FormRadio.jsx ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var FormRadio = function (_React$Component) {
+	_inherits(FormRadio, _React$Component);
+
+	// props.name
+	// props.values
+	// props.selectValue  [{text:"", value:""}]
+	// props.onChange(name, selectValue)
+	function FormRadio(props) {
+		_classCallCheck(this, FormRadio);
+
+		var _this = _possibleConstructorReturn(this, (FormRadio.__proto__ || Object.getPrototypeOf(FormRadio)).call(this, props));
+
+		_this.state = {
+			selectValue: props.selectValue
+		};
+
+		_this.onChange = _this.onChange.bind(_this);
+		return _this;
+	}
+
+	_createClass(FormRadio, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			$(':input:not(.labelauty)').labelauty();
+		}
+	}, {
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(nextProps) {
+			this.state.selectValue = nextProps.selectValue;
+		}
+	}, {
+		key: 'componentDidUpdate',
+		value: function componentDidUpdate() {
+			$(':input:not(.labelauty)').labelauty();
+		}
+	}, {
+		key: 'onChange',
+		value: function onChange(event) {
+			var _this2 = this;
+
+			this.setState({ selectValue: event.target.value }, function () {
+				_this2.props.onChange(_this2.props.name, _this2.state.selectValue);
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this3 = this;
+
+			var radioLis = this.props.values.map(function (item) {
+				if (item.value == _this3.state.selectValue) {
+					return _react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement('input', { type: 'radio', name: _this3.props.name, 'data-labelauty': item.text, value: item.value, checked: true, onChange: _this3.onChange })
+					);
+				} else {
+					return _react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement('input', { type: 'radio', name: _this3.props.name, 'data-labelauty': item.text, value: item.value, checked: false, onChange: _this3.onChange })
+					);
+				}
+			});
+
+			return _react2.default.createElement(
+				'ul',
+				null,
+				radioLis
+			);
+		}
+	}]);
+
+	return FormRadio;
+}(_react2.default.Component);
+
+exports.default = FormRadio;
 
 /***/ }),
 
@@ -6684,6 +6797,153 @@ var LookupClientForm = function (_ClientForm) {
 }(_ClientForm3.default);
 
 exports.default = LookupClientForm;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/TextGroup.jsx":
+/*!********************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/TextGroup.jsx ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TextGroup = function (_React$Component) {
+	_inherits(TextGroup, _React$Component);
+
+	// props.name
+	// props.values
+	// props.onChange(name, values)
+	function TextGroup(props) {
+		_classCallCheck(this, TextGroup);
+
+		var _this = _possibleConstructorReturn(this, (TextGroup.__proto__ || Object.getPrototypeOf(TextGroup)).call(this, props));
+
+		_this.state = {
+			values: new Array()
+		};
+
+		_this.AddClick = _this.AddClick.bind(_this);
+		_this.DeleteClick = _this.DeleteClick.bind(_this);
+		_this.OnChange = _this.OnChange.bind(_this);
+		return _this;
+	}
+
+	_createClass(TextGroup, [{
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(nextProps) {
+			this.state.values = nextProps.values;
+		}
+
+		// 登录重定向添加单击
+
+	}, {
+		key: 'AddClick',
+		value: function AddClick() {
+			this.setState(function (preState) {
+				preState.values.push("");
+				return { values: preState.values };
+			});
+		}
+
+		// 登录重定向删除单击
+
+	}, {
+		key: 'DeleteClick',
+		value: function DeleteClick(index) {
+			this.setState(function (preState) {
+				preState.values.splice(index, 1);
+				return { values: preState.values };
+			});
+		}
+
+		// 登录重定向表单输入
+
+	}, {
+		key: 'OnChange',
+		value: function OnChange(index, value) {
+			var _this2 = this;
+
+			this.setState(function (preState) {
+				preState.values[index] = value;
+				return { values: preState.values };
+			}, function () {
+				return _this2.props.onChange(_this2.props.name, _this2.state.values);
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this3 = this;
+
+			var list = this.state.values.map(function (item, index) {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'd-flex margin-buttom10' },
+					_react2.default.createElement('input', { name: _this3.props.name, type: 'text', className: 'form-control', value: item,
+						onChange: function onChange(event) {
+							return _this3.OnChange(index, event.target.value);
+						} }),
+					_react2.default.createElement(
+						'button',
+						{ className: 'btn btn-danger btn-sm', onClick: function onClick() {
+								return _this3.DeleteClick(index);
+							} },
+						'\u5220\u9664'
+					)
+				);
+			});
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'card' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'card-header bg-secondary text-white' },
+					'\u767B\u5F55\u91CD\u5B9A\u5411\u5730\u5740'
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'card-body' },
+					list,
+					_react2.default.createElement(
+						'button',
+						{ className: 'btn btn-success btn-sm', onClick: this.AddClick },
+						'+\u6DFB\u52A0'
+					)
+				)
+			);
+		}
+	}]);
+
+	return TextGroup;
+}(_react2.default.Component);
+
+exports.default = TextGroup;
 
 /***/ }),
 
@@ -6759,7 +7019,7 @@ var ClientList = function (_React$Component) {
                     _react2.default.createElement(
                         'td',
                         null,
-                        clients[item].enabled
+                        clients[item].enabled ? "启用" : "禁用"
                     ),
                     _react2.default.createElement(
                         'td',

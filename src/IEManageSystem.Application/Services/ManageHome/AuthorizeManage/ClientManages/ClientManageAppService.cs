@@ -126,7 +126,14 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages
                 return new UpdateClientOutput() { ErrorMessage = "客户端密匙长度必须大于或等于6，小于或等于50" };
             }
 
-            var client = _clientManager.GetClient(input.Id);
+            Expression<Func<Client, object>>[] clientLoad = new Expression<Func<Client, object>>[] {
+                e=>e.AllowedGrantTypes,
+                e=>e.RedirectUris,
+                e=>e.PostLogoutRedirectUris,
+                e=>e.AllowedScopes,
+            };
+
+            var client = _clientManager.GetClientInclude(input.Id, clientLoad);
 
             _clientManager.UpdateAllowedGrantType(client, input.AllowedGrantType);
             _clientManager.UpdateAllowedScopes(client, input.AllowedScopes);
@@ -142,6 +149,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages
             client.AllowAccessTokensViaBrowser = input.AllowAccessTokensViaBrowser;
             client.AllowOfflineAccess = input.AllowOfflineAccess;
             client.Enabled = input.Enabled;
+            client.AccessTokenType = (int)("jwt".Equals(input.AccessTokenType, StringComparison.OrdinalIgnoreCase) ? IdentityServer4.Models.AccessTokenType.Jwt : IdentityServer4.Models.AccessTokenType.Reference);
 
             return new UpdateClientOutput();
         }

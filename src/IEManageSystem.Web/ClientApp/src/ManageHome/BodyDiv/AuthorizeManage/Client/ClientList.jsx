@@ -17,7 +17,7 @@ export default class ClientList extends React.Component
                             <td>{ clients[item].clientId  }</td>
                             <td>{ clients[item].allowedGrantType  }</td>
                             <td>{ clients[item].accessTokenType  }</td>
-                            <td>{ clients[item].enabled   }</td>
+                            <td>{ clients[item].enabled ? "启用":"禁用"   }</td>
                             <td>
                                 <div className="btn-group btn-group-sm">
                                     <button type="button" className="btn btn-primary" 

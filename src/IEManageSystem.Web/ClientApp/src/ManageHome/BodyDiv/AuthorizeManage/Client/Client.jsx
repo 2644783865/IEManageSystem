@@ -52,6 +52,10 @@ export default class Client extends React.Component
 		this.clientAddClick = this.clientAddClick.bind(this);
 		this.clientLookupClick = this.clientLookupClick.bind(this);
 	}
+
+    componentDidUpdate(){
+        this.state.operationState = operationState.none;
+    }
 	
 	// 刷新整个Client组件
 	freshen(){
@@ -160,9 +164,8 @@ export default class Client extends React.Component
 
 	// 点击添加按钮
 	clientAddClick(){
-		let client = {};
 		this.setState({ 
-			curClient:client,
+			curClient:null,
 			operationState: operationState.add
 		});
 	}

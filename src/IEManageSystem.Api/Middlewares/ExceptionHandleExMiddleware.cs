@@ -46,7 +46,7 @@ namespace IEManageSystem.Api.Middlewares
                 ApiResultDataModel result = new ApiResultDataModel()
                 {
                     IsSuccess = false,
-                    Message = "发生未知错误，请联系管理员",
+                    Message = ex.Message,
                 };
                 context.Response.ContentType = "text/plain";
 
