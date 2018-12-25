@@ -44,7 +44,6 @@ export default class Paging extends React.Component
 	
 	render(){
 		let pageNum = this.props.pageNum;
-		const clients = this.props.clients;
 
 		const minIndex = this.state.pageIndex - 4;
 		const maxIndex = this.state.pageIndex + 4;
@@ -74,7 +73,7 @@ export default class Paging extends React.Component
                 <ul className="pagination pagination-md">
                     {lis}
                 </ul>
-                <button type="button" className="btn btn-info" onClick={this.props.clientAddClick}>+添加</button>
+                <button type="button" className="btn btn-info" onClick={this.props.resourceAddClick}>+添加</button>
             </div>
 		);
 	}

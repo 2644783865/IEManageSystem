@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export default class ClientDelete extends React.Component
+export default class ResourceDelete extends React.Component
 {
 	constructor(props){
 		super(props);
@@ -58,12 +58,12 @@ export default class ClientDelete extends React.Component
                   </div>
              
                   <div className="modal-body">
-                    你正要删除 {this.props.client.clientId} ，删除后无法恢复，确定删除吗？
+                    你正要删除 {this.props.resource.clientId} ，删除后无法恢复，确定删除吗？
                   </div>
              
                   <div className="modal-footer">
                     <span id="dataDeleteError" className="text-danger"></span>
-                    <button type="button" className="btn btn-danger btn-sm" onClick={()=>this.delete(this.props.client.id)}>删除</button>
+                    <button type="button" className="btn btn-danger btn-sm" onClick={()=>this.delete(this.props.resource.id)}>删除</button>
                     <button id="dataDeleteCloseBtn" type="button" className="btn btn-secondary" data-dismiss="modal">关闭</button>
                   </div>
              

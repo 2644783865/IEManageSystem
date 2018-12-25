@@ -86,10 +86,10 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/css-loader/index.js!./src/ManageHome/BodyDiv/AuthorizeManage/Client/Client.css":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/css-loader!./src/ManageHome/BodyDiv/AuthorizeManage/Client/Client.css ***!
-  \********************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./src/ManageHome/BodyDiv/AuthorizeManage/Client/Resource.css":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/css-loader!./src/ManageHome/BodyDiv/AuthorizeManage/Client/Resource.css ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5391,15 +5391,202 @@ module.exports = warning;
 
 /***/ }),
 
-/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Client.css":
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Paging.jsx":
 /*!******************************************************************!*\
-  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/Client.css ***!
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/Paging.jsx ***!
   \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
 
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader!./Client.css */ "./node_modules/css-loader/index.js!./src/ManageHome/BodyDiv/AuthorizeManage/Client/Client.css");
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Paging = function (_React$Component) {
+	_inherits(Paging, _React$Component);
+
+	function Paging(props) {
+		_classCallCheck(this, Paging);
+
+		var _this = _possibleConstructorReturn(this, (Paging.__proto__ || Object.getPrototypeOf(Paging)).call(this, props));
+
+		_this.state = {
+			pageIndex: 1
+		};
+
+		_this.prePageClick = _this.prePageClick.bind(_this);
+		_this.nextPageClick = _this.nextPageClick.bind(_this);
+		_this.pageIndexClick = _this.pageIndexClick.bind(_this);
+		return _this;
+	}
+
+	// 上一页单击
+
+
+	_createClass(Paging, [{
+		key: 'prePageClick',
+		value: function prePageClick() {
+			var _this2 = this;
+
+			if (this.state.pageIndex > 1) {
+				this.setState(function (prevState) {
+					return { pageIndex: prevState.pageIndex - 1 };
+				}, function () {
+					return _this2.props.pageIndexChange(_this2.state.pageIndex);
+				});
+				;
+			}
+		}
+
+		// 下一页单击
+
+	}, {
+		key: 'nextPageClick',
+		value: function nextPageClick() {
+			var _this3 = this;
+
+			if (this.state.pageIndex < this.props.pageNum) {
+				this.setState(function (prevState) {
+					return { pageIndex: prevState.pageIndex + 1 };
+				}, function () {
+					return _this3.props.pageIndexChange(_this3.state.pageIndex);
+				});
+			}
+		}
+
+		// 页索引单击
+
+	}, {
+		key: 'pageIndexClick',
+		value: function pageIndexClick(pageIndex) {
+			var _this4 = this;
+
+			this.setState({ pageIndex: pageIndex }, function () {
+				return _this4.props.pageIndexChange(_this4.state.pageIndex);
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this5 = this;
+
+			var pageNum = this.props.pageNum;
+
+			var minIndex = this.state.pageIndex - 4;
+			var maxIndex = this.state.pageIndex + 4;
+
+			var lis = new Array();
+			lis.push(_react2.default.createElement(
+				'li',
+				{ className: 'page-item' },
+				_react2.default.createElement(
+					'a',
+					{ onClick: this.prePageClick, className: 'page-link', href: 'javascript:void(0)' },
+					'\u4E0A\u4E00\u9875'
+				)
+			));
+
+			var _loop = function _loop(min) {
+				if (min > 0) {
+					var li = null;
+					if (min == _this5.state.pageIndex) {
+						li = _react2.default.createElement(
+							'li',
+							{ className: 'page-item' },
+							_react2.default.createElement(
+								'a',
+								{ onClick: function onClick() {
+										return _this5.pageIndexClick(min);
+									}, className: 'page-link bg-white text-dark', href: 'javascript:void(0)' },
+								min
+							)
+						);
+					} else {
+						li = _react2.default.createElement(
+							'li',
+							{ className: 'page-item' },
+							_react2.default.createElement(
+								'a',
+								{ onClick: function onClick() {
+										return _this5.pageIndexClick(min);
+									}, className: 'page-link', href: 'javascript:void(0)' },
+								min
+							)
+						);
+					}
+
+					lis.push(li);
+				}
+			};
+
+			for (var min = minIndex; min <= maxIndex && min <= pageNum; min++) {
+				_loop(min);
+			}
+
+			lis.push(_react2.default.createElement(
+				'li',
+				{ className: 'page-item' },
+				_react2.default.createElement(
+					'a',
+					{ onClick: this.nextPageClick, className: 'page-link', href: 'javascript:void(0)' },
+					'\u4E0B\u4E00\u9875'
+				)
+			));
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'data-paging d-flex justify-content-between w-100' },
+				_react2.default.createElement(
+					'ul',
+					{ className: 'pagination pagination-md' },
+					lis
+				),
+				_react2.default.createElement(
+					'button',
+					{ type: 'button', className: 'btn btn-info', onClick: this.props.resourceAddClick },
+					'+\u6DFB\u52A0'
+				)
+			);
+		}
+	}]);
+
+	return Paging;
+}(_react2.default.Component);
+
+exports.default = Paging;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Resource.css":
+/*!********************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/Resource.css ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader!./Resource.css */ "./node_modules/css-loader/index.js!./src/ManageHome/BodyDiv/AuthorizeManage/Client/Resource.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -5421,10 +5608,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Client.jsx":
-/*!******************************************************************!*\
-  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/Client.jsx ***!
-  \******************************************************************/
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Resource.jsx":
+/*!********************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/Resource.jsx ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5453,29 +5640,29 @@ var _jqueryLabelauty3 = __webpack_require__(/*! jquery-labelauty.css */ "./src/l
 
 var _jqueryLabelauty4 = _interopRequireDefault(_jqueryLabelauty3);
 
-var _ClientList = __webpack_require__(/*! ./ClientList.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientList.jsx");
+var _ResourceList = __webpack_require__(/*! ./ResourceList.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceList.jsx");
 
-var _ClientList2 = _interopRequireDefault(_ClientList);
+var _ResourceList2 = _interopRequireDefault(_ResourceList);
 
 var _Paging = __webpack_require__(/*! ./Paging.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Paging.jsx");
 
 var _Paging2 = _interopRequireDefault(_Paging);
 
-var _ClientDelete = __webpack_require__(/*! ./ClientDelete.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientDelete.jsx");
+var _ResourceDelete = __webpack_require__(/*! ./ResourceDelete.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceDelete.jsx");
 
-var _ClientDelete2 = _interopRequireDefault(_ClientDelete);
+var _ResourceDelete2 = _interopRequireDefault(_ResourceDelete);
 
-var _AddClientForm = __webpack_require__(/*! ./ClientForm/AddClientForm.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/AddClientForm.jsx");
+var _AddResourceForm = __webpack_require__(/*! ./ResourceForm/AddResourceForm.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/AddResourceForm.jsx");
 
-var _AddClientForm2 = _interopRequireDefault(_AddClientForm);
+var _AddResourceForm2 = _interopRequireDefault(_AddResourceForm);
 
-var _LookupClientForm = __webpack_require__(/*! ./ClientForm/LookupClientForm.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/LookupClientForm.jsx");
+var _LookupResourceForm = __webpack_require__(/*! ./ResourceForm/LookupResourceForm.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/LookupResourceForm.jsx");
 
-var _LookupClientForm2 = _interopRequireDefault(_LookupClientForm);
+var _LookupResourceForm2 = _interopRequireDefault(_LookupResourceForm);
 
-var _EditClientForm = __webpack_require__(/*! ./ClientForm/EditClientForm.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/EditClientForm.jsx");
+var _EditResourceForm = __webpack_require__(/*! ./ResourceForm/EditResourceForm.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/EditResourceForm.jsx");
 
-var _EditClientForm2 = _interopRequireDefault(_EditClientForm);
+var _EditResourceForm2 = _interopRequireDefault(_EditResourceForm);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5485,7 +5672,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-__webpack_require__(/*! ./Client.css */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Client.css");
+__webpack_require__(/*! ./Resource.css */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Resource.css");
 
 var operationState = {
 	none: "none",
@@ -5495,22 +5682,22 @@ var operationState = {
 	lookup: "lookup"
 };
 
-var Client = function (_React$Component) {
-	_inherits(Client, _React$Component);
+var Resource = function (_React$Component) {
+	_inherits(Resource, _React$Component);
 
-	function Client(props) {
-		_classCallCheck(this, Client);
+	function Resource(props) {
+		_classCallCheck(this, Resource);
 
-		var _this = _possibleConstructorReturn(this, (Client.__proto__ || Object.getPrototypeOf(Client)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (Resource.__proto__ || Object.getPrototypeOf(Resource)).call(this, props));
 
 		_this.pageSize = 10;
 
 		_this.pageIndex = 1;
 
 		_this.state = {
-			curClient: null,
-			clients: new Array(),
-			clientNum: 0,
+			curResource: null,
+			resources: new Array(),
+			resourceNum: 0,
 			pageNum: 0,
 			operationState: operationState.none
 		};
@@ -5519,37 +5706,37 @@ var Client = function (_React$Component) {
 
 		_this.pageIndexChange = _this.pageIndexChange.bind(_this);
 
-		_this.getClientListBackcall = _this.getClientListBackcall.bind(_this);
-		_this.getClientList(_this.pageIndex, _this.pageSize);
+		_this.getResourceListBackcall = _this.getResourceListBackcall.bind(_this);
+		_this.getResourceList(_this.pageIndex, _this.pageSize);
 
-		_this.getClientNumBackcall = _this.getClientNumBackcall.bind(_this);
-		_this.getClientNum();
+		_this.getResourceNumBackcall = _this.getResourceNumBackcall.bind(_this);
+		_this.getResourceNum();
 
-		_this.clientEditClick = _this.clientEditClick.bind(_this);
-		_this.clientDeleteClick = _this.clientDeleteClick.bind(_this);
-		_this.clientAddClick = _this.clientAddClick.bind(_this);
-		_this.clientLookupClick = _this.clientLookupClick.bind(_this);
+		_this.resourceEditClick = _this.resourceEditClick.bind(_this);
+		_this.resourceDeleteClick = _this.resourceDeleteClick.bind(_this);
+		_this.resourceAddClick = _this.resourceAddClick.bind(_this);
+		_this.resourceLookupClick = _this.resourceLookupClick.bind(_this);
 		return _this;
 	}
 
-	_createClass(Client, [{
+	_createClass(Resource, [{
 		key: 'componentDidUpdate',
 		value: function componentDidUpdate() {
 			this.state.operationState = operationState.none;
 		}
 
-		// 刷新整个Client组件
+		// 刷新整个Resource组件
 
 	}, {
 		key: 'freshen',
 		value: function freshen() {
-			this.getClientList(this.pageIndex, this.pageSize);
-			this.getClientNum();
+			this.getResourceList(this.pageIndex, this.pageSize);
+			this.getResourceNum();
 
 			this.setState({
-				curClient: null,
-				clients: new Array(),
-				clientNum: 0,
+				curResource: null,
+				resources: new Array(),
+				resourceNum: 0,
 				pageNum: 0,
 				operationState: operationState.none
 			});
@@ -5561,24 +5748,24 @@ var Client = function (_React$Component) {
 		key: 'pageIndexChange',
 		value: function pageIndexChange(pageIndex) {
 			this.pageIndex = pageIndex;
-			this.getClientList(this.pageIndex, this.pageSize);
+			this.getResourceList(this.pageIndex, this.pageSize);
 		}
 
 		// 获取客户端列表回调
 
 	}, {
-		key: 'getClientListBackcall',
-		value: function getClientListBackcall(data) {
+		key: 'getResourceListBackcall',
+		value: function getResourceListBackcall(data) {
 			if (data.isSuccess == true) {
-				this.setState({ clients: data.value.clients });
+				this.setState({ resources: data.value.clients });
 			}
 		}
 
 		// 获取客户端列表
 
 	}, {
-		key: 'getClientList',
-		value: function getClientList(pageIndex, pageSize) {
+		key: 'getResourceList',
+		value: function getResourceList(pageIndex, pageSize) {
 			var postData = {
 				pageIndex: pageIndex,
 				pageSize: pageSize
@@ -5590,22 +5777,22 @@ var Client = function (_React$Component) {
 				data: JSON.stringify(postData),
 				contentType: 'application/json',
 				dataType: 'json',
-				success: this.getClientListBackcall
+				success: this.getResourceListBackcall
 			});
 		}
 
 		// 获取客户端数量回调
 
 	}, {
-		key: 'getClientNumBackcall',
-		value: function getClientNumBackcall(data) {
+		key: 'getResourceNumBackcall',
+		value: function getResourceNumBackcall(data) {
 			if (data.isSuccess == true) {
 				var pageNum = parseInt(data.value.clientNum / this.pageSize);
 				if (data.value.clientNum % this.pageSize > 0) {
 					pageNum++;
 				}
 				this.setState({
-					clientNum: data.value.clientNum,
+					resourceNum: data.value.clientNum,
 					pageNum: pageNum });
 			}
 		}
@@ -5613,8 +5800,8 @@ var Client = function (_React$Component) {
 		// 获取客户端数量
 
 	}, {
-		key: 'getClientNum',
-		value: function getClientNum() {
+		key: 'getResourceNum',
+		value: function getResourceNum() {
 			var postData = {};
 
 			$.ajax({
@@ -5623,20 +5810,20 @@ var Client = function (_React$Component) {
 				data: JSON.stringify(postData),
 				contentType: 'application/json',
 				dataType: 'json',
-				success: this.getClientNumBackcall
+				success: this.getResourceNumBackcall
 			});
 		}
 
 		// 点击编辑按钮
 
 	}, {
-		key: 'clientEditClick',
-		value: function clientEditClick(id) {
-			var clients = this.state.clients;
-			for (var item in clients) {
-				if (clients[item].id == id) {
+		key: 'resourceEditClick',
+		value: function resourceEditClick(id) {
+			var resources = this.state.resources;
+			for (var item in resources) {
+				if (resources[item].id == id) {
 					this.setState({
-						curClient: clients[item],
+						curResource: resources[item],
 						operationState: operationState.edit
 					});
 					break;
@@ -5647,13 +5834,13 @@ var Client = function (_React$Component) {
 		// 点击删除按钮
 
 	}, {
-		key: 'clientDeleteClick',
-		value: function clientDeleteClick(id) {
-			var clients = this.state.clients;
-			for (var item in clients) {
-				if (clients[item].id == id) {
+		key: 'resourceDeleteClick',
+		value: function resourceDeleteClick(id) {
+			var resources = this.state.resources;
+			for (var item in resources) {
+				if (resources[item].id == id) {
 					this.setState({
-						curClient: clients[item],
+						curResource: resources[item],
 						operationState: operationState.delete
 					});
 					break;
@@ -5664,10 +5851,10 @@ var Client = function (_React$Component) {
 		// 点击添加按钮
 
 	}, {
-		key: 'clientAddClick',
-		value: function clientAddClick() {
+		key: 'resourceAddClick',
+		value: function resourceAddClick() {
 			this.setState({
-				curClient: null,
+				curResource: null,
 				operationState: operationState.add
 			});
 		}
@@ -5675,13 +5862,13 @@ var Client = function (_React$Component) {
 		//点击查看按钮
 
 	}, {
-		key: 'clientLookupClick',
-		value: function clientLookupClick() {
-			var clients = this.state.clients;
-			for (var item in clients) {
-				if (clients[item].id == id) {
+		key: 'resourceLookupClick',
+		value: function resourceLookupClick() {
+			var resources = this.state.resources;
+			for (var item in resources) {
+				if (resources[item].id == id) {
 					this.setState({
-						curClient: clients[item],
+						curResource: resources[item],
 						operationState: operationState.lookup
 					});
 					break;
@@ -5691,42 +5878,42 @@ var Client = function (_React$Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var clientList = _react2.default.createElement(_ClientList2.default, {
-				clients: this.state.clients,
-				clientEditClick: this.clientEditClick,
-				clientDeleteClick: this.clientDeleteClick,
-				clientLookupClick: this.clientLookupClick
+			var resourceList = _react2.default.createElement(_ResourceList2.default, {
+				resources: this.state.resources,
+				resourceEditClick: this.resourceEditClick,
+				resourceDeleteClick: this.resourceDeleteClick,
+				resourceLookupClick: this.resourceLookupClick
 			});
 
 			var paging = _react2.default.createElement(_Paging2.default, {
-				clientAddClick: this.clientAddClick,
+				resourceAddClick: this.resourceAddClick,
 				pageNum: this.state.pageNum,
 				pageIndexChange: this.pageIndexChange });
 
 			return _react2.default.createElement(
 				'div',
 				{ className: 'row' },
-				clientList,
+				resourceList,
 				paging,
-				this.state.operationState == operationState.add && _react2.default.createElement(_AddClientForm2.default, { client: this.state.curClient, freshen: this.freshen }),
-				this.state.operationState == operationState.edit && _react2.default.createElement(_EditClientForm2.default, { client: this.state.curClient, freshen: this.freshen }),
-				this.state.operationState == operationState.lookup && _react2.default.createElement(_LookupClientForm2.default, { client: this.state.curClient, freshen: this.freshen }),
-				this.state.operationState == operationState.delete && _react2.default.createElement(_ClientDelete2.default, { client: this.state.curClient, freshen: this.freshen })
+				this.state.operationState == operationState.add && _react2.default.createElement(_AddResourceForm2.default, { resource: this.state.curResource, freshen: this.freshen }),
+				this.state.operationState == operationState.edit && _react2.default.createElement(_EditResourceForm2.default, { resource: this.state.curResource, freshen: this.freshen }),
+				this.state.operationState == operationState.lookup && _react2.default.createElement(_LookupResourceForm2.default, { resource: this.state.curResource, freshen: this.freshen }),
+				this.state.operationState == operationState.delete && _react2.default.createElement(_ResourceDelete2.default, { resource: this.state.curResource, freshen: this.freshen })
 			);
 		}
 	}]);
 
-	return Client;
+	return Resource;
 }(_react2.default.Component);
 
-exports.default = Client;
+exports.default = Resource;
 
 /***/ }),
 
-/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientDelete.jsx":
-/*!************************************************************************!*\
-  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientDelete.jsx ***!
-  \************************************************************************/
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceDelete.jsx":
+/*!**************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceDelete.jsx ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5755,19 +5942,19 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ClientDelete = function (_React$Component) {
-  _inherits(ClientDelete, _React$Component);
+var ResourceDelete = function (_React$Component) {
+  _inherits(ResourceDelete, _React$Component);
 
-  function ClientDelete(props) {
-    _classCallCheck(this, ClientDelete);
+  function ResourceDelete(props) {
+    _classCallCheck(this, ResourceDelete);
 
-    var _this = _possibleConstructorReturn(this, (ClientDelete.__proto__ || Object.getPrototypeOf(ClientDelete)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (ResourceDelete.__proto__ || Object.getPrototypeOf(ResourceDelete)).call(this, props));
 
     _this.deleteBackcall = _this.deleteBackcall.bind(_this);
     return _this;
   }
 
-  _createClass(ClientDelete, [{
+  _createClass(ResourceDelete, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
       $("#dataDeleteBtn").click();
@@ -5840,7 +6027,7 @@ var ClientDelete = function (_React$Component) {
                 'div',
                 { className: 'modal-body' },
                 '\u4F60\u6B63\u8981\u5220\u9664 ',
-                this.props.client.clientId,
+                this.props.resource.clientId,
                 ' \uFF0C\u5220\u9664\u540E\u65E0\u6CD5\u6062\u590D\uFF0C\u786E\u5B9A\u5220\u9664\u5417\uFF1F'
               ),
               _react2.default.createElement(
@@ -5850,7 +6037,7 @@ var ClientDelete = function (_React$Component) {
                 _react2.default.createElement(
                   'button',
                   { type: 'button', className: 'btn btn-danger btn-sm', onClick: function onClick() {
-                      return _this2.delete(_this2.props.client.id);
+                      return _this2.delete(_this2.props.resource.id);
                     } },
                   '\u5220\u9664'
                 ),
@@ -5867,17 +6054,17 @@ var ClientDelete = function (_React$Component) {
     }
   }]);
 
-  return ClientDelete;
+  return ResourceDelete;
 }(_react2.default.Component);
 
-exports.default = ClientDelete;
+exports.default = ResourceDelete;
 
 /***/ }),
 
-/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/AddClientForm.jsx":
-/*!************************************************************************************!*\
-  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/AddClientForm.jsx ***!
-  \************************************************************************************/
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/AddResourceForm.jsx":
+/*!****************************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/AddResourceForm.jsx ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5888,9 +6075,9 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _ClientForm2 = __webpack_require__(/*! ./ClientForm.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/ClientForm.jsx");
+var _ResourceForm2 = __webpack_require__(/*! ./ResourceForm.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/ResourceForm.jsx");
 
-var _ClientForm3 = _interopRequireDefault(_ClientForm2);
+var _ResourceForm3 = _interopRequireDefault(_ResourceForm2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5900,29 +6087,356 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var AddClientForm = function (_ClientForm) {
-	_inherits(AddClientForm, _ClientForm);
+var AddResourceForm = function (_ResourceForm) {
+	_inherits(AddResourceForm, _ResourceForm);
 
-	function AddClientForm(props) {
-		_classCallCheck(this, AddClientForm);
+	function AddResourceForm(props) {
+		_classCallCheck(this, AddResourceForm);
 
-		var _this = _possibleConstructorReturn(this, (AddClientForm.__proto__ || Object.getPrototypeOf(AddClientForm)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (AddResourceForm.__proto__ || Object.getPrototypeOf(AddResourceForm)).call(this, props));
 
 		_this.submitUrl = "/api/ClientManage/AddClient";
 		return _this;
 	}
 
-	return AddClientForm;
-}(_ClientForm3.default);
+	return AddResourceForm;
+}(_ResourceForm3.default);
 
-exports.default = AddClientForm;
+exports.default = AddResourceForm;
 
 /***/ }),
 
-/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/ClientForm.jsx":
-/*!*********************************************************************************!*\
-  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/ClientForm.jsx ***!
-  \*********************************************************************************/
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/EditResourceForm.jsx":
+/*!*****************************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/EditResourceForm.jsx ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _ResourceForm2 = __webpack_require__(/*! ./ResourceForm.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/ResourceForm.jsx");
+
+var _ResourceForm3 = _interopRequireDefault(_ResourceForm2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var EditResourceForm = function (_ResourceForm) {
+	_inherits(EditResourceForm, _ResourceForm);
+
+	function EditResourceForm(props) {
+		_classCallCheck(this, EditResourceForm);
+
+		var _this = _possibleConstructorReturn(this, (EditResourceForm.__proto__ || Object.getPrototypeOf(EditResourceForm)).call(this, props));
+
+		_this.submitUrl = "/api/ClientManage/UpdateClient";
+		return _this;
+	}
+
+	return EditResourceForm;
+}(_ResourceForm3.default);
+
+exports.default = EditResourceForm;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/FormCheck.jsx":
+/*!**********************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/FormCheck.jsx ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var FormCheck = function (_React$Component) {
+	_inherits(FormCheck, _React$Component);
+
+	// props.name
+	// props.values
+	// props.selectValues
+	// props.onChange(name, selectValues)
+	function FormCheck(props) {
+		_classCallCheck(this, FormCheck);
+
+		var _this = _possibleConstructorReturn(this, (FormCheck.__proto__ || Object.getPrototypeOf(FormCheck)).call(this, props));
+
+		_this.state = {
+			selectValues: props.selectValues
+		};
+
+		_this.onChange = _this.onChange.bind(_this);
+		return _this;
+	}
+
+	_createClass(FormCheck, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			$(':input:not(.labelauty)').labelauty();
+		}
+	}, {
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(nextProps) {
+			this.state.selectValues = nextProps.selectValues;
+		}
+	}, {
+		key: 'componentDidUpdate',
+		value: function componentDidUpdate() {
+			$(':input:not(.labelauty)').labelauty();
+		}
+	}, {
+		key: 'onChange',
+		value: function onChange(event, index) {
+			var _this2 = this;
+
+			if (event.target.checked) {
+				this.state.selectValues.push(event.target.value);
+				this.setState({ selectValues: this.state.selectValues }, function () {
+					return _this2.props.onChange(_this2.props.name, _this2.state.selectValues);
+				});
+			} else {
+				var i = this.state.selectValues.indexOf(this.props.values[index].value);
+				this.state.selectValues.splice(i, 1);
+				this.setState({ selectValues: this.state.selectValues }, function () {
+					return _this2.props.onChange(_this2.props.name, _this2.state.selectValues);
+				});
+			}
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this3 = this;
+
+			var checkboxLis = this.props.values.map(function (item, index) {
+				if (_this3.state.selectValues.indexOf(item.value) >= 0) {
+					return _react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement('input', { type: 'checkbox', name: _this3.props.name, 'data-labelauty': item.text, value: item.value, checked: true, onChange: function onChange(event) {
+								return _this3.onChange(event, index);
+							} })
+					);
+				} else {
+					return _react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement('input', { type: 'checkbox', name: _this3.props.name, 'data-labelauty': item.text, value: item.value, checked: false, onChange: function onChange(event) {
+								return _this3.onChange(event, index);
+							} })
+					);
+				}
+			});
+
+			return _react2.default.createElement(
+				'ul',
+				null,
+				checkboxLis
+			);
+		}
+	}]);
+
+	return FormCheck;
+}(_react2.default.Component);
+
+exports.default = FormCheck;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/FormRadio.jsx":
+/*!**********************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/FormRadio.jsx ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var FormRadio = function (_React$Component) {
+	_inherits(FormRadio, _React$Component);
+
+	// props.name
+	// props.values
+	// props.selectValue  [{text:"", value:""}]
+	// props.onChange(name, selectValue)
+	function FormRadio(props) {
+		_classCallCheck(this, FormRadio);
+
+		var _this = _possibleConstructorReturn(this, (FormRadio.__proto__ || Object.getPrototypeOf(FormRadio)).call(this, props));
+
+		_this.state = {
+			selectValue: props.selectValue
+		};
+
+		_this.onChange = _this.onChange.bind(_this);
+		return _this;
+	}
+
+	_createClass(FormRadio, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			$(':input:not(.labelauty)').labelauty();
+		}
+	}, {
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(nextProps) {
+			this.state.selectValue = nextProps.selectValue;
+		}
+	}, {
+		key: 'componentDidUpdate',
+		value: function componentDidUpdate() {
+			$(':input:not(.labelauty)').labelauty();
+		}
+	}, {
+		key: 'onChange',
+		value: function onChange(event) {
+			var _this2 = this;
+
+			this.setState({ selectValue: event.target.value }, function () {
+				_this2.props.onChange(_this2.props.name, _this2.state.selectValue);
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this3 = this;
+
+			var radioLis = this.props.values.map(function (item) {
+				if (item.value == _this3.state.selectValue) {
+					return _react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement('input', { type: 'radio', name: _this3.props.name, 'data-labelauty': item.text, value: item.value, checked: true, onChange: _this3.onChange })
+					);
+				} else {
+					return _react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement('input', { type: 'radio', name: _this3.props.name, 'data-labelauty': item.text, value: item.value, checked: false, onChange: _this3.onChange })
+					);
+				}
+			});
+
+			return _react2.default.createElement(
+				'ul',
+				null,
+				radioLis
+			);
+		}
+	}]);
+
+	return FormRadio;
+}(_react2.default.Component);
+
+exports.default = FormRadio;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/LookupResourceForm.jsx":
+/*!*******************************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/LookupResourceForm.jsx ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _ResourceForm2 = __webpack_require__(/*! ./ResourceForm.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/ResourceForm.jsx");
+
+var _ResourceForm3 = _interopRequireDefault(_ResourceForm2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var LookupResourceForm = function (_ResourceForm) {
+	_inherits(LookupResourceForm, _ResourceForm);
+
+	function LookupResourceForm(props) {
+		_classCallCheck(this, LookupResourceForm);
+
+		var _this = _possibleConstructorReturn(this, (LookupResourceForm.__proto__ || Object.getPrototypeOf(LookupResourceForm)).call(this, props));
+
+		_this.submitUrl = "";
+		return _this;
+	}
+
+	return LookupResourceForm;
+}(_ResourceForm3.default);
+
+exports.default = LookupResourceForm;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/ResourceForm.jsx":
+/*!*************************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/ResourceForm.jsx ***!
+  \*************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5943,15 +6457,15 @@ var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _FormRadio = __webpack_require__(/*! ./FormRadio.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/FormRadio.jsx");
+var _FormRadio = __webpack_require__(/*! ./FormRadio.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/FormRadio.jsx");
 
 var _FormRadio2 = _interopRequireDefault(_FormRadio);
 
-var _FormCheck = __webpack_require__(/*! ./FormCheck.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/FormCheck.jsx");
+var _FormCheck = __webpack_require__(/*! ./FormCheck.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/FormCheck.jsx");
 
 var _FormCheck2 = _interopRequireDefault(_FormCheck);
 
-var _TextGroup = __webpack_require__(/*! ./TextGroup.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/TextGroup.jsx");
+var _TextGroup = __webpack_require__(/*! ./TextGroup.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/TextGroup.jsx");
 
 var _TextGroup2 = _interopRequireDefault(_TextGroup);
 
@@ -5963,17 +6477,17 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ClientForm = function (_React$Component) {
-  _inherits(ClientForm, _React$Component);
+var ResourceForm = function (_React$Component) {
+  _inherits(ResourceForm, _React$Component);
 
-  function ClientForm(props) {
-    _classCallCheck(this, ClientForm);
+  function ResourceForm(props) {
+    _classCallCheck(this, ResourceForm);
 
-    var _this = _possibleConstructorReturn(this, (ClientForm.__proto__ || Object.getPrototypeOf(ClientForm)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (ResourceForm.__proto__ || Object.getPrototypeOf(ResourceForm)).call(this, props));
 
     _this.submitUrl = "";
 
-    _this.client = null;
+    _this.resource = null;
 
     _this.state = {
       grantTypeGroupNames: new Array(),
@@ -5995,11 +6509,11 @@ var ClientForm = function (_React$Component) {
     return _this;
   }
 
-  _createClass(ClientForm, [{
+  _createClass(ResourceForm, [{
     key: 'initClient',
     value: function initClient(inputClient) {
       if (inputClient == null) {
-        this.client = {
+        this.resource = {
           id: "",
           clientId: "",
           clientSecret: "",
@@ -6015,29 +6529,29 @@ var ClientForm = function (_React$Component) {
         return;
       }
 
-      this.client = Object.assign({}, inputClient);
-      this.client.allowedScopes = Object.assign([], inputClient.allowedScopes);
-      this.client.redirectUris = Object.assign([], inputClient.redirectUris);
-      this.client.postLogoutRedirectUris = Object.assign([], inputClient.postLogoutRedirectUris);
+      this.resource = Object.assign({}, inputClient);
+      this.resource.allowedScopes = Object.assign([], inputClient.allowedScopes);
+      this.resource.redirectUris = Object.assign([], inputClient.redirectUris);
+      this.resource.postLogoutRedirectUris = Object.assign([], inputClient.postLogoutRedirectUris);
     }
   }, {
     key: 'componentWillMount',
     value: function componentWillMount() {
-      this.initClient(this.props.client);
+      this.initClient(this.props.resource);
     }
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
       $("#dataFormBtn").click();
 
-      // this.client = Object.assign({}, this.props.client);
+      // this.resource = Object.assign({}, this.props.resource);
     }
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       $("#dataFormBtn").click();
 
-      this.initClient(nextProps.client);
+      this.initClient(nextProps.resource);
     }
 
     // 获取认证类型组合回调
@@ -6154,7 +6668,7 @@ var ClientForm = function (_React$Component) {
   }, {
     key: 'submit',
     value: function submit() {
-      var postData = this.client;
+      var postData = this.resource;
 
       $.ajax({
         url: this.submitUrl,
@@ -6177,9 +6691,9 @@ var ClientForm = function (_React$Component) {
         values: this.state.grantTypeGroupNames.map(function (item) {
           return { text: item, value: item };
         }),
-        selectValue: this.client.allowedGrantType,
+        selectValue: this.resource.allowedGrantType,
         onChange: function onChange(name, selectValue) {
-          _this2.client.allowedGrantType = selectValue;
+          _this2.resource.allowedGrantType = selectValue;
         } });
 
       var identityResourceUl = _react2.default.createElement(_FormCheck2.default, {
@@ -6187,9 +6701,9 @@ var ClientForm = function (_React$Component) {
         values: this.state.identityResources.map(function (item) {
           return { text: item, value: item };
         }),
-        selectValues: this.client.allowedScopes,
+        selectValues: this.resource.allowedScopes,
         onChange: function onChange(name, selectValues) {
-          _this2.client.allowedScopes = selectValues;
+          _this2.resource.allowedScopes = selectValues;
         } });
 
       var apiResourceUl = _react2.default.createElement(_FormCheck2.default, {
@@ -6197,55 +6711,55 @@ var ClientForm = function (_React$Component) {
         values: this.state.apiResources.map(function (item) {
           return { text: item, value: item };
         }),
-        selectValues: this.client.allowedScopes,
+        selectValues: this.resource.allowedScopes,
         onChange: function onChange(name, selectValues) {
-          _this2.client.allowedScopes = selectValues;
+          _this2.resource.allowedScopes = selectValues;
         } });
 
       var redirectUriGroup = _react2.default.createElement(_TextGroup2.default, {
         name: 'redirectUris',
-        values: this.client.redirectUris,
+        values: this.resource.redirectUris,
         onChange: function onChange(name, values) {
-          _this2.client.redirectUris = values;
+          _this2.resource.redirectUris = values;
         } });
 
       var postLogoutRedirectUrisGroup = _react2.default.createElement(_TextGroup2.default, {
         name: 'postLogoutRedirectUris',
-        values: this.client.postLogoutRedirectUris,
+        values: this.resource.postLogoutRedirectUris,
         onChange: function onChange(name, values) {
-          _this2.client.postLogoutRedirectUris = values;
+          _this2.resource.postLogoutRedirectUris = values;
         } });
 
       var allowAccessTokensViaBrowserUl = _react2.default.createElement(_FormRadio2.default, {
         name: 'allowAccessTokensViaBrowser',
         values: [{ text: "启用", value: "true" }, { text: "禁用", value: "false" }],
-        selectValue: this.client.allowAccessTokensViaBrowser.toString(),
+        selectValue: this.resource.allowAccessTokensViaBrowser.toString(),
         onChange: function onChange(name, selectValue) {
-          _this2.client.allowAccessTokensViaBrowser = selectValue;
+          _this2.resource.allowAccessTokensViaBrowser = selectValue;
         } });
 
       var accessTokenTypeUl = _react2.default.createElement(_FormRadio2.default, {
         name: 'accessTokenType',
         values: [{ text: "JWT", value: "jwt" }, { text: "Reference", value: "reference" }],
-        selectValue: this.client.accessTokenType,
+        selectValue: this.resource.accessTokenType,
         onChange: function onChange(name, selectValue) {
-          _this2.client.accessTokenType = selectValue;
+          _this2.resource.accessTokenType = selectValue;
         } });
 
       var enabledUl = _react2.default.createElement(_FormRadio2.default, {
         name: 'enabled',
         values: [{ text: "启用", value: "true" }, { text: "禁用", value: "false" }],
-        selectValue: this.client.enabled.toString(),
+        selectValue: this.resource.enabled.toString(),
         onChange: function onChange(name, selectValue) {
-          _this2.client.enabled = selectValue;
+          _this2.resource.enabled = selectValue;
         } });
 
       var allowOfflineAccessUl = _react2.default.createElement(_FormRadio2.default, {
         name: 'allowOfflineAccess',
         values: [{ text: "启用", value: "true" }, { text: "禁用", value: "false" }],
-        selectValue: this.client.allowOfflineAccess.toString(),
+        selectValue: this.resource.allowOfflineAccess.toString(),
         onChange: function onChange(name, selectValue) {
-          _this2.client.allowOfflineAccess = selectValue;
+          _this2.resource.allowOfflineAccess = selectValue;
         } });
 
       return _react2.default.createElement(
@@ -6295,9 +6809,9 @@ var ClientForm = function (_React$Component) {
                     )
                   ),
                   _react2.default.createElement('input', { name: 'clientId', type: 'text', className: 'form-control', placeholder: '\u5BA2\u6237\u7AEFId',
-                    value: this.client.clientId,
+                    value: this.resource.clientId,
                     onChange: function onChange(event) {
-                      _this2.client.clientId = event.target.value;_this2.setState();
+                      _this2.resource.clientId = event.target.value;_this2.setState();
                     } })
                 ),
                 _react2.default.createElement(
@@ -6313,9 +6827,9 @@ var ClientForm = function (_React$Component) {
                     )
                   ),
                   _react2.default.createElement('input', { name: 'clientSecret', type: 'text', className: 'form-control', placeholder: '\u5BC6\u94A5\uFF08\u5982\u4E0D\u586B\u5199\u5219\u65E0\u9700\u4FEE\u6539\uFF09',
-                    value: this.client.clientSecret,
+                    value: this.resource.clientSecret,
                     onChange: function onChange(event) {
-                      _this2.client.clientSecret = event.target.value;_this2.setState();
+                      _this2.resource.clientSecret = event.target.value;_this2.setState();
                     } })
                 ),
                 _react2.default.createElement(
@@ -6466,344 +6980,17 @@ var ClientForm = function (_React$Component) {
     }
   }]);
 
-  return ClientForm;
+  return ResourceForm;
 }(_react2.default.Component);
 
-exports.default = ClientForm;
+exports.default = ResourceForm;
 
 /***/ }),
 
-/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/EditClientForm.jsx":
-/*!*************************************************************************************!*\
-  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/EditClientForm.jsx ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _ClientForm2 = __webpack_require__(/*! ./ClientForm.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/ClientForm.jsx");
-
-var _ClientForm3 = _interopRequireDefault(_ClientForm2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var EditClientForm = function (_ClientForm) {
-	_inherits(EditClientForm, _ClientForm);
-
-	function EditClientForm(props) {
-		_classCallCheck(this, EditClientForm);
-
-		var _this = _possibleConstructorReturn(this, (EditClientForm.__proto__ || Object.getPrototypeOf(EditClientForm)).call(this, props));
-
-		_this.submitUrl = "/api/ClientManage/UpdateClient";
-		return _this;
-	}
-
-	return EditClientForm;
-}(_ClientForm3.default);
-
-exports.default = EditClientForm;
-
-/***/ }),
-
-/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/FormCheck.jsx":
-/*!********************************************************************************!*\
-  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/FormCheck.jsx ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var FormCheck = function (_React$Component) {
-	_inherits(FormCheck, _React$Component);
-
-	// props.name
-	// props.values
-	// props.selectValues
-	// props.onChange(name, selectValues)
-	function FormCheck(props) {
-		_classCallCheck(this, FormCheck);
-
-		var _this = _possibleConstructorReturn(this, (FormCheck.__proto__ || Object.getPrototypeOf(FormCheck)).call(this, props));
-
-		_this.state = {
-			selectValues: props.selectValues
-		};
-
-		_this.onChange = _this.onChange.bind(_this);
-		return _this;
-	}
-
-	_createClass(FormCheck, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			$(':input:not(.labelauty)').labelauty();
-		}
-	}, {
-		key: 'componentWillReceiveProps',
-		value: function componentWillReceiveProps(nextProps) {
-			this.state.selectValues = nextProps.selectValues;
-		}
-	}, {
-		key: 'componentDidUpdate',
-		value: function componentDidUpdate() {
-			$(':input:not(.labelauty)').labelauty();
-		}
-	}, {
-		key: 'onChange',
-		value: function onChange(event, index) {
-			var _this2 = this;
-
-			if (event.target.checked) {
-				this.state.selectValues.push(event.target.value);
-				this.setState({ selectValues: this.state.selectValues }, function () {
-					return _this2.props.onChange(_this2.props.name, _this2.state.selectValues);
-				});
-			} else {
-				var i = this.state.selectValues.indexOf(this.props.values[index].value);
-				this.state.selectValues.splice(i, 1);
-				this.setState({ selectValues: this.state.selectValues }, function () {
-					return _this2.props.onChange(_this2.props.name, _this2.state.selectValues);
-				});
-			}
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this3 = this;
-
-			var checkboxLis = this.props.values.map(function (item, index) {
-				if (_this3.state.selectValues.indexOf(item.value) >= 0) {
-					return _react2.default.createElement(
-						'li',
-						null,
-						_react2.default.createElement('input', { type: 'checkbox', name: _this3.props.name, 'data-labelauty': item.text, value: item.value, checked: true, onChange: function onChange(event) {
-								return _this3.onChange(event, index);
-							} })
-					);
-				} else {
-					return _react2.default.createElement(
-						'li',
-						null,
-						_react2.default.createElement('input', { type: 'checkbox', name: _this3.props.name, 'data-labelauty': item.text, value: item.value, checked: false, onChange: function onChange(event) {
-								return _this3.onChange(event, index);
-							} })
-					);
-				}
-			});
-
-			return _react2.default.createElement(
-				'ul',
-				null,
-				checkboxLis
-			);
-		}
-	}]);
-
-	return FormCheck;
-}(_react2.default.Component);
-
-exports.default = FormCheck;
-
-/***/ }),
-
-/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/FormRadio.jsx":
-/*!********************************************************************************!*\
-  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/FormRadio.jsx ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var FormRadio = function (_React$Component) {
-	_inherits(FormRadio, _React$Component);
-
-	// props.name
-	// props.values
-	// props.selectValue  [{text:"", value:""}]
-	// props.onChange(name, selectValue)
-	function FormRadio(props) {
-		_classCallCheck(this, FormRadio);
-
-		var _this = _possibleConstructorReturn(this, (FormRadio.__proto__ || Object.getPrototypeOf(FormRadio)).call(this, props));
-
-		_this.state = {
-			selectValue: props.selectValue
-		};
-
-		_this.onChange = _this.onChange.bind(_this);
-		return _this;
-	}
-
-	_createClass(FormRadio, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			$(':input:not(.labelauty)').labelauty();
-		}
-	}, {
-		key: 'componentWillReceiveProps',
-		value: function componentWillReceiveProps(nextProps) {
-			this.state.selectValue = nextProps.selectValue;
-		}
-	}, {
-		key: 'componentDidUpdate',
-		value: function componentDidUpdate() {
-			$(':input:not(.labelauty)').labelauty();
-		}
-	}, {
-		key: 'onChange',
-		value: function onChange(event) {
-			var _this2 = this;
-
-			this.setState({ selectValue: event.target.value }, function () {
-				_this2.props.onChange(_this2.props.name, _this2.state.selectValue);
-			});
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this3 = this;
-
-			var radioLis = this.props.values.map(function (item) {
-				if (item.value == _this3.state.selectValue) {
-					return _react2.default.createElement(
-						'li',
-						null,
-						_react2.default.createElement('input', { type: 'radio', name: _this3.props.name, 'data-labelauty': item.text, value: item.value, checked: true, onChange: _this3.onChange })
-					);
-				} else {
-					return _react2.default.createElement(
-						'li',
-						null,
-						_react2.default.createElement('input', { type: 'radio', name: _this3.props.name, 'data-labelauty': item.text, value: item.value, checked: false, onChange: _this3.onChange })
-					);
-				}
-			});
-
-			return _react2.default.createElement(
-				'ul',
-				null,
-				radioLis
-			);
-		}
-	}]);
-
-	return FormRadio;
-}(_react2.default.Component);
-
-exports.default = FormRadio;
-
-/***/ }),
-
-/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/LookupClientForm.jsx":
-/*!***************************************************************************************!*\
-  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/LookupClientForm.jsx ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _ClientForm2 = __webpack_require__(/*! ./ClientForm.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/ClientForm.jsx");
-
-var _ClientForm3 = _interopRequireDefault(_ClientForm2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var LookupClientForm = function (_ClientForm) {
-	_inherits(LookupClientForm, _ClientForm);
-
-	function LookupClientForm(props) {
-		_classCallCheck(this, LookupClientForm);
-
-		var _this = _possibleConstructorReturn(this, (LookupClientForm.__proto__ || Object.getPrototypeOf(LookupClientForm)).call(this, props));
-
-		_this.submitUrl = "";
-		return _this;
-	}
-
-	return LookupClientForm;
-}(_ClientForm3.default);
-
-exports.default = LookupClientForm;
-
-/***/ }),
-
-/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/TextGroup.jsx":
-/*!********************************************************************************!*\
-  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientForm/TextGroup.jsx ***!
-  \********************************************************************************/
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/TextGroup.jsx":
+/*!**********************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/TextGroup.jsx ***!
+  \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6947,10 +7134,10 @@ exports.default = TextGroup;
 
 /***/ }),
 
-/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientList.jsx":
-/*!**********************************************************************!*\
-  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ClientList.jsx ***!
-  \**********************************************************************/
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceList.jsx":
+/*!************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceList.jsx ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6979,47 +7166,47 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ClientList = function (_React$Component) {
-    _inherits(ClientList, _React$Component);
+var ResourceList = function (_React$Component) {
+    _inherits(ResourceList, _React$Component);
 
-    function ClientList(props) {
-        _classCallCheck(this, ClientList);
+    function ResourceList(props) {
+        _classCallCheck(this, ResourceList);
 
-        return _possibleConstructorReturn(this, (ClientList.__proto__ || Object.getPrototypeOf(ClientList)).call(this, props));
+        return _possibleConstructorReturn(this, (ResourceList.__proto__ || Object.getPrototypeOf(ResourceList)).call(this, props));
     }
 
-    _createClass(ClientList, [{
+    _createClass(ResourceList, [{
         key: 'render',
         value: function render() {
             var _this2 = this;
 
-            var clients = this.props.clients;
+            var resources = this.props.resources;
 
-            var clientTrs = new Array();
+            var resourceTrs = new Array();
 
             var _loop = function _loop(item) {
-                var clientTr = _react2.default.createElement(
+                var resourceTr = _react2.default.createElement(
                     'tr',
                     null,
                     _react2.default.createElement(
                         'td',
                         null,
-                        clients[item].clientId
+                        resources[item].clientId
                     ),
                     _react2.default.createElement(
                         'td',
                         null,
-                        clients[item].allowedGrantType
+                        resources[item].allowedGrantType
                     ),
                     _react2.default.createElement(
                         'td',
                         null,
-                        clients[item].accessTokenType
+                        resources[item].accessTokenType
                     ),
                     _react2.default.createElement(
                         'td',
                         null,
-                        clients[item].enabled ? "启用" : "禁用"
+                        resources[item].enabled ? "启用" : "禁用"
                     ),
                     _react2.default.createElement(
                         'td',
@@ -7031,7 +7218,7 @@ var ClientList = function (_React$Component) {
                                 'button',
                                 { type: 'button', className: 'btn btn-primary',
                                     onClick: function onClick() {
-                                        return _this2.props.clientEditClick(clients[item].id);
+                                        return _this2.props.resourceEditClick(resources[item].id);
                                     } },
                                 '\u7F16\u8F91'
                             ),
@@ -7039,7 +7226,7 @@ var ClientList = function (_React$Component) {
                                 'button',
                                 { type: 'button', className: 'btn btn-danger',
                                     onClick: function onClick() {
-                                        return _this2.props.clientDeleteClick(clients[item].id);
+                                        return _this2.props.resourceDeleteClick(resources[item].id);
                                     } },
                                 '\u5220\u9664'
                             )
@@ -7047,10 +7234,10 @@ var ClientList = function (_React$Component) {
                     )
                 );
 
-                clientTrs.push(clientTr);
+                resourceTrs.push(resourceTr);
             };
 
-            for (var item in clients) {
+            for (var item in resources) {
                 _loop(item);
             }
 
@@ -7115,205 +7302,17 @@ var ClientList = function (_React$Component) {
                     _react2.default.createElement(
                         'tbody',
                         null,
-                        clientTrs
+                        resourceTrs
                     )
                 )
             );
         }
     }]);
 
-    return ClientList;
+    return ResourceList;
 }(_react2.default.Component);
 
-exports.default = ClientList;
-
-/***/ }),
-
-/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Paging.jsx":
-/*!******************************************************************!*\
-  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/Paging.jsx ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Paging = function (_React$Component) {
-	_inherits(Paging, _React$Component);
-
-	function Paging(props) {
-		_classCallCheck(this, Paging);
-
-		var _this = _possibleConstructorReturn(this, (Paging.__proto__ || Object.getPrototypeOf(Paging)).call(this, props));
-
-		_this.state = {
-			pageIndex: 1
-		};
-
-		_this.prePageClick = _this.prePageClick.bind(_this);
-		_this.nextPageClick = _this.nextPageClick.bind(_this);
-		_this.pageIndexClick = _this.pageIndexClick.bind(_this);
-		return _this;
-	}
-
-	// 上一页单击
-
-
-	_createClass(Paging, [{
-		key: 'prePageClick',
-		value: function prePageClick() {
-			var _this2 = this;
-
-			if (this.state.pageIndex > 1) {
-				this.setState(function (prevState) {
-					return { pageIndex: prevState.pageIndex - 1 };
-				}, function () {
-					return _this2.props.pageIndexChange(_this2.state.pageIndex);
-				});
-				;
-			}
-		}
-
-		// 下一页单击
-
-	}, {
-		key: 'nextPageClick',
-		value: function nextPageClick() {
-			var _this3 = this;
-
-			if (this.state.pageIndex < this.props.pageNum) {
-				this.setState(function (prevState) {
-					return { pageIndex: prevState.pageIndex + 1 };
-				}, function () {
-					return _this3.props.pageIndexChange(_this3.state.pageIndex);
-				});
-			}
-		}
-
-		// 页索引单击
-
-	}, {
-		key: 'pageIndexClick',
-		value: function pageIndexClick(pageIndex) {
-			var _this4 = this;
-
-			this.setState({ pageIndex: pageIndex }, function () {
-				return _this4.props.pageIndexChange(_this4.state.pageIndex);
-			});
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this5 = this;
-
-			var pageNum = this.props.pageNum;
-			var clients = this.props.clients;
-
-			var minIndex = this.state.pageIndex - 4;
-			var maxIndex = this.state.pageIndex + 4;
-
-			var lis = new Array();
-			lis.push(_react2.default.createElement(
-				'li',
-				{ className: 'page-item' },
-				_react2.default.createElement(
-					'a',
-					{ onClick: this.prePageClick, className: 'page-link', href: 'javascript:void(0)' },
-					'\u4E0A\u4E00\u9875'
-				)
-			));
-
-			var _loop = function _loop(min) {
-				if (min > 0) {
-					var li = null;
-					if (min == _this5.state.pageIndex) {
-						li = _react2.default.createElement(
-							'li',
-							{ className: 'page-item' },
-							_react2.default.createElement(
-								'a',
-								{ onClick: function onClick() {
-										return _this5.pageIndexClick(min);
-									}, className: 'page-link bg-white text-dark', href: 'javascript:void(0)' },
-								min
-							)
-						);
-					} else {
-						li = _react2.default.createElement(
-							'li',
-							{ className: 'page-item' },
-							_react2.default.createElement(
-								'a',
-								{ onClick: function onClick() {
-										return _this5.pageIndexClick(min);
-									}, className: 'page-link', href: 'javascript:void(0)' },
-								min
-							)
-						);
-					}
-
-					lis.push(li);
-				}
-			};
-
-			for (var min = minIndex; min <= maxIndex && min <= pageNum; min++) {
-				_loop(min);
-			}
-
-			lis.push(_react2.default.createElement(
-				'li',
-				{ className: 'page-item' },
-				_react2.default.createElement(
-					'a',
-					{ onClick: this.nextPageClick, className: 'page-link', href: 'javascript:void(0)' },
-					'\u4E0B\u4E00\u9875'
-				)
-			));
-
-			return _react2.default.createElement(
-				'div',
-				{ className: 'data-paging d-flex justify-content-between w-100' },
-				_react2.default.createElement(
-					'ul',
-					{ className: 'pagination pagination-md' },
-					lis
-				),
-				_react2.default.createElement(
-					'button',
-					{ type: 'button', className: 'btn btn-info', onClick: this.props.clientAddClick },
-					'+\u6DFB\u52A0'
-				)
-			);
-		}
-	}]);
-
-	return Paging;
-}(_react2.default.Component);
-
-exports.default = Paging;
+exports.default = ResourceList;
 
 /***/ }),
 
@@ -7377,9 +7376,9 @@ var _BodyDiv = __webpack_require__(/*! ./BodyDiv.css */ "./src/ManageHome/BodyDi
 
 var _BodyDiv2 = _interopRequireDefault(_BodyDiv);
 
-var _Client = __webpack_require__(/*! ./AuthorizeManage/Client/Client.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Client.jsx");
+var _Resource = __webpack_require__(/*! ./AuthorizeManage/Client/Resource.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Resource.jsx");
 
-var _Client2 = _interopRequireDefault(_Client);
+var _Resource2 = _interopRequireDefault(_Resource);
 
 var _UserInfo = __webpack_require__(/*! ./Personal/UserInfo/UserInfo.jsx */ "./src/ManageHome/BodyDiv/Personal/UserInfo/UserInfo.jsx");
 
@@ -7408,7 +7407,7 @@ var BodyDiv = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'col-md-10 content-container' },
-                _react2.default.createElement(_reactRouterDom.Route, { path: '/ManageHome/AuthorizeManage/Client', component: _Client2.default }),
+                _react2.default.createElement(_reactRouterDom.Route, { path: '/ManageHome/AuthorizeManage/Client', component: _Resource2.default }),
                 _react2.default.createElement(_reactRouterDom.Route, { path: '/ManageHome/Personal/UserInfo', component: _UserInfo2.default })
             );
         }

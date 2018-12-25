@@ -1,34 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export default class ClientList extends React.Component
+export default class ResourceList extends React.Component
 {
 	constructor(props){
 		super(props);
 	}
 	
 	render(){
-        let clients = this.props.clients;
+        let resources = this.props.resources;
 
-        let clientTrs = new Array();
-        for(let item in clients){
-            let clientTr = 
+        let resourceTrs = new Array();
+        for(let item in resources){
+            let resourceTr = 
                         <tr>
-                            <td>{ clients[item].clientId  }</td>
-                            <td>{ clients[item].allowedGrantType  }</td>
-                            <td>{ clients[item].accessTokenType  }</td>
-                            <td>{ clients[item].enabled ? "启用":"禁用"   }</td>
+                            <td>{ resources[item].clientId  }</td>
+                            <td>{ resources[item].allowedGrantType  }</td>
+                            <td>{ resources[item].accessTokenType  }</td>
+                            <td>{ resources[item].enabled ? "启用":"禁用"   }</td>
                             <td>
                                 <div className="btn-group btn-group-sm">
                                     <button type="button" className="btn btn-primary" 
-                                        onClick={()=>this.props.clientEditClick(clients[item].id)}>编辑</button>
+                                        onClick={()=>this.props.resourceEditClick(resources[item].id)}>编辑</button>
                                     <button type="button" className="btn btn-danger"
-                                        onClick={()=>this.props.clientDeleteClick(clients[item].id)}>删除</button>
+                                        onClick={()=>this.props.resourceDeleteClick(resources[item].id)}>删除</button>
                                 </div>
                             </td>
                         </tr>;
 
-            clientTrs.push(clientTr);
+            resourceTrs.push(resourceTr);
         }
 
 		return (
@@ -51,7 +51,7 @@ export default class ClientList extends React.Component
                         </tr>
                     </thead>
                     <tbody>
-                        { clientTrs }
+                        { resourceTrs }
                     </tbody>
                 </table>
             </div>

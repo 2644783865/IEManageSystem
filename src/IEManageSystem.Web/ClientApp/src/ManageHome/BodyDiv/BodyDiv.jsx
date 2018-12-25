@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, NavLink } from 'react-router-dom';
 import BodyDivCss from './BodyDiv.css';
-import Client from "./AuthorizeManage/Client/Client.jsx";
+import Client from "./AuthorizeManage/Client/Resource.jsx";
 import UserInfo from "./Personal/UserInfo/UserInfo.jsx";
 
 export default class BodyDiv extends React.Component
