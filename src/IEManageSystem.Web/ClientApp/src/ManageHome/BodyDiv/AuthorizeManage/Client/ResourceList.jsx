@@ -21,9 +21,9 @@ export default class ResourceList extends React.Component
                             <td>
                                 <div className="btn-group btn-group-sm">
                                     <button type="button" className="btn btn-primary" 
-                                        onClick={()=>this.props.resourceEditClick(resources[item].id)}>编辑</button>
+                                        onClick={()=>this.props.resourceEditClick(resources[item])}>编辑</button>
                                     <button type="button" className="btn btn-danger"
-                                        onClick={()=>this.props.resourceDeleteClick(resources[item].id)}>删除</button>
+                                        onClick={()=>this.props.resourceDeleteClick(resources[item])}>删除</button>
                                 </div>
                             </td>
                         </tr>;

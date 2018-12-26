@@ -1,57 +1,48 @@
 
 export default class ResourceDescribe
 {
-	// describes [{text:"", name:"", isId=true, isName=true}]
+	// describes [{text:"", name:"", isShowOnList=true, isId=true, isName=true}]
 	constructor(describes){
 		this.describes = describes;
-		this.idName = "id";
+		this.idDescribes = null;
+		this.nameDescribes = null;
+
 		for(let item in this.describes){
 			if(this.describes[item].isId === true){
-				this.idName = this.describes[item].name;
+				this.idDescribes = this.describes[item];
 				break;
 			}
 		}
 
-		this.nameName = "name";
+		
 		for(let item in this.describes){
 			if(this.describes[item].isName === true){
-				this.nameName = this.describes[item].name;
+				this.nameDescribes = this.describes[item];
 				break;
 			}
 		}
 	}
 
-	getTextFormName(name){
+	// 获取显示在列表上的描述
+	getDescribesOfList(){
+
+	}
+
+	// 根据名称获取的描述
+	getDescribeFormName(name){
 		for(let item in this.describes){
 			if(this.describes[item].name === name){
-				return this.describes[item].text;
+				return this.describes[item];
 			}
 		}
 
 		for(let item in this.describes){
 			var reg = new RegExp("." + name + "$");
 			if(reg.text(this.describes[item].name)){
-				return this.describes[item].text;
+				return this.describes[item];
 			}
 		}
 
 		return null;
-	}
-
-	getResourceId(resource)
-	{
-		if(this.idName === null){
-			return null;
-		}
-
-		return resource[this.idName];
-	}
-
-	getResourceName(resource){
-		if(this.nameName === null){
-			return null;
-		}
-
-		return resource[this.nameName];
 	}
 }

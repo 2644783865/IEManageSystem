@@ -5391,6 +5391,334 @@ module.exports = warning;
 
 /***/ }),
 
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Client.jsx":
+/*!******************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/Client.jsx ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _Resource = __webpack_require__(/*! ./Resource.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Resource.jsx");
+
+var _Resource2 = _interopRequireDefault(_Resource);
+
+var _ErrorModal = __webpack_require__(/*! ./ErrorModal.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ErrorModal.jsx");
+
+var _ErrorModal2 = _interopRequireDefault(_ErrorModal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Client = function (_React$Component) {
+	_inherits(Client, _React$Component);
+
+	function Client(props) {
+		_classCallCheck(this, Client);
+
+		var _this = _possibleConstructorReturn(this, (Client.__proto__ || Object.getPrototypeOf(Client)).call(this, props));
+
+		_this.state = {
+			resources: new Array(),
+			resourceNum: 0,
+			isFreshenResources: true
+		};
+
+		_this.getResourceListBackcall = _this.getResourceListBackcall.bind(_this);
+
+		_this.getResourceNumBackcall = _this.getResourceNumBackcall.bind(_this);
+
+		_this.submitBackcall = _this.submitBackcall.bind(_this);
+		_this.addResource = _this.addResource.bind(_this);
+		_this.updateResource = _this.updateResource.bind(_this);
+		_this.deleteResource = _this.deleteResource.bind(_this);
+		_this.freshenResources = _this.freshenResources.bind(_this);
+		return _this;
+	}
+
+	_createClass(Client, [{
+		key: 'componentDidUpdate',
+		value: function componentDidUpdate() {
+			this.state.isFreshenResources = false;
+		}
+
+		// 提交回调
+
+	}, {
+		key: 'submitBackcall',
+		value: function submitBackcall(data) {
+			if (data.isSuccess == true) {
+				this.setState({ isFreshenResources: true });
+			} else {
+				_ErrorModal2.default.showErrorModal("提交表单错误", data.message);
+			}
+		}
+
+		//
+
+	}, {
+		key: 'addResource',
+		value: function addResource(resource) {
+			var postData = resource;
+
+			$.ajax({
+				url: "/api/ClientManage/AddClient",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: this.submitBackcall
+			});
+		}
+
+		//
+
+	}, {
+		key: 'updateResource',
+		value: function updateResource(resource) {
+			var postData = resource;
+
+			$.ajax({
+				url: "/api/ClientManage/UpdateClient",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: this.submitBackcall
+			});
+		}
+
+		//
+
+	}, {
+		key: 'deleteResource',
+		value: function deleteResource(resource) {
+			var postData = {
+				id: resource.id
+			};
+
+			$.ajax({
+				url: "/api/ClientManage/RemoveClient",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: this.submitBackcall
+			});
+		}
+
+		// 刷新
+
+	}, {
+		key: 'freshenResources',
+		value: function freshenResources(pageIndex, pageSize) {
+			this.getResourceList(pageIndex, pageSize);
+			this.getResourceNum();
+		}
+
+		// 获取客户端列表回调
+
+	}, {
+		key: 'getResourceListBackcall',
+		value: function getResourceListBackcall(data) {
+			if (data.isSuccess == true) {
+				this.setState({ resources: data.value.clients });
+			}
+		}
+
+		// 获取客户端列表
+
+	}, {
+		key: 'getResourceList',
+		value: function getResourceList(pageIndex, pageSize) {
+			var postData = {
+				pageIndex: pageIndex,
+				pageSize: pageSize
+			};
+
+			$.ajax({
+				url: "/api/ClientManage/GetClients",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: this.getResourceListBackcall
+			});
+		}
+
+		// 获取客户端数量回调
+
+	}, {
+		key: 'getResourceNumBackcall',
+		value: function getResourceNumBackcall(data) {
+			if (data.isSuccess == true) {
+				this.setState({
+					resourceNum: data.value.clientNum });
+			}
+		}
+
+		// 获取客户端数量
+
+	}, {
+		key: 'getResourceNum',
+		value: function getResourceNum() {
+			var postData = {};
+
+			$.ajax({
+				url: "/api/ClientManage/GetClientNum",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: this.getResourceNumBackcall
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(_Resource2.default, {
+					resources: this.state.resources,
+					resourceNum: this.state.resourceNum,
+					isFreshenResources: this.state.isFreshenResources,
+					freshenResources: this.freshenResources,
+					addResource: this.addResource,
+					updateResource: this.updateResource,
+					deleteResource: this.deleteResource }),
+				_react2.default.createElement(_ErrorModal2.default, null)
+			);
+		}
+	}]);
+
+	return Client;
+}(_react2.default.Component);
+
+exports.default = Client;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ErrorModal.jsx":
+/*!**********************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ErrorModal.jsx ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./src/lib/js/react.min.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ErrorModal = function (_React$Component) {
+  _inherits(ErrorModal, _React$Component);
+
+  function ErrorModal(props) {
+    _classCallCheck(this, ErrorModal);
+
+    return _possibleConstructorReturn(this, (ErrorModal.__proto__ || Object.getPrototypeOf(ErrorModal)).call(this, props));
+  }
+
+  _createClass(ErrorModal, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement('button', { id: 'ResourceErrorBtn', className: 'btn', 'data-toggle': 'modal', 'data-target': '#ResourceError', hidden: 'hidden' }),
+        _react2.default.createElement(
+          'div',
+          { className: 'modal fade data-delete', id: 'ResourceError' },
+          _react2.default.createElement(
+            'div',
+            { className: 'modal-dialog' },
+            _react2.default.createElement(
+              'div',
+              { className: 'modal-content' },
+              _react2.default.createElement(
+                'div',
+                { className: 'modal-header' },
+                _react2.default.createElement('h4', { id: 'ResourceErrorTitle', className: 'modal-title' }),
+                _react2.default.createElement(
+                  'button',
+                  { type: 'button', className: 'close', 'data-dismiss': 'modal' },
+                  '\xD7'
+                )
+              ),
+              _react2.default.createElement('div', { id: 'ResourceErrorText', className: 'modal-body' }),
+              _react2.default.createElement(
+                'div',
+                { className: 'modal-footer' },
+                _react2.default.createElement(
+                  'button',
+                  { type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
+                  '\u5173\u95ED'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }], [{
+    key: 'showErrorModal',
+    value: function showErrorModal(title, message) {
+      $("#ResourceErrorBtn").click();
+      $("#ResourceErrorTitle").text(title);
+      $("#ResourceErrorText").text(message);
+      // setTimeout('$("#ResourceErrorText").text("")',3000);
+    }
+  }]);
+
+  return ErrorModal;
+}(_react2.default.Component);
+
+exports.default = ErrorModal;
+
+/***/ }),
+
 /***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Paging.jsx":
 /*!******************************************************************!*\
   !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/Paging.jsx ***!
@@ -5429,72 +5757,18 @@ var Paging = function (_React$Component) {
 	function Paging(props) {
 		_classCallCheck(this, Paging);
 
-		var _this = _possibleConstructorReturn(this, (Paging.__proto__ || Object.getPrototypeOf(Paging)).call(this, props));
-
-		_this.state = {
-			pageIndex: 1
-		};
-
-		_this.prePageClick = _this.prePageClick.bind(_this);
-		_this.nextPageClick = _this.nextPageClick.bind(_this);
-		_this.pageIndexClick = _this.pageIndexClick.bind(_this);
-		return _this;
+		return _possibleConstructorReturn(this, (Paging.__proto__ || Object.getPrototypeOf(Paging)).call(this, props));
 	}
 
-	// 上一页单击
-
-
 	_createClass(Paging, [{
-		key: 'prePageClick',
-		value: function prePageClick() {
-			var _this2 = this;
-
-			if (this.state.pageIndex > 1) {
-				this.setState(function (prevState) {
-					return { pageIndex: prevState.pageIndex - 1 };
-				}, function () {
-					return _this2.props.pageIndexChange(_this2.state.pageIndex);
-				});
-				;
-			}
-		}
-
-		// 下一页单击
-
-	}, {
-		key: 'nextPageClick',
-		value: function nextPageClick() {
-			var _this3 = this;
-
-			if (this.state.pageIndex < this.props.pageNum) {
-				this.setState(function (prevState) {
-					return { pageIndex: prevState.pageIndex + 1 };
-				}, function () {
-					return _this3.props.pageIndexChange(_this3.state.pageIndex);
-				});
-			}
-		}
-
-		// 页索引单击
-
-	}, {
-		key: 'pageIndexClick',
-		value: function pageIndexClick(pageIndex) {
-			var _this4 = this;
-
-			this.setState({ pageIndex: pageIndex }, function () {
-				return _this4.props.pageIndexChange(_this4.state.pageIndex);
-			});
-		}
-	}, {
 		key: 'render',
 		value: function render() {
-			var _this5 = this;
+			var _this2 = this;
 
 			var pageNum = this.props.pageNum;
 
-			var minIndex = this.state.pageIndex - 4;
-			var maxIndex = this.state.pageIndex + 4;
+			var minIndex = this.props.pageIndex - 4;
+			var maxIndex = this.props.pageIndex + 4;
 
 			var lis = new Array();
 			lis.push(_react2.default.createElement(
@@ -5502,7 +5776,9 @@ var Paging = function (_React$Component) {
 				{ className: 'page-item' },
 				_react2.default.createElement(
 					'a',
-					{ onClick: this.prePageClick, className: 'page-link', href: 'javascript:void(0)' },
+					{ onClick: function onClick() {
+							return _this2.props.pageIndexChange(_this2.props.pageIndex - 1);
+						}, className: 'page-link', href: 'javascript:void(0)' },
 					'\u4E0A\u4E00\u9875'
 				)
 			));
@@ -5510,14 +5786,14 @@ var Paging = function (_React$Component) {
 			var _loop = function _loop(min) {
 				if (min > 0) {
 					var li = null;
-					if (min == _this5.state.pageIndex) {
+					if (min == _this2.props.pageIndex) {
 						li = _react2.default.createElement(
 							'li',
 							{ className: 'page-item' },
 							_react2.default.createElement(
 								'a',
 								{ onClick: function onClick() {
-										return _this5.pageIndexClick(min);
+										return _this2.props.pageIndexChange(min);
 									}, className: 'page-link bg-white text-dark', href: 'javascript:void(0)' },
 								min
 							)
@@ -5529,7 +5805,7 @@ var Paging = function (_React$Component) {
 							_react2.default.createElement(
 								'a',
 								{ onClick: function onClick() {
-										return _this5.pageIndexClick(min);
+										return _this2.props.pageIndexChange(min);
 									}, className: 'page-link', href: 'javascript:void(0)' },
 								min
 							)
@@ -5549,7 +5825,9 @@ var Paging = function (_React$Component) {
 				{ className: 'page-item' },
 				_react2.default.createElement(
 					'a',
-					{ onClick: this.nextPageClick, className: 'page-link', href: 'javascript:void(0)' },
+					{ onClick: function onClick() {
+							return _this2.props.pageIndexChange(_this2.props.pageIndex + 1);
+						}, className: 'page-link', href: 'javascript:void(0)' },
 					'\u4E0B\u4E00\u9875'
 				)
 			));
@@ -5640,6 +5918,10 @@ var _jqueryLabelauty3 = __webpack_require__(/*! jquery-labelauty.css */ "./src/l
 
 var _jqueryLabelauty4 = _interopRequireDefault(_jqueryLabelauty3);
 
+var _ResourceDescribe = __webpack_require__(/*! ./ResourceDescribe.js */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceDescribe.js");
+
+var _ResourceDescribe2 = _interopRequireDefault(_ResourceDescribe);
+
 var _ResourceList = __webpack_require__(/*! ./ResourceList.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceList.jsx");
 
 var _ResourceList2 = _interopRequireDefault(_ResourceList);
@@ -5685,6 +5967,13 @@ var operationState = {
 var Resource = function (_React$Component) {
 	_inherits(Resource, _React$Component);
 
+	// props.resources
+	// props.resourceNum
+	// props.isFreshenResources
+	// props.freshenResources()
+	// props.addResource()
+	// props.updateResource()
+	// props.deleteResource()
 	function Resource(props) {
 		_classCallCheck(this, Resource);
 
@@ -5692,54 +5981,56 @@ var Resource = function (_React$Component) {
 
 		_this.pageSize = 10;
 
-		_this.pageIndex = 1;
-
 		_this.state = {
 			curResource: null,
-			resources: new Array(),
-			resourceNum: 0,
 			pageNum: 0,
+			pageIndex: 1,
 			operationState: operationState.none
 		};
 
-		_this.freshen = _this.freshen.bind(_this);
-
 		_this.pageIndexChange = _this.pageIndexChange.bind(_this);
-
-		_this.getResourceListBackcall = _this.getResourceListBackcall.bind(_this);
-		_this.getResourceList(_this.pageIndex, _this.pageSize);
-
-		_this.getResourceNumBackcall = _this.getResourceNumBackcall.bind(_this);
-		_this.getResourceNum();
-
-		_this.resourceEditClick = _this.resourceEditClick.bind(_this);
-		_this.resourceDeleteClick = _this.resourceDeleteClick.bind(_this);
-		_this.resourceAddClick = _this.resourceAddClick.bind(_this);
-		_this.resourceLookupClick = _this.resourceLookupClick.bind(_this);
+		_this.resourceOperationClick = _this.resourceOperationClick.bind(_this);
+		_this.resourceUpdate = _this.resourceUpdate.bind(_this);
 		return _this;
 	}
 
 	_createClass(Resource, [{
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.freshenState(this.props);
+		}
+	}, {
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(nextProps) {
+			this.freshenState(nextProps);
+		}
+	}, {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+
+			// 如果外部需要刷新资源
+			if (this.props.isFreshenResources === true) {
+				this.props.freshenResources(this.state.pageIndex, this.pageSize);
+			}
+		}
+	}, {
 		key: 'componentDidUpdate',
 		value: function componentDidUpdate() {
 			this.state.operationState = operationState.none;
+
+			// 如果外部需要刷新资源
+			if (this.props.isFreshenResources === true) {
+				this.props.freshenResources(this.state.pageIndex, this.pageSize);
+			}
 		}
-
-		// 刷新整个Resource组件
-
 	}, {
-		key: 'freshen',
-		value: function freshen() {
-			this.getResourceList(this.pageIndex, this.pageSize);
-			this.getResourceNum();
-
-			this.setState({
-				curResource: null,
-				resources: new Array(),
-				resourceNum: 0,
-				pageNum: 0,
-				operationState: operationState.none
-			});
+		key: 'freshenState',
+		value: function freshenState(props) {
+			var pageNum = parseInt(props.resourceNum / this.pageSize);
+			if (props.resourceNum % this.pageSize > 0) {
+				pageNum++;
+			}
+			this.state.pageNum = pageNum;
 		}
 
 		// 页索引改变
@@ -5747,147 +6038,63 @@ var Resource = function (_React$Component) {
 	}, {
 		key: 'pageIndexChange',
 		value: function pageIndexChange(pageIndex) {
-			this.pageIndex = pageIndex;
-			this.getResourceList(this.pageIndex, this.pageSize);
-		}
-
-		// 获取客户端列表回调
-
-	}, {
-		key: 'getResourceListBackcall',
-		value: function getResourceListBackcall(data) {
-			if (data.isSuccess == true) {
-				this.setState({ resources: data.value.clients });
+			if (pageIndex > 0 && pageIndex <= this.state.pageNum) {
+				this.setState({ pageIndex: pageIndex });
+				this.props.freshenResources(pageIndex, this.pageSize);
 			}
 		}
 
-		// 获取客户端列表
+		// 操作按钮点击
 
 	}, {
-		key: 'getResourceList',
-		value: function getResourceList(pageIndex, pageSize) {
-			var postData = {
-				pageIndex: pageIndex,
-				pageSize: pageSize
-			};
+		key: 'resourceOperationClick',
+		value: function resourceOperationClick(operation, resource) {
+			this.setState({ operationState: operation });
 
-			$.ajax({
-				url: "/api/ClientManage/GetClients",
-				type: 'post',
-				data: JSON.stringify(postData),
-				contentType: 'application/json',
-				dataType: 'json',
-				success: this.getResourceListBackcall
-			});
-		}
-
-		// 获取客户端数量回调
-
-	}, {
-		key: 'getResourceNumBackcall',
-		value: function getResourceNumBackcall(data) {
-			if (data.isSuccess == true) {
-				var pageNum = parseInt(data.value.clientNum / this.pageSize);
-				if (data.value.clientNum % this.pageSize > 0) {
-					pageNum++;
-				}
-				this.setState({
-					resourceNum: data.value.clientNum,
-					pageNum: pageNum });
+			if (resource != undefined) {
+				this.setState({ curResource: resource });
+			} else {
+				this.setState({ curResource: null });
 			}
 		}
 
-		// 获取客户端数量
+		// 更新资源
 
 	}, {
-		key: 'getResourceNum',
-		value: function getResourceNum() {
-			var postData = {};
-
-			$.ajax({
-				url: "/api/ClientManage/GetClientNum",
-				type: 'post',
-				data: JSON.stringify(postData),
-				contentType: 'application/json',
-				dataType: 'json',
-				success: this.getResourceNumBackcall
-			});
-		}
-
-		// 点击编辑按钮
-
-	}, {
-		key: 'resourceEditClick',
-		value: function resourceEditClick(id) {
-			var resources = this.state.resources;
-			for (var item in resources) {
-				if (resources[item].id == id) {
-					this.setState({
-						curResource: resources[item],
-						operationState: operationState.edit
-					});
-					break;
-				}
-			}
-		}
-
-		// 点击删除按钮
-
-	}, {
-		key: 'resourceDeleteClick',
-		value: function resourceDeleteClick(id) {
-			var resources = this.state.resources;
-			for (var item in resources) {
-				if (resources[item].id == id) {
-					this.setState({
-						curResource: resources[item],
-						operationState: operationState.delete
-					});
-					break;
-				}
-			}
-		}
-
-		// 点击添加按钮
-
-	}, {
-		key: 'resourceAddClick',
-		value: function resourceAddClick() {
-			this.setState({
-				curResource: null,
-				operationState: operationState.add
-			});
-		}
-
-		//点击查看按钮
-
-	}, {
-		key: 'resourceLookupClick',
-		value: function resourceLookupClick() {
-			var resources = this.state.resources;
-			for (var item in resources) {
-				if (resources[item].id == id) {
-					this.setState({
-						curResource: resources[item],
-						operationState: operationState.lookup
-					});
-					break;
-				}
+		key: 'resourceUpdate',
+		value: function resourceUpdate(operation, resource) {
+			if (operation == operationState.add) {
+				this.props.addResource(resource);
+			} else if (operation == operationState.edit) {
+				this.props.updateResource(resource);
+			} else if (operation == operationState.delete) {
+				this.props.deleteResource(resource);
 			}
 		}
 	}, {
 		key: 'render',
 		value: function render() {
+			var _this2 = this;
+
 			var resourceList = _react2.default.createElement(_ResourceList2.default, {
-				resources: this.state.resources,
-				resourceEditClick: this.resourceEditClick,
-				resourceDeleteClick: this.resourceDeleteClick,
-				resourceLookupClick: this.resourceLookupClick
+				resources: this.props.resources,
+				resourceEditClick: function resourceEditClick(resource) {
+					return _this2.resourceOperationClick(operationState.edit, resource);
+				},
+				resourceDeleteClick: function resourceDeleteClick(resource) {
+					return _this2.resourceOperationClick(operationState.delete, resource);
+				},
+				resourceLookupClick: function resourceLookupClick(resource) {
+					return _this2.resourceOperationClick(operationState.lookup, resource);
+				}
 			});
 
 			var paging = _react2.default.createElement(_Paging2.default, {
-				resourceAddClick: this.resourceAddClick,
+				resourceAddClick: function resourceAddClick() {
+					return _this2.resourceOperationClick(operationState.add);
+				},
 				pageNum: this.state.pageNum,
+				pageIndex: this.state.pageIndex,
 				pageIndexChange: this.pageIndexChange });
 
 			return _react2.default.createElement(
@@ -5895,10 +6102,22 @@ var Resource = function (_React$Component) {
 				{ className: 'row' },
 				resourceList,
 				paging,
-				this.state.operationState == operationState.add && _react2.default.createElement(_AddResourceForm2.default, { resource: this.state.curResource, freshen: this.freshen }),
-				this.state.operationState == operationState.edit && _react2.default.createElement(_EditResourceForm2.default, { resource: this.state.curResource, freshen: this.freshen }),
-				this.state.operationState == operationState.lookup && _react2.default.createElement(_LookupResourceForm2.default, { resource: this.state.curResource, freshen: this.freshen }),
-				this.state.operationState == operationState.delete && _react2.default.createElement(_ResourceDelete2.default, { resource: this.state.curResource, freshen: this.freshen })
+				this.state.operationState == operationState.add && _react2.default.createElement(_AddResourceForm2.default, {
+					resource: this.state.curResource,
+					resourceUpdate: function resourceUpdate(resource) {
+						return _this2.resourceUpdate(operationState.add, resource);
+					} }),
+				this.state.operationState == operationState.edit && _react2.default.createElement(_EditResourceForm2.default, {
+					resource: this.state.curResource,
+					resourceUpdate: function resourceUpdate(resource) {
+						return _this2.resourceUpdate(operationState.edit, resource);
+					} }),
+				this.state.operationState == operationState.lookup && _react2.default.createElement(_LookupResourceForm2.default, { resource: this.state.curResource }),
+				this.state.operationState == operationState.delete && _react2.default.createElement(_ResourceDelete2.default, {
+					resource: this.state.curResource,
+					resourceUpdate: function resourceUpdate(resource) {
+						return _this2.resourceUpdate(operationState.delete, resource);
+					} })
 			);
 		}
 	}]);
@@ -5950,7 +6169,7 @@ var ResourceDelete = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (ResourceDelete.__proto__ || Object.getPrototypeOf(ResourceDelete)).call(this, props));
 
-    _this.deleteBackcall = _this.deleteBackcall.bind(_this);
+    _this.delete = _this.delete.bind(_this);
     return _this;
   }
 
@@ -5965,37 +6184,14 @@ var ResourceDelete = function (_React$Component) {
       $("#dataDeleteBtn").click();
     }
   }, {
-    key: 'deleteBackcall',
-    value: function deleteBackcall(data) {
-      if (data.isSuccess == true) {
-        $("#dataDeleteCloseBtn").click();
-        this.props.freshen();
-      } else {
-        $("#dataDeleteError").text(data.message);
-        setTimeout('$("#dataDeleteError").text("")', 3000);
-      }
-    }
-  }, {
     key: 'delete',
-    value: function _delete(id) {
-      var postData = {
-        id: id
-      };
-
-      $.ajax({
-        url: "/api/ClientManage/RemoveClient",
-        type: 'post',
-        data: JSON.stringify(postData),
-        contentType: 'application/json',
-        dataType: 'json',
-        success: this.deleteBackcall
-      });
+    value: function _delete() {
+      this.props.resourceUpdate(this.props.resource);
+      $("#dataDeleteCloseBtn").click();
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       return _react2.default.createElement(
         'div',
         null,
@@ -6036,9 +6232,7 @@ var ResourceDelete = function (_React$Component) {
                 _react2.default.createElement('span', { id: 'dataDeleteError', className: 'text-danger' }),
                 _react2.default.createElement(
                   'button',
-                  { type: 'button', className: 'btn btn-danger btn-sm', onClick: function onClick() {
-                      return _this2.delete(_this2.props.resource.id);
-                    } },
+                  { type: 'button', className: 'btn btn-danger btn-sm', onClick: this.delete },
                   '\u5220\u9664'
                 ),
                 _react2.default.createElement(
@@ -6058,6 +6252,92 @@ var ResourceDelete = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = ResourceDelete;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceDescribe.js":
+/*!***************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceDescribe.js ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ResourceDescribe = function () {
+	// describes [{text:"", name:"", isId=true, isName=true}]
+	function ResourceDescribe(describes) {
+		_classCallCheck(this, ResourceDescribe);
+
+		this.describes = describes;
+		this.idName = "id";
+		for (var item in this.describes) {
+			if (this.describes[item].isId === true) {
+				this.idName = this.describes[item].name;
+				break;
+			}
+		}
+
+		this.nameName = "name";
+		for (var _item in this.describes) {
+			if (this.describes[_item].isName === true) {
+				this.nameName = this.describes[_item].name;
+				break;
+			}
+		}
+	}
+
+	_createClass(ResourceDescribe, [{
+		key: "getTextFormName",
+		value: function getTextFormName(name) {
+			for (var item in this.describes) {
+				if (this.describes[item].name === name) {
+					return this.describes[item].text;
+				}
+			}
+
+			for (var _item2 in this.describes) {
+				var reg = new RegExp("." + name + "$");
+				if (reg.text(this.describes[_item2].name)) {
+					return this.describes[_item2].text;
+				}
+			}
+
+			return null;
+		}
+	}, {
+		key: "getResourceId",
+		value: function getResourceId(resource) {
+			if (this.idName === null) {
+				return null;
+			}
+
+			return resource[this.idName];
+		}
+	}, {
+		key: "getResourceName",
+		value: function getResourceName(resource) {
+			if (this.nameName === null) {
+				return null;
+			}
+
+			return resource[this.nameName];
+		}
+	}]);
+
+	return ResourceDescribe;
+}();
+
+exports.default = ResourceDescribe;
 
 /***/ }),
 
@@ -6504,7 +6784,6 @@ var ResourceForm = function (_React$Component) {
     _this.getApiResourcesBackcall = _this.getApiResourcesBackcall.bind(_this);
     _this.getApiResources();
 
-    _this.submitBackcall = _this.submitBackcall.bind(_this);
     _this.submit = _this.submit.bind(_this);
     return _this;
   }
@@ -6649,37 +6928,13 @@ var ResourceForm = function (_React$Component) {
       });
     }
 
-    // 提交回调
-
-  }, {
-    key: 'submitBackcall',
-    value: function submitBackcall(data) {
-      if (data.isSuccess == true) {
-        $("#dataFormCloseBtn").click();
-        this.props.freshen();
-      } else {
-        $("#dataFormError").text(data.message);
-        setTimeout('$("#dataFormError").text("")', 3000);
-      }
-    }
-
     // 提交
 
   }, {
     key: 'submit',
     value: function submit() {
-      var postData = this.resource;
-
-      $.ajax({
-        url: this.submitUrl,
-        type: 'post',
-        data: JSON.stringify(postData),
-        contentType: 'application/json',
-        dataType: 'json',
-        success: this.submitBackcall
-      });
-
-      console.log(postData);
+      this.props.resourceUpdate(this.resource);
+      $("#dataFormCloseBtn").click();
     }
   }, {
     key: 'render',
@@ -7218,7 +7473,7 @@ var ResourceList = function (_React$Component) {
                                 'button',
                                 { type: 'button', className: 'btn btn-primary',
                                     onClick: function onClick() {
-                                        return _this2.props.resourceEditClick(resources[item].id);
+                                        return _this2.props.resourceEditClick(resources[item]);
                                     } },
                                 '\u7F16\u8F91'
                             ),
@@ -7226,7 +7481,7 @@ var ResourceList = function (_React$Component) {
                                 'button',
                                 { type: 'button', className: 'btn btn-danger',
                                     onClick: function onClick() {
-                                        return _this2.props.resourceDeleteClick(resources[item].id);
+                                        return _this2.props.resourceDeleteClick(resources[item]);
                                     } },
                                 '\u5220\u9664'
                             )
@@ -7376,9 +7631,9 @@ var _BodyDiv = __webpack_require__(/*! ./BodyDiv.css */ "./src/ManageHome/BodyDi
 
 var _BodyDiv2 = _interopRequireDefault(_BodyDiv);
 
-var _Resource = __webpack_require__(/*! ./AuthorizeManage/Client/Resource.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Resource.jsx");
+var _Client = __webpack_require__(/*! ./AuthorizeManage/Client/Client.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Client.jsx");
 
-var _Resource2 = _interopRequireDefault(_Resource);
+var _Client2 = _interopRequireDefault(_Client);
 
 var _UserInfo = __webpack_require__(/*! ./Personal/UserInfo/UserInfo.jsx */ "./src/ManageHome/BodyDiv/Personal/UserInfo/UserInfo.jsx");
 
@@ -7407,7 +7662,7 @@ var BodyDiv = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'col-md-10 content-container' },
-                _react2.default.createElement(_reactRouterDom.Route, { path: '/ManageHome/AuthorizeManage/Client', component: _Resource2.default }),
+                _react2.default.createElement(_reactRouterDom.Route, { path: '/ManageHome/AuthorizeManage/Client', component: _Client2.default }),
                 _react2.default.createElement(_reactRouterDom.Route, { path: '/ManageHome/Personal/UserInfo', component: _UserInfo2.default })
             );
         }

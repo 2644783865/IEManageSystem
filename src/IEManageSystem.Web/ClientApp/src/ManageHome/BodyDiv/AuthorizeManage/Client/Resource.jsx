@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import jquerylabelautyjs from 'jquery-labelauty.js';
 import jquerylabelautycss from 'jquery-labelauty.css';
+import ResourceDescribe from './ResourceDescribe.js';
 import ResourceList from './ResourceList.jsx';
 import Paging from './Paging.jsx';
 import ResourceDelete from './ResourceDelete.jsx';
@@ -22,190 +23,133 @@ var operationState = {
 
 export default class Resource extends React.Component
 {
+	// props.resources
+	// props.resourceNum
+	// props.isFreshenResources
+	// props.freshenResources()
+	// props.addResource()
+	// props.updateResource()
+	// props.deleteResource()
 	constructor(props){
 		super(props);
 
         this.pageSize = 10;
 
-        this.pageIndex = 1;
-
 		this.state = {
 			curResource: null,
-			resources: new Array(),
-			resourceNum: 0,
 			pageNum: 0,
+			pageIndex: 1,
 			operationState: operationState.none
 		};
 
-		this.freshen = this.freshen.bind(this);
-
 		this.pageIndexChange = this.pageIndexChange.bind(this);
-
-        this.getResourceListBackcall = this.getResourceListBackcall.bind(this);
-		this.getResourceList(this.pageIndex, this.pageSize);
-
-        this.getResourceNumBackcall = this.getResourceNumBackcall.bind(this);
-        this.getResourceNum();
-
-		this.resourceEditClick = this.resourceEditClick.bind(this);
-		this.resourceDeleteClick = this.resourceDeleteClick.bind(this);
-		this.resourceAddClick = this.resourceAddClick.bind(this);
-		this.resourceLookupClick = this.resourceLookupClick.bind(this);
+		this.resourceOperationClick = this.resourceOperationClick.bind(this);
+		this.resourceUpdate = this.resourceUpdate.bind(this);
 	}
 
-    componentDidUpdate(){
-        this.state.operationState = operationState.none;
-    }
-	
-	// 刷新整个Resource组件
-	freshen(){
-		this.getResourceList(this.pageIndex, this.pageSize);
-		this.getResourceNum();
+	componentWillMount(){
+	    this.freshenState(this.props)
+	}
 
-		this.setState({
-			curResource: null,
-			resources: new Array(),
-			resourceNum: 0,
-			pageNum: 0,
-			operationState: operationState.none
-		});
+    componentWillReceiveProps(nextProps){
+	    this.freshenState(nextProps)
+	}
+
+	componentDidMount(){
+		
+	    // 如果外部需要刷新资源
+        if(this.props.isFreshenResources === true){
+        	this.props.freshenResources(this.state.pageIndex, this.pageSize);
+        }
+	}
+
+	componentDidUpdate(){
+        this.state.operationState = operationState.none;
+		
+		// 如果外部需要刷新资源
+        if(this.props.isFreshenResources === true){
+        	this.props.freshenResources(this.state.pageIndex, this.pageSize);
+        }
+    }
+
+	freshenState(props)
+	{
+	    let pageNum = parseInt(props.resourceNum/this.pageSize);
+        if((props.resourceNum%this.pageSize) > 0){
+            pageNum++;
+        }
+        this.state.pageNum = pageNum;
 	}
     
     // 页索引改变
 	pageIndexChange(pageIndex)
 	{
-        this.pageIndex = pageIndex;
-		this.getResourceList(this.pageIndex, this.pageSize);
-	}
-
-	// 获取客户端列表回调
-    getResourceListBackcall(data){
-        if(data.isSuccess == true)
-        {
-            this.setState({ resources:data.value.clients });
-        }
-    }
-
-    // 获取客户端列表
-	getResourceList(pageIndex, pageSize){
-		let postData = {
-            pageIndex: pageIndex,
-            pageSize: pageSize
-        };
-
-		$.ajax({
-			url: "/api/ClientManage/GetClients",
-            type: 'post',
-            data: JSON.stringify(postData),
-            contentType: 'application/json',
-            dataType: 'json',
-            success: this.getResourceListBackcall
-		});
-	}
-
-	// 获取客户端数量回调
-    getResourceNumBackcall(data){
-        if(data.isSuccess == true)
-        {
-            let pageNum = parseInt(data.value.clientNum/this.pageSize);
-            if((data.value.clientNum%this.pageSize) > 0){
-                pageNum++;
-            }
-            this.setState({ 
-                resourceNum:data.value.clientNum,
-                pageNum:pageNum });
-        }
-    }
-
-    // 获取客户端数量
-    getResourceNum(){
-        let postData = {
-        };
-
-        $.ajax({
-            url: "/api/ClientManage/GetClientNum",
-            type: 'post',
-            data: JSON.stringify(postData),
-            contentType: 'application/json',
-            dataType: 'json',
-            success: this.getResourceNumBackcall
-        });
-    }
-
-	// 点击编辑按钮
-	resourceEditClick(id)
-	{
-		let resources = this.state.resources;
-		for(let item in resources){
-			if(resources[item].id == id){
-				this.setState({ 
-					curResource:resources[item],
-					operationState: operationState.edit
-				});
-				break;
-			}
+		if(pageIndex > 0 && pageIndex <= this.state.pageNum)
+		{
+			this.setState({pageIndex: pageIndex});
+			this.props.freshenResources(pageIndex, this.pageSize);
 		}
 	}
 
-	// 点击删除按钮
-	resourceDeleteClick(id)
+	// 操作按钮点击
+	resourceOperationClick(operation, resource)
 	{
-		let resources = this.state.resources;
-		for(let item in resources){
-			if(resources[item].id == id){
-				this.setState({ 
-					curResource:resources[item],
-					operationState: operationState.delete
-				});
-				break;
-			}
+		this.setState({operationState: operation});
+
+		if(resource != undefined){
+			this.setState({curResource:resource});
+		}
+		else{
+			this.setState({curResource:null});
 		}
 	}
 
-	// 点击添加按钮
-	resourceAddClick(){
-		this.setState({ 
-			curResource:null,
-			operationState: operationState.add
-		});
-	}
-
-	//点击查看按钮
-	resourceLookupClick(){
-		let resources = this.state.resources;
-		for(let item in resources){
-			if(resources[item].id == id){
-				this.setState({ 
-					curResource:resources[item],
-					operationState: operationState.lookup
-				});
-				break;
-			}
+	// 更新资源
+	resourceUpdate(operation, resource){
+		if(operation == operationState.add){
+			this.props.addResource(resource);
+		}
+		else if(operation == operationState.edit){
+			this.props.updateResource(resource);
+		}
+		else if(operation == operationState.delete){
+			this.props.deleteResource(resource);
 		}
 	}
 	
 	render()
 	{
         let resourceList = <ResourceList 
-                    resources={ this.state.resources } 
-                    resourceEditClick={ this.resourceEditClick }
-                    resourceDeleteClick={ this.resourceDeleteClick }
-                    resourceLookupClick={ this.resourceLookupClick }
+                    resources={ this.props.resources } 
+                    resourceEditClick={ resource=>this.resourceOperationClick(operationState.edit, resource) }
+                    resourceDeleteClick={ resource=>this.resourceOperationClick(operationState.delete, resource) }
+                    resourceLookupClick={ resource=>this.resourceOperationClick(operationState.lookup, resource) }
                     />;
 
         let paging = <Paging 
-                    resourceAddClick={ this.resourceAddClick } 
+                    resourceAddClick={ ()=>this.resourceOperationClick(operationState.add) } 
                     pageNum={ this.state.pageNum } 
+                    pageIndex={ this.state.pageIndex } 
                     pageIndexChange={ this.pageIndexChange } />;
 
         return (
 			<div className="row">
 	            {resourceList}
 	            {paging}
-	            { this.state.operationState == operationState.add && <AddResourceForm resource={ this.state.curResource } freshen={this.freshen} /> }
-	            { this.state.operationState == operationState.edit && <EditResourceForm resource={ this.state.curResource } freshen={this.freshen} /> }
-	            { this.state.operationState == operationState.lookup && <LookupResourceForm resource={ this.state.curResource } freshen={this.freshen} /> }
-	            { this.state.operationState == operationState.delete && <ResourceDelete resource={ this.state.curResource } freshen={this.freshen} /> }
+	            { this.state.operationState == operationState.add && 
+	            	<AddResourceForm 
+	            	resource={ this.state.curResource } 
+	            	resourceUpdate={resource=>this.resourceUpdate(operationState.add, resource)} /> }
+	            { this.state.operationState == operationState.edit && 
+	            	<EditResourceForm 
+	            	resource={ this.state.curResource } 
+	            	resourceUpdate={resource=>this.resourceUpdate(operationState.edit, resource)} /> }
+	            { this.state.operationState == operationState.lookup && 
+	            	<LookupResourceForm resource={ this.state.curResource } /> }
+	            { this.state.operationState == operationState.delete && 
+	            	<ResourceDelete 
+	            	resource={ this.state.curResource } 
+	            	resourceUpdate={resource=>this.resourceUpdate(operationState.delete, resource)} /> }
 	        </div>
 		);
 	}

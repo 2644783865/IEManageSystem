@@ -6,7 +6,7 @@ export default class ResourceDelete extends React.Component
 	constructor(props){
 		super(props);
 
-    this.deleteBackcall = this.deleteBackcall.bind(this);
+    this.delete = this.delete.bind(this);
 	}
 
 	componentDidMount(){
@@ -17,31 +17,10 @@ export default class ResourceDelete extends React.Component
     $("#dataDeleteBtn").click();
   }
 
-  deleteBackcall(data){
-    if(data.isSuccess == true)
-    {
-      $("#dataDeleteCloseBtn").click();
-      this.props.freshen();
-    }
-    else{
-      $("#dataDeleteError").text(data.message);
-      setTimeout('$("#dataDeleteError").text("")',3000);
-    }
-  }
-
-  delete(id){
-    let postData = {
-      id: id
-    };
-
-    $.ajax({
-      url: "/api/ClientManage/RemoveClient",
-      type: 'post',
-      data: JSON.stringify(postData),
-      contentType: 'application/json',
-      dataType: 'json',
-      success: this.deleteBackcall
-    });
+  delete()
+  {
+    this.props.resourceUpdate(this.props.resource);
+    $("#dataDeleteCloseBtn").click();
   }
 	
 	render(){
@@ -63,7 +42,7 @@ export default class ResourceDelete extends React.Component
              
                   <div className="modal-footer">
                     <span id="dataDeleteError" className="text-danger"></span>
-                    <button type="button" className="btn btn-danger btn-sm" onClick={()=>this.delete(this.props.resource.id)}>删除</button>
+                    <button type="button" className="btn btn-danger btn-sm" onClick={this.delete}>删除</button>
                     <button id="dataDeleteCloseBtn" type="button" className="btn btn-secondary" data-dismiss="modal">关闭</button>
                   </div>
              

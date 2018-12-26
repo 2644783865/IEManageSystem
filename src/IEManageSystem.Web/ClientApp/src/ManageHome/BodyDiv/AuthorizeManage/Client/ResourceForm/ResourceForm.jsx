@@ -28,7 +28,6 @@ export default class ResourceForm extends React.Component
     this.getApiResourcesBackcall = this.getApiResourcesBackcall.bind(this);
     this.getApiResources();
 
-    this.submitBackcall = this.submitBackcall.bind(this);
     this.submit = this.submit.bind(this);
 	}
 
@@ -154,33 +153,11 @@ export default class ResourceForm extends React.Component
     });
   }
 
-  // 提交回调
-  submitBackcall(data){
-    if(data.isSuccess == true)
-    {
-      $("#dataFormCloseBtn").click();
-      this.props.freshen();
-    }
-    else{
-      $("#dataFormError").text(data.message);
-      setTimeout('$("#dataFormError").text("")',3000);
-    }
-  }
-
   // 提交
-  submit(){
-    let postData = this.resource;
-
-    $.ajax({
-      url: this.submitUrl,
-      type: 'post',
-      data: JSON.stringify(postData),
-      contentType: 'application/json',
-      dataType: 'json',
-      success: this.submitBackcall
-    });
-
-    console.log(postData);
+  submit()
+  {
+    this.props.resourceUpdate(this.resource);
+    $("#dataFormCloseBtn").click();
   }
 	
 	render(){
