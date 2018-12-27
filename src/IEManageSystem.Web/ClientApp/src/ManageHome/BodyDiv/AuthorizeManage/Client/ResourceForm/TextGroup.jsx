@@ -3,14 +3,16 @@ import ReactDOM from 'react-dom';
 
 export default class TextGroup extends React.Component
 {
+	// 
 	// props.name
 	// props.values
+	// props.title
 	// props.onChange(name, values)
 	constructor(props){
 		super(props);
 
 		this.state = {
-			values: new Array()
+			values: this.props.values
 		};
 
 		this.AddClick = this.AddClick.bind(this);
@@ -65,7 +67,7 @@ export default class TextGroup extends React.Component
 
 		return(
 			<div className="card">
-                <div className="card-header bg-secondary text-white">登录重定向地址</div>
+                <div className="card-header bg-secondary text-white">{this.props.title}</div>
                 <div className="card-body">
                     {list}
                     <button className="btn btn-success btn-sm" onClick={this.AddClick}>+添加</button>

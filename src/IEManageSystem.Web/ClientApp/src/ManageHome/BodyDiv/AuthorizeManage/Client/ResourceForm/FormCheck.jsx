@@ -44,7 +44,7 @@ export default class FormCheck extends React.Component
 
 	render(){
 		let checkboxLis = this.props.values.map((item, index)=>{
-			if(this.state.selectValues.indexOf(item.value) >= 0){
+			if(this.state.selectValues.indexOf(item.value) >= 0 || this.state.selectValues.indexOf(item.value.toString()) >= 0){
 				return <li><input type="checkbox" name={this.props.name} data-labelauty={ item.text } value={item.value} checked={true} onChange={(event)=>this.onChange(event, index)} /></li>;
 			}
 			else{

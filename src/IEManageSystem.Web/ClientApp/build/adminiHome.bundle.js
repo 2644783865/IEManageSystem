@@ -5439,43 +5439,42 @@ var Client = function (_React$Component) {
 
 		var _this = _possibleConstructorReturn(this, (Client.__proto__ || Object.getPrototypeOf(Client)).call(this, props));
 
-		_this.state = {
-			resources: new Array(),
-			resourceNum: 0,
-			isFreshenResources: true
-		};
+		_this.grantTypeGroup = new Array();
 
-		_this.getResourceListBackcall = _this.getResourceListBackcall.bind(_this);
+		_this.identityResources = new Array();
 
-		_this.getResourceNumBackcall = _this.getResourceNumBackcall.bind(_this);
+		_this.apiResources = new Array();
+
+		_this.describes = [{ name: "id", isId: true, isAddShow: false, isEditShow: false }, { name: "clientId", text: "客户端Id", isName: true, isShowOnList: true }, { name: "clientSecret", text: "客户端密钥" }, { name: "allowedGrantType", text: "认证类型", isShowOnList: true, valueType: "radio", valueTexts: _this.grantTypeGroup }, { name: "allowedScopes", text: "身份资源", valueType: "check", valueTexts: _this.identityResources }, { name: "allowedScopes", text: "Api资源", valueType: "check", valueTexts: _this.apiResources }, { name: "redirectUris", text: "登录重定向", isShowOnList: true, valueType: "textGroup" }, { name: "postLogoutRedirectUris", text: "登出重定向", valueType: "textGroup" }, { name: "allowAccessTokensViaBrowser", text: "允许浏览器访问", valueType: "radio", valueTexts: [{ text: "允许", value: true }, { text: "不允许", value: false }] }, { name: "accessTokenType", text: "令牌类型", valueType: "radio", valueTexts: [{ text: "JWT", value: "jwt" }, { text: "Reference", value: "reference" }] }, { name: "enabled", text: "是否启用", isShowOnList: true, valueType: "radio", valueTexts: [{ text: "启用", value: true }, { text: "禁用", value: false }] }, { name: "allowOfflineAccess", text: "是否离线共享", valueType: "radio", valueTexts: [{ text: "启用", value: true }, { text: "禁用", value: false }] }];
+
+		_this.resourceChild = null;
 
 		_this.submitBackcall = _this.submitBackcall.bind(_this);
 		_this.addResource = _this.addResource.bind(_this);
 		_this.updateResource = _this.updateResource.bind(_this);
 		_this.deleteResource = _this.deleteResource.bind(_this);
 		_this.freshenResources = _this.freshenResources.bind(_this);
+
+		_this.getClientGrantTypeGroupNames();
+		_this.getIdentityResources();
+		_this.getApiResources();
 		return _this;
 	}
 
+	// 提交回调
+
+
 	_createClass(Client, [{
-		key: 'componentDidUpdate',
-		value: function componentDidUpdate() {
-			this.state.isFreshenResources = false;
-		}
-
-		// 提交回调
-
-	}, {
 		key: 'submitBackcall',
 		value: function submitBackcall(data) {
 			if (data.isSuccess == true) {
-				this.setState({ isFreshenResources: true });
+				this.resourceChild.reloadResources();
 			} else {
 				_ErrorModal2.default.showErrorModal("提交表单错误", data.message);
 			}
 		}
 
-		//
+		// Resource组件添加资源通知
 
 	}, {
 		key: 'addResource',
@@ -5492,7 +5491,7 @@ var Client = function (_React$Component) {
 			});
 		}
 
-		//
+		// Resource组件更新资源通知
 
 	}, {
 		key: 'updateResource',
@@ -5509,7 +5508,7 @@ var Client = function (_React$Component) {
 			});
 		}
 
-		//
+		// Resource组件删除资源通知
 
 	}, {
 		key: 'deleteResource',
@@ -5528,7 +5527,7 @@ var Client = function (_React$Component) {
 			});
 		}
 
-		// 刷新
+		// Resource组件刷新资源通知
 
 	}, {
 		key: 'freshenResources',
@@ -5537,14 +5536,79 @@ var Client = function (_React$Component) {
 			this.getResourceNum();
 		}
 
-		// 获取客户端列表回调
+		// 获取认证类型组合
 
 	}, {
-		key: 'getResourceListBackcall',
-		value: function getResourceListBackcall(data) {
-			if (data.isSuccess == true) {
-				this.setState({ resources: data.value.clients });
-			}
+		key: 'getClientGrantTypeGroupNames',
+		value: function getClientGrantTypeGroupNames() {
+			var postData = {};
+
+			$.ajax({
+				url: "/api/ClientManage/GetClientGrantTypeGroupNames",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: function (data) {
+					if (data.isSuccess == true) {
+						for (var item in data.value) {
+							this.grantTypeGroup.push({ text: data.value[item], value: data.value[item] });
+						}
+					}
+				}.bind(this)
+			});
+		}
+
+		// 获取身份资源
+
+	}, {
+		key: 'getIdentityResources',
+		value: function getIdentityResources() {
+			var postData = {
+				pageIndex: 1,
+				pageSize: 9999
+			};
+
+			$.ajax({
+				url: "/api/IdentityResourceManage/GetIdentityResources",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: function (data) {
+					if (data.isSuccess == true) {
+						for (var item in data.value.identityResources) {
+							this.identityResources.push({ text: data.value.identityResources[item].displayName, value: data.value.identityResources[item].name });
+						}
+					}
+				}.bind(this)
+			});
+		}
+
+		// 获取Api资源
+
+	}, {
+		key: 'getApiResources',
+		value: function getApiResources() {
+			var postData = {
+				pageIndex: 1,
+				pageSize: 9999
+			};
+
+			$.ajax({
+				url: "/api/ApiResourceManage/GetApiResources",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: function (data) {
+					if (data.isSuccess == true) {
+						for (var item in data.value.apiResources) {
+							this.apiResources.push({ text: data.value.apiResources[item].displayName, value: data.value.apiResources[item].name });
+						}
+					}
+				}.bind(this)
+			});
 		}
 
 		// 获取客户端列表
@@ -5563,19 +5627,12 @@ var Client = function (_React$Component) {
 				data: JSON.stringify(postData),
 				contentType: 'application/json',
 				dataType: 'json',
-				success: this.getResourceListBackcall
+				success: function (data) {
+					if (data.isSuccess == true) {
+						this.resourceChild.resetResources(data.value.clients, pageIndex);
+					}
+				}.bind(this)
 			});
-		}
-
-		// 获取客户端数量回调
-
-	}, {
-		key: 'getResourceNumBackcall',
-		value: function getResourceNumBackcall(data) {
-			if (data.isSuccess == true) {
-				this.setState({
-					resourceNum: data.value.clientNum });
-			}
 		}
 
 		// 获取客户端数量
@@ -5591,23 +5648,31 @@ var Client = function (_React$Component) {
 				data: JSON.stringify(postData),
 				contentType: 'application/json',
 				dataType: 'json',
-				success: this.getResourceNumBackcall
+				success: function (data) {
+					if (data.isSuccess == true) {
+						this.resourceChild.resetResourceNum(data.value.clientNum);
+					}
+				}.bind(this)
 			});
 		}
 	}, {
 		key: 'render',
 		value: function render() {
+			var _this2 = this;
+
 			return _react2.default.createElement(
 				'div',
 				null,
 				_react2.default.createElement(_Resource2.default, {
-					resources: this.state.resources,
-					resourceNum: this.state.resourceNum,
-					isFreshenResources: this.state.isFreshenResources,
+					title: '\u5BA2\u6237\u7AEF',
+					describes: this.describes,
 					freshenResources: this.freshenResources,
 					addResource: this.addResource,
 					updateResource: this.updateResource,
-					deleteResource: this.deleteResource }),
+					deleteResource: this.deleteResource,
+					setResourceRef: function setResourceRef(ref) {
+						_this2.resourceChild = ref;
+					} }),
 				_react2.default.createElement(_ErrorModal2.default, null)
 			);
 		}
@@ -5967,21 +6032,27 @@ var operationState = {
 var Resource = function (_React$Component) {
 	_inherits(Resource, _React$Component);
 
-	// props.resources
-	// props.resourceNum
-	// props.isFreshenResources
+	// props.title
+	// props.describes
 	// props.freshenResources()
 	// props.addResource()
 	// props.updateResource()
 	// props.deleteResource()
+	// props.setResourceRef()
 	function Resource(props) {
 		_classCallCheck(this, Resource);
 
 		var _this = _possibleConstructorReturn(this, (Resource.__proto__ || Object.getPrototypeOf(Resource)).call(this, props));
 
+		_this.props.setResourceRef(_this);
+
 		_this.pageSize = 10;
 
+		_this.resourceDescribe = new _ResourceDescribe2.default(_this.props.describes);
+
 		_this.state = {
+			resources: new Array(),
+			resourceNum: 0,
 			curResource: null,
 			pageNum: 0,
 			pageIndex: 1,
@@ -5991,46 +6062,50 @@ var Resource = function (_React$Component) {
 		_this.pageIndexChange = _this.pageIndexChange.bind(_this);
 		_this.resourceOperationClick = _this.resourceOperationClick.bind(_this);
 		_this.resourceUpdate = _this.resourceUpdate.bind(_this);
+
+		_this.props.freshenResources(_this.state.pageIndex, _this.pageSize);
 		return _this;
 	}
 
 	_createClass(Resource, [{
-		key: 'componentWillMount',
-		value: function componentWillMount() {
-			this.freshenState(this.props);
-		}
-	}, {
-		key: 'componentWillReceiveProps',
-		value: function componentWillReceiveProps(nextProps) {
-			this.freshenState(nextProps);
-		}
-	}, {
 		key: 'componentDidMount',
-		value: function componentDidMount() {
-
-			// 如果外部需要刷新资源
-			if (this.props.isFreshenResources === true) {
-				this.props.freshenResources(this.state.pageIndex, this.pageSize);
-			}
-		}
+		value: function componentDidMount() {}
 	}, {
 		key: 'componentDidUpdate',
 		value: function componentDidUpdate() {
 			this.state.operationState = operationState.none;
-
-			// 如果外部需要刷新资源
-			if (this.props.isFreshenResources === true) {
-				this.props.freshenResources(this.state.pageIndex, this.pageSize);
-			}
 		}
+
+		// 重载资源
+
 	}, {
-		key: 'freshenState',
-		value: function freshenState(props) {
-			var pageNum = parseInt(props.resourceNum / this.pageSize);
-			if (props.resourceNum % this.pageSize > 0) {
+		key: 'reloadResources',
+		value: function reloadResources() {
+			this.props.freshenResources(this.state.pageIndex, this.pageSize);
+		}
+
+		// 重新设置资源（由父组件调用）
+
+	}, {
+		key: 'resetResources',
+		value: function resetResources(resources, pageIndex) {
+			this.setState({ resources: resources, pageIndex: pageIndex });
+		}
+
+		// 重新设置资源数量（由父组件调用）
+
+	}, {
+		key: 'resetResourceNum',
+		value: function resetResourceNum(resourceNum) {
+			var pageNum = parseInt(resourceNum / this.pageSize);
+			if (resourceNum % this.pageSize > 0) {
 				pageNum++;
 			}
-			this.state.pageNum = pageNum;
+
+			this.setState({
+				resourceNum: resourceNum,
+				pageNum: pageNum
+			});
 		}
 
 		// 页索引改变
@@ -6039,7 +6114,6 @@ var Resource = function (_React$Component) {
 		key: 'pageIndexChange',
 		value: function pageIndexChange(pageIndex) {
 			if (pageIndex > 0 && pageIndex <= this.state.pageNum) {
-				this.setState({ pageIndex: pageIndex });
 				this.props.freshenResources(pageIndex, this.pageSize);
 			}
 		}
@@ -6077,7 +6151,9 @@ var Resource = function (_React$Component) {
 			var _this2 = this;
 
 			var resourceList = _react2.default.createElement(_ResourceList2.default, {
-				resources: this.props.resources,
+				title: this.props.title,
+				resources: this.state.resources,
+				describes: this.resourceDescribe.getDescribesOfList(),
 				resourceEditClick: function resourceEditClick(resource) {
 					return _this2.resourceOperationClick(operationState.edit, resource);
 				},
@@ -6103,17 +6179,26 @@ var Resource = function (_React$Component) {
 				resourceList,
 				paging,
 				this.state.operationState == operationState.add && _react2.default.createElement(_AddResourceForm2.default, {
+					title: this.props.title,
+					describes: this.resourceDescribe.getDescribesOfAdd(),
 					resource: this.state.curResource,
 					resourceUpdate: function resourceUpdate(resource) {
 						return _this2.resourceUpdate(operationState.add, resource);
 					} }),
 				this.state.operationState == operationState.edit && _react2.default.createElement(_EditResourceForm2.default, {
+					title: this.props.title,
+					describes: this.resourceDescribe.getDescribesOfEdit(),
 					resource: this.state.curResource,
 					resourceUpdate: function resourceUpdate(resource) {
 						return _this2.resourceUpdate(operationState.edit, resource);
 					} }),
-				this.state.operationState == operationState.lookup && _react2.default.createElement(_LookupResourceForm2.default, { resource: this.state.curResource }),
+				this.state.operationState == operationState.lookup && _react2.default.createElement(_LookupResourceForm2.default, {
+					title: this.props.title,
+					describes: this.resourceDescribe.describes,
+					resource: this.state.curResource }),
 				this.state.operationState == operationState.delete && _react2.default.createElement(_ResourceDelete2.default, {
+					title: this.props.title,
+					nameDescribe: this.resourceDescribe.nameDescribes,
 					resource: this.state.curResource,
 					resourceUpdate: function resourceUpdate(resource) {
 						return _this2.resourceUpdate(operationState.delete, resource);
@@ -6164,6 +6249,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ResourceDelete = function (_React$Component) {
   _inherits(ResourceDelete, _React$Component);
 
+  // props.title
+  // props.resource
+  // props.nameDescribe
+  // props.resourceUpdate()
   function ResourceDelete(props) {
     _classCallCheck(this, ResourceDelete);
 
@@ -6211,7 +6300,8 @@ var ResourceDelete = function (_React$Component) {
                 _react2.default.createElement(
                   'h4',
                   { className: 'modal-title' },
-                  '\u5220\u9664\u5BA2\u6237\u7AEF'
+                  '\u5220\u9664 ',
+                  this.props.title
                 ),
                 _react2.default.createElement(
                   'button',
@@ -6223,7 +6313,7 @@ var ResourceDelete = function (_React$Component) {
                 'div',
                 { className: 'modal-body' },
                 '\u4F60\u6B63\u8981\u5220\u9664 ',
-                this.props.resource.clientId,
+                this.props.resource[this.props.nameDescribe.name],
                 ' \uFF0C\u5220\u9664\u540E\u65E0\u6CD5\u6062\u590D\uFF0C\u786E\u5B9A\u5220\u9664\u5417\uFF1F'
               ),
               _react2.default.createElement(
@@ -6271,66 +6361,146 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _ResourceDescribeValueType = __webpack_require__(/*! ./ResourceDescribeValueType.js */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceDescribeValueType.js");
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ResourceDescribe = function () {
-	// describes [{text:"", name:"", isId=true, isName=true}]
+	// describes [{
+	// 	text:"", 
+	// 	name:"", 
+	// 	isShowOnList=false, 
+	// 	isAddShow=true,
+	//	isEditShow=true,
+	// 	isId=true, 
+	// 	isName=true, 
+	// 	valueType="", 
+	// 	valueTexts=[{value:"", text:""}]
+	// }]
 	function ResourceDescribe(describes) {
 		_classCallCheck(this, ResourceDescribe);
 
 		this.describes = describes;
-		this.idName = "id";
+		this.idDescribes = null;
+		this.nameDescribes = null;
+
 		for (var item in this.describes) {
-			if (this.describes[item].isId === true) {
-				this.idName = this.describes[item].name;
+			if (this.describes[item].text === undefined) {
+				this.describes[item].text = this.describes[item].name;
+			}
+
+			if (this.describes[item].isShowOnList === undefined) {
+				this.describes[item].isShowOnList = false;
+			}
+
+			if (this.describes[item].isAddShow === undefined) {
+				this.describes[item].isAddShow = true;
+			}
+
+			if (this.describes[item].isEditShow === undefined) {
+				this.describes[item].isEditShow = true;
+			}
+
+			if (this.describes[item].isId === undefined) {
+				this.describes[item].isId = false;
+			}
+
+			if (this.describes[item].isName === undefined) {
+				this.describes[item].isName = false;
+			}
+
+			if (this.describes[item].valueType === undefined) {
+				this.describes[item].valueType = _ResourceDescribeValueType.ResourceDescribeValueType.text;
+			}
+
+			if (this.describes[item].valueTexts === undefined) {
+				this.describes[item].valueTexts = new Array();
+			}
+		}
+
+		for (var _item in this.describes) {
+			if (this.describes[_item].isId === true) {
+				this.idDescribes = this.describes[_item];
 				break;
 			}
 		}
 
-		this.nameName = "name";
-		for (var _item in this.describes) {
-			if (this.describes[_item].isName === true) {
-				this.nameName = this.describes[_item].name;
+		for (var _item2 in this.describes) {
+			if (this.describes[_item2].isName === true) {
+				this.nameDescribes = this.describes[_item2];
 				break;
 			}
 		}
 	}
 
+	// 获取显示在列表上的描述
+
+
 	_createClass(ResourceDescribe, [{
-		key: "getTextFormName",
-		value: function getTextFormName(name) {
+		key: "getDescribesOfList",
+		value: function getDescribesOfList() {
+			var listDescribes = new Array();
+
 			for (var item in this.describes) {
-				if (this.describes[item].name === name) {
-					return this.describes[item].text;
+				if (this.describes[item].isShowOnList === true) {
+					listDescribes.push(this.describes[item]);
 				}
 			}
 
-			for (var _item2 in this.describes) {
+			return listDescribes;
+		}
+
+		// 获取显示在添加上的描述
+
+	}, {
+		key: "getDescribesOfAdd",
+		value: function getDescribesOfAdd() {
+			var listDescribes = new Array();
+
+			for (var item in this.describes) {
+				if (this.describes[item].isAddShow === true) {
+					listDescribes.push(this.describes[item]);
+				}
+			}
+
+			return listDescribes;
+		}
+
+		// 获取显示在编辑上的描述
+
+	}, {
+		key: "getDescribesOfEdit",
+		value: function getDescribesOfEdit() {
+			var listDescribes = new Array();
+
+			for (var item in this.describes) {
+				if (this.describes[item].isEditShow === true) {
+					listDescribes.push(this.describes[item]);
+				}
+			}
+
+			return listDescribes;
+		}
+
+		// 根据名称获取的描述
+
+	}, {
+		key: "getDescribeFormName",
+		value: function getDescribeFormName(name) {
+			for (var item in this.describes) {
+				if (this.describes[item].name === name) {
+					return this.describes[item];
+				}
+			}
+
+			for (var _item3 in this.describes) {
 				var reg = new RegExp("." + name + "$");
-				if (reg.text(this.describes[_item2].name)) {
-					return this.describes[_item2].text;
+				if (reg.text(this.describes[_item3].name)) {
+					return this.describes[_item3];
 				}
 			}
 
 			return null;
-		}
-	}, {
-		key: "getResourceId",
-		value: function getResourceId(resource) {
-			if (this.idName === null) {
-				return null;
-			}
-
-			return resource[this.idName];
-		}
-	}, {
-		key: "getResourceName",
-		value: function getResourceName(resource) {
-			if (this.nameName === null) {
-				return null;
-			}
-
-			return resource[this.nameName];
 		}
 	}]);
 
@@ -6338,6 +6508,28 @@ var ResourceDescribe = function () {
 }();
 
 exports.default = ResourceDescribe;
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceDescribeValueType.js":
+/*!************************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceDescribeValueType.js ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var ResourceDescribeValueType = exports.ResourceDescribeValueType = {
+	text: "text",
+	textGroup: "textGroup",
+	radio: "radio",
+	check: "check"
+};
 
 /***/ }),
 
@@ -6373,10 +6565,7 @@ var AddResourceForm = function (_ResourceForm) {
 	function AddResourceForm(props) {
 		_classCallCheck(this, AddResourceForm);
 
-		var _this = _possibleConstructorReturn(this, (AddResourceForm.__proto__ || Object.getPrototypeOf(AddResourceForm)).call(this, props));
-
-		_this.submitUrl = "/api/ClientManage/AddClient";
-		return _this;
+		return _possibleConstructorReturn(this, (AddResourceForm.__proto__ || Object.getPrototypeOf(AddResourceForm)).call(this, props));
 	}
 
 	return AddResourceForm;
@@ -6418,10 +6607,7 @@ var EditResourceForm = function (_ResourceForm) {
 	function EditResourceForm(props) {
 		_classCallCheck(this, EditResourceForm);
 
-		var _this = _possibleConstructorReturn(this, (EditResourceForm.__proto__ || Object.getPrototypeOf(EditResourceForm)).call(this, props));
-
-		_this.submitUrl = "/api/ClientManage/UpdateClient";
-		return _this;
+		return _possibleConstructorReturn(this, (EditResourceForm.__proto__ || Object.getPrototypeOf(EditResourceForm)).call(this, props));
 	}
 
 	return EditResourceForm;
@@ -6522,7 +6708,7 @@ var FormCheck = function (_React$Component) {
 			var _this3 = this;
 
 			var checkboxLis = this.props.values.map(function (item, index) {
-				if (_this3.state.selectValues.indexOf(item.value) >= 0) {
+				if (_this3.state.selectValues.indexOf(item.value) >= 0 || _this3.state.selectValues.indexOf(item.value.toString()) >= 0) {
 					return _react2.default.createElement(
 						'li',
 						null,
@@ -6638,7 +6824,7 @@ var FormRadio = function (_React$Component) {
 			var _this3 = this;
 
 			var radioLis = this.props.values.map(function (item) {
-				if (item.value == _this3.state.selectValue) {
+				if (item.value === _this3.state.selectValue || item.value.toString() === _this3.state.selectValue) {
 					return _react2.default.createElement(
 						'li',
 						null,
@@ -6700,10 +6886,7 @@ var LookupResourceForm = function (_ResourceForm) {
 	function LookupResourceForm(props) {
 		_classCallCheck(this, LookupResourceForm);
 
-		var _this = _possibleConstructorReturn(this, (LookupResourceForm.__proto__ || Object.getPrototypeOf(LookupResourceForm)).call(this, props));
-
-		_this.submitUrl = "";
-		return _this;
+		return _possibleConstructorReturn(this, (LookupResourceForm.__proto__ || Object.getPrototypeOf(LookupResourceForm)).call(this, props));
 	}
 
 	return LookupResourceForm;
@@ -6737,6 +6920,8 @@ var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _ResourceDescribeValueType = __webpack_require__(/*! ../ResourceDescribeValueType.js */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceDescribeValueType.js");
+
 var _FormRadio = __webpack_require__(/*! ./FormRadio.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceForm/FormRadio.jsx");
 
 var _FormRadio2 = _interopRequireDefault(_FormRadio);
@@ -6760,60 +6945,21 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ResourceForm = function (_React$Component) {
   _inherits(ResourceForm, _React$Component);
 
+  // props.resource
+  // props.describes
+  // props.resourceUpdate()
   function ResourceForm(props) {
     _classCallCheck(this, ResourceForm);
 
     var _this = _possibleConstructorReturn(this, (ResourceForm.__proto__ || Object.getPrototypeOf(ResourceForm)).call(this, props));
 
-    _this.submitUrl = "";
-
     _this.resource = null;
-
-    _this.state = {
-      grantTypeGroupNames: new Array(),
-      identityResources: new Array(),
-      apiResources: new Array()
-    };
-
-    _this.getClientGrantTypeGroupNamesBackcall = _this.getClientGrantTypeGroupNamesBackcall.bind(_this);
-    _this.getClientGrantTypeGroupNames();
-
-    _this.getIdentityResourcesBackcall = _this.getIdentityResourcesBackcall.bind(_this);
-    _this.getIdentityResources();
-
-    _this.getApiResourcesBackcall = _this.getApiResourcesBackcall.bind(_this);
-    _this.getApiResources();
 
     _this.submit = _this.submit.bind(_this);
     return _this;
   }
 
   _createClass(ResourceForm, [{
-    key: 'initClient',
-    value: function initClient(inputClient) {
-      if (inputClient == null) {
-        this.resource = {
-          id: "",
-          clientId: "",
-          clientSecret: "",
-          allowedGrantType: "",
-          allowedScopes: new Array(),
-          redirectUris: new Array(),
-          postLogoutRedirectUris: new Array(),
-          allowAccessTokensViaBrowser: true,
-          accessTokenType: "jwt",
-          enabled: true,
-          allowOfflineAccess: true
-        };
-        return;
-      }
-
-      this.resource = Object.assign({}, inputClient);
-      this.resource.allowedScopes = Object.assign([], inputClient.allowedScopes);
-      this.resource.redirectUris = Object.assign([], inputClient.redirectUris);
-      this.resource.postLogoutRedirectUris = Object.assign([], inputClient.postLogoutRedirectUris);
-    }
-  }, {
     key: 'componentWillMount',
     value: function componentWillMount() {
       this.initClient(this.props.resource);
@@ -6822,8 +6968,6 @@ var ResourceForm = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       $("#dataFormBtn").click();
-
-      // this.resource = Object.assign({}, this.props.resource);
     }
   }, {
     key: 'componentWillReceiveProps',
@@ -6832,100 +6976,29 @@ var ResourceForm = function (_React$Component) {
 
       this.initClient(nextProps.resource);
     }
-
-    // 获取认证类型组合回调
-
   }, {
-    key: 'getClientGrantTypeGroupNamesBackcall',
-    value: function getClientGrantTypeGroupNamesBackcall(data) {
-      if (data.isSuccess == true) {
-        this.setState({ grantTypeGroupNames: data.value });
-      }
-    }
+    key: 'initClient',
+    value: function initClient(inputResource) {
+      if (inputResource == null) {
+        this.resource = {};
 
-    // 获取认证类型组合
-
-  }, {
-    key: 'getClientGrantTypeGroupNames',
-    value: function getClientGrantTypeGroupNames() {
-      var postData = {};
-
-      $.ajax({
-        url: "/api/ClientManage/GetClientGrantTypeGroupNames",
-        type: 'post',
-        data: JSON.stringify(postData),
-        contentType: 'application/json',
-        dataType: 'json',
-        success: this.getClientGrantTypeGroupNamesBackcall
-      });
-    }
-
-    // 获取身份资源回调
-
-  }, {
-    key: 'getIdentityResourcesBackcall',
-    value: function getIdentityResourcesBackcall(data) {
-      if (data.isSuccess == true) {
-        var identityResources = new Array();
-        for (var item in data.value.identityResources) {
-          identityResources.push(data.value.identityResources[item].name);
+        for (var item in this.props.describes) {
+          if (this.props.describes[item].valueType === _ResourceDescribeValueType.ResourceDescribeValueType.textGroup || this.props.describes[item].valueType === _ResourceDescribeValueType.ResourceDescribeValueType.check) {
+            this.resource[this.props.describes[item].name] = new Array();
+          } else {
+            this.resource[this.props.describes[item].name] = "";
+          }
         }
-        this.setState({ identityResources: identityResources });
+        return;
       }
-    }
 
-    // 获取身份资源
+      this.resource = Object.assign({}, inputResource);
 
-  }, {
-    key: 'getIdentityResources',
-    value: function getIdentityResources() {
-      var postData = {
-        pageIndex: 1,
-        pageSize: 9999
-      };
-
-      $.ajax({
-        url: "/api/IdentityResourceManage/GetIdentityResources",
-        type: 'post',
-        data: JSON.stringify(postData),
-        contentType: 'application/json',
-        dataType: 'json',
-        success: this.getIdentityResourcesBackcall
-      });
-    }
-
-    // 获取Api资源回调
-
-  }, {
-    key: 'getApiResourcesBackcall',
-    value: function getApiResourcesBackcall(data) {
-      if (data.isSuccess == true) {
-        var resources = new Array();
-        for (var item in data.value.apiResources) {
-          resources.push(data.value.apiResources[item].name);
+      for (var _item in this.props.describes) {
+        if (this.props.describes[_item].valueType === _ResourceDescribeValueType.ResourceDescribeValueType.textGroup && this.props.describes[_item].valueType === _ResourceDescribeValueType.ResourceDescribeValueType.check) {
+          this.resource[this.props.describes[_item].name] = Object.assign([], inputResource[this.props.describes[_item].name]);
         }
-        this.setState({ apiResources: resources });
       }
-    }
-
-    // 获取Api资源
-
-  }, {
-    key: 'getApiResources',
-    value: function getApiResources() {
-      var postData = {
-        pageIndex: 1,
-        pageSize: 9999
-      };
-
-      $.ajax({
-        url: "/api/ApiResourceManage/GetApiResources",
-        type: 'post',
-        data: JSON.stringify(postData),
-        contentType: 'application/json',
-        dataType: 'json',
-        success: this.getApiResourcesBackcall
-      });
     }
 
     // 提交
@@ -6937,85 +7010,107 @@ var ResourceForm = function (_React$Component) {
       $("#dataFormCloseBtn").click();
     }
   }, {
-    key: 'render',
-    value: function render() {
+    key: 'createElement',
+    value: function createElement(describe) {
       var _this2 = this;
 
-      var allowedGrantTypeUl = _react2.default.createElement(_FormRadio2.default, {
-        name: 'allowedGrantType',
-        values: this.state.grantTypeGroupNames.map(function (item) {
-          return { text: item, value: item };
-        }),
-        selectValue: this.resource.allowedGrantType,
-        onChange: function onChange(name, selectValue) {
-          _this2.resource.allowedGrantType = selectValue;
-        } });
+      if (describe.valueType === _ResourceDescribeValueType.ResourceDescribeValueType.text) {
+        return _react2.default.createElement(
+          'div',
+          { name: describe.name, className: 'input-group mb-3 col-md-12' },
+          _react2.default.createElement(
+            'div',
+            { className: 'input-group-prepend' },
+            _react2.default.createElement(
+              'span',
+              { className: 'input-group-text' },
+              describe.text
+            )
+          ),
+          _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: "请输入" + describe.text,
+            value: this.resource[describe.name],
+            onChange: function onChange(event) {
+              _this2.resource[describe.name] = event.target.value;_this2.setState();
+            } })
+        );
+      }
 
-      var identityResourceUl = _react2.default.createElement(_FormCheck2.default, {
-        name: 'allowedScopes',
-        values: this.state.identityResources.map(function (item) {
-          return { text: item, value: item };
-        }),
-        selectValues: this.resource.allowedScopes,
-        onChange: function onChange(name, selectValues) {
-          _this2.resource.allowedScopes = selectValues;
-        } });
+      if (describe.valueType === _ResourceDescribeValueType.ResourceDescribeValueType.textGroup) {
+        return _react2.default.createElement(
+          'div',
+          { name: describe.name, className: 'col-md-12 float-left' },
+          _react2.default.createElement(_TextGroup2.default, {
+            title: describe.text,
+            values: this.resource[describe.name],
+            onChange: function onChange(name, values) {
+              _this2.resource[describe.name] = values;
+            } })
+        );
+      }
 
-      var apiResourceUl = _react2.default.createElement(_FormCheck2.default, {
-        name: 'allowedScopes',
-        values: this.state.apiResources.map(function (item) {
-          return { text: item, value: item };
-        }),
-        selectValues: this.resource.allowedScopes,
-        onChange: function onChange(name, selectValues) {
-          _this2.resource.allowedScopes = selectValues;
-        } });
+      if (describe.valueType === _ResourceDescribeValueType.ResourceDescribeValueType.radio) {
+        return _react2.default.createElement(
+          'div',
+          { name: describe.name, className: 'col-md-12 float-left' },
+          _react2.default.createElement(
+            'div',
+            { className: 'card' },
+            _react2.default.createElement(
+              'div',
+              { className: 'card-header bg-secondary text-white' },
+              describe.text
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'card-body' },
+              _react2.default.createElement(_FormRadio2.default, {
+                name: describe.name,
+                values: describe.valueTexts,
+                selectValue: this.resource[describe.name],
+                onChange: function onChange(name, selectValue) {
+                  _this2.resource[describe.name] = selectValue;
+                } })
+            )
+          )
+        );
+      }
 
-      var redirectUriGroup = _react2.default.createElement(_TextGroup2.default, {
-        name: 'redirectUris',
-        values: this.resource.redirectUris,
-        onChange: function onChange(name, values) {
-          _this2.resource.redirectUris = values;
-        } });
+      if (describe.valueType === _ResourceDescribeValueType.ResourceDescribeValueType.check) {
+        return _react2.default.createElement(
+          'div',
+          { name: describe.name, className: 'col-md-12 float-left' },
+          _react2.default.createElement(
+            'div',
+            { className: 'card' },
+            _react2.default.createElement(
+              'div',
+              { className: 'card-header bg-secondary text-white' },
+              describe.text
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'card-body' },
+              _react2.default.createElement(_FormCheck2.default, {
+                name: describe.name,
+                values: describe.valueTexts,
+                selectValues: this.resource[describe.name],
+                onChange: function onChange(name, selectValues) {
+                  _this2.resource[describe.name] = selectValues;
+                } })
+            )
+          )
+        );
+      }
 
-      var postLogoutRedirectUrisGroup = _react2.default.createElement(_TextGroup2.default, {
-        name: 'postLogoutRedirectUris',
-        values: this.resource.postLogoutRedirectUris,
-        onChange: function onChange(name, values) {
-          _this2.resource.postLogoutRedirectUris = values;
-        } });
-
-      var allowAccessTokensViaBrowserUl = _react2.default.createElement(_FormRadio2.default, {
-        name: 'allowAccessTokensViaBrowser',
-        values: [{ text: "启用", value: "true" }, { text: "禁用", value: "false" }],
-        selectValue: this.resource.allowAccessTokensViaBrowser.toString(),
-        onChange: function onChange(name, selectValue) {
-          _this2.resource.allowAccessTokensViaBrowser = selectValue;
-        } });
-
-      var accessTokenTypeUl = _react2.default.createElement(_FormRadio2.default, {
-        name: 'accessTokenType',
-        values: [{ text: "JWT", value: "jwt" }, { text: "Reference", value: "reference" }],
-        selectValue: this.resource.accessTokenType,
-        onChange: function onChange(name, selectValue) {
-          _this2.resource.accessTokenType = selectValue;
-        } });
-
-      var enabledUl = _react2.default.createElement(_FormRadio2.default, {
-        name: 'enabled',
-        values: [{ text: "启用", value: "true" }, { text: "禁用", value: "false" }],
-        selectValue: this.resource.enabled.toString(),
-        onChange: function onChange(name, selectValue) {
-          _this2.resource.enabled = selectValue;
-        } });
-
-      var allowOfflineAccessUl = _react2.default.createElement(_FormRadio2.default, {
-        name: 'allowOfflineAccess',
-        values: [{ text: "启用", value: "true" }, { text: "禁用", value: "false" }],
-        selectValue: this.resource.allowOfflineAccess.toString(),
-        onChange: function onChange(name, selectValue) {
-          _this2.resource.allowOfflineAccess = selectValue;
-        } });
+      return null;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var elements = new Array();
+      for (var item in this.props.describes) {
+        elements.push(this.createElement(this.props.describes[item]));
+      }
 
       return _react2.default.createElement(
         'div',
@@ -7051,167 +7146,7 @@ var ResourceForm = function (_React$Component) {
               _react2.default.createElement(
                 'div',
                 { className: 'modal-body jumbotron' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'input-group mb-3 col-md-12' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'input-group-prepend' },
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'input-group-text' },
-                      '\u5BA2\u6237\u7AEFId'
-                    )
-                  ),
-                  _react2.default.createElement('input', { name: 'clientId', type: 'text', className: 'form-control', placeholder: '\u5BA2\u6237\u7AEFId',
-                    value: this.resource.clientId,
-                    onChange: function onChange(event) {
-                      _this2.resource.clientId = event.target.value;_this2.setState();
-                    } })
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'input-group mb-3 col-md-12' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'input-group-prepend' },
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'input-group-text' },
-                      '\u5BA2\u6237\u7AEF\u5BC6\u94A5'
-                    )
-                  ),
-                  _react2.default.createElement('input', { name: 'clientSecret', type: 'text', className: 'form-control', placeholder: '\u5BC6\u94A5\uFF08\u5982\u4E0D\u586B\u5199\u5219\u65E0\u9700\u4FEE\u6539\uFF09',
-                    value: this.resource.clientSecret,
-                    onChange: function onChange(event) {
-                      _this2.resource.clientSecret = event.target.value;_this2.setState();
-                    } })
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-md-12 float-left' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'card' },
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'card-header bg-secondary text-white' },
-                      '\u8BA4\u8BC1\u7C7B\u578B'
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'card-body' },
-                      allowedGrantTypeUl
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-md-12 float-left' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'card' },
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'card-header bg-secondary text-white' },
-                      '\u8EAB\u4EFD\u8D44\u6E90\u57DF'
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'card-body' },
-                      identityResourceUl
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-md-12 float-left' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'card' },
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'card-header bg-secondary text-white' },
-                      'Api\u8D44\u6E90\u57DF'
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'card-body' },
-                      apiResourceUl
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'w-100 float-left' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'col-md-6 float-left' },
-                    redirectUriGroup
-                  ),
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'col-md-6 float-left' },
-                    postLogoutRedirectUrisGroup
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-md-12 float-left' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'card' },
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'card-header bg-secondary text-white' },
-                      '\u5176\u4ED6\u9009\u9879'
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'card-body' },
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'col-md-6 float-left' },
-                        _react2.default.createElement(
-                          'h6',
-                          { className: 'margin-buttom10' },
-                          '\u5141\u8BB8\u6D4F\u89C8\u5668\u8BBF\u95EE'
-                        ),
-                        allowAccessTokensViaBrowserUl
-                      ),
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'col-md-6 float-left' },
-                        _react2.default.createElement(
-                          'h6',
-                          { className: 'margin-buttom10' },
-                          'Token\u7C7B\u578B'
-                        ),
-                        accessTokenTypeUl
-                      ),
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'col-md-6 float-left' },
-                        _react2.default.createElement(
-                          'h6',
-                          { className: 'margin-buttom10' },
-                          '\u662F\u5426\u542F\u7528'
-                        ),
-                        enabledUl
-                      ),
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'col-md-6 float-left' },
-                        _react2.default.createElement(
-                          'h6',
-                          { className: 'margin-buttom10' },
-                          '\u79BB\u7EBF\u5171\u4EAB'
-                        ),
-                        allowOfflineAccessUl
-                      )
-                    )
-                  )
-                )
+                elements
               ),
               _react2.default.createElement(
                 'div',
@@ -7277,8 +7212,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var TextGroup = function (_React$Component) {
 	_inherits(TextGroup, _React$Component);
 
+	// 
 	// props.name
 	// props.values
+	// props.title
 	// props.onChange(name, values)
 	function TextGroup(props) {
 		_classCallCheck(this, TextGroup);
@@ -7286,7 +7223,7 @@ var TextGroup = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, (TextGroup.__proto__ || Object.getPrototypeOf(TextGroup)).call(this, props));
 
 		_this.state = {
-			values: new Array()
+			values: _this.props.values
 		};
 
 		_this.AddClick = _this.AddClick.bind(_this);
@@ -7366,7 +7303,7 @@ var TextGroup = function (_React$Component) {
 				_react2.default.createElement(
 					'div',
 					{ className: 'card-header bg-secondary text-white' },
-					'\u767B\u5F55\u91CD\u5B9A\u5411\u5730\u5740'
+					this.props.title
 				),
 				_react2.default.createElement(
 					'div',
@@ -7413,6 +7350,8 @@ var _reactDom = __webpack_require__(/*! react-dom */ "./src/lib/js/react-dom.min
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _ResourceDescribeValueType = __webpack_require__(/*! ./ResourceDescribeValueType.js */ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/ResourceDescribeValueType.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -7424,6 +7363,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ResourceList = function (_React$Component) {
     _inherits(ResourceList, _React$Component);
 
+    // props.title
+    // props.resources
+    // props.describes
+    // props.resourceEditClick()
+    // props.resourceDeleteClick()
+    // props.resourceLookupClick()
     function ResourceList(props) {
         _classCallCheck(this, ResourceList);
 
@@ -7431,69 +7376,145 @@ var ResourceList = function (_React$Component) {
     }
 
     _createClass(ResourceList, [{
-        key: 'render',
-        value: function render() {
+        key: 'getShowTexts',
+        value: function getShowTexts(resource, describe) {
+            var texts = new Array();
+            if (describe.valueType === _ResourceDescribeValueType.ResourceDescribeValueType.text) {
+                texts.push(resource[describe.name]);
+                return texts;
+            }
+
+            if (describe.valueType === _ResourceDescribeValueType.ResourceDescribeValueType.textGroup) {
+                var values = resource[describe.name];
+                for (var valueItem in values) {
+                    texts.push(values[valueItem]);
+                }
+                return texts;
+            }
+
+            if (describe.valueType === _ResourceDescribeValueType.ResourceDescribeValueType.radio) {
+                var valueTexts = describe.valueTexts;
+                if (valueTexts === undefined) {
+                    texts.push(resource[describe.name]);
+                } else {
+                    var value = resource[describe.name];
+
+                    valueTexts.map(function (valueText) {
+                        if (valueText.value === value) texts.push(valueText.text);
+                    });
+                }
+                return texts;
+            }
+
+            if (describe.valueType === _ResourceDescribeValueType.ResourceDescribeValueType.check) {
+                var _valueTexts = describe.valueTexts;
+                if (_valueTexts === undefined) {
+                    var _values = resource[describe.name];
+
+                    for (var _valueItem in _values) {
+                        texts.push(_values[_valueItem]);
+                    }
+                } else {
+                    (function () {
+                        var values = resource[describe.name];
+
+                        var _loop = function _loop(_valueItem2) {
+                            _valueTexts.map(function (valueText) {
+                                if (valueText.value === values[_valueItem2]) texts.push(valueText.text);
+                            });
+                        };
+
+                        for (var _valueItem2 in values) {
+                            _loop(_valueItem2);
+                        }
+                    })();
+                }
+                return texts;
+            }
+
+            return texts;
+        }
+    }, {
+        key: 'createResourceTr',
+        value: function createResourceTr(resource, describes) {
             var _this2 = this;
 
-            var resources = this.props.resources;
+            var resourceBodyTds = new Array();
+            for (var describeItem in describes) {
+                var showTexts = this.getShowTexts(resource, describes[describeItem]);
+                var text = "";
+                if (showTexts.length > 1) {
+                    for (var showTextItem in showTexts) {
+                        text = text + "[" + showTexts[showTextItem] + "]";
+                    }
+                } else if (showTexts.length == 1) {
+                    text = showTexts[0];
+                }
 
-            var resourceTrs = new Array();
+                resourceBodyTds.push(_react2.default.createElement(
+                    'td',
+                    null,
+                    text
+                ));
+            }
 
-            var _loop = function _loop(item) {
-                var resourceTr = _react2.default.createElement(
-                    'tr',
+            return _react2.default.createElement(
+                'tr',
+                null,
+                resourceBodyTds,
+                _react2.default.createElement(
+                    'td',
                     null,
                     _react2.default.createElement(
-                        'td',
-                        null,
-                        resources[item].clientId
-                    ),
-                    _react2.default.createElement(
-                        'td',
-                        null,
-                        resources[item].allowedGrantType
-                    ),
-                    _react2.default.createElement(
-                        'td',
-                        null,
-                        resources[item].accessTokenType
-                    ),
-                    _react2.default.createElement(
-                        'td',
-                        null,
-                        resources[item].enabled ? "启用" : "禁用"
-                    ),
-                    _react2.default.createElement(
-                        'td',
-                        null,
+                        'div',
+                        { className: 'btn-group btn-group-sm' },
                         _react2.default.createElement(
-                            'div',
-                            { className: 'btn-group btn-group-sm' },
-                            _react2.default.createElement(
-                                'button',
-                                { type: 'button', className: 'btn btn-primary',
-                                    onClick: function onClick() {
-                                        return _this2.props.resourceEditClick(resources[item]);
-                                    } },
-                                '\u7F16\u8F91'
-                            ),
-                            _react2.default.createElement(
-                                'button',
-                                { type: 'button', className: 'btn btn-danger',
-                                    onClick: function onClick() {
-                                        return _this2.props.resourceDeleteClick(resources[item]);
-                                    } },
-                                '\u5220\u9664'
-                            )
+                            'button',
+                            { type: 'button', className: 'btn btn-primary',
+                                onClick: function onClick() {
+                                    return _this2.props.resourceEditClick(resource);
+                                } },
+                            '\u7F16\u8F91'
+                        ),
+                        _react2.default.createElement(
+                            'button',
+                            { type: 'button', className: 'btn btn-danger',
+                                onClick: function onClick() {
+                                    return _this2.props.resourceDeleteClick(resource);
+                                } },
+                            '\u5220\u9664'
                         )
                     )
-                );
+                )
+            );
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var describes = this.props.describes;
+            var resourceHeadThs = new Array();
+            for (var item in describes) {
+                resourceHeadThs.push(_react2.default.createElement(
+                    'th',
+                    null,
+                    describes[item].text
+                ));
+            }
+            var resourceHeadTr = _react2.default.createElement(
+                'tr',
+                null,
+                resourceHeadThs,
+                _react2.default.createElement(
+                    'th',
+                    null,
+                    '\u64CD\u4F5C'
+                )
+            );
 
-                resourceTrs.push(resourceTr);
-            };
-
-            for (var item in resources) {
-                _loop(item);
+            var resources = this.props.resources;
+            var resourceBodyTrs = new Array();
+            for (var _item in resources) {
+                resourceBodyTrs.push(this.createResourceTr(resources[_item], describes));
             }
 
             return _react2.default.createElement(
@@ -7516,7 +7537,8 @@ var ResourceList = function (_React$Component) {
                 _react2.default.createElement(
                     'h5',
                     null,
-                    '\u5BA2\u6237\u7AEF\u5217\u8868'
+                    this.props.title,
+                    ' \u5217\u8868'
                 ),
                 _react2.default.createElement(
                     'table',
@@ -7524,40 +7546,12 @@ var ResourceList = function (_React$Component) {
                     _react2.default.createElement(
                         'thead',
                         null,
-                        _react2.default.createElement(
-                            'tr',
-                            null,
-                            _react2.default.createElement(
-                                'th',
-                                null,
-                                '\u5BA2\u6237\u7AEFId'
-                            ),
-                            _react2.default.createElement(
-                                'th',
-                                null,
-                                '\u8BA4\u8BC1\u7C7B\u578B'
-                            ),
-                            _react2.default.createElement(
-                                'th',
-                                null,
-                                'Token\u7C7B\u578B'
-                            ),
-                            _react2.default.createElement(
-                                'th',
-                                null,
-                                '\u542F\u7528\u72B6\u6001'
-                            ),
-                            _react2.default.createElement(
-                                'th',
-                                null,
-                                '\u64CD\u4F5C'
-                            )
-                        )
+                        resourceHeadTr
                     ),
                     _react2.default.createElement(
                         'tbody',
                         null,
-                        resourceTrs
+                        resourceBodyTrs
                     )
                 )
             );

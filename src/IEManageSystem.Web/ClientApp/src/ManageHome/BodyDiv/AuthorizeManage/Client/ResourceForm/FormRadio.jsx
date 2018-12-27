@@ -38,7 +38,7 @@ export default class FormRadio extends React.Component
 
 	render(){
 		let radioLis = this.props.values.map(item=>{
-			if(item.value == this.state.selectValue){
+			if(item.value === this.state.selectValue || item.value.toString() === this.state.selectValue){
 				return <li><input type="radio" name={this.props.name} data-labelauty={ item.text } value={item.value} checked={true} onChange={this.onChange} /></li>;
 			}
 			else{

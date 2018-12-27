@@ -23,19 +23,26 @@ var operationState = {
 
 export default class Resource extends React.Component
 {
-	// props.resources
-	// props.resourceNum
-	// props.isFreshenResources
+	// props.title
+	// props.describes
 	// props.freshenResources()
 	// props.addResource()
 	// props.updateResource()
 	// props.deleteResource()
+	// props.setResourceRef()
 	constructor(props){
 		super(props);
 
+		this.props.setResourceRef(this);
+
         this.pageSize = 10;
 
-		this.state = {
+        this.resourceDescribe = new ResourceDescribe(this.props.describes);
+
+		this.state = 
+		{
+			resources:new Array(),
+			resourceNum: 0,
 			curResource: null,
 			pageNum: 0,
 			pageIndex: 1,
@@ -45,40 +52,40 @@ export default class Resource extends React.Component
 		this.pageIndexChange = this.pageIndexChange.bind(this);
 		this.resourceOperationClick = this.resourceOperationClick.bind(this);
 		this.resourceUpdate = this.resourceUpdate.bind(this);
-	}
 
-	componentWillMount(){
-	    this.freshenState(this.props)
-	}
-
-    componentWillReceiveProps(nextProps){
-	    this.freshenState(nextProps)
+		this.props.freshenResources(this.state.pageIndex, this.pageSize);
 	}
 
 	componentDidMount(){
-		
-	    // 如果外部需要刷新资源
-        if(this.props.isFreshenResources === true){
-        	this.props.freshenResources(this.state.pageIndex, this.pageSize);
-        }
 	}
 
 	componentDidUpdate(){
         this.state.operationState = operationState.none;
-		
-		// 如果外部需要刷新资源
-        if(this.props.isFreshenResources === true){
-        	this.props.freshenResources(this.state.pageIndex, this.pageSize);
-        }
     }
 
-	freshenState(props)
+    // 重载资源
+    reloadResources(){
+    	this.props.freshenResources(this.state.pageIndex, this.pageSize);
+    }
+
+	// 重新设置资源（由父组件调用）
+	resetResources(resources, pageIndex)
 	{
-	    let pageNum = parseInt(props.resourceNum/this.pageSize);
-        if((props.resourceNum%this.pageSize) > 0){
+		this.setState({ resources:resources, pageIndex: pageIndex })
+	}
+
+	// 重新设置资源数量（由父组件调用）
+	resetResourceNum(resourceNum)
+	{
+		let pageNum = parseInt(resourceNum / this.pageSize);
+        if((resourceNum % this.pageSize) > 0){
             pageNum++;
         }
-        this.state.pageNum = pageNum;
+
+		this.setState({
+			resourceNum: resourceNum,
+			pageNum: pageNum,
+		})
 	}
     
     // 页索引改变
@@ -86,7 +93,6 @@ export default class Resource extends React.Component
 	{
 		if(pageIndex > 0 && pageIndex <= this.state.pageNum)
 		{
-			this.setState({pageIndex: pageIndex});
 			this.props.freshenResources(pageIndex, this.pageSize);
 		}
 	}
@@ -120,7 +126,9 @@ export default class Resource extends React.Component
 	render()
 	{
         let resourceList = <ResourceList 
-                    resources={ this.props.resources } 
+        			title={ this.props.title }
+                    resources={ this.state.resources } 
+                    describes={ this.resourceDescribe.getDescribesOfList() }
                     resourceEditClick={ resource=>this.resourceOperationClick(operationState.edit, resource) }
                     resourceDeleteClick={ resource=>this.resourceOperationClick(operationState.delete, resource) }
                     resourceLookupClick={ resource=>this.resourceOperationClick(operationState.lookup, resource) }
@@ -138,16 +146,25 @@ export default class Resource extends React.Component
 	            {paging}
 	            { this.state.operationState == operationState.add && 
 	            	<AddResourceForm 
+	            	title={ this.props.title }
+	            	describes={ this.resourceDescribe.getDescribesOfAdd() }
 	            	resource={ this.state.curResource } 
 	            	resourceUpdate={resource=>this.resourceUpdate(operationState.add, resource)} /> }
 	            { this.state.operationState == operationState.edit && 
 	            	<EditResourceForm 
+	            	title={ this.props.title }
+	            	describes={ this.resourceDescribe.getDescribesOfEdit() }
 	            	resource={ this.state.curResource } 
 	            	resourceUpdate={resource=>this.resourceUpdate(operationState.edit, resource)} /> }
 	            { this.state.operationState == operationState.lookup && 
-	            	<LookupResourceForm resource={ this.state.curResource } /> }
+	            	<LookupResourceForm 
+	            	title={ this.props.title }
+					describes={ this.resourceDescribe.describes }
+	            	resource={ this.state.curResource } /> }
 	            { this.state.operationState == operationState.delete && 
 	            	<ResourceDelete 
+	            	title={ this.props.title }
+	            	nameDescribe={ this.resourceDescribe.nameDescribes }
 	            	resource={ this.state.curResource } 
 	            	resourceUpdate={resource=>this.resourceUpdate(operationState.delete, resource)} /> }
 	        </div>

@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 
 export default class ResourceDelete extends React.Component
 {
+  // props.title
+  // props.resource
+  // props.nameDescribe
+  // props.resourceUpdate()
 	constructor(props){
 		super(props);
 
@@ -32,12 +36,12 @@ export default class ResourceDelete extends React.Component
                 <div className="modal-content">
              
                   <div className="modal-header">
-                    <h4 className="modal-title">删除客户端</h4>
+                    <h4 className="modal-title">删除 {this.props.title}</h4>
                     <button type="button" className="close" data-dismiss="modal">&times;</button>
                   </div>
              
                   <div className="modal-body">
-                    你正要删除 {this.props.resource.clientId} ，删除后无法恢复，确定删除吗？
+                    你正要删除 {this.props.resource[this.props.nameDescribe.name]} ，删除后无法恢复，确定删除吗？
                   </div>
              
                   <div className="modal-footer">
