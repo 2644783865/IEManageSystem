@@ -38,7 +38,10 @@ export default class SideNav extends React.Component
             for(let item in this.menu.menuItems){
                 let li = 
                     <li className="leftmenu_css_li">
-                        <NavLink className="text-white" to={this.menu.menuItems[item].url}>{this.menu.menuItems[item].text}</NavLink>
+                        <NavLink className="text-white" to={this.menu.menuItems[item].url} activeClassName="leftmenu_css_li_active">
+                            <span class="oi oi-chevron-right" title="icon name" aria-hidden="true"></span>
+                            {" " + this.menu.menuItems[item].text}
+                        </NavLink>
                     </li>;
 
                 lis.push(li);

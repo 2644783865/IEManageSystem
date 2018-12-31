@@ -6,6 +6,6 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages.Dto
 {
     public class GetClientNumInput
     {
-
+        public string SearchKey { get; set; }
     }
 }

@@ -31,6 +31,10 @@ html,body {
         margin-left: auto;
         margin-right:20px;
     }
+    .navbar_css .navbar-collapse button span {
+        margin-left: auto;
+        margin-right:5px;
+    }
     .navbar_css a {
         color: #FFFFFF;
     }
@@ -43,7 +47,8 @@ html,body {
     }
 
 .navbar_css_li_click {
-    background-color: #00E5CD;
+    background-color: #00E5CD !important;
+    color: #fff !important;
 }
 
 .navbar_css li a:focus {
@@ -64,7 +69,6 @@ html,body {
     background-color: #00BED1;
     position: relative;
     display: block;
-    padding: 10px 15px;
     margin-bottom: -1px;
     border: 1px solid #ddd;
     cursor: pointer;
@@ -72,11 +76,18 @@ html,body {
 }
     .leftmenu_css_li a{
         display: block;
+        padding: 10px 15px;
+    }
+
+    .leftmenu_css_li_active{
+        background-color: #00E5CD;
     }
 
 .leftmenu_css ul li:hover {
     background-color: #00E5CD;
 }
+
+
 
 .leftmenu_css_li_click {
     background-color: #00E5CD;

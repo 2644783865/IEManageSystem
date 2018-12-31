@@ -7,9 +7,10 @@ import TextGroup from './TextGroup.jsx';
 
 export default class ResourceForm extends React.Component
 {
-  // props.resource
-  // props.describes
-  // props.resourceUpdate()
+  // props.resource  资源数据
+  // props.describes  资源描述
+  // props.isHideSubmit  是否隐藏提交按钮
+  // props.resourceUpdate()  提交回调函数
 	constructor(props){
 		super(props);
 
@@ -72,35 +73,39 @@ export default class ResourceForm extends React.Component
   createElement(describe)
   {
     if(describe.valueType === ResourceDescribeValueType.text){
-        return(<div name={describe.name} className="input-group mb-3 col-md-12">
+        return(<div name={describe.name} className={"input-group mb-3 col-md-" + describe.col}>
                     <div className="input-group-prepend">
                       <span className="input-group-text">{describe.text}</span>
                     </div>
-                    <input type="text" className="form-control" placeholder={"请输入" + describe.text}
-                    value={this.resource[describe.name]}
+                    <input type="text" className="form-control" 
+                    placeholder={"请输入" + describe.text}
+                    readonly={ describe.isEdit ? null:"readonly" }
+                    value={this.resource[describe.name] == null ? "":this.resource[describe.name]}
                     onChange={event=>{this.resource[describe.name] = event.target.value; this.setState()}} />
                 </div>);
     }
 
     if(describe.valueType === ResourceDescribeValueType.textGroup)
     {
-        return(<div name={describe.name} className="col-md-12 float-left">
+        return(<div name={describe.name} className={"float-left col-md-" + describe.col}>
                     <TextGroup 
                     title={describe.text}
                     values={this.resource[describe.name]}
+                    isEdit={describe.isEdit}
                     onChange={(name, values)=>{this.resource[describe.name] = values}} />
                 </div>);
     }
 
     if(describe.valueType === ResourceDescribeValueType.radio)
     {
-        return(<div name={describe.name} className="col-md-12 float-left">
+        return(<div name={describe.name} className={"float-left col-md-" + describe.col}>
                     <div className="card">
                       <div className="card-header bg-secondary text-white">{describe.text}</div>
                       <div className="card-body">
                         <FormRadio 
                           name={describe.name} 
                           values={describe.valueTexts} 
+                          isEdit={describe.isEdit}
                           selectValue={this.resource[describe.name]}
                           onChange={(name, selectValue)=>{this.resource[describe.name] = selectValue}} />
                       </div> 
@@ -110,13 +115,14 @@ export default class ResourceForm extends React.Component
 
     if(describe.valueType === ResourceDescribeValueType.check)
     {
-        return(<div name={describe.name}  className="col-md-12 float-left">
+        return(<div name={describe.name}  className={"float-left col-md-" + describe.col}>
                     <div className="card">
                       <div className="card-header bg-secondary text-white">{describe.text}</div>
                       <div className="card-body">
                       <FormCheck 
                         name={describe.name} 
                         values={describe.valueTexts} 
+                        isEdit={describe.isEdit}
                         selectValues={this.resource[describe.name]}
                         onChange={(name, selectValues)=>{this.resource[describe.name] = selectValues}} />
                       </div> 
@@ -150,7 +156,10 @@ export default class ResourceForm extends React.Component
          
               <div className="modal-footer">
                 <span id="dataFormError" className="text-danger"></span>
-                <button type="button" className="btn btn-info" onClick={ this.submit }>提交</button>
+                {
+                  !this.props.isHideSubmit &&
+                  <button type="button" className="btn btn-info" onClick={ this.submit }>提交</button>
+                }
                 <button id="dataFormCloseBtn" type="button" className="btn btn-secondary" data-dismiss="modal">关闭</button>
               </div>
          

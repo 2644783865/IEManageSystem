@@ -1,9 +1,14 @@
-.data-list h5{
-    background: #343a40;
-    padding: 10px 20px 10px 20px;
+.data-list h6{
+    background: #00C5CD;
+    padding: 10px 10px 10px 10px;
     margin-bottom: 0px;
-    border-radius: 10px 10px 0px 0px;
-    color: #ffffff; 
+    color: #ffffff;
+    font-size: 17px;
+}
+
+.data-list thead{
+    background-color: #00C5AD;
+    color: #fff;
 }
 
 .data-paging ul{
@@ -26,6 +31,7 @@
 
 .data-form ul{
     padding: 0px;
+    margin: 0px;
 }
 
 .data-form li{

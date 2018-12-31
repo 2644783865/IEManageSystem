@@ -44,13 +44,16 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages
                 e=>e.AllowedScopes,
             };
 
-            var clients = _clientRepository.GetAllInclude(clientLoad).OrderByDescending(e => e.Id).Skip((input.PageIndex - 1) * input.PageSize).Take(input.PageSize).ToList();
+            var clients = FiltersClients(_clientRepository.GetAllInclude(clientLoad), input.SearchKey);
+
+            clients = clients.OrderByDescending(e => e.Id).Skip((input.PageIndex - 1) * input.PageSize).Take(input.PageSize);
 
             List<ClientDto> clientDtos = new List<ClientDto>();
-            foreach (var item in clients) {
+            foreach (var item in clients.ToList()) {
                 ClientDto clientDto = new ClientDto() {
                     Id = item.Id,
                     ClientId = item.ClientId,
+                    ClientName = item.ClientName,
                     AccessTokenType = item.AccessTokenType == (int)IdentityServer4.Models.AccessTokenType.Jwt ? "jwt" : "reference",
                     AllowAccessTokensViaBrowser = item.AllowAccessTokensViaBrowser,
                     AllowedGrantTypes = item.AllowedGrantTypes.Select(e => e.GrantType).ToList(),
@@ -70,9 +73,21 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages
 
         public async Task<GetClientNumOutput> GetClientNum(GetClientNumInput input)
         {
-            int clientNum = _clientRepository.GetAll().Count();
+            int clientNum = FiltersClients(_clientRepository.GetAll(), input.SearchKey).Count();
 
             return new GetClientNumOutput() { ClientNum = clientNum };
+        }
+
+        private IEnumerable<Client> FiltersClients(IEnumerable<Client> clients, string searchKey)
+        {
+            if (!string.IsNullOrWhiteSpace(searchKey))
+            {
+                clients = clients.Where(
+                    e => (e.ClientName != null && e.ClientName.Contains(searchKey)) || 
+                        (e.ClientId != null && e.ClientId.Contains(searchKey)));
+            }
+
+            return clients;
         }
 
         public async Task<AddClientOutput> AddClient(AddClientInput input)
@@ -94,6 +109,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages
                 input.PostLogoutRedirectUris,
                 input.AllowedScopes);
 
+            client.ClientName = input.ClientName;
             client.AllowOfflineAccess = input.AllowOfflineAccess;
             client.AccessTokenType = (int) ("jwt".Equals(input.AccessTokenType, StringComparison.OrdinalIgnoreCase) ? IdentityServer4.Models.AccessTokenType.Jwt: IdentityServer4.Models.AccessTokenType.Reference);
             client.AllowAccessTokensViaBrowser = input.AllowAccessTokensViaBrowser;
@@ -146,6 +162,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages
             }
 
             client.ClientId = input.ClientId;
+            client.ClientName = input.ClientName;
             client.AllowAccessTokensViaBrowser = input.AllowAccessTokensViaBrowser;
             client.AllowOfflineAccess = input.AllowOfflineAccess;
             client.Enabled = input.Enabled;

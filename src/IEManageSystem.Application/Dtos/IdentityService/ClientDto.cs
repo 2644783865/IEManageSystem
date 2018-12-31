@@ -13,6 +13,8 @@ namespace IEManageSystem.Dtos.IdentityService
 
         public string ClientId { get; set; }
 
+        public string ClientName { get; set; }
+
         public string AllowedGrantType { get; set; }
 
         public List<string> AllowedGrantTypes { get; set; }

@@ -20,6 +20,11 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages.Dto
         /// <summary>
         /// 
         /// </summary>
+        public string ClientName { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public string ClientSecret { get; set; }
 
         /// <summary>

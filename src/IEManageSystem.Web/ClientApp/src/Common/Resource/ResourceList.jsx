@@ -12,6 +12,8 @@ export default class ResourceList extends React.Component
     // props.resourceLookupClick()
 	constructor(props){
 		super(props);
+
+        this.searchKey = "";
 	}
 
     getShowTexts(resource, describe)
@@ -96,10 +98,15 @@ export default class ResourceList extends React.Component
                     { resourceBodyTds }
                     <td>
                         <div className="btn-group btn-group-sm">
+                            <button type="button" className="btn btn-info" 
+                                onClick={()=>this.props.resourceLookupClick(resource)}>
+                                <span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
                             <button type="button" className="btn btn-primary" 
-                                onClick={()=>this.props.resourceEditClick(resource)}>编辑</button>
+                                onClick={()=>this.props.resourceEditClick(resource)}>
+                                <span class="oi oi-pencil" title="icon name" aria-hidden="true"></span>编辑</button>
                             <button type="button" className="btn btn-danger"
-                                onClick={()=>this.props.resourceDeleteClick(resource)}>删除</button>
+                                onClick={()=>this.props.resourceDeleteClick(resource)}>
+                                <span class="oi oi-trash" title="icon name" aria-hidden="true"></span>删除</button>
                         </div>
                     </td>
                 </tr>);
@@ -125,13 +132,15 @@ export default class ResourceList extends React.Component
 		return (
 		    <div className="data-list w-100">
                 <div className="input-group mb-3">
-                    <input type="text" className="form-control" placeholder="Search" />
+                    <input name="searchKey" type="text" className="form-control" placeholder="Search" onChange={event=>this.searchKey=event.target.value} />
                     <div className="input-group-append">
-                      <button className="btn btn-info" type="submit">搜索一下</button>  
+                      <button className="btn btn-info" type="submit" onClick={()=>this.props.searchClick(this.searchKey)}>
+                        <span class="oi oi-magnifying-glass" title="icon name" aria-hidden="true"></span>搜索一下
+                      </button>  
                     </div>
                 </div>
-                <h5>{this.props.title} 列表</h5>
-                <table className="table table-hover table-dark table-striped text-white">
+                <h6><span class="oi oi-list" title="icon name" aria-hidden="true"></span> {" "+this.props.title} 列表</h6>
+                <table className="table table-hover table-striped">
                     <thead>
                         { resourceHeadTr }
                     </thead>

@@ -55,8 +55,11 @@ export default class Nav extends React.Component
                     <ul className="navbar-nav">
                         {menuItemLis}
                     </ul>
-                    <span className="text-info float-right">你好，{this.props.userName}</span>
-                    <input id="outLogin" data-url="/api/Account/Logout" onClick={this.logoutClick} type="button" value="退出登录" className="btn btn-info float-right" />
+                    <span className="text-white float-right">你好，{this.props.userName}</span>
+                    <button id="outLogin" data-url="/api/Account/Logout" onClick={this.logoutClick} type="button" className="btn btn-info float-right" >
+                        <span class="oi oi-account-logout" title="icon name" aria-hidden="true"></span>
+                        退出登录
+                    </button>
                 </div> 
             </nav>
         );

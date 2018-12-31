@@ -7,6 +7,7 @@ export default class TextGroup extends React.Component
 	// props.name
 	// props.values
 	// props.title
+	// props.isEdit
 	// props.onChange(name, values)
 	constructor(props){
 		super(props);
@@ -61,8 +62,12 @@ export default class TextGroup extends React.Component
       		(item, index)=>
       		<div className="d-flex margin-buttom10">
               <input name={this.props.name} type="text" className="form-control" value={item} 
+              	readonly={ this.props.isEdit ? null:"readonly" }
                 onChange={(event)=>this.OnChange(index, event.target.value)} />
-              <button className="btn btn-danger btn-sm" onClick={()=>this.DeleteClick(index)}>删除</button>
+              { 
+              	this.props.isEdit && 
+              	<button className="btn btn-danger btn-sm" onClick={()=>this.DeleteClick(index)}>删除</button>
+              }
             </div>);
 
 		return(
@@ -70,7 +75,10 @@ export default class TextGroup extends React.Component
                 <div className="card-header bg-secondary text-white">{this.props.title}</div>
                 <div className="card-body">
                     {list}
-                    <button className="btn btn-success btn-sm" onClick={this.AddClick}>+添加</button>
+                    { 
+		              	this.props.isEdit && 
+		              	<button className="btn btn-success btn-sm" onClick={this.AddClick}>+添加</button>
+		            }
                 </div> 
             </div>);
 	}

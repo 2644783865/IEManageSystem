@@ -12,5 +12,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages.Dto
 
         [Range(1, 9999)]
         public int PageSize { get; set; }
+
+        public string SearchKey { get; set; }
     }
 }

@@ -5,6 +5,7 @@ export default class FormRadio extends React.Component
 {
 	// props.name
 	// props.values
+	// props.isEdit
 	// props.selectValue  [{text:"", value:""}]
 	// props.onChange(name, selectValue)
 	constructor(props){
@@ -39,10 +40,14 @@ export default class FormRadio extends React.Component
 	render(){
 		let radioLis = this.props.values.map(item=>{
 			if(item.value === this.state.selectValue || item.value.toString() === this.state.selectValue){
-				return <li><input type="radio" name={this.props.name} data-labelauty={ item.text } value={item.value} checked={true} onChange={this.onChange} /></li>;
+				return <li><input type="radio" name={this.props.name} data-labelauty={ item.text } value={item.value} checked={true} onChange={this.onChange} 
+							readonly={ this.props.isEdit ? null:"readonly" }
+						/></li>;
 			}
 			else{
-				return <li><input type="radio" name={this.props.name} data-labelauty={ item.text } value={item.value} checked={false} onChange={this.onChange} /></li>;
+				return <li><input type="radio" name={this.props.name} data-labelauty={ item.text } value={item.value} checked={false} onChange={this.onChange} 
+							readonly={ this.props.isEdit ? null:"readonly" }
+						/></li>;
 			}
 		});
 

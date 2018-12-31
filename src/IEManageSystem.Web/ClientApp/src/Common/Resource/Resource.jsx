@@ -1,14 +1,13 @@
+import 'labelauty';
+import 'labelautycss';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import jquerylabelautyjs from 'jquery-labelauty.js';
-import jquerylabelautycss from 'jquery-labelauty.css';
 import ResourceDescribe from './ResourceDescribe.js';
 import ResourceList from './ResourceList.jsx';
 import Paging from './Paging.jsx';
 import ResourceDelete from './ResourceDelete.jsx';
-import AddResourceForm from './ResourceForm/AddResourceForm.jsx';
-import LookupResourceForm from './ResourceForm/LookupResourceForm.jsx';
-import EditResourceForm from './ResourceForm/EditResourceForm.jsx';
+import ResourceForm from './ResourceForm/ResourceForm.jsx';
 
 require("./Resource.css");
 
@@ -23,13 +22,13 @@ var operationState = {
 
 export default class Resource extends React.Component
 {
-	// props.title
-	// props.describes
-	// props.freshenResources()
-	// props.addResource()
-	// props.updateResource()
-	// props.deleteResource()
-	// props.setResourceRef()
+	// props.title  标题
+	// props.describes  资源描述
+	// props.freshenResources()  刷新数据接口
+	// props.addResource()  添加数据接口
+	// props.updateResource()  更新数据接口
+	// props.deleteResource()  删除数据接口
+	// props.setResourceRef()  设置当前组件的引用
 	constructor(props){
 		super(props);
 
@@ -38,6 +37,8 @@ export default class Resource extends React.Component
         this.pageSize = 10;
 
         this.resourceDescribe = new ResourceDescribe(this.props.describes);
+
+        this.searchKey = "";
 
 		this.state = 
 		{
@@ -52,6 +53,7 @@ export default class Resource extends React.Component
 		this.pageIndexChange = this.pageIndexChange.bind(this);
 		this.resourceOperationClick = this.resourceOperationClick.bind(this);
 		this.resourceUpdate = this.resourceUpdate.bind(this);
+		this.searchClick = this.searchClick.bind(this);
 
 		this.props.freshenResources(this.state.pageIndex, this.pageSize);
 	}
@@ -65,7 +67,7 @@ export default class Resource extends React.Component
 
     // 重载资源
     reloadResources(){
-    	this.props.freshenResources(this.state.pageIndex, this.pageSize);
+    	this.props.freshenResources(this.state.pageIndex, this.pageSize, this.searchKey);
     }
 
 	// 重新设置资源（由父组件调用）
@@ -87,13 +89,20 @@ export default class Resource extends React.Component
 			pageNum: pageNum,
 		})
 	}
+
+	// 搜索单击
+	searchClick(searchKey)
+	{
+		this.searchKey = searchKey;
+		this.props.freshenResources(this.state.pageIndex, this.pageSize, this.searchKey);
+    }
     
     // 页索引改变
 	pageIndexChange(pageIndex)
 	{
 		if(pageIndex > 0 && pageIndex <= this.state.pageNum)
 		{
-			this.props.freshenResources(pageIndex, this.pageSize);
+			this.props.freshenResources(pageIndex, this.pageSize, this.searchKey);
 		}
 	}
 
@@ -129,6 +138,7 @@ export default class Resource extends React.Component
         			title={ this.props.title }
                     resources={ this.state.resources } 
                     describes={ this.resourceDescribe.getDescribesOfList() }
+                    searchClick={ this.searchClick }
                     resourceEditClick={ resource=>this.resourceOperationClick(operationState.edit, resource) }
                     resourceDeleteClick={ resource=>this.resourceOperationClick(operationState.delete, resource) }
                     resourceLookupClick={ resource=>this.resourceOperationClick(operationState.lookup, resource) }
@@ -145,21 +155,22 @@ export default class Resource extends React.Component
 	            {resourceList}
 	            {paging}
 	            { this.state.operationState == operationState.add && 
-	            	<AddResourceForm 
+	            	<ResourceForm 
 	            	title={ this.props.title }
 	            	describes={ this.resourceDescribe.getDescribesOfAdd() }
 	            	resource={ this.state.curResource } 
 	            	resourceUpdate={resource=>this.resourceUpdate(operationState.add, resource)} /> }
 	            { this.state.operationState == operationState.edit && 
-	            	<EditResourceForm 
+	            	<ResourceForm 
 	            	title={ this.props.title }
 	            	describes={ this.resourceDescribe.getDescribesOfEdit() }
 	            	resource={ this.state.curResource } 
 	            	resourceUpdate={resource=>this.resourceUpdate(operationState.edit, resource)} /> }
 	            { this.state.operationState == operationState.lookup && 
-	            	<LookupResourceForm 
+	            	<ResourceForm 
 	            	title={ this.props.title }
-					describes={ this.resourceDescribe.describes }
+	            	isHideSubmit={ true }
+					describes={ this.resourceDescribe.getDescribesOfLookup() }
 	            	resource={ this.state.curResource } /> }
 	            { this.state.operationState == operationState.delete && 
 	            	<ResourceDelete 

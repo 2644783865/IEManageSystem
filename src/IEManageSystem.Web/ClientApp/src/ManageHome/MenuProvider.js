@@ -26,7 +26,7 @@ const menus =
     },
     {
         id: "AuthorizeManage",
-        text: "认证管理",
+        text: "OAuth认证管理",
         url: "/ManageHome/AuthorizeManage",
         menuItems: [
             {

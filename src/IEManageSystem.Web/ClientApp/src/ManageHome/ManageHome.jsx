@@ -1,3 +1,12 @@
+import 'bootstrap';
+import 'bootstrapcss';
+import 'bootstrapcssicon';
+
+import 'commoncss';
+import 'logocss';
+
+import 'cookie';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';

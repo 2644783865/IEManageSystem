@@ -1,12 +1,12 @@
 var path = require("path");
 var pathMap = require('./src/pathmap.json');
 var libPath = path.resolve('./src/lib');
-var cssPath = path.resolve('./src/lib/css');
-var jsPath = path.resolve('./src/lib/js');
+var commonPath = path.resolve('./src/Common');
 var nodeModPath = path.resolve(__dirname, './node_modules');
 
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-var BomPlugin = require('webpack-utf8-bom');    //将文件转成utf-8 bom格式，解决中文乱码的问题
+const BomPlugin = require('webpack-utf8-bom');    //将文件转成utf-8 bom格式，解决中文乱码的问题
 module.exports = {
     // 开发环境
     devtool: 'source-map',
@@ -17,7 +17,7 @@ module.exports = {
         account:__dirname + "/src/Account/account.jsx",
         consent:__dirname + "/src/Consent/consent.jsx",
         adminiHome:__dirname + "/src/ManageHome/ManageHome.jsx",
-        selectSingleData:__dirname + "/src/SelectSingleData/SelectSingleData.js",
+        // selectSingleData:__dirname + "/src/SelectSingleData/SelectSingleData.js",
     },
     output: {
         path: __dirname + "/build",
@@ -25,6 +25,13 @@ module.exports = {
         chunkFilename: "[id].chunk.js"
     },
     plugins: [       //生成html
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            'window.$':'jquery',
+            'window.jQuery':'jquery',
+            Popper: 'popper'
+        }),
         //这里开始写
         new HtmlWebpackPlugin({
             filename: __dirname + '/build/Account/Login.cshtml',
@@ -72,8 +79,10 @@ module.exports = {
               ],
             },
             {
-                test: /\.((ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9]))|(ttf|eot)$/,
-                loader: 'url?limit=10000&name=fonts/[hash:8].[name].[ext]'
+              test: /\.(woff|woff2|eot|ttf|otf)$/,
+              use: [
+                'file-loader'
+              ]
             },
             {
                 test: /\.(tpl|ejs)$/, 
@@ -91,7 +100,7 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js',"*",".css"],
-        modules:[libPath, nodeModPath, cssPath, jsPath],
+        modules:[libPath, commonPath, nodeModPath],
         alias: pathMap
     }
 }

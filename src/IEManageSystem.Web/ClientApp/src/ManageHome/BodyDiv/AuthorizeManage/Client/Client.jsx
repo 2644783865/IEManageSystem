@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Resource from './Resource.jsx';
-import ErrorModal from './ErrorModal.jsx';
+import Resource from 'Resource/Resource.jsx';
+import ErrorModal from 'Resource/ErrorModal.jsx';
 
 export default class Client extends React.Component
 {
@@ -15,18 +15,46 @@ export default class Client extends React.Component
 		this.apiResources = new Array();
 
 		this.describes=[
-			{name:"id", isId:true, isAddShow:false, isEditShow:false},
-			{name:"clientId", text:"客户端Id", isName:true, isShowOnList:true},
+			{name:"id", isId:true, isAddShow:false, isEditShow:false, isLookupShow:false},
+			{name:"clientId", text:"客户端Id", isName:true, isShowOnList:true, isEditCanEdit:false},
+			{name:"clientName", text:"客户端名称", isShowOnList:true},
 			{name:"clientSecret", text:"客户端密钥"},
 			{name:"allowedGrantType", text:"认证类型", isShowOnList:true, valueType:"radio", valueTexts:this.grantTypeGroup},
 			{name:"allowedScopes", text:"身份资源", valueType:"check", valueTexts:this.identityResources},
 			{name:"allowedScopes", text:"Api资源", valueType:"check", valueTexts:this.apiResources},
 			{name:"redirectUris", text:"登录重定向", isShowOnList:true, valueType:"textGroup"},
 			{name:"postLogoutRedirectUris", text:"登出重定向", valueType:"textGroup"},
-			{name:"allowAccessTokensViaBrowser", text:"允许浏览器访问", valueType:"radio", valueTexts:[{text:"允许", value:true}, {text:"不允许", value:false}]},
-			{name:"accessTokenType", text:"令牌类型", valueType:"radio", valueTexts:[{text:"JWT", value:"jwt"}, {text:"Reference", value:"reference"}]},
-			{name:"enabled", text:"是否启用", isShowOnList:true, valueType:"radio", valueTexts:[{text:"启用", value:true}, {text:"禁用", value:false}]},
-			{name:"allowOfflineAccess", text:"是否离线共享", valueType:"radio", valueTexts:[{text:"启用", value:true}, {text:"禁用", value:false}]},
+			{
+				name:"allowAccessTokensViaBrowser", 
+				text:"允许浏览器访问", 
+				valueType:"radio", 
+				valueTexts:[{text:"允许", value:true}, {text:"不允许", value:false}],
+				col: 6,
+			},
+			{
+				name:"accessTokenType", 
+				text:"令牌类型", 
+				valueType:"radio", 
+				valueTexts:[{text:"JWT", value:"jwt"}, 
+				{text:"Reference", value:"reference"}],
+				col: 6,
+			},
+			{
+				name:"enabled", 
+				text:"是否启用", 
+				isShowOnList:true, 
+				valueType:"radio", 
+				valueTexts:[{text:"启用", value:true}, {text:"禁用", value:false}],
+				col: 6,
+			},
+			{
+				name:"allowOfflineAccess", 
+				text:"是否离线共享", 
+				valueType:"radio", 
+				valueTexts:[{text:"启用", value:true}, 
+				{text:"禁用", value:false}],
+				col: 6,
+			},
 		];
 
 		this.resourceChild = null;
@@ -98,9 +126,9 @@ export default class Client extends React.Component
 	}
 
 	// Resource组件刷新资源通知
-	freshenResources(pageIndex, pageSize){
-		this.getResourceList(pageIndex, pageSize);
-		this.getResourceNum();
+	freshenResources(pageIndex, pageSize, searchKey){
+		this.getResourceList(pageIndex, pageSize, searchKey);
+		this.getResourceNum(searchKey);
 	}
 
 	// 获取认证类型组合
@@ -170,10 +198,11 @@ export default class Client extends React.Component
 	}
 
     // 获取客户端列表
-	getResourceList(pageIndex, pageSize){
+	getResourceList(pageIndex, pageSize, searchKey){
 		let postData = {
             pageIndex: pageIndex,
-            pageSize: pageSize
+            pageSize: pageSize,
+            searchKey: searchKey
         };
 
 		$.ajax({
@@ -192,8 +221,9 @@ export default class Client extends React.Component
 	}
 
     // 获取客户端数量
-    getResourceNum(){
+    getResourceNum(searchKey){
         let postData = {
+        	searchKey:searchKey
         };
 
         $.ajax({
