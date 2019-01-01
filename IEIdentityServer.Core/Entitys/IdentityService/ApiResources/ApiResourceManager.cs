@@ -22,6 +22,27 @@ namespace IEIdentityServer.Core.Entitys.IdentityService.ApiResources
             // IdentityServer4.EntityFramework.Entities.Client
         }
 
+        public ApiResource GetApiResource(int id, Expression<Func<ApiResource, object>>[] expressions)
+        {
+            return _repository.GetAllInclude(expressions).FirstOrDefault(e => e.Id == id);
+        }
+
+        public ApiResource CreateApiResource(
+            string name,
+            List<string> useClaims)
+        {
+            List<ApiResourceClaim> apiClaims = new List<ApiResourceClaim>();
+            useClaims.ForEach(e => apiClaims.Add(new ApiResourceClaim() { Type = e }));
+
+            ApiResource apiResource = new ApiResource()
+            {
+                Name = name,
+                UserClaims = apiClaims,
+            };
+
+            return apiResource;
+        }
+
         /// <summary>
         /// 添加资源
         /// </summary>
@@ -29,28 +50,16 @@ namespace IEIdentityServer.Core.Entitys.IdentityService.ApiResources
         /// <param name="displayName"></param>
         /// <param name="description"></param>
         /// <param name="useClaims"></param>
-        public void AddResource(
-            string name,
-            string displayName,
-            string description,
-            List<string> useClaims
-            )
+        public void AddResource(ApiResource resource)
         {
-            if (_repository.FirstOrDefault(e => e.Name == name) != null)
+            if (string.IsNullOrWhiteSpace(resource.Name)) {
+                throw new IEIdentityException("资源名称不能为空");
+            }
+
+            if (_repository.FirstOrDefault(e => e.Name == resource.Name) != null)
             {
                 throw new IEIdentityException("已存在相同名称的资源");
             }
-
-            List<ApiResourceClaim> claims = new List<ApiResourceClaim>();
-            useClaims.ForEach(e => claims.Add(new ApiResourceClaim() { Type = e }));
-
-            ApiResource resource = new ApiResource()
-            {
-                Name = name,
-                DisplayName = displayName,
-                Description = description,
-                UserClaims = claims
-            };
 
             _repository.Insert(resource);
         }
@@ -58,40 +67,16 @@ namespace IEIdentityServer.Core.Entitys.IdentityService.ApiResources
         /// <summary>
         /// 更新资源
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="name"></param>
-        /// <param name="dispalyName"></param>
-        /// <param name="description"></param>
+        /// <param name="resource"></param>
         /// <param name="useClaims"></param>
-        public void UpdateApiResource(
-            int id,
-            string name,
-            string dispalyName,
-            string description,
+        public void UpdateApiResourceClaims(
+            ApiResource resource,
             List<string> useClaims
             )
         {
-            Expression<Func<ApiResource, object>>[] propertySelectors = new Expression<Func<ApiResource, object>>[] {
-                e=>e.UserClaims,
-            };
-            var resource = _repository.GetAllInclude(propertySelectors).FirstOrDefault(e => e.Id == id);
-            if (resource == null)
-            {
-                throw new Exception("未找到资源");
-            }
-
-            var compareResource = _repository.FirstOrDefault(e => e.Name == name);
-            if (compareResource != null && !resource.Equals(compareResource))
-            {
-                throw new IEIdentityException("已存在相同名称的资源");
-            }
-
             List<ApiResourceClaim> claims = new List<ApiResourceClaim>();
             useClaims.ForEach(e => claims.Add(new ApiResourceClaim() { Type = e }));
 
-            resource.Name = name;
-            resource.DisplayName = dispalyName;
-            resource.Description = description;
             resource.UserClaims = claims;
         }
 

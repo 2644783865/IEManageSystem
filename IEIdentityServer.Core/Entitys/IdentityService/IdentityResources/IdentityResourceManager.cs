@@ -20,69 +20,46 @@ namespace IEIdentityServer.Core.Entitys.IdentityService.IdentityResources
             _repository = repository;
         }
 
-        public void AddIdentityResource(
+        public IdentityResource CreateIdentityResource(
             string name,
-            string dispalyName,
-            string description,
-            List<string> useClaims
-            )
+            List<string> useClaims)
         {
-            if (_repository.FirstOrDefault(e => e.Name == name) != null)
-            {
-                throw new IEIdentityException("已存在相同名称的资源");
-            }
-
             List<IdentityClaim> identityClaims = new List<IdentityClaim>();
-            useClaims.ForEach(e=> identityClaims.Add(new IdentityClaim() { Type = e }));
+            useClaims.ForEach(e => identityClaims.Add(new IdentityClaim() { Type = e }));
 
-            IdentityResource identityResource = new IdentityResource() {
+            IdentityResource identityResource = new IdentityResource()
+            {
                 Name = name,
-                DisplayName = dispalyName,
-                Description = description,
                 UserClaims = identityClaims,
             };
+
+            return identityResource;
+        }
+
+        public IdentityResource GetIdentityResource(int id, Expression<Func<IdentityResource, object>>[] expressions)
+        {
+            return _repository.GetAllInclude(expressions).FirstOrDefault(e => e.Id == id);
+        }
+
+        public void AddIdentityResource(IdentityResource identityResource)
+        {
+            if (string.IsNullOrWhiteSpace(identityResource.Name))
+            {
+                throw new IEIdentityException("资源名称不能为空");
+            }
+
+            if (_repository.FirstOrDefault(e => e.Name == identityResource.Name) != null) {
+                throw new IEIdentityException("已存在相同名称的资源");
+            }
 
             _repository.Insert(identityResource);
         }
 
-        public void UpdateIdentityResource(
-            int id,
-            string name,
-            string dispalyName,
-            string description,
-            List<string> useClaims
-            )
+        public void UpdateIdentityResourceClaims(IdentityResource identityResource, List<string> useClaims)
         {
-            Expression<Func<IdentityResource, object>>[] propertySelectors = new Expression<Func<IdentityResource, object>>[] {
-                e=>e.UserClaims,
-            };
-            var identityResource = _repository.GetAllInclude(propertySelectors).FirstOrDefault(e => e.Id == id);
-            if (identityResource == null)
-            {
-                throw new Exception("未找到资源");
-            }
-
-            var compareResource = _repository.FirstOrDefault(e => e.Name == name);
-            if (compareResource != null && !identityResource.Equals(compareResource))
-            {
-                throw new IEIdentityException("已存在相同名称的资源");
-            }
-
-            if (identityResource.Name == "openid")
-            {
-                throw new IEIdentityException("不支持更新openid资源");
-            }
-
-            if (identityResource.Name == "profile" && name != "profile") {
-                throw new IEIdentityException("不支持对profile重新名称");
-            }
-
             List<IdentityClaim> identityClaims = new List<IdentityClaim>();
             useClaims.ForEach(e => identityClaims.Add(new IdentityClaim() { Type = e }));
 
-            identityResource.Name = name;
-            identityResource.DisplayName = dispalyName;
-            identityResource.Description = description;
             identityResource.UserClaims = identityClaims;
         }
 

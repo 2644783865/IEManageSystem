@@ -14,12 +14,6 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiResourceManages.
         /// 
         /// </summary>
         [Required]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Required]
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -30,7 +24,12 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiResourceManages.
         /// <summary>
         /// 
         /// </summary>
+        public bool Enabled { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [Required]
-        public List<string> Claims { get; set; }
+        public List<string> UserClaims { get; set; }
     }
 }

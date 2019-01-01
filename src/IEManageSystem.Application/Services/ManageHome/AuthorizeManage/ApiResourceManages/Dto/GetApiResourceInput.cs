@@ -12,5 +12,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiResourceManages.
 
         [Range(1, 99999999)]
         public int PageSize { get; set; }
+
+        public string SearchKey { get; set; }
     }
 }

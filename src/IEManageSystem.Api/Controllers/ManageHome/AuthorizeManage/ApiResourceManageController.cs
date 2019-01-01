@@ -39,6 +39,22 @@ namespace IEManageSystem.Api.Controllers.ManageHome.AuthorizeManage
         }
 
         /// <summary>
+        /// 获取资源数量
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ActionResult<ApiResultDataModel<GetApiResourceNumOutput>>> GetApiResourceNum([FromBody] GetApiResourceNumInput input)
+        {
+            if (ValidateModel() == false)
+            {
+                return new ApiResultDataModel<GetApiResourceNumOutput>(_ValidateModelErrors);
+            }
+
+            return new ApiResultDataModel<GetApiResourceNumOutput>(await _apiResourceManageAppService.GetApiResourceNum(input));
+        }
+
+        /// <summary>
         /// 添加Api资源
         /// </summary>
         /// <param name="input"></param>

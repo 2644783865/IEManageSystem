@@ -11,6 +11,8 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiResourceManages
     {
         Task<GetApiResourceOutput> GetApiResources(GetApiResourceInput input);
 
+        Task<GetApiResourceNumOutput> GetApiResourceNum(GetApiResourceNumInput input);
+
         Task<AddApiResourceOutput> AddApiResource(AddApiResourceInput input);
 
         Task<DeleteApiResourceOutput> DeleteApiResource(DeleteApiResourceInput input);

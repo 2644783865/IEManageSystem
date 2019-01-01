@@ -6,6 +6,6 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiResourceManages.
 {
     public class DeleteApiResourceInput
     {
-        public int ApiResourceId { get; set; }
+        public int Id { get; set; }
     }
 }

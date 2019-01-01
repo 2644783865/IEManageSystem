@@ -39,6 +39,22 @@ namespace IEManageSystem.Api.Controllers.ManageHome.AuthorizeManage
         }
 
         /// <summary>
+        /// 获取身份资源数量
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ActionResult<ApiResultDataModel<GetIdentityResourceNumOutput>>> GetIdentityResourceNum([FromBody] GetIdentityResourceNumInput input)
+        {
+            if (ValidateModel() == false)
+            {
+                return new ApiResultDataModel<GetIdentityResourceNumOutput>(_ValidateModelErrors);
+            }
+
+            return new ApiResultDataModel<GetIdentityResourceNumOutput>(await _IdentityResourceManageAppService.GetIdentityResourceNum(input));
+        }
+
+        /// <summary>
         /// 添加身份资源
         /// </summary>
         /// <returns></returns>

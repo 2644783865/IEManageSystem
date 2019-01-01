@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Resource from 'Resource/Resource.jsx';
 import ErrorModal from 'Resource/ErrorModal.jsx';
+import LoadingModal from 'Resource/LoadingModal/LoadingModal.jsx';
 
 export default class Client extends React.Component
 {
@@ -72,6 +73,8 @@ export default class Client extends React.Component
 
 	// 提交回调
 	submitBackcall(data){
+		LoadingModal.hideModal();
+
 	    if(data.isSuccess == true)
 	    {
 	    	this.resourceChild.reloadResources();
@@ -83,6 +86,8 @@ export default class Client extends React.Component
 
 	// Resource组件添加资源通知
 	addResource(resource){
+		LoadingModal.showModal();
+
 		let postData = resource;
 
 	    $.ajax({
@@ -97,6 +102,8 @@ export default class Client extends React.Component
 
 	// Resource组件更新资源通知
 	updateResource(resource){
+		LoadingModal.showModal();
+
 		let postData = resource;
 
 	    $.ajax({
@@ -111,6 +118,8 @@ export default class Client extends React.Component
 
 	// Resource组件删除资源通知
 	deleteResource(resource){
+		LoadingModal.showModal();
+		
 		let postData = {
 	      id: resource.id
 	    };
@@ -253,6 +262,7 @@ export default class Client extends React.Component
 				deleteResource={this.deleteResource}
 				setResourceRef={(ref)=>{this.resourceChild = ref}} />
 				<ErrorModal />
+				<LoadingModal />
 			</div>
 		);
 	}

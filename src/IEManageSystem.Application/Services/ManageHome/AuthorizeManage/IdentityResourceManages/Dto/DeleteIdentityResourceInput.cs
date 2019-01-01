@@ -6,6 +6,6 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.IdentityResourceMan
 {
     public class DeleteIdentityResourceInput
     {
-        public int IdentityResourceId { get; set; }
+        public int Id { get; set; }
     }
 }

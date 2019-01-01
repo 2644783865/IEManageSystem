@@ -7,6 +7,7 @@ import TextGroup from './TextGroup.jsx';
 
 export default class ResourceForm extends React.Component
 {
+  // props.title
   // props.resource  资源数据
   // props.describes  资源描述
   // props.isHideSubmit  是否隐藏提交按钮
@@ -24,13 +25,29 @@ export default class ResourceForm extends React.Component
   }
 
 	componentDidMount(){
-    $("#dataFormBtn").click();
+    // $("#dataFormBtn").click();
+    this.showModal();
 	}
 
   componentWillReceiveProps(nextProps){
-    $("#dataFormBtn").click();
+    // $("#dataFormBtn").click();
+    this.showModal();
 
     this.initClient(nextProps.resource);
+  }
+
+  showModal(){
+    $("body").addClass("modal-open");
+    $("body").append('<div class="modal-backdrop fade show"></div>');
+    $("#dataForm").addClass("show");
+    $("#dataForm").show(500);
+  }
+
+  hideModal(){
+    $("body").removeClass("modal-open");
+    $("div.modal-backdrop").remove();
+    $("#dataForm").removeClass("show");
+    $("#dataForm").hide(500);
   }
 
   initClient(inputResource)
@@ -66,8 +83,9 @@ export default class ResourceForm extends React.Component
   // 提交
   submit()
   {
+    this.hideModal();
     this.props.resourceUpdate(this.resource);
-    $("#dataFormCloseBtn").click();
+    // $("#dataFormCloseBtn").click();
   }
 
   createElement(describe)
@@ -81,7 +99,7 @@ export default class ResourceForm extends React.Component
                     placeholder={"请输入" + describe.text}
                     readonly={ describe.isEdit ? null:"readonly" }
                     value={this.resource[describe.name] == null ? "":this.resource[describe.name]}
-                    onChange={event=>{this.resource[describe.name] = event.target.value; this.setState()}} />
+                    onChange={event=>{this.resource[describe.name] = event.target.value; this.setState({})}} />
                 </div>);
     }
 
@@ -141,13 +159,12 @@ export default class ResourceForm extends React.Component
 
 		return (
       <div>
-        <button id="dataFormBtn" type="button" className="btn btn-info" data-toggle="modal" data-target="#dataForm"  hidden="hidden">+添加</button>
-        <div className="modal fade data-form show" id="dataForm">
+        <div className="modal fade data-form" id="dataForm">
           <div className="modal-dialog modal-lg">
             <div className="modal-content">
               <div className="modal-header bg-info text-white">
-                <h4 className="modal-title">客户端信息</h4>
-                <button type="button" className="close" data-dismiss="modal">&times;</button>
+                <h4 className="modal-title">{this.props.title}信息</h4>
+                <button type="button" className="close" data-dismiss="modal" onClick={this.hideModal}>&times;</button>
               </div>
          
               <div className="modal-body jumbotron">
@@ -160,7 +177,7 @@ export default class ResourceForm extends React.Component
                   !this.props.isHideSubmit &&
                   <button type="button" className="btn btn-info" onClick={ this.submit }>提交</button>
                 }
-                <button id="dataFormCloseBtn" type="button" className="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button id="dataFormCloseBtn" type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.hideModal}>关闭</button>
               </div>
          
             </div>

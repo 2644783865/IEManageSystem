@@ -27,7 +27,12 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiResourceManages.
         /// <summary>
         /// 
         /// </summary>
+        public bool Enabled { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [Required]
-        public List<string> Claims { get; set; }
+        public List<string> UserClaims { get; set; }
     }
 }

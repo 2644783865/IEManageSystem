@@ -8,6 +8,7 @@ using System.Linq;
 using IEIdentityServer.Core.Repositories;
 using IdentityServer4.EntityFramework.Entities;
 using IEIdentityServer.Core.Entitys.IdentityService.IdentityResources;
+using System.Linq.Expressions;
 
 namespace IEManageSystem.Services.ManageHome.AuthorizeManage.IdentityResourceManages
 {
@@ -34,11 +35,53 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.IdentityResourceMan
         /// <returns></returns>
         public async Task<GetIdentityResourceOutput> GetIdentityResources(GetIdentityResourceInput input)
         {
-            List<IdentityResource> identityResources = _IdentityResourceRepository.GetAllInclude(new System.Linq.Expressions.Expression<Func<IdentityResource, object>>[] {
+            var includes = new System.Linq.Expressions.Expression<Func<IdentityResource, object>>[] {
                     e=>e.UserClaims,
-                }).OrderByDescending(e => e.Id).Skip((input.PageIndex - 1) * input.PageSize).Take(input.PageSize).ToList();
+                };
 
-            return new GetIdentityResourceOutput() { IdentityResources = AutoMapper.Mapper.Map<List<IdentityResourceDto>>(identityResources) };
+            List<IdentityResource> resources = FiltersResources(_IdentityResourceRepository.GetAllInclude(includes), input.SearchKey).OrderByDescending(e => e.Id).Skip((input.PageIndex - 1) * input.PageSize).Take(input.PageSize).ToList();
+
+            List<IdentityResourceDto> resourceDtos = new List<IdentityResourceDto>();
+            foreach (var item in resources)
+            {
+                IdentityResourceDto resourceDto = new IdentityResourceDto()
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    DisplayName = item.DisplayName,
+                    Description = item.Description,
+                    Enabled = item.Enabled,
+                    Required = item.Required,
+                    UserClaims = item.UserClaims.Select(e => e.Type).ToList(),
+                };
+
+                resourceDtos.Add(resourceDto);
+            }
+
+            return new GetIdentityResourceOutput() { IdentityResources = resourceDtos };
+        }
+
+        /// <summary>
+        /// 获取Api资源数量
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<GetIdentityResourceNumOutput> GetIdentityResourceNum(GetIdentityResourceNumInput input)
+        {
+            int resourceNum = FiltersResources(_IdentityResourceRepository.GetAll(), input.SearchKey).Count();
+
+            return new GetIdentityResourceNumOutput() { ResourceNum = resourceNum };
+        }
+
+        public IEnumerable<IdentityResource> FiltersResources(IEnumerable<IdentityResource> apiResources, string searchKey)
+        {
+            if (!string.IsNullOrWhiteSpace(searchKey))
+                apiResources = apiResources.Where(e =>
+                    (e.Name != null && e.Name.Contains(searchKey)) ||
+                    (e.DisplayName != null && e.DisplayName.Contains(searchKey))
+                    );
+
+            return apiResources;
         }
 
         /// <summary>
@@ -47,7 +90,14 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.IdentityResourceMan
         /// <returns></returns>
         public async Task<AddIdentityResourceOutput> AddIdentityResource(AddIdentityResourceInput input)
         {
-            _IdentityResourceManager.AddIdentityResource(input.Name, input.DisplayName, input.Description, input.Claims);
+            var resource = _IdentityResourceManager.CreateIdentityResource(input.Name, input.UserClaims);
+
+            resource.Description = input.Description;
+            resource.DisplayName = input.DisplayName;
+            resource.Enabled = input.Enabled;
+            resource.Required = input.Required;
+
+            _IdentityResourceManager.AddIdentityResource(resource);
 
             return new AddIdentityResourceOutput();
         }
@@ -58,11 +108,11 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.IdentityResourceMan
         /// <returns></returns>
         public async Task<DeleteIdentityResourceOutput> DeleteIdentityResource(DeleteIdentityResourceInput input)
         {
-            if (_IdentityResourceRepository.FirstOrDefault(input.IdentityResourceId) == null) {
+            if (_IdentityResourceRepository.FirstOrDefault(input.Id) == null) {
                 return new DeleteIdentityResourceOutput() { ErrorMessage = "未找到资源" };
             }
 
-            _IdentityResourceManager.RemoveIdentityResource(input.IdentityResourceId);
+            _IdentityResourceManager.RemoveIdentityResource(input.Id);
 
             return new DeleteIdentityResourceOutput();
         }
@@ -74,12 +124,21 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.IdentityResourceMan
         /// <returns></returns>
         public async Task<UpdateIdentityResourceOutput> UpdateIdentityResource(UpdateIdentityResourceInput input)
         {
-            if (_IdentityResourceRepository.FirstOrDefault(input.Id) == null)
+            Expression<Func<IdentityResource, object>>[] includes = new Expression<Func<IdentityResource, object>>[] {
+                e=>e.UserClaims
+            };
+            var resource = _IdentityResourceManager.GetIdentityResource(input.Id, includes);
+
+            if (resource == null)
             {
                 return new UpdateIdentityResourceOutput() { ErrorMessage = "未找到资源" };
             }
 
-            _IdentityResourceManager.UpdateIdentityResource(input.Id, input.Name, input.DisplayName, input.Description, input.Claims);
+            _IdentityResourceManager.UpdateIdentityResourceClaims(resource, input.UserClaims);
+            resource.Description = input.Description;
+            resource.DisplayName = input.DisplayName;
+            resource.Enabled = input.Enabled;
+            resource.Required = input.Required;
 
             return new UpdateIdentityResourceOutput();
         }

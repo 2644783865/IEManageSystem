@@ -12,5 +12,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.IdentityResourceMan
 
         [Range(1,99999999)]
         public int PageSize { get; set; }
+
+        public string SearchKey { get; set; }
     }
 }

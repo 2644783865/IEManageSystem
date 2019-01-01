@@ -86,6 +86,25 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/css-loader/index.js!./src/Common/Resource/LoadingModal/LoadingModal.css":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/css-loader!./src/Common/Resource/LoadingModal/LoadingModal.css ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "@keyframes loading-frame\r\n{\r\n    from {\r\n        transform: rotate(0deg);\r\n        -ms-transform: rotate(0deg); /* IE 9 */\r\n        -webkit-transform: rotate(0deg); /* Safari and Chrome */\r\n    }\r\n    to {\r\n        transform: rotate(360deg);\r\n        -ms-transform: rotate(360deg); /* IE 9 */\r\n        -webkit-transform: rotate(360deg); /* Safari and Chrome */\r\n    }\r\n}\r\n \r\n@-webkit-keyframes loading-frame /* Safari 与 Chrome */\r\n{\r\n    from {\r\n        transform: rotate(0deg);\r\n        -ms-transform: rotate(0deg); /* IE 9 */\r\n        -webkit-transform: rotate(0deg); /* Safari and Chrome */\r\n    }\r\n    to {\r\n        transform: rotate(360deg);\r\n        -ms-transform: rotate(360deg); /* IE 9 */\r\n        -webkit-transform: rotate(360deg); /* Safari and Chrome */\r\n    }\r\n}\r\n\r\n.loading-animation{\r\n    color:#ffffff;\r\n    font-size: 40px;\r\n    display: inline-block;\r\n\r\n    animation-name: loading-frame;\r\n    animation-duration: 1s;\r\n    animation-timing-function: linear;\r\n    animation-iteration-count: infinite;\r\n    /* Safari 与 Chrome: */\r\n    -webkit-animation-name: loading-frame;\r\n    -webkit-animation-duration: 1s;\r\n    -webkit-animation-timing-function: linear;\r\n    -webkit-animation-iteration-count: infinite;\r\n}\r\n\r\n.loading-animation-text{\r\n    margin-left: 20px;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    font-size: 20px;\r\n    color: #ffffff;\r\n}\r\n\r\n.background-transparent{\r\n    background-color: rgba(0,0,0,0);\r\n    border: 0px;\r\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./src/Common/Resource/Resource.css":
 /*!********************************************************************!*\
   !*** ./node_modules/css-loader!./src/Common/Resource/Resource.css ***!
@@ -24285,6 +24304,135 @@ exports.default = ErrorModal;
 
 /***/ }),
 
+/***/ "./src/Common/Resource/LoadingModal/LoadingModal.css":
+/*!***********************************************************!*\
+  !*** ./src/Common/Resource/LoadingModal/LoadingModal.css ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!./LoadingModal.css */ "./node_modules/css-loader/index.js!./src/Common/Resource/LoadingModal/LoadingModal.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./src/Common/Resource/LoadingModal/LoadingModal.jsx":
+/*!***********************************************************!*\
+  !*** ./src/Common/Resource/LoadingModal/LoadingModal.jsx ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+__webpack_require__(/*! ./LoadingModal.css */ "./src/Common/Resource/LoadingModal/LoadingModal.css");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var LoadingModal = function (_React$Component) {
+  _inherits(LoadingModal, _React$Component);
+
+  function LoadingModal(props) {
+    _classCallCheck(this, LoadingModal);
+
+    return _possibleConstructorReturn(this, (LoadingModal.__proto__ || Object.getPrototypeOf(LoadingModal)).call(this, props));
+  }
+
+  _createClass(LoadingModal, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'modal fade show', id: 'resourceLoading' },
+        _react2.default.createElement(
+          'div',
+          { className: 'modal-dialog' },
+          _react2.default.createElement(
+            'div',
+            { className: 'modal-content background-transparent' },
+            _react2.default.createElement(
+              'div',
+              { className: 'modal-body d-flex justify-content-center' },
+              _react2.default.createElement(
+                'div',
+                { className: 'loading-animation' },
+                _react2.default.createElement('span', { className: 'oi oi-aperture', title: 'icon name', 'aria-hidden': 'true' })
+              ),
+              _react2.default.createElement(
+                'span',
+                { className: 'loading-animation-text' },
+                '\u6B63\u5728\u52AA\u529B\u52A0\u8F7D\u4E2D\u3002\u3002\u3002'
+              )
+            )
+          )
+        )
+      );
+    }
+  }], [{
+    key: 'showModal',
+    value: function showModal() {
+      $("body").addClass("modal-open");
+      $("body").append('<div class="modal-backdrop fade show"></div>');
+      $("#resourceLoading").addClass("show");
+      $("#resourceLoading").fadeToggle(500);
+    }
+  }, {
+    key: 'hideModal',
+    value: function hideModal() {
+      $("body").removeClass("modal-open");
+      $("div.modal-backdrop").remove();
+      $("#resourceLoading").removeClass("show");
+      $("#resourceLoading").fadeToggle(500);
+    }
+  }]);
+
+  return LoadingModal;
+}(_react2.default.Component);
+
+exports.default = LoadingModal;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./src/lib/js/jquery-3.3.1.min.js")))
+
+/***/ }),
+
 /***/ "./src/Common/Resource/Paging.jsx":
 /*!****************************************!*\
   !*** ./src/Common/Resource/Paging.jsx ***!
@@ -24768,18 +24916,34 @@ var ResourceDelete = function (_React$Component) {
   _createClass(ResourceDelete, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      $("#dataDeleteBtn").click();
+      this.showModal();
     }
   }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate() {
-      $("#dataDeleteBtn").click();
+      this.showModal();
+    }
+  }, {
+    key: 'showModal',
+    value: function showModal() {
+      $("body").addClass("modal-open");
+      $("body").append('<div class="modal-backdrop fade show"></div>');
+      $("#dataDelete").addClass("show");
+      $("#dataDelete").show(500);
+    }
+  }, {
+    key: 'hideModal',
+    value: function hideModal() {
+      $("body").removeClass("modal-open");
+      $("div.modal-backdrop").remove();
+      $("#dataDelete").removeClass("show");
+      $("#dataDelete").hide(500);
     }
   }, {
     key: 'delete',
     value: function _delete() {
+      this.hideModal();
       this.props.resourceUpdate(this.props.resource);
-      $("#dataDeleteCloseBtn").click();
     }
   }, {
     key: 'render',
@@ -24787,7 +24951,6 @@ var ResourceDelete = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement('button', { id: 'dataDeleteBtn', className: 'btn', 'data-toggle': 'modal', 'data-target': '#dataDelete', hidden: 'hidden' }),
         _react2.default.createElement(
           'div',
           { className: 'modal fade data-delete', id: 'dataDelete' },
@@ -24799,7 +24962,7 @@ var ResourceDelete = function (_React$Component) {
               { className: 'modal-content' },
               _react2.default.createElement(
                 'div',
-                { className: 'modal-header' },
+                { className: 'modal-header bg-info text-white' },
                 _react2.default.createElement(
                   'h4',
                   { className: 'modal-title' },
@@ -24808,7 +24971,7 @@ var ResourceDelete = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                   'button',
-                  { type: 'button', className: 'close', 'data-dismiss': 'modal' },
+                  { type: 'button', className: 'close', 'data-dismiss': 'modal', onClick: this.hideModal },
                   '\xD7'
                 )
               ),
@@ -24817,7 +24980,7 @@ var ResourceDelete = function (_React$Component) {
                 { className: 'modal-body' },
                 '\u4F60\u6B63\u8981\u5220\u9664 ',
                 this.props.resource[this.props.nameDescribe.name],
-                ' \uFF0C\u5220\u9664\u540E\u65E0\u6CD5\u6062\u590D\uFF0C\u786E\u5B9A\u5220\u9664\u5417\uFF1F'
+                ' \uFF0C\u786E\u5B9A\u5220\u9664\u5417\uFF1F'
               ),
               _react2.default.createElement(
                 'div',
@@ -24830,7 +24993,7 @@ var ResourceDelete = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                   'button',
-                  { id: 'dataDeleteCloseBtn', type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
+                  { id: 'dataDeleteCloseBtn', type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal', onClick: this.hideModal },
                   '\u5173\u95ED'
                 )
               )
@@ -25377,6 +25540,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ResourceForm = function (_React$Component) {
   _inherits(ResourceForm, _React$Component);
 
+  // props.title
   // props.resource  资源数据
   // props.describes  资源描述
   // props.isHideSubmit  是否隐藏提交按钮
@@ -25400,14 +25564,32 @@ var ResourceForm = function (_React$Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-      $("#dataFormBtn").click();
+      // $("#dataFormBtn").click();
+      this.showModal();
     }
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      $("#dataFormBtn").click();
+      // $("#dataFormBtn").click();
+      this.showModal();
 
       this.initClient(nextProps.resource);
+    }
+  }, {
+    key: 'showModal',
+    value: function showModal() {
+      $("body").addClass("modal-open");
+      $("body").append('<div class="modal-backdrop fade show"></div>');
+      $("#dataForm").addClass("show");
+      $("#dataForm").show(500);
+    }
+  }, {
+    key: 'hideModal',
+    value: function hideModal() {
+      $("body").removeClass("modal-open");
+      $("div.modal-backdrop").remove();
+      $("#dataForm").removeClass("show");
+      $("#dataForm").hide(500);
     }
   }, {
     key: 'initClient',
@@ -25439,8 +25621,9 @@ var ResourceForm = function (_React$Component) {
   }, {
     key: 'submit',
     value: function submit() {
+      this.hideModal();
       this.props.resourceUpdate(this.resource);
-      $("#dataFormCloseBtn").click();
+      // $("#dataFormCloseBtn").click();
     }
   }, {
     key: 'createElement',
@@ -25465,7 +25648,7 @@ var ResourceForm = function (_React$Component) {
             readonly: describe.isEdit ? null : "readonly",
             value: this.resource[describe.name] == null ? "" : this.resource[describe.name],
             onChange: function onChange(event) {
-              _this2.resource[describe.name] = event.target.value;_this2.setState();
+              _this2.resource[describe.name] = event.target.value;_this2.setState({});
             } })
         );
       }
@@ -25554,13 +25737,8 @@ var ResourceForm = function (_React$Component) {
         'div',
         null,
         _react2.default.createElement(
-          'button',
-          { id: 'dataFormBtn', type: 'button', className: 'btn btn-info', 'data-toggle': 'modal', 'data-target': '#dataForm', hidden: 'hidden' },
-          '+\u6DFB\u52A0'
-        ),
-        _react2.default.createElement(
           'div',
-          { className: 'modal fade data-form show', id: 'dataForm' },
+          { className: 'modal fade data-form', id: 'dataForm' },
           _react2.default.createElement(
             'div',
             { className: 'modal-dialog modal-lg' },
@@ -25573,11 +25751,12 @@ var ResourceForm = function (_React$Component) {
                 _react2.default.createElement(
                   'h4',
                   { className: 'modal-title' },
-                  '\u5BA2\u6237\u7AEF\u4FE1\u606F'
+                  this.props.title,
+                  '\u4FE1\u606F'
                 ),
                 _react2.default.createElement(
                   'button',
-                  { type: 'button', className: 'close', 'data-dismiss': 'modal' },
+                  { type: 'button', className: 'close', 'data-dismiss': 'modal', onClick: this.hideModal },
                   '\xD7'
                 )
               ),
@@ -25597,7 +25776,7 @@ var ResourceForm = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                   'button',
-                  { id: 'dataFormCloseBtn', type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
+                  { id: 'dataFormCloseBtn', type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal', onClick: this.hideModal },
                   '\u5173\u95ED'
                 )
               )
@@ -26029,6 +26208,247 @@ exports.default = ResourceList;
 
 /***/ }),
 
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/ApiResource/ApiResource.jsx":
+/*!****************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/ApiResource/ApiResource.jsx ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _Resource = __webpack_require__(/*! Resource/Resource.jsx */ "./src/Common/Resource/Resource.jsx");
+
+var _Resource2 = _interopRequireDefault(_Resource);
+
+var _ErrorModal = __webpack_require__(/*! Resource/ErrorModal.jsx */ "./src/Common/Resource/ErrorModal.jsx");
+
+var _ErrorModal2 = _interopRequireDefault(_ErrorModal);
+
+var _LoadingModal = __webpack_require__(/*! Resource/LoadingModal/LoadingModal.jsx */ "./src/Common/Resource/LoadingModal/LoadingModal.jsx");
+
+var _LoadingModal2 = _interopRequireDefault(_LoadingModal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ApiResource = function (_React$Component) {
+	_inherits(ApiResource, _React$Component);
+
+	function ApiResource(props) {
+		_classCallCheck(this, ApiResource);
+
+		var _this = _possibleConstructorReturn(this, (ApiResource.__proto__ || Object.getPrototypeOf(ApiResource)).call(this, props));
+
+		_this.claims = new Array();
+
+		// 获取Claim
+		$.get("/api/ClaimManage/GetWebClaimTypes", function (data) {
+			if (data.isSuccess == true) {
+				for (var item in data.value) {
+					this.claims.push({ text: data.value[item], value: data.value[item] });
+				}
+			}
+		}.bind(_this));
+
+		_this.describes = [{ name: "id", isId: true, isAddShow: false, isEditShow: false, isLookupShow: false }, { name: "name", text: "Api资源名称", isName: true, isShowOnList: true, isEditCanEdit: false }, { name: "displayName", text: "Api资源显示名称", isShowOnList: true }, { name: "description", text: "Api资源描述" }, { name: "userClaims", text: "携带信息", valueType: "check", valueTexts: _this.claims }, {
+			name: "enabled",
+			text: "是否启用",
+			isShowOnList: true,
+			valueType: "radio",
+			valueTexts: [{ text: "启用", value: true }, { text: "禁用", value: false }],
+			col: 6
+		}];
+
+		_this.resourceChild = null;
+
+		_this.submitBackcall = _this.submitBackcall.bind(_this);
+		_this.addResource = _this.addResource.bind(_this);
+		_this.updateResource = _this.updateResource.bind(_this);
+		_this.deleteResource = _this.deleteResource.bind(_this);
+		_this.freshenResources = _this.freshenResources.bind(_this);
+		return _this;
+	}
+
+	// 提交回调
+
+
+	_createClass(ApiResource, [{
+		key: 'submitBackcall',
+		value: function submitBackcall(data) {
+			_LoadingModal2.default.hideModal();
+
+			if (data.isSuccess == true) {
+				this.resourceChild.reloadResources();
+			} else {
+				_ErrorModal2.default.showErrorModal("提交表单错误", data.message);
+			}
+		}
+
+		// Resource组件添加资源通知
+
+	}, {
+		key: 'addResource',
+		value: function addResource(resource) {
+			_LoadingModal2.default.showModal();
+			var postData = resource;
+
+			$.ajax({
+				url: "/api/ApiResourceManage/AddApiResource",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: this.submitBackcall
+			});
+		}
+
+		// Resource组件更新资源通知
+
+	}, {
+		key: 'updateResource',
+		value: function updateResource(resource) {
+			_LoadingModal2.default.showModal();
+			var postData = resource;
+
+			$.ajax({
+				url: "/api/ApiResourceManage/UpdateApiResource",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: this.submitBackcall
+			});
+		}
+
+		// Resource组件删除资源通知
+
+	}, {
+		key: 'deleteResource',
+		value: function deleteResource(resource) {
+			_LoadingModal2.default.showModal();
+			var postData = {
+				id: resource.id
+			};
+
+			$.ajax({
+				url: "/api/ApiResourceManage/DeleteApiResource",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: this.submitBackcall
+			});
+		}
+
+		// Resource组件刷新资源通知
+
+	}, {
+		key: 'freshenResources',
+		value: function freshenResources(pageIndex, pageSize, searchKey) {
+			this.getResourceList(pageIndex, pageSize, searchKey);
+			this.getResourceNum(searchKey);
+		}
+
+		// 获取资源列表
+
+	}, {
+		key: 'getResourceList',
+		value: function getResourceList(pageIndex, pageSize, searchKey) {
+			var postData = {
+				pageIndex: pageIndex,
+				pageSize: pageSize,
+				searchKey: searchKey
+			};
+
+			$.ajax({
+				url: "/api/ApiResourceManage/GetApiResources",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: function (data) {
+					if (data.isSuccess == true) {
+						this.resourceChild.resetResources(data.value.apiResources, pageIndex);
+					}
+				}.bind(this)
+			});
+		}
+
+		// 获取资源数量
+
+	}, {
+		key: 'getResourceNum',
+		value: function getResourceNum(searchKey) {
+			var postData = {
+				searchKey: searchKey
+			};
+
+			$.ajax({
+				url: "/api/ApiResourceManage/GetApiResourceNum",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: function (data) {
+					if (data.isSuccess == true) {
+						this.resourceChild.resetResourceNum(data.value.resourceNum);
+					}
+				}.bind(this)
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
+
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(_Resource2.default, {
+					title: 'Api\u8D44\u6E90',
+					describes: this.describes,
+					freshenResources: this.freshenResources,
+					addResource: this.addResource,
+					updateResource: this.updateResource,
+					deleteResource: this.deleteResource,
+					setResourceRef: function setResourceRef(ref) {
+						_this2.resourceChild = ref;
+					} }),
+				_react2.default.createElement(_ErrorModal2.default, null),
+				_react2.default.createElement(_LoadingModal2.default, null)
+			);
+		}
+	}]);
+
+	return ApiResource;
+}(_react2.default.Component);
+
+exports.default = ApiResource;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./src/lib/js/jquery-3.3.1.min.js")))
+
+/***/ }),
+
 /***/ "./src/ManageHome/BodyDiv/AuthorizeManage/Client/Client.jsx":
 /*!******************************************************************!*\
   !*** ./src/ManageHome/BodyDiv/AuthorizeManage/Client/Client.jsx ***!
@@ -26060,6 +26480,10 @@ var _Resource2 = _interopRequireDefault(_Resource);
 var _ErrorModal = __webpack_require__(/*! Resource/ErrorModal.jsx */ "./src/Common/Resource/ErrorModal.jsx");
 
 var _ErrorModal2 = _interopRequireDefault(_ErrorModal);
+
+var _LoadingModal = __webpack_require__(/*! Resource/LoadingModal/LoadingModal.jsx */ "./src/Common/Resource/LoadingModal/LoadingModal.jsx");
+
+var _LoadingModal2 = _interopRequireDefault(_LoadingModal);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26130,6 +26554,8 @@ var Client = function (_React$Component) {
 	_createClass(Client, [{
 		key: 'submitBackcall',
 		value: function submitBackcall(data) {
+			_LoadingModal2.default.hideModal();
+
 			if (data.isSuccess == true) {
 				this.resourceChild.reloadResources();
 			} else {
@@ -26142,6 +26568,8 @@ var Client = function (_React$Component) {
 	}, {
 		key: 'addResource',
 		value: function addResource(resource) {
+			_LoadingModal2.default.showModal();
+
 			var postData = resource;
 
 			$.ajax({
@@ -26159,6 +26587,8 @@ var Client = function (_React$Component) {
 	}, {
 		key: 'updateResource',
 		value: function updateResource(resource) {
+			_LoadingModal2.default.showModal();
+
 			var postData = resource;
 
 			$.ajax({
@@ -26176,6 +26606,8 @@ var Client = function (_React$Component) {
 	}, {
 		key: 'deleteResource',
 		value: function deleteResource(resource) {
+			_LoadingModal2.default.showModal();
+
 			var postData = {
 				id: resource.id
 			};
@@ -26339,7 +26771,8 @@ var Client = function (_React$Component) {
 					setResourceRef: function setResourceRef(ref) {
 						_this2.resourceChild = ref;
 					} }),
-				_react2.default.createElement(_ErrorModal2.default, null)
+				_react2.default.createElement(_ErrorModal2.default, null),
+				_react2.default.createElement(_LoadingModal2.default, null)
 			);
 		}
 	}]);
@@ -26348,6 +26781,254 @@ var Client = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Client;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./src/lib/js/jquery-3.3.1.min.js")))
+
+/***/ }),
+
+/***/ "./src/ManageHome/BodyDiv/AuthorizeManage/IdentityResource/IdentityResource.jsx":
+/*!**************************************************************************************!*\
+  !*** ./src/ManageHome/BodyDiv/AuthorizeManage/IdentityResource/IdentityResource.jsx ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _Resource = __webpack_require__(/*! Resource/Resource.jsx */ "./src/Common/Resource/Resource.jsx");
+
+var _Resource2 = _interopRequireDefault(_Resource);
+
+var _ErrorModal = __webpack_require__(/*! Resource/ErrorModal.jsx */ "./src/Common/Resource/ErrorModal.jsx");
+
+var _ErrorModal2 = _interopRequireDefault(_ErrorModal);
+
+var _LoadingModal = __webpack_require__(/*! Resource/LoadingModal/LoadingModal.jsx */ "./src/Common/Resource/LoadingModal/LoadingModal.jsx");
+
+var _LoadingModal2 = _interopRequireDefault(_LoadingModal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var IdentityResource = function (_React$Component) {
+	_inherits(IdentityResource, _React$Component);
+
+	function IdentityResource(props) {
+		_classCallCheck(this, IdentityResource);
+
+		var _this = _possibleConstructorReturn(this, (IdentityResource.__proto__ || Object.getPrototypeOf(IdentityResource)).call(this, props));
+
+		_this.claims = new Array();
+
+		// 获取Claim
+		$.get("/api/ClaimManage/GetWebClaimTypes", function (data) {
+			if (data.isSuccess == true) {
+				for (var item in data.value) {
+					this.claims.push({ text: data.value[item], value: data.value[item] });
+				}
+			}
+		}.bind(_this));
+
+		_this.describes = [{ name: "id", isId: true, isAddShow: false, isEditShow: false, isLookupShow: false }, { name: "name", text: "身份资源名称", isName: true, isShowOnList: true, isEditCanEdit: false }, { name: "displayName", text: "身份资源显示名称", isShowOnList: true }, { name: "description", text: "身份资源描述" }, { name: "userClaims", text: "携带信息", valueType: "check", valueTexts: _this.claims }, {
+			name: "enabled",
+			text: "是否启用",
+			isShowOnList: true,
+			valueType: "radio",
+			valueTexts: [{ text: "启用", value: true }, { text: "禁用", value: false }],
+			col: 6
+		}, {
+			name: "required",
+			text: "是否必须",
+			isShowOnList: true,
+			valueType: "radio",
+			valueTexts: [{ text: "必须", value: true }, { text: "非必须", value: false }],
+			col: 6
+		}];
+
+		_this.resourceChild = null;
+
+		_this.submitBackcall = _this.submitBackcall.bind(_this);
+		_this.addResource = _this.addResource.bind(_this);
+		_this.updateResource = _this.updateResource.bind(_this);
+		_this.deleteResource = _this.deleteResource.bind(_this);
+		_this.freshenResources = _this.freshenResources.bind(_this);
+		return _this;
+	}
+
+	// 提交回调
+
+
+	_createClass(IdentityResource, [{
+		key: 'submitBackcall',
+		value: function submitBackcall(data) {
+			_LoadingModal2.default.hideModal();
+
+			if (data.isSuccess == true) {
+				this.resourceChild.reloadResources();
+			} else {
+				_ErrorModal2.default.showErrorModal("提交表单错误", data.message);
+			}
+		}
+
+		// Resource组件添加资源通知
+
+	}, {
+		key: 'addResource',
+		value: function addResource(resource) {
+			_LoadingModal2.default.showModal();
+			var postData = resource;
+
+			$.ajax({
+				url: "/api/IdentityResourceManage/AddIdentityResource",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: this.submitBackcall
+			});
+		}
+
+		// Resource组件更新资源通知
+
+	}, {
+		key: 'updateResource',
+		value: function updateResource(resource) {
+			_LoadingModal2.default.showModal();
+			var postData = resource;
+
+			$.ajax({
+				url: "/api/IdentityResourceManage/UpdateIdentityResource",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: this.submitBackcall
+			});
+		}
+
+		// Resource组件删除资源通知
+
+	}, {
+		key: 'deleteResource',
+		value: function deleteResource(resource) {
+			_LoadingModal2.default.showModal();
+			var postData = {
+				id: resource.id
+			};
+
+			$.ajax({
+				url: "/api/IdentityResourceManage/DeleteIdentityResource",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: this.submitBackcall
+			});
+		}
+
+		// Resource组件刷新资源通知
+
+	}, {
+		key: 'freshenResources',
+		value: function freshenResources(pageIndex, pageSize, searchKey) {
+			this.getResourceList(pageIndex, pageSize, searchKey);
+			this.getResourceNum(searchKey);
+		}
+
+		// 获取资源列表
+
+	}, {
+		key: 'getResourceList',
+		value: function getResourceList(pageIndex, pageSize, searchKey) {
+			var postData = {
+				pageIndex: pageIndex,
+				pageSize: pageSize,
+				searchKey: searchKey
+			};
+
+			$.ajax({
+				url: "/api/IdentityResourceManage/GetIdentityResources",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: function (data) {
+					if (data.isSuccess == true) {
+						this.resourceChild.resetResources(data.value.identityResources, pageIndex);
+					}
+				}.bind(this)
+			});
+		}
+
+		// 获取资源数量
+
+	}, {
+		key: 'getResourceNum',
+		value: function getResourceNum(searchKey) {
+			var postData = {
+				searchKey: searchKey
+			};
+
+			$.ajax({
+				url: "/api/IdentityResourceManage/GetIdentityResourceNum",
+				type: 'post',
+				data: JSON.stringify(postData),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: function (data) {
+					if (data.isSuccess == true) {
+						this.resourceChild.resetResourceNum(data.value.resourceNum);
+					}
+				}.bind(this)
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
+
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(_Resource2.default, {
+					title: '\u8EAB\u4EFD\u8D44\u6E90',
+					describes: this.describes,
+					freshenResources: this.freshenResources,
+					addResource: this.addResource,
+					updateResource: this.updateResource,
+					deleteResource: this.deleteResource,
+					setResourceRef: function setResourceRef(ref) {
+						_this2.resourceChild = ref;
+					} }),
+				_react2.default.createElement(_ErrorModal2.default, null),
+				_react2.default.createElement(_LoadingModal2.default, null)
+			);
+		}
+	}]);
+
+	return IdentityResource;
+}(_react2.default.Component);
+
+exports.default = IdentityResource;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./src/lib/js/jquery-3.3.1.min.js")))
 
 /***/ }),
@@ -26416,6 +27097,14 @@ var _Client = __webpack_require__(/*! ./AuthorizeManage/Client/Client.jsx */ "./
 
 var _Client2 = _interopRequireDefault(_Client);
 
+var _ApiResource = __webpack_require__(/*! ./AuthorizeManage/ApiResource/ApiResource.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/ApiResource/ApiResource.jsx");
+
+var _ApiResource2 = _interopRequireDefault(_ApiResource);
+
+var _IdentityResource = __webpack_require__(/*! ./AuthorizeManage/IdentityResource/IdentityResource.jsx */ "./src/ManageHome/BodyDiv/AuthorizeManage/IdentityResource/IdentityResource.jsx");
+
+var _IdentityResource2 = _interopRequireDefault(_IdentityResource);
+
 var _UserInfo = __webpack_require__(/*! ./Personal/UserInfo/UserInfo.jsx */ "./src/ManageHome/BodyDiv/Personal/UserInfo/UserInfo.jsx");
 
 var _UserInfo2 = _interopRequireDefault(_UserInfo);
@@ -26444,6 +27133,8 @@ var BodyDiv = function (_React$Component) {
                 'div',
                 { className: 'col-md-10 content-container' },
                 _react2.default.createElement(_reactRouterDom.Route, { path: '/ManageHome/AuthorizeManage/Client', component: _Client2.default }),
+                _react2.default.createElement(_reactRouterDom.Route, { path: '/ManageHome/AuthorizeManage/ApiResource', component: _ApiResource2.default }),
+                _react2.default.createElement(_reactRouterDom.Route, { path: '/ManageHome/AuthorizeManage/IdentityResource', component: _IdentityResource2.default }),
                 _react2.default.createElement(_reactRouterDom.Route, { path: '/ManageHome/Personal/UserInfo', component: _UserInfo2.default })
             );
         }
