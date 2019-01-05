@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Route, NavLink, Link, Switch } from 'react-router-dom';
 
 import MenuProvider from "../MenuProvider.js";
+import Logo from 'Logo/Logo.jsx';
 
 export default class Nav extends React.Component
 {
@@ -41,11 +42,7 @@ export default class Nav extends React.Component
         return(
             <nav className="navbar navbar-expand-md bg-dark navbar-dark fixed-top navbar_css">
                 <div className="float-left navbar_logo_css">
-                    <div className="logo">
-                        <div className="w-75">
-                            <img src="/images/logo.png" alt="" className="w-100" />
-                        </div>
-                    </div>
+                    <Logo />
                 </div>
                 <a className="navbar-brand" href="#">冰纹管理系统</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">

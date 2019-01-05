@@ -13,10 +13,15 @@ module.exports = {
     mode:"development",
     // // 生产环境
     // devtool:'cheap-module-source-map',
+    devServer: {
+        contentBase: './build',
+        port: 9000
+    },
     entry: { 
         account:__dirname + "/src/Account/account.jsx",
         consent:__dirname + "/src/Consent/consent.jsx",
         adminiHome:__dirname + "/src/ManageHome/ManageHome.jsx",
+        home:__dirname + "/src/Home/Index.jsx",
         // selectSingleData:__dirname + "/src/SelectSingleData/SelectSingleData.js",
     },
     output: {
@@ -50,6 +55,12 @@ module.exports = {
             template: __dirname + '/src/ManageHome/ManageHome.html', // html模板路径,模板路径是支持传参调用loader的,
             inject: 'body', //打包之后的js插入的位置，true/'head'/'body'/false,
             chunks: ['adminiHome']
+        }),
+        new HtmlWebpackPlugin({
+            filename: __dirname + '/build/Home/Index.cshtml',
+            template: __dirname + '/src/Home/Index.html', // html模板路径,模板路径是支持传参调用loader的,
+            inject: 'body', //打包之后的js插入的位置，true/'head'/'body'/false,
+            chunks: ['home']
         }),
         new BomPlugin(true, /\.(cshtml)$/),//解决cshtml中文乱码的问题
     ],

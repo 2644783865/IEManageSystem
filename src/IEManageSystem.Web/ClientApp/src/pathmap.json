@@ -3,7 +3,6 @@
 "bootstrapcssicon":"css/open-iconic-bootstrap.min.css",
 "commoncss":"css/common.css",
 "labelautycss":"css/jquery-labelauty.css",
-"logocss":"css/logo.css",
 
 "jquery":"js/jquery-3.3.1.min.js",
 "bootstrap":"js/bootstrap.min.js",

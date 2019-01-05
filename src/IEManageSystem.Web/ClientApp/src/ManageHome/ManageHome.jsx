@@ -3,7 +3,6 @@ import 'bootstrapcss';
 import 'bootstrapcssicon';
 
 import 'commoncss';
-import 'logocss';
 
 import 'cookie';
 
