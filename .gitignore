@@ -18,9 +18,12 @@
 /src/IEManageSystem.EntityFrameworkCore/bin
 /src/UtilityAction/bin
 /src/IEManageSystem.Web/App_Data/Logs/Logs.txt
-/IEIdentityServer.Core/bin
-/IEIdentityServer.Core/obj
-/IEIdentityServer.EFCore/bin
-/IEIdentityServer.EFCore/obj
-/IEIdentityServer.Core/obj
+/src/IEManageSystem.IdentityServer/bin
+/src/IEManageSystem.IdentityServer/obj
+/src/IEManageSystem.IdentityServerEF/bin
+/src/IEManageSystem.IdentityServerEF/obj
 /src/IEManageSystem.Web/ClientApp/node_modules
+/test/IEManageSystem.Tests/bin/Debug/netcoreapp2.1
+/test/IEManageSystem.Tests/obj
+/test/IEManageSystem.Web.Tests/bin/Debug/netcoreapp2.1
+/test/IEManageSystem.Web.Tests/obj

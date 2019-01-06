@@ -3,7 +3,7 @@ using IEManageSystem.Entitys.Authorization;
 using IEManageSystem.Entitys.Authorization.Users;
 using Microsoft.EntityFrameworkCore;
 
-namespace IEManageSystem.EntityFrameworkCore.IEManageSystemEF
+namespace IEManageSystem.EntityFrameworkCore
 {
     public class IEManageSystemDbContext : AbpDbContext
     {

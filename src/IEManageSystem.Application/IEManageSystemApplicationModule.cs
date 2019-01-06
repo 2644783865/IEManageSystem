@@ -7,7 +7,7 @@ namespace IEManageSystem
 {
     [DependsOn(
         typeof(IEManageSystemCoreModule), 
-        typeof(IEIdentityServerCoreModule),
+        typeof(IEIdentityServerModule),
         typeof(AbpAutoMapperModule))]
     public class IEManageSystemApplicationModule : AbpModule
     {

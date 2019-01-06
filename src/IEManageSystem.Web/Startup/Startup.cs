@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Http;
 using IEManageSystem.Api.Help;
 using IEManageSystem.Api.Help.IdentityServerHelp;
 using IEManageSystem.Api.Middlewares;
-using IEManageSystem.EntityFrameworkCore.IEManageSystemEF;
 using Microsoft.AspNetCore.Mvc.Razor;
 using IdentityServer4.EntityFramework.DbContexts;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +22,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using IEManageSystem.Configuration;
 using IEManageSystem.IdentityServerEF.EntityFramework;
+using IEManageSystem.EntityFrameworkCore;
 
 namespace IEManageSystem.Web.Startup
 {
@@ -44,7 +44,7 @@ namespace IEManageSystem.Web.Startup
             //Configure DbContext
             services.AddAbpDbContext<IEManageSystemDbContext>(options =>
             {
-                IEManageSystem.EntityFrameworkCore.IEManageSystemEF.DbContextOptionsConfigurer.Configure(options.DbContextOptions, options.ConnectionString);
+                IEManageSystem.EntityFrameworkCore.DbContextOptionsConfigurer.Configure(options.DbContextOptions, options.ConnectionString);
             });
 
             services.AddAbpDbContext<IEConfigurationDbContext>(options =>

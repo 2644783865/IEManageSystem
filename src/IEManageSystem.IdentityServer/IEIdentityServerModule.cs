@@ -7,7 +7,7 @@ using System.Text;
 namespace IEManageSystem.IdentityServer
 {
     [DependsOn()]
-    public class IEIdentityServerCoreModule : AbpModule
+    public class IEIdentityServerModule : AbpModule
     {
         public override void PreInitialize()
         {
@@ -15,7 +15,7 @@ namespace IEManageSystem.IdentityServer
 
         public override void Initialize()
         {
-            IocManager.RegisterAssemblyByConvention(typeof(IEIdentityServerCoreModule).GetAssembly());
+            IocManager.RegisterAssemblyByConvention(typeof(IEIdentityServerModule).GetAssembly());
         }
     }
 }

@@ -11,8 +11,8 @@ using System.Text;
 namespace IEManageSystem.IdentityServerEF
 {
     [DependsOn(
-        typeof(IEIdentityServerCoreModule))]
-    public class IEIdentityServerEFCoreModule : AbpModule
+        typeof(IEIdentityServerModule))]
+    public class IEIdentityServerEFModule : AbpModule
     {
         public override void PreInitialize()
         {
@@ -20,7 +20,7 @@ namespace IEManageSystem.IdentityServerEF
 
         public override void Initialize()
         {
-            IocManager.RegisterAssemblyByConvention(typeof(IEIdentityServerEFCoreModule).GetAssembly());
+            IocManager.RegisterAssemblyByConvention(typeof(IEIdentityServerEFModule).GetAssembly());
 
             IocManager.IocContainer.Register(
                     Component.For(typeof(IIEIdentityServerRepository<>)).ImplementedBy(typeof(IEIdentityServerRepository<>)).LifestyleTransient()

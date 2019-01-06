@@ -3,7 +3,7 @@ using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Castle.MicroKernel.Registration;
 
-namespace IEManageSystem.EntityFrameworkCore.IEManageSystemEF
+namespace IEManageSystem.EntityFrameworkCore
 {
     [DependsOn(
         typeof(IEManageSystemCoreModule), 
