@@ -2,7 +2,7 @@
 using Abp.AspNetCore.Configuration;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
-using IEIdentityServer.EFCore;
+using IEManageSystem.IdentityServerEF;
 using IEManageSystem.Api.Startup;
 using IEManageSystem.Configuration;
 using IEManageSystem.EntityFrameworkCore;

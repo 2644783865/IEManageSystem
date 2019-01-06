@@ -1,0 +1,16 @@
+D:\VSProject\IEManageSystem\IEIdentityServer.EFCore\bin\Debug\netcoreapp2.1\IEIdentityServer.EFCore.deps.json
+D:\VSProject\IEManageSystem\IEIdentityServer.EFCore\bin\Debug\netcoreapp2.1\IEIdentityServer.EFCore.dll
+D:\VSProject\IEManageSystem\IEIdentityServer.EFCore\bin\Debug\netcoreapp2.1\IEIdentityServer.EFCore.pdb
+D:\VSProject\IEManageSystem\IEIdentityServer.EFCore\bin\Debug\netcoreapp2.1\IEIdentityServer.Core.dll
+D:\VSProject\IEManageSystem\IEIdentityServer.EFCore\bin\Debug\netcoreapp2.1\IEIdentityServer.Core.pdb
+D:\VSProject\IEManageSystem\IEIdentityServer.EFCore\obj\Debug\netcoreapp2.1\IEIdentityServer.EFCore.csprojAssemblyReference.cache
+D:\VSProject\IEManageSystem\IEIdentityServer.EFCore\obj\Debug\netcoreapp2.1\IEIdentityServer.EFCore.csproj.CoreCompileInputs.cache
+D:\VSProject\IEManageSystem\IEIdentityServer.EFCore\obj\Debug\netcoreapp2.1\IEIdentityServer.EFCore.AssemblyInfoInputs.cache
+D:\VSProject\IEManageSystem\IEIdentityServer.EFCore\obj\Debug\netcoreapp2.1\IEIdentityServer.EFCore.AssemblyInfo.cs
+D:\VSProject\IEManageSystem\IEIdentityServer.EFCore\obj\Debug\netcoreapp2.1\IEIdentityServer.EFCore.csproj.CopyComplete
+D:\VSProject\IEManageSystem\IEIdentityServer.EFCore\obj\Debug\netcoreapp2.1\IEIdentityServer.EFCore.dll
+D:\VSProject\IEManageSystem\IEIdentityServer.EFCore\obj\Debug\netcoreapp2.1\IEIdentityServer.EFCore.pdb
+D:\VSProject\IEManageSystem\IEIdentityServer.EFCore\bin\Debug\netcoreapp2.1\IEManageSystem.Core.dll
+D:\VSProject\IEManageSystem\IEIdentityServer.EFCore\bin\Debug\netcoreapp2.1\UtilityAction.dll
+D:\VSProject\IEManageSystem\IEIdentityServer.EFCore\bin\Debug\netcoreapp2.1\IEManageSystem.Core.pdb
+D:\VSProject\IEManageSystem\IEIdentityServer.EFCore\bin\Debug\netcoreapp2.1\UtilityAction.pdb

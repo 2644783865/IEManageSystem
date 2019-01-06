@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using IEIdentityServer.Core.Entitys.Clients.ClientGrantTypes;
+using IEManageSystem.IdentityServer.Entitys.Clients.ClientGrantTypes;
 using IEManageSystem.Api.Models;
 using IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages;
 using IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages.Dto;

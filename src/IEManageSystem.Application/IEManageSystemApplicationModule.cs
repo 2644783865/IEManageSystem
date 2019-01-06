@@ -1,7 +1,7 @@
 ﻿using Abp.AutoMapper;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
-using IEIdentityServer.Core;
+using IEManageSystem.IdentityServer;
 
 namespace IEManageSystem
 {

@@ -1,0 +1,14 @@
+D:\VSProject\IEManageSystem\src\IEManageSystem.IdentityServer\bin\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.deps.json
+D:\VSProject\IEManageSystem\src\IEManageSystem.IdentityServer\bin\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.dll
+D:\VSProject\IEManageSystem\src\IEManageSystem.IdentityServer\bin\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.pdb
+D:\VSProject\IEManageSystem\src\IEManageSystem.IdentityServer\bin\Debug\netcoreapp2.1\IEManageSystem.Core.dll
+D:\VSProject\IEManageSystem\src\IEManageSystem.IdentityServer\bin\Debug\netcoreapp2.1\UtilityAction.dll
+D:\VSProject\IEManageSystem\src\IEManageSystem.IdentityServer\bin\Debug\netcoreapp2.1\IEManageSystem.Core.pdb
+D:\VSProject\IEManageSystem\src\IEManageSystem.IdentityServer\bin\Debug\netcoreapp2.1\UtilityAction.pdb
+D:\VSProject\IEManageSystem\src\IEManageSystem.IdentityServer\obj\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.csprojAssemblyReference.cache
+D:\VSProject\IEManageSystem\src\IEManageSystem.IdentityServer\obj\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.csproj.CoreCompileInputs.cache
+D:\VSProject\IEManageSystem\src\IEManageSystem.IdentityServer\obj\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.AssemblyInfoInputs.cache
+D:\VSProject\IEManageSystem\src\IEManageSystem.IdentityServer\obj\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.AssemblyInfo.cs
+D:\VSProject\IEManageSystem\src\IEManageSystem.IdentityServer\obj\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.csproj.CopyComplete
+D:\VSProject\IEManageSystem\src\IEManageSystem.IdentityServer\obj\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.dll
+D:\VSProject\IEManageSystem\src\IEManageSystem.IdentityServer\obj\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.pdb

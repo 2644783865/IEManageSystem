@@ -11,8 +11,8 @@
     <RootNamespace>IEManageSystem</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\IEIdentityServer.Core\IEIdentityServer.Core.csproj" />
     <ProjectReference Include="..\IEManageSystem.Core\IEManageSystem.Core.csproj" />
+    <ProjectReference Include="..\IEManageSystem.IdentityServer\IEManageSystem.IdentityServer.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Abp.EntityFrameworkCore" Version="3.7.2" />

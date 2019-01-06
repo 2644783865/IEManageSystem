@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
-using IEIdentityServer.Core.Repositories;
+using IEManageSystem.IdentityServer.Repositories;
 using IdentityServer4.EntityFramework.Entities;
 using System.Linq.Expressions;
-using IEIdentityServer.Core.Entitys.IdentityResources;
+using IEManageSystem.IdentityServer.Entitys.IdentityResources;
 
 namespace IEManageSystem.Services.ManageHome.AuthorizeManage.IdentityResourceManages
 {

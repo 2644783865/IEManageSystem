@@ -9,7 +9,7 @@ using IEManageSystem.EntityFrameworkCore;
 using Abp.AspNetCore;
 using IEManageSystem.Api.Configuration;
 using IEManageSystem.EntityFrameworkCore.IEManageSystemEF;
-using IEIdentityServer.EFCore;
+using IEManageSystem.IdentityServerEF;
 
 namespace IEManageSystem.Api.Startup
 {

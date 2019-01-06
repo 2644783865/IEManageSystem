@@ -1,5 +1,5 @@
 ﻿using Castle.Core.Logging;
-using IEIdentityServer.Core.Help.Exceptions;
+using IEManageSystem.IdentityServer.Help.Exceptions;
 using IEManageSystem.Api.Models;
 using IEManageSystem.Help.Exceptions;
 using Microsoft.AspNetCore.Http;

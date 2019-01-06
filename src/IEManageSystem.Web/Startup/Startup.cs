@@ -22,7 +22,7 @@ using IdentityServer4.EntityFramework.Mappers;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using IEManageSystem.Configuration;
-using IEIdentityServer.EFCore.EntityFramework;
+using IEManageSystem.IdentityServerEF.EntityFramework;
 
 namespace IEManageSystem.Web.Startup
 {
@@ -49,7 +49,7 @@ namespace IEManageSystem.Web.Startup
 
             services.AddAbpDbContext<IEConfigurationDbContext>(options =>
             {
-                IEIdentityServer.EFCore.EntityFramework.DbContextOptionsConfigurer.Configure(options.DbContextOptions, _configurationRoot.GetConnectionString("IdentityServer"));
+                IEManageSystem.IdentityServerEF.EntityFramework.DbContextOptionsConfigurer.Configure(options.DbContextOptions, _configurationRoot.GetConnectionString("IdentityServer"));
             });
 
             services.AddMvc(options =>
