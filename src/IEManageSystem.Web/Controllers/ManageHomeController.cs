@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.Application.Navigation;
+using IEManageSystem.ApiAuthorization.Authorizations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IEManageSystem.Web.Controllers
 {
     [Authorize]
+    [ApiAuthorization]
     public class ManageHomeController : IEManageSystemControllerBase
     {
         public IActionResult Index()

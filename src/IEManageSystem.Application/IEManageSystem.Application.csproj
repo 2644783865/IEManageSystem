@@ -11,6 +11,7 @@
     <RootNamespace>IEManageSystem</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\IEManageSystem.ApiAuthorization\IEManageSystem.ApiAuthorization.csproj" />
     <ProjectReference Include="..\IEManageSystem.Core\IEManageSystem.Core.csproj" />
     <ProjectReference Include="..\IEManageSystem.IdentityServer\IEManageSystem.IdentityServer.csproj" />
   </ItemGroup>

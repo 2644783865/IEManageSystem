@@ -23,6 +23,9 @@ using Microsoft.Extensions.Configuration;
 using IEManageSystem.Configuration;
 using IEManageSystem.IdentityServerEF.EntityFramework;
 using IEManageSystem.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using IEManageSystem.ApiAuthorization;
+using IEManageSystem.ApiAuthorization.Authorizations;
 
 namespace IEManageSystem.Web.Startup
 {
@@ -80,6 +83,8 @@ namespace IEManageSystem.Web.Startup
 
             services.AddScoped<ValidateCodeHelper>();
 
+            services.AddSingleton<IAuthorizationHandler, ApiScopeAuthorizationPolicy>();
+
             return services.AddAbp<IEManageSystemWebModule>(options =>
             {
                 options.IocManager.IocContainer.AddFacility<LoggingFacility>(
@@ -114,7 +119,7 @@ namespace IEManageSystem.Web.Startup
 
             app.UseIdentityServer();
 
-            // app.UseAuthentication();
+            app.UseAuthentication();
 
             app.UseStaticFiles();
 

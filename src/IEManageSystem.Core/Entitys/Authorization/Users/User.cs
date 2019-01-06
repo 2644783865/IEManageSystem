@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using System.Text;
 
 namespace IEManageSystem.Entitys.Authorization.Users
@@ -54,7 +55,7 @@ namespace IEManageSystem.Entitys.Authorization.Users
         /// <summary>
         /// 权限
         /// </summary>
-        public string Role { get; set; }
+        public IQueryable<UserRole> UserRoles { get; set; }
 
         public int? TenantId { get; set; }
     }
