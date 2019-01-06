@@ -8,7 +8,7 @@ using System.Text;
 using System.Linq;
 using IEIdentityServer.Core.Help.Exceptions;
 
-namespace IEIdentityServer.Core.Entitys.IdentityService.IdentityResources
+namespace IEIdentityServer.Core.Entitys.IdentityResources
 {
     public class IdentityResourceManager: ITransientDependency
     {

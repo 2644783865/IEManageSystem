@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace IEIdentityServer.Core.Entitys.IdentityService.Clients.ClientGrantTypes
+namespace IEIdentityServer.Core.Entitys.Clients.ClientGrantTypes
 {
     /// <summary>
     /// 认证类型组合（OAuth2.0认证类型的组合）

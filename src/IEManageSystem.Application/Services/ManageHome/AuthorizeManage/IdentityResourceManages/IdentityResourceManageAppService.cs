@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 using System.Linq;
 using IEIdentityServer.Core.Repositories;
 using IdentityServer4.EntityFramework.Entities;
-using IEIdentityServer.Core.Entitys.IdentityService.IdentityResources;
 using System.Linq.Expressions;
+using IEIdentityServer.Core.Entitys.IdentityResources;
 
 namespace IEManageSystem.Services.ManageHome.AuthorizeManage.IdentityResourceManages
 {

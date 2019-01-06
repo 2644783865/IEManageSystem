@@ -8,7 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace IEIdentityServer.Core.Entitys.IdentityService.ApiResources
+namespace IEIdentityServer.Core.Entitys.ApiResources
 {
     public class ApiResourceManager: ITransientDependency
     {

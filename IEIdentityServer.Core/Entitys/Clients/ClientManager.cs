@@ -2,7 +2,7 @@
 using IdentityServer4.EntityFramework.Entities;
 using IdentityServer4.EntityFramework.Mappers;
 using IdentityServer4.Models;
-using IEIdentityServer.Core.Entitys.IdentityService.Clients.ClientGrantTypes;
+using IEIdentityServer.Core.Entitys.Clients.ClientGrantTypes;
 using IEIdentityServer.Core.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace IEIdentityServer.Core.Entitys.IdentityService.Clients
+namespace IEIdentityServer.Core.Entitys.Clients
 {
     public class ClientManager : ITransientDependency
     {

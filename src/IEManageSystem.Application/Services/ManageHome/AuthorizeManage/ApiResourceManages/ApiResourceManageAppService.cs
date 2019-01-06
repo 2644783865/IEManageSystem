@@ -1,5 +1,5 @@
 ﻿using IdentityServer4.EntityFramework.Entities;
-using IEIdentityServer.Core.Entitys.IdentityService.ApiResources;
+using IEIdentityServer.Core.Entitys.ApiResources;
 using IEIdentityServer.Core.Repositories;
 using IEManageSystem.Dtos.IdentityService;
 using IEManageSystem.Services.ManageHome.AuthorizeManage.ApiResourceManages.Dto;

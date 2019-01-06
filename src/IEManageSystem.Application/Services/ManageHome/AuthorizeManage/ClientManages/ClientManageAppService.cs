@@ -1,5 +1,4 @@
 ﻿using IdentityServer4.EntityFramework.Entities;
-using IEIdentityServer.Core.Entitys.IdentityService.Clients;
 using IEIdentityServer.Core.Repositories;
 using IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages.Dto;
 using System;
@@ -10,7 +9,8 @@ using System.Linq;
 using IEManageSystem.Dtos.IdentityService;
 using System.Linq.Expressions;
 using UtilityAction.Other;
-using IEIdentityServer.Core.Entitys.IdentityService.Clients.ClientGrantTypes;
+using IEIdentityServer.Core.Entitys.Clients;
+using IEIdentityServer.Core.Entitys.Clients.ClientGrantTypes;
 
 namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages
 {
