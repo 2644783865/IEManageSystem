@@ -1,4 +1,5 @@
-﻿using Abp.Domain.Services;
+﻿using Abp.Domain.Repositories;
+using Abp.Domain.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,7 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
     {
         private static List<ApiScope> _apiScopes { get; set; } = new List<ApiScope>();
 
-        public ApiScopeManager() {
-        }
-
-        public void Register(string name)
+        public static void Register(string name)
         {
             if (_apiScopes.Where(e => e.Name == name).Any())
             {
@@ -23,9 +21,18 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
             _apiScopes.Add(new ApiScope(name));
         }
 
-        public ApiScope GetApiSingleForControllerName(string controllerName)
+        private IRepository<ApiScope> _repository { get; set; }
+
+        public ApiScopeManager(
+            IRepository<ApiScope> repository
+            )
         {
-            return _apiScopes.FirstOrDefault(e => e.ApiSingles.Where(ie => ie.ControllerName == controllerName).Any());
+            _repository = repository;
+        }
+
+        public ApiScope GetApiScopeForApiSingleName(string name)
+        {
+            return _apiScopes.FirstOrDefault(e => e.ApiScopeApis.Where(ie => ie.ApiSingleName == name).Any());
         }
     }
 }

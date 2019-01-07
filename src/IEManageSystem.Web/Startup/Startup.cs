@@ -83,7 +83,7 @@ namespace IEManageSystem.Web.Startup
 
             services.AddScoped<ValidateCodeHelper>();
 
-            services.AddSingleton<IAuthorizationHandler, ApiScopeAuthorizationPolicy>();
+            services.AddApiAuthorization();
 
             return services.AddAbp<IEManageSystemWebModule>(options =>
             {

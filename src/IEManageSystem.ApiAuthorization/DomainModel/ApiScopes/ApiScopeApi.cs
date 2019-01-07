@@ -6,14 +6,14 @@ using System.Text;
 
 namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
 {
-    public class ApiSingle : Entity
+    public class ApiScopeApi : Entity
     {
-        public string ControllerName { get; set; }
-
-        public string ControllerDescribe { get; set; }
-
         public int ApiScopeId { get; set; }
 
+        public string ApiSingleName { get; set; }
+
         public ApiScope ApiScope { get; set; }
+
+        public ApiSingle ApiSingle { get; set; }
     }
 }

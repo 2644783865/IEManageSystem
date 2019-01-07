@@ -9,6 +9,7 @@ using IEManageSystem.EntityFrameworkCore;
 using Abp.AspNetCore;
 using IEManageSystem.Api.Configuration;
 using IEManageSystem.IdentityServerEF;
+using IEManageSystem.ApiAuthorization.Authorizations;
 
 namespace IEManageSystem.Api.Startup
 {
@@ -47,6 +48,8 @@ namespace IEManageSystem.Api.Startup
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(typeof(IEManageSystemWebHostModule).GetAssembly());
+
+            ApiAuthorizationConfigure.RegisterApi(typeof(IEManageSystemWebHostModule).GetAssembly());
         }
     }
 }

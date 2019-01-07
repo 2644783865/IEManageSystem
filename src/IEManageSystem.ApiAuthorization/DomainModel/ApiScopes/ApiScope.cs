@@ -7,7 +7,7 @@ using System.Text;
 
 namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
 {
-    public class ApiScope : Entity
+    public class ApiScope:Entity
     {
         public ApiScope(string name) {
             Name = name;
@@ -15,7 +15,7 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
 
         public string Name { get; private set; }
 
-        public IQueryable<ApiSingle> ApiSingles { get; set; }
+        public IQueryable<ApiScopeApi> ApiScopeApis { get; set; }
 
         public IQueryable<ApiScopePermission> ApiScopePermissions { get; set; }
     }
