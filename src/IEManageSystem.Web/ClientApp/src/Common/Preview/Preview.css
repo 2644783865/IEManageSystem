@@ -1,0 +1,46 @@
+.preview{
+    padding: 0px;
+    overflow: hidden;
+    box-shadow: 0px 0px 5px #eceaea;
+    height: 100%;
+}
+
+.preview>h6{
+    background: #00C5CD;
+    padding: 10px 10px 10px 10px;
+    color: #ffffff;
+}
+
+.preview>h6 input{
+    font-size: 12px;
+    padding: 5px;
+    width: 100px !important;
+    display: inline-block;
+}
+
+.preview>h6 .input-group{
+    margin-bottom: 0px !important;
+}
+
+.preview>div
+{
+    max-height: 100%;
+    overflow-y: scroll;
+    margin-right: -17px;
+}
+
+.preview ul{
+    width: 100%;
+}
+
+.preview li{
+    border: 0px;
+    background-color: #E0FFFF;
+    margin-bottom: 2px;
+    color: #A9A9A9;
+}
+
+.preview li:hover{
+    background: #40E0D0;
+    color: #ffffff;
+}

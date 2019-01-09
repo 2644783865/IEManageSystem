@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, NavLink } from 'react-router-dom';
 import BodyDivCss from './BodyDiv.css';
-import Client from "./AuthorizeManage/Client/Client.jsx";
-import ApiResource from "./AuthorizeManage/ApiResource/ApiResource.jsx";
-import IdentityResource from "./AuthorizeManage/IdentityResource/IdentityResource.jsx";
+import Client from "./OAuthManage/Client/Client.jsx";
+import ApiResource from "./OAuthManage/ApiResource/ApiResource.jsx";
+import IdentityResource from "./OAuthManage/IdentityResource/IdentityResource.jsx";
 import UserInfo from "./Personal/UserInfo/UserInfo.jsx";
+import ApiScopePermission from "./AuthorizeManage/ApiScopePermission/ApiScopePermission.jsx";
 
 export default class BodyDiv extends React.Component
 {
@@ -18,10 +19,11 @@ export default class BodyDiv extends React.Component
     {
         return(
             <div className="col-md-10 content-container">
-                <Route path="/ManageHome/AuthorizeManage/Client" component={Client} />
-                <Route path="/ManageHome/AuthorizeManage/ApiResource" component={ApiResource} />
-                <Route path="/ManageHome/AuthorizeManage/IdentityResource" component={IdentityResource} />
+                <Route path="/ManageHome/OAuthManage/Client" component={Client} />
+                <Route path="/ManageHome/OAuthManage/ApiResource" component={ApiResource} />
+                <Route path="/ManageHome/OAuthManage/IdentityResource" component={IdentityResource} />
                 <Route path="/ManageHome/Personal/UserInfo" component={UserInfo} />
+                <Route path="/ManageHome/AuthorizeManage/ApiScopePermission" component={ApiScopePermission} />
             </div>
         );
     }

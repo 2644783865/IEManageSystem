@@ -1,10 +1,12 @@
 ﻿using Abp.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace IEManageSystem.Entitys.Authorization.Roles
 {
+    [Table("RolePermission")]
     public class RolePermission : Entity
     {
         public int RoleId { get; set; }

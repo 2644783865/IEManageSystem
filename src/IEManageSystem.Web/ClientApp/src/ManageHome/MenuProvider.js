@@ -26,20 +26,31 @@ const menus =
     },
     {
         id: "AuthorizeManage",
-        text: "OAuth认证管理",
+        text: "授权管理",
         url: "/ManageHome/AuthorizeManage",
         menuItems: [
             {
+                text: "Api域权限管理",
+                url: "/ManageHome/AuthorizeManage/ApiScopePermission"
+            }
+        ]
+    },
+    {
+        id: "OAuthManage",
+        text: "OAuth认证管理",
+        url: "/ManageHome/OAuthManage",
+        menuItems: [
+            {
                 text: "身份资源",
-                url: "/ManageHome/AuthorizeManage/IdentityResource"
+                url: "/ManageHome/OAuthManage/IdentityResource"
             },
             {
                 text: "API资源",
-                url: "/ManageHome/AuthorizeManage/ApiResource"
+                url: "/ManageHome/OAuthManage/ApiResource"
             },
             {
                 text: "客户端",
-                url: "/ManageHome/AuthorizeManage/Client"
+                url: "/ManageHome/OAuthManage/Client"
             }
         ]
     }

@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import Resource from 'Resource/Resource.jsx';
 import ErrorModal from 'Resource/ErrorModal.jsx';
 import LoadingModal from 'Resource/LoadingModal/LoadingModal.jsx';
+import Preview from 'Preview/Preview.jsx';
 
-export default class ApiResource extends React.Component
+export default class ApiScopePermission extends React.Component
 {
 	constructor(props){
 		super(props);
@@ -158,15 +159,20 @@ export default class ApiResource extends React.Component
 
 	render(){
 		return(
-			<div>
-				<Resource
-				title="Api资源"
-				describes={this.describes}
-				freshenResources={this.freshenResources}
-				addResource={this.addResource}
-				updateResource={this.updateResource}
-				deleteResource={this.deleteResource}
-				setResourceRef={(ref)=>{this.resourceChild = ref}} />
+			<div className="w-100 h-100">
+				<div class="col-md-3 float-left h-75">
+					<Preview />
+				</div>
+				<div class="col-md-9 float-left">
+					<Resource
+					title="Api资源"
+					describes={this.describes}
+					freshenResources={this.freshenResources}
+					addResource={this.addResource}
+					updateResource={this.updateResource}
+					deleteResource={this.deleteResource}
+					setResourceRef={(ref)=>{this.resourceChild = ref}} />
+				</div>
 				<ErrorModal />
 				<LoadingModal />
 			</div>

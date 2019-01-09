@@ -166,7 +166,7 @@ export default class IdentityResource extends React.Component
 
 	render(){
 		return(
-			<div>
+			<div className="col-md-12">
 				<Resource
 				title="身份资源"
 				describes={this.describes}

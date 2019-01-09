@@ -2,13 +2,18 @@
 using IEManageSystem.ApiAuthorization.DomainModel.ApiScopes;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 
 namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
 {
+    [Table("ApiScope")]
     public class ApiScope:Entity
     {
+        protected ApiScope() {
+        }
+
         public ApiScope(string name) {
             Name = name;
         }

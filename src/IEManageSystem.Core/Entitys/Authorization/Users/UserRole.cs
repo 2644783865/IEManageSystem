@@ -2,10 +2,12 @@
 using IEManageSystem.Entitys.Authorization.Roles;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace IEManageSystem.Entitys.Authorization.Users
 {
+    [Table("UserRole")]
     public class UserRole : Entity
     {
         public int UserId { get; set; }

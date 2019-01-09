@@ -9,5 +9,6 @@
 "popper":"js/popper.min",
 "form":"js/jquery.form.js",
 "cookie":"js/jquery.cookie.js",
-"labelauty": "js/jquery-labelauty.js"
+"labelauty": "js/jquery-labelauty.js",
+"mousewheel":"js/jquery.mousewheel.min.js"
 }
