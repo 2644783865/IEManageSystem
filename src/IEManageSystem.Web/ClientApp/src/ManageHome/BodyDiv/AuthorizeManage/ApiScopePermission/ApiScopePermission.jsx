@@ -160,10 +160,10 @@ export default class ApiScopePermission extends React.Component
 	render(){
 		return(
 			<div className="w-100 h-100">
-				<div class="col-md-3 float-left h-75">
+				<div class="w-20 padding-right-10 float-left h-100">
 					<Preview />
 				</div>
-				<div class="col-md-9 float-left">
+				<div class="w-80 padding-left-10 float-left h-100">
 					<Resource
 					title="Api资源"
 					describes={this.describes}

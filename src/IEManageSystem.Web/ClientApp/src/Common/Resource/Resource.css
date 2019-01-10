@@ -1,9 +1,9 @@
 .data-list h6{
     background: #00C5CD;
-    padding: 10px 10px 10px 10px;
+    padding: 5px 10px;
     margin-bottom: 0px;
     color: #ffffff;
-    font-size: 17px;
+    font-size: 19px;
 }
 
 .data-list thead{
@@ -40,6 +40,10 @@
     padding: 0px 5px 0px 5px;
 }
 
-.margin-buttom10{
-    margin-bottom: 10px;
+.margin-buttom-0{
+    margin-bottom: 0px !important;
+}
+
+.margin-buttom-10{
+    margin-bottom: 10px !important;
 }

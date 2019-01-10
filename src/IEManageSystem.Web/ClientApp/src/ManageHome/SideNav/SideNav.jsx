@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, NavLink, Link, Switch } from 'react-router-dom';
 
+import './SideNav.css'
 import MenuProvider from "../MenuProvider.js";
 
 export default class SideNav extends React.Component
@@ -49,7 +50,7 @@ export default class SideNav extends React.Component
         }
 
         return(
-            <div className="col-md-2 leftmenu_css">
+            <div className="leftmenu_css">
                 <ul className="list-group">
                     {lis}
                 </ul>

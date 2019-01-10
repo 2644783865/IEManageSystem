@@ -8,6 +8,7 @@ const menus =
         url: "/ManageHome/Personal",
         menuItems: [
             {
+                id:"UserInfo",
                 text: "用户信息",
                 url: "/ManageHome/Personal/UserInfo"
             }
@@ -19,17 +20,19 @@ const menus =
         url: "/ManageHome/UserManage",
         menuItems: [
             {
+                id:"GeneralUser",
                 text: "普通用户管理",
-                url: ""
+                url: "/ManageHome/UserManage/GeneralUser"
             }
         ]
     },
     {
         id: "AuthorizeManage",
-        text: "授权管理",
+        text: "站点授权管理",
         url: "/ManageHome/AuthorizeManage",
         menuItems: [
             {
+                id:"ApiScopePermission",
                 text: "Api域权限管理",
                 url: "/ManageHome/AuthorizeManage/ApiScopePermission"
             }
@@ -41,14 +44,17 @@ const menus =
         url: "/ManageHome/OAuthManage",
         menuItems: [
             {
+                id:"IdentityResource",
                 text: "身份资源",
                 url: "/ManageHome/OAuthManage/IdentityResource"
             },
             {
+                id:"ApiResource",
                 text: "API资源",
                 url: "/ManageHome/OAuthManage/ApiResource"
             },
             {
+                id:"Client",
                 text: "客户端",
                 url: "/ManageHome/OAuthManage/Client"
             }

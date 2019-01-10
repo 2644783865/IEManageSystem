@@ -1,0 +1,41 @@
+.navbar_css {
+    background: linear-gradient(to right, #00C5CD, #00EEEE);
+}
+.navbar_logo_css{
+    width: 50px;
+}
+    .navbar_css .navbar-collapse {
+        display: -webkit-flex;
+        display: flex;
+    }
+    .navbar_css .navbar-collapse span {
+        margin-left: auto;
+        margin-right:20px;
+    }
+    .navbar_css .navbar-collapse button span {
+        margin-left: auto;
+        margin-right:5px;
+    }
+    .navbar_css a {
+        color: #FFFFFF;
+    }
+    .navbar_css li {
+        border-radius:5px;
+        overflow:hidden;
+    }
+    .navbar_css li a {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    .navbar_css li a:hover {
+        background-color: #00E5CD;
+    }
+
+.navbar_css_li_click {
+    background-color: #00E5CD !important;
+    color: #fff !important;
+}
+
+.navbar_css li a:focus {
+    background-color: #00E5CD;
+}

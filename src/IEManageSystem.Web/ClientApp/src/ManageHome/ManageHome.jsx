@@ -8,12 +8,13 @@ import 'cookie';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect, Link, Switch } from 'react-router-dom';
 
 import MenuProvider from "./MenuProvider.js";
 import Nav from './Nav/Nav.jsx';
 import SideNav from "./SideNav/SideNav.jsx";
 import BodyDiv from './BodyDiv/BodyDiv.jsx';
+import NavTag from './NavTag/NavTag.jsx';
 
 require('./ManageHome.css');
 
@@ -47,12 +48,22 @@ class UserHome extends React.Component{
     render()
     {
         return (
-        <div className="d-flex h-100">
+        <div className="d-flex h-100 manage-home">
+            <Redirect path="/ManageHome" to={{pathname: '/ManageHome/Personal'}} />
             <Nav userName={this.state.userName} />
-            <div className="container-fixed bodydiv_css">
+            <div className="container-fixed">
                 <div className="row h-100">
-                    <Route path="/ManageHome/:menuId" component={SideNav} />
-                    <Route path="/ManageHome/:menuId/:menuItemId" component={BodyDiv} />
+                    <div className="col-md-2 h-100 padding-0">
+                        <Route path="/ManageHome/:menuId" component={SideNav} />
+                    </div>
+                    <div className="col-md-10 h-100 padding-0 d-flex flex-column">
+                        <div className="padding-top-10">
+                            <Route path="/ManageHome/:menuId?/:menuItemId?" component={NavTag} />
+                        </div>
+                        <div className="bodydiv-parent">
+                            <Route path="/ManageHome/:menuId/:menuItemId?" component={BodyDiv} />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

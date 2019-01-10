@@ -1,0 +1,28 @@
+.nav-tag{
+    width: 100%;
+    overflow: hidden;
+}
+
+.nav-tag ul{
+    white-space:nowrap;
+    flex-wrap: nowrap;
+}
+
+.nav-tag ul li{
+    flex-shrink: 0;
+    width: 150px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.nav-tag-noactive{
+    color: #ffffff;
+    background-color: #dee2e6;
+    border-radius: 0px !important;
+    margin: 0px 1px;
+}
+
+.nav-tag-noactive:hover{
+    color: #495057;
+    background-color: #ffffff;
+}

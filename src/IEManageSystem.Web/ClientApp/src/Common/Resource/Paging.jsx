@@ -34,7 +34,7 @@ export default class Paging extends React.Component
 		lis.push(<li className="page-item"><a onClick={()=>this.props.pageIndexChange(this.props.pageIndex + 1)} className="page-link" href="javascript:void(0)" >下一页</a></li>);
 
 		return (
-            <div className="data-paging d-flex justify-content-between w-100">
+            <div className="data-paging mt-auto d-flex justify-content-between w-100">
                 <ul className="pagination pagination-md">
                     {lis}
                 </ul>

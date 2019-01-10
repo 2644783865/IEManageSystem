@@ -15,7 +15,5 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
         public string ApiSingleName { get; set; }
 
         public ApiScope ApiScope { get; set; }
-
-        public ApiSingle ApiSingle { get; set; }
     }
 }

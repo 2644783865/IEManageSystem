@@ -151,7 +151,7 @@ export default class Resource extends React.Component
                     pageIndexChange={ this.pageIndexChange } />;
 
         return (
-			<div className="row">
+			<div className="w-100 h-100 d-flex flex-column">
 	            {resourceList}
 	            {paging}
 	            { this.state.operationState == operationState.add && 
