@@ -17,10 +17,11 @@ namespace IEManageSystem.ApiAuthorization.DomainModel
             }
 
             ApiSingle apiSingle = new ApiSingle(controllerName);
+
+            _apiSingles.Add(apiSingle);
         }
 
         public ApiSingleManager() {
-
         }
 
         public ApiSingle GetApiSingleForControllerName(string controllerName)

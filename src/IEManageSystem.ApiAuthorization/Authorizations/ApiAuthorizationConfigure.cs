@@ -18,6 +18,11 @@ namespace IEManageSystem.ApiAuthorization.Authorizations
             return services.AddScoped<IAuthorizationHandler, ApiScopeAuthorizationPolicy>();
         }
 
+        public static IServiceCollection AddApiScopeProvider<T>(this IServiceCollection services) where T: ApiScopeProvider
+        {
+            return services.AddScoped<ApiScopeProvider, T>();
+        }
+
         public static void RegisterApi(Assembly assembly)
         {
             Type[] types = assembly.GetTypes();

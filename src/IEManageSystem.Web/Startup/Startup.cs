@@ -26,6 +26,7 @@ using IEManageSystem.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using IEManageSystem.ApiAuthorization;
 using IEManageSystem.ApiAuthorization.Authorizations;
+using IEManageSystem.Api.Startup;
 
 namespace IEManageSystem.Web.Startup
 {
@@ -83,7 +84,7 @@ namespace IEManageSystem.Web.Startup
 
             services.AddScoped<ValidateCodeHelper>();
 
-            services.AddApiAuthorization();
+            services.AddApiAuthorization().AddApiScopeProvider<IEApiScopeProvider>();
 
             return services.AddAbp<IEManageSystemWebModule>(options =>
             {

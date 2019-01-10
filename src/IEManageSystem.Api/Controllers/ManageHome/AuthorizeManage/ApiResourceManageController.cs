@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IEManageSystem.Api.Models;
-using IEManageSystem.Services.ManageHome.AuthorizeManage.ApiResourceManages;
-using IEManageSystem.Services.ManageHome.AuthorizeManage.ApiResourceManages.Dto;
+using IEManageSystem.Services.ManageHome.OAuthManage.ApiResourceManages;
+using IEManageSystem.Services.ManageHome.OAuthManage.ApiResourceManages.Dto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

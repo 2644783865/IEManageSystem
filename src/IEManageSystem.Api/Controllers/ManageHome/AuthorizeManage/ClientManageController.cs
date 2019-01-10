@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using IEManageSystem.IdentityServer.Entitys.Clients.ClientGrantTypes;
 using IEManageSystem.Api.Models;
-using IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages;
-using IEManageSystem.Services.ManageHome.AuthorizeManage.ClientManages.Dto;
+using IEManageSystem.Services.ManageHome.OAuthManage.ClientManages;
+using IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.Dto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
