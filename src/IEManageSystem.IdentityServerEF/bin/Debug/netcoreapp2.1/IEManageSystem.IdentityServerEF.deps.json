@@ -8,7 +8,6 @@
     ".NETCoreApp,Version=v2.1": {
       "IEManageSystem.IdentityServerEF/1.0.0": {
         "dependencies": {
-          "Abp": "3.7.2",
           "Abp.EntityFrameworkCore": "3.7.2",
           "IEManageSystem.IdentityServer": "1.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.1.0"

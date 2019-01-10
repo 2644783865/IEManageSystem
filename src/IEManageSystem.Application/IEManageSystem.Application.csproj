@@ -16,7 +16,6 @@
     <ProjectReference Include="..\IEManageSystem.IdentityServer\IEManageSystem.IdentityServer.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Abp.EntityFrameworkCore" Version="3.7.2" />
     <PackageReference Include="Abp.AutoMapper" Version="3.7.2" />
   </ItemGroup>
   <ItemGroup>
