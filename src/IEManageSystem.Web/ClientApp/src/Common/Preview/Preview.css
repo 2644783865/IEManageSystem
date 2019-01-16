@@ -1,9 +1,10 @@
 .preview{
-    padding: 0px;
+    padding: 0rem;
     overflow: hidden;
-    box-shadow: 0px 0px 5px #eceaea;
+    /*box-shadow: 0rem 0rem 0.5rem #eceaea;*/
     height: 100%;
-    padding-bottom: 100px;
+    padding-bottom: 6rem;
+    background-color: #eceaea;
 }
 
 .preview-hide{
@@ -12,16 +13,20 @@
 
 .preview>h6{
     background: #00C5CD;
-    padding: 10px 20px;
+    padding: 0.67rem 1.25rem;
     color: #ffffff;
-    font-size: 18px;
-    margin: 5px;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.preview-search{
+    padding: 0.3rem 0.7rem !important;
 }
 
 .preview>h6 input{
-    font-size: 12px;
-    padding: 5px;
-    width: 100px !important;
+    font-size: 0.75rem;
+    padding: 0.3rem;
+    width: 6rem !important;
     display: inline-block;
 }
 
@@ -33,7 +38,7 @@
 {
     max-height: 100%;
     overflow-y: scroll;
-    margin-right: -17px;
+    margin-right: -19px;
 }
 
 .preview ul{

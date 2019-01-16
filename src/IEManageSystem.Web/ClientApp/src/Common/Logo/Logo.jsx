@@ -18,7 +18,7 @@ export default class Logo extends React.Component
         return (
             <div className={"logo "+ this.props.className}>
                 <div className="w-75">
-                    <img src={"/"+Logopng} alt="" className="w-100" />
+                    <img src={Logopng} alt="" className="w-100" />
                 </div>
             </div>
         );

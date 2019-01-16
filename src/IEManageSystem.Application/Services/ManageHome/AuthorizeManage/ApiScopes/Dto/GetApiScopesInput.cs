@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopePermissions.Dto
+namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.Dto
 {
     public class GetApiScopesInput
     {

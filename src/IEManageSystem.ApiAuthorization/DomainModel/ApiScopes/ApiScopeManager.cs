@@ -3,6 +3,7 @@ using Abp.Domain.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
@@ -31,9 +32,11 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
             }
         }
 
-        public IQueryable<ApiScope> GetApiScopes()
+        public IQueryable<ApiScope> GetApiScopes() => _repository.GetAll();
+
+        public IQueryable<ApiScope> GetApiScopes(Expression<Func<ApiScope, object>>[] propertySelectors)
         {
-            return _repository.GetAll();
+            return _repository.GetAllIncluding();
         }
 
         public ApiScope GetApiScopeForApiSingleName(string name)

@@ -9,6 +9,6 @@ namespace IEManageSystem.Web.Configuration
     {
         public const string Login = "/Account/Login";
 
-        public const string ManageHome = "/ManageHome/Index";
+        public const string ManageHome = "/ManageHome";
     }
 }

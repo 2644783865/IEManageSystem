@@ -13,12 +13,14 @@ module.exports = {
         consent:__dirname + "/src/Consent/consent.jsx",
         adminiHome:__dirname + "/src/ManageHome/ManageHome.jsx",
         home:__dirname + "/src/Home/Index.jsx",
+        weatherExport:__dirname + "/src/Common/Weather/weatherExport.js",
         // selectSingleData:__dirname + "/src/SelectSingleData/SelectSingleData.js",
     },
     output: {
         path: __dirname + "/build",
         filename: "[name].bundle.js",
-        chunkFilename: "[id].chunk.js"
+        chunkFilename: "[id].chunk.js",
+        libraryTarget: 'umd'
     },
     plugins: [
         new webpack.ProvidePlugin({
@@ -26,7 +28,8 @@ module.exports = {
             jQuery: "jquery",
             'window.$':'jquery',
             'window.jQuery':'jquery',
-            Popper: 'popper'
+            Popper: 'popper',
+            Chart: 'chart',
         }),
         //这里开始写
         new HtmlWebpackPlugin({
@@ -45,7 +48,7 @@ module.exports = {
             filename: __dirname + '/build/ManageHome/Index.cshtml',
             template: __dirname + '/src/ManageHome/ManageHome.html', // html模板路径,模板路径是支持传参调用loader的,
             inject: 'body', //打包之后的js插入的位置，true/'head'/'body'/false,
-            chunks: ['adminiHome']
+            chunks: ['adminiHome', "weatherExport"]
         }),
         new HtmlWebpackPlugin({
             filename: __dirname + '/build/Home/Index.cshtml',
@@ -70,20 +73,23 @@ module.exports = {
             {
               test: /\.(gif|png|jpe?g|svg)$/i,
               use: [
-                'file-loader',
-                {
-                  loader: 'image-webpack-loader',
-                  options: {
-                    bypassOnDebug: true, // webpack@1.x
-                    disable: true, // webpack@2.x and newer
-                  },
-                },
+                  {
+                    loader: 'file-loader',
+                    options:{
+                        name: '/images/[hash].[ext]'
+                    }
+                  }
               ],
             },
             {
               test: /\.(woff|woff2|eot|ttf|otf)$/,
               use: [
-                'file-loader'
+                  {
+                    loader: 'file-loader',
+                    options:{
+                        name: '/fonts/[hash].[ext]'
+                    }
+                  }
               ]
             },
             {

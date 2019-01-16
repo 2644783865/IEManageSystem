@@ -33,7 +33,7 @@ module.exports = merge(common, {
             filename: __dirname + '/build/ManageHome/Index.html',
             template: __dirname + '/src/ManageHome/ManageHome.html', // html模板路径,模板路径是支持传参调用loader的,
             inject: 'body', //打包之后的js插入的位置，true/'head'/'body'/false,
-            chunks: ['adminiHome']
+            chunks: ['adminiHome', "weatherExport"]
         }),
         new HtmlWebpackPlugin({
             filename: __dirname + '/build/Index.html',

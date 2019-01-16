@@ -10,8 +10,6 @@ export default class NavTag extends React.Component{
         super(props);
 
         this.menuItems = new Array();
-
-        this.mainMenu = (new MenuProvider()).mainMenu;
     }
 
     componentWillMount(){
@@ -33,26 +31,17 @@ export default class NavTag extends React.Component{
         }
 
         let menuId = props.match.params.menuId;
-        let menu = null;
-        for(let item in this.mainMenu.menuItems){
-            if(this.mainMenu.menuItems[item].id == menuId){
-                menu = this.mainMenu.menuItems[item];
-            }
-        }
+        let menuItemId = props.match.params.menuItemId;
 
-        if(menu == null){
+        let menuProvider = new MenuProvider();
+        let menuPaths = menuProvider.getMenuPath([menuId, menuItemId]);
+        let menuItem = menuProvider.getMenuItem(menuPaths);
+
+        if(menuItem == null){
             return;
         }
 
-        let menuItemId = props.match.params.menuItemId;
-        let menuItem = null;
-        for(let item in menu.menuItems){
-            if(menu.menuItems[item].id == menuItemId){
-                menuItem = menu.menuItems[item];
-            }
-        }
-
-        if(menuItem == null){
+        if(menuItem.menuItems.length > 0){
             return;
         }
         
@@ -67,10 +56,17 @@ export default class NavTag extends React.Component{
 
     render()
     {
-        let lis = this.menuItems.map(item=>{
-            return (<li class="nav-item">
+        let lis = new Array();
+        lis.push(<li class="nav-item">
+                        <NavLink className="nav-link nav-tag-noactive" to="/ManageHome/Index" activeClassName="active">
+                            后台首页
+                        </NavLink>
+                    </li>);
+        this.menuItems.map(item=>{
+            lis.push(<li class="nav-item">
                         <NavLink className="nav-link nav-tag-noactive" to={item.url} activeClassName="active">
                             {item.text}
+                            <span class="oi oi-delete nav-tag-deleteicon" title="icon name" aria-hidden="true"></span>
                         </NavLink>
                     </li>);
         });

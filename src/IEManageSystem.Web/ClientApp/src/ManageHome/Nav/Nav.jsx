@@ -6,13 +6,32 @@ import './Nav.css';
 import MenuProvider from "../MenuProvider.js";
 import Logo from 'Logo/Logo.jsx';
 
+import DefaultAvatar from 'images/default_avatar.png';
+
 export default class Nav extends React.Component
 {
+    // props.topLevelMenus
+    // props.selectTopMenu
+    // props.topLevelMenusSelect
     constructor(props)
     {
         super(props);
 
-        this.menu = (new MenuProvider()).mainMenu;
+        this.state = 
+        {
+            userName:null,              // 用户名称
+        };
+
+        this.getUserName();
+    }
+
+    // 获取用户名称
+    getUserName(){
+        $.get("/api/User/GetIdentity",function(data){
+            if(data.isSuccess == true){
+                this.setState({userName:data.value.identityUser.name});
+            }
+        }.bind(this));
     }
 
     // 退出登录单击
@@ -31,12 +50,18 @@ export default class Nav extends React.Component
     
     render()
     {
+        let selectTopMenu = this.props.selectTopMenu;
+
         let menuItemLis = new Array();
-        for(let item in this.menu.menuItems){
+        for(let item in this.props.topLevelMenus)
+        {
+            let className = selectTopMenu.id == this.props.topLevelMenus[item].id ? "nav-link navbar_css_li_click" : "nav-link";
+
             let menuItemLi = 
                 <li className="nav-item">
-                    <NavLink activeClassName="navbar_css_li_click" className="nav-link" to={this.menu.menuItems[item].url}>{this.menu.menuItems[item].text}</NavLink>
+                    <a href="javascript:void(0)" onClick={()=>{this.props.topLevelMenusSelect(this.props.topLevelMenus[item])}} className={className} to={this.props.topLevelMenus[item].url}>{this.props.topLevelMenus[item].text}</a>
                 </li>;
+
             menuItemLis.push(menuItemLi);
         }
 
@@ -50,10 +75,21 @@ export default class Nav extends React.Component
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="collapsibleNavbar">
+                    <div className="input-group navbar-search">
+                        <input type="text" className="form-control" placeholder="Search" />
+                        <div className="input-group-append">
+                            <button className="btn btn-info btn-sm" type="button">
+                                <span class="oi oi-magnifying-glass" title="icon name" aria-hidden="true"></span>
+                            </button>  
+                        </div>
+                    </div>
                     <ul className="navbar-nav">
                         {menuItemLis}
                     </ul>
-                    <span className="text-white float-right">你好，{this.props.userName}</span>
+                    <span className="text-white float-right">
+                        你好，{this.state.userName}
+                        <img className="rounded-circle navbar-avatar" src={DefaultAvatar} alt="Card image" />
+                    </span>
                     <button id="outLogin" data-url="/api/Account/Logout" onClick={this.logoutClick} type="button" className="btn btn-info float-right" >
                         <span class="oi oi-account-logout" title="icon name" aria-hidden="true"></span>
                         退出登录

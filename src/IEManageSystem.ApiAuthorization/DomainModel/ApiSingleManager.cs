@@ -24,6 +24,8 @@ namespace IEManageSystem.ApiAuthorization.DomainModel
         public ApiSingleManager() {
         }
 
+        public List<ApiSingle> GetApiSingles() => _apiSingles.ToList();
+
         public ApiSingle GetApiSingleForControllerName(string controllerName)
         {
             return _apiSingles.FirstOrDefault(e => e.Name == controllerName);

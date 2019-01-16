@@ -19,7 +19,7 @@ export default class UserInfo extends React.Component
 	                        <button className="btn btn-outline-info text-white">修改头像</button>
 	                        <input type="file" id="customFile"/>
 	                    </div>
-	                    <img className="card-img-top w-100" src={"/"+require('./img_avatar.png')} alt="Card image" />
+	                    <img className="card-img-top w-100" src={require('./img_avatar.png')} alt="Card image" />
 	                </div>
 	                <div className="card-body">
 	                  <h6 className="card-title">昵称</h6>

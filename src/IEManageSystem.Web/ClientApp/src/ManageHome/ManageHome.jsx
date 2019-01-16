@@ -18,43 +18,50 @@ import NavTag from './NavTag/NavTag.jsx';
 
 require('./ManageHome.css');
 
-class UserHome extends React.Component{
+class UserHome extends React.Component
+{
     constructor(props) {
         super(props);
 
-        this.getUserNameBackCall = this.getUserNameBackCall.bind(this);
+        this.menuProvider = new MenuProvider();
+
+        this.topLevelMenus = this.menuProvider.getTopLevelMenus();
         
-        this.state = 
-        {
-            userName:null,              // 用户名称
+        this.state = {
+            selectTopMenu:this.menuProvider.getDefaultTopLevelMenu(),
+            selectSideMenu:null,
         };
 
-        this.getUserName();
+        this.topLevelMenusSelect = this.topLevelMenusSelect.bind(this);
+        this.sideMenuSelect = this.sideMenuSelect.bind(this);
     }
 
-    // 获取用户名称回调
-    getUserNameBackCall(data){
-        if(data.isSuccess == true){
-            this.setState({userName:data.value.identityUser.name});
-        }
+    componentDidMount(){
     }
 
-    // 获取用户名称
-    getUserName(){
-        $.get("/api/User/GetIdentity",this.getUserNameBackCall);
+    topLevelMenusSelect(menu)
+    {
+        this.setState({
+            selectTopMenu:menu
+        });
     }
-    
+
+    sideMenuSelect(menu){
+        this.setState({
+            selectSideMenu:menu
+        });
+    }
 
     render()
     {
         return (
         <div className="d-flex h-100 manage-home">
-            <Redirect path="/ManageHome" to={{pathname: '/ManageHome/Personal'}} />
-            <Nav userName={this.state.userName} />
+            <Redirect path="/ManageHome" to={{pathname: '/ManageHome/Index'}} />
+            <Nav topLevelMenus={this.topLevelMenus} selectTopMenu={this.state.selectTopMenu} topLevelMenusSelect={this.topLevelMenusSelect} />
             <div className="container-fixed">
                 <div className="row h-100">
                     <div className="col-md-2 h-100 padding-0">
-                        <Route path="/ManageHome/:menuId" component={SideNav} />
+                        <SideNav selectTopMenu={this.state.selectTopMenu} sideMenuSelect={this.sideMenuSelect} />
                     </div>
                     <div className="col-md-10 h-100 padding-0 d-flex flex-column">
                         <div className="padding-top-10">

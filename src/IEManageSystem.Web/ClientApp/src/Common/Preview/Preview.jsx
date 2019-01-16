@@ -33,7 +33,7 @@ export default class Preview extends React.Component
                         </a>
                     </span>
                 </h6>
-                <h6 id="previewSearch" className="preview-hide">
+                <h6 id="previewSearch" className="preview-search">
                     <div className="input-group mb-3">
                         <input type="text" className="form-control" placeholder="Search" />
                         <div className="input-group-append">

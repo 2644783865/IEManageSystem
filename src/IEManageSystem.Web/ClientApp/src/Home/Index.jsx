@@ -122,7 +122,7 @@ class Home extends React.Component{
                         <div className="">
                             <div className="icon-md">
                                 <div>
-                                    <img src={"/"+Icon1} className="w-100 h-100" />
+                                    <img src={Icon1} className="w-100 h-100" />
                                 </div>
                             </div>
                             <div className="icon-sm">
@@ -149,7 +149,7 @@ class Home extends React.Component{
                             <div className="icon-sm">
                                 <div className="d-flex">
                                     <a className="home-managehome-icon" href="/ManageHome">
-                                        <img src={"/"+managehomeicon} className="rounded w-100 h-100" />
+                                        <img src={managehomeicon} className="rounded w-100 h-100" />
                                     </a>
                                 </div>
                             </div>
