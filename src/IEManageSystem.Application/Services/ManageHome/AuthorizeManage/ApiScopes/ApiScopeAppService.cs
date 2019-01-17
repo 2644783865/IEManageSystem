@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes
 {
@@ -33,14 +34,14 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes
             _apiSingleManager = apiSingleManager;
         }
 
-        public GetApiScopesOutput GetApiScopes(GetApiScopesInput input)
+        public async Task<GetApiScopesOutput> GetApiScopes(GetApiScopesInput input)
         {
             return new GetApiScopesOutput() {
                 ApiScopes = AutoMapper.Mapper.Map<List<ApiScopeDto>>(_apiScopeManager.GetApiScopes().ToList())
             };
         }
 
-        public GetApiScopePermissionOutput GetApiScopePermissions(GetApiScopePermissionInput input)
+        public async Task<GetApiScopePermissionOutput> GetApiScopePermissions(GetApiScopePermissionInput input)
         {
             Expression<Func<ApiScope, object>>[] propertySelectors = new Expression<Func<ApiScope, object>>[] {
                 e => e.ApiScopePermissions
@@ -60,7 +61,21 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes
             };
         }
 
-        public GetApiScopeApiSinglesOutput GetApiScopeApiSingles(GetApiScopeApiSinglesInput input)
+        public async Task<AddApiScopePermissionOutput> AddApiScopePermission(AddApiScopePermissionInput input)
+        {
+            _apiScopeManager.AddPermission(input.ApiScopeId, input.PermissionId);
+
+            return new AddApiScopePermissionOutput();
+        }
+
+        public async Task<RemoveApiScopePermissionOutput> RemoveApiScopePermission(RemoveApiScopePermissionInput input)
+        {
+            _apiScopeManager.RemovePermission(input.ApiScopeId, input.PermissionId);
+
+            return new RemoveApiScopePermissionOutput();
+        }
+
+        public async Task<GetApiScopeApiSinglesOutput> GetApiScopeApiSingles(GetApiScopeApiSinglesInput input)
         {
             Expression<Func<ApiScope, object>>[] propertySelectors = new Expression<Func<ApiScope, object>>[] {
                 e => e.ApiScopeApis
@@ -76,6 +91,20 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes
             var apiSingles = _apiSingleManager.GetApiSingles().Where(e => apiSingleNames.Contains(e.Name)).ToList();
 
             return new GetApiScopeApiSinglesOutput() { ApiSingles = AutoMapper.Mapper.Map<List<ApiSingleDto>>(apiSingles) };
+        }
+
+        public async Task<AddApiScopeApiSingleOutput> AddApiScopeApiSingle(AddApiScopeApiSingleInput input)
+        {
+            _apiScopeManager.AddApiScopeApi(input.ApiScopeId, input.ApiSingleName);
+
+            return new AddApiScopeApiSingleOutput();
+        }
+
+        public async Task<RemoveApiScopeApiSingleOutput> RemoveApiScopeApiSingle(RemoveApiScopeApiSingleInput input)
+        {
+            _apiScopeManager.RemoveApiScopeApi(input.ApiScopeId, input.ApiSingleName);
+
+            return new RemoveApiScopeApiSingleOutput();
         }
     }
 }

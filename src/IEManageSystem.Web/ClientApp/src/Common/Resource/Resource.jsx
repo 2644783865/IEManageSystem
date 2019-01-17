@@ -29,6 +29,9 @@ export default class Resource extends React.Component
 	// props.updateResource()  更新数据接口
 	// props.deleteResource()  删除数据接口
 	// props.setResourceRef()  设置当前组件的引用
+	// props.hideAdd = false
+	// props.hideEdit = false
+	// props.hideDelete = false
 	constructor(props){
 		super(props);
 
@@ -142,10 +145,13 @@ export default class Resource extends React.Component
                     resourceEditClick={ resource=>this.resourceOperationClick(operationState.edit, resource) }
                     resourceDeleteClick={ resource=>this.resourceOperationClick(operationState.delete, resource) }
                     resourceLookupClick={ resource=>this.resourceOperationClick(operationState.lookup, resource) }
+                    hideEdit={this.props.hideEdit}
+                    hideDelete={this.props.hideDelete}
                     />;
 
         let paging = <Paging 
                     resourceAddClick={ ()=>this.resourceOperationClick(operationState.add) } 
+                    hideAdd={this.props.hideAdd}
                     pageNum={ this.state.pageNum } 
                     pageIndex={ this.state.pageIndex } 
                     pageIndexChange={ this.pageIndexChange } />;

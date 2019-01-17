@@ -10,6 +10,18 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
     [Table("ApiScopePermission")]
     public class ApiScopePermission : Entity
     {
+        protected ApiScopePermission() {
+        }
+
+        public ApiScopePermission(ApiScope apiScope, Permission permission)
+        {
+            ApiScopeId = apiScope.Id;
+
+            PermissionId = PermissionId;
+
+            Permission = permission;
+        }
+
         public int ApiScopeId { get; set; }
 
         public int PermissionId { get; set; }

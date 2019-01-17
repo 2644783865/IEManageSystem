@@ -10,6 +10,8 @@ export default class ResourceList extends React.Component
     // props.resourceEditClick()
     // props.resourceDeleteClick()
     // props.resourceLookupClick()
+    // props.hideEdit
+    // props.hideDelete
 	constructor(props){
 		super(props);
 
@@ -101,12 +103,12 @@ export default class ResourceList extends React.Component
                             <button type="button" className="btn btn-info" 
                                 onClick={()=>this.props.resourceLookupClick(resource)}>
                                 <span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            <button type="button" className="btn btn-primary" 
-                                onClick={()=>this.props.resourceEditClick(resource)}>
-                                <span class="oi oi-pencil" title="icon name" aria-hidden="true"></span>编辑</button>
-                            <button type="button" className="btn btn-danger"
-                                onClick={()=>this.props.resourceDeleteClick(resource)}>
-                                <span class="oi oi-trash" title="icon name" aria-hidden="true"></span>删除</button>
+                            {this.props.hideEdit != true && <button type="button" className="btn btn-primary" 
+                                                            onClick={()=>this.props.resourceEditClick(resource)}>
+                                                            <span class="oi oi-pencil" title="icon name" aria-hidden="true"></span>编辑</button>}
+                            {this.props.hideDelete != true && <button type="button" className="btn btn-danger"
+                                                            onClick={()=>this.props.resourceDeleteClick(resource)}>
+                                                            <span class="oi oi-trash" title="icon name" aria-hidden="true"></span>删除</button>}
                         </div>
                     </td>
                 </tr>);

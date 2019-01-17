@@ -12,7 +12,7 @@ namespace IEManageSystem.ApiAuthorization.Authorizations
 {
     public class ApiScopeAuthorizationPolicy : AuthorizationHandler<ApiAuthorizationRequirement>
     {
-        private CheckPermissionService _checkPermissionService = new CheckPermissionService();
+        private CheckPermissionService _checkPermissionService { get; set; }
 
         private ApiScopeManager _apiScopeManager { get; set; }
 
@@ -20,11 +20,14 @@ namespace IEManageSystem.ApiAuthorization.Authorizations
 
         public ApiScopeAuthorizationPolicy(
             ApiScopeManager apiScopeManager,
-            ApiSingleManager apiSingleManager)
+            ApiSingleManager apiSingleManager,
+            CheckPermissionService checkPermissionService)
         {
             _apiScopeManager = apiScopeManager;
 
             _apiSingleManager = apiSingleManager;
+
+            _checkPermissionService = checkPermissionService;
         }
         
 

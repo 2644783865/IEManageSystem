@@ -2,9 +2,9 @@
     padding: 0rem;
     overflow: hidden;
     /*box-shadow: 0rem 0rem 0.5rem #eceaea;*/
-    height: 100%;
+    max-height: 100%;
     padding-bottom: 6rem;
-    background-color: #eceaea;
+    background-color: #ffffff;
 }
 
 .preview-hide{

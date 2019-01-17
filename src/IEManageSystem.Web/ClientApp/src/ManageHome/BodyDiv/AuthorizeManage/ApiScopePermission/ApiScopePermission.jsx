@@ -5,36 +5,21 @@ import ErrorModal from 'Resource/ErrorModal.jsx';
 import LoadingModal from 'Resource/LoadingModal/LoadingModal.jsx';
 import Preview from 'Preview/Preview.jsx';
 
+import "./ApiScopePermission.css";
+
 export default class ApiScopePermission extends React.Component
 {
 	constructor(props){
 		super(props);
 
-		this.claims = new Array();
-
-		// 获取Claim
-	    $.get("/api/ClaimManage/GetWebClaimTypes", function(data){
-	      if(data.isSuccess == true){
-	        for(var item in data.value){
-	        	this.claims.push({text:data.value[item], value:data.value[item]});
-	        }
-	      }
-	    }.bind(this));
+		this.state = {
+			apiScopes: [],
+			apiScopePermissions: [],
+		}
 
 		this.describes=[
-			{name:"id", isId:true, isAddShow:false, isEditShow:false, isLookupShow:false},
-			{name:"name", text:"Api资源名称", isName:true, isShowOnList:true, isEditCanEdit:false},
-			{name:"displayName", text:"Api资源显示名称", isShowOnList:true},
-			{name:"description", text:"Api资源描述"},
-			{name:"userClaims", text:"携带信息", valueType:"check", valueTexts:this.claims},
-			{
-				name:"enabled", 
-				text:"是否启用", 
-				isShowOnList:true, 
-				valueType:"radio", 
-				valueTexts:[{text:"启用", value:true}, {text:"禁用", value:false}],
-				col: 6,
-			},
+			{name:"id", isId:true, isAddShow:false, isEditShow:false, isLookupShow:true},
+			{name:"name", text:"权限名称名称", isName:true, isShowOnList:true},
 		];
 
 		this.resourceChild = null;
@@ -44,6 +29,10 @@ export default class ApiScopePermission extends React.Component
     	this.updateResource = this.updateResource.bind(this);
     	this.deleteResource = this.deleteResource.bind(this);
     	this.freshenResources = this.freshenResources.bind(this);
+
+    	this.getApiScopes();
+
+    	this.previewOnClick = this.previewOnClick.bind(this);
 	}
 
 	// 提交回调
@@ -108,9 +97,19 @@ export default class ApiScopePermission extends React.Component
 	}
 
 	// Resource组件刷新资源通知
-	freshenResources(pageIndex, pageSize, searchKey){
-		this.getResourceList(pageIndex, pageSize, searchKey);
-		this.getResourceNum(searchKey);
+	freshenResources(pageIndex, pageSize, searchKey)
+	{
+		let startIndex = (pageIndex-1)*pageSize;
+		let endIndex = pageIndex*pageSize - 1;
+
+		let newResource = [];
+		for(let item in this.apiScopePermissions){
+			if(item>=startIndex && item <= endIndex){
+				newResource.push(this.apiScopePermissions[item]);
+			}
+		}
+
+		this.resourceChild.resetResources(newResource, pageIndex);
 	}
 
     // 获取资源列表
@@ -157,21 +156,69 @@ export default class ApiScopePermission extends React.Component
         });
     }
 
+    // 获取Api域
+    getApiScopes(){
+    	let postData = {
+        };
+
+		$.ajax({
+			url: "/api/ApiScopeManage/GetApiScopes",
+            type: 'post',
+            data: JSON.stringify(postData),
+            contentType: 'application/json',
+            dataType: 'json',
+            success: function(data){
+		        if(data.isSuccess == true)
+		        {
+		        	this.setState({apiScopes: data.value.apiScopes});
+		        }
+		    }.bind(this)
+		});
+    }
+
+    // 预览框单击
+    previewOnClick(previewResource){
+    	let postData = {
+    		id: previewResource.id
+        };
+
+		$.ajax({
+			url: "/api/ApiScopeManage/GetApiScopePermissions",
+            type: 'post',
+            data: JSON.stringify(postData),
+            contentType: 'application/json',
+            dataType: 'json',
+            success: function(data){
+		        if(data.isSuccess == true)
+		        {
+		        	this.setState({apiScopePermissions: data.value.permissions},this.resourceChild.reloadResources());
+		        }
+		    }.bind(this)
+		});
+    }
+
 	render(){
 		return(
-			<div className="w-100 h-100">
-				<div class="w-20 padding-right-10 float-left h-100">
-					<Preview />
+			<div className="row h-100 apiScopePermission">
+				<div class="left-preview float-left h-100">
+					<Preview 
+						title="Api域"
+						previewResources={this.state.apiScopes} 
+						textName="name" 
+						previewOnClick={this.previewOnClick}
+						operationName="查看"
+					/>
 				</div>
-				<div class="w-80 padding-left-10 float-left h-100">
+				<div class="right-permissions padding-left-10 padding-right-10 float-left h-100">
 					<Resource
-					title="Api资源"
+					title="Api域权限"
 					describes={this.describes}
 					freshenResources={this.freshenResources}
 					addResource={this.addResource}
 					updateResource={this.updateResource}
 					deleteResource={this.deleteResource}
-					setResourceRef={(ref)=>{this.resourceChild = ref}} />
+					setResourceRef={(ref)=>{this.resourceChild = ref}}
+					hideEdit={true} />
 				</div>
 				<ErrorModal />
 				<LoadingModal />

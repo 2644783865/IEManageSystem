@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 export default class Paging extends React.Component
 {
+	// props.hideAdd
 	constructor(props){
 		super(props);
 	}
@@ -38,7 +39,7 @@ export default class Paging extends React.Component
                 <ul className="pagination pagination-md">
                     {lis}
                 </ul>
-                <button type="button" className="btn btn-info" onClick={this.props.resourceAddClick}>+添加</button>
+                {this.props.hideAdd != true && <button type="button" className="btn btn-info" onClick={this.props.resourceAddClick}>+添加</button>}
             </div>
 		);
 	}

@@ -4,6 +4,11 @@ import './Preview.css';
 
 export default class Preview extends React.Component
 {
+    // props.title
+    // props.previewResources
+    // props.textName
+    // props.previewOnClick()
+    // props.operationName
 	constructor(props){
 		super(props);
 	}
@@ -22,11 +27,26 @@ export default class Preview extends React.Component
         });
     }
 	
-	render(){
+	render()
+    {
+        let lis = [];
+        for(let item in this.props.previewResources){
+            let li = <li className="list-group-item d-flex justify-content-between">
+                            <span className="mt-auto mb-auto">{this.props.previewResources[item][this.props.textName]}</span>
+                            <span className="mt-auto mb-auto">
+                                <button className="btn btn-info btn-sm"
+                                    onClick={()=>{this.props.previewOnClick(this.props.previewResources[item])}}
+                                ><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>{this.props.operationName}</button>
+                            </span>
+                    </li>
+
+            lis.push(li);
+        }
+
 		return (
 		    <div className="preview">
                 <h6 className="d-flex justify-content-between">
-                    <span className="mt-auto mb-auto">Api域名</span>
+                    <span className="mt-auto mb-auto">{this.props.title}</span>
                     <span>
                         <a href="javascript:void(0)" className="text-white">
                             <span id="previewSearchBtn" onClick={this.toggleSearch} className="oi oi-chevron-bottom" title="icon name" aria-hidden="true"></span>
@@ -45,186 +65,7 @@ export default class Preview extends React.Component
                 </h6>
                 <div className="">
                     <ul className="list-group">
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span className="mt-auto mb-auto">选项名称</span>
-                            <span className="mt-auto mb-auto">
-                                <button className="btn btn-info btn-sm"><span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>查看</button>
-                            </span>
-                        </li>
+                        {lis}
                     </ul>
                 </div>
             </div>
