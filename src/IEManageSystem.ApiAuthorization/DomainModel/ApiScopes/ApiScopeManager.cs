@@ -47,7 +47,7 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
 
         public IQueryable<ApiScope> GetApiScopes(Expression<Func<ApiScope, object>>[] propertySelectors)
         {
-            return _repository.GetAllIncluding();
+            return _repository.GetAllIncluding(propertySelectors);
         }
 
         public ApiScope GetApiScopeForApiSingleName(string name)
@@ -74,7 +74,11 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
 
         public void RemovePermission(int apiScopeId, int permissionId)
         {
-            var apiScope = _repository.FirstOrDefault(apiScopeId);
+            Expression<Func<ApiScope, object>>[] propertySelectors = new Expression<Func<ApiScope, object>>[] {
+                e=>e.ApiScopePermissions
+            };
+            var apiScope = _repository.GetAllIncluding(propertySelectors).FirstOrDefault(e => e.Id == apiScopeId);
+
             if (apiScope == null)
             {
                 throw new Exception("找不到Api域");

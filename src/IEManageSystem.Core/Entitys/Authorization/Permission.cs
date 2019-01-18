@@ -9,6 +9,15 @@ namespace IEManageSystem.Entitys.Authorization
     [Table("Permission")]
     public class Permission : Entity
     {
+        protected Permission() {
+        }
+
+        public Permission(string name) {
+            Name = name;
+        }
+
         public string Name { get; set; }
+
+        public string DisplayName { get; set; }
     }
 }

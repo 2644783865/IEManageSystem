@@ -56,6 +56,16 @@ const menus =
         menuItems: 
         [
             {
+                id:"Permission",
+                text: "权限管理",
+                url: "/ManageHome/AuthorizeManage/Permission"
+            },
+            {
+                id:"UserPermissionManage",
+                text: "用户权限管理",
+                url: "/ManageHome/AuthorizeManage/UserPermissionManage"
+            },
+            {
                 id:"ApiScopeManage",
                 text: "Api域管理",
                 url: "/ManageHome/AuthorizeManage/ApiScopeManage",
@@ -72,11 +82,6 @@ const menus =
                     }
                 ]
             },
-            {
-                id:"UserPermissionManage",
-                text: "用户权限管理",
-                url: "/ManageHome/AuthorizeManage/UserPermissionManage"
-            }
         ]
     },
     {

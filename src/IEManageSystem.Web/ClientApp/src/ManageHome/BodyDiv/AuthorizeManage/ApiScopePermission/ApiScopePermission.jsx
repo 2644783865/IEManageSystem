@@ -12,14 +12,20 @@ export default class ApiScopePermission extends React.Component
 	constructor(props){
 		super(props);
 
+		this.permissions = [];
+
 		this.state = {
+			apiScope:{},	// 当前选择的api域
 			apiScopes: [],
-			apiScopePermissions: [],
 		}
 
 		this.describes=[
 			{name:"id", isId:true, isAddShow:false, isEditShow:false, isLookupShow:true},
-			{name:"name", text:"权限名称名称", isName:true, isShowOnList:true},
+			{name:"name", text:"权限名称", isName:true, isShowOnList:true, isEditShow:false, isAddShow:false},
+			{name:"displayName", text:"权限显示名称", isShowOnList:true, isEditShow:false, isAddShow:false},
+			{name:"permissionId", text:"请选择权限", valueType:"radio",
+				valueTexts:this.permissions
+			},
 		];
 
 		this.resourceChild = null;
@@ -31,8 +37,7 @@ export default class ApiScopePermission extends React.Component
     	this.freshenResources = this.freshenResources.bind(this);
 
     	this.getApiScopes();
-
-    	this.previewOnClick = this.previewOnClick.bind(this);
+    	this.getPermissions();
 	}
 
 	// 提交回调
@@ -52,10 +57,13 @@ export default class ApiScopePermission extends React.Component
 	// Resource组件添加资源通知
 	addResource(resource){
 		LoadingModal.showModal();
-		let postData = resource;
+		let postData = {
+			permissionId:resource.permissionId,
+			apiScopeId:this.state.apiScope.id,
+		};
 
 	    $.ajax({
-	      url: "/api/ApiResourceManage/AddApiResource",
+	      url: "/api/ApiScopeManage/AddApiScopePermission",
 	      type: 'post',
 	      data: JSON.stringify(postData),
 	      contentType: 'application/json',
@@ -66,28 +74,18 @@ export default class ApiScopePermission extends React.Component
 
 	// Resource组件更新资源通知
 	updateResource(resource){
-		LoadingModal.showModal();
-		let postData = resource;
-
-	    $.ajax({
-	      url: "/api/ApiResourceManage/UpdateApiResource",
-	      type: 'post',
-	      data: JSON.stringify(postData),
-	      contentType: 'application/json',
-	      dataType: 'json',
-	      success: this.submitBackcall
-	    });
 	}
 
 	// Resource组件删除资源通知
 	deleteResource(resource){
 		LoadingModal.showModal();
 		let postData = {
-	      id: resource.id
-	    };
+			permissionId:resource.id,
+			apiScopeId:this.state.apiScope.id,
+		};
 
 	    $.ajax({
-	      url: "/api/ApiResourceManage/DeleteApiResource",
+	      url: "/api/ApiScopeManage/RemoveApiScopePermission",
 	      type: 'post',
 	      data: JSON.stringify(postData),
 	      contentType: 'application/json',
@@ -99,29 +97,17 @@ export default class ApiScopePermission extends React.Component
 	// Resource组件刷新资源通知
 	freshenResources(pageIndex, pageSize, searchKey)
 	{
-		let startIndex = (pageIndex-1)*pageSize;
-		let endIndex = pageIndex*pageSize - 1;
-
-		let newResource = [];
-		for(let item in this.apiScopePermissions){
-			if(item>=startIndex && item <= endIndex){
-				newResource.push(this.apiScopePermissions[item]);
-			}
-		}
-
-		this.resourceChild.resetResources(newResource, pageIndex);
+		this.getResourceList(this.state.apiScope);
 	}
 
     // 获取资源列表
-	getResourceList(pageIndex, pageSize, searchKey){
+	getResourceList(previewResource){
 		let postData = {
-            pageIndex: pageIndex,
-            pageSize: pageSize,
-            searchKey: searchKey
+    		id: previewResource.id
         };
 
 		$.ajax({
-			url: "/api/ApiResourceManage/GetApiResources",
+			url: "/api/ApiScopeManage/GetApiScopePermissions",
             type: 'post',
             data: JSON.stringify(postData),
             contentType: 'application/json',
@@ -129,7 +115,9 @@ export default class ApiScopePermission extends React.Component
             success: function(data){
 		        if(data.isSuccess == true)
 		        {
-		        	this.resourceChild.resetResources(data.value.apiResources, pageIndex);
+		        	this.setState({
+		        		apiScope:previewResource},
+		        		()=>this.resourceChild.resetResources(data.value.permissions, 1));
 		        }
 		    }.bind(this)
 		});
@@ -137,23 +125,6 @@ export default class ApiScopePermission extends React.Component
 
     // 获取资源数量
     getResourceNum(searchKey){
-        let postData = {
-        	searchKey:searchKey
-        };
-
-        $.ajax({
-            url: "/api/ApiResourceManage/GetApiResourceNum",
-            type: 'post',
-            data: JSON.stringify(postData),
-            contentType: 'application/json',
-            dataType: 'json',
-            success: function(data){
-		        if(data.isSuccess == true)
-		        {
-		        	this.resourceChild.resetResourceNum(data.value.resourceNum);
-		        }
-		    }.bind(this)
-        });
     }
 
     // 获取Api域
@@ -176,14 +147,16 @@ export default class ApiScopePermission extends React.Component
 		});
     }
 
-    // 预览框单击
-    previewOnClick(previewResource){
+    // 获取权限列表
+    getPermissions()
+    {
     	let postData = {
-    		id: previewResource.id
+            pageIndex: 1,
+            pageSize: 9999,
         };
 
 		$.ajax({
-			url: "/api/ApiScopeManage/GetApiScopePermissions",
+			url: "/api/PermissionManage/GetPermissions",
             type: 'post',
             data: JSON.stringify(postData),
             contentType: 'application/json',
@@ -191,7 +164,12 @@ export default class ApiScopePermission extends React.Component
             success: function(data){
 		        if(data.isSuccess == true)
 		        {
-		        	this.setState({apiScopePermissions: data.value.permissions},this.resourceChild.reloadResources());
+		        	for(let item in data.value.permissions){
+		        		this.permissions.push({
+		        			value:data.value.permissions[item].id,
+		        			text:data.value.permissions[item].displayName,
+		        		});
+		        	}
 		        }
 		    }.bind(this)
 		});
@@ -202,10 +180,10 @@ export default class ApiScopePermission extends React.Component
 			<div className="row h-100 apiScopePermission">
 				<div class="left-preview float-left h-100">
 					<Preview 
-						title="Api域"
+						title="Api域名称"
 						previewResources={this.state.apiScopes} 
 						textName="name" 
-						previewOnClick={this.previewOnClick}
+						previewOnClick={(previewResource)=>this.getResourceList(previewResource)}
 						operationName="查看"
 					/>
 				</div>
@@ -218,7 +196,8 @@ export default class ApiScopePermission extends React.Component
 					updateResource={this.updateResource}
 					deleteResource={this.deleteResource}
 					setResourceRef={(ref)=>{this.resourceChild = ref}}
-					hideEdit={true} />
+					hideEdit={true}
+					hidePadding={true} />
 				</div>
 				<ErrorModal />
 				<LoadingModal />

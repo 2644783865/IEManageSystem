@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 export default class Paging extends React.Component
 {
 	// props.hideAdd
+	// props.hidePadding
 	constructor(props){
 		super(props);
 	}
@@ -36,9 +37,12 @@ export default class Paging extends React.Component
 
 		return (
             <div className="data-paging mt-auto d-flex justify-content-between w-100">
-                <ul className="pagination pagination-md">
-                    {lis}
-                </ul>
+                {
+                	this.props.hidePadding != true &&
+                	<ul className="pagination pagination-md">
+                        {lis}
+                    </ul>
+                }
                 {this.props.hideAdd != true && <button type="button" className="btn btn-info" onClick={this.props.resourceAddClick}>+添加</button>}
             </div>
 		);

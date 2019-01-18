@@ -32,12 +32,17 @@ export default class Resource extends React.Component
 	// props.hideAdd = false
 	// props.hideEdit = false
 	// props.hideDelete = false
+	// props.hidePadding = false
 	constructor(props){
 		super(props);
 
 		this.props.setResourceRef(this);
 
         this.pageSize = 10;
+
+        if(this.props.hidePadding == true){
+        	this.pageSize = 999999;
+        }
 
         this.resourceDescribe = new ResourceDescribe(this.props.describes);
 
@@ -152,6 +157,7 @@ export default class Resource extends React.Component
         let paging = <Paging 
                     resourceAddClick={ ()=>this.resourceOperationClick(operationState.add) } 
                     hideAdd={this.props.hideAdd}
+                    hidePadding={this.props.hidePadding}
                     pageNum={ this.state.pageNum } 
                     pageIndex={ this.state.pageIndex } 
                     pageIndexChange={ this.pageIndexChange } />;
