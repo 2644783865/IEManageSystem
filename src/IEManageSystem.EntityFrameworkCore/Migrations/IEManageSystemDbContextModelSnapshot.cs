@@ -74,6 +74,8 @@ namespace IEManageSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Describe");
+
                     b.Property<string>("DisplayName");
 
                     b.Property<string>("Name");
@@ -88,6 +90,10 @@ namespace IEManageSystem.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Describe");
+
+                    b.Property<string>("DisplayName");
 
                     b.Property<string>("Name");
 
@@ -121,13 +127,11 @@ namespace IEManageSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("EmailAddress")
-                        .IsRequired();
+                    b.Property<string>("EmailAddress");
 
                     b.Property<string>("HeadSculpture");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(20);
 
                     b.Property<string>("Password")

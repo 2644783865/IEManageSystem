@@ -1,10 +1,10 @@
 .preview{
-    padding: 0rem;
+    padding: 0.5rem;
     overflow: hidden;
-    /*box-shadow: 0rem 0rem 0.5rem #eceaea;*/
     max-height: 100%;
-    padding-bottom: 6rem;
     background-color: #ffffff;
+    border-top: 1px solid #bcc5c5;
+    border-bottom: 1px solid #bcc5c5;
 }
 
 .preview-hide{
@@ -12,11 +12,15 @@
 }
 
 .preview>h6{
-    background: #00C5CD;
     padding: 0.67rem 1.25rem;
-    color: #ffffff;
+    color: #777777;
     font-size: 1rem;
     margin-bottom: 0.25rem;
+    border: 1px solid #c7c7c7;
+}
+
+.preview>h6 .oi{
+    margin-top: 0.2rem;
 }
 
 .preview-search{
@@ -47,12 +51,12 @@
 
 .preview li{
     border: 0px;
-    background-color: #E0FFFF;
+    background-color: #bcc5c5;
     margin-bottom: 2px;
-    color: #A9A9A9;
+    color: #ffffff;
 }
 
 .preview li:hover{
-    background: #40E0D0;
+    background: #989a9a;
     color: #ffffff;
 }

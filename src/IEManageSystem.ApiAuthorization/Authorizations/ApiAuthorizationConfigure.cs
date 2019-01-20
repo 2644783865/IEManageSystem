@@ -11,7 +11,7 @@ namespace IEManageSystem.ApiAuthorization.Authorizations
 {
     public static class ApiAuthorizationConfigure
     {
-        public const string ApiPermissiionClaimName = "ApiPermissiionClaim";
+        public const string ApiPermissiionClaimName = "ApiPermissionClaim";
 
         public static IServiceCollection AddApiAuthorization(this IServiceCollection services)
         {

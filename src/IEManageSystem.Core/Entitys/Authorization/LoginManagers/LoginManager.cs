@@ -26,7 +26,8 @@ namespace IEManageSystem.Entitys.Authorization.LoginManagers
             AbpLoginResult abpLoginResult = new AbpLoginResult();
 
             // 验证用户名
-            if ( !(await _UserRepository.GetAllListAsync(e => e.UserName == userName && e.TenantId == tenantId)).Any())
+            //if ( !(await _UserRepository.GetAllListAsync(e => e.UserName == userName && e.TenantId == tenantId)).Any())
+            if (!(await _UserRepository.GetAllListAsync(e => e.UserName == userName)).Any())
             {
                 abpLoginResult.Result = AbpLoginResultType.InvalidUserNameOrEmailAddress;
                 return abpLoginResult;
@@ -34,7 +35,8 @@ namespace IEManageSystem.Entitys.Authorization.LoginManagers
 
             // 验证密码
             password = Encrypt.MD5Utf8(password);
-            var user = await _UserRepository.FirstOrDefaultAsync(e => e.UserName == userName && e.Password == password && e.TenantId == tenantId);
+            //var user = await _UserRepository.FirstOrDefaultAsync(e => e.UserName == userName && e.Password == password && e.TenantId == tenantId);
+            var user = await _UserRepository.FirstOrDefaultAsync(e => e.UserName == userName && e.Password == password);
             if (user == null)
             {
                 abpLoginResult.Result = AbpLoginResultType.InvalidPassword;

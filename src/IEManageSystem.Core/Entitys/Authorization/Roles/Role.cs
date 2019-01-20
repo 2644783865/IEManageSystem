@@ -10,8 +10,29 @@ namespace IEManageSystem.Entitys.Authorization.Roles
     [Table("Role")]
     public class Role : Entity
     {
-        public string Name { get; set; }
+        public static Role SuperAdmin { get { return new Role("SuperAdmin") { DisplayName = "超级管理员", Describe = "拥有站点最高权限" }; } }
 
-        public IQueryable<RolePermission> RolePermissions { get; set; }
+        protected Role() {
+        }
+
+        public Role(string name)
+        {
+            Name = name;
+        }
+
+        public string Name { get; protected set; }
+
+        public string DisplayName { get; set; }
+
+        public string Describe { get; set; }
+
+        public ICollection<RolePermission> RolePermissions { get; set; }
+
+        public void AddPermission(Permission permission)
+        {
+            RolePermission rolePermission = new RolePermission(this, permission);
+
+            RolePermissions.Add(rolePermission);
+        }
     }
 }

@@ -12,20 +12,6 @@ export default class Preview extends React.Component
 	constructor(props){
 		super(props);
 	}
-
-    toggleSearch()
-    {
-        $("#previewSearch").toggle(300, function(){
-            if($("#previewSearch").css("display") != "none"){
-                $("#previewSearchBtn").removeClass("oi-chevron-buttom");
-                $("#previewSearchBtn").addClass("oi-chevron-top");
-            }
-            else{
-                $("#previewSearchBtn").removeClass("oi-chevron-top");
-                $("#previewSearchBtn").addClass("oi-chevron-bottom");
-            }
-        });
-    }
 	
 	render()
     {
@@ -45,19 +31,15 @@ export default class Preview extends React.Component
 
 		return (
 		    <div className="preview">
-                <h6 className="d-flex justify-content-between">
-                    <span className="mt-auto mb-auto">{this.props.title}</span>
-                    <span>
-                        <a href="javascript:void(0)" className="text-white">
-                            <span id="previewSearchBtn" onClick={this.toggleSearch} className="oi oi-chevron-bottom" title="icon name" aria-hidden="true"></span>
-                        </a>
-                    </span>
+                <h6 className="d-flex">
+                    <span className="oi oi-list" title="icon name" aria-hidden="true"></span>
+                    <span className="padding-left-10">{this.props.title}</span>
                 </h6>
                 <h6 id="previewSearch" className="preview-search">
                     <div className="input-group mb-3">
                         <input type="text" className="form-control" placeholder="Search" />
                         <div className="input-group-append">
-                            <button className="btn btn-success btn-sm" type="submit">
+                            <button className="btn btn-outline-secondary btn-sm" type="submit">
                                 <span className="oi oi-magnifying-glass" title="icon name" aria-hidden="true"></span>
                             </button> 
                         </div>

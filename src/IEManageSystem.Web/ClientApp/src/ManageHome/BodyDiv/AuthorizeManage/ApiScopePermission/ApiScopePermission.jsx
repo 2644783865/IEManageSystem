@@ -177,7 +177,7 @@ export default class ApiScopePermission extends React.Component
 
 	render(){
 		return(
-			<div className="row h-100 apiScopePermission">
+			<div className="row apiScopePermission">
 				<div class="left-preview float-left h-100">
 					<Preview 
 						title="Api域名称"

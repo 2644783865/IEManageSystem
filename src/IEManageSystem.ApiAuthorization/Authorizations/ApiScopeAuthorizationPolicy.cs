@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
+using System.Security.Claims;
 
 namespace IEManageSystem.ApiAuthorization.Authorizations
 {
@@ -43,21 +45,40 @@ namespace IEManageSystem.ApiAuthorization.Authorizations
                 return Task.CompletedTask;
             }
 
+            // 获取当前用户拥有的权限
+            List<Claim> permissionClaims = context.User.Claims.Where(e => e.Type == ApiAuthorizationConfigure.ApiPermissiionClaimName).ToList();
+
             // 获取要访问的Api
             var apiSingle = _apiSingleManager.GetApiSingleForControllerName(requirement.ControllerName);
 
-            // 获取Api所在的Api域
-            var apiScope = _apiScopeManager.GetApiScopeForApiSingleName(apiSingle.Name);
+            // 获取要访问的Api域s
+            var apiScopes = _apiScopeManager.GetApiScopesForApiSingleName(apiSingle.Name);
 
-            // 检查权限
-            if (!_checkPermissionService.IsAllowAccess(apiScope, requirement.PermissionName))
+            foreach (var apiScope in apiScopes)
             {
-                return Task.CompletedTask;
+                if (CheckPermission(apiScope, permissionClaims))
+                {
+                    // 授权通过
+                    context.Succeed(requirement);
+                    return Task.CompletedTask;
+                }
             }
 
-            // 授权通过
-            context.Succeed(requirement);
             return Task.CompletedTask;
+        }
+
+        private bool CheckPermission(ApiScope apiScope, List<Claim> permissionClaims)
+        {
+            foreach (var permissionClaim in permissionClaims)
+            {
+                // 检查权限
+                if (_checkPermissionService.IsAllowAccess(apiScope, permissionClaim.Value))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

@@ -55,19 +55,19 @@ class UserHome extends React.Component
     render()
     {
         return (
-        <div className="d-flex h-100 manage-home">
+        <div className="manage-home d-flex flex-column h-100">
             <Redirect path="/ManageHome" to={{pathname: '/ManageHome/Index'}} />
             <Nav topLevelMenus={this.topLevelMenus} selectTopMenu={this.state.selectTopMenu} topLevelMenusSelect={this.topLevelMenusSelect} />
-            <div className="container-fixed">
-                <div className="row h-100">
+            <div className="d-flex flex-grow-1 w-100">
+                <div className="d-flex w-100">
                     <div className="col-md-2 h-100 padding-0">
                         <SideNav selectTopMenu={this.state.selectTopMenu} sideMenuSelect={this.sideMenuSelect} />
                     </div>
                     <div className="col-md-10 h-100 padding-0 d-flex flex-column">
-                        <div className="padding-top-10">
+                        <div className="flex-shrink-0">
                             <Route path="/ManageHome/:menuId?/:menuItemId?" component={NavTag} />
                         </div>
-                        <div className="bodydiv-parent">
+                        <div className="bodydiv-parent d-flex flex-grow-1 w-100">
                             <Route path="/ManageHome/:menuId/:menuItemId?" component={BodyDiv} />
                         </div>
                     </div>

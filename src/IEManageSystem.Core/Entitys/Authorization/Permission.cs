@@ -9,6 +9,8 @@ namespace IEManageSystem.Entitys.Authorization
     [Table("Permission")]
     public class Permission : Entity
     {
+        public static Permission SuperPermission { get { return new Permission("SuperPermission") { DisplayName = "超级权限", Describe = "站点最高权限" }; } }
+
         protected Permission() {
         }
 
@@ -16,8 +18,10 @@ namespace IEManageSystem.Entitys.Authorization
             Name = name;
         }
 
-        public string Name { get; set; }
+        public string Name { get; protected set; }
 
         public string DisplayName { get; set; }
+
+        public string Describe { get; set; }
     }
 }

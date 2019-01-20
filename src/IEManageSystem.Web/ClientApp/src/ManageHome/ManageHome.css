@@ -86,14 +86,13 @@ a:hover{
             height: 100%;
 }
 
-.manage-home>.container-fixed {
-    padding-top: 3rem;
-    margin: 0rem;
-    width: 100%;
+.manage-home {
+    margin-right: -15px;
+    margin-left: -15px;
 }
 
 .bodydiv-parent{
-    height: 100%;
+    overflow-y:auto;
 }
 
 .padding-0{

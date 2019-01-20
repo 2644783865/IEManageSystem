@@ -50,9 +50,9 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
             return _repository.GetAllIncluding(propertySelectors);
         }
 
-        public ApiScope GetApiScopeForApiSingleName(string name)
+        public IQueryable<ApiScope> GetApiScopesForApiSingleName(string name)
         {
-            return _repository.FirstOrDefault(e => e.ApiScopeApis.Where(ie => ie.ApiSingleName == name).Any());
+            return _repository.GetAll().Where(e => e.ApiScopeApis.Where(ie => ie.ApiSingleName == name).Any());
         }
 
         public void AddPermission(int apiScopeId, int permissionId)

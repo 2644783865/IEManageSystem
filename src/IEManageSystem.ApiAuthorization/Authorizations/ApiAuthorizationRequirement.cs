@@ -8,16 +8,12 @@ namespace IEManageSystem.ApiAuthorization.Authorizations
     public class ApiAuthorizationRequirement: IAuthorizationRequirement
     {
         public ApiAuthorizationRequirement(
-            string controllerName,
-            string permissionName
+            string controllerName
             )
         {
             ControllerName = controllerName;
-            PermissionName = permissionName;
         }
 
         public string ControllerName { get; private set; }
-
-        public string PermissionName { get; private set; }
     }
 }

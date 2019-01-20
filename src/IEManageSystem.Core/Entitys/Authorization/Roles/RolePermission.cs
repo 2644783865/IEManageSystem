@@ -14,5 +14,17 @@ namespace IEManageSystem.Entitys.Authorization.Roles
         public int PermissionId { get; set; }
 
         public Permission Permission { get; set; }
+
+        protected RolePermission() {
+        }
+
+        public RolePermission(Role role, Permission permission)
+        {
+            RoleId = role.Id;
+
+            PermissionId = permission.Id;
+
+            Permission = permission;
+        }
     }
 }

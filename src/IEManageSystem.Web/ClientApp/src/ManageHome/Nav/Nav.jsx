@@ -66,7 +66,7 @@ export default class Nav extends React.Component
         }
 
         return(
-            <nav className="navbar navbar-expand-md bg-dark navbar-dark fixed-top navbar_css">
+            <nav className="navbar navbar-expand-md navbar_css flex-shrink-0">
                 <div className="float-left navbar_logo_css">
                     <Logo />
                 </div>

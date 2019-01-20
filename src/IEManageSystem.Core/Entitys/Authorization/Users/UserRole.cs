@@ -10,9 +10,21 @@ namespace IEManageSystem.Entitys.Authorization.Users
     [Table("UserRole")]
     public class UserRole : Entity
     {
-        public int UserId { get; set; }
+        protected UserRole() {
+        }
 
-        public int RoleId { get; set; }
+        public UserRole(User user, Role role)
+        {
+            UserId = user.Id;
+
+            RoleId = role.Id;
+
+            Role = role;
+        }
+
+        public int UserId { get; protected set; }
+
+        public int RoleId { get; protected set; }
 
         public Role Role { get; set; }
     }

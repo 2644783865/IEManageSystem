@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities;
+using IEManageSystem.Entitys.Authorization.Roles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -30,14 +31,12 @@ namespace IEManageSystem.Entitys.Authorization.Users
         /// <summary>
         /// 邮箱
         /// </summary>
-        [Required]
         [EmailAddress]
         public string EmailAddress { get; set; }
 
         /// <summary>
         /// 昵称
         /// </summary>
-        [Required]
         [MaxLength(20)]
         public string Name { get; set; }
 
@@ -55,8 +54,15 @@ namespace IEManageSystem.Entitys.Authorization.Users
         /// <summary>
         /// 权限
         /// </summary>
-        public IQueryable<UserRole> UserRoles { get; set; }
+        public ICollection<UserRole> UserRoles { get; set; }
 
         public int? TenantId { get; set; }
+
+        public void AddRole(Role role)
+        {
+            UserRole userRole = new UserRole(this, role);
+
+            UserRoles.Add(userRole);
+        }
     }
 }
