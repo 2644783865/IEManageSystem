@@ -12,6 +12,8 @@ namespace IEManageSystem.Entitys.Authorization.Roles
     {
         public static Role SuperAdmin { get { return new Role("SuperAdmin") { DisplayName = "超级管理员", Describe = "拥有站点最高权限" }; } }
 
+        public static Role Admin { get { return new Role("Admin") { DisplayName = "管理员", Describe = "站点管理员" }; } }
+
         protected Role() {
         }
 

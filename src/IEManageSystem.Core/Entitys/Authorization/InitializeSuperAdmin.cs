@@ -43,15 +43,15 @@ namespace IEManageSystem.Entitys.Authorization
                 {
                     var superAdminRole = Role.SuperAdmin;
 
-                    _roleManager.AddRole(superAdminRole);
+                    _roleManager.CreateRole(superAdminRole).Wait();
 
-                    _unitOfWorkManager.Current.SaveChanges();
+                    //_unitOfWorkManager.Current.SaveChanges();
 
                     _roleManager.AddPermission(superAdminRole, Permission.SuperPermission);
 
-                    User superAdmin = _userManager.AddUser("SuperAdmin", "123456", "超级管理员");
+                    User superAdmin = _userManager.CreateUser("SuperAdmin", "123456", "超级管理员").Result;
 
-                    _unitOfWorkManager.Current.SaveChanges();
+                    //_unitOfWorkManager.Current.SaveChanges();
 
                     _userManager.AddUserRole(superAdmin, superAdminRole);
 

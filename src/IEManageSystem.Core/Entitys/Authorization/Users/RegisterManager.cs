@@ -33,7 +33,7 @@ namespace IEManageSystem.Entitys.Authorization.Users
         /// <returns></returns>
         public async Task<User> RegisterAsync(string userName, string password, string emailAddress, string name, int? tenantId)
         {
-            var user = _userManager.AddUser(userName, password, name, tenantId);
+            var user = await _userManager.CreateUser(userName, password, name, tenantId);
 
             user.EmailAddress = emailAddress;
 

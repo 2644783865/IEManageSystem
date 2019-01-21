@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import ApiScopePermission from "./ApiScopePermission/ApiScopePermission.jsx";
 import Permission from "./Permission/Permission.jsx";
+import AdminManage from "./AdminManage/AdminManage.jsx";
 
 export default class AuthorizeManage extends React.Component
 {
@@ -18,6 +19,7 @@ export default class AuthorizeManage extends React.Component
                 <Switch>
                     <Route path="/ManageHome/AuthorizeManage/ApiScopePermission" component={ApiScopePermission} />
                     <Route path="/ManageHome/AuthorizeManage/Permission" component={Permission} />
+                    <Route path="/ManageHome/AuthorizeManage/AdminManage" component={AdminManage} />
                 </Switch>
             </div>
         );

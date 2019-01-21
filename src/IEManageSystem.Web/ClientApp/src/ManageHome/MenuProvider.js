@@ -56,6 +56,23 @@ const menus =
         menuItems: 
         [
             {
+                id:"Admin",
+                text: "管理员",
+                url: "/ManageHome/AuthorizeManage/Admin",
+                menuItems: [
+                    {
+                        id:"AdminManage",
+                        text: "管理员管理",
+                        url: "/ManageHome/AuthorizeManage/AdminManage"
+                    },
+                    {
+                        id:"AdminRoleManage",
+                        text: "管理员角色",
+                        url: "/ManageHome/AuthorizeManage/AdminRoleManage"
+                    }
+                ]
+            },
+            {
                 id:"Permission",
                 text: "权限管理",
                 url: "/ManageHome/AuthorizeManage/Permission"

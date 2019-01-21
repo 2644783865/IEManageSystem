@@ -12,13 +12,13 @@ namespace IEManageSystem.Entitys.Authorization.LoginManagers
 {
     public class LoginManager: ITransientDependency
     {
-        private IRepository<User> _UserRepository { get; set; }
+        private UserManager _UserManager { get; set; }
 
         public LoginManager(
-            IRepository<User> userRepository
+            UserManager userManager
             )
         {
-            _UserRepository = userRepository;
+            _UserManager = userManager;
         }
 
         public async Task<AbpLoginResult> LoginAsync(string userName, string password, int tenantId)
@@ -27,17 +27,16 @@ namespace IEManageSystem.Entitys.Authorization.LoginManagers
 
             // 验证用户名
             //if ( !(await _UserRepository.GetAllListAsync(e => e.UserName == userName && e.TenantId == tenantId)).Any())
-            if (!(await _UserRepository.GetAllListAsync(e => e.UserName == userName)).Any())
+            var user = _UserManager.GetUserForUserName(userName);
+            if (user == null)
             {
                 abpLoginResult.Result = AbpLoginResultType.InvalidUserNameOrEmailAddress;
                 return abpLoginResult;
             }
 
             // 验证密码
-            password = Encrypt.MD5Utf8(password);
             //var user = await _UserRepository.FirstOrDefaultAsync(e => e.UserName == userName && e.Password == password && e.TenantId == tenantId);
-            var user = await _UserRepository.FirstOrDefaultAsync(e => e.UserName == userName && e.Password == password);
-            if (user == null)
+            if (!_UserManager.ValidatePassword(user, password))
             {
                 abpLoginResult.Result = AbpLoginResultType.InvalidPassword;
                 return abpLoginResult;
