@@ -182,8 +182,6 @@ function createWeather(city, weather, tips, hours, windPower)
 }
 
 export function showLocation(data) {
-    console.log(data);
-
     let postdata = 'version=v1&city=' + data.content.address;
 
     $.ajax({
@@ -201,8 +199,6 @@ export function showLocation(data) {
             // 提示 res.data[0].air_tips
             // 时间 res.data[0].hours[i].day
             // 气温 res.data[0].hours[i].tem
-            console.log(res);
-            
             createWeather(res.city, res.data[0].wea, res.data[0].air_tips, res.data[0].hours, res.data[0].win_speed);
         }
     });

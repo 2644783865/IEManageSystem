@@ -6,6 +6,9 @@ using System.Text;
 using System.Linq;
 using IEManageSystem.Dtos.Core;
 using System.Threading.Tasks;
+using IEManageSystem.Entitys.Authorization.Roles;
+using System.Linq.Expressions;
+using IEManageSystem.Help.Exceptions;
 
 namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Admins
 {
@@ -13,10 +16,15 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Admins
     {
         private AdminManager _adminManager { get; set; }
 
+        private RoleManager _roleManager { get; set; }
+
         public AdminAppService(
-            AdminManager adminManager)
+            AdminManager adminManager,
+            RoleManager roleManager)
         {
             _adminManager = adminManager;
+
+            _roleManager = roleManager;
         }
 
         public async Task<GetAdminsOutput> GetAdmins(GetAdminsInput input)
@@ -69,6 +77,61 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Admins
             _adminManager.DeleteAdmin(input.Id);
 
             return new DeleteAdminOutput();
+        }
+
+        public async Task<GetAdminRolesOutput> GetAdminRoles(GetAdminRolesInput input)
+        {
+            Expression<Func<User, object>>[] propertySelectors = new Expression<Func<User, object>>[] {
+                e => e.UserRoles
+            };
+            var admin = _adminManager.GetAdminsIncluding(propertySelectors).FirstOrDefault(e => e.Id == input.Id);
+
+            if (admin == null) {
+                throw new MessageException("未找到管理员");
+            }
+
+            var roleIds = admin.UserRoles.Select(e => e.RoleId).ToList();
+            var roles = _roleManager.GetRoles().Where(e => roleIds.Contains(e.Id)).ToList();
+
+            return new GetAdminRolesOutput() { Roles = AutoMapper.Mapper.Map<List<RoleDto>>(roles) };
+        }
+
+        public async Task<AddRoleOutput> AddRole(AddRoleInput input)
+        {
+            var admin = _adminManager.GetAdmin(input.AdminId);
+            if (admin == null)
+            {
+                throw new Exception("找不到要添加权限的管理员");
+            }
+
+            var role = _roleManager.GetRole(input.RoleId);
+            if (role == null)
+            {
+                throw new Exception("找不到要添加的权限");
+            }
+
+            _adminManager.AddRole(admin, role);
+
+            return new AddRoleOutput();
+        }
+
+        public async Task<RemoveRoleOutput> RemoveRole(RemoveRoleInput input)
+        {
+            var admin = _adminManager.GetAdmin(input.AdminId);
+            if (admin == null)
+            {
+                throw new Exception("找不到要添加权限的管理员");
+            }
+
+            var role = _roleManager.GetRole(input.RoleId);
+            if (role == null)
+            {
+                throw new Exception("找不到要添加的权限");
+            }
+
+            _adminManager.Remove(admin, role);
+
+            return new RemoveRoleOutput();
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace IEManageSystem.Entitys.Authorization.Users
 {
@@ -22,6 +23,8 @@ namespace IEManageSystem.Entitys.Authorization.Users
         public User GetAdmin(int id) => _userManager.GetUser(id);
 
         public IQueryable<User> GetAdmins() => _userManager.UserRepository.GetAll();
+
+        public IQueryable<User> GetAdminsIncluding(Expression<Func<User, object>>[] propertySelectors) => _userManager.UserRepository.GetAllIncluding(propertySelectors);
 
         public async Task<User> CreateAdmin(string userName, string password, string name = null, int? tenantId = null)
         {
@@ -51,6 +54,16 @@ namespace IEManageSystem.Entitys.Authorization.Users
         public void UpdatePassword(User user, string password)
         {
             _userManager.UpdatePassword(user, password);
+        }
+
+        public void AddRole(User user, Role role)
+        {
+            _userManager.AddUserRole(user, role);
+        }
+
+        public void Remove(User user, Role role)
+        {
+            _userManager.RemoveRole(user, role);
         }
     }
 }

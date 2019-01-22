@@ -78,11 +78,6 @@ const menus =
                 url: "/ManageHome/AuthorizeManage/Permission"
             },
             {
-                id:"UserPermissionManage",
-                text: "用户权限管理",
-                url: "/ManageHome/AuthorizeManage/UserPermissionManage"
-            },
-            {
                 id:"ApiScopeManage",
                 text: "Api域管理",
                 url: "/ManageHome/AuthorizeManage/ApiScopeManage",

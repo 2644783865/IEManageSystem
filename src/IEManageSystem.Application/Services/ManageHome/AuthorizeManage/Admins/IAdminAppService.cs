@@ -18,5 +18,11 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Admins
         Task<UpdateAdminOutput> UpdateAdmin(UpdateAdminInput input);
 
         Task<DeleteAdminOutput> DeleteAdmin(DeleteAdminInput input);
+
+        Task<GetAdminRolesOutput> GetAdminRoles(GetAdminRolesInput input);
+
+        Task<AddRoleOutput> AddRole(AddRoleInput input);
+
+        Task<RemoveRoleOutput> RemoveRole(RemoveRoleInput input);
     }
 }

@@ -4,6 +4,7 @@ import { Switch, Route, NavLink } from 'react-router-dom';
 import ApiScopePermission from "./ApiScopePermission/ApiScopePermission.jsx";
 import Permission from "./Permission/Permission.jsx";
 import AdminManage from "./AdminManage/AdminManage.jsx";
+import AdminRoleManage from "./AdminRoleManage/AdminRoleManage.jsx";
 
 export default class AuthorizeManage extends React.Component
 {
@@ -20,6 +21,7 @@ export default class AuthorizeManage extends React.Component
                     <Route path="/ManageHome/AuthorizeManage/ApiScopePermission" component={ApiScopePermission} />
                     <Route path="/ManageHome/AuthorizeManage/Permission" component={Permission} />
                     <Route path="/ManageHome/AuthorizeManage/AdminManage" component={AdminManage} />
+                    <Route path="/ManageHome/AuthorizeManage/AdminRoleManage" component={AdminRoleManage} />
                 </Switch>
             </div>
         );

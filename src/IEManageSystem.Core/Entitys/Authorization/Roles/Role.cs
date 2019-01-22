@@ -36,5 +36,17 @@ namespace IEManageSystem.Entitys.Authorization.Roles
 
             RolePermissions.Add(rolePermission);
         }
+
+        public void RemovePermission(Permission permission)
+        {
+            foreach (var item in RolePermissions)
+            {
+                if (item.PermissionId == permission.Id)
+                {
+                    RolePermissions.Remove(item);
+                    break;
+                }
+            }
+        }
     }
 }

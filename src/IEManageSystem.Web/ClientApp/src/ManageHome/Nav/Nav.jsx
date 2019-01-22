@@ -58,7 +58,7 @@ export default class Nav extends React.Component
             let className = selectTopMenu.id == this.props.topLevelMenus[item].id ? "nav-link navbar_css_li_click" : "nav-link";
 
             let menuItemLi = 
-                <li className="nav-item">
+                <li key={item} className="nav-item">
                     <a href="javascript:void(0)" onClick={()=>{this.props.topLevelMenusSelect(this.props.topLevelMenus[item])}} className={className} to={this.props.topLevelMenus[item].url}>{this.props.topLevelMenus[item].text}</a>
                 </li>;
 
@@ -79,7 +79,7 @@ export default class Nav extends React.Component
                         <input type="text" className="form-control" placeholder="Search" />
                         <div className="input-group-append">
                             <button className="btn btn-info btn-sm" type="button">
-                                <span class="oi oi-magnifying-glass" title="icon name" aria-hidden="true"></span>
+                                <span className="oi oi-magnifying-glass" title="icon name" aria-hidden="true"></span>
                             </button>  
                         </div>
                     </div>
@@ -91,7 +91,7 @@ export default class Nav extends React.Component
                         <img className="rounded-circle navbar-avatar" src={DefaultAvatar} alt="Card image" />
                     </span>
                     <button id="outLogin" data-url="/api/Account/Logout" onClick={this.logoutClick} type="button" className="btn btn-info float-right" >
-                        <span class="oi oi-account-logout" title="icon name" aria-hidden="true"></span>
+                        <span className="oi oi-account-logout" title="icon name" aria-hidden="true"></span>
                         退出登录
                     </button>
                 </div> 

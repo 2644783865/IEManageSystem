@@ -75,5 +75,38 @@ namespace IEManageSystem.Api.Controllers.ManageHome.AuthorizeManage
 
             return new ApiResultDataModel<DeleteAdminOutput>(await _adminAppService.DeleteAdmin(input));
         }
+
+        [HttpPost]
+        public async Task<ActionResult<ApiResultDataModel<GetAdminRolesOutput>>> GetAdminRoles([FromBody]GetAdminRolesInput input)
+        {
+            if (ValidateModel() == false)
+            {
+                return new ApiResultDataModel<GetAdminRolesOutput>(_ValidateModelErrors);
+            }
+
+            return new ApiResultDataModel<GetAdminRolesOutput>(await _adminAppService.GetAdminRoles(input));
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<ApiResultDataModel<AddRoleOutput>>> AddRole([FromBody]AddRoleInput input)
+        {
+            if (ValidateModel() == false)
+            {
+                return new ApiResultDataModel<AddRoleOutput>(_ValidateModelErrors);
+            }
+
+            return new ApiResultDataModel<AddRoleOutput>(await _adminAppService.AddRole(input));
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<ApiResultDataModel<RemoveRoleOutput>>> RemoveRole([FromBody]RemoveRoleInput input)
+        {
+            if (ValidateModel() == false)
+            {
+                return new ApiResultDataModel<RemoveRoleOutput>(_ValidateModelErrors);
+            }
+
+            return new ApiResultDataModel<RemoveRoleOutput>(await _adminAppService.RemoveRole(input));
+        }
     }
 }

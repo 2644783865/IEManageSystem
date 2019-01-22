@@ -12,13 +12,20 @@ namespace IEManageSystem.Entitys.Authorization.Users
     [Table("User")]
     public class User:Entity
     {
+        protected User() {
+        }
+
+        public User(string userName) {
+            UserName = userName;
+        }
+
         /// <summary>
         /// 用户名
         /// </summary>
         [Required]
         [MaxLength(15)]
         [MinLength(6)]
-        public string UserName { get; set; }
+        public string UserName { get; protected set; }
 
         /// <summary>
         /// 密码

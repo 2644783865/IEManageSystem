@@ -22,7 +22,7 @@ export default class Weather extends React.Component
                 <div className="elements weather-left">
                     <div className="weather-temperature">
                     </div>
-                    <div class="weather-wind-power">
+                    <div className="weather-wind-power">
                     </div>
                     {
                         this.props.showWeatherTip == true &&

@@ -54,10 +54,10 @@ export default class SideNav extends React.Component
                 navLink = 
                     <a href="javascript:void(0)" className="text-white" to={menuItems[item].url} onClick={
                         event=>{
-                            $(event.target).parent().children("ul").slideToggle(1000);
+                            $(event.target).parent().children("div").slideToggle(1000);
                         }
                     }>
-                        <span class="oi oi-chevron-right" title="icon name" aria-hidden="true"></span>
+                        <span className="oi oi-chevron-right" title="icon name" aria-hidden="true"></span>
                         {" " + menuItems[item].text}
                     </a>;
 
@@ -66,15 +66,17 @@ export default class SideNav extends React.Component
             else{
                 navLink = 
                     <NavLink activeClassName="leftmenu_css_li_active" className="text-white" to={menuItems[item].url}>
-                        <span class="oi oi-chevron-right" title="icon name" aria-hidden="true"></span>
+                        <span className="oi oi-chevron-right leftmenu-icon-hide" title="icon name" aria-hidden="true"></span>
                         {" " + menuItems[item].text}
                     </NavLink>;
             }
 
             let li = 
-                <li className="leftmenu_css_li">
+                <li key={item} className="leftmenu_css_li">
                     {navLink}
-                    {childMenus}
+                    <div className="w-100 hide">
+                        {childMenus}
+                    </div>
                 </li>;
 
             lis.push(li);

@@ -95,9 +95,8 @@ namespace IEManageSystem.Entitys.Authorization.Users
 
             password = Encrypt.MD5Utf8(password);
 
-            User user = new User()
+            User user = new User(userName)
             {
-                UserName = userName,
                 Password = password,
                 Name = !string.IsNullOrEmpty(name) ? name : userName,
                 TenantId = tenantId

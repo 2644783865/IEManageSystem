@@ -178,7 +178,7 @@ export default class ApiScopePermission extends React.Component
 	render(){
 		return(
 			<div className="row apiScopePermission">
-				<div class="left-preview float-left h-100">
+				<div className="left-preview float-left h-100">
 					<Preview 
 						title="Api域名称"
 						previewResources={this.state.apiScopes} 
@@ -187,7 +187,7 @@ export default class ApiScopePermission extends React.Component
 						operationName="查看"
 					/>
 				</div>
-				<div class="right-permissions padding-left-10 padding-right-10 float-left h-100">
+				<div className="right-permissions padding-left-10 padding-right-10 float-left h-100">
 					<Resource
 					title="Api域权限"
 					describes={this.describes}

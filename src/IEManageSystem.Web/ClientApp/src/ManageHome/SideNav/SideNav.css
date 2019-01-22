@@ -63,3 +63,7 @@
         border-left: 0.312rem solid #00C5AD !important;
         border-right: 0.312rem solid #00C5AD !important;
     }
+
+.leftmenu-icon-hide{
+    color: #ffffff00;
+}

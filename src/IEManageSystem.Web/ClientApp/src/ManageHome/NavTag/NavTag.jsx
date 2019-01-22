@@ -57,23 +57,23 @@ export default class NavTag extends React.Component{
     render()
     {
         let lis = new Array();
-        lis.push(<li class="nav-item">
+        lis.push(<li key={0} className="nav-item">
                         <NavLink className="nav-link nav-tag-noactive" to="/ManageHome/Index" activeClassName="active">
                             后台首页
                         </NavLink>
                     </li>);
-        this.menuItems.map(item=>{
-            lis.push(<li class="nav-item">
+        this.menuItems.map((item, index)=>{
+            lis.push(<li key={index+1} className="nav-item">
                         <NavLink className="nav-link nav-tag-noactive" to={item.url} activeClassName="active">
                             {item.text}
-                            <span class="oi oi-delete nav-tag-deleteicon" title="icon name" aria-hidden="true"></span>
+                            <span className="oi oi-delete nav-tag-deleteicon" title="icon name" aria-hidden="true"></span>
                         </NavLink>
                     </li>);
         });
 
         return (
-            <div class="w-100 nav-tag">
-                <ul class="nav nav-tabs">
+            <div className="w-100 nav-tag">
+                <ul className="nav nav-tabs">
                     {lis}
                 </ul> 
             </div>

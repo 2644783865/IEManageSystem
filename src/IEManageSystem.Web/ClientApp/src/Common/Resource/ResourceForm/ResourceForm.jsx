@@ -92,8 +92,8 @@ export default class ResourceForm extends React.Component
   {
     if(describe.valueType === ResourceDescribeValueType.text){
         return(<div name={describe.name} className={"input-group mb-3 col-md-" + describe.col}>
-                    <div className="input-group-prepend">
-                      <span className="input-group-text">{describe.text}</span>
+                    <div className="input-group-prepend w-20">
+                      <span className="input-group-text w-100 justify-content-end border-right-0">{describe.text}</span>
                     </div>
                     <input type="text" className="form-control" 
                     placeholder={"请输入" + describe.text}
@@ -158,7 +158,7 @@ export default class ResourceForm extends React.Component
     }
 
 		return (
-      <div>
+      <div className="">
         <div className="modal fade data-form" id="dataForm">
           <div className="modal-dialog modal-lg">
             <div className="modal-content">
