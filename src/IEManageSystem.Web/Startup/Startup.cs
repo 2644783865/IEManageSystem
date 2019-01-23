@@ -27,6 +27,7 @@ using Microsoft.AspNetCore.Authorization;
 using IEManageSystem.ApiAuthorization;
 using IEManageSystem.ApiAuthorization.Authorizations;
 using IEManageSystem.Api.Startup;
+using IEManageSystem.Web.Filters;
 
 namespace IEManageSystem.Web.Startup
 {
@@ -59,7 +60,11 @@ namespace IEManageSystem.Web.Startup
             services.AddMvc(options =>
             {
                 // options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-            }).AddRazorOptions(opt =>
+                options.Filters.Add<IEResultFilter>();
+                options.Filters.Add<IEExceptionFilter>();
+                options.Filters.Add<IEValidationActionFilter>();
+            })
+            .AddRazorOptions(opt =>
             {
                 opt.ViewLocationFormats.Add("/Views/ManageHome/{1}/{0}" + RazorViewEngine.ViewExtension);
                 opt.ViewLocationFormats.Add("/ClientApp/build/{1}/{0}" + RazorViewEngine.ViewExtension);
@@ -114,7 +119,7 @@ namespace IEManageSystem.Web.Startup
             //    app.UseExceptionHandler("/Error");
             //}
 
-            app.UseExceptionHandleEx();
+            //app.UseExceptionHandleEx();
 
             app.UseSession();
 

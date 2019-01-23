@@ -10,6 +10,8 @@ using Abp.AspNetCore;
 using IEManageSystem.Api.Configuration;
 using IEManageSystem.IdentityServerEF;
 using IEManageSystem.ApiAuthorization.Authorizations;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace IEManageSystem.Api.Startup
 {
@@ -42,7 +44,25 @@ namespace IEManageSystem.Api.Startup
             //Configuration.Modules.AbpAspNetCore()
             //     .CreateControllersForAppServices(
             //         typeof(IEManageSystemApplicationModule).GetAssembly()
-            //     );
+            //     )
+            //     .ConfigureControllerModel(controllerModel =>
+            //     {
+            //         foreach (var action in controllerModel.Actions)
+            //         {
+            //             foreach (var selector in action.Selectors)
+            //             {
+            //                 if (selector.AttributeRouteModel == null)
+            //                 {
+            //                     // 
+            //                     selector.AttributeRouteModel = new AttributeRouteModel(
+            //                         new RouteAttribute(
+            //                             $"api/{controllerModel.ControllerName}/{action.ActionName}"
+            //                         )
+            //                     );
+            //                 }
+            //             }
+            //         }
+            //     });
         }
 
         public override void Initialize()
