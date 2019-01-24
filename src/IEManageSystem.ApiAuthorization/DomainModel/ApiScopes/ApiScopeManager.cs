@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Repositories;
 using Abp.Domain.Services;
+using IEManageSystem.ApiAuthorization.DomainModel.ApiSingles;
 using IEManageSystem.Entitys.Authorization;
 using System;
 using System.Collections.Generic;
@@ -13,25 +14,25 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
     {
         private List<ApiScope> _apiScopes { get; set; }
 
-        private IRepository<ApiScope> _repository { get; set; }
+        private IRepository<ApiScope> _apiScopeRepository { get; set; }
 
         private IRepository<Permission> _permissionRepository { get; set; }
 
-        private ApiSingleManager _apiSingleManager { get; set; }
+        private IRepository<ApiSingle> _apiSingleRepository { get; set; }
 
         public ApiScopeManager(
             IRepository<ApiScope> repository,
             IRepository<Permission> permissionRepository,
-            ApiSingleManager apiSingleManager
+            IRepository<ApiSingle> apiSingleRepository
             )
         {
-            _repository = repository;
+            _apiScopeRepository = repository;
 
-            _apiScopes = _repository.GetAllList();
+            _apiScopes = _apiScopeRepository.GetAllList();
 
             _permissionRepository = permissionRepository;
 
-            _apiSingleManager = apiSingleManager;
+            _apiSingleRepository = apiSingleRepository;
         }
 
         public void Register(string name)
@@ -39,25 +40,25 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
             if (!_apiScopes.Any(e => e.Name == name))
             {
                 ApiScope apiScope = new ApiScope(name);
-                _repository.Insert(apiScope);
+                _apiScopeRepository.Insert(apiScope);
             }
         }
 
-        public IQueryable<ApiScope> GetApiScopes() => _repository.GetAll();
+        public IQueryable<ApiScope> GetApiScopes() => _apiScopeRepository.GetAll();
 
         public IQueryable<ApiScope> GetApiScopes(Expression<Func<ApiScope, object>>[] propertySelectors)
         {
-            return _repository.GetAllIncluding(propertySelectors);
+            return _apiScopeRepository.GetAllIncluding(propertySelectors);
         }
 
-        public IQueryable<ApiScope> GetApiScopesForApiSingleName(string name)
+        public IQueryable<ApiScope> GetApiScopesForApiSingleName(ApiSingle apiSingle)
         {
-            return _repository.GetAll().Where(e => e.ApiScopeApis.Where(ie => ie.ApiSingleName == name).Any());
+            return _apiScopeRepository.GetAll().Where(e => e.ApiScopeApis.Where(ie => ie.ApiSingleId == apiSingle.Id).Any());
         }
 
         public void AddPermission(int apiScopeId, int permissionId)
         {
-            var apiScope = _repository.FirstOrDefault(apiScopeId);
+            var apiScope = _apiScopeRepository.FirstOrDefault(apiScopeId);
             if (apiScope == null)
             {
                 throw new Exception("找不到Api域");
@@ -77,7 +78,7 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
             Expression<Func<ApiScope, object>>[] propertySelectors = new Expression<Func<ApiScope, object>>[] {
                 e=>e.ApiScopePermissions
             };
-            var apiScope = _repository.GetAllIncluding(propertySelectors).FirstOrDefault(e => e.Id == apiScopeId);
+            var apiScope = _apiScopeRepository.GetAllIncluding(propertySelectors).FirstOrDefault(e => e.Id == apiScopeId);
 
             if (apiScope == null)
             {
@@ -93,15 +94,15 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
             apiScope.RemovePermission(permission);
         }
 
-        public void AddApiScopeApi(int apiScopeId, string apiSingleName)
+        public void AddApiScopeApi(int apiScopeId, int apiSingleId)
         {
-            var apiScope = _repository.FirstOrDefault(apiScopeId);
+            var apiScope = _apiScopeRepository.FirstOrDefault(apiScopeId);
             if (apiScope == null)
             {
                 throw new Exception("找不到Api域");
             }
 
-            var apiSingle = _apiSingleManager.GetApiSingles().FirstOrDefault(e=>e.Name == apiSingleName);
+            var apiSingle = _apiSingleRepository.Get(apiSingleId);
             if (apiSingle == null)
             {
                 throw new Exception("找不到要添加的Api");
@@ -110,15 +111,15 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
             apiScope.AddApiScopeApi(apiSingle);
         }
 
-        public void RemoveApiScopeApi(int apiScopeId, string apiSingleName)
+        public void RemoveApiScopeApi(int apiScopeId, int apiSingleId)
         {
-            var apiScope = _repository.FirstOrDefault(apiScopeId);
+            var apiScope = _apiScopeRepository.FirstOrDefault(apiScopeId);
             if (apiScope == null)
             {
                 throw new Exception("找不到Api域");
             }
 
-            var apiSingle = _apiSingleManager.GetApiSingles().FirstOrDefault(e => e.Name == apiSingleName);
+            var apiSingle = _apiSingleRepository.Get(apiSingleId);
             if (apiSingle == null)
             {
                 throw new Exception("找不到要移除的Api");

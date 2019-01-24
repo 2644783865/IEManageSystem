@@ -8,6 +8,6 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.Dto
     {
         public int ApiScopeId { get; set; }
 
-        public string ApiSingleName { get; set; }
+        public int ApiSingleId { get; set; }
     }
 }

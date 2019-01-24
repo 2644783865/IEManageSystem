@@ -1,3 +1,17 @@
+H:\项目\IEManageSystem\src\IEManageSystem.IdentityServer\bin\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.deps.json
+H:\项目\IEManageSystem\src\IEManageSystem.IdentityServer\bin\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.dll
+H:\项目\IEManageSystem\src\IEManageSystem.IdentityServer\bin\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.pdb
+H:\项目\IEManageSystem\src\IEManageSystem.IdentityServer\bin\Debug\netcoreapp2.1\IEManageSystem.Core.dll
+H:\项目\IEManageSystem\src\IEManageSystem.IdentityServer\bin\Debug\netcoreapp2.1\UtilityAction.dll
+H:\项目\IEManageSystem\src\IEManageSystem.IdentityServer\bin\Debug\netcoreapp2.1\IEManageSystem.Core.pdb
+H:\项目\IEManageSystem\src\IEManageSystem.IdentityServer\bin\Debug\netcoreapp2.1\UtilityAction.pdb
+H:\项目\IEManageSystem\src\IEManageSystem.IdentityServer\obj\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.csprojAssemblyReference.cache
+H:\项目\IEManageSystem\src\IEManageSystem.IdentityServer\obj\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.csproj.CoreCompileInputs.cache
+H:\项目\IEManageSystem\src\IEManageSystem.IdentityServer\obj\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.AssemblyInfoInputs.cache
+H:\项目\IEManageSystem\src\IEManageSystem.IdentityServer\obj\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.AssemblyInfo.cs
+H:\项目\IEManageSystem\src\IEManageSystem.IdentityServer\obj\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.csproj.CopyComplete
+H:\项目\IEManageSystem\src\IEManageSystem.IdentityServer\obj\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.dll
+H:\项目\IEManageSystem\src\IEManageSystem.IdentityServer\obj\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.pdb
 D:\VSProject\IEManageSystem\src\IEManageSystem.IdentityServer\bin\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.deps.json
 D:\VSProject\IEManageSystem\src\IEManageSystem.IdentityServer\bin\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.dll
 D:\VSProject\IEManageSystem\src\IEManageSystem.IdentityServer\bin\Debug\netcoreapp2.1\IEManageSystem.IdentityServer.pdb

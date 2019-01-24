@@ -89,8 +89,6 @@ namespace IEManageSystem.Web.Startup
 
             services.AddScoped<ValidateCodeHelper>();
 
-            services.AddApiAuthorization().AddApiScopeProvider<IEApiScopeProvider>();
-
             return services.AddAbp<IEManageSystemWebModule>(options =>
             {
                 options.IocManager.IocContainer.AddFacility<LoggingFacility>(

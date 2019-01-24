@@ -12,6 +12,8 @@ using IEManageSystem.IdentityServerEF;
 using IEManageSystem.ApiAuthorization.Authorizations;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc;
+using IEManageSystem.ApiAuthorization.DomainModel.ApiSingles;
+using IEManageSystem.ApiAuthorization;
 
 namespace IEManageSystem.Api.Startup
 {
@@ -68,8 +70,17 @@ namespace IEManageSystem.Api.Startup
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(typeof(IEManageSystemWebHostModule).GetAssembly());
+        }
 
-            ApiAuthorizationConfigure.RegisterApi(typeof(IEManageSystemWebHostModule).GetAssembly());
+        public override void PostInitialize()
+        {
+            var apiAuthorizationConfiguration = IocManager.Resolve<ApiAuthorizationConfiguration>();
+
+            apiAuthorizationConfiguration.RegisterApiScope(IEApiScopeProvider.AuthorizeManage);
+            apiAuthorizationConfiguration.RegisterApiScope(IEApiScopeProvider.OAuthManage);
+            apiAuthorizationConfiguration.RegisterApiScope(IEApiScopeProvider.Personal);
+            apiAuthorizationConfiguration.RegisterApiScope(IEApiScopeProvider.UserManage);
+            apiAuthorizationConfiguration.RegisterApiSingle(typeof(IEManageSystemWebHostModule).GetAssembly());
         }
     }
 }

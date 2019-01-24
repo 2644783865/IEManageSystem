@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IEManageSystem.Api.Models;
+using IEManageSystem.Api.Startup;
+using IEManageSystem.ApiAuthorization;
 using IEManageSystem.Services.ManageHome.AuthorizeManage.Admins;
 using IEManageSystem.Services.ManageHome.AuthorizeManage.Admins.Dto;
 using Microsoft.AspNetCore.Http;
@@ -11,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace IEManageSystem.Api.Controllers.ManageHome.AuthorizeManage
 {
     [Route("api/[controller]/[action]")]
+    [ApiAuthorization(IEApiScopeProvider.AuthorizeManage)]
     public class AdminManageController : IEManageSystemControllerBase
     {
         private IAdminAppService _adminAppService { get; set; }

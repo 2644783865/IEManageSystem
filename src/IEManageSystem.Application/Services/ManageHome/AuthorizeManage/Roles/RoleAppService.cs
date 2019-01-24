@@ -9,6 +9,7 @@ using IEManageSystem.Dtos.Core;
 using IEManageSystem.Help.Exceptions;
 using Abp.Domain.Repositories;
 using IEManageSystem.Entitys.Authorization;
+using System.Linq.Expressions;
 
 namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Roles
 {
@@ -69,6 +70,19 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Roles
             role.Describe = input.Describe;
 
             return new UpdateRoleOutput();
+        }
+
+        public async Task<GetRolePermissionsOutput> GetRolePermissions(GetRolePermissionsInput input)
+        {
+            Expression<Func<Role, object>>[] propertySelectors = new Expression<Func<Role, object>>[] {
+                e => e.RolePermissions
+            };
+            var role = _roleManager.RoleRepository.GetAllIncluding(propertySelectors).FirstOrDefault(e => e.Id == input.Id);
+
+            List<int> permissionIds = role.RolePermissions.Select(e => e.PermissionId).ToList();
+            var permissions = await _permissionRepository.GetAllListAsync(e => permissionIds.Contains(e.Id));
+
+            return new GetRolePermissionsOutput() { Permissions = AutoMapper.Mapper.Map<List<PermissionDto>>(permissions) };
         }
 
         public async Task<AddPermissionOutput> AddPermission(AddPermissionInput input)

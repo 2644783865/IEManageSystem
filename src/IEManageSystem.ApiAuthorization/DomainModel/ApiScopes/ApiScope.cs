@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities;
 using IEManageSystem.ApiAuthorization.DomainModel.ApiScopes;
+using IEManageSystem.ApiAuthorization.DomainModel.ApiSingles;
 using IEManageSystem.Entitys.Authorization;
 using System;
 using System.Collections.Generic;
@@ -67,7 +68,7 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
                 throw new Exception("Api域Api为空");
             }
 
-            var removeItem = ApiScopeApis.FirstOrDefault(e=>e.ApiSingleName == apiSingle.Name);
+            var removeItem = ApiScopeApis.FirstOrDefault(e=>e.ApiSingleId == apiSingle.Id);
 
             if (removeItem == null)
             {

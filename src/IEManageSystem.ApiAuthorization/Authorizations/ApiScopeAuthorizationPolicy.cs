@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Security.Claims;
+using IEManageSystem.ApiAuthorization.DomainModel.ApiSingles;
 
 namespace IEManageSystem.ApiAuthorization.Authorizations
 {
@@ -40,19 +41,19 @@ namespace IEManageSystem.ApiAuthorization.Authorizations
                 return Task.CompletedTask;
             }
 
-            if(!context.User.HasClaim(c => c.Type == ApiAuthorizationConfigure.ApiPermissiionClaimName))
+            if(!context.User.HasClaim(c => c.Type == ApiAuthorizationExtensions.ApiPermissiionClaimName))
             {
                 return Task.CompletedTask;
             }
 
             // 获取当前用户拥有的权限
-            List<Claim> permissionClaims = context.User.Claims.Where(e => e.Type == ApiAuthorizationConfigure.ApiPermissiionClaimName).ToList();
+            List<Claim> permissionClaims = context.User.Claims.Where(e => e.Type == ApiAuthorizationExtensions.ApiPermissiionClaimName).ToList();
 
             // 获取要访问的Api
             var apiSingle = _apiSingleManager.GetApiSingleForControllerName(requirement.ControllerName);
 
             // 获取要访问的Api域s
-            var apiScopes = _apiScopeManager.GetApiScopesForApiSingleName(apiSingle.Name);
+            var apiScopes = _apiScopeManager.GetApiScopesForApiSingleName(apiSingle);
 
             foreach (var apiScope in apiScopes)
             {

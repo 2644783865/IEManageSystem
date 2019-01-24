@@ -1,6 +1,7 @@
 ﻿using Abp.Domain.Repositories;
 using IEManageSystem.ApiAuthorization.DomainModel;
 using IEManageSystem.ApiAuthorization.DomainModel.ApiScopes;
+using IEManageSystem.ApiAuthorization.DomainModel.ApiSingles;
 using IEManageSystem.Dtos.ApiAuthorization;
 using IEManageSystem.Dtos.Core;
 using IEManageSystem.Entitys.Authorization;
@@ -87,22 +88,22 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes
                 return new GetApiScopeApiSinglesOutput() { ErrorMessage = "为找到Api域" };
             }
 
-            var apiSingleNames = apiScope.ApiScopeApis.Select(e => e.ApiSingleName).ToList();
-            var apiSingles = _apiSingleManager.GetApiSingles().Where(e => apiSingleNames.Contains(e.Name)).ToList();
+            var apiSingleIds = apiScope.ApiScopeApis.Select(e => e.ApiSingleId).ToList();
+            var apiSingles = await _apiSingleManager.ApiSingleRepository.GetAllListAsync(e => apiSingleIds.Contains(e.Id));
 
             return new GetApiScopeApiSinglesOutput() { ApiSingles = AutoMapper.Mapper.Map<List<ApiSingleDto>>(apiSingles) };
         }
 
         public async Task<AddApiScopeApiSingleOutput> AddApiScopeApiSingle(AddApiScopeApiSingleInput input)
         {
-            _apiScopeManager.AddApiScopeApi(input.ApiScopeId, input.ApiSingleName);
+            _apiScopeManager.AddApiScopeApi(input.ApiScopeId, input.ApiSingleId);
 
             return new AddApiScopeApiSingleOutput();
         }
 
         public async Task<RemoveApiScopeApiSingleOutput> RemoveApiScopeApiSingle(RemoveApiScopeApiSingleInput input)
         {
-            _apiScopeManager.RemoveApiScopeApi(input.ApiScopeId, input.ApiSingleName);
+            _apiScopeManager.RemoveApiScopeApi(input.ApiScopeId, input.ApiSingleId);
 
             return new RemoveApiScopeApiSingleOutput();
         }

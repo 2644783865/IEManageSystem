@@ -1,4 +1,5 @@
-﻿using IEManageSystem.ApiAuthorization.Authorizations;
+﻿using IEManageSystem.ApiAuthorization;
+using IEManageSystem.ApiAuthorization.Authorizations;
 using IEManageSystem.ApiAuthorization.DomainModel.ApiScopes;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IEManageSystem.Api.Startup
 {
-    public class IEApiScopeProvider: ApiScopeProvider
+    public class IEApiScopeProvider
     {
         public const string Personal = "Personal";
 
@@ -16,17 +17,5 @@ namespace IEManageSystem.Api.Startup
         public const string AuthorizeManage = "AuthorizeManage";
 
         public const string OAuthManage = "OAuthManage";
-
-        public IEApiScopeProvider(ApiScopeManager apiScopeManager) : base(apiScopeManager)
-        {
-        }
-
-        public override void SetApiScope()
-        {
-            _apiScopeManager.Register(Personal);
-            _apiScopeManager.Register(UserManage);
-            _apiScopeManager.Register(AuthorizeManage);
-            _apiScopeManager.Register(OAuthManage);
-        }
     }
 }

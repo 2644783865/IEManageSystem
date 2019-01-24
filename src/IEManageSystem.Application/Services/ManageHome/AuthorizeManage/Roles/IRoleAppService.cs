@@ -19,6 +19,8 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Roles
 
         Task<DeleteRoleOutput> DeleteRole(DeleteRoleInput input);
 
+        Task<GetRolePermissionsOutput> GetRolePermissions(GetRolePermissionsInput input);
+
         Task<AddPermissionOutput> AddPermission(AddPermissionInput input);
 
         Task<RemovePermissionOutput> RemovePermission(RemovePermissionInput input);

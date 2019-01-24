@@ -18,13 +18,13 @@ namespace IEManageSystem.ApiAuthorization
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(typeof(IEApiAuthorizationModule).GetAssembly());
+
+            IocManager.Register<ApiAuthorizationConfiguration>();
         }
 
         public override void PostInitialize()
         {
-            ApiScopeProvider apiScopeProvider = IocManager.Resolve<ApiScopeProvider>();
-
-            apiScopeProvider.SetApiScope();
+            
         }
     }
 }

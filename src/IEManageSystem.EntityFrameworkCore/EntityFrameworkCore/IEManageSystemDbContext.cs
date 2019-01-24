@@ -1,5 +1,6 @@
 ﻿using Abp.EntityFrameworkCore;
 using IEManageSystem.ApiAuthorization.DomainModel.ApiScopes;
+using IEManageSystem.ApiAuthorization.DomainModel.ApiSingles;
 using IEManageSystem.Entitys.Authorization;
 using IEManageSystem.Entitys.Authorization.Roles;
 using IEManageSystem.Entitys.Authorization.Users;
@@ -23,5 +24,7 @@ namespace IEManageSystem.EntityFrameworkCore
         public DbSet<Permission> Permissions { get; set; }
 
         public DbSet<ApiScope> ApiScopes { get; set; }
+
+        public DbSet<ApiSingle> ApiSingles { get; set; }
     }
 }
