@@ -12,8 +12,6 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
 {
     public class ApiScopeManager:IDomainService
     {
-        private List<ApiScope> _apiScopes { get; set; }
-
         private IRepository<ApiScope> _apiScopeRepository { get; set; }
 
         private IRepository<Permission> _permissionRepository { get; set; }
@@ -21,14 +19,12 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
         private IRepository<ApiSingle> _apiSingleRepository { get; set; }
 
         public ApiScopeManager(
-            IRepository<ApiScope> repository,
+            IRepository<ApiScope> apiScopeRepository,
             IRepository<Permission> permissionRepository,
             IRepository<ApiSingle> apiSingleRepository
             )
         {
-            _apiScopeRepository = repository;
-
-            _apiScopes = _apiScopeRepository.GetAllList();
+            _apiScopeRepository = apiScopeRepository;
 
             _permissionRepository = permissionRepository;
 
@@ -37,7 +33,7 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
 
         public void Register(string name)
         {
-            if (!_apiScopes.Any(e => e.Name == name))
+            if (!_apiScopeRepository.GetAll().Any(e => e.Name == name))
             {
                 ApiScope apiScope = new ApiScope(name);
                 _apiScopeRepository.Insert(apiScope);
@@ -53,7 +49,7 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
 
         public IQueryable<ApiScope> GetApiScopesForApiSingleName(ApiSingle apiSingle)
         {
-            return _apiScopeRepository.GetAll().Where(e => e.ApiScopeApis.Where(ie => ie.ApiSingleId == apiSingle.Id).Any());
+            return _apiScopeRepository.GetAll().Where(e => e.ApiSingles.Where(ie => ie.Id == apiSingle.Id).Any());
         }
 
         public void AddPermission(int apiScopeId, int permissionId)
@@ -106,6 +102,17 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
             if (apiSingle == null)
             {
                 throw new Exception("找不到要添加的Api");
+            }
+
+            apiScope.AddApiScopeApi(apiSingle);
+        }
+
+        public void AddApiScopeApi(string apiScopeName, ApiSingle apiSingle)
+        {
+            var apiScope = _apiScopeRepository.FirstOrDefault(e => e.Name == apiScopeName);
+            if (apiScope == null)
+            {
+                throw new Exception("找不到Api域");
             }
 
             apiScope.AddApiScopeApi(apiSingle);

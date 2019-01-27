@@ -79,19 +79,16 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes
         public async Task<GetApiScopeApiSinglesOutput> GetApiScopeApiSingles(GetApiScopeApiSinglesInput input)
         {
             Expression<Func<ApiScope, object>>[] propertySelectors = new Expression<Func<ApiScope, object>>[] {
-                e => e.ApiScopeApis
+                e => e.ApiSingles
             };
 
             var apiScope = _apiScopeManager.GetApiScopes(propertySelectors).FirstOrDefault(e => e.Id == input.Id);
             if (apiScope == null)
             {
-                return new GetApiScopeApiSinglesOutput() { ErrorMessage = "为找到Api域" };
+                return new GetApiScopeApiSinglesOutput() { ErrorMessage = "未找到Api域" };
             }
 
-            var apiSingleIds = apiScope.ApiScopeApis.Select(e => e.ApiSingleId).ToList();
-            var apiSingles = await _apiSingleManager.ApiSingleRepository.GetAllListAsync(e => apiSingleIds.Contains(e.Id));
-
-            return new GetApiScopeApiSinglesOutput() { ApiSingles = AutoMapper.Mapper.Map<List<ApiSingleDto>>(apiSingles) };
+            return new GetApiScopeApiSinglesOutput() { ApiSingles = AutoMapper.Mapper.Map<List<ApiSingleDto>>(apiScope.ApiSingles) };
         }
 
         public async Task<AddApiScopeApiSingleOutput> AddApiScopeApiSingle(AddApiScopeApiSingleInput input)

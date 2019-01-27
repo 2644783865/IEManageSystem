@@ -15,7 +15,7 @@ namespace IEManageSystem.ApiAuthorization
     {
         private string _apiScopeName { get; set; }
 
-        public ApiAuthorizationAttribute(string apiScopeName)
+        public ApiAuthorizationAttribute(string apiScopeName = null)
         {
             _apiScopeName = apiScopeName;
         }

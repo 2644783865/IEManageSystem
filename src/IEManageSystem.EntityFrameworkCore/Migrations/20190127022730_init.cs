@@ -21,19 +21,6 @@ namespace IEManageSystem.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ApiSingles",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ApiSingles", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Permission",
                 columns: table => new
                 {
@@ -83,50 +70,23 @@ namespace IEManageSystem.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ApiScopeApi",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ApiScopeId = table.Column<int>(nullable: false),
-                    ApiSingleId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ApiScopeApi", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ApiScopeApi_ApiScope_ApiScopeId",
-                        column: x => x.ApiScopeId,
-                        principalTable: "ApiScope",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ApiScopeApi_ApiSingles_ApiSingleId",
-                        column: x => x.ApiSingleId,
-                        principalTable: "ApiSingles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ApiSingleAction",
+                name: "ApiSingles",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
-                    IsQueryAction = table.Column<bool>(nullable: false),
-                    ApiSingleId = table.Column<int>(nullable: false)
+                    ApiScopeId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApiSingleAction", x => x.Id);
+                    table.PrimaryKey("PK_ApiSingles", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ApiSingleAction_ApiSingles_ApiSingleId",
-                        column: x => x.ApiSingleId,
-                        principalTable: "ApiSingles",
+                        name: "FK_ApiSingles_ApiScope_ApiScopeId",
+                        column: x => x.ApiScopeId,
+                        principalTable: "ApiScope",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -207,15 +167,26 @@ namespace IEManageSystem.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_ApiScopeApi_ApiScopeId",
-                table: "ApiScopeApi",
-                column: "ApiScopeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ApiScopeApi_ApiSingleId",
-                table: "ApiScopeApi",
-                column: "ApiSingleId");
+            migrationBuilder.CreateTable(
+                name: "ApiSingleAction",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    IsQueryAction = table.Column<bool>(nullable: false),
+                    ApiSingleId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ApiSingleAction", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ApiSingleAction_ApiSingles_ApiSingleId",
+                        column: x => x.ApiSingleId,
+                        principalTable: "ApiSingles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ApiScopePermission_ApiScopeId",
@@ -231,6 +202,11 @@ namespace IEManageSystem.Migrations
                 name: "IX_ApiSingleAction_ApiSingleId",
                 table: "ApiSingleAction",
                 column: "ApiSingleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ApiSingles_ApiScopeId",
+                table: "ApiSingles",
+                column: "ApiScopeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RolePermission_PermissionId",
@@ -256,9 +232,6 @@ namespace IEManageSystem.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ApiScopeApi");
-
-            migrationBuilder.DropTable(
                 name: "ApiScopePermission");
 
             migrationBuilder.DropTable(
@@ -271,9 +244,6 @@ namespace IEManageSystem.Migrations
                 name: "UserRole");
 
             migrationBuilder.DropTable(
-                name: "ApiScope");
-
-            migrationBuilder.DropTable(
                 name: "ApiSingles");
 
             migrationBuilder.DropTable(
@@ -284,6 +254,9 @@ namespace IEManageSystem.Migrations
 
             migrationBuilder.DropTable(
                 name: "User");
+
+            migrationBuilder.DropTable(
+                name: "ApiScope");
         }
     }
 }

@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc;
 using IEManageSystem.ApiAuthorization.DomainModel.ApiSingles;
 using IEManageSystem.ApiAuthorization;
+using Abp.Domain.Uow;
 
 namespace IEManageSystem.Api.Startup
 {
@@ -74,13 +75,23 @@ namespace IEManageSystem.Api.Startup
 
         public override void PostInitialize()
         {
-            var apiAuthorizationConfiguration = IocManager.Resolve<ApiAuthorizationConfiguration>();
+            IUnitOfWorkManager unitOfWorkManager = IocManager.Resolve<IUnitOfWorkManager>();
 
-            apiAuthorizationConfiguration.RegisterApiScope(IEApiScopeProvider.AuthorizeManage);
-            apiAuthorizationConfiguration.RegisterApiScope(IEApiScopeProvider.OAuthManage);
-            apiAuthorizationConfiguration.RegisterApiScope(IEApiScopeProvider.Personal);
-            apiAuthorizationConfiguration.RegisterApiScope(IEApiScopeProvider.UserManage);
-            apiAuthorizationConfiguration.RegisterApiSingle(typeof(IEManageSystemWebHostModule).GetAssembly());
+            using (var unitOfWork = unitOfWorkManager.Begin())
+            {
+                var apiAuthorizationConfiguration = IocManager.Resolve<ApiAuthorizationConfiguration>();
+
+                apiAuthorizationConfiguration.RegisterApiScope(IEApiScopeProvider.AuthorizeManage);
+                apiAuthorizationConfiguration.RegisterApiScope(IEApiScopeProvider.OAuthManage);
+                apiAuthorizationConfiguration.RegisterApiScope(IEApiScopeProvider.Personal);
+                apiAuthorizationConfiguration.RegisterApiScope(IEApiScopeProvider.UserManage);
+
+                unitOfWorkManager.Current.SaveChanges();
+
+                apiAuthorizationConfiguration.RegisterApiSingle(typeof(IEManageSystemWebHostModule).GetAssembly());
+
+                unitOfWork.Complete();
+            }
         }
     }
 }

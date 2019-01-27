@@ -33,53 +33,14 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiSingles
         /// 注册Api
         /// </summary>
         /// <param name="controllerType"></param>
-        public void Register(Type controllerType)
+        public void Register(ApiSingle apiSingle)
         {
-            ApiSingle apiSingle = ApiSingleRepository.FirstOrDefault(e => e.Name == controllerType.Name);
-
-            if (apiSingle == null)
+            if (ApiSingleRepository.FirstOrDefault(e => e.Name == apiSingle.Name) != null)
             {
-                apiSingle = new ApiSingle(controllerType.Name);
-
-                ApiSingleRepository.Insert(apiSingle);
-            }
-            else
-            {
-                ApiSingleRepository.EnsureCollectionLoaded(apiSingle, e => e.ApiSingleActions);
+                return;
             }
 
-            foreach (var attribute in controllerType.CustomAttributes)
-            {
-                if (attribute.AttributeType == typeof(ApiAuthorizationAttribute))
-                {
-                    string apiScopeName = attribute.ConstructorArguments[0].Value.ToString();
-
-                    var apiScope = _apiScopeRepository.FirstOrDefault(e=>e.Name == apiScopeName);
-
-                    if (apiScope == null) {
-                        throw new Exception($"{controllerType.Name}尝试指定一个未注册的api域{apiScopeName}");
-                    }
-
-                    apiScope.AddApiScopeApi(apiSingle);
-                }
-            }
-
-            List<ApiSingleAction> apiSingleActions = new List<ApiSingleAction>();
-            foreach (var methodInfo in controllerType.GetMethods())
-            {
-                if (IsQueryMethod(methodInfo))
-                {
-                    apiSingleActions.Add(new ApiSingleAction(methodInfo.Name)
-                    {
-                        IsQueryAction = true
-                    });
-                }
-                else {
-                    apiSingleActions.Add(new ApiSingleAction(methodInfo.Name));
-                }
-            }
-
-            apiSingle.ApiSingleActions = apiSingleActions;
+            ApiSingleRepository.Insert(apiSingle);
         }
 
         public bool IsQueryMethod(MethodInfo methodInfo)

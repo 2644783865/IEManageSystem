@@ -33,26 +33,77 @@ namespace IEManageSystem.ApiAuthorization
             Type[] types = assembly.GetTypes();
             foreach (Type item in types)
             {
-                if (IsController(item))
-                {
-                    _apiSingleManager.Register(item);
-                }
+                if (IsExistApiAuthorizationAttribute(item))
+                    RegisterApiSingleByType(item);
             }
         }
 
-        private bool IsController(Type type)
+        private bool IsExistApiAuthorizationAttribute(Type type)
         {
             if (type == null)
             {
                 return false;
             }
 
-            if (type == typeof(Controller))
+            foreach (var attribute in type.CustomAttributes)
             {
-                return true;
+                if (attribute.AttributeType == typeof(ApiAuthorizationAttribute))
+                {
+                    return true;
+                }
             }
 
-            return IsController(type.BaseType);
+            return false;
+        }
+
+        private void RegisterApiSingleByType(Type controllerType)
+        {
+            ApiSingle apiSingle = new ApiSingle(controllerType.Name);
+
+            List<ApiSingleAction> apiSingleActions = new List<ApiSingleAction>();
+
+            foreach (var methodInfo in controllerType.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly))
+            {
+                apiSingleActions.Add(new ApiSingleAction(methodInfo.Name)
+                {
+                    IsQueryAction = IsQueryMethod(methodInfo)
+                });
+            }
+
+            apiSingle.ApiSingleActions = apiSingleActions;
+
+            _apiSingleManager.Register(apiSingle);
+
+            string apiScopeName = null;
+
+            foreach (var attribute in controllerType.CustomAttributes)
+            {
+                if (attribute.AttributeType == typeof(ApiAuthorizationAttribute))
+                {
+                    if (attribute.ConstructorArguments.Count > 0)
+                        apiScopeName = attribute.ConstructorArguments[0].Value.ToString();
+                }
+            }
+
+            if (string.IsNullOrEmpty(apiScopeName))
+            {
+                return;
+            }
+
+            _apiScopeManager.AddApiScopeApi(apiScopeName, apiSingle);
+        }
+
+        public bool IsQueryMethod(MethodInfo methodInfo)
+        {
+            foreach (var attribute in methodInfo.CustomAttributes)
+            {
+                if (attribute.AttributeType == typeof(ApiAuthorizationQueryAttribute))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

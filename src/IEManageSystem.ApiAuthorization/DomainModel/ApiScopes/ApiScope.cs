@@ -22,7 +22,7 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
 
         public string Name { get; private set; }
 
-        public ICollection<ApiScopeApi> ApiScopeApis { get; set; }
+        public ICollection<ApiSingle> ApiSingles { get; set; }
 
         public ICollection<ApiScopePermission> ApiScopePermissions { get; set; }
 
@@ -54,28 +54,22 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
 
         public void AddApiScopeApi(ApiSingle apiSingle)
         {
-            if (ApiScopeApis == null) {
-                ApiScopeApis = new List<ApiScopeApi>();
+            if (ApiSingles == null)
+            {
+                ApiSingles = new List<ApiSingle>();
             }
 
-            ApiScopeApis.Add(new ApiScopeApi(this, apiSingle));
+            ApiSingles.Add(apiSingle);
         }
 
         public void RemoveApiScopeApi(ApiSingle apiSingle)
         {
-            if (ApiScopeApis == null)
+            if (ApiSingles == null)
             {
                 throw new Exception("Api域Api为空");
             }
 
-            var removeItem = ApiScopeApis.FirstOrDefault(e=>e.ApiSingleId == apiSingle.Id);
-
-            if (removeItem == null)
-            {
-                throw new Exception("Api域不存在该权限");
-            }
-
-            ApiScopeApis.Remove(removeItem);
+            ApiSingles.Remove(apiSingle);
         }
     }
 }
