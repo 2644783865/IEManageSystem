@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace IEManageSystem.Services.ManageHome.OAuthManage.ApiResourceManages
 {
-    public class ApiResourceManageAppService: IApiResourceManageAppService
+    public class ApiResourceManageAppService: IEManageSystemAppServiceBase, IApiResourceManageAppService
     {
         private IIEIdentityServerRepository<ApiResource> _apiResourceRepository { get; set; }
 

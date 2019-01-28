@@ -25,9 +25,19 @@ namespace IEManageSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("ApiManageScopeId");
+
+                    b.Property<int?>("ApiQueryScopeId");
+
+                    b.Property<string>("DisplayName");
+
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ApiManageScopeId");
+
+                    b.HasIndex("ApiQueryScopeId");
 
                     b.ToTable("ApiScope");
                 });
@@ -40,15 +50,33 @@ namespace IEManageSystem.Migrations
 
                     b.Property<int>("ApiScopeId");
 
+                    b.Property<int?>("ApiScopeNodeId");
+
                     b.Property<int>("PermissionId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApiScopeId");
+                    b.HasIndex("ApiScopeNodeId");
 
                     b.HasIndex("PermissionId");
 
                     b.ToTable("ApiScopePermission");
+                });
+
+            modelBuilder.Entity("IEManageSystem.ApiAuthorization.DomainModel.ApiScopes.AuthorizationNodes.ApiScopeNode", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ApiScopeNode");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("ApiScopeNode");
                 });
 
             modelBuilder.Entity("IEManageSystem.ApiAuthorization.DomainModel.ApiSingles.ApiSingle", b =>
@@ -87,7 +115,7 @@ namespace IEManageSystem.Migrations
                     b.ToTable("ApiSingleAction");
                 });
 
-            modelBuilder.Entity("IEManageSystem.Entitys.Authorization.Permission", b =>
+            modelBuilder.Entity("IEManageSystem.Entitys.Authorization.Permissions.Permission", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -189,14 +217,44 @@ namespace IEManageSystem.Migrations
                     b.ToTable("UserRole");
                 });
 
+            modelBuilder.Entity("IEManageSystem.ApiAuthorization.DomainModel.ApiScopes.AuthorizationNodes.ApiManageScope", b =>
+                {
+                    b.HasBaseType("IEManageSystem.ApiAuthorization.DomainModel.ApiScopes.AuthorizationNodes.ApiScopeNode");
+
+
+                    b.ToTable("ApiManageScope");
+
+                    b.HasDiscriminator().HasValue("ApiManageScope");
+                });
+
+            modelBuilder.Entity("IEManageSystem.ApiAuthorization.DomainModel.ApiScopes.AuthorizationNodes.ApiQueryScope", b =>
+                {
+                    b.HasBaseType("IEManageSystem.ApiAuthorization.DomainModel.ApiScopes.AuthorizationNodes.ApiScopeNode");
+
+
+                    b.ToTable("ApiQueryScope");
+
+                    b.HasDiscriminator().HasValue("ApiQueryScope");
+                });
+
+            modelBuilder.Entity("IEManageSystem.ApiAuthorization.DomainModel.ApiScopes.ApiScope", b =>
+                {
+                    b.HasOne("IEManageSystem.ApiAuthorization.DomainModel.ApiScopes.AuthorizationNodes.ApiManageScope", "ApiManageScope")
+                        .WithMany()
+                        .HasForeignKey("ApiManageScopeId");
+
+                    b.HasOne("IEManageSystem.ApiAuthorization.DomainModel.ApiScopes.AuthorizationNodes.ApiQueryScope", "ApiQueryScope")
+                        .WithMany()
+                        .HasForeignKey("ApiQueryScopeId");
+                });
+
             modelBuilder.Entity("IEManageSystem.ApiAuthorization.DomainModel.ApiScopes.ApiScopePermission", b =>
                 {
-                    b.HasOne("IEManageSystem.ApiAuthorization.DomainModel.ApiScopes.ApiScope")
+                    b.HasOne("IEManageSystem.ApiAuthorization.DomainModel.ApiScopes.AuthorizationNodes.ApiScopeNode")
                         .WithMany("ApiScopePermissions")
-                        .HasForeignKey("ApiScopeId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ApiScopeNodeId");
 
-                    b.HasOne("IEManageSystem.Entitys.Authorization.Permission", "Permission")
+                    b.HasOne("IEManageSystem.Entitys.Authorization.Permissions.Permission", "Permission")
                         .WithMany()
                         .HasForeignKey("PermissionId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -219,7 +277,7 @@ namespace IEManageSystem.Migrations
 
             modelBuilder.Entity("IEManageSystem.Entitys.Authorization.Roles.RolePermission", b =>
                 {
-                    b.HasOne("IEManageSystem.Entitys.Authorization.Permission", "Permission")
+                    b.HasOne("IEManageSystem.Entitys.Authorization.Permissions.Permission", "Permission")
                         .WithMany()
                         .HasForeignKey("PermissionId")
                         .OnDelete(DeleteBehavior.Cascade);

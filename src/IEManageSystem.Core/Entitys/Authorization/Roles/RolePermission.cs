@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities;
+using IEManageSystem.Entitys.Authorization.Permissions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;

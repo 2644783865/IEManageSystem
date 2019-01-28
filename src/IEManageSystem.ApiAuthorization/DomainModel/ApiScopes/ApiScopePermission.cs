@@ -1,5 +1,7 @@
 ﻿using Abp.Domain.Entities;
+using IEManageSystem.ApiAuthorization.DomainModel.ApiScopes.AuthorizationNodes;
 using IEManageSystem.Entitys.Authorization;
+using IEManageSystem.Entitys.Authorization.Permissions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,7 +15,7 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
         protected ApiScopePermission() {
         }
 
-        public ApiScopePermission(ApiScope apiScope, Permission permission)
+        public ApiScopePermission(ApiScopeNode apiScope, Permission permission)
         {
             ApiScopeId = apiScope.Id;
 

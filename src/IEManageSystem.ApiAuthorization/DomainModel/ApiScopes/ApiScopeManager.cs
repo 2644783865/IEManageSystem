@@ -1,7 +1,9 @@
 ﻿using Abp.Domain.Repositories;
 using Abp.Domain.Services;
+using IEManageSystem.ApiAuthorization.DomainModel.ApiScopes.AuthorizationNodes;
 using IEManageSystem.ApiAuthorization.DomainModel.ApiSingles;
 using IEManageSystem.Entitys.Authorization;
+using IEManageSystem.Entitys.Authorization.Permissions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,87 +14,151 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
 {
     public class ApiScopeManager:IDomainService
     {
-        private IRepository<ApiScope> _apiScopeRepository { get; set; }
-
-        private IRepository<Permission> _permissionRepository { get; set; }
+        public IRepository<ApiScope> ApiScopeRepository { get; set; }
 
         private IRepository<ApiSingle> _apiSingleRepository { get; set; }
 
+        private PermissionManager _permissionManager { get; set; }
+
         public ApiScopeManager(
             IRepository<ApiScope> apiScopeRepository,
-            IRepository<Permission> permissionRepository,
-            IRepository<ApiSingle> apiSingleRepository
+            IRepository<ApiSingle> apiSingleRepository,
+            PermissionManager permissionManager
             )
         {
-            _apiScopeRepository = apiScopeRepository;
-
-            _permissionRepository = permissionRepository;
+            ApiScopeRepository = apiScopeRepository;
 
             _apiSingleRepository = apiSingleRepository;
+
+            _permissionManager = permissionManager;
         }
 
-        public void Register(string name)
+        public void Register(string name, string displayName = null)
         {
-            if (!_apiScopeRepository.GetAll().Any(e => e.Name == name))
+            if (!ApiScopeRepository.GetAll().Any(e => e.Name == name))
             {
+                Permission scopeManagePermission = new Permission(name + ApiManageScope.NamePostfix) {
+                    DisplayName = (displayName ?? name) + "域权限" + ApiManageScope.DisplayNamePostfix
+                };
+                _permissionManager.Create(scopeManagePermission);
+                Permission queryManagePermission = new Permission(name + ApiQueryScope.NamePostfix) {
+                    DisplayName = (displayName ?? name) + "域权限" + ApiQueryScope.DisplayNamePostfix
+                };
+                _permissionManager.Create(queryManagePermission);
+
                 ApiScope apiScope = new ApiScope(name);
-                _apiScopeRepository.Insert(apiScope);
+
+                apiScope.SetDisplayName(displayName ?? name);
+
+                apiScope.ApiManageScope.AddPermission(scopeManagePermission);
+                apiScope.ApiQueryScope.AddPermission(scopeManagePermission);
+                apiScope.ApiQueryScope.AddPermission(queryManagePermission);
+
+                ApiScopeRepository.Insert(apiScope);
             }
         }
 
-        public IQueryable<ApiScope> GetApiScopes() => _apiScopeRepository.GetAll();
+        public IQueryable<ApiScope> GetApiScopes() => ApiScopeRepository.GetAll();
 
         public IQueryable<ApiScope> GetApiScopes(Expression<Func<ApiScope, object>>[] propertySelectors)
         {
-            return _apiScopeRepository.GetAllIncluding(propertySelectors);
+            return ApiScopeRepository.GetAllIncluding(propertySelectors);
         }
 
-        public IQueryable<ApiScope> GetApiScopesForApiSingleName(ApiSingle apiSingle)
+        public ApiScope GetApiScopesForApiSingle(ApiSingle apiSingle)
         {
-            return _apiScopeRepository.GetAll().Where(e => e.ApiSingles.Where(ie => ie.Id == apiSingle.Id).Any());
+            return ApiScopeRepository.GetAll().FirstOrDefault(e => e.ApiSingles.Where(ie => ie.Id == apiSingle.Id).Any());
         }
 
-        public void AddPermission(int apiScopeId, int permissionId)
+        public void AddManagePermission(int apiScopeId, int permissionId)
         {
-            var apiScope = _apiScopeRepository.FirstOrDefault(apiScopeId);
+            Expression<Func<ApiScope, object>>[] propertySelectors = new Expression<Func<ApiScope, object>>[] {
+                e => e.ApiManageScope
+            };
+            var apiScope = ApiScopeRepository.GetAllIncluding(propertySelectors).FirstOrDefault(e => e.Id == apiScopeId);
             if (apiScope == null)
             {
                 throw new Exception("找不到Api域");
             }
 
-            var permission = _permissionRepository.FirstOrDefault(permissionId);
+            var permission = _permissionManager.PermissionRepository.FirstOrDefault(permissionId);
             if (permission == null)
             {
                 throw new Exception("找不到要添加的权限");
             }
 
-            apiScope.AddPermission(permission);
+            apiScope.ApiManageScope.AddPermission(permission);
         }
 
-        public void RemovePermission(int apiScopeId, int permissionId)
+        public void RemoveManagePermission(int apiScopeId, int permissionId)
         {
-            Expression<Func<ApiScope, object>>[] propertySelectors = new Expression<Func<ApiScope, object>>[] {
-                e=>e.ApiScopePermissions
+            Expression<Func<ApiScope, object>>[] propertySelectors = new Expression<Func<ApiScope, object>>[] 
+            {
+                e=>e.ApiManageScope,
+                e=>e.ApiManageScope.ApiScopePermissions
             };
-            var apiScope = _apiScopeRepository.GetAllIncluding(propertySelectors).FirstOrDefault(e => e.Id == apiScopeId);
+            var apiScope = ApiScopeRepository.GetAllIncluding(propertySelectors).FirstOrDefault(e => e.Id == apiScopeId);
 
             if (apiScope == null)
             {
                 throw new Exception("找不到Api域");
             }
 
-            var permission = _permissionRepository.FirstOrDefault(permissionId);
+            var permission = _permissionManager.PermissionRepository.FirstOrDefault(permissionId);
             if (permission == null)
             {
                 throw new Exception("找不到要移除的权限");
             }
 
-            apiScope.RemovePermission(permission);
+            apiScope.ApiManageScope.RemovePermission(permission);
+        }
+
+        public void AddQueryPermission(int apiScopeId, int permissionId)
+        {
+            Expression<Func<ApiScope, object>>[] propertySelectors = new Expression<Func<ApiScope, object>>[] {
+                e => e.ApiQueryScope
+            };
+            var apiScope = ApiScopeRepository.GetAllIncluding(propertySelectors).FirstOrDefault(e => e.Id == apiScopeId);
+            if (apiScope == null)
+            {
+                throw new Exception("找不到Api域");
+            }
+
+            var permission = _permissionManager.PermissionRepository.FirstOrDefault(permissionId);
+            if (permission == null)
+            {
+                throw new Exception("找不到要添加的权限");
+            }
+
+            apiScope.ApiQueryScope.AddPermission(permission);
+        }
+
+        public void RemoveQueryPermission(int apiScopeId, int permissionId)
+        {
+            Expression<Func<ApiScope, object>>[] propertySelectors = new Expression<Func<ApiScope, object>>[]
+            {
+                e=>e.ApiQueryScope,
+                e=>e.ApiQueryScope.ApiScopePermissions
+            };
+            var apiScope = ApiScopeRepository.GetAllIncluding(propertySelectors).FirstOrDefault(e => e.Id == apiScopeId);
+
+            if (apiScope == null)
+            {
+                throw new Exception("找不到Api域");
+            }
+
+            var permission = _permissionManager.PermissionRepository.FirstOrDefault(permissionId);
+            if (permission == null)
+            {
+                throw new Exception("找不到要移除的权限");
+            }
+
+            apiScope.ApiQueryScope.RemovePermission(permission);
         }
 
         public void AddApiScopeApi(int apiScopeId, int apiSingleId)
         {
-            var apiScope = _apiScopeRepository.FirstOrDefault(apiScopeId);
+            var apiScope = ApiScopeRepository.FirstOrDefault(apiScopeId);
             if (apiScope == null)
             {
                 throw new Exception("找不到Api域");
@@ -109,7 +175,7 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
 
         public void AddApiScopeApi(string apiScopeName, ApiSingle apiSingle)
         {
-            var apiScope = _apiScopeRepository.FirstOrDefault(e => e.Name == apiScopeName);
+            var apiScope = ApiScopeRepository.FirstOrDefault(e => e.Name == apiScopeName);
             if (apiScope == null)
             {
                 throw new Exception("找不到Api域");
@@ -120,7 +186,7 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
 
         public void RemoveApiScopeApi(int apiScopeId, int apiSingleId)
         {
-            var apiScope = _apiScopeRepository.FirstOrDefault(apiScopeId);
+            var apiScope = ApiScopeRepository.FirstOrDefault(apiScopeId);
             if (apiScope == null)
             {
                 throw new Exception("找不到Api域");

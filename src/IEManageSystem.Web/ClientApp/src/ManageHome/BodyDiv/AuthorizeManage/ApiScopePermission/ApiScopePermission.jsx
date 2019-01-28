@@ -63,7 +63,7 @@ export default class ApiScopePermission extends React.Component
 		};
 
 	    $.ajax({
-	      url: "/api/ApiScopeManage/AddApiScopePermission",
+	      url: "/api/ApiScopeManage/AddManagePermission",
 	      type: 'post',
 	      data: JSON.stringify(postData),
 	      contentType: 'application/json',
@@ -85,7 +85,7 @@ export default class ApiScopePermission extends React.Component
 		};
 
 	    $.ajax({
-	      url: "/api/ApiScopeManage/RemoveApiScopePermission",
+	      url: "/api/ApiScopeManage/RemoveManagePermission",
 	      type: 'post',
 	      data: JSON.stringify(postData),
 	      contentType: 'application/json',
@@ -107,7 +107,7 @@ export default class ApiScopePermission extends React.Component
         };
 
 		$.ajax({
-			url: "/api/ApiScopeManage/GetApiScopePermissions",
+			url: "/api/ApiScopeManage/GetManagePermissions",
             type: 'post',
             data: JSON.stringify(postData),
             contentType: 'application/json',
@@ -182,7 +182,7 @@ export default class ApiScopePermission extends React.Component
 					<Preview 
 						title="Api域名称"
 						previewResources={this.state.apiScopes} 
-						textName="name" 
+						textName="displayName" 
 						previewOnClick={(previewResource)=>this.getResourceList(previewResource)}
 						operationName="查看"
 					/>

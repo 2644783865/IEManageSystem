@@ -23,7 +23,7 @@ namespace IEManageSystem.ApiAuthorization
         public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
         {
             var requirement = new ApiAuthorizationRequirement(
-                ((Microsoft.AspNetCore.Mvc.Controllers.ControllerActionDescriptor)context.ActionDescriptor).ControllerName);
+                ((Microsoft.AspNetCore.Mvc.Controllers.ControllerActionDescriptor)context.ActionDescriptor).ControllerName, context.ActionDescriptor.DisplayName);
 
             var authorizationService = context.HttpContext.RequestServices.GetRequiredService<IAuthorizationService>();
 

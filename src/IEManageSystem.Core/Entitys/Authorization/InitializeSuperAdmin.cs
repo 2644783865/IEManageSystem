@@ -1,6 +1,7 @@
 ﻿using Abp.Domain.Repositories;
 using Abp.Domain.Services;
 using Abp.Domain.Uow;
+using IEManageSystem.Entitys.Authorization.Permissions;
 using IEManageSystem.Entitys.Authorization.Roles;
 using IEManageSystem.Entitys.Authorization.Users;
 using System;

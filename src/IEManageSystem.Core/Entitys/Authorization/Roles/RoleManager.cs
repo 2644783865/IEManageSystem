@@ -1,6 +1,7 @@
 ﻿using Abp.Domain.Repositories;
 using Abp.Domain.Services;
 using Abp.Domain.Uow;
+using IEManageSystem.Entitys.Authorization.Permissions;
 using IEManageSystem.Help.Exceptions;
 using System;
 using System.Collections.Generic;

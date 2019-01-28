@@ -10,10 +10,11 @@ using IEManageSystem.Help.Exceptions;
 using Abp.Domain.Repositories;
 using IEManageSystem.Entitys.Authorization;
 using System.Linq.Expressions;
+using IEManageSystem.Entitys.Authorization.Permissions;
 
 namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Roles
 {
-    public class RoleAppService : IRoleAppService
+    public class RoleAppService : IEManageSystemAppServiceBase, IRoleAppService
     {
         private RoleManager _roleManager { get; set; }
 

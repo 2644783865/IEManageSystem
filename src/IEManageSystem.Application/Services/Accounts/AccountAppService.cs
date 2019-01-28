@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Abp.Application.Services;
 using Abp.Configuration;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
@@ -8,6 +9,7 @@ using IEManageSystem.Services.Accounts.Dto;
 
 namespace IEManageSystem.Services.Accounts
 {
+    [RemoteService(false)]
     public class AccountAppService : IEManageSystemAppServiceBase, IAccountAppService
     {
         private IAbpSession _AbpSession { get; set; }

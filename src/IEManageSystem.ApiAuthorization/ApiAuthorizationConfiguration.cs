@@ -23,9 +23,9 @@ namespace IEManageSystem.ApiAuthorization
             _apiSingleManager = apiSingleManager;
         }
 
-        public void RegisterApiScope(string name)
+        public void RegisterApiScope(string name, string displayName)
         {
-            _apiScopeManager.Register(name);
+            _apiScopeManager.Register(name, displayName);
         }
 
         public void RegisterApiSingle(Assembly assembly)

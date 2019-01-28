@@ -9,12 +9,16 @@
     <UserSecretsId>AbpCompanyName-IEManageSystem-56C2EF2F-ABD6-4EFC-AAF2-2E81C34E8FB1</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Help\IdentityServerHelp\IdentityResources\**" />
     <Compile Remove="Help\TokenHelp\**" />
     <Compile Remove="wwwroot\**" />
+    <Content Remove="Help\IdentityServerHelp\IdentityResources\**" />
     <Content Remove="Help\TokenHelp\**" />
     <Content Remove="wwwroot\**" />
+    <EmbeddedResource Remove="Help\IdentityServerHelp\IdentityResources\**" />
     <EmbeddedResource Remove="Help\TokenHelp\**" />
     <EmbeddedResource Remove="wwwroot\**" />
+    <None Remove="Help\IdentityServerHelp\IdentityResources\**" />
     <None Remove="Help\TokenHelp\**" />
     <None Remove="wwwroot\**" />
   </ItemGroup>
@@ -64,8 +68,5 @@
     <ProjectReference Include="..\IEManageSystem.EntityFrameworkCore\IEManageSystem.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\IEManageSystem.IdentityServerEF\IEManageSystem.IdentityServerEF.csproj" />
     <ProjectReference Include="..\UtilityAction\UtilityAction.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Help\IdentityServerHelp\IdentityResources\" />
   </ItemGroup>
 </Project>

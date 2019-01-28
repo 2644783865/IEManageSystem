@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using IEManageSystem.ApiAuthorization.DomainModel.ApiSingles;
 using IEManageSystem.ApiAuthorization;
 using Abp.Domain.Uow;
+using IEManageSystem.Api.Help.IEApiScopeHelp;
 
 namespace IEManageSystem.Api.Startup
 {
@@ -44,28 +45,28 @@ namespace IEManageSystem.Api.Startup
             // Use database for language management
             // Configuration.Modules.Zero().LanguageManagement.EnableDbLocalization();
 
-            //Configuration.Modules.AbpAspNetCore()
-            //     .CreateControllersForAppServices(
-            //         typeof(IEManageSystemApplicationModule).GetAssembly()
-            //     )
-            //     .ConfigureControllerModel(controllerModel =>
-            //     {
-            //         foreach (var action in controllerModel.Actions)
-            //         {
-            //             foreach (var selector in action.Selectors)
-            //             {
-            //                 if (selector.AttributeRouteModel == null)
-            //                 {
-            //                     // 
-            //                     selector.AttributeRouteModel = new AttributeRouteModel(
-            //                         new RouteAttribute(
-            //                             $"api/{controllerModel.ControllerName}/{action.ActionName}"
-            //                         )
-            //                     );
-            //                 }
-            //             }
-            //         }
-            //     });
+            Configuration.Modules.AbpAspNetCore()
+                 .CreateControllersForAppServices(
+                     typeof(IEManageSystemApplicationModule).GetAssembly()
+                 )
+                 .ConfigureControllerModel(controllerModel =>
+                 {
+                     foreach (var action in controllerModel.Actions)
+                     {
+                         foreach (var selector in action.Selectors)
+                         {
+                             if (selector.AttributeRouteModel == null)
+                             {
+                                 // 
+                                 selector.AttributeRouteModel = new AttributeRouteModel(
+                                     new RouteAttribute(
+                                         $"api/{controllerModel.ControllerName}/{action.ActionName}"
+                                     )
+                                 );
+                             }
+                         }
+                     }
+                 });
         }
 
         public override void Initialize()
@@ -81,10 +82,10 @@ namespace IEManageSystem.Api.Startup
             {
                 var apiAuthorizationConfiguration = IocManager.Resolve<ApiAuthorizationConfiguration>();
 
-                apiAuthorizationConfiguration.RegisterApiScope(IEApiScopeProvider.AuthorizeManage);
-                apiAuthorizationConfiguration.RegisterApiScope(IEApiScopeProvider.OAuthManage);
-                apiAuthorizationConfiguration.RegisterApiScope(IEApiScopeProvider.Personal);
-                apiAuthorizationConfiguration.RegisterApiScope(IEApiScopeProvider.UserManage);
+                new IEApiScopeProvider().Register((name, displayName) => 
+                {
+                    apiAuthorizationConfiguration.RegisterApiScope(name, displayName);
+                });
 
                 unitOfWorkManager.Current.SaveChanges();
 

@@ -12,7 +12,7 @@ using IEManageSystem.Services.Users.Dto;
 
 namespace IEManageSystem.Services.Users
 {
-    public class UserAppService : IUserAppService
+    public class UserAppService : IEManageSystemAppServiceBase, IUserAppService
     {
         private IAbpSession _AbpSession { get; set; }
 

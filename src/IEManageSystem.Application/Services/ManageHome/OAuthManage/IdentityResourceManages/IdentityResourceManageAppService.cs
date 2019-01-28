@@ -12,7 +12,7 @@ using IEManageSystem.IdentityServer.Entitys.IdentityResources;
 
 namespace IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages
 {
-    public class IdentityResourceManageAppService: IIdentityResourceManageAppService
+    public class IdentityResourceManageAppService: IEManageSystemAppServiceBase, IIdentityResourceManageAppService
     {
         private IIEIdentityServerRepository<IdentityResource> _IdentityResourceRepository { get; set; }
 

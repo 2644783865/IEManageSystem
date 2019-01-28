@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities;
 using IEManageSystem.ApiAuthorization.DomainModel.ApiScopes;
+using IEManageSystem.ApiAuthorization.DomainModel.ApiScopes.AuthorizationNodes;
 using IEManageSystem.ApiAuthorization.DomainModel.ApiSingles;
 using IEManageSystem.Entitys.Authorization;
 using System;
@@ -16,40 +17,28 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
         protected ApiScope() {
         }
 
-        public ApiScope(string name) {
+        public ApiScope(string name)
+        {
             Name = name;
+
+            ApiManageScope = new ApiManageScope();
+
+            ApiQueryScope = new ApiQueryScope();
         }
 
-        public string Name { get; private set; }
+        public string Name { get; protected set; }
+
+        public string DisplayName { get; protected set; }
 
         public ICollection<ApiSingle> ApiSingles { get; set; }
 
-        public ICollection<ApiScopePermission> ApiScopePermissions { get; set; }
+        public ApiManageScope ApiManageScope { get; set; }
 
-        public void AddPermission(Permission permission)
+        public ApiQueryScope ApiQueryScope { get; set; }
+
+        public void SetDisplayName(string displayName)
         {
-            if (ApiScopePermissions == null)
-            {
-                ApiScopePermissions = new List<ApiScopePermission>();
-            }
-
-            ApiScopePermissions.Add(new ApiScopePermission(this, permission));
-        }
-
-        public  void RemovePermission(Permission permission)
-        {
-            if (ApiScopePermissions == null)
-            {
-                throw new Exception("Api域权限为空");
-            }
-
-            var removeItem = ApiScopePermissions.FirstOrDefault(e => e.PermissionId == permission.Id);
-            if (removeItem == null)
-            {
-                throw new Exception("Api域不存在该权限");
-            }
-
-            ApiScopePermissions.Remove(removeItem);
+            DisplayName = displayName;
         }
 
         public void AddApiScopeApi(ApiSingle apiSingle)

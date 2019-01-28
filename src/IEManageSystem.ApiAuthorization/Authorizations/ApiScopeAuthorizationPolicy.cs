@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Security.Claims;
 using IEManageSystem.ApiAuthorization.DomainModel.ApiSingles;
+using System.Linq.Expressions;
 
 namespace IEManageSystem.ApiAuthorization.Authorizations
 {
@@ -17,22 +18,11 @@ namespace IEManageSystem.ApiAuthorization.Authorizations
     {
         private CheckPermissionService _checkPermissionService { get; set; }
 
-        private ApiScopeManager _apiScopeManager { get; set; }
-
-        private ApiSingleManager _apiSingleManager { get; set; }
-
         public ApiScopeAuthorizationPolicy(
-            ApiScopeManager apiScopeManager,
-            ApiSingleManager apiSingleManager,
             CheckPermissionService checkPermissionService)
         {
-            _apiScopeManager = apiScopeManager;
-
-            _apiSingleManager = apiSingleManager;
-
             _checkPermissionService = checkPermissionService;
         }
-        
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, ApiAuthorizationRequirement requirement)
         {
@@ -49,37 +39,14 @@ namespace IEManageSystem.ApiAuthorization.Authorizations
             // 获取当前用户拥有的权限
             List<Claim> permissionClaims = context.User.Claims.Where(e => e.Type == ApiAuthorizationExtensions.ApiPermissiionClaimName).ToList();
 
-            // 获取要访问的Api
-            var apiSingle = _apiSingleManager.GetApiSingleForControllerName(requirement.ControllerName);
-
-            // 获取要访问的Api域s
-            var apiScopes = _apiScopeManager.GetApiScopesForApiSingleName(apiSingle);
-
-            foreach (var apiScope in apiScopes)
+            if (_checkPermissionService.IsAllowAccess(requirement.ControllerName, requirement.ActionName, permissionClaims.Select(e => e.Value).ToList()))
             {
-                if (CheckPermission(apiScope, permissionClaims))
-                {
-                    // 授权通过
-                    context.Succeed(requirement);
-                    return Task.CompletedTask;
-                }
+                // 授权通过
+                context.Succeed(requirement);
+                return Task.CompletedTask;
             }
 
             return Task.CompletedTask;
-        }
-
-        private bool CheckPermission(ApiScope apiScope, List<Claim> permissionClaims)
-        {
-            foreach (var permissionClaim in permissionClaims)
-            {
-                // 检查权限
-                if (_checkPermissionService.IsAllowAccess(apiScope, permissionClaim.Value))
-                {
-                    return true;
-                }
-            }
-
-            return false;
         }
     }
 }

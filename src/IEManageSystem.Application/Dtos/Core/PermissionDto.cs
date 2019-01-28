@@ -1,5 +1,6 @@
 ﻿using Abp.AutoMapper;
 using IEManageSystem.Entitys.Authorization;
+using IEManageSystem.Entitys.Authorization.Permissions;
 using System;
 using System.Collections.Generic;
 using System.Text;

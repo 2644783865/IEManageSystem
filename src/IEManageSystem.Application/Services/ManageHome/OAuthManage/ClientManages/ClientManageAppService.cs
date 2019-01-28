@@ -14,7 +14,7 @@ using IEManageSystem.IdentityServer.Entitys.Clients.ClientGrantTypes;
 
 namespace IEManageSystem.Services.ManageHome.OAuthManage.ClientManages
 {
-    public class ClientManageAppService: IClientManageAppService
+    public class ClientManageAppService: IEManageSystemAppServiceBase, IClientManageAppService
     {
         private ClientManager _clientManager { get; set; }
 
