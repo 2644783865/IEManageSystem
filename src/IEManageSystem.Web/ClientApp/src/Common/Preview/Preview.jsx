@@ -17,7 +17,7 @@ export default class Preview extends React.Component
     {
         let lis = [];
         for(let item in this.props.previewResources){
-            let li = <li className="list-group-item d-flex justify-content-between">
+            let li = <li className="list-group-item d-flex justify-content-between" key={item}>
                             <span className="mt-auto mb-auto">{this.props.previewResources[item][this.props.textName]}</span>
                             <span className="mt-auto mb-auto">
                                 <button className="btn btn-info btn-sm"

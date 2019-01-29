@@ -56,7 +56,6 @@ class UserHome extends React.Component
     {
         return (
         <div className="manage-home d-flex flex-column h-100">
-            <Redirect path="/ManageHome" to={{pathname: '/ManageHome/Index'}} />
             <Nav topLevelMenus={this.topLevelMenus} selectTopMenu={this.state.selectTopMenu} topLevelMenusSelect={this.topLevelMenusSelect} />
             <div className="d-flex flex-grow-1 w-100">
                 <div className="d-flex w-100">
@@ -68,7 +67,7 @@ class UserHome extends React.Component
                             <Route path="/ManageHome/:menuId?/:menuItemId?" component={NavTag} />
                         </div>
                         <div className="bodydiv-parent d-flex flex-grow-1 w-100">
-                            <Route path="/ManageHome/:menuId/:menuItemId?" component={BodyDiv} />
+                            <Route path="/ManageHome/:menuId?/:menuItemId?" component={BodyDiv} />
                         </div>
                     </div>
                 </div>

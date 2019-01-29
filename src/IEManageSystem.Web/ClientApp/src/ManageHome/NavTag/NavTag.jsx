@@ -26,10 +26,6 @@ export default class NavTag extends React.Component{
             return;
         }
 
-        if(props.match.params.menuItemId == undefined){
-            return;
-        }
-
         let menuId = props.match.params.menuId;
         let menuItemId = props.match.params.menuItemId;
 

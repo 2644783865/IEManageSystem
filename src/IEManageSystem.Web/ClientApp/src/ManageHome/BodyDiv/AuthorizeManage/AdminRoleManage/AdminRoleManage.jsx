@@ -24,8 +24,9 @@ export default class AdminRoleManage extends React.Component
 			{name:"name", text:"角色名称", isName:true, isShowOnList:true, isEditShow:false, isAddShow:false},
 			{name:"displayName", text:"角色显示名称", isShowOnList:true, isEditShow:false, isAddShow:false},
 			{name:"describe", text:"角色描述", isShowOnList:true, isEditShow:false, isAddShow:false},
-			{name:"permissionId", text:"请选择权限", valueType:"radio",
-				valueTexts:this.selectResources
+			{name:"selectId", text:"请选择角色", valueType:"radio",
+				valueTexts:this.selectResources,
+				isLookupShow:false
 			},
 		];
 
@@ -59,12 +60,12 @@ export default class AdminRoleManage extends React.Component
 	addResource(resource){
 		LoadingModal.showModal();
 		let postData = {
-			roleId:resource.permissionId,
-			adminId:this.state.apiScope.id,
+			roleId:resource.selectId,
+			adminId:this.state.previewrResource.id,
 		};
 
 	    $.ajax({
-	      url: "/api/ApiScopeManage/AddApiScopePermission",
+	      url: "/api/AdminManage/AddRole",
 	      type: 'post',
 	      data: JSON.stringify(postData),
 	      contentType: 'application/json',
@@ -82,7 +83,7 @@ export default class AdminRoleManage extends React.Component
 		LoadingModal.showModal();
 		let postData = {
 			roleId:resource.id,
-			adminId:this.state.apiScope.id,
+			adminId:this.state.previewrResource.id,
 		};
 
 	    $.ajax({
@@ -159,7 +160,7 @@ export default class AdminRoleManage extends React.Component
         };
 
 		$.ajax({
-			url: "/api/PermissionManage/GetPermissions",
+			url: "/api/RoleManage/GetRoles",
             type: 'post',
             data: JSON.stringify(postData),
             contentType: 'application/json',
@@ -167,10 +168,10 @@ export default class AdminRoleManage extends React.Component
             success: function(data){
 		        if(data.isSuccess == true)
 		        {
-		        	for(let item in data.value.permissions){
+		        	for(let item in data.value.roles){
 		        		this.selectResources.push({
-		        			value:data.value.permissions[item].id,
-		        			text:data.value.permissions[item].displayName,
+		        			value:data.value.roles[item].id,
+		        			text:data.value.roles[item].displayName,
 		        		});
 		        	}
 		        }
@@ -183,7 +184,7 @@ export default class AdminRoleManage extends React.Component
 			<div className="row">
 				<div className="left-preview float-left h-100">
 					<Preview 
-						title="Api域名称"
+						title="管理员名称"
 						previewResources={this.state.previewrResources} 
 						textName="name" 
 						previewOnClick={(previewResource)=>this.getResourceList(previewResource)}
@@ -192,7 +193,7 @@ export default class AdminRoleManage extends React.Component
 				</div>
 				<div className="right-resource padding-left-10 padding-right-10 float-left h-100">
 					<Resource
-					title="Api域权限"
+					title="角色"
 					describes={this.describes}
 					freshenResources={this.freshenResources}
 					addResource={this.addResource}

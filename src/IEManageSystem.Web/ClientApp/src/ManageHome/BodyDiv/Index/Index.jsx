@@ -233,19 +233,19 @@ export default class Index extends React.Component
                 <div className="row mt-4"> 
                  <div className="col"> 
                   <small>Europe</small> 
-                  <div className="progress mt-1" style={{height: "6px;"}}> 
+                  <div className="progress mt-1" style={{height: "6px"}}> 
                    <div className="progress-bar" role="progressbar" style={{width: "35%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
                   </div> 
                  </div> 
                  <div className="col"> 
                   <small>Asia</small> 
-                  <div className="progress mt-1" style={{height: "6px;"}}> 
+                  <div className="progress mt-1" style={{height: "6px"}}> 
                    <div className="progress-bar bg-warning" role="progressbar" style={{width: "75%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
                   </div> 
                  </div> 
                  <div className="col"> 
                   <small>Other</small> 
-                  <div className="progress mt-1" style={{height: "6px;"}}> 
+                  <div className="progress mt-1" style={{height: "6px"}}> 
                    <div className="progress-bar bg-danger" role="progressbar" style={{width: "45%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
                   </div> 
                  </div> 

@@ -69,6 +69,28 @@ const menus =
                         id:"AdminRoleManage",
                         text: "管理员角色",
                         url: "/ManageHome/AuthorizeManage/AdminRoleManage"
+                    },
+                    {
+                        id: "AdminPermissionManage",
+                        text: "管理员权限",
+                        url: "/ManageHome/AuthorizeManage/AdminPermissionManage"
+                    }
+                ]
+            },
+            {
+                id:"Role",
+                text: "角色",
+                url: "/ManageHome/AuthorizeManage/Role",
+                menuItems: [
+                    {
+                        id:"RoleManage",
+                        text: "角色管理",
+                        url: "/ManageHome/AuthorizeManage/RoleManage"
+                    },
+                    {
+                        id:"RolePermissionManage",
+                        text: "角色权限管理",
+                        url: "/ManageHome/AuthorizeManage/RolePermissionManage"
                     }
                 ]
             },
@@ -234,6 +256,17 @@ export default class MenuProvider
         {
             if(menu.menuItems[item].id == menuId){
                 return menu.menuItems[item];
+            }
+        }
+
+        // 如果菜单id为空，返回默认菜单
+        if(menuId == undefined || menuId == null)
+        {
+            for(let item in menu.menuItems)
+            {
+                if(menu.menuItems[item].default == true){
+                    return menu.menuItems[item];
+                }
             }
         }
         

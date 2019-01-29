@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using IEManageSystem.Entitys.Authorization.Roles;
 using System.Linq.Expressions;
 using IEManageSystem.Help.Exceptions;
+using IEManageSystem.Entitys.Authorization.Permissions;
 
 namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Admins
 {
@@ -18,13 +19,16 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Admins
 
         private RoleManager _roleManager { get; set; }
 
+        private PermissionManager _permissionManager { get; set; }
+
         public AdminManageAppService(
             AdminManager adminManager,
-            RoleManager roleManager)
+            RoleManager roleManager,
+            PermissionManager permissionManager)
         {
             _adminManager = adminManager;
-
             _roleManager = roleManager;
+            _permissionManager = permissionManager;
         }
 
         public async Task<GetAdminsOutput> GetAdmins(GetAdminsInput input)
@@ -132,6 +136,36 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Admins
             _adminManager.Remove(admin, role);
 
             return new RemoveRoleOutput();
+        }
+
+        public async Task<GetPermissionsOutput> GetPermissions(GetPermissionsInput input)
+        {
+            Expression<Func<User, object>>[] adminProperty = new Expression<Func<User, object>>[] {
+                e => e.UserRoles
+            };
+            var admin = _adminManager.GetAdminsIncluding(adminProperty).FirstOrDefault(e => e.Id == input.Id);
+
+            if (admin == null)
+            {
+                throw new MessageException("未找到管理员");
+            }
+
+            var roleIds = admin.UserRoles.Select(e => e.RoleId).ToList();
+            Expression<Func<Role, object>>[] roleProperty = new Expression<Func<Role, object>>[] {
+                e => e.RolePermissions
+            };
+            var roles = _roleManager.RoleRepository.GetAllIncluding(roleProperty).Where(e => roleIds.Contains(e.Id)).ToList();
+
+            var permissionIds = new List<int>();
+            roles.ForEach(role =>
+            {
+                role.RolePermissions.ToList().ForEach(polePermission => { permissionIds.Add(polePermission.PermissionId); });
+            });
+            permissionIds = permissionIds.Distinct().ToList();
+
+            var permissions = await _permissionManager.PermissionRepository.GetAllListAsync(e => permissionIds.Contains(e.Id));
+
+            return new GetPermissionsOutput() { Permissions = AutoMapper.Mapper.Map<List<PermissionDto>>(permissions) };
         }
     }
 }

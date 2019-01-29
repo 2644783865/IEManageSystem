@@ -24,5 +24,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Admins
         Task<AddRoleOutput> AddRole(AddRoleInput input);
 
         Task<RemoveRoleOutput> RemoveRole(RemoveRoleInput input);
+
+        Task<GetPermissionsOutput> GetPermissions(GetPermissionsInput input);
     }
 }

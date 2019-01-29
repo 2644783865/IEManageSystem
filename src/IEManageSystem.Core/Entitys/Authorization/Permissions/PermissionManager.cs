@@ -27,5 +27,10 @@ namespace IEManageSystem.Entitys.Authorization.Permissions
 
             PermissionRepository.Insert(permission);
         }
+
+        public void Delete(int Id)
+        {
+            PermissionRepository.Delete(Id);
+        }
     }
 }

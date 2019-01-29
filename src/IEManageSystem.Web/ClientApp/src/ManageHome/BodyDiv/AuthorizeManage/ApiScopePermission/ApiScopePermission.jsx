@@ -4,8 +4,14 @@ import Resource from 'Resource/Resource.jsx';
 import ErrorModal from 'Resource/ErrorModal.jsx';
 import LoadingModal from 'Resource/LoadingModal/LoadingModal.jsx';
 import Preview from 'Preview/Preview.jsx';
+import Tab from 'Tab/Tab.jsx';
 
 import "./ApiScopePermission.css";
+
+const scopePermissionType = {
+    manage: "manage",
+    query: "query",
+}
 
 export default class ApiScopePermission extends React.Component
 {
@@ -15,8 +21,8 @@ export default class ApiScopePermission extends React.Component
 		this.permissions = [];
 
 		this.state = {
-			apiScope:{},	// 当前选择的api域
-			apiScopes: [],
+			previewrResource:{},	// 当前选择的api域
+			previewrResources: [],
 		}
 
 		this.describes=[
@@ -24,7 +30,8 @@ export default class ApiScopePermission extends React.Component
 			{name:"name", text:"权限名称", isName:true, isShowOnList:true, isEditShow:false, isAddShow:false},
 			{name:"displayName", text:"权限显示名称", isShowOnList:true, isEditShow:false, isAddShow:false},
 			{name:"permissionId", text:"请选择权限", valueType:"radio",
-				valueTexts:this.permissions
+				valueTexts:this.permissions,
+				isLookupShow:false
 			},
 		];
 
@@ -37,7 +44,10 @@ export default class ApiScopePermission extends React.Component
     	this.freshenResources = this.freshenResources.bind(this);
 
     	this.getApiScopes();
-    	this.getPermissions();
+        this.getPermissions();
+
+        this.tabSelectIndex = 0;
+        this.tabs = [{ value: scopePermissionType.manage, text: "管理域" }, { value: scopePermissionType.query, text: "查询域" }];
 	}
 
 	// 提交回调
@@ -59,16 +69,16 @@ export default class ApiScopePermission extends React.Component
 		LoadingModal.showModal();
 		let postData = {
 			permissionId:resource.permissionId,
-			apiScopeId:this.state.apiScope.id,
-		};
+			apiScopeId:this.state.previewrResource.id,
+        };
 
 	    $.ajax({
-	      url: "/api/ApiScopeManage/AddManagePermission",
-	      type: 'post',
-	      data: JSON.stringify(postData),
-	      contentType: 'application/json',
-	      dataType: 'json',
-	      success: this.submitBackcall
+            url: this.tabs[this.tabSelectIndex].value == scopePermissionType.manage ? "/api/ApiScopeManage/AddManagePermission" : "/api/ApiScopeManage/AddQueryPermission",
+            type: 'post',
+            data: JSON.stringify(postData),
+            contentType: 'application/json',
+            dataType: 'json',
+            success: this.submitBackcall
 	    });
 	}
 
@@ -81,24 +91,24 @@ export default class ApiScopePermission extends React.Component
 		LoadingModal.showModal();
 		let postData = {
 			permissionId:resource.id,
-			apiScopeId:this.state.apiScope.id,
+			apiScopeId:this.state.previewrResource.id,
 		};
 
 	    $.ajax({
-	      url: "/api/ApiScopeManage/RemoveManagePermission",
-	      type: 'post',
-	      data: JSON.stringify(postData),
-	      contentType: 'application/json',
-	      dataType: 'json',
-	      success: this.submitBackcall
+            url: this.tabs[this.tabSelectIndex].value == scopePermissionType.manage ? "/api/ApiScopeManage/RemoveManagePermission" : "/api/ApiScopeManage/RemoveQueryPermission",
+            type: 'post',
+            data: JSON.stringify(postData),
+            contentType: 'application/json',
+            dataType: 'json',
+            success: this.submitBackcall
 	    });
 	}
 
 	// Resource组件刷新资源通知
 	freshenResources(pageIndex, pageSize, searchKey)
 	{
-		this.getResourceList(this.state.apiScope);
-	}
+		this.getResourceList(this.state.previewrResource);
+    }
 
     // 获取资源列表
 	getResourceList(previewResource){
@@ -107,7 +117,7 @@ export default class ApiScopePermission extends React.Component
         };
 
 		$.ajax({
-			url: "/api/ApiScopeManage/GetManagePermissions",
+            url: this.tabs[this.tabSelectIndex].value == scopePermissionType.manage ? "/api/ApiScopeManage/GetManagePermissions" : "/api/ApiScopeManage/GetQueryPermissions",
             type: 'post',
             data: JSON.stringify(postData),
             contentType: 'application/json',
@@ -116,7 +126,7 @@ export default class ApiScopePermission extends React.Component
 		        if(data.isSuccess == true)
 		        {
 		        	this.setState({
-		        		apiScope:previewResource},
+		        		previewrResource:previewResource},
 		        		()=>this.resourceChild.resetResources(data.value.permissions, 1));
 		        }
 		    }.bind(this)
@@ -141,7 +151,7 @@ export default class ApiScopePermission extends React.Component
             success: function(data){
 		        if(data.isSuccess == true)
 		        {
-		        	this.setState({apiScopes: data.value.apiScopes});
+		        	this.setState({previewrResources: data.value.apiScopes});
 		        }
 		    }.bind(this)
 		});
@@ -180,24 +190,33 @@ export default class ApiScopePermission extends React.Component
 			<div className="row apiScopePermission">
 				<div className="left-preview float-left h-100">
 					<Preview 
-						title="Api域名称"
-						previewResources={this.state.apiScopes} 
+						title="功能域名称"
+						previewResources={this.state.previewrResources} 
 						textName="displayName" 
 						previewOnClick={(previewResource)=>this.getResourceList(previewResource)}
 						operationName="查看"
 					/>
 				</div>
-				<div className="right-permissions padding-left-10 padding-right-10 float-left h-100">
-					<Resource
-					title="Api域权限"
-					describes={this.describes}
-					freshenResources={this.freshenResources}
-					addResource={this.addResource}
-					updateResource={this.updateResource}
-					deleteResource={this.deleteResource}
-					setResourceRef={(ref)=>{this.resourceChild = ref}}
-					hideEdit={true}
-					hidePadding={true} />
+                <div className="right-permissions padding-left-10 padding-right-10 float-left h-100">
+                    <Tab tabs={this.tabs}
+                        nameField="text"
+                        selectIndex={this.tabSelectIndex}
+                        selectOnclick={(tab, index) => {
+                            this.tabSelectIndex = index;
+                            this.getResourceList(this.state.previewrResource);
+                        }}
+                    >
+                        <Resource
+                            title="权限"
+                            describes={this.describes}
+                            freshenResources={this.freshenResources}
+                            addResource={this.addResource}
+                            updateResource={this.updateResource}
+                            deleteResource={this.deleteResource}
+                            setResourceRef={(ref) => { this.resourceChild = ref }}
+                            hideEdit={true}
+                            hidePadding={true} />
+                    </Tab>
 				</div>
 				<ErrorModal />
 				<LoadingModal />
