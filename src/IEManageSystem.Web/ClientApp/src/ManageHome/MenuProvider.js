@@ -268,6 +268,7 @@ export default class MenuProvider
                     return menu.menuItems[item];
                 }
             }
+            return null;
         }
         
         // 如果菜单id未index

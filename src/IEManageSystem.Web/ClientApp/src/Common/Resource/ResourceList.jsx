@@ -141,7 +141,7 @@ export default class ResourceList extends React.Component
                         <div className="input-group mb-3 margin-buttom-0">
                             <input name="searchKey" type="text" className="form-control" placeholder="Search" onChange={event=>this.searchKey=event.target.value} />
                             <div className="input-group-append">
-                              <button className="btn btn-info btn-sm" type="submit" onClick={()=>this.props.searchClick(this.searchKey)}>
+                              <button className="btn btn-outline-secondary btn-sm" type="submit" onClick={()=>this.props.searchClick(this.searchKey)}>
                                 <span class="oi oi-magnifying-glass" title="icon name" aria-hidden="true"></span>搜索一下
                               </button>  
                             </div>

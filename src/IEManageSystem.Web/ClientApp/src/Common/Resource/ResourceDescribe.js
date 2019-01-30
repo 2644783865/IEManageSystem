@@ -2,7 +2,7 @@ import {ResourceDescribeValueType} from './ResourceDescribeValueType.js';
 
 export default class ResourceDescribe
 {
-	// describes [{  字段描述
+	// externalDescribes [{  字段描述（由外部传入的描述）
 	// 	text:"",  描述显示文本
 	// 	name:"",  描述名称
 	// 	isShowOnList=false,  是否显示在列表上 
@@ -17,150 +17,182 @@ export default class ResourceDescribe
 	// 	valueTexts=[{value:"", text:""}],  如果字段为单选或复选时需指定
 	//	col=12  网格长度
 	// }]
-	constructor(describes){
-		this.describes = describes;
+	constructor(externalDescribes){
+		this.externalDescribes = externalDescribes;
 		this.idDescribes = null;
 		this.nameDescribes = null;
 
-		for(let item in this.describes){
-			if(this.describes[item].text === undefined){
-				this.describes[item].text = this.describes[item].name;
-			}
+        this._initExternalDescribes();
 
-			if(this.describes[item].isShowOnList === undefined){
-				this.describes[item].isShowOnList = false;
-			}
-
-			if(this.describes[item].isAddShow === undefined){
-				this.describes[item].isAddShow = true;
-			}
-
-			if(this.describes[item].isAddCanEdit === undefined){
-				this.describes[item].isAddCanEdit = true;
-			}
-
-			if(this.describes[item].isEditShow === undefined){
-				this.describes[item].isEditShow = true;
-			}
-
-			if(this.describes[item].isEditCanEdit === undefined){
-				this.describes[item].isEditCanEdit = true;
-			}
-
-			if(this.describes[item].isLookupShow === undefined){
-				this.describes[item].isLookupShow = true;
-			}
-
-			if(this.describes[item].isId === undefined){
-				this.describes[item].isId = false;
-			}
-
-			if(this.describes[item].isName === undefined){
-				this.describes[item].isName = false;
-			}
-
-			if(this.describes[item].valueType === undefined){
-				this.describes[item].valueType = ResourceDescribeValueType.text;
-			}
-
-			if(this.describes[item].valueTexts === undefined){
-				this.describes[item].valueTexts = new Array();
-			}
-
-			if(this.describes[item].col === undefined){
-				this.describes[item].col = 12;
-			}
-		}
-
-		for(let item in this.describes){
-			if(this.describes[item].isId === true){
-				this.idDescribes = this.describes[item];
+		for(let item in this.externalDescribes){
+			if(this.externalDescribes[item].isId === true){
+				this.idDescribes = this.externalDescribes[item];
 				break;
 			}
 		}
 
 		
-		for(let item in this.describes){
-			if(this.describes[item].isName === true){
-				this.nameDescribes = this.describes[item];
+		for(let item in this.externalDescribes){
+			if(this.externalDescribes[item].isName === true){
+				this.nameDescribes = this.externalDescribes[item];
 				break;
 			}
 		}
-	}
+    }
+
+    // 初始化外部描述
+    _initExternalDescribes()
+    {
+        for (let item in this.externalDescribes) {
+            if (this.externalDescribes[item].text === undefined) {
+                this.externalDescribes[item].text = this.externalDescribes[item].name;
+            }
+
+            if (this.externalDescribes[item].isShowOnList === undefined) {
+                this.externalDescribes[item].isShowOnList = false;
+            }
+
+            if (this.externalDescribes[item].isAddShow === undefined) {
+                this.externalDescribes[item].isAddShow = true;
+            }
+
+            if (this.externalDescribes[item].isAddCanEdit === undefined) {
+                this.externalDescribes[item].isAddCanEdit = true;
+            }
+
+            if (this.externalDescribes[item].isEditShow === undefined) {
+                this.externalDescribes[item].isEditShow = true;
+            }
+
+            if (this.externalDescribes[item].isEditCanEdit === undefined) {
+                this.externalDescribes[item].isEditCanEdit = true;
+            }
+
+            if (this.externalDescribes[item].isLookupShow === undefined) {
+                this.externalDescribes[item].isLookupShow = true;
+            }
+
+            if (this.externalDescribes[item].isId === undefined) {
+                this.externalDescribes[item].isId = false;
+            }
+
+            if (this.externalDescribes[item].isName === undefined) {
+                this.externalDescribes[item].isName = false;
+            }
+
+            if (this.externalDescribes[item].valueType === undefined) {
+                this.externalDescribes[item].valueType = ResourceDescribeValueType.text;
+            }
+
+            if (this.externalDescribes[item].valueTexts === undefined) {
+                this.externalDescribes[item].valueTexts = new Array();
+            }
+
+            if (this.externalDescribes[item].col === undefined) {
+                this.externalDescribes[item].col = 12;
+            }
+        }
+    }
 
 	// 获取显示在列表上的描述
 	getDescribesOfList(){
-		let listDescribes = new Array();
+		let describes = new Array();
 
-		for(let item in this.describes){
-			if(this.describes[item].isShowOnList === true){
-				listDescribes.push(this.describes[item]);
+		for(let item in this.externalDescribes){
+            if (this.externalDescribes[item].isShowOnList === true) {
+                describes.push(new Describe(this.externalDescribes[item]));
 			}
 		}
 
-		return listDescribes;
+		return describes;
 	}
 
 	// 获取显示在添加上的描述
 	getDescribesOfAdd(){
-		let listDescribes = new Array();
+		let describes = new Array();
 
-		for(let item in this.describes){
-			if(this.describes[item].isAddShow === true){
-				this.describes[item].isEdit = this.describes[item].isAddCanEdit
+		for(let item in this.externalDescribes){
+            if (this.externalDescribes[item].isAddShow === true) {
+                let describe = new Describe(this.externalDescribes[item]);
+                describe.isEdit = this.externalDescribes[item].isAddCanEdit
 
-				listDescribes.push(this.describes[item]);
+                describes.push(describe);
 			}
 		}
 
-		return listDescribes;
+		return describes;
 	}
 
 	// 获取显示在编辑上的描述
 	getDescribesOfEdit(){
-		let listDescribes = new Array();
+		let describes = new Array();
 
-		for(let item in this.describes){
-			if(this.describes[item].isEditShow === true){
-				this.describes[item].isEdit = this.describes[item].isEditCanEdit
+		for(let item in this.externalDescribes){
+            if (this.externalDescribes[item].isEditShow === true) {
+                let describe = new Describe(this.externalDescribes[item]);
+                describe.isEdit = this.externalDescribes[item].isEditCanEdit;
 
-				listDescribes.push(this.describes[item]);
+                describes.push(describe);
 			}
 		}
 
-		return listDescribes;
+		return describes;
 	}
 
 	// 获取显示在查看上的描述
 	getDescribesOfLookup(){
-		let listDescribes = new Array();
+		let describes = new Array();
 
-		for(let item in this.describes){
-			if(this.describes[item].isLookupShow === true){
-				this.describes[item].isEdit = false;
+		for(let item in this.externalDescribes){
+            if (this.externalDescribes[item].isLookupShow === true) {
+                let describe = new Describe(this.externalDescribes[item]);
+                describe.isEdit = false;
 				
-				listDescribes.push(this.describes[item]);
+                describes.push(describe);
 			}
 		}
 
-		return listDescribes;
+		return describes;
 	}
 
 	// 根据名称获取的描述
 	getDescribeFormName(name){
-		for(let item in this.describes){
-			if(this.describes[item].name === name){
-				return this.describes[item];
+		for(let item in this.externalDescribes){
+			if(this.externalDescribes[item].name === name){
+                return new Describe(this.externalDescribes[item]);
 			}
 		}
 
-		for(let item in this.describes){
+		for(let item in this.externalDescribes){
 			var reg = new RegExp("." + name + "$");
-			if(reg.text(this.describes[item].name)){
-				return this.describes[item];
+			if(reg.text(this.externalDescribes[item].name)){
+                return new Describe(this.externalDescribes[item]);
 			}
 		}
 
 		return null;
 	}
+}
+
+// Describe[{  字段描述（供Resource组件使用的描述）
+// 	text:"",  描述显示文本
+// 	name:"",  描述名称
+// 	isId=true,  是否是Id字段
+// 	isName=true,  是否是名称字段
+// 	valueType="",  字段类型
+// 	valueTexts=[{value:"", text:""}],  如果字段为单选或复选时需指定
+//	col=12  网格长度
+//  isEdit=true,  是否可以编辑
+// }]
+class Describe {
+    constructor(externalDescribes) {
+        this.text = externalDescribes.text;
+        this.name = externalDescribes.name;
+        this.isId = externalDescribes.isId;
+        this.isName = externalDescribes.isName;
+        this.valueType = externalDescribes.valueType;
+        this.valueTexts = externalDescribes.valueTexts;
+        this.col = externalDescribes.col;
+        this.isEdit = true;
+    }
 }

@@ -8,6 +8,8 @@ import ResourceList from './ResourceList.jsx';
 import Paging from './Paging.jsx';
 import ResourceDelete from './ResourceDelete.jsx';
 import ResourceForm from './ResourceForm/ResourceForm.jsx';
+import ErrorModal from 'Resource/ErrorModal.jsx';
+import LoadingModal from 'Resource/LoadingModal/LoadingModal.jsx';
 
 require("./Resource.css");
 
@@ -38,15 +40,15 @@ export default class Resource extends React.Component
 
 		this.props.setResourceRef(this);
 
-        this.pageSize = 10;
-
         if(this.props.hidePadding == true){
         	this.pageSize = 999999;
         }
 
-        this.resourceDescribe = new ResourceDescribe(this.props.describes);
-
+        this.pageIndex = 1;
+        this.pageSize = 10;
         this.searchKey = "";
+
+        this._resourceDescribe = new ResourceDescribe(this.props.describes);
 
 		this.state = 
 		{
@@ -54,16 +56,15 @@ export default class Resource extends React.Component
 			resourceNum: 0,
 			curResource: null,
 			pageNum: 0,
-			pageIndex: 1,
 			operationState: operationState.none
 		};
 
-		this.pageIndexChange = this.pageIndexChange.bind(this);
-		this.resourceOperationClick = this.resourceOperationClick.bind(this);
-		this.resourceUpdate = this.resourceUpdate.bind(this);
-		this.searchClick = this.searchClick.bind(this);
+		this._pageIndexChange = this._pageIndexChange.bind(this);
+		this._resourceOperationClick = this._resourceOperationClick.bind(this);
+		this._resourceUpdate = this._resourceUpdate.bind(this);
+		this._searchClick = this._searchClick.bind(this);
 
-		this.props.freshenResources(this.state.pageIndex, this.pageSize);
+		this.props.freshenResources(this.pageIndex, this.pageSize);
 	}
 
 	componentDidMount(){
@@ -73,15 +74,11 @@ export default class Resource extends React.Component
         this.state.operationState = operationState.none;
     }
 
-    // 重载资源
-    reloadResources(){
-    	this.props.freshenResources(this.state.pageIndex, this.pageSize, this.searchKey);
-    }
-
 	// 重新设置资源（由父组件调用）
 	resetResources(resources, pageIndex)
-	{
-		this.setState({ resources:resources, pageIndex: pageIndex })
+    {
+        this.pageIndex = pageIndex;
+        this.setState({ resources: resources });
 	}
 
 	// 重新设置资源数量（由父组件调用）
@@ -98,15 +95,27 @@ export default class Resource extends React.Component
 		})
 	}
 
+	showLoadingModal(){
+		LoadingModal.showModal();
+	}
+
+	hideLoadingModal(){
+		LoadingModal.hideModal();
+	}
+
+	showErrorModal(title, message){
+		ErrorModal.showErrorModal(title, message);
+	}
+
 	// 搜索单击
-	searchClick(searchKey)
+	_searchClick(searchKey)
 	{
 		this.searchKey = searchKey;
-		this.props.freshenResources(this.state.pageIndex, this.pageSize, this.searchKey);
+		this.props.freshenResources(this.pageIndex, this.pageSize, this.searchKey);
     }
     
     // 页索引改变
-	pageIndexChange(pageIndex)
+	_pageIndexChange(pageIndex)
 	{
 		if(pageIndex > 0 && pageIndex <= this.state.pageNum)
 		{
@@ -115,7 +124,7 @@ export default class Resource extends React.Component
 	}
 
 	// 操作按钮点击
-	resourceOperationClick(operation, resource)
+	_resourceOperationClick(operation, resource)
 	{
 		this.setState({operationState: operation});
 
@@ -128,7 +137,7 @@ export default class Resource extends React.Component
 	}
 
 	// 更新资源
-	resourceUpdate(operation, resource){
+	_resourceUpdate(operation, resource){
 		if(operation == operationState.add){
 			this.props.addResource(resource);
 		}
@@ -145,51 +154,53 @@ export default class Resource extends React.Component
         let resourceList = <ResourceList 
         			title={ this.props.title }
                     resources={ this.state.resources } 
-                    describes={ this.resourceDescribe.getDescribesOfList() }
-                    searchClick={ this.searchClick }
-                    resourceEditClick={ resource=>this.resourceOperationClick(operationState.edit, resource) }
-                    resourceDeleteClick={ resource=>this.resourceOperationClick(operationState.delete, resource) }
-                    resourceLookupClick={ resource=>this.resourceOperationClick(operationState.lookup, resource) }
+                    describes={ this._resourceDescribe.getDescribesOfList() }
+                    searchClick={ this._searchClick }
+                    resourceEditClick={ resource=>this._resourceOperationClick(operationState.edit, resource) }
+                    resourceDeleteClick={ resource=>this._resourceOperationClick(operationState.delete, resource) }
+                    resourceLookupClick={ resource=>this._resourceOperationClick(operationState.lookup, resource) }
                     hideEdit={this.props.hideEdit}
                     hideDelete={this.props.hideDelete}
                     />;
 
         let paging = <Paging 
-                    resourceAddClick={ ()=>this.resourceOperationClick(operationState.add) } 
+                    resourceAddClick={ ()=>this._resourceOperationClick(operationState.add) } 
                     hideAdd={this.props.hideAdd}
                     hidePadding={this.props.hidePadding}
                     pageNum={ this.state.pageNum } 
-                    pageIndex={ this.state.pageIndex } 
-                    pageIndexChange={ this.pageIndexChange } />;
+                    pageIndex={ this.pageIndex } 
+                    pageIndexChange={ this._pageIndexChange } />;
 
         return (
 			<div className="w-100 h-100 d-flex flex-column">
+				<ErrorModal />
+                <LoadingModal />
 	            {resourceList}
 	            {paging}
 	            { this.state.operationState == operationState.add && 
 	            	<ResourceForm 
 	            	title={ this.props.title }
-	            	describes={ this.resourceDescribe.getDescribesOfAdd() }
+	            	describes={ this._resourceDescribe.getDescribesOfAdd() }
 	            	resource={ this.state.curResource } 
-	            	resourceUpdate={resource=>this.resourceUpdate(operationState.add, resource)} /> }
+	            	resourceUpdate={resource=>this._resourceUpdate(operationState.add, resource)} /> }
 	            { this.state.operationState == operationState.edit && 
 	            	<ResourceForm 
 	            	title={ this.props.title }
-	            	describes={ this.resourceDescribe.getDescribesOfEdit() }
+	            	describes={ this._resourceDescribe.getDescribesOfEdit() }
 	            	resource={ this.state.curResource } 
-	            	resourceUpdate={resource=>this.resourceUpdate(operationState.edit, resource)} /> }
+	            	resourceUpdate={resource=>this._resourceUpdate(operationState.edit, resource)} /> }
 	            { this.state.operationState == operationState.lookup && 
 	            	<ResourceForm 
 	            	title={ this.props.title }
 	            	isHideSubmit={ true }
-					describes={ this.resourceDescribe.getDescribesOfLookup() }
+					describes={ this._resourceDescribe.getDescribesOfLookup() }
 	            	resource={ this.state.curResource } /> }
 	            { this.state.operationState == operationState.delete && 
 	            	<ResourceDelete 
 	            	title={ this.props.title }
-	            	nameDescribe={ this.resourceDescribe.nameDescribes }
+	            	nameDescribe={ this._resourceDescribe.nameDescribes }
 	            	resource={ this.state.curResource } 
-	            	resourceUpdate={resource=>this.resourceUpdate(operationState.delete, resource)} /> }
+	            	resourceUpdate={resource=>this._resourceUpdate(operationState.delete, resource)} /> }
 	        </div>
 		);
 	}

@@ -1,21 +1,11 @@
 ﻿import React from 'react';
 import ReactDOM from 'react-dom';
-import Resource from 'Resource/Resource.jsx';
-import ErrorModal from 'Resource/ErrorModal.jsx';
-import LoadingModal from 'Resource/LoadingModal/LoadingModal.jsx';
-import Preview from 'Preview/Preview.jsx';
-
-import "./AdminPermissionManage.css";
+import ResourceChildList from 'ResourceChildList/ResourceChildList.jsx';
 
 export default class AdminPermissionManage extends React.Component
 {
-    constructor(props) {
+    constructor(props){
         super(props);
-
-        this.state = {
-            previewrResource: {},	// 当前选择的资源
-            previewrResources: [],
-        }
 
         this.describes = [
             { name: "id", isId: true, isAddShow: false, isEditShow: false, isLookupShow: false },
@@ -23,7 +13,7 @@ export default class AdminPermissionManage extends React.Component
             { name: "displayName", text: "权限显示名称", isShowOnList: true },
         ];
 
-        this.resourceChild = null;
+        this.resourceChildList = null;
 
         this.submitBackcall = this.submitBackcall.bind(this);
         this.addResource = this.addResource.bind(this);
@@ -31,32 +21,36 @@ export default class AdminPermissionManage extends React.Component
         this.deleteResource = this.deleteResource.bind(this);
         this.freshenResources = this.freshenResources.bind(this);
 
+        this.tabs = [{ value: "AdminPermissionManage", text: "管理员权限" }];
+        
         this.getPreviewrResources();
     }
 
     // 提交回调
-    submitBackcall(data) {
+    submitBackcall(data)
+    {
     }
 
     // Resource组件添加资源通知
-    addResource(resource) {
+    addResource(previewResource, resource, tabValue){
     }
 
     // Resource组件更新资源通知
-    updateResource(resource) {
+    updateResource(previewResource, resource, tabValue){
     }
 
     // Resource组件删除资源通知
-    deleteResource(resource) {
+    deleteResource(previewResource, resource, tabValue){
     }
 
-    // Resource组件刷新资源通知
-    freshenResources(pageIndex, pageSize, searchKey) {
-        this.getResourceList(this.state.previewrResource);
+    // 组件刷新资源通知
+    freshenResources(previewResource, tabValue)
+    {
+        this.getResourceList(previewResource, tabValue);
     }
 
     // 获取资源列表
-    getResourceList(previewResource) {
+    getResourceList(previewResource, tabValue){
         let postData = {
             id: previewResource.id
         };
@@ -67,23 +61,21 @@ export default class AdminPermissionManage extends React.Component
             data: JSON.stringify(postData),
             contentType: 'application/json',
             dataType: 'json',
-            success: function (data) {
-                if (data.isSuccess == true) {
-                    this.setState({
-                        previewrResource: previewResource
-                    },
-                        () => this.resourceChild.resetResources(data.value.permissions, 1));
+            success: function(data){
+                if(data.isSuccess == true)
+                {
+                    this.resourceChildList.resetResources(data.value.permissions);
                 }
             }.bind(this)
         });
     }
 
     // 获取资源数量
-    getResourceNum(searchKey) {
+    getResourceNum(searchKey){
     }
 
-    // 预览资源
-    getPreviewrResources() {
+    // 获取预览资源
+    getPreviewrResources(){
         let postData = {
             pageIndex: 1,
             pageSize: 9999,
@@ -95,43 +87,33 @@ export default class AdminPermissionManage extends React.Component
             data: JSON.stringify(postData),
             contentType: 'application/json',
             dataType: 'json',
-            success: function (data) {
-                if (data.isSuccess == true) {
-                    this.setState({ previewrResources: data.value.admins });
+            success: function(data){
+                if(data.isSuccess == true)
+                {
+                    this.resourceChildList.resetPreviewResources(data.value.admins);
                 }
             }.bind(this)
         });
     }
 
-    render() {
-        return (
-            <div className="row">
-                <div className="left-preview float-left h-100">
-                    <Preview
-                        title="管理员名称"
-                        previewResources={this.state.previewrResources}
-                        textName="name"
-                        previewOnClick={(previewResource) => this.getResourceList(previewResource)}
-                        operationName="查看"
-                    />
-                </div>
-                <div className="right-resource padding-left-10 padding-right-10 float-left h-100">
-                    <Resource
-                        title="权限"
-                        describes={this.describes}
-                        freshenResources={this.freshenResources}
-                        addResource={this.addResource}
-                        updateResource={this.updateResource}
-                        deleteResource={this.deleteResource}
-                        setResourceRef={(ref) => { this.resourceChild = ref }}
-                        hideAdd={true}
-                        hideEdit={true}
-                        hideDelete={true}
-                        hidePadding={true} />
-                </div>
-                <ErrorModal />
-                <LoadingModal />
-            </div>
+    render(){
+        return(
+            <ResourceChildList 
+                freshenResources={this.freshenResources}
+                previewTitle="管理员名称"
+                previewResourcesTextName="name"
+                tabs={this.tabs}
+                resourceTitle="权限"
+                describes={this.describes}
+                addResource={this.addResource}
+                updateResource={this.updateResource}
+                deleteResource={this.deleteResource}
+                setResourceChildListRef={(resourceChildList)=>{this.resourceChildList = resourceChildList}}
+                hideAdd={true}
+                hideEdit={true}
+                hideDelete={true}
+                hidePadding={true}
+            />
         );
     }
 }

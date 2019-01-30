@@ -1,12 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Resource from 'Resource/Resource.jsx';
-import ErrorModal from 'Resource/ErrorModal.jsx';
-import LoadingModal from 'Resource/LoadingModal/LoadingModal.jsx';
-import Preview from 'Preview/Preview.jsx';
-import Tab from 'Tab/Tab.jsx';
-
-import "./ApiScopePermission.css";
+import ResourceChildList from 'ResourceChildList/ResourceChildList.jsx';
 
 const scopePermissionType = {
     manage: "manage",
@@ -20,11 +14,6 @@ export default class ApiScopePermission extends React.Component
 
 		this.permissions = [];
 
-		this.state = {
-			previewrResource:{},	// 当前选择的api域
-			previewrResources: [],
-		}
-
 		this.describes=[
 			{name:"id", isId:true, isAddShow:false, isEditShow:false, isLookupShow:true},
 			{name:"name", text:"权限名称", isName:true, isShowOnList:true, isEditShow:false, isAddShow:false},
@@ -35,7 +24,7 @@ export default class ApiScopePermission extends React.Component
 			},
 		];
 
-		this.resourceChild = null;
+		this.resourceChildList = null;
 
         this.submitBackcall = this.submitBackcall.bind(this);
     	this.addResource = this.addResource.bind(this);
@@ -43,37 +32,36 @@ export default class ApiScopePermission extends React.Component
     	this.deleteResource = this.deleteResource.bind(this);
     	this.freshenResources = this.freshenResources.bind(this);
 
-    	this.getApiScopes();
-        this.getPermissions();
-
-        this.tabSelectIndex = 0;
         this.tabs = [{ value: scopePermissionType.manage, text: "管理域" }, { value: scopePermissionType.query, text: "查询域" }];
+		
+		this.getPreviewrResources();
+        this.getPermissions();
 	}
 
 	// 提交回调
 	submitBackcall(data)
 	{
-		LoadingModal.hideModal();
+		this.resourceChildList.hideLoadingModal();
 
 	    if(data.isSuccess == true)
 	    {
-	    	this.resourceChild.reloadResources();
+            this.resourceChildList.updateResources()
 	    }
 	    else{
-	      	ErrorModal.showErrorModal("提交表单错误", data.message);
+	      	this.resourceChildList.showErrorModal("提交表单错误", data.message);
 	    }
 	}
 
 	// Resource组件添加资源通知
-	addResource(resource){
-		LoadingModal.showModal();
+	addResource(previewResource, resource, tabValue){
+		this.resourceChildList.showLoadingModal();
 		let postData = {
 			permissionId:resource.permissionId,
-			apiScopeId:this.state.previewrResource.id,
+			apiScopeId:previewResource.id,
         };
 
 	    $.ajax({
-            url: this.tabs[this.tabSelectIndex].value == scopePermissionType.manage ? "/api/ApiScopeManage/AddManagePermission" : "/api/ApiScopeManage/AddQueryPermission",
+            url: tabValue == scopePermissionType.manage ? "/api/ApiScopeManage/AddManagePermission" : "/api/ApiScopeManage/AddQueryPermission",
             type: 'post',
             data: JSON.stringify(postData),
             contentType: 'application/json',
@@ -83,19 +71,19 @@ export default class ApiScopePermission extends React.Component
 	}
 
 	// Resource组件更新资源通知
-	updateResource(resource){
+	updateResource(previewResource, resource, tabValue){
 	}
 
 	// Resource组件删除资源通知
-	deleteResource(resource){
-		LoadingModal.showModal();
+	deleteResource(previewResource, resource, tabValue){
+		this.resourceChildList.showLoadingModal();
 		let postData = {
 			permissionId:resource.id,
-			apiScopeId:this.state.previewrResource.id,
+			apiScopeId:previewResource.id,
 		};
 
 	    $.ajax({
-            url: this.tabs[this.tabSelectIndex].value == scopePermissionType.manage ? "/api/ApiScopeManage/RemoveManagePermission" : "/api/ApiScopeManage/RemoveQueryPermission",
+            url: tabValue == scopePermissionType.manage ? "/api/ApiScopeManage/RemoveManagePermission" : "/api/ApiScopeManage/RemoveQueryPermission",
             type: 'post',
             data: JSON.stringify(postData),
             contentType: 'application/json',
@@ -104,20 +92,20 @@ export default class ApiScopePermission extends React.Component
 	    });
 	}
 
-	// Resource组件刷新资源通知
-	freshenResources(pageIndex, pageSize, searchKey)
+	// 组件刷新资源通知
+	freshenResources(previewResource, tabValue)
 	{
-		this.getResourceList(this.state.previewrResource);
+		this.getResourceList(previewResource, tabValue);
     }
 
     // 获取资源列表
-	getResourceList(previewResource){
+	getResourceList(previewResource, tabValue){
 		let postData = {
     		id: previewResource.id
         };
 
 		$.ajax({
-            url: this.tabs[this.tabSelectIndex].value == scopePermissionType.manage ? "/api/ApiScopeManage/GetManagePermissions" : "/api/ApiScopeManage/GetQueryPermissions",
+            url: tabValue == scopePermissionType.manage ? "/api/ApiScopeManage/GetManagePermissions" : "/api/ApiScopeManage/GetQueryPermissions",
             type: 'post',
             data: JSON.stringify(postData),
             contentType: 'application/json',
@@ -125,9 +113,7 @@ export default class ApiScopePermission extends React.Component
             success: function(data){
 		        if(data.isSuccess == true)
 		        {
-		        	this.setState({
-		        		previewrResource:previewResource},
-		        		()=>this.resourceChild.resetResources(data.value.permissions, 1));
+		        	this.resourceChildList.resetResources(data.value.permissions);
 		        }
 		    }.bind(this)
 		});
@@ -137,8 +123,8 @@ export default class ApiScopePermission extends React.Component
     getResourceNum(searchKey){
     }
 
-    // 获取Api域
-    getApiScopes(){
+    // 获取预览资源
+    getPreviewrResources(){
     	let postData = {
         };
 
@@ -151,7 +137,7 @@ export default class ApiScopePermission extends React.Component
             success: function(data){
 		        if(data.isSuccess == true)
 		        {
-		        	this.setState({previewrResources: data.value.apiScopes});
+		        	this.resourceChildList.resetPreviewResources(data.value.apiScopes);
 		        }
 		    }.bind(this)
 		});
@@ -187,40 +173,20 @@ export default class ApiScopePermission extends React.Component
 
 	render(){
 		return(
-			<div className="row apiScopePermission">
-				<div className="left-preview float-left h-100">
-					<Preview 
-						title="功能域名称"
-						previewResources={this.state.previewrResources} 
-						textName="displayName" 
-						previewOnClick={(previewResource)=>this.getResourceList(previewResource)}
-						operationName="查看"
-					/>
-				</div>
-                <div className="right-permissions padding-left-10 padding-right-10 float-left h-100">
-                    <Tab tabs={this.tabs}
-                        nameField="text"
-                        selectIndex={this.tabSelectIndex}
-                        selectOnclick={(tab, index) => {
-                            this.tabSelectIndex = index;
-                            this.getResourceList(this.state.previewrResource);
-                        }}
-                    >
-                        <Resource
-                            title="权限"
-                            describes={this.describes}
-                            freshenResources={this.freshenResources}
-                            addResource={this.addResource}
-                            updateResource={this.updateResource}
-                            deleteResource={this.deleteResource}
-                            setResourceRef={(ref) => { this.resourceChild = ref }}
-                            hideEdit={true}
-                            hidePadding={true} />
-                    </Tab>
-				</div>
-				<ErrorModal />
-				<LoadingModal />
-			</div>
+			<ResourceChildList 
+				freshenResources={this.freshenResources}
+				previewTitle="功能域名称"
+				previewResourcesTextName="displayName"
+				tabs={this.tabs}
+				resourceTitle="权限"
+				describes={this.describes}
+				addResource={this.addResource}
+				updateResource={this.updateResource}
+				deleteResource={this.deleteResource}
+				setResourceChildListRef={(resourceChildList)=>{this.resourceChildList = resourceChildList}}
+				hideEdit={true}
+				hidePadding={true}
+			/>
 		);
 	}
 }

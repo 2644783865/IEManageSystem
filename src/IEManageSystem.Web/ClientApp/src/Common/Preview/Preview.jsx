@@ -30,7 +30,7 @@ export default class Preview extends React.Component
         }
 
 		return (
-		    <div className="preview">
+		    <div className="preview h-100">
                 <h6 className="d-flex">
                     <span className="oi oi-list" title="icon name" aria-hidden="true"></span>
                     <span className="padding-left-10">{this.props.title}</span>

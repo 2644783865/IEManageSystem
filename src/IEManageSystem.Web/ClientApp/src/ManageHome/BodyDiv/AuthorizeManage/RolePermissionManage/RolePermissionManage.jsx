@@ -1,23 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Resource from 'Resource/Resource.jsx';
-import ErrorModal from 'Resource/ErrorModal.jsx';
-import LoadingModal from 'Resource/LoadingModal/LoadingModal.jsx';
-import Preview from 'Preview/Preview.jsx';
-
-import "./RolePermissionManage.css";
+import ResourceChildList from 'ResourceChildList/ResourceChildList.jsx';
 
 export default class RolePermissionManage extends React.Component
 {
     constructor(props){
         super(props);
 
-        this.selectResources = [];  // 可以选择的资源
-
-        this.state = {
-            previewrResource:{},    // 当前选择的资源
-            previewrResources: [],
-        }
+        this.selectResources = [];
 
         this.describes=[
             {name:"id", isId:true, isAddShow:false, isEditShow:false, isLookupShow:false},
@@ -29,7 +19,7 @@ export default class RolePermissionManage extends React.Component
             },
         ];
 
-        this.resourceChild = null;
+        this.resourceChildList = null;
 
         this.submitBackcall = this.submitBackcall.bind(this);
         this.addResource = this.addResource.bind(this);
@@ -37,6 +27,8 @@ export default class RolePermissionManage extends React.Component
         this.deleteResource = this.deleteResource.bind(this);
         this.freshenResources = this.freshenResources.bind(this);
 
+        this.tabs = [{ value: "value", text: "管理员角色" }];
+        
         this.getPreviewrResources();
         this.getSelectResources();
     }
@@ -44,65 +36,65 @@ export default class RolePermissionManage extends React.Component
     // 提交回调
     submitBackcall(data)
     {
-        LoadingModal.hideModal();
+        this.resourceChildList.hideLoadingModal();
 
         if(data.isSuccess == true)
         {
-            this.resourceChild.reloadResources();
+            this.resourceChildList.updateResources()
         }
         else{
-            ErrorModal.showErrorModal("提交表单错误", data.message);
+            this.resourceChildList.showErrorModal("提交表单错误", data.message);
         }
     }
 
     // Resource组件添加资源通知
-    addResource(resource){
-        LoadingModal.showModal();
+    addResource(previewResource, resource, tabValue){
+        this.resourceChildList.showLoadingModal();
         let postData = {
             permissionId:resource.selectId,
-            roleId:this.state.previewrResource.id,
+            roleId:previewResource.id,
         };
 
         $.ajax({
-          url: "/api/RoleManage/AddPermission",
-          type: 'post',
-          data: JSON.stringify(postData),
-          contentType: 'application/json',
-          dataType: 'json',
-          success: this.submitBackcall
+            url: "/api/RoleManage/AddPermission",
+            type: 'post',
+            data: JSON.stringify(postData),
+            contentType: 'application/json',
+            dataType: 'json',
+            success: this.submitBackcall
         });
     }
 
     // Resource组件更新资源通知
-    updateResource(resource){
+    updateResource(previewResource, resource, tabValue){
     }
 
     // Resource组件删除资源通知
-    deleteResource(resource){
-        LoadingModal.showModal();
+    deleteResource(previewResource, resource, tabValue){
+        this.resourceChildList.showLoadingModal();
         let postData = {
             permissionId:resource.id,
-            roleId:this.state.previewrResource.id,
+            roleId:previewResource.id,
         };
 
         $.ajax({
-          url: "/api/RoleManage/RemovePermission",
-          type: 'post',
-          data: JSON.stringify(postData),
-          contentType: 'application/json',
-          dataType: 'json',
-          success: this.submitBackcall
+            url: "/api/RoleManage/RemovePermission",
+            type: 'post',
+            data: JSON.stringify(postData),
+            contentType: 'application/json',
+            dataType: 'json',
+            success: this.submitBackcall
         });
     }
 
-    // Resource组件刷新资源通知
-    freshenResources(pageIndex, pageSize, searchKey)
+    // 组件刷新资源通知
+    freshenResources(previewResource, tabValue)
     {
-        this.getResourceList(this.state.previewrResource);
+        this.getResourceList(previewResource, tabValue);
     }
 
     // 获取资源列表
-    getResourceList(previewResource){
+    getResourceList(previewResource, tabValue){
         let postData = {
             id: previewResource.id
         };
@@ -116,9 +108,7 @@ export default class RolePermissionManage extends React.Component
             success: function(data){
                 if(data.isSuccess == true)
                 {
-                    this.setState({
-                        previewrResource:previewResource},
-                        ()=>this.resourceChild.resetResources(data.value.permissions, 1));
+                    this.resourceChildList.resetResources(data.value.roles);
                 }
             }.bind(this)
         });
@@ -128,7 +118,7 @@ export default class RolePermissionManage extends React.Component
     getResourceNum(searchKey){
     }
 
-    // 预览资源
+    // 获取预览资源
     getPreviewrResources(){
         let postData = {
             pageIndex: 1,
@@ -144,7 +134,7 @@ export default class RolePermissionManage extends React.Component
             success: function(data){
                 if(data.isSuccess == true)
                 {
-                    this.setState({previewrResources: data.value.roles});
+                    this.resourceChildList.resetPreviewResources(data.value.roles);
                 }
             }.bind(this)
         });
@@ -180,31 +170,20 @@ export default class RolePermissionManage extends React.Component
 
     render(){
         return(
-            <div className="row">
-                <div className="left-preview float-left h-100">
-                    <Preview 
-                        title="角色名称"
-                        previewResources={this.state.previewrResources} 
-                        textName="displayName" 
-                        previewOnClick={(previewResource)=>this.getResourceList(previewResource)}
-                        operationName="查看"
-                    />
-                </div>
-                <div className="right-resource padding-left-10 padding-right-10 float-left h-100">
-                    <Resource
-                    title="权限"
-                    describes={this.describes}
-                    freshenResources={this.freshenResources}
-                    addResource={this.addResource}
-                    updateResource={this.updateResource}
-                    deleteResource={this.deleteResource}
-                    setResourceRef={(ref)=>{this.resourceChild = ref}}
-                    hideEdit={true}
-                    hidePadding={true} />
-                </div>
-                <ErrorModal />
-                <LoadingModal />
-            </div>
+            <ResourceChildList 
+                freshenResources={this.freshenResources}
+                previewTitle="角色名称"
+                previewResourcesTextName="displayName"
+                tabs={this.tabs}
+                resourceTitle="权限"
+                describes={this.describes}
+                addResource={this.addResource}
+                updateResource={this.updateResource}
+                deleteResource={this.deleteResource}
+                setResourceChildListRef={(resourceChildList)=>{this.resourceChildList = resourceChildList}}
+                hideEdit={true}
+                hidePadding={true}
+            />
         );
     }
 }

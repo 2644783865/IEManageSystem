@@ -60,7 +60,8 @@ export default class IdentityResource extends React.Component
 
 	    if(data.isSuccess == true)
 	    {
-	    	this.resourceChild.reloadResources();
+            this.getResourceList(this.resourceChild.pageIndex, this.resourceChild.pageSize, this.resourceChild.searchKey);
+            this.getResourceNum(this.resourceChild.searchKey);
 	    }
 	    else{
 	      	ErrorModal.showErrorModal("提交表单错误", data.message);
