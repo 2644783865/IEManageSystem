@@ -54,6 +54,10 @@ namespace IEManageSystem.Api.Help.IEApiScopeHelp
                         DisplayName = "管理员管理"
                     },
                     new ApiScopeDescribe(){
+                        Name = "AuthorizeManage.RoleManage",
+                        DisplayName = "角色管理"
+                    },
+                    new ApiScopeDescribe(){
                         Name = "AuthorizeManage.PermissionManage",
                         DisplayName = "权限管理"
                     },

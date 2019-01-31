@@ -1,3 +1,5 @@
+import { ApiScope } from "./ApiScopeAuthority/ApiScope.js";
+import { ApiScopeNodeType } from "./ApiScopeAuthority/ApiScopeNodeType.js";
 import Menu from "./Menu.js";
 
 const menus = 
@@ -63,17 +65,30 @@ const menus =
                     {
                         id:"AdminManage",
                         text: "管理员管理",
-                        url: "/ManageHome/AuthorizeManage/AdminManage"
+                        url: "/ManageHome/AuthorizeManage/AdminManage",
+                        accessScope:
+                            [
+                                { scopeName: ApiScope.AuthorizeManage.AdminManage, scopeNodeType: ApiScopeNodeType.manage },
+                            ]
                     },
                     {
                         id:"AdminRoleManage",
                         text: "管理员角色",
-                        url: "/ManageHome/AuthorizeManage/AdminRoleManage"
+                        url: "/ManageHome/AuthorizeManage/AdminRoleManage",
+                        accessScope:
+                            [
+                                { scopeName: ApiScope.AuthorizeManage.AdminManage, scopeNodeType: ApiScopeNodeType.manage },
+                                { scopeName: ApiScope.AuthorizeManage.RoleManage, scopeNodeType: ApiScopeNodeType.query },
+                            ]
                     },
                     {
                         id: "AdminPermissionManage",
                         text: "管理员权限",
-                        url: "/ManageHome/AuthorizeManage/AdminPermissionManage"
+                        url: "/ManageHome/AuthorizeManage/AdminPermissionManage",
+                        accessScope:
+                            [
+                                { scopeName: ApiScope.AuthorizeManage.AdminManage, scopeNodeType: ApiScopeNodeType.query },
+                            ]
                     }
                 ]
             },
@@ -85,19 +100,32 @@ const menus =
                     {
                         id:"RoleManage",
                         text: "角色管理",
-                        url: "/ManageHome/AuthorizeManage/RoleManage"
+                        url: "/ManageHome/AuthorizeManage/RoleManage",
+                        accessScope:
+                            [
+                                { scopeName: ApiScope.AuthorizeManage.RoleManage, scopeNodeType: ApiScopeNodeType.manage },
+                            ]
                     },
                     {
                         id:"RolePermissionManage",
                         text: "角色权限管理",
-                        url: "/ManageHome/AuthorizeManage/RolePermissionManage"
+                        url: "/ManageHome/AuthorizeManage/RolePermissionManage",
+                        accessScope:
+                            [
+                                { scopeName: ApiScope.AuthorizeManage.RoleManage, scopeNodeType: ApiScopeNodeType.manage },
+                                { scopeName: ApiScope.AuthorizeManage.PermissionManage, scopeNodeType: ApiScopeNodeType.query },
+                            ]
                     }
                 ]
             },
             {
                 id:"Permission",
                 text: "权限管理",
-                url: "/ManageHome/AuthorizeManage/Permission"
+                url: "/ManageHome/AuthorizeManage/Permission",
+                accessScope:
+                    [
+                        { scopeName: ApiScope.AuthorizeManage.PermissionManage, scopeNodeType: ApiScopeNodeType.manage },
+                    ]
             },
             {
                 id:"ApiScopeManage",
@@ -107,7 +135,12 @@ const menus =
                     {
                         id:"ApiScopePermission",
                         text: "Api域权限管理",
-                        url: "/ManageHome/AuthorizeManage/ApiScopePermission"
+                        url: "/ManageHome/AuthorizeManage/ApiScopePermission",
+                        accessScope:
+                            [
+                                { scopeName: ApiScope.AuthorizeManage.ApiScopeManage, scopeNodeType: ApiScopeNodeType.manage },
+                                { scopeName: ApiScope.AuthorizeManage.PermissionManage, scopeNodeType: ApiScopeNodeType.query },
+                            ]
                     },
                     {
                         id:"ApiScopeApi",
@@ -126,17 +159,29 @@ const menus =
             {
                 id:"IdentityResource",
                 text: "身份资源",
-                url: "/ManageHome/OAuthManage/IdentityResource"
+                url: "/ManageHome/OAuthManage/IdentityResource",
+                accessScope:
+                    [
+                        { scopeName: ApiScope.OAuthManage.IdentityResource, scopeNodeType: ApiScopeNodeType.manage },
+                    ]
             },
             {
                 id:"ApiResource",
                 text: "API资源",
-                url: "/ManageHome/OAuthManage/ApiResource"
+                url: "/ManageHome/OAuthManage/ApiResource",
+                accessScope:
+                    [
+                        { scopeName: ApiScope.OAuthManage.ApiResource, scopeNodeType: ApiScopeNodeType.manage },
+                    ]
             },
             {
                 id:"Client",
                 text: "客户端",
-                url: "/ManageHome/OAuthManage/Client"
+                url: "/ManageHome/OAuthManage/Client",
+                accessScope:
+                    [
+                        { scopeName: ApiScope.OAuthManage.Client, scopeNodeType: ApiScopeNodeType.manage },
+                    ]
             }
         ]
     }

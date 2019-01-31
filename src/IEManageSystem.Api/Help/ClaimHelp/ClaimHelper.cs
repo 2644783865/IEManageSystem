@@ -1,4 +1,5 @@
 ﻿using Abp.Dependency;
+using IEManageSystem.ApiAuthorization;
 using IEManageSystem.Entitys.Authorization.LoginManagers;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace IEManageSystem.Api.Help.ClaimHelp
         /// <returns></returns>
         public List<Claim> CreateClaimsForIdentityUser(IdentityUser user)
         {
-            return  new List<Claim>
+            List<Claim> claims = new List<Claim>
                     {
                             ClaimBuilder.Id.CreateClaim(user.Id.ToString()),
                             ClaimBuilder.UserName.CreateClaim(user.UserName ?? ""),
@@ -49,6 +50,13 @@ namespace IEManageSystem.Api.Help.ClaimHelp
                             ClaimBuilder.Name.CreateClaim(user.Name ?? ""),
                             ClaimBuilder.Phone.CreateClaim(user.Phone ?? ""),
                     };
+
+            // Api域权限Claim
+            user.Permissions.ForEach(e => {
+                claims.Add(new Claim(ApiAuthorizationExtensions.ApiPermissiionClaimName, e));
+            });
+
+            return claims;
         }
 
         /// <summary>

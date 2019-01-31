@@ -33,6 +33,48 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
             _permissionManager = permissionManager;
         }
 
+        /// <summary>
+        /// 获取可以访问的域
+        /// </summary>
+        /// <param name="userPermissionNames"></param>
+        /// <returns></returns>
+        public List<UserScopeAccessAuthority> GetUserScopeAccessAuthorities(List<string> userPermissionNames)
+        {
+            List<Permission> userPermissions = _permissionManager.PermissionRepository.GetAllList(e => userPermissionNames.Contains(e.Name));
+
+            return GetUserScopeAccessAuthorities(userPermissions);
+        }
+
+        /// <summary>
+        /// 获取可以访问的域
+        /// </summary>
+        /// <param name="userPermissions"></param>
+        /// <returns></returns>
+        public List<UserScopeAccessAuthority> GetUserScopeAccessAuthorities(List<Permission> userPermissions)
+        {
+            Expression<Func<ApiScope, object>>[] propertySelectors = new Expression<Func<ApiScope, object>>[] {
+                e => e.ApiManageScope,
+                e => e.ApiManageScope.ApiScopePermissions,
+                e => e.ApiQueryScope,
+                e => e.ApiQueryScope.ApiScopePermissions
+            };
+            var apiScopes = ApiScopeRepository.GetAllIncluding(propertySelectors).ToList();
+
+            List<UserScopeAccessAuthority> userScopeAccessAuthoritys = new List<UserScopeAccessAuthority>();
+            List<int> permissionIds = userPermissions.Select(e => e.Id).ToList();
+            foreach (var apiScope in apiScopes)
+            {
+                bool manageAuthority = apiScope.ApiManageScope.ApiScopePermissions.Any(e => permissionIds.Contains(e.PermissionId));
+                bool queryAuthority = apiScope.ApiQueryScope.ApiScopePermissions.Any(e => permissionIds.Contains(e.PermissionId));
+
+                if (manageAuthority || queryAuthority) {
+                    userScopeAccessAuthoritys.Add(new UserScopeAccessAuthority(apiScope.Name, manageAuthority, queryAuthority));
+                }
+            }
+
+            return userScopeAccessAuthoritys;
+        }
+
         public void Register(string name, string displayName = null)
         {
             if (!ApiScopeRepository.GetAll().Any(e => e.Name == name))
