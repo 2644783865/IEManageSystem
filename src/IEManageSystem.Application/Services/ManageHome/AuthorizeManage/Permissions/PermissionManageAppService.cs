@@ -8,12 +8,15 @@ using System.Linq;
 using IEManageSystem.Dtos.Core;
 using System.Threading.Tasks;
 using IEManageSystem.Entitys.Authorization.Permissions;
+using IEManageSystem.Help.IEApiScopeHelp;
+using IEManageSystem.ApiAuthorization;
 
 namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions
 {
+    [ApiAuthorization(IEApiScopeProvider.PermissionManage)]
     public class PermissionManageAppService: IEManageSystemAppServiceBase, IPermissionManageAppService
     {
-        public PermissionManager _permissionManager { get; set; }
+        private PermissionManager _permissionManager { get; set; }
 
         public PermissionManageAppService(
             PermissionManager permissionManager)
@@ -21,6 +24,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions
             _permissionManager = permissionManager;
         }
 
+        [ApiAuthorizationQuery]
         public async Task<GetPermissionsOutput> GetPermissions(GetPermissionsInput input)
         {
             var permissions = _permissionManager.PermissionRepository.GetAll()
@@ -30,6 +34,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions
             return new GetPermissionsOutput() { Permissions = AutoMapper.Mapper.Map<List<PermissionDto>>(permissions) };
         }
 
+        [ApiAuthorizationQuery]
         public async Task<GetPermissionNumOutput> GetPermissionNum(GetPermissionNumInput input)
         {
             int num = _permissionManager.PermissionRepository.GetAll()

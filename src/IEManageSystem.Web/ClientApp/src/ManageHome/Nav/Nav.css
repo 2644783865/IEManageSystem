@@ -23,11 +23,11 @@
         display: -webkit-flex;
         display: flex;
     }
-    .navbar_css .navbar-collapse span {
+    .navbar_css .navbar-collapse>span {
         margin-left: auto;
         margin-right: 1.25rem;
     }
-    .navbar_css .navbar-collapse button span {
+    .navbar_css .navbar-collapse>button>span {
         margin-left: auto;
         margin-right:0.3rem;
     }

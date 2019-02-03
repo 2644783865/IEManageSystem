@@ -26,6 +26,7 @@ export default class Resource extends React.Component
 {
 	// props.title  标题
 	// props.describes  资源描述
+	// props.resources  可选初始化资源
 	// props.freshenResources()  刷新数据接口
 	// props.addResource()  添加数据接口
 	// props.updateResource()  更新数据接口
@@ -52,7 +53,7 @@ export default class Resource extends React.Component
 
 		this.state = 
 		{
-			resources:new Array(),
+			resources:this.props.resources == undefined ? [] : this.props.resources,
 			resourceNum: 0,
 			curResource: null,
 			pageNum: 0,
@@ -63,8 +64,6 @@ export default class Resource extends React.Component
 		this._resourceOperationClick = this._resourceOperationClick.bind(this);
 		this._resourceUpdate = this._resourceUpdate.bind(this);
 		this._searchClick = this._searchClick.bind(this);
-
-		this.props.freshenResources(this.pageIndex, this.pageSize);
 	}
 
 	componentDidMount(){

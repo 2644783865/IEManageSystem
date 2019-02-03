@@ -8,6 +8,8 @@ using IEManageSystem.Services.ManageHome.OAuthManage.ClientManages;
 using IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.Dto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using IEManageSystem.ApiAuthorization;
+using IEManageSystem.Help.IEApiScopeHelp;
 
 namespace IEManageSystem.Api.Controllers.ManageHome.OAuthManage
 {

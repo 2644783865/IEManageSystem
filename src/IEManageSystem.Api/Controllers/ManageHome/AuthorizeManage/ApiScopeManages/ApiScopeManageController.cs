@@ -1,40 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Abp.Domain.Repositories;
 using IEManageSystem.Api.Controllers.ManageHome.AuthorizeManage.ApiScopeManages.Dto;
+using IEManageSystem.Api.Help;
 using IEManageSystem.Api.Models;
 using IEManageSystem.ApiAuthorization;
 using IEManageSystem.ApiAuthorization.DomainModel.ApiScopes;
+using IEManageSystem.ApiAuthorization.DomainModel.ApiSingles;
+using IEManageSystem.Help.IEApiScopeHelp;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IEManageSystem.Api.Controllers.ManageHome.AuthorizeManage.ApiScopeManages
 {
     [Route("api/[controller]/[action]")]
+    [ApiAuthorization(IEApiScopeProvider.ApiScopeManage)]
     public class ApiScopeManageController : IEManageSystemControllerBase
     {
-        private ApiScopeManager _apiScopeManager { get; set; }
+        private IRepository<ApiSingle> _apiSingleRepository { get; set; }
 
         public ApiScopeManageController(
-            ApiScopeManager apiScopeManager)
+            IRepository<ApiSingle> apiSingleRepository)
         {
-            _apiScopeManager = apiScopeManager;
+            _apiSingleRepository = apiSingleRepository;
         }
 
-        /// <summary>
-        /// 获取当前用户可以访问的域
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
         [HttpPost]
-        public async Task<ActionResult<ApiResultDataModel>> GetUserScopeAccessAuthorities([FromBody]GetUserScopeAccessAuthoritiesInput input)
+        [ApiAuthorizationQuery]
+        public async Task<ActionResult<ApiResultDataModel>> GetApiScopeUrls([FromBody]GetApiScopeUrlsInput input)
         {
-            List<string> permissionNames = User.Claims.Where(e => e.Type == ApiAuthorizationExtensions.ApiPermissiionClaimName).Select(e => e.Value).ToList();
+            Expression<Func<ApiSingle, object>>[] propertySelectors = new Expression<Func<ApiSingle, object>>[] {
+                e => e.ApiSingleActions
+            };
+            var apiSingles = _apiSingleRepository.GetAllIncluding(propertySelectors).Where(e => e.ApiScopeId == input.Id).ToList();
 
-            var userScopeAccessAuthorities = _apiScopeManager.GetUserScopeAccessAuthorities(permissionNames);
+            List<GetApiScopeUrlsUrl> urls = new List<GetApiScopeUrlsUrl>();
+            apiSingles.ForEach(apiSingle => {
+                apiSingle.ApiSingleActions.ToList().ForEach(action =>
+                {
+                    urls.Add(new GetApiScopeUrlsUrl() {
+                        Url = IEUrlHelper.CreateUrl(apiSingle.Name, action.Name),
+                        IsQueryUrl = action.IsQueryAction
+                    });
+                });
+            });
 
-            return new ApiResultDataModel() { Value = new GetUserScopeAccessAuthoritiesOutput() { UserScopeAccessAuthoritys = userScopeAccessAuthorities } };
+            return new ApiResultDataModel(true, new GetApiScopeUrlsOutput() { Urls = urls });
         }
     }
 }

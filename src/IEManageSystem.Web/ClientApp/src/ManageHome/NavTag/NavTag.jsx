@@ -55,6 +55,7 @@ export default class NavTag extends React.Component{
         let lis = new Array();
         lis.push(<li key={0} className="nav-item">
                         <NavLink className="nav-link nav-tag-noactive" to="/ManageHome/Index" activeClassName="active">
+                            <span className="oi oi-home" title="icon name" aria-hidden="true"></span>
                             后台首页
                         </NavLink>
                     </li>);

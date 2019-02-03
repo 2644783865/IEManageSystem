@@ -11,9 +11,12 @@ using System.Linq.Expressions;
 using UtilityAction.Other;
 using IEManageSystem.IdentityServer.Entitys.Clients;
 using IEManageSystem.IdentityServer.Entitys.Clients.ClientGrantTypes;
+using IEManageSystem.Help.IEApiScopeHelp;
+using IEManageSystem.ApiAuthorization;
 
 namespace IEManageSystem.Services.ManageHome.OAuthManage.ClientManages
 {
+    [ApiAuthorization(IEApiScopeProvider.Client)]
     public class ClientManageAppService: IEManageSystemAppServiceBase, IClientManageAppService
     {
         private ClientManager _clientManager { get; set; }
@@ -35,6 +38,7 @@ namespace IEManageSystem.Services.ManageHome.OAuthManage.ClientManages
             _clientGrantTypeGroupManager = clientGrantTypeGroupManager;
         }
 
+        [ApiAuthorizationQuery]
         public async Task<GetClientsOutput> GetClients(GetClientsInput input)
         {
             Expression<Func<Client, object>>[] clientLoad = new Expression<Func<Client, object>>[] {
@@ -71,6 +75,7 @@ namespace IEManageSystem.Services.ManageHome.OAuthManage.ClientManages
             return new GetClientsOutput() { Clients = clientDtos };
         }
 
+        [ApiAuthorizationQuery]
         public async Task<GetClientNumOutput> GetClientNum(GetClientNumInput input)
         {
             int clientNum = FiltersClients(_clientRepository.GetAll(), input.SearchKey).Count();

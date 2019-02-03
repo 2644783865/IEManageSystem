@@ -10,9 +10,12 @@ using IEManageSystem.Entitys.Authorization.Roles;
 using System.Linq.Expressions;
 using IEManageSystem.Help.Exceptions;
 using IEManageSystem.Entitys.Authorization.Permissions;
+using IEManageSystem.ApiAuthorization;
+using IEManageSystem.Help.IEApiScopeHelp;
 
 namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Admins
 {
+    [ApiAuthorization(IEApiScopeProvider.AdminManage)]
     public class AdminManageAppService: IEManageSystemAppServiceBase, IAdminManageAppService
     {
         private AdminManager _adminManager { get; set; }
@@ -31,6 +34,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Admins
             _permissionManager = permissionManager;
         }
 
+        [ApiAuthorizationQuery]
         public async Task<GetAdminsOutput> GetAdmins(GetAdminsInput input)
         {
             var admins = _adminManager.GetAdmins().Where(e => (string.IsNullOrEmpty(input.SearchKey) || e.Name.Contains(input.SearchKey))).Skip((input.PageIndex - 1) * input.PageSize).Take(input.PageSize).ToList();
@@ -38,6 +42,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Admins
             return new GetAdminsOutput() { Admins = AutoMapper.Mapper.Map<List<UserDto>>(admins) };
         }
 
+        [ApiAuthorizationQuery]
         public async Task<GetAdminNumOutput> GetAdminNum(GetAdminNumInput input)
         {
             int num = _adminManager.GetAdmins().Where(e => (string.IsNullOrEmpty(input.SearchKey) || e.Name.Contains(input.SearchKey))).Count();
@@ -83,6 +88,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Admins
             return new DeleteAdminOutput();
         }
 
+        [ApiAuthorizationQuery]
         public async Task<GetAdminRolesOutput> GetAdminRoles(GetAdminRolesInput input)
         {
             Expression<Func<User, object>>[] propertySelectors = new Expression<Func<User, object>>[] {
@@ -138,6 +144,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Admins
             return new RemoveRoleOutput();
         }
 
+        [ApiAuthorizationQuery]
         public async Task<GetPermissionsOutput> GetPermissions(GetPermissionsInput input)
         {
             Expression<Func<User, object>>[] adminProperty = new Expression<Func<User, object>>[] {

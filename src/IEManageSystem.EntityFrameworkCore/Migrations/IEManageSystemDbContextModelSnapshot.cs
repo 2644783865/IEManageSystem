@@ -85,7 +85,7 @@ namespace IEManageSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ApiScopeId");
+                    b.Property<int>("ApiScopeId");
 
                     b.Property<string>("Name");
 
@@ -264,7 +264,8 @@ namespace IEManageSystem.Migrations
                 {
                     b.HasOne("IEManageSystem.ApiAuthorization.DomainModel.ApiScopes.ApiScope")
                         .WithMany("ApiSingles")
-                        .HasForeignKey("ApiScopeId");
+                        .HasForeignKey("ApiScopeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("IEManageSystem.ApiAuthorization.DomainModel.ApiSingles.ApiSingleAction", b =>

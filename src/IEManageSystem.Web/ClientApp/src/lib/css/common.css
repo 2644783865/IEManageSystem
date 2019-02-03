@@ -45,3 +45,79 @@
 .hide{
     display: none;
 }
+
+@keyframes rotate90
+{
+    from {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg); /* IE 9 */
+        -webkit-transform: rotate(0deg); /* Safari and Chrome */
+    }
+    to {
+        transform: rotate(90deg);
+        -ms-transform: rotate(90deg); /* IE 9 */
+        -webkit-transform: rotate(90deg); /* Safari and Chrome */
+    }
+}
+ 
+@-webkit-keyframes rotate90 /* Safari 与 Chrome */
+{
+    from {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg); /* IE 9 */
+        -webkit-transform: rotate(0deg); /* Safari and Chrome */
+    }
+    to {
+        transform: rotate(90deg);
+        -ms-transform: rotate(90deg); /* IE 9 */
+        -webkit-transform: rotate(90deg); /* Safari and Chrome */
+    }
+}
+
+.rotate90{
+    animation: rotate90 0.5s linear 0s 1 normal;
+    /* Safari 与 Chrome: */
+    -webkit-animation: rotate90 0.5s linear 0s 1 normal;
+
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari and Chrome */
+}
+
+@keyframes rotate-90
+{
+    from {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg); /* IE 9 */
+        -webkit-transform: rotate(0deg); /* Safari and Chrome */
+    }
+    to {
+        transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg); /* IE 9 */
+        -webkit-transform: rotate(-90deg); /* Safari and Chrome */
+    }
+}
+ 
+@-webkit-keyframes rotate-90 /* Safari 与 Chrome */
+{
+    from {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg); /* IE 9 */
+        -webkit-transform: rotate(0deg); /* Safari and Chrome */
+    }
+    to {
+        transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg); /* IE 9 */
+        -webkit-transform: rotate(-90deg); /* Safari and Chrome */
+    }
+}
+
+.rotate-90{
+    animation: rotate-90 0.5s linear 0s 1 normal;
+    /* Safari 与 Chrome: */
+    -webkit-animation: rotate-90 0.5s linear 0s 1 normal;
+
+    transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg); /* IE 9 */
+    -webkit-transform: rotate(-90deg); /* Safari and Chrome */
+}

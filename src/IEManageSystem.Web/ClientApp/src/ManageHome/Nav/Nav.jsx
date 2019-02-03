@@ -59,7 +59,15 @@ export default class Nav extends React.Component
 
             let menuItemLi = 
                 <li key={item} className="nav-item">
-                    <a href="javascript:void(0)" onClick={()=>{this.props.topLevelMenusSelect(this.props.topLevelMenus[item])}} className={className} to={this.props.topLevelMenus[item].url}>{this.props.topLevelMenus[item].text}</a>
+                    <a href="javascript:void(0)" onClick={()=>{this.props.topLevelMenusSelect(this.props.topLevelMenus[item])}} className={className} to={this.props.topLevelMenus[item].url}>
+                        {
+                            this.props.topLevelMenus[item].icon != undefined &&
+                            <span className={ "oi padding-right-10 " + this.props.topLevelMenus[item].icon } title="icon name" aria-hidden="true"></span>
+                        }
+                        <span>
+                            {this.props.topLevelMenus[item].text}
+                        </span>
+                    </a>
                 </li>;
 
             menuItemLis.push(menuItemLi);

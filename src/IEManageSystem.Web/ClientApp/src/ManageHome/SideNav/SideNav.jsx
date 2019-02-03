@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { Route, NavLink, Link, Switch } from 'react-router-dom';
 
 import './SideNav.css'
-import MenuProvider from "../MenuProvider.js";
 
 import DefaultAvatar from 'images/default_avatar.png';
 
@@ -47,18 +46,39 @@ export default class SideNav extends React.Component
         let menuItems = menu.menuItems;
         for(let item in menuItems)
         {
+            let icon = <span className={
+                                "oi padding-right-10 " + 
+                                (menuItems[item].icon == undefined ? "oi-tags leftmenu-icon-hide":menuItems[item].icon)
+                            } title="icon name" aria-hidden="true">
+                        </span>
+            let text = <span>{" " + menuItems[item].text}</span>;
+
             let navLink = null;
             let childMenus = null;
             if(menuItems[item].menuItems != undefined && menuItems[item].menuItems.length > 0)
             {
                 navLink = 
-                    <a href="javascript:void(0)" className="text-white" to={menuItems[item].url} onClick={
+                    <a href="javascript:void(0)" className="text-white" onClick={
                         event=>{
-                            $(event.target).parent().children("div").slideToggle(1000);
+                            // 隐藏所有子菜单
+                            let lis = $(event.target).parents("ul").eq(0).children("li");
+                            lis.children("div").hide(500);
+                            lis.children("a").find("span.oi-chevron-right").removeClass("rotate90");
+
+                            let div = $(event.target).parents("li").eq(0).children("div");
+                            if(div.css("display") == "none"){
+                                div.show(500);
+                                $(event.target).find("span.oi-chevron-right").addClass("rotate90");
+                            }
+                            else{
+                                div.hide(500);
+                                $(event.target).find("span.oi-chevron-right").removeClass("rotate90");
+                            }
                         }
                     }>
-                        <span className="oi oi-chevron-right" title="icon name" aria-hidden="true"></span>
-                        {" " + menuItems[item].text}
+                        {icon}
+                        {text}
+                        <span className="oi oi-chevron-right ml-auto" title="icon name" aria-hidden="true"></span>
                     </a>;
 
                 childMenus = this.createMenusIteration(menuItems[item]);
@@ -66,8 +86,8 @@ export default class SideNav extends React.Component
             else{
                 navLink = 
                     <NavLink activeClassName="leftmenu_css_li_active" className="text-white" to={menuItems[item].url}>
-                        <span className="oi oi-chevron-right leftmenu-icon-hide" title="icon name" aria-hidden="true"></span>
-                        {" " + menuItems[item].text}
+                        {icon}
+                        {text}
                     </NavLink>;
             }
 

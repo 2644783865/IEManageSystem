@@ -13,11 +13,15 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes
 
         Task<GetManagePermissionsOutput> GetManagePermissions(GetManagePermissionsInput input);
 
+        Task<GetManagePermissionsByNameOutput> GetManagePermissionsByName(GetManagePermissionsByNameInput input);
+
         Task<AddManagePermissionOutput> AddManagePermission(AddManagePermissionInput input);
 
         Task<RemoveManagePermissionOutput> RemoveManagePermission(RemoveManagePermissionInput input);
 
         Task<GetQueryPermissionsOutput> GetQueryPermissions(GetQueryPermissionsInput input);
+
+        Task<GetQueryPermissionsByNameOutput> GetQueryPermissionsByName(GetQueryPermissionsByNameInput input);
 
         Task<AddQueryPermissionOutput> AddQueryPermission(AddQueryPermissionInput input);
 

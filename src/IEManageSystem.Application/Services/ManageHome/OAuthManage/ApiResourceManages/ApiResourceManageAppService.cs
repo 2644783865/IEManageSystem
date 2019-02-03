@@ -9,9 +9,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IEManageSystem.Help.IEApiScopeHelp;
+using IEManageSystem.ApiAuthorization;
 
 namespace IEManageSystem.Services.ManageHome.OAuthManage.ApiResourceManages
 {
+    [ApiAuthorization(IEApiScopeProvider.ApiResource)]
     public class ApiResourceManageAppService: IEManageSystemAppServiceBase, IApiResourceManageAppService
     {
         private IIEIdentityServerRepository<ApiResource> _apiResourceRepository { get; set; }
@@ -33,6 +36,7 @@ namespace IEManageSystem.Services.ManageHome.OAuthManage.ApiResourceManages
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [ApiAuthorizationQuery]
         public async Task<GetApiResourceOutput> GetApiResources(GetApiResourceInput input)
         {
             var includes = new System.Linq.Expressions.Expression<Func<ApiResource, object>>[] {
@@ -64,6 +68,7 @@ namespace IEManageSystem.Services.ManageHome.OAuthManage.ApiResourceManages
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [ApiAuthorizationQuery]
         public async Task<GetApiResourceNumOutput> GetApiResourceNum(GetApiResourceNumInput input)
         {
             int resourceNum = FiltersResources(_apiResourceRepository.GetAll(), input.SearchKey).Count();

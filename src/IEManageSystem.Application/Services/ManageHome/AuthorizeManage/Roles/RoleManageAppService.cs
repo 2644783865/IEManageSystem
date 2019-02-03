@@ -11,9 +11,12 @@ using Abp.Domain.Repositories;
 using IEManageSystem.Entitys.Authorization;
 using System.Linq.Expressions;
 using IEManageSystem.Entitys.Authorization.Permissions;
+using IEManageSystem.Help.IEApiScopeHelp;
+using IEManageSystem.ApiAuthorization;
 
 namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Roles
 {
+    [ApiAuthorization(IEApiScopeProvider.RoleManage)]
     public class RoleManageAppService : IEManageSystemAppServiceBase, IRoleManageAppService
     {
         private RoleManager _roleManager { get; set; }
@@ -29,6 +32,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Roles
             _permissionRepository = permissionRepository;
         }
 
+        [ApiAuthorizationQuery]
         public async Task<GetRolesOutput> GetRoles(GetRolesInput input)
         {
             var roles = _roleManager.GetRoles().Where(e => (string.IsNullOrEmpty(input.SearchKey) || e.Name.Contains(input.SearchKey))).Skip((input.PageIndex - 1) * input.PageSize).Take(input.PageSize).ToList();
@@ -36,6 +40,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Roles
             return new GetRolesOutput() { Roles = AutoMapper.Mapper.Map<List<RoleDto>>(roles) };
         }
 
+        [ApiAuthorizationQuery]
         public async Task<GetRoleNumOutput> GetRoleNum(GetRoleNumInput input)
         {
             int num = _roleManager.GetRoles().Where(e => (string.IsNullOrEmpty(input.SearchKey) || e.Name.Contains(input.SearchKey))).Count();
@@ -73,6 +78,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Roles
             return new UpdateRoleOutput();
         }
 
+        [ApiAuthorizationQuery]
         public async Task<GetPermissionsOutput> GetPermissions(GetPermissionsInput input)
         {
             Expression<Func<Role, object>>[] propertySelectors = new Expression<Func<Role, object>>[] {

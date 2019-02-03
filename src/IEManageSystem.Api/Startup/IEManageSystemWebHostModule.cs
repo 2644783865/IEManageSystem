@@ -15,7 +15,8 @@ using Microsoft.AspNetCore.Mvc;
 using IEManageSystem.ApiAuthorization.DomainModel.ApiSingles;
 using IEManageSystem.ApiAuthorization;
 using Abp.Domain.Uow;
-using IEManageSystem.Api.Help.IEApiScopeHelp;
+using IEManageSystem.Help.IEApiScopeHelp;
+using IEManageSystem.Api.Help;
 
 namespace IEManageSystem.Api.Startup
 {
@@ -60,7 +61,7 @@ namespace IEManageSystem.Api.Startup
                                  // 
                                  selector.AttributeRouteModel = new AttributeRouteModel(
                                      new RouteAttribute(
-                                         $"api/{controllerModel.ControllerName}/{action.ActionName}"
+                                         IEUrlHelper.CreateUrl(controllerModel.ControllerName, action.ActionName)
                                      )
                                  );
                              }
@@ -90,6 +91,8 @@ namespace IEManageSystem.Api.Startup
                 unitOfWorkManager.Current.SaveChanges();
 
                 apiAuthorizationConfiguration.RegisterApiSingle(typeof(IEManageSystemWebHostModule).GetAssembly());
+
+                apiAuthorizationConfiguration.RegisterApiSingle(typeof(IEManageSystemApplicationModule).GetAssembly());
 
                 unitOfWork.Complete();
             }

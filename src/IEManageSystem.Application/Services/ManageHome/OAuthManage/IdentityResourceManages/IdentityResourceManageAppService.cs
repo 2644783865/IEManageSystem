@@ -9,9 +9,12 @@ using IEManageSystem.IdentityServer.Repositories;
 using IdentityServer4.EntityFramework.Entities;
 using System.Linq.Expressions;
 using IEManageSystem.IdentityServer.Entitys.IdentityResources;
+using IEManageSystem.Help.IEApiScopeHelp;
+using IEManageSystem.ApiAuthorization;
 
 namespace IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages
 {
+    [ApiAuthorization(IEApiScopeProvider.IdentityResource)]
     public class IdentityResourceManageAppService: IEManageSystemAppServiceBase, IIdentityResourceManageAppService
     {
         private IIEIdentityServerRepository<IdentityResource> _IdentityResourceRepository { get; set; }
@@ -33,6 +36,7 @@ namespace IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [ApiAuthorizationQuery]
         public async Task<GetIdentityResourceOutput> GetIdentityResources(GetIdentityResourceInput input)
         {
             var includes = new System.Linq.Expressions.Expression<Func<IdentityResource, object>>[] {
@@ -66,6 +70,7 @@ namespace IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [ApiAuthorizationQuery]
         public async Task<GetIdentityResourceNumOutput> GetIdentityResourceNum(GetIdentityResourceNumInput input)
         {
             int resourceNum = FiltersResources(_IdentityResourceRepository.GetAll(), input.SearchKey).Count();

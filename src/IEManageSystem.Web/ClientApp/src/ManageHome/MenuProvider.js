@@ -8,17 +8,20 @@ const menus =
         id: "Personal",
         text: "个人中心",
         url: "/ManageHome/Personal",
+        icon: "oi-person",
         default: true,
         menuItems: [
             {
                 id:"UserInfo",
                 text: "用户信息",
-                url: "/ManageHome/Personal/UserInfo"
+                url: "/ManageHome/Personal/UserInfo",
+                icon: "oi-person"
             },
             {
                 id:"UserSecurity",
                 text: "账号安全",
-                url: "/ManageHome/Personal/UserSecurity"
+                url: "/ManageHome/Personal/UserSecurity",
+                icon: "oi-envelope-closed"
             },
             {
                 id:"Other",
@@ -55,12 +58,14 @@ const menus =
         id: "AuthorizeManage",
         text: "站点授权管理",
         url: "/ManageHome/AuthorizeManage",
+        icon: "oi-shield",
         menuItems: 
         [
             {
                 id:"Admin",
                 text: "管理员",
                 url: "/ManageHome/AuthorizeManage/Admin",
+                icon: "oi-people",
                 menuItems: [
                     {
                         id:"AdminManage",
@@ -122,6 +127,7 @@ const menus =
                 id:"Permission",
                 text: "权限管理",
                 url: "/ManageHome/AuthorizeManage/Permission",
+                icon: "oi-cog",
                 accessScope:
                     [
                         { scopeName: ApiScope.AuthorizeManage.PermissionManage, scopeNodeType: ApiScopeNodeType.manage },
@@ -129,12 +135,13 @@ const menus =
             },
             {
                 id:"ApiScopeManage",
-                text: "Api域管理",
+                text: "功能域管理",
                 url: "/ManageHome/AuthorizeManage/ApiScopeManage",
+                icon: "oi-globe",
                 menuItems: [
                     {
                         id:"ApiScopePermission",
-                        text: "Api域权限管理",
+                        text: "功能域权限管理",
                         url: "/ManageHome/AuthorizeManage/ApiScopePermission",
                         accessScope:
                             [
@@ -143,9 +150,23 @@ const menus =
                             ]
                     },
                     {
-                        id:"ApiScopeApi",
-                        text: "Api域Api管理",
-                        url: "/ManageHome/AuthorizeManage/ApiScopeApi"
+                        id:"ApiScopeUrl",
+                        text: "功能域Url管理",
+                        url: "/ManageHome/AuthorizeManage/ApiScopeUrl",
+                        accessScope:
+                            [
+                                { scopeName: ApiScope.AuthorizeManage.ApiScopeManage, scopeNodeType: ApiScopeNodeType.query },
+                            ]
+                    },
+                    {
+                        id:"MenuPermission",
+                        text:"菜单权限",
+                        url:"/ManageHome/AuthorizeManage/MenuPermission",
+                        icon:"oi-menu",
+                        accessScope:
+                            [
+                                { scopeName: ApiScope.AuthorizeManage.ApiScopeManage, scopeNodeType: ApiScopeNodeType.query },
+                            ]
                     }
                 ]
             },
@@ -204,6 +225,8 @@ export default class MenuProvider
 		menu.text = menuData.text;
 		menu.url = menuData.url;
         menu.default = menuData.default;
+        menu.icon = menuData.icon;
+        menu.accessScope = menuData.accessScope;
 		if(menuData.menuItems != undefined && menuData.menuItems != null){
 			for(let item in menuData.menuItems){
 				menu.menuItems.push(this.createMenu(menuData.menuItems[item]));
@@ -212,6 +235,10 @@ export default class MenuProvider
 
 		return menu;
 	}
+
+    getmainMenu(){
+        return mainMenu;
+    }
 
     getTopLevelMenus()
     {

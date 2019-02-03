@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Repositories;
+using IEManageSystem.ApiAuthorization;
 using IEManageSystem.ApiAuthorization.DomainModel;
 using IEManageSystem.ApiAuthorization.DomainModel.ApiScopes;
 using IEManageSystem.ApiAuthorization.DomainModel.ApiSingles;
@@ -6,6 +7,7 @@ using IEManageSystem.Dtos.ApiAuthorization;
 using IEManageSystem.Dtos.Core;
 using IEManageSystem.Entitys.Authorization;
 using IEManageSystem.Entitys.Authorization.Permissions;
+using IEManageSystem.Help.IEApiScopeHelp;
 using IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.Dto;
 using System;
 using System.Collections.Generic;
@@ -16,6 +18,7 @@ using System.Threading.Tasks;
 
 namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes
 {
+    [ApiAuthorization(IEApiScopeProvider.ApiScopeManage)]
     public class ApiScopeManageAppService: IEManageSystemAppServiceBase, IApiScopeManageAppService
     {
         private ApiScopeManager _apiScopeManager { get; set; }
@@ -36,6 +39,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes
             _apiSingleManager = apiSingleManager;
         }
 
+        [ApiAuthorizationQuery]
         public async Task<GetApiScopesOutput> GetApiScopes(GetApiScopesInput input)
         {
             return new GetApiScopesOutput() {
@@ -43,6 +47,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes
             };
         }
 
+        [ApiAuthorizationQuery]
         public async Task<GetManagePermissionsOutput> GetManagePermissions(GetManagePermissionsInput input)
         {
             Expression<Func<ApiScope, object>>[] propertySelectors = new Expression<Func<ApiScope, object>>[] {
@@ -63,6 +68,29 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes
             };
         }
 
+        [ApiAuthorizationQuery]
+        public async Task<GetManagePermissionsByNameOutput> GetManagePermissionsByName(GetManagePermissionsByNameInput input)
+        {
+            Expression<Func<ApiScope, object>>[] propertySelectors = new Expression<Func<ApiScope, object>>[] {
+                e => e.ApiManageScope.ApiScopePermissions
+            };
+
+            var apiScope = _apiScopeManager.GetApiScopes(propertySelectors).FirstOrDefault(e => e.Name == input.Name);
+            if (apiScope == null)
+            {
+                return new GetManagePermissionsByNameOutput() { ErrorMessage = "未找到Api域" };
+            }
+
+            var permissionIds = apiScope.ApiManageScope.ApiScopePermissions.Select(e => e.PermissionId).ToList();
+
+            var apiScopePermissions = _permissionRepository.GetAllList(e => permissionIds.Contains(e.Id));
+
+            return new GetManagePermissionsByNameOutput()
+            {
+                Permissions = AutoMapper.Mapper.Map<List<PermissionDto>>(apiScopePermissions)
+            };
+        }
+
         public async Task<AddManagePermissionOutput> AddManagePermission(AddManagePermissionInput input)
         {
             _apiScopeManager.AddManagePermission(input.ApiScopeId, input.PermissionId);
@@ -77,6 +105,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes
             return new RemoveManagePermissionOutput();
         }
 
+        [ApiAuthorizationQuery]
         public async Task<GetQueryPermissionsOutput> GetQueryPermissions(GetQueryPermissionsInput input)
         {
             Expression<Func<ApiScope, object>>[] propertySelectors = new Expression<Func<ApiScope, object>>[] {
@@ -99,6 +128,29 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes
             };
         }
 
+        [ApiAuthorizationQuery]
+        public async Task<GetQueryPermissionsByNameOutput> GetQueryPermissionsByName(GetQueryPermissionsByNameInput input)
+        {
+            Expression<Func<ApiScope, object>>[] propertySelectors = new Expression<Func<ApiScope, object>>[] {
+                e => e.ApiQueryScope.ApiScopePermissions
+            };
+
+            var apiScope = _apiScopeManager.GetApiScopes(propertySelectors).FirstOrDefault(e => e.Name == input.Name);
+            if (apiScope == null)
+            {
+                return new GetQueryPermissionsByNameOutput() { ErrorMessage = "未找到Api域" };
+            }
+
+            var permissionIds = apiScope.ApiQueryScope.ApiScopePermissions.Select(e => e.PermissionId).ToList();
+
+            var apiScopePermissions = _permissionRepository.GetAllList(e => permissionIds.Contains(e.Id));
+
+            return new GetQueryPermissionsByNameOutput()
+            {
+                Permissions = AutoMapper.Mapper.Map<List<PermissionDto>>(apiScopePermissions)
+            };
+        }
+
         public async Task<AddQueryPermissionOutput> AddQueryPermission(AddQueryPermissionInput input)
         {
             _apiScopeManager.AddQueryPermission(input.ApiScopeId, input.PermissionId);
@@ -113,6 +165,7 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes
             return new RemoveQueryPermissionOutput();
         }
 
+        [ApiAuthorizationQuery]
         public async Task<GetApiSinglesOutput> GetApiSingles(GetApiSinglesInput input)
         {
             Expression<Func<ApiScope, object>>[] propertySelectors = new Expression<Func<ApiScope, object>>[] {

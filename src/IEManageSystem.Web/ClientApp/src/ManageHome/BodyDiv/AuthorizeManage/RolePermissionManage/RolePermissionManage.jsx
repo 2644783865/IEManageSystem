@@ -27,7 +27,7 @@ export default class RolePermissionManage extends React.Component
         this.deleteResource = this.deleteResource.bind(this);
         this.freshenResources = this.freshenResources.bind(this);
 
-        this.tabs = [{ value: "value", text: "管理员角色" }];
+        this.tabs = [{ value: "value", text: "角色权限" }];
         
         this.getPreviewrResources();
         this.getSelectResources();
@@ -108,7 +108,7 @@ export default class RolePermissionManage extends React.Component
             success: function(data){
                 if(data.isSuccess == true)
                 {
-                    this.resourceChildList.resetResources(data.value.roles);
+                    this.resourceChildList.resetResources(data.value.permissions);
                 }
             }.bind(this)
         });

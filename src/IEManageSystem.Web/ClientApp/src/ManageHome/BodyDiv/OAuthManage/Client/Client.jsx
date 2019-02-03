@@ -70,6 +70,11 @@ export default class Client extends React.Component
 	    this.getIdentityResources();
 	    this.getApiResources();
 	}
+	
+	componentDidMount(){
+		this.getResourceList(this.resourceChild.pageIndex, this.resourceChild.pageSize, this.resourceChild.searchKey);
+        this.getResourceNum(this.resourceChild.searchKey);
+	}
 
 	// 提交回调
 	submitBackcall(data){

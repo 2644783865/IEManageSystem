@@ -8,6 +8,8 @@ import AdminRoleManage from "./AdminRoleManage/AdminRoleManage.jsx";
 import AdminPermissionManage from "./AdminPermissionManage/AdminPermissionManage.jsx";
 import RoleManage from "./RoleManage/RoleManage.jsx";
 import RolePermissionManage from "./RolePermissionManage/RolePermissionManage.jsx";
+import ApiScopeUrl from "./ApiScopeUrl/ApiScopeUrl.jsx";
+import MenuPermission from "./MenuPermission/MenuPermission.jsx";
 
 export default class AuthorizeManage extends React.Component
 {
@@ -28,6 +30,8 @@ export default class AuthorizeManage extends React.Component
                     <Route path="/ManageHome/AuthorizeManage/AdminPermissionManage" component={AdminPermissionManage} />
                     <Route path="/ManageHome/AuthorizeManage/RoleManage" component={RoleManage} />
                     <Route path="/ManageHome/AuthorizeManage/RolePermissionManage" component={RolePermissionManage} />
+                    <Route path="/ManageHome/AuthorizeManage/ApiScopeUrl" component={ApiScopeUrl} />
+                    <Route path="/ManageHome/AuthorizeManage/MenuPermission" component={MenuPermission} />
                 </Switch>
             </div>
         );
