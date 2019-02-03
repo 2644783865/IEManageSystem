@@ -64,8 +64,8 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
             List<int> permissionIds = userPermissions.Select(e => e.Id).ToList();
             foreach (var apiScope in apiScopes)
             {
-                bool manageAuthority = apiScope.ApiManageScope.ApiScopePermissions.Any(e => permissionIds.Contains(e.PermissionId));
-                bool queryAuthority = apiScope.ApiQueryScope.ApiScopePermissions.Any(e => permissionIds.Contains(e.PermissionId));
+                bool manageAuthority = apiScope.ApiManageScope.IsAllowAccess(userPermissions);
+                bool queryAuthority = apiScope.ApiQueryScope.IsAllowAccess(userPermissions);
 
                 if (manageAuthority || queryAuthority) {
                     userScopeAccessAuthoritys.Add(new UserScopeAccessAuthority(apiScope.Name, manageAuthority, queryAuthority));

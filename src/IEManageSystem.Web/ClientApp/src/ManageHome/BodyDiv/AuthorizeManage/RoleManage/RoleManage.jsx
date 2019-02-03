@@ -11,9 +11,9 @@ export default class RoleManage extends React.Component
 
 		this.describes=[
 			{name:"id", isId:true, isAddShow:false, isEditShow:false, isLookupShow:true},
-			{name:"name", text:"角色名称", isName:true, isShowOnList:true, isEditShow:false, isAddShow:false},
-			{name:"displayName", text:"角色显示名称", isShowOnList:true, isEditShow:false, isAddShow:false},
-			{name:"describe", text:"角色描述", isShowOnList:true, isEditShow:false, isAddShow:false},
+			{name:"name", text:"角色名称", isName:true, isShowOnList:true, isEditCanEdit:false},
+			{name:"displayName", text:"角色显示名称", isShowOnList:true},
+			{name:"describe", text:"角色描述", isShowOnList:true},
 		];
 
 		this.resourceChild = null;

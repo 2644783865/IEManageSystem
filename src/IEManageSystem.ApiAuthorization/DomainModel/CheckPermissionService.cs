@@ -39,7 +39,16 @@ namespace IEManageSystem.ApiAuthorization.DomainModel
                 e => e.ApiSingleActions
             };
             var apiSingle = _apiSingleManager.ApiSingleRepository.GetAllIncluding(apiSingleSelectors).FirstOrDefault(e => e.Name == apiSingleName);
+
+            if (apiSingle == null) {
+                return false;
+            }
+
             var apiSingleAction = apiSingle.ApiSingleActions.FirstOrDefault(e => e.Name == actionName);
+
+            if (apiSingleAction == null) {
+                return false;
+            }
 
             // 获取要访问的Api域
             Expression<Func<ApiScope, object>>[] apiScopeSelectors = new Expression<Func<ApiScope, object>>[]
@@ -51,27 +60,15 @@ namespace IEManageSystem.ApiAuthorization.DomainModel
             };
             var apiScope = _apiScopeManager.ApiScopeRepository.GetAllIncluding(apiScopeSelectors).FirstOrDefault(e => e.ApiSingles.Where(ie => ie.Id == apiSingle.Id).Any());
 
-            List<int> permissionIds = new List<int>();
+            // 获取拥有的权限
+            var permissions = _permissionRepository.GetAllList(e => permissionNames.Contains(e.Name)).ToList();
+
             if (apiSingleAction.IsQueryAction == true)
             {
-                permissionIds = apiScope.ApiQueryScope.ApiScopePermissions.Select(e => e.PermissionId).ToList();
-            }
-            else
-            {
-                permissionIds = apiScope.ApiManageScope.ApiScopePermissions.Select(e => e.PermissionId).ToList();
+                return apiScope.ApiQueryScope.IsAllowAccess(permissions);
             }
 
-            var permissions = _permissionRepository.GetAllList(e => permissionIds.Contains(e.Id)).ToList();
-
-            foreach (var permissionName in permissionNames)
-            {
-                if (permissions.Where(e => e.Name == permissionName).Any())
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            return apiScope.ApiManageScope.IsAllowAccess(permissions);
         }
     }
 }

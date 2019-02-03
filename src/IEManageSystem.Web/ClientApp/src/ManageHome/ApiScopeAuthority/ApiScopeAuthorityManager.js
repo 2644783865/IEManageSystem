@@ -15,7 +15,7 @@ export default class ApiScopeAuthorityManager
         let postData = {};
 
         $.ajax({
-            url: "/api/ApiScopeManage/GetUserScopeAccessAuthorities",
+            url: "/api/User/GetUserScopeAccessAuthorities",
             type: 'post',
             data: JSON.stringify(postData),
             contentType: 'application/json',
@@ -25,13 +25,32 @@ export default class ApiScopeAuthorityManager
                 if (data.isSuccess == true) {
                     userScopeAccessAuthorities = data.value.userScopeAccessAuthoritys;
                 }
-            }.bind(this)
+            }.bind(this),
         });
+    }
+
+    isAllowAccessMenu(menu)
+    {
+        // 如果没有指定需求的域，则允许访问
+        if(menu.accessScope == undefined){
+            return true;
+        }
+
+        for(let item in menu.accessScope)
+        {
+            // 如果需求的域中其中一个没有访问权限，则没有这个菜单的访问权限
+            if(this.isAllowAccessScope(menu.accessScope[item].scopeName, menu.accessScope[item].scopeNodeType) == false)
+            {
+                return false;   
+            }
+        }
+
+        return true;
     }
 
     isAllowAccessScope(scopeName, scopeNodeType)
     {
-        for (var item in userScopeAccessAuthorities)
+        for(let item in userScopeAccessAuthorities)
         {
             if (userScopeAccessAuthorities[item].scopeName != scopeName)
             {

@@ -79,6 +79,8 @@ namespace IEManageSystem.Web.Startup
 
             services.AddSession();
 
+            services.AddApiAuthorization();
+
             // 配置IdentityService
             services
                 .ConfigurationIdentityServer(_configurationRoot.GetConnectionString("IdentityServer"))

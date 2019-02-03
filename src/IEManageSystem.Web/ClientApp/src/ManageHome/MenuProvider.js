@@ -1,5 +1,6 @@
 import { ApiScope } from "./ApiScopeAuthority/ApiScope.js";
 import { ApiScopeNodeType } from "./ApiScopeAuthority/ApiScopeNodeType.js";
+import ApiScopeAuthorityManager from "./ApiScopeAuthority/ApiScopeAuthorityManager.js";
 import Menu from "./Menu.js";
 
 const menus = 
@@ -22,35 +23,6 @@ const menus =
                 text: "账号安全",
                 url: "/ManageHome/Personal/UserSecurity",
                 icon: "oi-envelope-closed"
-            },
-            {
-                id:"Other",
-                text: "其他",
-                url: "/ManageHome/Personal/Other",
-                menuItems: [
-                    {
-                        id:"Other1",
-                        text: "其他功能1",
-                        url: "/ManageHome/Personal/Other1"
-                    },
-                    {
-                        id:"Other2",
-                        text: "其他功能2",
-                        url: "/ManageHome/Personal/Other2"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        id: "UserManage",
-        text: "用户管理",
-        url: "/ManageHome/UserManage",
-        menuItems: [
-            {
-                id:"GeneralUser",
-                text: "普通用户管理",
-                url: "/ManageHome/UserManage/GeneralUser"
             }
         ]
     },
@@ -214,7 +186,11 @@ export default class MenuProvider
 {
 	constructor(){
         if(mainMenu == null){
+            this.apiScopeAuthorityManager = new ApiScopeAuthorityManager();
             mainMenu = this.createMenu({ menuItems: menus });
+            if(mainMenu == null){
+                mainMenu = new Menu();
+            }
         }
 	}
 
@@ -227,11 +203,28 @@ export default class MenuProvider
         menu.default = menuData.default;
         menu.icon = menuData.icon;
         menu.accessScope = menuData.accessScope;
-		if(menuData.menuItems != undefined && menuData.menuItems != null){
-			for(let item in menuData.menuItems){
-				menu.menuItems.push(this.createMenu(menuData.menuItems[item]));
-			}
-		}
+
+        // 如果不允许访问这个菜单，则访问null
+        if(this.apiScopeAuthorityManager.isAllowAccessMenu(menu) == false){
+            return null;
+        }
+
+        // 如果菜单为节点菜单，则返回这个菜单
+        if(menuData.menuItems == undefined || menuData.menuItems == null){
+            return menu;
+        }
+
+        for(let item in menuData.menuItems){
+            let childMenu = this.createMenu(menuData.menuItems[item]);
+            if(childMenu != null){
+                menu.menuItems.push(childMenu);
+            }
+        }
+
+        // 如果菜单不为节点菜单，但又没有子项，返回null
+        if(menu.menuItems.length == 0){
+            return null;
+        }
 
 		return menu;
 	}

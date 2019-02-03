@@ -61,7 +61,7 @@ namespace IEManageSystem.Api.Controllers.Users
 
             var userScopeAccessAuthorities = _apiScopeManager.GetUserScopeAccessAuthorities(permissionNames);
 
-            return new ApiResultDataModel() { Value = new GetUserScopeAccessAuthoritiesOutput() { UserScopeAccessAuthoritys = userScopeAccessAuthorities } };
+            return new ApiResultDataModel(true, new GetUserScopeAccessAuthoritiesOutput() { UserScopeAccessAuthoritys = userScopeAccessAuthorities });
         }
     }
 }

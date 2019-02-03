@@ -13,6 +13,29 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes.AuthorizationNod
     {
         public ICollection<ApiScopePermission> ApiScopePermissions { get; set; }
 
+        public bool IsAllowAccess(Permission permission)
+        {
+            if (permission.Name == Permission.SuperPermission.Name) {
+                return true;
+            }
+
+            return ApiScopePermissions.Any(e => e.PermissionId == permission.Id);
+        }
+
+        public bool IsAllowAccess(List<Permission> permissions)
+        {
+            var superPermissionName = Permission.SuperPermission.Name;
+
+            foreach (var permission in permissions)
+            {
+                if (IsAllowAccess(permission)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public void AddPermission(Permission permission)
         {
             if (ApiScopePermissions == null)

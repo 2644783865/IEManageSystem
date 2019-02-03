@@ -1,13 +1,7 @@
 ﻿
+// Api域，需要域服务器上的域保持一致
 export const ApiScope =
     {
-        Personal: {
-            UserInfo: "Personal.UserInfo",
-            UserSecurity: "Personal.UserSecurity"
-        },
-        UserManage: {
-            UserManage: "UserManage.UserManage"
-        },
         AuthorizeManage: {
             AdminManage: "AuthorizeManage.AdminManage",
             RoleManage: "AuthorizeManage.RoleManage",

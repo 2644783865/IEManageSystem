@@ -43,7 +43,7 @@
     flex-grow:1;
 }
 .weather-icon>img{
-    width: 60%;
+    width: 50%;
 }
 .weather-cityandtext{
     font-size: 0.5em;
