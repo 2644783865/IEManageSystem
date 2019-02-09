@@ -6,10 +6,14 @@ import './NavTag.css'
 import MenuProvider from "../MenuProvider.js";
 
 class NavTag extends React.Component{
-    constructor(props) {
+    constructor(props) 
+    {
         super(props);
 
         this.menuItems = new Array();
+
+        this._leftClick = this._leftClick.bind(this);
+        this._rightClick = this._rightClick.bind(this);
     }
 
     componentWillMount(){
@@ -48,6 +52,35 @@ class NavTag extends React.Component{
         }
 
         this.menuItems.push(menuItem);
+    }
+
+    _rightClick(event){
+        var parentWidth = $("#navTagTab").width();
+        var left = $("#navTagTab").children("div").position().left;
+        var width = $("#navTagTab").children("div").width();
+
+        left = left - 250;
+
+        if(-left + parentWidth > width){
+            $("#navTagTab").children("div").css("left", -(width-parentWidth)+"px");
+        }
+        else{
+            $("#navTagTab").children("div").css("left", left+"px");
+        }
+    }
+
+    _leftClick(event){
+        var parentWidth = $("#navTagTab").width();
+        var left = $("#navTagTab").children("div").position().left;
+        var width = $("#navTagTab").children("div").width();
+
+        left = left + 250;
+        if(left > 0){
+            $("#navTagTab").children("div").css("left", 0+"px");
+        }
+        else{
+            $("#navTagTab").children("div").css("left", left+"px");
+        }
     }
 
     render()
@@ -105,18 +138,30 @@ class NavTag extends React.Component{
 
         return (
             <div className="w-100 nav-tag d-flex padding-right-10">
-                <button className="btn btn-outline-secondary">
+                <button className="btn btn-outline-secondary"
+                    onClick={this._leftClick}>
                     <span className="oi oi-arrow-thick-left" title="icon name" aria-hidden="true"></span>
                 </button>
-                <div className="flex-grow-1 flex-shrink-1">
-                    <ul className="nav nav-tabs">
-                        {lis}
-                    </ul>
+                <div id="navTagTab" className="tag flex-grow-1 flex-shrink-1">
+                    <div>
+                        <ul className="nav nav-tabs">
+                            {lis}
+                        </ul>
+                    </div>
                 </div>
-                <button className="btn btn-outline-secondary">
+                <button className="btn btn-outline-secondary"
+                    onClick={this._rightClick}>
                     <span className="oi oi-arrow-thick-right" title="icon name" aria-hidden="true"></span>
                 </button>
-                <button className="btn nav-tag-closeall">
+                <button className="btn nav-tag-closeall"
+                    onClick={
+                        ()=>{
+                            this.menuItems = [];
+                            $("#navTagTab").children("div").css("left", 0+"px");
+                            this.props.history.push("/ManageHome/Index"); 
+                        }
+                    }
+                >
                     <span className="padding-right-10">关闭所有</span>
                     <span className="oi oi-circle-x" title="icon name" aria-hidden="true"></span>
                 </button>

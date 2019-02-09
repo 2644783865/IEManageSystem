@@ -55,7 +55,6 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Admins
             var admin = await _adminManager.CreateAdmin(input.UserName, input.Password, input.Name, input.TenantId);
 
             admin.EmailAddress = input.EmailAddress;
-            admin.HeadSculpture = input.HeadSculpture;
             admin.Phone = input.Phone;
 
             return new CreateAdminOutput();
@@ -76,7 +75,6 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Admins
             admin.EmailAddress = input.EmailAddress;
             admin.Name = input.Name;
             admin.Phone = input.Phone;
-            admin.HeadSculpture = input.HeadSculpture;
 
             return new UpdateAdminOutput();
         }

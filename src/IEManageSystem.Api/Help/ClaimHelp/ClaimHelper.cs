@@ -58,22 +58,5 @@ namespace IEManageSystem.Api.Help.ClaimHelp
 
             return claims;
         }
-
-        /// <summary>
-        /// 用Claims生成IdentityUser
-        /// </summary>
-        /// <param name="claims"></param>
-        /// <returns></returns>
-        public IdentityUser CreateIdentityUserForClaims(List<Claim> claims)
-        {
-            return new IdentityUser()
-                    {
-                        Id = Convert.ToInt32(claims.FirstOrDefault(e => e.Type == ClaimBuilder.Id.ClaimName)?.Value ?? "-1"),
-                        EmailAddress = claims.FirstOrDefault(e => e.Type == ClaimBuilder.EmailAddress.ClaimName)?.Value,
-                        Name = claims.FirstOrDefault(e => e.Type == ClaimBuilder.Name.ClaimName)?.Value,
-                        Phone = claims.FirstOrDefault(e => e.Type == ClaimBuilder.Phone.ClaimName)?.Value,
-                        UserName = claims.FirstOrDefault(e => e.Type == ClaimBuilder.UserName.ClaimName)?.Value
-                    };
-        }
     }
 }

@@ -4,6 +4,15 @@
     font-size: 1rem;
 }
 
+.nav-tag .tag{
+}
+
+.nav-tag .tag>div{
+    display: inline-block;
+    position: relative;
+    min-width: 100%;
+}
+
 .nav-tag ul{
     white-space:nowrap;
     flex-wrap: nowrap;

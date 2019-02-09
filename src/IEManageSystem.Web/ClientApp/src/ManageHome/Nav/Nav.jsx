@@ -27,11 +27,20 @@ export default class Nav extends React.Component
 
     // 获取用户名称
     getUserName(){
-        $.get("/api/User/GetIdentity",function(data){
-            if(data.isSuccess == true){
-                this.setState({userName:data.value.identityUser.name});
-            }
-        }.bind(this));
+        let postData = {};
+
+        $.ajax({
+            url: "/api/User/GetIdentity",
+            type: 'post',
+            data: JSON.stringify(postData),
+            contentType: 'application/json',
+            dataType: 'json',
+            success: function (data) {
+                if (data.isSuccess == true) {
+                    this.setState({userName:data.value.identityUser.name});
+                }
+            }.bind(this),
+        });
     }
 
     // 退出登录单击

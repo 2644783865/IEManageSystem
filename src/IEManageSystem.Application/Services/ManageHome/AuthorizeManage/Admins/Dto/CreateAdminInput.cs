@@ -41,11 +41,6 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Admins.Dto
         [Phone]
         public string Phone { get; set; }
 
-        /// <summary>
-        /// 头像
-        /// </summary>
-        public string HeadSculpture { get; set; }
-
         public int? TenantId { get; set; }
     }
 }

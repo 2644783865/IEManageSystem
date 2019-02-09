@@ -10,7 +10,7 @@ namespace IEManageSystem.Api.Help.ClaimHelp
     {
         public static ClaimBuilder Id {
             get {
-                return new ClaimBuilder("Id");
+                return new ClaimBuilder(ClaimTypes.NameIdentifier);
             }
         }
 

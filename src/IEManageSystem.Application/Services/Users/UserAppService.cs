@@ -8,6 +8,7 @@ using Abp.Runtime.Session;
 using IEManageSystem.Entitys.Authorization;
 using IEManageSystem.Entitys.Authorization.LoginManagers;
 using IEManageSystem.Entitys.Authorization.Users;
+using IEManageSystem.Help.Exceptions;
 using IEManageSystem.Services.Users.Dto;
 
 namespace IEManageSystem.Services.Users
@@ -28,12 +29,42 @@ namespace IEManageSystem.Services.Users
             _UserRepository = userRepository;
         }
 
+        public async Task<SetUserInfoOutput> SetUserInfo(SetUserInfoInput input)
+        {
+            var user = await _UserRepository.FirstOrDefaultAsync((int)(_AbpSession.UserId ?? 0));
+            if (user == null)
+            {
+                throw new MessageException("未找到当前用户的信息");
+            }
+
+            if (string.IsNullOrEmpty(input.Name)) {
+                user.Name = input.Name;
+            }
+
+            if (string.IsNullOrEmpty(input.EmailAddress))
+            {
+                user.EmailAddress = input.EmailAddress;
+            }
+
+            if (string.IsNullOrEmpty(input.Phone))
+            {
+                user.Phone = input.Phone;
+            }
+
+            if (string.IsNullOrEmpty(input.HeadSculpture))
+            {
+                user.SetHeadSculpture(input.HeadSculpture);
+            }
+
+            return new SetUserInfoOutput();
+        }
+
         public async Task<GetIdentityOutput> GetIdentity(GetIdentityInput input)
         {
             var user = await _UserRepository.FirstOrDefaultAsync((int)(_AbpSession.UserId ?? 0));
             if (user == null)
             {
-                return new GetIdentityOutput() { ErrorMessage = "未找到当前用户的信息" };
+                throw new MessageException("未找到当前用户的信息");
             }
 
             IdentityUser identityUser = new IdentityUser() {

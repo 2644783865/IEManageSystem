@@ -7,17 +7,24 @@ export default class UserInfo extends React.Component
     constructor(props)
     {
         super(props);
+
+        this.state = {
+        	userName:"",
+        	emailAddress:"",
+        	name:"",
+        	phone:"",
+        };
     }
 
     render()
     {
         return(
-            <div className="row d-flex">
+            <div className="row d-flex userinfo">
 	            <div className="card w-25">
 	                <div className="w-100">
 	                    <div className="inputfile-img">
 	                        <button className="btn btn-outline-info text-white">修改头像</button>
-	                        <input type="file" id="customFile"/>
+	                        <input name="headSculpture" type="file"/>
 	                    </div>
 	                    <img className="card-img-top w-100" src={require('./img_avatar.png')} alt="Card image" />
 	                </div>
@@ -29,28 +36,61 @@ export default class UserInfo extends React.Component
 	            <div className="card text-white flex-grow-1">
 	                <div className="card-body">
 	                    <div className="input-group mb-3 w-75 float-left">
-	                        <div className="input-group-prepend">
+	                        <div className="input-group-prepend userinfo-lable">
 	                          <span className="input-group-text">账号</span>
 	                        </div>
-	                        <input type="text" className="form-control" placeholder="AccountNo" readonly="readonly"/>
+	                        <input value={this.state.userName} name="userName" type="text" className="form-control" placeholder="AccountNo" readonly="readonly"
+	                        	onChange={
+	                        		(event)=>{
+	                        			this.setState({userName:event.target.value});
+	                        		}
+	                        	}
+	                        />
 	                        <div className="input-group-append">
 	                            <button className="btn btn-outline-secondary" type="button">修改登录密码</button>
 	                        </div>
 	                    </div>
 	                    <div className="input-group mb-3">
-	                        <div className="input-group-prepend">
-	                          <span className="input-group-text">手机号</span>
+	                        <div className="input-group-prepend userinfo-lable">
+	                          <span className="input-group-text">昵称</span>
 	                        </div>
-	                        <input type="text" className="form-control" placeholder="PhoneNum"/>
+	                        <input value={this.state.name} name="name" type="text" className="form-control" placeholder="请输入昵称"
+	                        	onChange={
+	                        		(event)=>{
+	                        			this.setState({name:event.target.value});
+	                        		}
+	                        	}
+	                        />
 	                        <div className="input-group-append">
 	                          <button className="btn btn-info" type="button">编辑</button>  
 	                        </div>
 	                    </div>
 	                    <div className="input-group mb-3">
-	                        <div className="input-group-prepend">
+	                        <div className="input-group-prepend userinfo-lable">
+	                          <span className="input-group-text">手机号</span>
+	                        </div>
+	                        <input value={this.state.phone} name="phone" type="text" className="form-control" placeholder="请输入手机号"
+	                        	onChange={
+	                        		(event)=>{
+	                        			this.setState({phone:event.target.value});
+	                        		}
+	                        	}
+	                        />
+	                        <div className="input-group-append">
+	                          <button className="btn btn-info" type="button">编辑</button>  
+	                        </div>
+	                    </div>
+	                    <div className="input-group mb-3">
+	                        <div className="input-group-prepend userinfo-lable">
 	                          <span className="input-group-text">邮箱号</span>
 	                        </div>
-	                        <input type="text" className="form-control" placeholder="电子邮箱"/>
+	                        <input value={this.state.emailAddress} name="emailAddress" type="text" className="form-control" placeholder="请输入电子邮箱"
+	                        	onChange={
+	                        		(event)=>{
+	                        			this.setState({emailAddress:event.target.value});
+	                        		}
+	                        	}
+	                        />
 	                        <div className="input-group-append">
 	                          <button className="btn btn-info" type="button">编辑</button>  
 	                        </div>

@@ -31,10 +31,5 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Admins.Dto
         /// </summary>
         [Phone]
         public string Phone { get; set; }
-
-        /// <summary>
-        /// 头像
-        /// </summary>
-        public string HeadSculpture { get; set; }
     }
 }

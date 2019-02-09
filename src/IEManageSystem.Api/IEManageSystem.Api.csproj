@@ -11,16 +11,12 @@
   <ItemGroup>
     <Compile Remove="Help\IdentityServerHelp\IdentityResources\**" />
     <Compile Remove="Help\TokenHelp\**" />
-    <Compile Remove="wwwroot\**" />
     <Content Remove="Help\IdentityServerHelp\IdentityResources\**" />
     <Content Remove="Help\TokenHelp\**" />
-    <Content Remove="wwwroot\**" />
     <EmbeddedResource Remove="Help\IdentityServerHelp\IdentityResources\**" />
     <EmbeddedResource Remove="Help\TokenHelp\**" />
-    <EmbeddedResource Remove="wwwroot\**" />
     <None Remove="Help\IdentityServerHelp\IdentityResources\**" />
     <None Remove="Help\TokenHelp\**" />
-    <None Remove="wwwroot\**" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -67,6 +63,8 @@
     <ProjectReference Include="..\IEManageSystem.Application\IEManageSystem.Application.csproj" />
     <ProjectReference Include="..\IEManageSystem.EntityFrameworkCore\IEManageSystem.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\IEManageSystem.IdentityServerEF\IEManageSystem.IdentityServerEF.csproj" />
-    <ProjectReference Include="..\UtilityAction\UtilityAction.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 </Project>

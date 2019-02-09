@@ -32,24 +32,6 @@ namespace IEManageSystem.Api.Controllers.Users
         }
 
         /// <summary>
-        /// 获取身份信息
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public async Task<ActionResult<ApiResultDataModel<GetIdentityOutput>>> GetIdentity()
-        {
-            if (ValidateModel() == false)
-            {
-                return new ApiResultDataModel<GetIdentityOutput>(_ValidateModelErrors);
-            }
-
-            IdentityUser identityUser = new ClaimHelper().CreateIdentityUserForClaims(User.Claims.ToList());
-
-
-            return new ApiResultDataModel<GetIdentityOutput>(new GetIdentityOutput() { IdentityUser = identityUser });
-        }
-
-        /// <summary>
         /// 获取当前用户可以访问的域
         /// </summary>
         /// <param name="input"></param>

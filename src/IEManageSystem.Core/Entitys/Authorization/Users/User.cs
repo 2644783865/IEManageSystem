@@ -1,11 +1,14 @@
 ﻿using Abp.Domain.Entities;
+using IEManageSystem.Configuration;
 using IEManageSystem.Entitys.Authorization.Roles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.IO;
 using System.Linq;
 using System.Text;
+using UtilityAction.FileHandle;
 
 namespace IEManageSystem.Entitys.Authorization.Users
 {
@@ -56,7 +59,7 @@ namespace IEManageSystem.Entitys.Authorization.Users
         /// <summary>
         /// 头像
         /// </summary>
-        public string HeadSculpture { get; set; }
+        public string HeadSculpture { get; protected set; }
 
         /// <summary>
         /// 权限
@@ -70,6 +73,23 @@ namespace IEManageSystem.Entitys.Authorization.Users
             UserRole userRole = new UserRole(this, role);
 
             UserRoles.Add(userRole);
+        }
+
+        public void SetHeadSculpture(string base64Image)
+        {
+            string rootPath = AppConfigurations.RootPath;
+            string webPath = $"//Sonarqube//{Id}.png";
+
+            if (!string.IsNullOrEmpty(HeadSculpture))
+            {
+                File.Delete(rootPath + HeadSculpture);
+            }
+
+            string path = rootPath + webPath;
+
+            ImageHandle.SaveImage(base64Image, path);
+
+            HeadSculpture = webPath;
         }
     }
 }
