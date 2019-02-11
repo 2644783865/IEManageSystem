@@ -20,6 +20,7 @@ export default class Nav extends React.Component
         this.state = 
         {
             userName:null,              // 用户名称
+            headSculpture:"",
         };
 
         this.getUserName();
@@ -37,7 +38,7 @@ export default class Nav extends React.Component
             dataType: 'json',
             success: function (data) {
                 if (data.isSuccess == true) {
-                    this.setState({userName:data.value.user.name});
+                    this.setState({userName:data.value.user.name, headSculpture:data.value.user.headSculpture});
                 }
             }.bind(this),
         });
@@ -105,7 +106,8 @@ export default class Nav extends React.Component
                     </ul>
                     <span className="text-white float-right">
                         你好，{this.state.userName}
-                        <img className="rounded-circle navbar-avatar" src={DefaultAvatar} alt="Card image" />
+                        <img className="rounded-circle navbar-avatar" 
+                            src={(this.state.headSculpture == null || this.state.headSculpture == "") ? DefaultAvatar:this.state.headSculpture} alt="Card image" />
                     </span>
                     <button id="outLogin" data-url="/api/Account/Logout" onClick={this.logoutClick} type="button" className="btn btn-info float-right" >
                         <span className="oi oi-account-logout" title="icon name" aria-hidden="true"></span>

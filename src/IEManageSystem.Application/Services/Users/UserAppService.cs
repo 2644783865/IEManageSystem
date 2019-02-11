@@ -38,23 +38,28 @@ namespace IEManageSystem.Services.Users
                 throw new MessageException("未找到当前用户的信息");
             }
 
-            if (string.IsNullOrEmpty(input.Name)) {
+            if (!string.IsNullOrEmpty(input.Name)) {
                 user.Name = input.Name;
             }
 
-            if (string.IsNullOrEmpty(input.EmailAddress))
+            if (!string.IsNullOrEmpty(input.EmailAddress))
             {
                 user.EmailAddress = input.EmailAddress;
             }
 
-            if (string.IsNullOrEmpty(input.Phone))
+            if (!string.IsNullOrEmpty(input.Phone))
             {
                 user.Phone = input.Phone;
             }
 
-            if (string.IsNullOrEmpty(input.HeadSculpture))
+            if (!string.IsNullOrEmpty(input.HeadSculpture))
             {
                 user.SetHeadSculpture(input.HeadSculpture);
+            }
+
+            if (!string.IsNullOrEmpty(input.PersonSignature))
+            {
+                user.PersonSignature = input.PersonSignature;
             }
 
             return new SetUserInfoOutput();

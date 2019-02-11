@@ -57,6 +57,11 @@ namespace IEManageSystem.Entitys.Authorization.Users
         public string Phone { get; set; }
 
         /// <summary>
+        /// 个性签名
+        /// </summary>
+        public string PersonSignature { get; set; }
+
+        /// <summary>
         /// 头像
         /// </summary>
         public string HeadSculpture { get; protected set; }
@@ -78,7 +83,7 @@ namespace IEManageSystem.Entitys.Authorization.Users
         public void SetHeadSculpture(string base64Image)
         {
             string rootPath = AppConfigurations.RootPath;
-            string webPath = $"//Sonarqube//{Id}.png";
+            string webPath = $"\\Sonarqube\\{Id}.png";
 
             if (!string.IsNullOrEmpty(HeadSculpture))
             {

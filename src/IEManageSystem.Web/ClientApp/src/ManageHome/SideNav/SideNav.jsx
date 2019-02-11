@@ -18,6 +18,7 @@ export default class SideNav extends React.Component
         this.state = 
         {
             userName:null,              // 用户名称
+            headSculpture:"",
         };
 
 		this.getUserName();
@@ -35,7 +36,7 @@ export default class SideNav extends React.Component
             dataType: 'json',
             success: function (data) {
                 if (data.isSuccess == true) {
-                    this.setState({userName:data.value.user.name});
+                    this.setState({userName:data.value.user.name, headSculpture:data.value.user.headSculpture});
                 }
             }.bind(this),
         });
@@ -124,7 +125,8 @@ export default class SideNav extends React.Component
             <div className="leftmenu_css">
                 <div className="leftmenu-avatar">
                     <div className="d-flex justify-content-center">
-                        <img className="rounded-circle img-thumbnail w-50 h-50" src={DefaultAvatar} alt="Card image" />
+                        <img className="rounded-circle img-thumbnail w-50 h-50" 
+                            src={(this.state.headSculpture == null || this.state.headSculpture == "") ? DefaultAvatar:this.state.headSculpture} alt="Card image" />
                     </div>
                     <p>你好，{this.state.userName}</p>
                 </div>

@@ -26,6 +26,11 @@ namespace IEManageSystem.Services.Users.Dto
         public string Phone { get; set; }
 
         /// <summary>
+        /// 个性签名
+        /// </summary>
+        public string PersonSignature { get; set; }
+
+        /// <summary>
         /// 头像
         /// </summary>
         public string HeadSculpture { get; set; }

@@ -185,6 +185,8 @@ namespace IEManageSystem.Migrations
                         .IsRequired()
                         .HasMaxLength(60);
 
+                    b.Property<string>("PersonSignature");
+
                     b.Property<string>("Phone");
 
                     b.Property<int?>("TenantId");
