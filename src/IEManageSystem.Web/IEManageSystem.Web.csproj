@@ -10,6 +10,7 @@
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
   </PropertyGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -42,7 +43,6 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="wwwroot\css\Consent\" />
-    <Folder Include="wwwroot\js\Other\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 </Project>

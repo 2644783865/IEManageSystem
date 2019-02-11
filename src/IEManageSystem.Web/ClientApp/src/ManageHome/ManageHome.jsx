@@ -1,9 +1,7 @@
 import 'bootstrap';
 import 'bootstrapcss';
 import 'bootstrapcssicon';
-
 import 'commoncss';
-
 import 'cookie';
 
 import React from 'react';

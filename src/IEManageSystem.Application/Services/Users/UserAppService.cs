@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Abp.Auditing;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
+using IEManageSystem.Dtos.Core;
 using IEManageSystem.Entitys.Authorization;
 using IEManageSystem.Entitys.Authorization.LoginManagers;
 using IEManageSystem.Entitys.Authorization.Users;
@@ -59,7 +60,7 @@ namespace IEManageSystem.Services.Users
             return new SetUserInfoOutput();
         }
 
-        public async Task<GetIdentityOutput> GetIdentity(GetIdentityInput input)
+        public async Task<GetUserInfoOutput> GetUserInfo(GetUserInfoInput input)
         {
             var user = await _UserRepository.FirstOrDefaultAsync((int)(_AbpSession.UserId ?? 0));
             if (user == null)
@@ -67,16 +68,7 @@ namespace IEManageSystem.Services.Users
                 throw new MessageException("未找到当前用户的信息");
             }
 
-            IdentityUser identityUser = new IdentityUser() {
-                Id = user.Id,
-                EmailAddress = user.EmailAddress,
-                Name = user.Name,
-                Phone = user.Phone,
-                UserName = user.UserName,
-                TenantId = user.TenantId,
-            };
-
-            return new GetIdentityOutput() { IdentityUser = identityUser };
+            return new GetUserInfoOutput() { User = AutoMapper.Mapper.Map<UserDto>(user) };
         }
     }
 }

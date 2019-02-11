@@ -1,0 +1,56 @@
+html,body {
+            margin: 0;
+            width:100%;
+            height: 100%;
+
+            /*超出body范围部分隐藏*/
+            overflow: hidden;
+        }
+
+        .content{
+            height: 100%;
+            display: flex;
+            background-image: url(./background.jpg);
+            background-size: 100%, auto;
+            background-repeat:no-repeat;
+            background-position:bottom;
+        }
+        .content>div{
+            display: flex;
+        }
+        .content>div>div{
+            float: left;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        .authority{
+            background-color: rgba(0,0,0,0.2);
+            color: #ffffff;
+        }
+        .authority-list{
+            display: inline-block;
+        }
+        .authority-list>div{
+            float: left;
+        }
+        .authority-list li{
+            background-color: rgba(0,0,0,0.5);
+            color: #ffffff;
+        }
+        .authority-btn
+        {
+            padding: 20px;    
+        }
+        .authority-btn>div{
+            float: left;
+            display: flex;
+        }
+        .authority-btn button:first-child
+        {
+            margin-left: auto;
+            margin-right: 20px;
+        }
+        .authority-btn button:last-child
+        {
+            margin-right: auto;
+        }

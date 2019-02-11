@@ -28,14 +28,14 @@ export default class SideNav extends React.Component
         let postData = {};
 
         $.ajax({
-            url: "/api/User/GetIdentity",
+            url: "/api/User/GetUserInfo",
             type: 'post',
             data: JSON.stringify(postData),
             contentType: 'application/json',
             dataType: 'json',
             success: function (data) {
                 if (data.isSuccess == true) {
-                    this.setState({userName:data.value.identityUser.name});
+                    this.setState({userName:data.value.user.name});
                 }
             }.bind(this),
         });
