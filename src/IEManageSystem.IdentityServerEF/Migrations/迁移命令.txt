@@ -1,0 +1,2 @@
+﻿Update-Database -c IEPersistedGrantDbContext
+Update-Database -c IEConfigurationDbContext
