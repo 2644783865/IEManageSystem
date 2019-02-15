@@ -102,3 +102,7 @@ a:hover{
 .padding-top-10{
     padding-top: 0.625rem !important;
 }
+
+.nav-bottom {
+    font-size:0.7rem;
+}

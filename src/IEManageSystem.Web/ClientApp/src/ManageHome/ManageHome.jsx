@@ -16,67 +16,74 @@ import NavTag from './NavTag/NavTag.jsx';
 
 require('./ManageHome.css');
 
-class UserHome extends React.Component
-{
+class UserHome extends React.Component {
     constructor(props) {
         super(props);
 
         this.menuProvider = new MenuProvider();
 
         this.topLevelMenus = this.menuProvider.getTopLevelMenus();
-        
+
         this.state = {
-            selectTopMenu:this.menuProvider.getDefaultTopLevelMenu(),
-            selectSideMenu:null,
+            selectTopMenu: this.menuProvider.getDefaultTopLevelMenu(),
+            selectSideMenu: null,
         };
 
         this.topLevelMenusSelect = this.topLevelMenusSelect.bind(this);
         this.sideMenuSelect = this.sideMenuSelect.bind(this);
     }
 
-    componentDidMount(){
+    componentDidMount() {
     }
 
-    topLevelMenusSelect(menu)
-    {
+    topLevelMenusSelect(menu) {
         this.setState({
-            selectTopMenu:menu
+            selectTopMenu: menu
         });
     }
 
-    sideMenuSelect(menu){
+    sideMenuSelect(menu) {
         this.setState({
-            selectSideMenu:menu
+            selectSideMenu: menu
         });
     }
 
-    render()
-    {
+    render() {
         return (
-        <div className="manage-home d-flex flex-column h-100">
-            <Nav topLevelMenus={this.topLevelMenus} selectTopMenu={this.state.selectTopMenu} topLevelMenusSelect={this.topLevelMenusSelect} />
-            <div className="d-flex flex-grow-1 w-100">
-                <div className="d-flex w-100">
-                    <div className="col-md-2 h-100 padding-0">
-                        <SideNav selectTopMenu={this.state.selectTopMenu} sideMenuSelect={this.sideMenuSelect} />
-                    </div>
-                    <div className="col-md-10 h-100 padding-0 d-flex flex-column">
-                        <div className="flex-shrink-0">
-                            <Route path="/ManageHome/:menuId?/:menuItemId?" component={NavTag} />
+            <div className="manage-home d-flex flex-column h-100">
+                <Nav topLevelMenus={this.topLevelMenus} selectTopMenu={this.state.selectTopMenu} topLevelMenusSelect={this.topLevelMenusSelect} />
+                <div className="d-flex flex-grow-1 w-100">
+                    <div className="d-flex w-100">
+                        <div className="col-md-2 h-100 padding-0">
+                            <SideNav selectTopMenu={this.state.selectTopMenu} sideMenuSelect={this.sideMenuSelect} />
                         </div>
-                        <div className="bodydiv-parent d-flex flex-grow-1 w-100">
-                            <Route path="/ManageHome/:menuId?/:menuItemId?" component={BodyDiv} />
+                        <div className="col-md-10 h-100 padding-0 d-flex flex-column">
+                            <div className="flex-shrink-0">
+                                <Route path="/ManageHome/:menuId?/:menuItemId?" component={NavTag} />
+                            </div>
+                            <div className="bodydiv-parent d-flex flex-grow-1 w-100">
+                                <Route path="/ManageHome/:menuId?/:menuItemId?" component={BodyDiv} />
+                            </div>
+                            <div className="flex-shrink-0 nav-bottom">
+                                <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+                                    <small className="text-white">
+                                        Copyright © 2019 by IceEmblem. All rights reserved.
+                                    </small>
+                                    <span className="text-white ml-auto">
+                                        由冰纹工作室开发开发
+                                    </span>
+                                </nav>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         );
     }
 }
 
-ReactDOM.render( 
+ReactDOM.render(
     <BrowserRouter>
         <UserHome></UserHome>
-    </BrowserRouter> , 
-    document.getElementById('UserHome') );
+    </BrowserRouter>,
+    document.getElementById('UserHome'));

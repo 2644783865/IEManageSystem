@@ -35,7 +35,7 @@ export default class SideNav extends React.Component
             contentType: 'application/json',
             dataType: 'json',
             success: function (data) {
-                if (data.isSuccess == true) {
+                if (data.isSuccess === true) {
                     this.setState({userName:data.value.user.name, headSculpture:data.value.user.headSculpture});
                 }
             }.bind(this),
@@ -58,14 +58,14 @@ export default class SideNav extends React.Component
         {
             let icon = <span className={
                                 "oi padding-right-10 " + 
-                                (menuItems[item].icon == undefined ? "oi-tags leftmenu-icon-hide":menuItems[item].icon)
+                                (menuItems[item].icon === undefined ? "oi-tags leftmenu-icon-hide":menuItems[item].icon)
                             } title="icon name" aria-hidden="true">
                         </span>
             let text = <span>{" " + menuItems[item].text}</span>;
 
             let navLink = null;
             let childMenus = null;
-            if(menuItems[item].menuItems != undefined && menuItems[item].menuItems.length > 0)
+            if(menuItems[item].menuItems !== undefined && menuItems[item].menuItems.length > 0)
             {
                 navLink = 
                     <a href="javascript:void(0)" className="text-white" onClick={
@@ -76,7 +76,7 @@ export default class SideNav extends React.Component
                             lis.children("a").find("span.oi-chevron-right").removeClass("rotate90");
 
                             let div = $(event.target).parents("li").eq(0).children("div");
-                            if(div.css("display") == "none"){
+                            if(div.css("display") === "none"){
                                 div.show(500);
                                 $(event.target).find("span.oi-chevron-right").addClass("rotate90");
                             }
@@ -122,18 +122,36 @@ export default class SideNav extends React.Component
         let menus = this.createMenus();
 
         return(
-            <div className="leftmenu_css">
-                <div className="leftmenu-avatar">
+            <div className="d-flex flex-column leftmenu_css">
+                <div className="flex-shrink-0 leftmenu-avatar">
                     <div className="d-flex justify-content-center">
                         <img className="rounded-circle img-thumbnail w-50 h-50" 
-                            src={(this.state.headSculpture == null || this.state.headSculpture == "") ? DefaultAvatar:this.state.headSculpture} alt="Card image" />
+                            src={(this.state.headSculpture === null || this.state.headSculpture === "") ? DefaultAvatar:this.state.headSculpture} alt="Card image" />
                     </div>
                     <p>你好，{this.state.userName}</p>
                 </div>
-                <div className="leftmenu-weather">
+                <div className="flex-shrink-0 leftmenu-weather">
                     <Weather showWeatherCityandtext={true} />
                 </div>
-                {menus}
+                <div className="leftmenu-menu flex-grow-1 flex-shrink-1">
+                    {menus}
+                </div>
+                <div className="d-flex justify-content-between align-items-center flex-shrink-0 leftmenu-menutag">
+                    <div className="text-white">
+                        <span class="oi oi-tags padding-left-10 padding-right-10" title="icon name" aria-hidden="true"></span>
+                        <span>
+                            菜单书签
+                        </span>
+                    </div>
+                    <button className="leftmenu-menutag-btn" onClick={
+                        (event) => {
+                            if ($(event.currentTarget).hasClass('on')) event.currentTarget.classList.remove('on');
+                            else event.currentTarget.classList.add('on');
+                        }
+                    }>
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
             </div>
         );
     }

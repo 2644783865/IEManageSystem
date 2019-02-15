@@ -370,9 +370,6 @@ export default class Index extends React.Component
               <Calendar />
              </div> 
             </div> 
-            <footer className="footer"> 
-             <p className="text-muted m-0"><small className="float-right">Made with <span className="material-icons md-16 text-danger align-middle">favorite</span> by Akshay Kumar </small><small>FreakPixels &copy; 2016–2018 More Templates More Templates <a href="http://www.scnoob.com">菜鸟素材</a> - Collect from <a href="http://www.scnoob.com/moban.html">网页模板</a></small></p> 
-            </footer> 
            </div> 
           </div>
         );
