@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, NavLink, Link, Switch } from 'react-router-dom';
+import MenuTag from "./MenuTag/MenuTag.jsx";
 
 import './SideNav.css'
 
@@ -125,7 +126,7 @@ export default class SideNav extends React.Component
             <div className="d-flex flex-column leftmenu_css">
                 <div className="flex-shrink-0 leftmenu-avatar">
                     <div className="d-flex justify-content-center">
-                        <img className="rounded-circle img-thumbnail w-50 h-50" 
+                        <img className="rounded-circle img-thumbnail" 
                             src={(this.state.headSculpture === null || this.state.headSculpture === "") ? DefaultAvatar:this.state.headSculpture} alt="Card image" />
                     </div>
                     <p>你好，{this.state.userName}</p>
@@ -134,24 +135,11 @@ export default class SideNav extends React.Component
                     <Weather showWeatherCityandtext={true} />
                 </div>
                 <div className="leftmenu-menu flex-grow-1 flex-shrink-1">
-                    {menus}
-                </div>
-                <div className="d-flex justify-content-between align-items-center flex-shrink-0 leftmenu-menutag">
-                    <div className="text-white">
-                        <span class="oi oi-tags padding-left-10 padding-right-10" title="icon name" aria-hidden="true"></span>
-                        <span>
-                            菜单书签
-                        </span>
+                    <div>
+                        {menus}
                     </div>
-                    <button className="leftmenu-menutag-btn" onClick={
-                        (event) => {
-                            if ($(event.currentTarget).hasClass('on')) event.currentTarget.classList.remove('on');
-                            else event.currentTarget.classList.add('on');
-                        }
-                    }>
-                        <span></span><span></span><span></span>
-                    </button>
                 </div>
+                <Route path="/ManageHome/:menuId?/:menuItemId?" component={MenuTag} />
             </div>
         );
     }

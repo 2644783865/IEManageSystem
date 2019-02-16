@@ -5,19 +5,23 @@
     padding-top: 0.625rem;
     background-color: #04b0c1;
     /*background-color: #0c6d77;*/
-    overflow-x:hidden;
 }
 
 .leftmenu-avatar{
     padding:0.625rem 0rem;
 }
 
-.leftmenu-avatar p{
-    color: #ffffff;
-    text-align: center;
-    font-size: 1rem;
-    margin: 0.625rem;
-}
+    .leftmenu-avatar img {
+        width:40%;
+        height:40%;
+    }
+
+    .leftmenu-avatar p {
+        color: #ffffff;
+        text-align: center;
+        font-size: 1rem;
+        margin: 0.625rem;
+    }
 
 .leftmenu-weather{
     padding-bottom: 0.625rem;
@@ -25,11 +29,17 @@
 
 .leftmenu-menu 
 {
-    overflow-y: scroll;
-    margin-right: -18px;
+    overflow-x: hidden;
 }
 
-    .leftmenu_css ul {
+    .leftmenu-menu > div 
+    {
+        height:100%;
+        overflow-y: scroll;
+        margin-right: -18px;
+    }
+
+    .leftmenu-menu ul {
         background-color: #04b0c1;
     }
 
@@ -80,7 +90,7 @@
 
 .leftmenu-menutag {
     background-color: #234a4e;
-    padding: .5rem;
+    padding: .35rem .5rem;
 }
 
     .leftmenu-menutag > div {
