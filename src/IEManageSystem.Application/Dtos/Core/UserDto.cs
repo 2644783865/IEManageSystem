@@ -41,6 +41,31 @@ namespace IEManageSystem.Dtos.Core
         /// </summary>
         public string HeadSculpture { get; set; }
 
+        /// <summary>
+        /// 真实姓名
+        /// </summary>
+        public string RealName { get; set; }
+
+        /// <summary>
+        /// 身份证号
+        /// </summary>
+        public string IDNumber { get; set; }
+
+        /// <summary>
+        /// 地址
+        /// </summary>
+        public string Address { get; set; }
+
+        /// <summary>
+        /// 性别（true男，false女）
+        /// </summary>
+        public bool Sex { get; set; }
+
+        /// <summary>
+        /// 出生日期
+        /// </summary>
+        public DateTime BirthDate { get; set; }
+
         public int? TenantId { get; set; }
     }
 }

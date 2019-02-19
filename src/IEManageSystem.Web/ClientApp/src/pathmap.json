@@ -11,5 +11,6 @@
 "cookie":"js/jquery.cookie.js",
 "labelauty": "js/jquery-labelauty.js",
 "mousewheel":"js/jquery.mousewheel.min.js",
-"chart":"js/Chart.js"
+"chart": "js/Chart.js",
+"ielib": "js/IELib.js"
 }

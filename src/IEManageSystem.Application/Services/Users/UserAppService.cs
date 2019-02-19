@@ -62,6 +62,31 @@ namespace IEManageSystem.Services.Users
                 user.PersonSignature = input.PersonSignature;
             }
 
+            if(!string.IsNullOrEmpty(input.RealName))
+            {
+                user.RealName = input.RealName;
+            }
+
+            if(!string.IsNullOrEmpty(input.IDNumber))
+            {
+                user.IDNumber = input.IDNumber;
+            }
+
+            if(!string.IsNullOrEmpty(input.Address))
+            {
+                user.Address = input.Address;
+            }
+
+            if (input.Sex != null)
+            {
+                user.Sex = input.Sex.Value;
+            }
+
+            if (input.BirthDate != null)
+            {
+                user.BirthDate = input.BirthDate.Value;
+            }
+
             return new SetUserInfoOutput();
         }
 

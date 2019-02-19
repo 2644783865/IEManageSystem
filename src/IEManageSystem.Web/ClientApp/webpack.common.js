@@ -30,7 +30,8 @@ module.exports = {
             'window.jQuery':'jquery',
             Popper: 'popper',
             Chart: 'chart',
-            Cookie: "cookie"
+            Cookie: "cookie",
+            IELib:"ielib"
         }),
         //这里开始写
         new HtmlWebpackPlugin({

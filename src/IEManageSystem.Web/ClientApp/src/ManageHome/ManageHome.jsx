@@ -3,6 +3,7 @@ import 'bootstrapcss';
 import 'bootstrapcssicon';
 import 'commoncss';
 import 'cookie';
+import 'ielib';
 
 import React from 'react';
 import ReactDOM from 'react-dom';

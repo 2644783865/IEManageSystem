@@ -174,9 +174,15 @@ namespace IEManageSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Address");
+
+                    b.Property<DateTime>("BirthDate");
+
                     b.Property<string>("EmailAddress");
 
                     b.Property<string>("HeadSculpture");
+
+                    b.Property<string>("IDNumber");
 
                     b.Property<string>("Name")
                         .HasMaxLength(20);
@@ -188,6 +194,10 @@ namespace IEManageSystem.Migrations
                     b.Property<string>("PersonSignature");
 
                     b.Property<string>("Phone");
+
+                    b.Property<string>("RealName");
+
+                    b.Property<bool>("Sex");
 
                     b.Property<int?>("TenantId");
 
