@@ -12,6 +12,7 @@ using IEManageSystem.Help.Exceptions;
 using IEManageSystem.Entitys.Authorization.Permissions;
 using IEManageSystem.ApiAuthorization;
 using IEManageSystem.Help.IEApiScopeHelp;
+using IEManageSystem.Dtos.Core.Users;
 
 namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Admins
 {

@@ -2,6 +2,7 @@
 using IEManageSystem.ApiAuthorization.DomainModel.ApiScopes;
 using IEManageSystem.ApiAuthorization.DomainModel.ApiSingles;
 using IEManageSystem.Configures.ApiAuthorization;
+using IEManageSystem.Configures.Core;
 using IEManageSystem.Entitys.Authorization;
 using IEManageSystem.Entitys.Authorization.Permissions;
 using IEManageSystem.Entitys.Authorization.Roles;
@@ -22,6 +23,7 @@ namespace IEManageSystem.EntityFrameworkCore
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ApiScopeNodeConfigure());
+            modelBuilder.ApplyConfiguration(new UserConfigure());
 
             base.OnModelCreating(modelBuilder);
         }

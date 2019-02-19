@@ -2,6 +2,7 @@
 using Abp.Domain.Services;
 using Abp.Domain.Uow;
 using IEManageSystem.Entitys.Authorization.Roles;
+using IEManageSystem.Entitys.Authorization.Users.Accounts;
 using IEManageSystem.Help.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -57,7 +58,7 @@ namespace IEManageSystem.Entitys.Authorization.Users
 
         public User GetUserForUserName(string userName)
         {
-            return UserRepository.FirstOrDefault(e=>e.UserName == userName);
+            return UserRepository.FirstOrDefault(e=>e.Account.UserName == userName);
         }
 
         /// <summary>
@@ -71,7 +72,7 @@ namespace IEManageSystem.Entitys.Authorization.Users
             // 验证密码
             password = Encrypt.MD5Utf8(password);
 
-            if (user.Password == password) {
+            if (user.Account.Password == password) {
                 return true;
             }
 
@@ -88,16 +89,20 @@ namespace IEManageSystem.Entitys.Authorization.Users
         /// <returns></returns>
         public async Task<User> CreateUser(string userName, string password, string name = null, int? tenantId = null)
         {
-            if ((UserRepository.GetAllList(e => e.UserName == userName)).Any())
+            if ((UserRepository.GetAllList(e => e.Account.UserName == userName)).Any())
             {
                 throw new MessageException("已存在[" + userName + "]的账号，请重新注册");
             }
 
             password = Encrypt.MD5Utf8(password);
 
-            User user = new User(userName)
+            Account account = new Account(userName)
             {
                 Password = password,
+            };
+
+            User user = new User(account)
+            {
                 Name = !string.IsNullOrEmpty(name) ? name : userName,
                 TenantId = tenantId
             };
@@ -116,7 +121,7 @@ namespace IEManageSystem.Entitys.Authorization.Users
         {
             password = Encrypt.MD5Utf8(password);
 
-            user.Password = password;
+            user.Account.Password = password;
         }
 
         /// <summary>

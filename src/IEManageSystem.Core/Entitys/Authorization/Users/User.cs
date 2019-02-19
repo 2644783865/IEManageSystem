@@ -1,6 +1,7 @@
 ﻿using Abp.Domain.Entities;
 using IEManageSystem.Configuration;
 using IEManageSystem.Entitys.Authorization.Roles;
+using IEManageSystem.Entitys.Authorization.Users.Accounts;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,24 +20,15 @@ namespace IEManageSystem.Entitys.Authorization.Users
         }
 
         public User(string userName) {
-            UserName = userName;
+            Account = new Account(userName);
         }
 
-        /// <summary>
-        /// 用户名
-        /// </summary>
-        [Required]
-        [MaxLength(15)]
-        [MinLength(6)]
-        public string UserName { get; protected set; }
+        public User(Account account)
+        {
+            Account = account;
+        }
 
-        /// <summary>
-        /// 密码
-        /// </summary>
-        [Required]
-        [MaxLength(60)]
-        [MinLength(6)]
-        public string Password { get; set; }
+        public Account Account { get; protected set; }
 
         /// <summary>
         /// 邮箱
@@ -116,6 +108,11 @@ namespace IEManageSystem.Entitys.Authorization.Users
             }
 
             string path = rootPath + webPath;
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
 
             ImageHandle.SaveImage(base64Image, path);
 

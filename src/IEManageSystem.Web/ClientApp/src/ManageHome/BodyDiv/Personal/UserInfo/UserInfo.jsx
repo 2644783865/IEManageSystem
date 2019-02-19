@@ -82,7 +82,7 @@ export default class UserInfo extends React.Component
                         birthDate = new Date(data.value.user.birthDate);
                     }
                     this.setState({
-			        	userName:data.value.user.userName,
+			        	userName:data.value.user.account.userName,
 			        	emailAddress:data.value.user.emailAddress,
 			        	name:data.value.user.name,
 			        	phone:data.value.user.phone,

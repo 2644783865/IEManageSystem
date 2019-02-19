@@ -75,7 +75,7 @@ namespace IEManageSystem.Entitys.Authorization.LoginManagers
             abpLoginResult.User = new IdentityUser()
             {
                 Id = user.Id,
-                UserName = user.UserName,
+                UserName = user.Account.UserName,
                 EmailAddress = user.EmailAddress,
                 Name = user.Name,
                 Phone = user.Phone,

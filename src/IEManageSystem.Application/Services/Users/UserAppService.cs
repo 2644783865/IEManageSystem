@@ -6,6 +6,7 @@ using Abp.Auditing;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
 using IEManageSystem.Dtos.Core;
+using IEManageSystem.Dtos.Core.Users;
 using IEManageSystem.Entitys.Authorization;
 using IEManageSystem.Entitys.Authorization.LoginManagers;
 using IEManageSystem.Entitys.Authorization.Users;

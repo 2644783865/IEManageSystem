@@ -39,7 +39,4 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entitys\Authorization\Users\Accounts\" />
-  </ItemGroup>
 </Project>
