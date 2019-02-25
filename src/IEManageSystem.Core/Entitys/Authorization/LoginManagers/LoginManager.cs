@@ -37,7 +37,6 @@ namespace IEManageSystem.Entitys.Authorization.LoginManagers
             AbpLoginResult abpLoginResult = new AbpLoginResult();
 
             // 验证用户名
-            //if ( !(await _UserRepository.GetAllListAsync(e => e.UserName == userName && e.TenantId == tenantId)).Any())
             var user = _userManager.GetUserForUserName(userName);
             if (user == null)
             {
@@ -46,7 +45,6 @@ namespace IEManageSystem.Entitys.Authorization.LoginManagers
             }
 
             // 验证密码
-            //var user = await _UserRepository.FirstOrDefaultAsync(e => e.UserName == userName && e.Password == password && e.TenantId == tenantId);
             if (!_userManager.ValidatePassword(user, password))
             {
                 abpLoginResult.Result = AbpLoginResultType.InvalidPassword;

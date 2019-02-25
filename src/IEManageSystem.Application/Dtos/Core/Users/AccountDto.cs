@@ -18,5 +18,7 @@ namespace IEManageSystem.Dtos.Core.Users
         /// 密码
         /// </summary>
         public string Password { get; set; }
+
+        public SafetyProblemDto SafetyProblem { get; set; }
     }
 }

@@ -19,9 +19,9 @@ const menus =
                 icon: "oi-person"
             },
             {
-                id:"UserSecurity",
+                id:"AccountSecurity",
                 text: "账号安全",
-                url: "/ManageHome/Personal/UserSecurity",
+                url: "/ManageHome/Personal/AccountSecurity",
                 icon: "oi-envelope-closed"
             }
         ]

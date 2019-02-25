@@ -11,7 +11,6 @@ namespace IEManageSystem.Configures.Core
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.OwnsOne(e => e.Account);
         }
     }
 }

@@ -69,6 +69,8 @@ namespace IEManageSystem.Entitys.Authorization.Users
         /// <returns></returns>
         public bool ValidatePassword(User user, string password)
         {
+            UserRepository.EnsurePropertyLoaded(user, e => e.Account);
+
             // 验证密码
             password = Encrypt.MD5Utf8(password);
 

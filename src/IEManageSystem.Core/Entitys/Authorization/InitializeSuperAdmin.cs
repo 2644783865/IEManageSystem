@@ -1,6 +1,7 @@
 ﻿using Abp.Domain.Repositories;
 using Abp.Domain.Services;
 using Abp.Domain.Uow;
+using Castle.Core.Logging;
 using IEManageSystem.Entitys.Authorization.Permissions;
 using IEManageSystem.Entitys.Authorization.Roles;
 using IEManageSystem.Entitys.Authorization.Users;
@@ -14,7 +15,9 @@ namespace IEManageSystem.Entitys.Authorization
 {
     public class InitializeSuperAdmin:IDomainService
     {
-        public IUnitOfWorkManager _unitOfWorkManager { get; set; }
+        public ILogger Logger { get; set; }
+
+        private IUnitOfWorkManager _unitOfWorkManager { get; set; }
 
         private UserManager _userManager { get; set; }
 
@@ -25,6 +28,8 @@ namespace IEManageSystem.Entitys.Authorization
             RoleManager roleManager,
             IUnitOfWorkManager unitOfWorkManager)
         {
+            Logger = NullLogger.Instance;
+
             _userManager = userManager;
 
             _roleManager = roleManager;
@@ -46,20 +51,17 @@ namespace IEManageSystem.Entitys.Authorization
 
                     _roleManager.CreateRole(superAdminRole).Wait();
 
-                    //_unitOfWorkManager.Current.SaveChanges();
-
                     _roleManager.AddPermission(superAdminRole, Permission.SuperPermission);
 
                     User superAdmin = _userManager.CreateUser("SuperAdmin", "123456", "超级管理员").Result;
-
-                    //_unitOfWorkManager.Current.SaveChanges();
 
                     _userManager.AddUserRole(superAdmin, superAdminRole);
 
                     unitOfWork.Complete();
                 }
-                catch
+                catch(Exception ex)
                 {
+                    Logger.Error(ex.Message);
                 }
             }
         }

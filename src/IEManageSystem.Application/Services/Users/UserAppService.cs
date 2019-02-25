@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.Auditing;
@@ -93,7 +95,11 @@ namespace IEManageSystem.Services.Users
 
         public async Task<GetUserInfoOutput> GetUserInfo(GetUserInfoInput input)
         {
-            var user = await _UserRepository.FirstOrDefaultAsync((int)(_AbpSession.UserId ?? 0));
+            Expression<Func<User, object>>[] propertySelectors = new Expression<Func<User, object>>[] {
+                e=>e.Account
+            };
+            var user = _UserRepository.GetAllIncluding(propertySelectors).FirstOrDefault(e=>e.Id == (int)(_AbpSession.UserId ?? 0));
+
             if (user == null)
             {
                 throw new MessageException("未找到当前用户的信息");

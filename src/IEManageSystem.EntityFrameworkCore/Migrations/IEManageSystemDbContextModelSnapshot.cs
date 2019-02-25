@@ -168,11 +168,32 @@ namespace IEManageSystem.Migrations
                     b.ToTable("RolePermission");
                 });
 
+            modelBuilder.Entity("IEManageSystem.Entitys.Authorization.Users.Accounts.Account", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(60);
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(15);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Account");
+                });
+
             modelBuilder.Entity("IEManageSystem.Entitys.Authorization.Users.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AccountId");
 
                     b.Property<string>("Address");
 
@@ -198,6 +219,8 @@ namespace IEManageSystem.Migrations
                     b.Property<int?>("TenantId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
 
                     b.ToTable("User");
                 });
@@ -293,29 +316,34 @@ namespace IEManageSystem.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("IEManageSystem.Entitys.Authorization.Users.User", b =>
+            modelBuilder.Entity("IEManageSystem.Entitys.Authorization.Users.Accounts.Account", b =>
                 {
-                    b.OwnsOne("IEManageSystem.Entitys.Authorization.Users.Accounts.Account", "Account", b1 =>
+                    b.OwnsOne("IEManageSystem.Entitys.Authorization.Users.Accounts.SafetyProblem", "SafetyProblem", b1 =>
                         {
-                            b1.Property<int?>("UserId")
+                            b1.Property<int?>("AccountId")
                                 .ValueGeneratedOnAdd()
                                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                            b1.Property<string>("Password")
-                                .IsRequired()
-                                .HasMaxLength(60);
+                            b1.Property<string>("Answer")
+                                .HasMaxLength(20);
 
-                            b1.Property<string>("UserName")
-                                .IsRequired()
-                                .HasMaxLength(15);
+                            b1.Property<string>("Problem")
+                                .HasMaxLength(20);
 
-                            b1.ToTable("User");
+                            b1.ToTable("Account");
 
-                            b1.HasOne("IEManageSystem.Entitys.Authorization.Users.User")
-                                .WithOne("Account")
-                                .HasForeignKey("IEManageSystem.Entitys.Authorization.Users.Accounts.Account", "UserId")
+                            b1.HasOne("IEManageSystem.Entitys.Authorization.Users.Accounts.Account")
+                                .WithOne("SafetyProblem")
+                                .HasForeignKey("IEManageSystem.Entitys.Authorization.Users.Accounts.SafetyProblem", "AccountId")
                                 .OnDelete(DeleteBehavior.Cascade);
                         });
+                });
+
+            modelBuilder.Entity("IEManageSystem.Entitys.Authorization.Users.User", b =>
+                {
+                    b.HasOne("IEManageSystem.Entitys.Authorization.Users.Accounts.Account", "Account")
+                        .WithMany()
+                        .HasForeignKey("AccountId");
                 });
 
             modelBuilder.Entity("IEManageSystem.Entitys.Authorization.Users.UserRole", b =>

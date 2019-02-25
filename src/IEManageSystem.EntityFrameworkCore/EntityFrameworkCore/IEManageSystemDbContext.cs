@@ -24,6 +24,7 @@ namespace IEManageSystem.EntityFrameworkCore
         {
             modelBuilder.ApplyConfiguration(new ApiScopeNodeConfigure());
             modelBuilder.ApplyConfiguration(new UserConfigure());
+            modelBuilder.ApplyConfiguration(new AccountConfigure());
 
             base.OnModelCreating(modelBuilder);
         }

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import UserInfo from "./UserInfo/UserInfo.jsx";
+import AccountSecurity from "./AccountSecurity/AccountSecurity.jsx";
 
 export default class BodyDiv extends React.Component
 {
@@ -16,6 +17,7 @@ export default class BodyDiv extends React.Component
             <div className="w-100 h-100">
                 <Switch>
                     <Route path="/ManageHome/Personal/UserInfo" component={UserInfo} />
+                    <Route path="/ManageHome/Personal/AccountSecurity" component={AccountSecurity} />
                 </Switch>
             </div>
         );

@@ -161,9 +161,6 @@ export default class UserInfo extends React.Component
                                         }
                                     }
                                 />
-                                <div className="input-group-append">
-                                    <button className="btn btn-outline-secondary" type="button">修改登录密码</button>
-                                </div>
                             </div>
                             <div className="input-group mb-3">
                                 <div className="input-group-prepend userinfo-lable">
@@ -269,7 +266,7 @@ export default class UserInfo extends React.Component
                                             this.setState((preState) => ({ realNameReadonly: !preState.realNameReadonly }));
                                         }
                                     }
-                                ><span class="oi oi-pencil padding-right-10" title="icon name" aria-hidden="true"></span>{this.state.phoneReadonly ? "编辑" : "保存"}</button>
+                                ><span class="oi oi-pencil padding-right-10" title="icon name" aria-hidden="true"></span>{this.state.realNameReadonly ? "编辑" : "保存"}</button>
                             </div>
                         </div>
                         <div className="input-group mb-3">
@@ -291,7 +288,7 @@ export default class UserInfo extends React.Component
                                             this.setState((preState) => ({ idNumberReadonly: !preState.idNumberReadonly }));
                                         }
                                     }
-                                ><span class="oi oi-pencil padding-right-10" title="icon name" aria-hidden="true"></span>{this.state.phoneReadonly ? "编辑" : "保存"}</button>
+                                ><span class="oi oi-pencil padding-right-10" title="icon name" aria-hidden="true"></span>{this.state.idNumberReadonly ? "编辑" : "保存"}</button>
                             </div>
                         </div>
                         <div className="input-group mb-3">
@@ -313,7 +310,7 @@ export default class UserInfo extends React.Component
                                             this.setState((preState) => ({ addressReadonly: !preState.addressReadonly }));
                                         }
                                     }
-                                ><span class="oi oi-pencil padding-right-10" title="icon name" aria-hidden="true"></span>{this.state.phoneReadonly ? "编辑" : "保存"}</button>
+                                ><span class="oi oi-pencil padding-right-10" title="icon name" aria-hidden="true"></span>{this.state.addressReadonly ? "编辑" : "保存"}</button>
                             </div>
                         </div>
                         <div className="input-group mb-3">
@@ -348,7 +345,7 @@ export default class UserInfo extends React.Component
                                             this.setState((preState) => ({ birthDateReadonly: !preState.birthDateReadonly }));
                                         }
                                     }
-                                ><span class="oi oi-pencil padding-right-10" title="icon name" aria-hidden="true"></span>{this.state.phoneReadonly ? "编辑" : "保存"}</button>
+                                ><span class="oi oi-pencil padding-right-10" title="icon name" aria-hidden="true"></span>{this.state.birthDateReadonly ? "编辑" : "保存"}</button>
                             </div>
                         </div>
                     </div>
