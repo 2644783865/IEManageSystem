@@ -76,7 +76,7 @@ export default class IdentityResource extends React.Component
         this.resourceChild.showLoadingModal();
 		let postData = resource;
 
-	    $.ajax({
+	    IETool.ieAjax({
 	      url: "/api/IdentityResourceManage/AddIdentityResource",
 	      type: 'post',
 	      data: JSON.stringify(postData),
@@ -91,7 +91,7 @@ export default class IdentityResource extends React.Component
         this.resourceChild.showLoadingModal();
 		let postData = resource;
 
-	    $.ajax({
+	    IETool.ieAjax({
 	      url: "/api/IdentityResourceManage/UpdateIdentityResource",
 	      type: 'post',
 	      data: JSON.stringify(postData),
@@ -108,7 +108,7 @@ export default class IdentityResource extends React.Component
 	      id: resource.id
 	    };
 
-	    $.ajax({
+	    IETool.ieAjax({
 	      url: "/api/IdentityResourceManage/DeleteIdentityResource",
 	      type: 'post',
 	      data: JSON.stringify(postData),
@@ -132,7 +132,7 @@ export default class IdentityResource extends React.Component
             searchKey: searchKey
         };
 
-		$.ajax({
+		IETool.ieAjax({
 			url: "/api/IdentityResourceManage/GetIdentityResources",
             type: 'post',
             data: JSON.stringify(postData),
@@ -153,7 +153,7 @@ export default class IdentityResource extends React.Component
         	searchKey:searchKey
         };
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/IdentityResourceManage/GetIdentityResourceNum",
             type: 'post',
             data: JSON.stringify(postData),

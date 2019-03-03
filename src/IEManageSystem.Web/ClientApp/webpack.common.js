@@ -31,7 +31,8 @@ module.exports = {
             Popper: 'popper',
             Chart: 'chart',
             Cookie: "cookie",
-            IELib:"ielib"
+            IELib: "ielib",
+            IETool: 'ToolLibrary/IETool.js'
         }),
         //这里开始写
         new HtmlWebpackPlugin({

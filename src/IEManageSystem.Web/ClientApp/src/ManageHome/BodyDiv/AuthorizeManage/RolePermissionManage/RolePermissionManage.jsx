@@ -55,7 +55,7 @@ export default class RolePermissionManage extends React.Component
             roleId:previewResource.id,
         };
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/RoleManage/AddPermission",
             type: 'post',
             data: JSON.stringify(postData),
@@ -77,7 +77,7 @@ export default class RolePermissionManage extends React.Component
             roleId:previewResource.id,
         };
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/RoleManage/RemovePermission",
             type: 'post',
             data: JSON.stringify(postData),
@@ -99,7 +99,7 @@ export default class RolePermissionManage extends React.Component
             id: previewResource.id
         };
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/RoleManage/GetPermissions",
             type: 'post',
             data: JSON.stringify(postData),
@@ -125,7 +125,7 @@ export default class RolePermissionManage extends React.Component
             pageSize: 9999,
         };
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/RoleManage/GetRoles",
             type: 'post',
             data: JSON.stringify(postData),
@@ -148,7 +148,7 @@ export default class RolePermissionManage extends React.Component
             pageSize: 9999,
         };
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/PermissionManage/GetPermissions",
             type: 'post',
             data: JSON.stringify(postData),

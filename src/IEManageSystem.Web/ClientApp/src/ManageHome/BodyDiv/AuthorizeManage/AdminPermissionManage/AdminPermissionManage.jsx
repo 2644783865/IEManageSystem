@@ -55,7 +55,7 @@ export default class AdminPermissionManage extends React.Component
             id: previewResource.id
         };
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/AdminManage/GetPermissions",
             type: 'post',
             data: JSON.stringify(postData),
@@ -81,7 +81,7 @@ export default class AdminPermissionManage extends React.Component
             pageSize: 9999,
         };
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/AdminManage/GetAdmins",
             type: 'post',
             data: JSON.stringify(postData),

@@ -61,7 +61,7 @@ export default class MenuPermission extends React.Component
     			name: scopeName
     		}
 
-    		$.ajax({
+    		IETool.ieAjax({
 	            url: url,
 	            type: 'post',
 	            data: JSON.stringify(postData),
@@ -88,7 +88,7 @@ export default class MenuPermission extends React.Component
             pageSize: 9999,
         };
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/ApiScopeManage/GetApiScopes",
             type: 'post',
             data: JSON.stringify(postData),

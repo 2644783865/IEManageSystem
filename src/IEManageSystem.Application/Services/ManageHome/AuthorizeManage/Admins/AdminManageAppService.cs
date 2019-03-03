@@ -38,7 +38,10 @@ namespace IEManageSystem.Services.ManageHome.AuthorizeManage.Admins
         [ApiAuthorizationQuery]
         public async Task<GetAdminsOutput> GetAdmins(GetAdminsInput input)
         {
-            var admins = _adminManager.GetAdmins().Where(e => (string.IsNullOrEmpty(input.SearchKey) || e.Name.Contains(input.SearchKey))).Skip((input.PageIndex - 1) * input.PageSize).Take(input.PageSize).ToList();
+            Expression<Func<User, object>>[] propertySelectors = new Expression<Func<User, object>>[] {
+                e=>e.Account
+            };
+            var admins = _adminManager.GetAdminsIncluding(propertySelectors).Where(e => (string.IsNullOrEmpty(input.SearchKey) || e.Name.Contains(input.SearchKey))).Skip((input.PageIndex - 1) * input.PageSize).Take(input.PageSize).ToList();
 
             return new GetAdminsOutput() { Admins = AutoMapper.Mapper.Map<List<UserDto>>(admins) };
         }

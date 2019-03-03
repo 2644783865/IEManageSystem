@@ -60,7 +60,7 @@ export default class ApiScopeUrl extends React.Component
             id: previewResource.id
         };
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/ApiScopeManage/GetApiScopeUrls",
             type: 'post',
             data: JSON.stringify(postData),
@@ -86,7 +86,7 @@ export default class ApiScopeUrl extends React.Component
             pageSize: 9999,
         };
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/ApiScopeManage/GetApiScopes",
             type: 'post',
             data: JSON.stringify(postData),

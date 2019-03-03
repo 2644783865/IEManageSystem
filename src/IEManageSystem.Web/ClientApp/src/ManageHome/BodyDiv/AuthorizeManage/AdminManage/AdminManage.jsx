@@ -50,7 +50,7 @@ export default class AdminManage extends React.Component
         this.resourceChild.showLoadingModal();
 		let postData = resource;
 
-	    $.ajax({
+	    IETool.ieAjax({
 	      url: "/api/AdminManage/CreateAdmin",
 	      type: 'post',
 	      data: JSON.stringify(postData),
@@ -65,7 +65,7 @@ export default class AdminManage extends React.Component
         this.resourceChild.showLoadingModal();
 		let postData = resource;
 
-	    $.ajax({
+	    IETool.ieAjax({
 	      url: "/api/AdminManage/UpdateAdmin",
 	      type: 'post',
 	      data: JSON.stringify(postData),
@@ -82,7 +82,7 @@ export default class AdminManage extends React.Component
 	      id: resource.id
 	    };
 
-	    $.ajax({
+	    IETool.ieAjax({
 	      url: "/api/AdminManage/DeleteAdmin",
 	      type: 'post',
 	      data: JSON.stringify(postData),
@@ -106,15 +106,19 @@ export default class AdminManage extends React.Component
             searchKey: searchKey
         };
 
-		$.ajax({
+		IETool.ieAjax({
 			url: "/api/AdminManage/GetAdmins",
             type: 'post',
             data: JSON.stringify(postData),
             contentType: 'application/json',
             dataType: 'json',
             success: function(data){
-		        if(data.isSuccess == true)
-		        {
+		        if(data.isSuccess === true)
+                {
+                    let admins = data.value.admins;
+                    admins.map((item) => {
+                        item.userName = item.account.userName;
+                    });
 		        	this.resourceChild.resetResources(data.value.admins, pageIndex);
 		        }
 		    }.bind(this)
@@ -127,7 +131,7 @@ export default class AdminManage extends React.Component
         	searchKey:searchKey
         };
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/AdminManage/GetAdminNum",
             type: 'post',
             data: JSON.stringify(postData),

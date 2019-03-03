@@ -72,7 +72,7 @@ export default class UserInfo extends React.Component
     _getUserInfo(){
     	let postData = {};
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/User/GetUserInfo",
             type: 'post',
             data: JSON.stringify(postData),
@@ -123,7 +123,7 @@ export default class UserInfo extends React.Component
             birthDate: this.state.birthDate,
     	};
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/User/SetUserInfo",
             type: 'post',
             data: JSON.stringify(postData),

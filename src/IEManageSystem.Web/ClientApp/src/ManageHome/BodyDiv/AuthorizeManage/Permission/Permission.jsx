@@ -47,7 +47,7 @@ export default class Permission extends React.Component
         this.resourceChild.showLoadingModal();
 		let postData = resource;
 
-	    $.ajax({
+	    IETool.ieAjax({
 	      url: "/api/PermissionManage/AddPermission",
 	      type: 'post',
 	      data: JSON.stringify(postData),
@@ -62,7 +62,7 @@ export default class Permission extends React.Component
         this.resourceChild.showLoadingModal();
 		let postData = resource;
 
-	    $.ajax({
+	    IETool.ieAjax({
 	      url: "/api/PermissionManage/UpdatePermission",
 	      type: 'post',
 	      data: JSON.stringify(postData),
@@ -79,7 +79,7 @@ export default class Permission extends React.Component
 	      id: resource.id
 	    };
 
-	    $.ajax({
+	    IETool.ieAjax({
 	      url: "/api/PermissionManage/DeletePermission",
 	      type: 'post',
 	      data: JSON.stringify(postData),
@@ -103,7 +103,7 @@ export default class Permission extends React.Component
             searchKey: searchKey
         };
 
-		$.ajax({
+		IETool.ieAjax({
 			url: "/api/PermissionManage/GetPermissions",
             type: 'post',
             data: JSON.stringify(postData),
@@ -124,7 +124,7 @@ export default class Permission extends React.Component
         	searchKey:searchKey
         };
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/PermissionManage/GetPermissionNum",
             type: 'post',
             data: JSON.stringify(postData),

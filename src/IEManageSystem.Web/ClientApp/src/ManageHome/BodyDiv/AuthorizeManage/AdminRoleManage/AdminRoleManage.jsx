@@ -56,7 +56,7 @@ export default class AdminRoleManage extends React.Component
 			adminId:previewResource.id,
         };
 
-	    $.ajax({
+	    IETool.ieAjax({
             url: "/api/AdminManage/AddRole",
             type: 'post',
             data: JSON.stringify(postData),
@@ -78,7 +78,7 @@ export default class AdminRoleManage extends React.Component
 			adminId:previewResource.id,
 		};
 
-	    $.ajax({
+	    IETool.ieAjax({
             url: "/api/AdminManage/RemoveRole",
             type: 'post',
             data: JSON.stringify(postData),
@@ -100,7 +100,7 @@ export default class AdminRoleManage extends React.Component
     		id: previewResource.id
         };
 
-		$.ajax({
+		IETool.ieAjax({
             url: "/api/AdminManage/GetAdminRoles",
             type: 'post',
             data: JSON.stringify(postData),
@@ -126,7 +126,7 @@ export default class AdminRoleManage extends React.Component
             pageSize: 9999,
         };
 
-		$.ajax({
+		IETool.ieAjax({
 			url: "/api/AdminManage/GetAdmins",
             type: 'post',
             data: JSON.stringify(postData),
@@ -149,7 +149,7 @@ export default class AdminRoleManage extends React.Component
             pageSize: 9999,
         };
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/RoleManage/GetRoles",
             type: 'post',
             data: JSON.stringify(postData),

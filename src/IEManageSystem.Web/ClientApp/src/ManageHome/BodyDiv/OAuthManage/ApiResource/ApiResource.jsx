@@ -68,7 +68,7 @@ export default class ApiResource extends React.Component
         this.resourceChild.showLoadingModal();
 		let postData = resource;
 
-	    $.ajax({
+        IETool.ieAjax({
 	      url: "/api/ApiResourceManage/AddApiResource",
 	      type: 'post',
 	      data: JSON.stringify(postData),
@@ -83,7 +83,7 @@ export default class ApiResource extends React.Component
         this.resourceChild.showLoadingModal();
 		let postData = resource;
 
-	    $.ajax({
+        IETool.ieAjax({
 	      url: "/api/ApiResourceManage/UpdateApiResource",
 	      type: 'post',
 	      data: JSON.stringify(postData),
@@ -100,7 +100,7 @@ export default class ApiResource extends React.Component
 	      id: resource.id
 	    };
 
-	    $.ajax({
+        IETool.ieAjax({
 	      url: "/api/ApiResourceManage/DeleteApiResource",
 	      type: 'post',
 	      data: JSON.stringify(postData),
@@ -124,7 +124,7 @@ export default class ApiResource extends React.Component
             searchKey: searchKey
         };
 
-		$.ajax({
+        IETool.ieAjax({
 			url: "/api/ApiResourceManage/GetApiResources",
             type: 'post',
             data: JSON.stringify(postData),
@@ -145,7 +145,7 @@ export default class ApiResource extends React.Component
         	searchKey:searchKey
         };
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/ApiResourceManage/GetApiResourceNum",
             type: 'post',
             data: JSON.stringify(postData),

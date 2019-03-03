@@ -4,6 +4,7 @@ import 'bootstrapcssicon';
 import 'commoncss';
 import 'cookie';
 import 'ielib';
+import 'ToolLibrary/IETool.js';
 
 import React from 'react';
 import ReactDOM from 'react-dom';

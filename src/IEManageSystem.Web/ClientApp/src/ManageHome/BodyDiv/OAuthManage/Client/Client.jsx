@@ -94,7 +94,7 @@ export default class Client extends React.Component
 
 		let postData = resource;
 
-	    $.ajax({
+        IETool.ieAjax({
 	      url: "/api/ClientManage/AddClient",
 	      type: 'post',
 	      data: JSON.stringify(postData),
@@ -110,7 +110,7 @@ export default class Client extends React.Component
 
 		let postData = resource;
 
-	    $.ajax({
+        IETool.ieAjax({
 	      url: "/api/ClientManage/UpdateClient",
 	      type: 'post',
 	      data: JSON.stringify(postData),
@@ -128,7 +128,7 @@ export default class Client extends React.Component
 	      id: resource.id
 	    };
 
-	    $.ajax({
+        IETool.ieAjax({
 	      url: "/api/ClientManage/RemoveClient",
 	      type: 'post',
 	      data: JSON.stringify(postData),
@@ -148,7 +148,7 @@ export default class Client extends React.Component
 	getClientGrantTypeGroupNames() {
 	    let postData = {};
 
-	    $.ajax({
+        IETool.ieAjax({
 	        url: "/api/ClientManage/GetClientGrantTypeGroupNames",
 	        type: 'post',
 	        data: JSON.stringify(postData),
@@ -171,7 +171,7 @@ export default class Client extends React.Component
 	        pageSize: 9999
 	    };
 
-	    $.ajax({
+        IETool.ieAjax({
 	        url: "/api/IdentityResourceManage/GetIdentityResources",
 	        type: 'post',
 	        data: JSON.stringify(postData),
@@ -194,7 +194,7 @@ export default class Client extends React.Component
 	        pageSize: 9999
 	    };
 
-	    $.ajax({
+        IETool.ieAjax({
 	        url: "/api/ApiResourceManage/GetApiResources",
 	        type: 'post',
 	        data: JSON.stringify(postData),
@@ -218,7 +218,7 @@ export default class Client extends React.Component
             searchKey: searchKey
         };
 
-		$.ajax({
+        IETool.ieAjax({
 			url: "/api/ClientManage/GetClients",
             type: 'post',
             data: JSON.stringify(postData),
@@ -239,7 +239,7 @@ export default class Client extends React.Component
         	searchKey:searchKey
         };
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/ClientManage/GetClientNum",
             type: 'post',
             data: JSON.stringify(postData),

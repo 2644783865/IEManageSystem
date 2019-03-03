@@ -60,7 +60,7 @@ export default class ApiScopePermission extends React.Component
 			apiScopeId:previewResource.id,
         };
 
-	    $.ajax({
+	    IETool.ieAjax({
             url: tabValue == scopePermissionType.manage ? "/api/ApiScopeManage/AddManagePermission" : "/api/ApiScopeManage/AddQueryPermission",
             type: 'post',
             data: JSON.stringify(postData),
@@ -82,7 +82,7 @@ export default class ApiScopePermission extends React.Component
 			apiScopeId:previewResource.id,
 		};
 
-	    $.ajax({
+	    IETool.ieAjax({
             url: tabValue == scopePermissionType.manage ? "/api/ApiScopeManage/RemoveManagePermission" : "/api/ApiScopeManage/RemoveQueryPermission",
             type: 'post',
             data: JSON.stringify(postData),
@@ -104,7 +104,7 @@ export default class ApiScopePermission extends React.Component
     		id: previewResource.id
         };
 
-		$.ajax({
+		IETool.ieAjax({
             url: tabValue == scopePermissionType.manage ? "/api/ApiScopeManage/GetManagePermissions" : "/api/ApiScopeManage/GetQueryPermissions",
             type: 'post',
             data: JSON.stringify(postData),
@@ -128,7 +128,7 @@ export default class ApiScopePermission extends React.Component
     	let postData = {
         };
 
-		$.ajax({
+		IETool.ieAjax({
 			url: "/api/ApiScopeManage/GetApiScopes",
             type: 'post',
             data: JSON.stringify(postData),
@@ -151,7 +151,7 @@ export default class ApiScopePermission extends React.Component
             pageSize: 9999,
         };
 
-		$.ajax({
+		IETool.ieAjax({
 			url: "/api/PermissionManage/GetPermissions",
             type: 'post',
             data: JSON.stringify(postData),

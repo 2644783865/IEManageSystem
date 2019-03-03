@@ -48,7 +48,7 @@ export default class RoleManage extends React.Component
         this.resourceChild.showLoadingModal();
 		let postData = resource;
 
-	    $.ajax({
+	    IETool.ieAjax({
 	      url: "/api/RoleManage/AddRole",
 	      type: 'post',
 	      data: JSON.stringify(postData),
@@ -63,7 +63,7 @@ export default class RoleManage extends React.Component
         this.resourceChild.showLoadingModal();
 		let postData = resource;
 
-	    $.ajax({
+	    IETool.ieAjax({
 	      url: "/api/RoleManage/UpdateRole",
 	      type: 'post',
 	      data: JSON.stringify(postData),
@@ -80,7 +80,7 @@ export default class RoleManage extends React.Component
 	      id: resource.id
 	    };
 
-	    $.ajax({
+	    IETool.ieAjax({
 	      url: "/api/RoleManage/DeleteRole",
 	      type: 'post',
 	      data: JSON.stringify(postData),
@@ -104,7 +104,7 @@ export default class RoleManage extends React.Component
             searchKey: searchKey
         };
 
-		$.ajax({
+		IETool.ieAjax({
 			url: "/api/RoleManage/GetRoles",
             type: 'post',
             data: JSON.stringify(postData),
@@ -125,7 +125,7 @@ export default class RoleManage extends React.Component
         	searchKey:searchKey
         };
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/RoleManage/GetRoleNum",
             type: 'post',
             data: JSON.stringify(postData),

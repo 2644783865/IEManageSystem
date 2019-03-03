@@ -42,7 +42,7 @@ export default class AccountSecurity extends React.Component {
     _getUserInfo() {
         let postData = {};
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/User/GetUserInfo",
             type: 'post',
             data: JSON.stringify(postData),
@@ -81,7 +81,7 @@ export default class AccountSecurity extends React.Component {
             answer: this.state.answer
         };
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/User/SetSafetyProblem",
             type: 'post',
             data: JSON.stringify(postData),
