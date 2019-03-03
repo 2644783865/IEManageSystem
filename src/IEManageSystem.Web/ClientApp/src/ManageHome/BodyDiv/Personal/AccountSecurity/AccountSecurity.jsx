@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import UserInfoCss from './AccountSecurity.css';
 import imgAvatar from 'images/default_avatar.png';
 
+import ErrorModal from 'ErrorModal/ErrorModal.jsx';
+import LoadingModal from 'LoadingModal/LoadingModal.jsx';
+
 export default class AccountSecurity extends React.Component {
     constructor(props) {
         super(props);
@@ -23,6 +26,7 @@ export default class AccountSecurity extends React.Component {
         };
 
         this._getUserInfo = this._getUserInfo.bind(this);
+        this._setSafetyProblem = this._setSafetyProblem.bind(this);
 
         this._getUserInfo();
     }
@@ -56,8 +60,42 @@ export default class AccountSecurity extends React.Component {
                         name: data.value.user.name,
                         phone: data.value.user.phone,
                         personSignature: data.value.user.personSignature,
-                        headSculpture: data.value.user.headSculpture
+                        headSculpture: data.value.user.headSculpture,
+                        problem: data.value.user.account.safetyProblem.problem,
+                        answer: data.value.user.account.safetyProblem.answer
                     });
+                }
+                else {
+                    ErrorModal.showErrorModal("获取用户信息错误", data.message);
+                }
+            }.bind(this),
+        });
+    }
+
+    _setSafetyProblem()
+    {
+        LoadingModal.showModal();
+
+        let postData = {
+            problem: this.state.problem,
+            answer: this.state.answer
+        };
+
+        $.ajax({
+            url: "/api/User/SetSafetyProblem",
+            type: 'post',
+            data: JSON.stringify(postData),
+            contentType: 'application/json',
+            dataType: 'json',
+            success: function (data)
+            {
+                LoadingModal.hideModal();
+
+                if (data.isSuccess === true) {
+                    return;
+                }
+                else {
+                    ErrorModal.showErrorModal("表单提交错误", data.message);
                 }
             }.bind(this),
         });
@@ -179,9 +217,11 @@ export default class AccountSecurity extends React.Component {
                     </div>
                 </div>
                 <div className="w-100 mt-3">
-                    <button className="btn btn-info float-right" type="button" onClick={() => { }}>提交修改</button>
+                    <button className="btn btn-info float-right" type="button" onClick={this._setSafetyProblem}>提交修改</button>
                     <button className="btn btn-secondary float-right mr-3" type="button" onClick={this._getUserInfo}>取消修改</button>
                 </div>
+                <ErrorModal />
+                <LoadingModal />
             </div>
         );
     }

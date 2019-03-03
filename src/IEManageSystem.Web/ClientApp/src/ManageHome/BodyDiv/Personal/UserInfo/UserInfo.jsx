@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import UserInfoCss from './UserInfo.css';
 import imgAvatar from 'images/default_avatar.png';
 
+import ErrorModal from 'ErrorModal/ErrorModal.jsx';
+import LoadingModal from 'LoadingModal/LoadingModal.jsx';
+
 export default class UserInfo extends React.Component
 {
     constructor(props)
@@ -95,11 +98,17 @@ export default class UserInfo extends React.Component
                         birthDate: birthDate.Format("yyyy-MM-dd")
 			        });
                 }
+                else {
+                    ErrorModal.showErrorModal("获取用户信息错误", data.message);
+                }
             }.bind(this),
         });
     }
 
-    _setUserInfo(){
+    _setUserInfo()
+    {
+        LoadingModal.showModal();
+
     	let postData = {
     		userName:this.state.userName,
 			emailAddress:this.state.emailAddress,
@@ -121,8 +130,13 @@ export default class UserInfo extends React.Component
             contentType: 'application/json',
             dataType: 'json',
             success: function (data) {
-                if (data.isSuccess == true) {
+                LoadingModal.hideModal();
+
+                if (data.isSuccess === true) {
                     this._getUserInfo();
+                }
+                else {
+                    ErrorModal.showErrorModal("表单提交错误", data.message);
                 }
             }.bind(this),
         });
@@ -354,6 +368,8 @@ export default class UserInfo extends React.Component
                     <button className="btn btn-info float-right" type="button" onClick={this._setUserInfo}>提交修改</button>
                     <button className="btn btn-secondary float-right mr-3" type="button" onClick={this._getUserInfo}>取消修改</button>
                 </div>
+                <ErrorModal />
+                <LoadingModal />
 	        </div>
         );
     }

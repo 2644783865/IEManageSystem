@@ -10,5 +10,9 @@ namespace IEManageSystem.Services.Users
     public interface IUserAppService:IApplicationService
     {
         Task<GetUserInfoOutput> GetUserInfo(GetUserInfoInput input);
+
+        Task<SetUserInfoOutput> SetUserInfo(SetUserInfoInput input);
+
+        Task<SetSafetyProblemOutput> SetSafetyProblem(SetSafetyProblemInput input);
     }
 }

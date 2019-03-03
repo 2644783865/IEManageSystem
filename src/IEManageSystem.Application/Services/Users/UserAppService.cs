@@ -12,6 +12,7 @@ using IEManageSystem.Dtos.Core.Users;
 using IEManageSystem.Entitys.Authorization;
 using IEManageSystem.Entitys.Authorization.LoginManagers;
 using IEManageSystem.Entitys.Authorization.Users;
+using IEManageSystem.Entitys.Authorization.Users.Accounts;
 using IEManageSystem.Help.Exceptions;
 using IEManageSystem.Services.Users.Dto;
 
@@ -106,6 +107,25 @@ namespace IEManageSystem.Services.Users
             }
 
             return new GetUserInfoOutput() { User = AutoMapper.Mapper.Map<UserDto>(user) };
+        }
+
+        public async Task<SetSafetyProblemOutput> SetSafetyProblem(SetSafetyProblemInput input)
+        {
+            Expression<Func<User, object>>[] propertySelectors = new Expression<Func<User, object>>[] {
+                e=>e.Account
+            };
+            var user = _UserRepository.GetAllIncluding(propertySelectors).FirstOrDefault(e => e.Id == (int)(_AbpSession.UserId ?? 0));
+
+            if (user == null)
+            {
+                throw new MessageException("未找到当前用户的信息");
+            }
+
+            SafetyProblem safetyProblem = new SafetyProblem(input.Problem, input.Answer);
+
+            user.Account.SafetyProblem = safetyProblem;
+
+            return new SetSafetyProblemOutput();
         }
     }
 }

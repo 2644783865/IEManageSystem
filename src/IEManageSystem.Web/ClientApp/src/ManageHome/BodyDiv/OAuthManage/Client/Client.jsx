@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Resource from 'Resource/Resource.jsx';
-import ErrorModal from 'Resource/ErrorModal.jsx';
-import LoadingModal from 'Resource/LoadingModal/LoadingModal.jsx';
 
 export default class Client extends React.Component
 {
@@ -78,7 +76,7 @@ export default class Client extends React.Component
 
 	// 提交回调
 	submitBackcall(data){
-		LoadingModal.hideModal();
+        this.resourceChild.hideLoadingModal();
 
 	    if(data.isSuccess == true)
 	    {
@@ -86,13 +84,13 @@ export default class Client extends React.Component
             this.getResourceNum(this.resourceChild.searchKey);
 	    }
 	    else{
-	      	ErrorModal.showErrorModal("提交表单错误", data.message);
+            this.resourceChild.showErrorModal("提交表单错误", data.message);
 	    }
 	}
 
 	// Resource组件添加资源通知
 	addResource(resource){
-		LoadingModal.showModal();
+        this.resourceChild.showLoadingModal();
 
 		let postData = resource;
 
@@ -108,7 +106,7 @@ export default class Client extends React.Component
 
 	// Resource组件更新资源通知
 	updateResource(resource){
-		LoadingModal.showModal();
+        this.resourceChild.showLoadingModal();
 
 		let postData = resource;
 
@@ -124,7 +122,7 @@ export default class Client extends React.Component
 
 	// Resource组件删除资源通知
 	deleteResource(resource){
-		LoadingModal.showModal();
+        this.resourceChild.showLoadingModal();
 		
 		let postData = {
 	      id: resource.id
@@ -267,8 +265,6 @@ export default class Client extends React.Component
 				updateResource={this.updateResource}
 				deleteResource={this.deleteResource}
 				setResourceRef={(ref)=>{this.resourceChild = ref}} />
-				<ErrorModal />
-				<LoadingModal />
 			</div>
 		);
 	}
