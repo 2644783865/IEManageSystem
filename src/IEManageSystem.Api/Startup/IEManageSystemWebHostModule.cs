@@ -28,12 +28,10 @@ namespace IEManageSystem.Api.Startup
     )]
     public class IEManageSystemWebHostModule: AbpModule
     {
-        private readonly IHostingEnvironment _env;
         private readonly IConfigurationRoot _appConfiguration;
 
         public IEManageSystemWebHostModule(IHostingEnvironment env)
         {
-            _env = env;
             _appConfiguration = env.GetAppConfiguration();
         }
 
@@ -68,6 +66,8 @@ namespace IEManageSystem.Api.Startup
                          }
                      }
                  });
+
+            WebConfiguration.Init(_appConfiguration);
         }
 
         public override void Initialize()

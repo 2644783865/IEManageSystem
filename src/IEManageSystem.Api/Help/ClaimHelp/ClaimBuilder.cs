@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IdentityModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -8,6 +9,29 @@ namespace IEManageSystem.Api.Help.ClaimHelp
 {
     public class ClaimBuilder
     {
+        public static ClaimBuilder Subject
+        {
+            get {
+                return new ClaimBuilder(JwtClaimTypes.Subject);
+            }
+        }
+
+        public static ClaimBuilder Audience
+        {
+            get
+            {
+                return new ClaimBuilder(JwtClaimTypes.Audience);
+            }
+        }
+
+        public static ClaimBuilder Issuer
+        {
+            get
+            {
+                return new ClaimBuilder(JwtClaimTypes.Issuer);
+            }
+        }
+
         public static ClaimBuilder Id {
             get {
                 return new ClaimBuilder(ClaimTypes.NameIdentifier);

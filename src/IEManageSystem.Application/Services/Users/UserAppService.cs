@@ -15,9 +15,11 @@ using IEManageSystem.Entitys.Authorization.Users;
 using IEManageSystem.Entitys.Authorization.Users.Accounts;
 using IEManageSystem.Help.Exceptions;
 using IEManageSystem.Services.Users.Dto;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IEManageSystem.Services.Users
 {
+    [Authorize]
     public class UserAppService : IEManageSystemAppServiceBase, IUserAppService
     {
         private IAbpSession _AbpSession { get; set; }

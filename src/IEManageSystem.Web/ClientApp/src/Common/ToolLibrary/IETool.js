@@ -18,5 +18,5 @@ export function ieAjax(object)
 
 export function setToken(token)
 {
-    $.cookie('ie_token', token, { expires: 7 });
+    $.cookie('ie_token', token, { expires: 7, path: '/' });
 }

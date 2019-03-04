@@ -28,6 +28,12 @@ using IEManageSystem.ApiAuthorization;
 using IEManageSystem.ApiAuthorization.Authorizations;
 using IEManageSystem.Api.Startup;
 using IEManageSystem.Web.Filters;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using IdentityModel;
+using System.Text;
+using IEManageSystem.Api.Configuration;
+using IEManageSystem.Api.Help.ClaimHelp;
 
 namespace IEManageSystem.Web.Startup
 {
@@ -86,6 +92,29 @@ namespace IEManageSystem.Web.Startup
                 .ConfigurationIdentityServer(_configurationRoot.GetConnectionString("IdentityServer"))
                 .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>()
                 .AddProfileService<ProfileService>();
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    NameClaimType = ClaimBuilder.UserName.ClaimName,
+                    //RoleClaimType = JwtClaimTypes.Role,
+                    ValidIssuer = WebConfiguration.Issuer,
+                    ValidAudience = WebConfiguration.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(WebConfiguration.SymmetricKey))
+                };
+
+                options.IncludeErrorDetails = true;
+
+                options.Events = new JwtBearerEvents() {
+
+                };
+            });
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

@@ -51,9 +51,11 @@ export default class Content extends React.Component
 	
 	// 登录回调
 	loginCall(data){
-		if(data.isSuccess==true)
-		{
-			if( data.redirectHref == null || data.redirectHref == "")
+		if(data.isSuccess===true)
+        {
+            IETool.setToken(data.value.access_token);
+
+			if( data.redirectHref === null || data.redirectHref === "")
 			{
 				// 跳转管理中心
 				let manageHomeUrl = $("#manageHomeUrl").attr("value");

@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Abp.Dependency;
 using Abp.Domain.Uow;
 using Abp.Runtime.Session;
+using IdentityModel;
 using IdentityModel.Client;
 using IdentityServer4.Events;
 using IdentityServer4.Extensions;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
+using IEManageSystem.Api.Configuration;
 using IEManageSystem.Api.Help;
 using IEManageSystem.Api.Help.ClaimHelp;
 using IEManageSystem.Api.Models;
@@ -23,6 +27,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using UtilityAction.ValidateFun;
 
 namespace IEManageSystem.Api.Controllers
@@ -126,7 +131,7 @@ namespace IEManageSystem.Api.Controllers
                 return new ApiResultDataModel() { IsSuccess = false, Message = "密码错误" };
             }
 
-            await SignInAsync(output.AbpLoginResult.User, model.RememberLogin);
+            string jwtToken = await SignInAsync(output.AbpLoginResult.User, model.RememberLogin);
 
             // 确保returnUrl仍然有效，如果是这样重定向回授权端点或本地页面，只有当你想支持其他本地页面时才需要进行IsLocalUrl检查，否则IsValidReturnUrl会更严格
             if (_Interaction.IsValidReturnUrl(model.ReturnUrl) || Url.IsLocalUrl(model.ReturnUrl))
@@ -138,32 +143,52 @@ namespace IEManageSystem.Api.Controllers
                 };
             }
 
-            return new ApiResultDataModel() { IsSuccess = true };
+            return new ApiResultDataModel() { IsSuccess = true, Value= new
+                {
+                    access_token = jwtToken,
+                    token_type = "Bearer"
+                }
+            };
         }
 
         /// <summary>
         /// 执行站点登录
         /// </summary>
         /// <returns></returns>
-        private async Task SignInAsync(IdentityUser user, bool rememberLogin)
+        private async Task<string> SignInAsync(IdentityUser user, bool rememberLogin)
         {
             // 触发IdentityService用户登录成功事件
             await _Events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id.ToString(), user.Name));
 
-            // 如果用户选择“记住我”，则仅在此设置明确的到期时间。
-            AuthenticationProperties props = null;
-            if (rememberLogin)
-            {
-                props = new AuthenticationProperties
-                {
-                    IsPersistent = true,
-                    ExpiresUtc = DateTimeOffset.UtcNow.Add(TimeSpan.FromDays(15))
-                };
-            };
             var claims = new ClaimHelper().CreateClaimsForIdentityUser(user).ToArray();
 
-            // 发出身份验证Cookie
-            await HttpContext.SignInAsync(user.Id.ToString(), user.Name, props, claims);
+            //// 如果用户选择“记住我”，则仅在此设置明确的到期时间。
+            //AuthenticationProperties props = null;
+            //if (rememberLogin)
+            //{
+            //    props = new AuthenticationProperties
+            //    {
+            //        IsPersistent = true,
+            //        ExpiresUtc = DateTimeOffset.UtcNow.Add(TimeSpan.FromDays(15))
+            //    };
+            //};
+
+            //// 发出身份验证Cookie
+            //await HttpContext.SignInAsync(user.Id.ToString(), user.Name, props, claims);
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(WebConfiguration.SymmetricKey);
+            var expiresAt = DateTime.UtcNow.AddDays(7);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = expiresAt,
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            return tokenHandler.WriteToken(token);
         }
 
         /// <summary>

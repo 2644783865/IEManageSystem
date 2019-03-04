@@ -1,4 +1,5 @@
 ﻿using Abp.Dependency;
+using IEManageSystem.Api.Configuration;
 using IEManageSystem.ApiAuthorization;
 using IEManageSystem.Entitys.Authorization.LoginManagers;
 using System;
@@ -12,7 +13,7 @@ namespace IEManageSystem.Api.Help.ClaimHelp
     /// <summary>
     /// 提供站点Claim
     /// </summary>
-    public class ClaimHelper: ITransientDependency
+    public class ClaimHelper : ITransientDependency
     {
         public ClaimHelper(
             )
@@ -27,6 +28,9 @@ namespace IEManageSystem.Api.Help.ClaimHelp
         {
             return new List<string>
                     {
+                            ClaimBuilder.Subject.ClaimName,
+                            ClaimBuilder.Audience.ClaimName,
+                            ClaimBuilder.Issuer.ClaimName,
                             ClaimBuilder.Id.ClaimName,
                             ClaimBuilder.UserName.ClaimName,
                             ClaimBuilder.EmailAddress.ClaimName,
@@ -44,6 +48,9 @@ namespace IEManageSystem.Api.Help.ClaimHelp
         {
             List<Claim> claims = new List<Claim>
                     {
+                            ClaimBuilder.Subject.CreateClaim(user.Id.ToString()),
+                            ClaimBuilder.Audience.CreateClaim(WebConfiguration.Audience),
+                            ClaimBuilder.Issuer.CreateClaim(WebConfiguration.Issuer),
                             ClaimBuilder.Id.CreateClaim(user.Id.ToString()),
                             ClaimBuilder.UserName.CreateClaim(user.UserName ?? ""),
                             ClaimBuilder.EmailAddress.CreateClaim(user.EmailAddress ?? ""),

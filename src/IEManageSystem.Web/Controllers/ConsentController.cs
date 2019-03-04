@@ -16,7 +16,6 @@ namespace IEManageSystem.Web.Controllers
     /// <summary>
     /// This controller processes the consent UI
     /// </summary>
-    [Authorize]
     public class ConsentController : IEManageSystemControllerBase
     {
         /// <summary>

@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IEManageSystem.Web.Controllers
 {
-    [Authorize]
     public class ManageHomeController : IEManageSystemControllerBase
     {
         public IActionResult Index()

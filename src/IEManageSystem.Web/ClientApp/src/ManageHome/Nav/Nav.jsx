@@ -30,7 +30,7 @@ export default class Nav extends React.Component
     getUserName(){
         let postData = {};
 
-        $.ajax({
+        IETool.ieAjax({
             url: "/api/User/GetUserInfo",
             type: 'post',
             data: JSON.stringify(postData),
