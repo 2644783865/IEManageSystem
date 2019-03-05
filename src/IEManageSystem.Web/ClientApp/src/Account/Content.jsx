@@ -58,8 +58,7 @@ export default class Content extends React.Component
 			if( data.redirectHref === null || data.redirectHref === "")
 			{
 				// 跳转管理中心
-				let manageHomeUrl = $("#manageHomeUrl").attr("value");
-				$(location).attr('href', manageHomeUrl);
+				$(location).attr('href', "/ManageHome/Index");
 			}
 			else{
 				$(location).attr('href', data.redirectHref);
