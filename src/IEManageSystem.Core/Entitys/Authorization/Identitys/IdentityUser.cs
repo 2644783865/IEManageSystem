@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace IEManageSystem.Entitys.Authorization.LoginManagers
+namespace IEManageSystem.Entitys.Authorization.Identitys
 {
     public class IdentityUser
     {

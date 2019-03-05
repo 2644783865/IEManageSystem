@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IEManageSystem.Entitys.Authorization.Identitys;
+using System;
 using System.Collections.Generic;
 using System.Text;
 

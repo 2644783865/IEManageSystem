@@ -20,6 +20,7 @@ using IEManageSystem.Api.Help;
 using IEManageSystem.Api.Help.ClaimHelp;
 using IEManageSystem.Api.Models;
 using IEManageSystem.Api.Models.AccountModels;
+using IEManageSystem.Entitys.Authorization.Identitys;
 using IEManageSystem.Entitys.Authorization.LoginManagers;
 using IEManageSystem.Services.Accounts;
 using IEManageSystem.Services.Accounts.Dto;

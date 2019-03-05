@@ -1,6 +1,7 @@
 ﻿using Abp.Dependency;
 using IEManageSystem.Api.Configuration;
 using IEManageSystem.ApiAuthorization;
+using IEManageSystem.Entitys.Authorization.Identitys;
 using IEManageSystem.Entitys.Authorization.LoginManagers;
 using System;
 using System.Collections.Generic;
