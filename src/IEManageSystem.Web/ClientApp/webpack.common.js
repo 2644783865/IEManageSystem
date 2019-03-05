@@ -12,15 +12,13 @@ module.exports = {
         account:__dirname + "/src/Account/account.jsx",
         consent:__dirname + "/src/Consent/consent.jsx",
         adminiHome:__dirname + "/src/ManageHome/ManageHome.jsx",
-        home:__dirname + "/src/Home/Index.jsx",
-        weatherExport:__dirname + "/src/Common/Weather/weatherExport.js",
-        // selectSingleData:__dirname + "/src/SelectSingleData/SelectSingleData.js",
+        home:__dirname + "/src/Home/Index.jsx"
     },
     output: {
         path: __dirname + "/build",
         filename: "[name].bundle.js",
-        chunkFilename: "[id].chunk.js",
-        libraryTarget: 'umd'
+        chunkFilename: "[id].chunk.js"
+        // libraryTarget: 'umd'
     },
     plugins: [
         new webpack.ProvidePlugin({

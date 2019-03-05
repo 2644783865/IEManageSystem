@@ -33,21 +33,21 @@ using Microsoft.IdentityModel.Tokens;
 using IdentityModel;
 using System.Text;
 using IEManageSystem.Api.Configuration;
-using IEManageSystem.Api.Help.ClaimHelp;
+using IEManageSystem.JwtAuthentication.DomainModel;
+using IEManageSystem.JwtAuthentication.Configuration;
+using IEManageSystem.JwtAuthentication;
 
 namespace IEManageSystem.Web.Startup
 {
     public class Startup
     {
-        private IHostingEnvironment _env { get; set; }
-
         private IConfigurationRoot _configurationRoot { get; set; }
 
         public Startup(IHostingEnvironment env)
         {
-            _env = env;
+            _configurationRoot = AppConfigurations.Get(env.ContentRootPath, env.EnvironmentName);
 
-            _configurationRoot = AppConfigurations.Get(_env.ContentRootPath, _env.EnvironmentName);
+            WebConfiguration.Init(_configurationRoot);
         }
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
@@ -75,7 +75,6 @@ namespace IEManageSystem.Web.Startup
                 opt.ViewLocationFormats.Add("/Views/ManageHome/{1}/{0}" + RazorViewEngine.ViewExtension);
                 opt.ViewLocationFormats.Add("/ClientApp/build/{1}/{0}" + RazorViewEngine.ViewExtension);
                 opt.ViewLocationFormats.Add("/ClientApp/build/ManageHome/{1}/{0}" + RazorViewEngine.ViewExtension);
-
             }).AddJsonOptions(options =>
             {
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
@@ -93,28 +92,7 @@ namespace IEManageSystem.Web.Startup
                 .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>()
                 .AddProfileService<ProfileService>();
 
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    NameClaimType = ClaimBuilder.UserName.ClaimName,
-                    //RoleClaimType = JwtClaimTypes.Role,
-                    ValidIssuer = WebConfiguration.Issuer,
-                    ValidAudience = WebConfiguration.Audience,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(WebConfiguration.SymmetricKey))
-                };
-
-                options.IncludeErrorDetails = true;
-
-                options.Events = new JwtBearerEvents() {
-
-                };
-            });
+            services.AddIEJwtBearer(WebConfiguration.SymmetricKey);
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -180,16 +158,6 @@ namespace IEManageSystem.Web.Startup
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
-            //app.UseSpa(spa =>
-            //{
-            //    spa.Options.SourcePath = "ClientApp";
-
-            //    if (env.IsDevelopment())
-            //    {
-            //        spa.UseReactDevelopmentServer(npmScript: "start");
-            //    }
-            //});
         }
 
         private void InitializeDatabase(IApplicationBuilder app)

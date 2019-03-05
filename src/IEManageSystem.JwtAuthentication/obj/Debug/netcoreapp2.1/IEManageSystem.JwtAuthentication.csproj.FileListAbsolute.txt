@@ -1,0 +1,14 @@
+E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.JwtAuthentication\bin\Debug\netcoreapp2.1\IEManageSystem.JwtAuthentication.deps.json
+E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.JwtAuthentication\bin\Debug\netcoreapp2.1\IEManageSystem.JwtAuthentication.dll
+E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.JwtAuthentication\bin\Debug\netcoreapp2.1\IEManageSystem.Core.dll
+E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.JwtAuthentication\bin\Debug\netcoreapp2.1\UtilityAction.dll
+E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.JwtAuthentication\bin\Debug\netcoreapp2.1\IEManageSystem.Core.pdb
+E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.JwtAuthentication\bin\Debug\netcoreapp2.1\UtilityAction.pdb
+E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.JwtAuthentication\obj\Debug\netcoreapp2.1\IEManageSystem.JwtAuthentication.csprojAssemblyReference.cache
+E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.JwtAuthentication\obj\Debug\netcoreapp2.1\IEManageSystem.JwtAuthentication.csproj.CoreCompileInputs.cache
+E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.JwtAuthentication\obj\Debug\netcoreapp2.1\IEManageSystem.JwtAuthentication.AssemblyInfoInputs.cache
+E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.JwtAuthentication\obj\Debug\netcoreapp2.1\IEManageSystem.JwtAuthentication.AssemblyInfo.cs
+E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.JwtAuthentication\obj\Debug\netcoreapp2.1\IEManageSystem.JwtAuthentication.csproj.CopyComplete
+E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.JwtAuthentication\bin\Debug\netcoreapp2.1\IEManageSystem.JwtAuthentication.pdb
+E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.JwtAuthentication\obj\Debug\netcoreapp2.1\IEManageSystem.JwtAuthentication.dll
+E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.JwtAuthentication\obj\Debug\netcoreapp2.1\IEManageSystem.JwtAuthentication.pdb

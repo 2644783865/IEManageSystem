@@ -37,13 +37,6 @@ namespace IEManageSystem.Api.Startup
 
         public override void PreInitialize()
         {
-            //Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(
-            //    IEManageSystemConsts.ConnectionStringName
-            //);
-
-            // Use database for language management
-            // Configuration.Modules.Zero().LanguageManagement.EnableDbLocalization();
-
             Configuration.Modules.AbpAspNetCore()
                  .CreateControllersForAppServices(
                      typeof(IEManageSystemApplicationModule).GetAssembly()
@@ -66,8 +59,6 @@ namespace IEManageSystem.Api.Startup
                          }
                      }
                  });
-
-            WebConfiguration.Init(_appConfiguration);
         }
 
         public override void Initialize()

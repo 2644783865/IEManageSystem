@@ -3,6 +3,7 @@ using Abp.Modules;
 using Abp.Reflection.Extensions;
 using IEManageSystem.ApiAuthorization;
 using IEManageSystem.IdentityServer;
+using IEManageSystem.JwtAuthentication;
 
 namespace IEManageSystem
 {
@@ -10,7 +11,8 @@ namespace IEManageSystem
         typeof(IEManageSystemCoreModule), 
         typeof(IEIdentityServerModule),
         typeof(AbpAutoMapperModule),
-        typeof(IEApiAuthorizationModule))]
+        typeof(IEApiAuthorizationModule),
+        typeof(IEJwtAuthenticationModule))]
     public class IEManageSystemApplicationModule : AbpModule
     {
         public override void Initialize()

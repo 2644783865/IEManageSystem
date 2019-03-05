@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using IEManageSystem.Api.Help.ClaimHelp;
 using IEManageSystem.Api.Models;
+using IEManageSystem.JwtAuthentication.DomainModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,13 +12,13 @@ namespace IEManageSystem.Api.Controllers.ManageHome.OAuthManage
     [Route("api/[controller]/[action]")]
     public class ClaimManageController : IEManageSystemControllerBase
     {
-        private ClaimHelper _claimHelper { get; set; }
+        private ClaimManager _claimManager { get; set; }
 
         public ClaimManageController(
-            ClaimHelper claimHelper
+            ClaimManager claimManager
             )
         {
-            _claimHelper = claimHelper;
+            _claimManager = claimManager;
         }
 
         /// <summary>
@@ -33,9 +33,10 @@ namespace IEManageSystem.Api.Controllers.ManageHome.OAuthManage
                 return new ApiResultDataModel(_ValidateModelErrors);
             }
 
-            return new ApiResultDataModel() {
+            return new ApiResultDataModel()
+            {
                 IsSuccess = true,
-                Value = _claimHelper.GetWebClaimTypes(),
+                Value = _claimManager.GetIssueClaims(),
             };
         }
     }

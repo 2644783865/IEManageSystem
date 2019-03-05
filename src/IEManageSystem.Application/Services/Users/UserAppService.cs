@@ -22,23 +22,28 @@ namespace IEManageSystem.Services.Users
     [Authorize]
     public class UserAppService : IEManageSystemAppServiceBase, IUserAppService
     {
-        private IAbpSession _AbpSession { get; set; }
+        private IAbpSession _abpSession { get; set; }
 
-        private IRepository<User> _UserRepository { get; set; }
+        private IRepository<User> _userRepository { get; set; }
+
+        private UserManager _userManager { get; set; }
 
         public UserAppService(
             IAbpSession abpSession,
-            IRepository<User> userRepository
+            IRepository<User> userRepository,
+            UserManager userManager
             )
         {
-            _AbpSession = abpSession;
+            _abpSession = abpSession;
 
-            _UserRepository = userRepository;
+            _userRepository = userRepository;
+
+            _userManager = userManager;
         }
 
         public async Task<SetUserInfoOutput> SetUserInfo(SetUserInfoInput input)
         {
-            var user = await _UserRepository.FirstOrDefaultAsync((int)(_AbpSession.UserId ?? 0));
+            var user = await _userRepository.FirstOrDefaultAsync((int)(_abpSession.UserId ?? 0));
             if (user == null)
             {
                 throw new MessageException("未找到当前用户的信息");
@@ -101,7 +106,7 @@ namespace IEManageSystem.Services.Users
             Expression<Func<User, object>>[] propertySelectors = new Expression<Func<User, object>>[] {
                 e=>e.Account
             };
-            var user = _UserRepository.GetAllIncluding(propertySelectors).FirstOrDefault(e=>e.Id == (int)(_AbpSession.UserId ?? 0));
+            var user = _userRepository.GetAllIncluding(propertySelectors).FirstOrDefault(e=>e.Id == (int)(_abpSession.UserId ?? 0));
 
             if (user == null)
             {
@@ -116,7 +121,7 @@ namespace IEManageSystem.Services.Users
             Expression<Func<User, object>>[] propertySelectors = new Expression<Func<User, object>>[] {
                 e=>e.Account
             };
-            var user = _UserRepository.GetAllIncluding(propertySelectors).FirstOrDefault(e => e.Id == (int)(_AbpSession.UserId ?? 0));
+            var user = _userRepository.GetAllIncluding(propertySelectors).FirstOrDefault(e => e.Id == (int)(_abpSession.UserId ?? 0));
 
             if (user == null)
             {
@@ -128,6 +133,24 @@ namespace IEManageSystem.Services.Users
             user.Account.SafetyProblem = safetyProblem;
 
             return new SetSafetyProblemOutput();
+        }
+
+        public async Task<SetPassageOutput> SetPassage(SetPassageInput input)
+        {
+            var user = await _userRepository.FirstOrDefaultAsync((int)(_abpSession.UserId ?? 0));
+            if (user == null)
+            {
+                throw new MessageException("未找到当前用户的信息");
+            }
+
+            bool pass = _userManager.ValidatePassword(user, input.OldPassword);
+            if (pass == false) {
+                throw new MessageException("旧密码错误");
+            }
+
+            _userManager.UpdatePassword(user, input.NewPassword);
+
+            return new SetPassageOutput();
         }
     }
 }

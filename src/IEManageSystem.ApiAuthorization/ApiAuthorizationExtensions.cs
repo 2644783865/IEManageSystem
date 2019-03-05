@@ -13,8 +13,6 @@ namespace IEManageSystem.ApiAuthorization
 {
     public static class ApiAuthorizationExtensions
     {
-        public const string ApiPermissiionClaimName = "ApiPermissionClaim";
-
         public static IServiceCollection AddApiAuthorization(this IServiceCollection services)
         {
             return services.AddScoped<IAuthorizationHandler, ApiScopeAuthorizationPolicy>();

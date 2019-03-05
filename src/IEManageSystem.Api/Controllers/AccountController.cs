@@ -17,11 +17,11 @@ using IdentityServer4.Models;
 using IdentityServer4.Services;
 using IEManageSystem.Api.Configuration;
 using IEManageSystem.Api.Help;
-using IEManageSystem.Api.Help.ClaimHelp;
 using IEManageSystem.Api.Models;
 using IEManageSystem.Api.Models.AccountModels;
 using IEManageSystem.Entitys.Authorization.Identitys;
 using IEManageSystem.Entitys.Authorization.LoginManagers;
+using IEManageSystem.JwtAuthentication.DomainModel;
 using IEManageSystem.Services.Accounts;
 using IEManageSystem.Services.Accounts.Dto;
 using Microsoft.AspNetCore.Authentication;
@@ -46,12 +46,15 @@ namespace IEManageSystem.Api.Controllers
 
         private IAbpSession _AbpSession { get; set; }
 
+        private JwtTokenHandler _JwtTokenHandler { get; set; }
+
         public AccountController(
             IEventService events,
             IIdentityServerInteractionService interaction,
             ValidateCodeHelper validateCodeHelper,
             AccountAppService accountAppService,
-            IAbpSession abpSession)
+            IAbpSession abpSession,
+            JwtTokenHandler jwtTokenHandler)
         {
             _Events = events;
 
@@ -62,6 +65,8 @@ namespace IEManageSystem.Api.Controllers
             _AccountAppService = accountAppService;
 
             _AbpSession = abpSession;
+
+            _JwtTokenHandler = jwtTokenHandler;
         }
 
         /// <summary>
@@ -132,17 +137,12 @@ namespace IEManageSystem.Api.Controllers
                 return new ApiResultDataModel() { IsSuccess = false, Message = "密码错误" };
             }
 
-            string jwtToken = await SignInAsync(output.AbpLoginResult.User, model.RememberLogin);
+            IdentityUser user = output.AbpLoginResult.User;
 
-            // 确保returnUrl仍然有效，如果是这样重定向回授权端点或本地页面，只有当你想支持其他本地页面时才需要进行IsLocalUrl检查，否则IsValidReturnUrl会更严格
-            if (_Interaction.IsValidReturnUrl(model.ReturnUrl) || Url.IsLocalUrl(model.ReturnUrl))
-            {
-                return new ApiResultDataModel()
-                {
-                    IsSuccess = true,
-                    RedirectHref = model.ReturnUrl,
-                };
-            }
+            // 触发IdentityService用户登录成功事件
+            await _Events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id.ToString(), user.Name));
+
+            string jwtToken = _JwtTokenHandler.CreateToken(user, WebConfiguration.SymmetricKey);
 
             return new ApiResultDataModel() { IsSuccess = true, Value= new
                 {
@@ -150,46 +150,6 @@ namespace IEManageSystem.Api.Controllers
                     token_type = "Bearer"
                 }
             };
-        }
-
-        /// <summary>
-        /// 执行站点登录
-        /// </summary>
-        /// <returns></returns>
-        private async Task<string> SignInAsync(IdentityUser user, bool rememberLogin)
-        {
-            // 触发IdentityService用户登录成功事件
-            await _Events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id.ToString(), user.Name));
-
-            var claims = new ClaimHelper().CreateClaimsForIdentityUser(user).ToArray();
-
-            //// 如果用户选择“记住我”，则仅在此设置明确的到期时间。
-            //AuthenticationProperties props = null;
-            //if (rememberLogin)
-            //{
-            //    props = new AuthenticationProperties
-            //    {
-            //        IsPersistent = true,
-            //        ExpiresUtc = DateTimeOffset.UtcNow.Add(TimeSpan.FromDays(15))
-            //    };
-            //};
-
-            //// 发出身份验证Cookie
-            //await HttpContext.SignInAsync(user.Id.ToString(), user.Name, props, claims);
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(WebConfiguration.SymmetricKey);
-            var expiresAt = DateTime.UtcNow.AddDays(7);
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(claims),
-                Expires = expiresAt,
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-
-            return tokenHandler.WriteToken(token);
         }
 
         /// <summary>

@@ -22,11 +22,14 @@ export default class AccountSecurity extends React.Component {
             problem: "",
             problemReadonly: true,
             answer: "",
-            answerReadonly: true
+            answerReadonly: true,
+            oldPassword: "",
+            newPassword: ""
         };
 
         this._getUserInfo = this._getUserInfo.bind(this);
         this._setSafetyProblem = this._setSafetyProblem.bind(this);
+        this._setPassage = this._setPassage.bind(this);
 
         this._getUserInfo();
     }
@@ -101,6 +104,34 @@ export default class AccountSecurity extends React.Component {
         });
     }
 
+    _setPassage()
+    {
+        LoadingModal.showModal();
+
+        let postData = {
+            oldPassword: this.state.oldPassword,
+            newPassword: this.state.newPassword
+        };
+
+        IETool.ieAjax({
+            url: "/api/User/SetPassage",
+            type: 'post',
+            data: JSON.stringify(postData),
+            contentType: 'application/json',
+            dataType: 'json',
+            success: function (data) {
+                LoadingModal.hideModal();
+
+                if (data.isSuccess === true) {
+                    return;
+                }
+                else {
+                    ErrorModal.showErrorModal("表单提交错误", data.message);
+                }
+            }.bind(this),
+        });
+    }
+
     render() {
         let userInfoHeadSculpture = (this.state.headSculpture === null || this.state.headSculpture === "") ? imgAvatar : this.state.headSculpture;
         return (
@@ -130,7 +161,7 @@ export default class AccountSecurity extends React.Component {
                                     }
                                 />
                                 <div className="input-group-append">
-                                    <button className="btn btn-outline-secondary" type="button">修改登录密码</button>
+                                    <button className="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#changePassword">修改登录密码</button>
                                 </div>
                             </div>
                             <div className="input-group mb-3">
@@ -219,6 +250,44 @@ export default class AccountSecurity extends React.Component {
                 <div className="w-100 mt-3">
                     <button className="btn btn-info float-right" type="button" onClick={this._setSafetyProblem}>提交修改</button>
                     <button className="btn btn-secondary float-right mr-3" type="button" onClick={this._getUserInfo}>取消修改</button>
+                </div>
+                <div className="modal fade" id="changePassword">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header bg-info text-white">
+                                <h5 className="modal-title">修改用户密码</h5>
+                                <button type="button" className="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div className="modal-body">
+                                <div className="input-group mb-3">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">输入原密码</span>
+                                    </div>
+                                    <input type="text" className="form-control" placeholder="请输入原密码" name="oldPassword"
+                                        value={this.state.oldPassword}
+                                        onChange={(event) => {
+                                            this.setState({ oldPassword: event.target.value });
+                                        }}
+                                    />
+                                </div>
+                                <div className="input-group mb-3">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">输入新密码</span>
+                                    </div>
+                                    <input type="text" className="form-control" placeholder="请输入新密码" name="newPassword"
+                                        value={this.state.newPassword}
+                                        onChange={(event) => {
+                                            this.setState({ newPassword: event.target.value });
+                                        }}
+                                    />
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                <button type="button" className="btn btn-info" data-dismiss="modal" onClick={this._setPassage}>提交</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <ErrorModal />
                 <LoadingModal />

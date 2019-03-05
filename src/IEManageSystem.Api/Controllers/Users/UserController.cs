@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IEManageSystem.Api.Controllers.Users.Dto;
-using IEManageSystem.Api.Help.ClaimHelp;
 using IEManageSystem.Api.Models;
 using IEManageSystem.ApiAuthorization;
 using IEManageSystem.ApiAuthorization.DomainModel.ApiScopes;
 using IEManageSystem.Entitys.Authorization.LoginManagers;
+using IEManageSystem.JwtAuthentication.DomainModel;
 using IEManageSystem.Services.Users;
 using IEManageSystem.Services.Users.Dto;
 using Microsoft.AspNetCore.Http;
@@ -39,7 +39,7 @@ namespace IEManageSystem.Api.Controllers.Users
         [HttpPost]
         public async Task<ActionResult<ApiResultDataModel>> GetUserScopeAccessAuthorities([FromBody]GetUserScopeAccessAuthoritiesInput input)
         {
-            List<string> permissionNames = User.Claims.Where(e => e.Type == ApiAuthorizationExtensions.ApiPermissiionClaimName).Select(e => e.Value).ToList();
+            List<string> permissionNames = User.Claims.Where(e => e.Type == JwtClaimType.Permission).Select(e => e.Value).ToList();
 
             var userScopeAccessAuthorities = _apiScopeManager.GetUserScopeAccessAuthorities(permissionNames);
 

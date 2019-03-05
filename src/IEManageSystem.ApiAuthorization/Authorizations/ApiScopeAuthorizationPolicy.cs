@@ -12,6 +12,7 @@ using System.Security.Claims;
 using IEManageSystem.ApiAuthorization.DomainModel.ApiSingles;
 using System.Linq.Expressions;
 using Abp.Domain.Uow;
+using IEManageSystem.JwtAuthentication.DomainModel;
 
 namespace IEManageSystem.ApiAuthorization.Authorizations
 {
@@ -38,13 +39,13 @@ namespace IEManageSystem.ApiAuthorization.Authorizations
                     return Task.CompletedTask;
                 }
 
-                if (!context.User.HasClaim(c => c.Type == ApiAuthorizationExtensions.ApiPermissiionClaimName))
+                if (!context.User.HasClaim(c => c.Type == JwtClaimType.Permission))
                 {
                     return Task.CompletedTask;
                 }
 
                 // 获取当前用户拥有的权限
-                List<Claim> permissionClaims = context.User.Claims.Where(e => e.Type == ApiAuthorizationExtensions.ApiPermissiionClaimName).ToList();
+                List<Claim> permissionClaims = context.User.Claims.Where(e => e.Type == JwtClaimType.Permission).ToList();
 
                 if (_checkPermissionService.IsAllowAccess(requirement.ControllerName, requirement.ActionName, permissionClaims.Select(e => e.Value).ToList()))
                 {
