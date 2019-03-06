@@ -10,6 +10,22 @@
     width: 80% !important;
 }
 
+.overflow-hidden-x {
+    overflow-x: hidden;
+}
+
+.overflow-hidden-y {
+    overflow-y: hidden;
+}
+
+.overflow-auto-x {
+    overflow-x: auto;
+}
+
+.overflow-auto-y {
+    overflow-y: auto;
+}
+
 .margin-top-1{
 	margin-top:1px;
 }

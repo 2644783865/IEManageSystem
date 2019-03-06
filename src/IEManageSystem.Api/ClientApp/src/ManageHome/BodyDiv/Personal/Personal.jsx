@@ -14,7 +14,7 @@ export default class BodyDiv extends React.Component
     render()
     {
         return(
-            <div className="w-100 h-100">
+            <div className="w-100 h-100 overflow-auto-y">
                 <Switch>
                     <Route path="/ManageHome/Personal/UserInfo" component={UserInfo} />
                     <Route path="/ManageHome/Personal/AccountSecurity" component={AccountSecurity} />

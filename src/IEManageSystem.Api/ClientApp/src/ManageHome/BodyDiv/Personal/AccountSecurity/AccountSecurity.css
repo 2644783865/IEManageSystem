@@ -14,6 +14,7 @@
     padding: 1rem;
     border: 1px solid #dfdfdf;
     border-radius: .5rem;
+    display: inline-block;
 }
 
 .userinfo > div:nth-child(2) h5 {

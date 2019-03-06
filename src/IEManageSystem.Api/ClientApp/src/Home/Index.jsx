@@ -5,6 +5,7 @@ import 'bootstrapcssicon';
 import 'mousewheel';
 
 import 'commoncss';
+import 'iemedia';
 
 import 'cookie';
 
@@ -182,9 +183,9 @@ class Home extends React.Component{
                 <small className="text-white">
                     Copyright © 2019 by IceEmblem. All rights reserved.
                 </small>
-                <span className="text-white ml-auto">
+                <small className="text-white ml-auto">
                     由冰纹工作室开发开发
-                </span>
+                </small>
             </nav>
         </div>
         );

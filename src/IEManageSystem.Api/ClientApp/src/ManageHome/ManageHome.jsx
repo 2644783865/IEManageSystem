@@ -2,6 +2,7 @@ import 'bootstrap';
 import 'bootstrapcss';
 import 'bootstrapcssicon';
 import 'commoncss';
+import 'iemedia';
 import 'cookie';
 import 'ielib';
 import 'ToolLibrary/IETool.js';
@@ -54,7 +55,7 @@ class UserHome extends React.Component {
         return (
             <div className="manage-home d-flex flex-column h-100">
                 <Nav topLevelMenus={this.topLevelMenus} selectTopMenu={this.state.selectTopMenu} topLevelMenusSelect={this.topLevelMenusSelect} />
-                <div className="d-flex flex-grow-1 w-100">
+                <div className="d-flex flex-grow-1 overflow-hidden-y w-100">
                     <div className="d-flex w-100">
                         <div className="col-md-2 h-100 padding-0">
                             <SideNav selectTopMenu={this.state.selectTopMenu} sideMenuSelect={this.sideMenuSelect} />

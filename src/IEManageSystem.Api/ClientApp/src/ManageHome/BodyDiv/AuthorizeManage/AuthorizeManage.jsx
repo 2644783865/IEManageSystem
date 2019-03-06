@@ -21,7 +21,7 @@ export default class AuthorizeManage extends React.Component
     render()
     {
         return(
-            <div className="w-100 h-100">
+            <div className="w-100 h-100 overflow-auto-y">
                 <Switch>
                     <Route path="/ManageHome/AuthorizeManage/ApiScopePermission" component={ApiScopePermission} />
                     <Route path="/ManageHome/AuthorizeManage/Permission" component={Permission} />

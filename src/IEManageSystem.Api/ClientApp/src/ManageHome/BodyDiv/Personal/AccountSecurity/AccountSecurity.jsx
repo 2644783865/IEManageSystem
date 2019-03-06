@@ -135,7 +135,7 @@ export default class AccountSecurity extends React.Component {
     render() {
         let userInfoHeadSculpture = (this.state.headSculpture === null || this.state.headSculpture === "") ? imgAvatar : this.state.headSculpture;
         return (
-            <div className="row userinfo mb-3">
+            <div className="userinfo mb-3">
                 <div className="d-flex w-100">
                     <div className="card border-right-0 w-25">
                         <div className="w-100">

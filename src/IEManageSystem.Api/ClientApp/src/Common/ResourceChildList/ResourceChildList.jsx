@@ -69,7 +69,7 @@ export default class ResourceChildList extends React.Component
 
     render() {
         return (
-            <div className="row h-100">
+            <div className="w-100 h-100">
                 <div className="left-preview float-left h-100">
                     <Preview
                         title={this.props.previewTitle}
