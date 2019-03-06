@@ -9,13 +9,13 @@ namespace IEManageSystem.Api.Models.AccountModels
     public class RegisterApiModel
     {
         [Required]
-        [EmailAddress]
-        public string Email { get; set; }
-
-        [Required]
+        [MinLength(6)]
+        [MaxLength(20)]
         public string AccountID { get; set; }
 
         [Required]
+        [MinLength(6)]
+        [MaxLength(20)]
         public string Password { get; set; }
         
         [Required]

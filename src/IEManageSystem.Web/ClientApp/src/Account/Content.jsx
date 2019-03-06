@@ -31,7 +31,6 @@ export default class Content extends React.Component
 			AccountIDL:"", 
 			PasswordL:"",
 			VaildCodeL:"",
-			EmailR:"",
 			AccountIDR:"",
 			PasswordR:"",
 			PasswordRC:"",
@@ -106,7 +105,6 @@ export default class Content extends React.Component
 		}
 
 		let postdata = {
-			Email:$("#EmailR").val(),
 			Password:$("#PasswordR").val(),
 			AccountID:$("#AccountIDR").val(),
 			VaildCode:$("#VaildCodeR").val()
@@ -141,83 +139,81 @@ export default class Content extends React.Component
 			this.setState({imgSrc:imgsrc});
 	}
 
-	render(){
-		if(this.state.LoginPanelState == LoginPanelState.Login){
-			return(
-				<div className="col-md-4">
-					<div className="col-md-12">
-						<div className="col-md-12 error text-danger"></div>
-						<div>
-							<form id="loginform" className="form-inline">
-								<h6>继续你的旅行...</h6>
-							  <div className="w-100">
-							    <label className="" for="text">用户名:</label>
-							    <input  value={this.state.AccountIDL} onChange={(event)=> this.setState({AccountIDL: event.target.value})}  type="text" className="form-control" id="AccountIDL" name="AccountID" />
-							  </div>
-							  <div className="w-100">
-							    <label className="" for="pwd">密&#12288;码:</label>
-							    <input value={this.state.PasswordL} onChange={(event)=> this.setState({PasswordL: event.target.value})}  type="password" className="form-control" id="PasswordL" name="Password" />
-							  </div>
-							  <div className="w-100 valid">
-							    <label className="" for="text">验证码:</label>
-							    <input value={this.state.VaildCodeL} onChange={(event)=> this.setState({VaildCodeL: event.target.value})} type="text" className="" id="VaildCodeL" name="VaildCode" />
-							    <img onClick={this.imgClick} src={this.state.imgSrc}  className="img-rounded" />
-							  </div>
-							  <div className="w-100">
-							  	<label className="" for="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-							    <input className="form-check-input" type="checkbox" />
-							    <label className="form-check-label">记住我</label>
-							  </div>
-							  <div className="w-100">
-							  	&#12288;&#12288;&#12288;
+    render() {
+        let inputKey = 0;
+
+        if (this.state.LoginPanelState === LoginPanelState.Login) {
+            return (
+                <div className="col-md-4">
+                    <div className="col-md-12">
+                        <div className="col-md-12 error text-danger"></div>
+                        <div>
+                            <form id="loginform" className="form-inline">
+                                <h6>继续你的旅行...</h6>
+                                <div className="w-100">
+                                    <label className="" for="text">用户名:</label>
+                                    <input key={inputKey++} value={this.state.AccountIDL} onChange={(event) => this.setState({ AccountIDL: event.target.value })} type="text" className="form-control" id="AccountIDL" name="AccountID" />
+                                </div>
+                                <div className="w-100">
+                                    <label className="" for="pwd">密&#12288;码:</label>
+                                    <input key={inputKey++} value={this.state.PasswordL} onChange={(event) => this.setState({ PasswordL: event.target.value })} type="password" className="form-control" id="PasswordL" name="Password" />
+                                </div>
+                                <div className="w-100 valid">
+                                    <label className="" for="text">验证码:</label>
+                                    <input key={inputKey++} value={this.state.VaildCodeL} onChange={(event) => this.setState({ VaildCodeL: event.target.value })} type="text" className="" id="VaildCodeL" name="VaildCode" />
+                                    <img onClick={this.imgClick} src={this.state.imgSrc} className="img-rounded" />
+                                </div>
+                                <div className="w-100">
+                                    <label className="" for="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    <input key={inputKey++} className="form-check-input" type="checkbox" />
+                                    <label className="form-check-label">记住我</label>
+                                </div>
+                                <div className="w-100">
+                                    &#12288;&#12288;&#12288;
 							    <button onClick={this.login} type="button" className="btn btn-info">登录</button>
-							  	<button onClick={this.toRegister} type="button" className="btn btn-primary">去注册</button>
-							  </div>
-							</form>
-						</div>
-					</div>
-				</div>
-			);
-		}
-		else{
-			return(
-				<div className="col-md-4">
-					<div className="col-md-12">
-						<div className="col-md-12 error text-danger"></div>
-						<div>
-							<form id="registerform" className="form-inline">
-							  <h6>开始你的旅行...</h6>
-							  <div className="w-100">
-							    <label className="" for="text">邮&#12288;箱:</label>
-							    <input value={this.state.EmailR} onChange={(event)=> this.setState({EmailR: event.target.value})} type="text" className="form-control w-75" id="EmailR" name="Email" />
-							  </div>
-							  <div className="w-100">
-							    <label className="" for="text">用户名:</label>
-							    <input value={this.state.AccountIDR} onChange={(event)=> this.setState({AccountIDR: event.target.value})} type="text" className="form-control w-75" id="AccountIDR" name="AccountID" />
-							  </div>
-							  <div className="w-100">
-							    <label className="" for="pwd">密&#12288;码:</label>
-							    <input value={this.state.PasswordR} onChange={(event)=> this.setState({PasswordR: event.target.value})}  className="form-control w-50" id="PasswordR" name="Password" type="password" />
-							  </div>
-							  <div className="w-100">
-							    <label className="" for="pwd">确&#12288;认:</label>
-							    <input value={this.state.PasswordRC} onChange={(event)=> this.setState({PasswordRC: event.target.value})} className="form-control w-50" id="PasswordRC" name="PasswordC" type="password" />
-							  </div>
-							  <div className="w-100 valid">
-							    <label className="" for="pwd">验证码:</label>
-							    <input value={this.state.VaildCodeR} onChange={(event)=> this.setState({VaildCodeR: event.target.value})} type="text" className="" id="VaildCodeR" name="VaildCode" />
-							    <img onClick={this.imgClick} src={this.state.imgSrc}  className="img-rounded" />
-							  </div>
-							  <div className="w-100">
-							  	&#12288;&#12288;&#12288;
+                                    <button onClick={this.toRegister} type="button" className="btn btn-primary">去注册</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+        else {
+            return (
+                <div className="col-md-4">
+                    <div className="col-md-12">
+                        <div className="col-md-12 error text-danger"></div>
+                        <div>
+                            <form id="registerform" className="form-inline">
+                                <h6>开始你的旅行...</h6>
+                                <div className="w-100">
+                                    <label className="" for="text">用户名:</label>
+                                    <input key={inputKey++} value={this.state.AccountIDR} onChange={(event) => this.setState({ AccountIDR: event.target.value })} type="text" className="form-control w-75" id="AccountIDR" name="AccountID" />
+                                </div>
+                                <div className="w-100">
+                                    <label className="" for="pwd">密&#12288;码:</label>
+                                    <input key={inputKey++} value={this.state.PasswordR} onChange={(event) => this.setState({ PasswordR: event.target.value })} className="form-control w-50" id="PasswordR" name="Password" type="password" />
+                                </div>
+                                <div className="w-100">
+                                    <label className="" for="pwd">确&#12288;认:</label>
+                                    <input key={inputKey++} value={this.state.PasswordRC} onChange={(event) => this.setState({ PasswordRC: event.target.value })} className="form-control w-50" id="PasswordRC" name="PasswordC" type="password" />
+                                </div>
+                                <div className="w-100 valid">
+                                    <label className="" for="pwd">验证码:</label>
+                                    <input key={inputKey++} value={this.state.VaildCodeR} onChange={(event) => this.setState({ VaildCodeR: event.target.value })} type="text" className="" id="VaildCodeR" name="VaildCode" />
+                                    <img onClick={this.imgClick} src={this.state.imgSrc} className="img-rounded" />
+                                </div>
+                                <div className="w-100">
+                                    &#12288;&#12288;&#12288;
 							  	<button onClick={this.register} type="button" className="btn btn-primary">注册</button>
-							    <button onClick={this.toLogin} type="button" className="btn btn-info">去登录</button>
-							  </div>
-							</form>
-						</div>
-					</div>
-				</div>
-			);
+                                    <button onClick={this.toLogin} type="button" className="btn btn-info">去登录</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            );
 		}
 	}
 }

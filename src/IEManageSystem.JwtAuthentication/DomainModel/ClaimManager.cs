@@ -18,9 +18,9 @@ namespace IEManageSystem.JwtAuthentication.DomainModel
                 new Claim(JwtClaimType.Issuer, JwtAuthenConfiguration.Issuer),
                 new Claim(JwtClaimType.NameIdentifier, identityUser.Id.ToString()),
                 new Claim(JwtClaimType.UserName, identityUser.UserName),
-                new Claim(JwtClaimType.Name, identityUser.Name),
-                new Claim(JwtClaimType.EmailAddress, identityUser.EmailAddress),
-                new Claim(JwtClaimType.Phone, identityUser.Phone),
+                new Claim(JwtClaimType.Name, identityUser.Name ?? ""),
+                new Claim(JwtClaimType.EmailAddress, identityUser.EmailAddress ?? ""),
+                new Claim(JwtClaimType.Phone, identityUser.Phone ?? ""),
             };
 
             identityUser.Permissions.ForEach(e => {

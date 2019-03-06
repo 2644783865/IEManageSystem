@@ -17,7 +17,7 @@
     width: 100%;
 }
 .weather-left{
-    width: 60%;
+    width: 55%;
 }
 .weather-temperature{
     font-size: 2.5em;
@@ -37,7 +37,7 @@
 }
 
 .weather-right{
-    width: 40%;
+    width: 45%;
 }
 .weather-icon{
     flex-grow:1;

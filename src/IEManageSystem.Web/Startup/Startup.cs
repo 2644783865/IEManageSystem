@@ -70,17 +70,16 @@ namespace IEManageSystem.Web.Startup
                 options.Filters.Add<IEExceptionFilter>();
                 options.Filters.Add<IEValidationActionFilter>();
             })
-            .AddRazorOptions(opt =>
-            {
-                opt.ViewLocationFormats.Add("/Views/ManageHome/{1}/{0}" + RazorViewEngine.ViewExtension);
-                opt.ViewLocationFormats.Add("/ClientApp/build/{1}/{0}" + RazorViewEngine.ViewExtension);
-                opt.ViewLocationFormats.Add("/ClientApp/build/ManageHome/{1}/{0}" + RazorViewEngine.ViewExtension);
-            }).AddJsonOptions(options =>
+            .AddJsonOptions(options =>
             {
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
 
-            services.AddMvc();
+            // In production, the React files will be served from this directory
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/build";
+            });
 
             services.AddSession();
 
@@ -134,23 +133,27 @@ namespace IEManageSystem.Web.Startup
 
             app.UseAuthentication();
 
+            app.Use(async (context, next) => 
+            {
+                string requestPath = context.Request.Path.Value;
+
+                if (requestPath.StartsWith("/ManageHome/"))
+                {
+                    context.Request.Path = new PathString("/ManageHome/Index.html");
+                }
+
+                await next.Invoke();
+            });
+
+            app.UseDefaultFiles(new DefaultFilesOptions(new Microsoft.AspNetCore.StaticFiles.Infrastructure.SharedOptions() {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), @"ClientApp/build")),
+                RequestPath = new PathString("")
+            }));
+
             app.UseStaticFiles();
 
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                FileProvider = new PhysicalFileProvider(
-                Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot")),
-                RequestPath = new PathString("/wwwroot")
-            });
-
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                FileProvider = new PhysicalFileProvider(
-                Path.Combine(Directory.GetCurrentDirectory(), @"ClientApp/build")),
-                RequestPath = new PathString("")
-            });
-
-            //app.UseSpaStaticFiles();
+            app.UseSpaStaticFiles();
 
             app.UseMvc(routes =>
             {
@@ -158,6 +161,11 @@ namespace IEManageSystem.Web.Startup
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            //app.UseSpa(spa =>
+            //{
+            //    spa.Options.SourcePath = "ClientApp";
+            //});
         }
 
         private void InitializeDatabase(IApplicationBuilder app)

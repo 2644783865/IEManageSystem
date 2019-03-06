@@ -94,7 +94,6 @@ namespace IEManageSystem.Api.Controllers
             input.Surname = model.AccountID;
             input.UserName = model.AccountID;
             input.Password = model.Password;
-            input.EmailAddress = model.Email;
             input.TenantId = _AbpSession.TenantId;
 
             output = await _AccountAppService.Register(input);

@@ -141,7 +141,7 @@ class Home extends React.Component{
                         <div className="">
                             <div className="icon-sm">
                                 <div className="d-flex">
-                                    <a className="btn btn-info border-0 w-100 mt-auto mb-auto home-login" href="/Account/Login">
+                                    <a className="btn btn-info border-0 w-100 mt-auto mb-auto home-login" href="/Account">
                                         Login
                                     </a>
                                 </div>
