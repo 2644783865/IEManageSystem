@@ -37,6 +37,8 @@ namespace IEManageSystem.Api.Startup
 
         public override void PreInitialize()
         {
+            Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(IEManageSystemConsts.ConnectionStringName);
+
             Configuration.Modules.AbpAspNetCore()
                  .CreateControllersForAppServices(
                      typeof(IEManageSystemApplicationModule).GetAssembly()

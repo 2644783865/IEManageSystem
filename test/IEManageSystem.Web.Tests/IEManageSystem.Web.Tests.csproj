@@ -15,7 +15,6 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\IEManageSystem.Tests\IEManageSystem.Tests.csproj" />
-    <ProjectReference Include="..\..\src\IEManageSystem.Web\IEManageSystem.Web.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Castle.Core" Version="4.3.1" />

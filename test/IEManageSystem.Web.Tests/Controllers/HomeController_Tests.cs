@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using IEManageSystem.Web.Controllers;
 using Shouldly;
 using Xunit;
 

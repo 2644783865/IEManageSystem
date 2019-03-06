@@ -3,12 +3,10 @@
 ################################################################################
 
 /.vs
-/src/IEManageSystem.Web/bin
-/src/IEManageSystem.Web/obj
-/src/IEManageSystem.Web/App_Data/Logs/Logs.txt
-/src/IEManageSystem.Web/ClientApp/node_modules
 /src/IEManageSystem.Api/bin
 /src/IEManageSystem.Api/obj
+/src/IEManageSystem.Api/App_Data/Logs/Logs.txt
+/src/IEManageSystem.Api/ClientApp/node_modules
 /src/IEManageSystem.ApiAuthorization/bin
 /src/IEManageSystem.ApiAuthorization/obj
 /src/IEManageSystem.Application/obj

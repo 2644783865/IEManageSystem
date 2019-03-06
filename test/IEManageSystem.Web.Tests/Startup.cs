@@ -3,7 +3,6 @@ using Abp.AspNetCore;
 using Abp.AspNetCore.TestBase;
 using Abp.Dependency;
 using IEManageSystem.EntityFrameworkCore;
-using IEManageSystem.Web.Controllers;
 using Castle.MicroKernel.Registration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

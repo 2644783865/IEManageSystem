@@ -1,11 +1,9 @@
 using Abp.AspNetCore.TestBase;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
-using IEManageSystem.Web.Startup;
 namespace IEManageSystem.Web.Tests
 {
     [DependsOn(
-        typeof(IEManageSystemWebModule),
         typeof(AbpAspNetCoreTestBaseModule)
         )]
     public class IEManageSystemWebTestModule : AbpModule
