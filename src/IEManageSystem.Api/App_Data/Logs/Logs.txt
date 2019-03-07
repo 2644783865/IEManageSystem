@@ -12022,3 +12022,1019 @@ INFO  2019-03-07 00:40:22,311 [18   ] .Mvc.Infrastructure.ObjectResultExecutor -
 INFO  2019-03-07 00:40:22,317 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 75.2511ms 200 application/json; charset=utf-8
 INFO  2019-03-07 00:40:22,317 [18   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages.IdentityResourceManageAppService.GetIdentityResources (IEManageSystem.Application) in 38.0774ms
 INFO  2019-03-07 00:40:22,320 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 85.9623ms 200 application/json; charset=utf-8
+DEBUG 2019-03-07 11:38:10,676 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-03-07 11:38:10,794 [1    ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2019-03-07 11:38:10,802 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.Api.Startup.IEManageSystemWebHostModule, IEManageSystem.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-07 11:38:10,804 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IEManageSystemApplicationModule, IEManageSystem.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-07 11:38:10,804 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IEManageSystemCoreModule, IEManageSystem.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-07 11:38:10,804 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IdentityServer.IEIdentityServerModule, IEManageSystem.IdentityServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-07 11:38:10,805 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-07 11:38:10,805 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-07 11:38:10,805 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.ApiAuthorization.IEApiAuthorizationModule, IEManageSystem.ApiAuthorization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-07 11:38:10,805 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.JwtAuthentication.IEJwtAuthenticationModule, IEManageSystem.JwtAuthentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-07 11:38:10,805 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.EntityFrameworkCore.IEManageSystemEntityFrameworkCoreModule, IEManageSystem.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-07 11:38:10,806 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-07 11:38:10,806 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-07 11:38:10,826 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IdentityServerEF.IEIdentityServerEFModule, IEManageSystem.IdentityServerEF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-07 11:38:10,827 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-07 11:38:10,827 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-07 11:38:10,830 [1    ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2019-03-07 11:38:11,319 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: IEManageSystem.EntityFrameworkCore.IEManageSystemDbContext, IEManageSystem.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-07 11:38:11,437 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2019-03-07 11:38:11,543 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-03-07 11:38:11,596 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: IEManageSystem
+DEBUG 2019-03-07 11:38:11,628 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-03-07 11:38:12,207 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-03-07 11:38:37,594 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 16 classes define auto mapping attributes
+DEBUG 2019-03-07 11:38:37,594 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ApiResourceClaimDto
+DEBUG 2019-03-07 11:38:37,597 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ApiResourceDto
+DEBUG 2019-03-07 11:38:37,597 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ClientDto
+DEBUG 2019-03-07 11:38:37,597 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ClientGrantTypeDto
+DEBUG 2019-03-07 11:38:37,597 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ClientPostLogoutRedirectUriDto
+DEBUG 2019-03-07 11:38:37,597 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ClientRedirectUriDto
+DEBUG 2019-03-07 11:38:37,597 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ClientScopeDto
+DEBUG 2019-03-07 11:38:37,597 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ClientSecretDto
+DEBUG 2019-03-07 11:38:37,597 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.IdentityClaimDto
+DEBUG 2019-03-07 11:38:37,597 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.IdentityResourceDto
+DEBUG 2019-03-07 11:38:37,597 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.Core.PermissionDto
+DEBUG 2019-03-07 11:38:37,597 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.Core.RoleDto
+DEBUG 2019-03-07 11:38:37,597 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.Core.Users.AccountDto
+DEBUG 2019-03-07 11:38:37,597 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.Core.Users.SafetyProblemDto
+DEBUG 2019-03-07 11:38:37,597 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.Core.Users.UserDto
+DEBUG 2019-03-07 11:38:37,598 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.ApiAuthorization.ApiScopeDto
+INFO  2019-03-07 11:38:38,831 [1    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:38:39,000 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (81ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+INFO  2019-03-07 11:38:39,004 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+INFO  2019-03-07 11:38:39,028 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+INFO  2019-03-07 11:38:39,040 [1    ] Microsoft.EntityFrameworkCore.Migrations - No migrations were applied. The database is already up to date.
+INFO  2019-03-07 11:38:39,142 [1    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'ConfigurationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:38:39,145 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+INFO  2019-03-07 11:38:39,148 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+INFO  2019-03-07 11:38:39,166 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+INFO  2019-03-07 11:38:39,168 [1    ] Microsoft.EntityFrameworkCore.Migrations - No migrations were applied. The database is already up to date.
+INFO  2019-03-07 11:38:39,177 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Clients] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+INFO  2019-03-07 11:38:39,247 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (63ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [IdentityResources] AS [i])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+INFO  2019-03-07 11:38:39,279 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (27ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ApiResources] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+DEBUG 2019-03-07 11:38:39,338 [1    ] IdentityServer4.Startup                  - Using Bearer as default scheme for authentication
+DEBUG 2019-03-07 11:38:39,340 [1    ] IdentityServer4.Startup                  - Using idsrv as default scheme for sign-in
+DEBUG 2019-03-07 11:38:39,341 [1    ] IdentityServer4.Startup                  - Using idsrv as default scheme for sign-out
+DEBUG 2019-03-07 11:38:39,343 [1    ] IdentityServer4.Startup                  - Using Bearer as default scheme for challenge
+DEBUG 2019-03-07 11:38:39,344 [1    ] IdentityServer4.Startup                  - Using Bearer as default scheme for forbid
+DEBUG 2019-03-07 11:38:40,424 [1    ] tityServer4.EntityFramework.TokenCleanup - Starting token cleanup
+INFO  2019-03-07 11:38:41,009 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
+INFO  2019-03-07 11:38:41,010 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2019-03-07 11:38:41,159 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 152.3017ms 200 
+WARN  2019-03-07 11:38:41,166 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2019-03-07 11:38:41,180 [12   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2019-03-07 11:38:41,233 [12   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:38:41,236 [12   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:38:42,015 [13   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/index.html'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\index.html'
+INFO  2019-03-07 11:38:42,030 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1026.4665ms 200 text/html
+INFO  2019-03-07 11:38:42,057 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/home.bundle.js  
+WARN  2019-03-07 11:38:42,061 [11   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:38:42,064 [11   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:38:42,316 [11   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/home.bundle.js'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\home.bundle.js'
+INFO  2019-03-07 11:38:42,319 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 261.9291ms 200 application/javascript
+INFO  2019-03-07 11:38:42,590 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/4b2e0826674dd776a3601ddbb83dfd70.png  
+WARN  2019-03-07 11:38:42,591 [13   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:38:42,593 [13   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:38:42,720 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/fonts/3cf97837524dd7445e9d1462e3c4afe2.woff  
+WARN  2019-03-07 11:38:42,723 [11   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:38:42,725 [11   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:38:42,816 [13   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/fonts/3cf97837524dd7445e9d1462e3c4afe2.woff'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\fonts\3cf97837524dd7445e9d1462e3c4afe2.woff'
+INFO  2019-03-07 11:38:42,980 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 98.8491ms 200 application/font-woff
+INFO  2019-03-07 11:38:43,535 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/5dfddd62b20673f22e7356e07b288bcd.png  
+WARN  2019-03-07 11:38:43,538 [8    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:38:43,595 [8    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:38:43,596 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/12d0cd3019dc76759289bada6091a023.jpg  
+INFO  2019-03-07 11:38:43,666 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/5cd05031dabb7ecb9f145c8ff0ed3230.png  
+WARN  2019-03-07 11:38:43,743 [13   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:38:43,750 [11   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:38:43,755 [13   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:38:43,755 [11   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:38:43,817 [3    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/12d0cd3019dc76759289bada6091a023.jpg'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\12d0cd3019dc76759289bada6091a023.jpg'
+INFO  2019-03-07 11:38:43,818 [3    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 224.0922ms 200 image/jpeg
+INFO  2019-03-07 11:38:43,840 [12   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/5cd05031dabb7ecb9f145c8ff0ed3230.png'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\5cd05031dabb7ecb9f145c8ff0ed3230.png'
+INFO  2019-03-07 11:38:43,842 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 243.265ms 200 image/png
+INFO  2019-03-07 11:38:44,008 [3    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/4b2e0826674dd776a3601ddbb83dfd70.png'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\4b2e0826674dd776a3601ddbb83dfd70.png'
+INFO  2019-03-07 11:38:44,022 [3    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1422.0954ms 200 image/png
+INFO  2019-03-07 11:38:44,050 [3    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/5dfddd62b20673f22e7356e07b288bcd.png'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\5dfddd62b20673f22e7356e07b288bcd.png'
+INFO  2019-03-07 11:38:44,053 [3    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 516.9528ms 200 image/png
+INFO  2019-03-07 11:38:44,133 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/favicon.ico  
+WARN  2019-03-07 11:38:44,135 [17   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:38:44,137 [17   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:38:44,724 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 591.0303ms 404 
+INFO  2019-03-07 11:39:10,447 [18   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:39:11,083 [18   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (530ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:39:11,110 [18   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:39:26,804 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/Account/  
+WARN  2019-03-07 11:39:26,807 [19   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:39:26,821 [19   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:39:26,850 [20   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/Account/index.html'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\Account\index.html'
+INFO  2019-03-07 11:39:26,855 [20   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 48.6321ms 200 text/html
+INFO  2019-03-07 11:39:26,889 [20   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/account.bundle.js  
+WARN  2019-03-07 11:39:26,891 [20   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:39:26,893 [20   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:39:27,297 [20   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/account.bundle.js'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\account.bundle.js'
+INFO  2019-03-07 11:39:27,300 [20   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 410.0369ms 200 application/javascript
+INFO  2019-03-07 11:39:27,376 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/Api/Account/GetVerificationCode/?date=Thu%20Mar%2007%202019%2011:39:27%20GMT+0800%20(%E4%B8%AD%E5%9B%BD%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)  
+WARN  2019-03-07 11:39:27,383 [17   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:39:27,384 [17   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:39:27,406 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/e5a38fe076127382640a03a7e06c98c6.jpg  
+WARN  2019-03-07 11:39:27,408 [19   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:39:27,409 [19   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:39:28,701 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetVerificationCode", controller = "Account", area = ""}. Executing action IEManageSystem.Api.Controllers.AccountController.GetVerificationCode (IEManageSystem.Api)
+INFO  2019-03-07 11:39:28,868 [25   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/e5a38fe076127382640a03a7e06c98c6.jpg'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\e5a38fe076127382640a03a7e06c98c6.jpg'
+INFO  2019-03-07 11:39:28,872 [25   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1464.5103ms 200 image/jpeg
+INFO  2019-03-07 11:39:28,930 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Api.Controllers.AccountController.GetVerificationCode (IEManageSystem.Api) - Validation state: Valid
+INFO  2019-03-07 11:39:29,547 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Api.Controllers.AccountController.GetVerificationCode (IEManageSystem.Api), returned result Microsoft.AspNetCore.Mvc.FileContentResult in 613.4937ms.
+INFO  2019-03-07 11:39:29,555 [17   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Api.Controllers.AccountController.GetVerificationCode is executed by an anonymous user in 640 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:39:29,569 [17   ] Infrastructure.FileContentResultExecutor - Executing Microsoft.AspNetCore.Mvc.FileContentResult, sending file with download name '' ...
+INFO  2019-03-07 11:39:29,637 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Api.Controllers.AccountController.GetVerificationCode (IEManageSystem.Api) in 931.8855ms
+INFO  2019-03-07 11:39:29,641 [17   ] ft.AspNetCore.Session.DistributedSession - Session started; Key:ba948710-a939-a084-d2c6-9c5776bdc571, Id:bab53bd7-f46d-db3a-a427-032d04614fb2
+INFO  2019-03-07 11:39:29,651 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2275.2924ms 200 image/png
+INFO  2019-03-07 11:39:41,115 [26   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:39:41,119 [26   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:39:41,168 [26   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:40:02,586 [25   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/Account/LoginAsync application/json-patch+json 104
+WARN  2019-03-07 11:40:02,589 [25   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:40:02,590 [25   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:40:02,660 [25   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "LoginAsync", controller = "Account", area = ""}. Executing action IEManageSystem.Api.Controllers.AccountController.LoginAsync (IEManageSystem.Api)
+INFO  2019-03-07 11:40:02,888 [25   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Api.Controllers.AccountController.LoginAsync (IEManageSystem.Api) with arguments (IEManageSystem.Api.Models.AccountModels.LoginApiModel) - Validation state: Valid
+INFO  2019-03-07 11:40:02,900 [25   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Api.Controllers.AccountController.LoginAsync (IEManageSystem.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 10.081ms.
+INFO  2019-03-07 11:40:02,900 [25   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Api.Controllers.AccountController.LoginAsync is executed by an anonymous user in 16 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:40:02,922 [25   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:40:02,950 [25   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Api.Controllers.AccountController.LoginAsync (IEManageSystem.Api) in 288.0333ms
+INFO  2019-03-07 11:40:02,954 [25   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 368.0798ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:40:04,691 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/Api/Account/GetVerificationCode/?date=Thu%20Mar%2007%202019%2011:40:04%20GMT+0800%20(%E4%B8%AD%E5%9B%BD%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)  
+WARN  2019-03-07 11:40:04,694 [26   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:40:04,697 [26   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:40:04,702 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetVerificationCode", controller = "Account", area = ""}. Executing action IEManageSystem.Api.Controllers.AccountController.GetVerificationCode (IEManageSystem.Api)
+INFO  2019-03-07 11:40:04,706 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Api.Controllers.AccountController.GetVerificationCode (IEManageSystem.Api) - Validation state: Valid
+INFO  2019-03-07 11:40:04,741 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Api.Controllers.AccountController.GetVerificationCode (IEManageSystem.Api), returned result Microsoft.AspNetCore.Mvc.FileContentResult in 33.1701ms.
+INFO  2019-03-07 11:40:04,741 [26   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Api.Controllers.AccountController.GetVerificationCode is executed by an anonymous user in 37 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:40:04,743 [26   ] Infrastructure.FileContentResultExecutor - Executing Microsoft.AspNetCore.Mvc.FileContentResult, sending file with download name '' ...
+INFO  2019-03-07 11:40:04,751 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Api.Controllers.AccountController.GetVerificationCode (IEManageSystem.Api) in 41.1157ms
+INFO  2019-03-07 11:40:04,755 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 64.1658ms 200 image/png
+INFO  2019-03-07 11:40:11,182 [29   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:40:11,185 [29   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:40:11,187 [29   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:40:13,019 [28   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/Account/LoginAsync application/json-patch+json 104
+WARN  2019-03-07 11:40:13,021 [28   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:40:13,023 [28   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:40:13,025 [28   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "LoginAsync", controller = "Account", area = ""}. Executing action IEManageSystem.Api.Controllers.AccountController.LoginAsync (IEManageSystem.Api)
+INFO  2019-03-07 11:40:13,032 [28   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Api.Controllers.AccountController.LoginAsync (IEManageSystem.Api) with arguments (IEManageSystem.Api.Models.AccountModels.LoginApiModel) - Validation state: Valid
+INFO  2019-03-07 11:40:14,745 [29   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Api.Controllers.AccountController.LoginAsync (IEManageSystem.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 1710.6479ms.
+INFO  2019-03-07 11:40:14,768 [29   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Api.Controllers.AccountController.LoginAsync is executed by an anonymous user in 1738 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:40:14,773 [29   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:40:14,815 [29   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Api.Controllers.AccountController.LoginAsync (IEManageSystem.Api) in 1768.6708ms
+INFO  2019-03-07 11:40:14,820 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1800.9069ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:40:14,883 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/ManageHome/Index  
+WARN  2019-03-07 11:40:14,887 [26   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:40:14,889 [26   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:40:14,913 [29   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/ManageHome/Index.html'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\ManageHome\Index.html'
+INFO  2019-03-07 11:40:14,915 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 33.6305ms 200 text/html
+INFO  2019-03-07 11:40:14,967 [28   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/adminiHome.bundle.js  
+WARN  2019-03-07 11:40:14,969 [28   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:40:14,972 [28   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:40:15,363 [29   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/adminiHome.bundle.js'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\adminiHome.bundle.js'
+INFO  2019-03-07 11:40:15,366 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 399.2747ms 200 application/javascript
+INFO  2019-03-07 11:40:15,619 [28   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserScopeAccessAuthorities application/json 2
+WARN  2019-03-07 11:40:15,621 [28   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:40:15,623 [28   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:40:15,705 [28   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:40:15,716 [28   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetUserScopeAccessAuthorities", controller = "User", area = ""}. Executing action IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api)
+INFO  2019-03-07 11:40:15,756 [28   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api) with arguments (IEManageSystem.Api.Controllers.Users.Dto.GetUserScopeAccessAuthoritiesInput) - Validation state: Valid
+INFO  2019-03-07 11:40:16,175 [28   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 416.5179ms.
+INFO  2019-03-07 11:40:16,183 [28   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities is executed by user 1 in 429 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:40:16,185 [28   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:40:16,197 [28   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api) in 479.0735ms
+INFO  2019-03-07 11:40:16,200 [28   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 579.8143ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:40:16,208 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserInfo application/json 2
+WARN  2019-03-07 11:40:16,210 [26   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:40:16,212 [26   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:40:16,215 [26   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:40:16,226 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserInfo application/json 2
+INFO  2019-03-07 11:40:16,229 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUserInfo", controller = "User"}. Executing action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application)
+WARN  2019-03-07 11:40:16,231 [29   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:40:16,245 [29   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:40:16,249 [29   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:40:16,252 [29   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUserInfo", controller = "User"}. Executing action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application)
+INFO  2019-03-07 11:40:16,270 [26   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:40:16,272 [29   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:40:16,278 [29   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) with arguments (IEManageSystem.Services.Users.Dto.GetUserInfoInput) - Validation state: Valid
+INFO  2019-03-07 11:40:16,280 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) with arguments (IEManageSystem.Services.Users.Dto.GetUserInfoInput) - Validation state: Valid
+INFO  2019-03-07 11:40:16,312 [25   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/a5e81f19cf2c587876fd1bb08ae0249f.png  
+INFO  2019-03-07 11:40:16,314 [28   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/5dfddd62b20673f22e7356e07b288bcd.png  
+WARN  2019-03-07 11:40:16,317 [28   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:40:16,317 [25   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:40:16,318 [28   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:40:16,320 [25   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:40:16,360 [28   ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/images/5dfddd62b20673f22e7356e07b288bcd.png was not modified
+INFO  2019-03-07 11:40:16,381 [25   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/a5e81f19cf2c587876fd1bb08ae0249f.png'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\a5e81f19cf2c587876fd1bb08ae0249f.png'
+INFO  2019-03-07 11:40:16,383 [25   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 70.521ms 200 image/png
+INFO  2019-03-07 11:40:16,387 [28   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 71.4012ms 304 image/png
+INFO  2019-03-07 11:40:16,570 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 288.2921ms.
+INFO  2019-03-07 11:40:16,571 [26   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.Users.UserAppService.GetUserInfo is executed by user 1 in 297 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:40:16,573 [26   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:40:16,638 [29   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 339.0233ms.
+INFO  2019-03-07 11:40:16,638 [29   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.Users.UserAppService.GetUserInfo is executed by user 1 in 365 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:40:16,667 [29   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:40:16,690 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) in 437.3673ms
+INFO  2019-03-07 11:40:16,691 [29   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) in 436.9827ms
+INFO  2019-03-07 11:40:16,694 [25   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/fonts/3cf97837524dd7445e9d1462e3c4afe2.woff  
+INFO  2019-03-07 11:40:16,696 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 483.8661ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:40:16,696 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 474.7478ms 200 application/json; charset=utf-8
+WARN  2019-03-07 11:40:16,698 [25   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:40:16,700 [25   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:40:16,702 [25   ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/fonts/3cf97837524dd7445e9d1462e3c4afe2.woff was not modified
+INFO  2019-03-07 11:40:16,704 [25   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 11.8643ms 304 application/font-woff
+INFO  2019-03-07 11:40:17,114 [25   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/Sonarqube/1.png  
+WARN  2019-03-07 11:40:17,119 [25   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:40:17,121 [25   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:40:17,150 [28   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/Sonarqube/1.png'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\wwwroot\Sonarqube\1.png'
+INFO  2019-03-07 11:40:17,154 [28   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 38.1943ms 200 image/png
+INFO  2019-03-07 11:40:18,720 [28   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/f18f5b1a6c92d88998f07c07fccf1c23.svg  
+WARN  2019-03-07 11:40:18,721 [28   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:40:18,723 [28   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:40:18,738 [29   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/f18f5b1a6c92d88998f07c07fccf1c23.svg'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\f18f5b1a6c92d88998f07c07fccf1c23.svg'
+INFO  2019-03-07 11:40:18,740 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 21.1926ms 200 image/svg+xml
+INFO  2019-03-07 11:40:38,701 [28   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserInfo application/json 2
+WARN  2019-03-07 11:40:38,704 [28   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:40:38,707 [28   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:40:38,710 [28   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:40:38,714 [28   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUserInfo", controller = "User"}. Executing action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application)
+INFO  2019-03-07 11:40:38,722 [28   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:40:38,734 [28   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) with arguments (IEManageSystem.Services.Users.Dto.GetUserInfoInput) - Validation state: Valid
+INFO  2019-03-07 11:40:38,747 [28   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 8.6307ms.
+INFO  2019-03-07 11:40:38,750 [28   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.Users.UserAppService.GetUserInfo is executed by user 1 in 20 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:40:38,754 [28   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:40:38,763 [28   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) in 39.6919ms
+INFO  2019-03-07 11:40:38,767 [28   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 64.4713ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:40:38,922 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/61f5683c6a4823b5eb8aad1d0ac61e9d.png  
+WARN  2019-03-07 11:40:38,926 [29   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:40:38,928 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/b96b35f79cf720e6e62fc6686cb1e12a.png  
+WARN  2019-03-07 11:40:38,929 [29   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:40:38,930 [26   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:40:38,932 [26   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:40:38,942 [33   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/61f5683c6a4823b5eb8aad1d0ac61e9d.png'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\61f5683c6a4823b5eb8aad1d0ac61e9d.png'
+INFO  2019-03-07 11:40:38,946 [26   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/b96b35f79cf720e6e62fc6686cb1e12a.png'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\b96b35f79cf720e6e62fc6686cb1e12a.png'
+INFO  2019-03-07 11:40:38,950 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 22.7972ms 200 image/png
+INFO  2019-03-07 11:40:38,952 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 23.1119ms 200 image/png
+INFO  2019-03-07 11:40:41,200 [33   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:40:41,204 [33   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:40:41,206 [33   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:40:41,875 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserInfo application/json 2
+WARN  2019-03-07 11:40:41,879 [29   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:40:41,883 [29   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:40:41,885 [29   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:40:41,888 [29   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUserInfo", controller = "User"}. Executing action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application)
+INFO  2019-03-07 11:40:41,899 [29   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:40:41,904 [29   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) with arguments (IEManageSystem.Services.Users.Dto.GetUserInfoInput) - Validation state: Valid
+INFO  2019-03-07 11:40:41,910 [29   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 4.3689ms.
+INFO  2019-03-07 11:40:41,911 [29   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.Users.UserAppService.GetUserInfo is executed by user 1 in 9 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:40:41,915 [29   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:40:41,918 [29   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) in 27.791ms
+INFO  2019-03-07 11:40:41,923 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 47.1029ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:41:11,209 [31   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:41:11,214 [31   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:41:11,216 [31   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:41:41,229 [34   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:41:41,233 [34   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:41:41,235 [34   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:41:57,018 [35   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserInfo application/json 2
+WARN  2019-03-07 11:41:57,026 [35   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:41:57,034 [35   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:41:57,070 [35   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:41:57,081 [35   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUserInfo", controller = "User"}. Executing action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application)
+INFO  2019-03-07 11:41:57,084 [35   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:41:57,087 [35   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) with arguments (IEManageSystem.Services.Users.Dto.GetUserInfoInput) - Validation state: Valid
+INFO  2019-03-07 11:41:57,093 [35   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 4.1157ms.
+INFO  2019-03-07 11:41:57,093 [35   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.Users.UserAppService.GetUserInfo is executed by user 1 in 8 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:41:57,095 [35   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:41:57,098 [35   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) in 15.159ms
+INFO  2019-03-07 11:41:57,100 [35   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 111.2023ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:42:06,361 [46   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserInfo application/json 2
+INFO  2019-03-07 11:42:06,372 [42   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/a5e81f19cf2c587876fd1bb08ae0249f.png  
+WARN  2019-03-07 11:42:06,377 [46   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:42:06,426 [42   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:42:06,429 [46   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:42:06,432 [42   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:42:06,439 [42   ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/images/a5e81f19cf2c587876fd1bb08ae0249f.png was not modified
+INFO  2019-03-07 11:42:06,442 [46   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:42:06,445 [42   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 74.6884ms 304 image/png
+INFO  2019-03-07 11:42:06,447 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUserInfo", controller = "User"}. Executing action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application)
+INFO  2019-03-07 11:42:06,451 [46   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:42:06,456 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) with arguments (IEManageSystem.Services.Users.Dto.GetUserInfoInput) - Validation state: Valid
+INFO  2019-03-07 11:42:06,463 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 5.2418ms.
+INFO  2019-03-07 11:42:06,464 [46   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.Users.UserAppService.GetUserInfo is executed by user 1 in 12 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:42:06,466 [46   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:42:06,471 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) in 19.3282ms
+INFO  2019-03-07 11:42:06,475 [46   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 114.2641ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:42:11,238 [46   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:42:11,243 [46   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:42:11,245 [46   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:42:22,186 [46   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserInfo application/json 2
+WARN  2019-03-07 11:42:22,189 [46   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:42:22,194 [46   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:42:22,202 [46   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:42:22,211 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUserInfo", controller = "User"}. Executing action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application)
+INFO  2019-03-07 11:42:22,216 [46   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:42:22,221 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) with arguments (IEManageSystem.Services.Users.Dto.GetUserInfoInput) - Validation state: Valid
+INFO  2019-03-07 11:42:22,232 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 8.1397ms.
+INFO  2019-03-07 11:42:22,233 [46   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.Users.UserAppService.GetUserInfo is executed by user 1 in 15 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:42:22,236 [46   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:42:22,242 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) in 25.3581ms
+INFO  2019-03-07 11:42:22,249 [46   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 63.4646ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:42:41,259 [46   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:42:41,263 [46   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:42:41,264 [46   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:43:05,918 [46   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/AdminManage/GetAdmins application/json 31
+WARN  2019-03-07 11:43:05,928 [46   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:43:05,932 [53   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/RoleManage/GetRoles application/json 31
+WARN  2019-03-07 11:43:05,937 [46   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:43:05,939 [53   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:43:05,943 [53   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:43:05,944 [46   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:43:05,946 [53   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:43:05,951 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAdmins", controller = "AdminManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Admins.AdminManageAppService.GetAdmins (IEManageSystem.Application)
+INFO  2019-03-07 11:43:05,953 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetRoles", controller = "RoleManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles (IEManageSystem.Application)
+INFO  2019-03-07 11:43:06,137 [46   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:43:06,146 [53   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:43:06,289 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.Dto.GetRolesInput) - Validation state: Valid
+INFO  2019-03-07 11:43:06,302 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Admins.AdminManageAppService.GetAdmins (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Admins.Dto.GetAdminsInput) - Validation state: Valid
+INFO  2019-03-07 11:43:06,366 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 74.6937ms.
+INFO  2019-03-07 11:43:06,366 [53   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles is executed by user 1 in 80 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:43:06,368 [53   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:43:06,374 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles (IEManageSystem.Application) in 418.6685ms
+INFO  2019-03-07 11:43:06,377 [53   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 449.1074ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:43:06,430 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Admins.AdminManageAppService.GetAdmins (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 126.5017ms.
+INFO  2019-03-07 11:43:06,430 [46   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Admins.AdminManageAppService.GetAdmins is executed by user 1 in 130 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:43:06,432 [46   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:43:06,436 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Admins.AdminManageAppService.GetAdmins (IEManageSystem.Application) in 480.8411ms
+INFO  2019-03-07 11:43:06,439 [46   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 551.2753ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:43:07,416 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/AdminManage/GetAdminRoles application/json 11
+WARN  2019-03-07 11:43:07,418 [54   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:43:07,420 [54   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:43:07,422 [54   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:43:07,427 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAdminRoles", controller = "AdminManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Admins.AdminManageAppService.GetAdminRoles (IEManageSystem.Application)
+INFO  2019-03-07 11:43:07,620 [54   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:43:07,625 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Admins.AdminManageAppService.GetAdminRoles (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Admins.Dto.GetAdminRolesInput) - Validation state: Valid
+INFO  2019-03-07 11:43:07,686 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Admins.AdminManageAppService.GetAdminRoles (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 58.8062ms.
+INFO  2019-03-07 11:43:07,687 [54   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Admins.AdminManageAppService.GetAdminRoles is executed by user 1 in 63 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:43:07,689 [54   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:43:07,692 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Admins.AdminManageAppService.GetAdminRoles (IEManageSystem.Application) in 262.5892ms
+INFO  2019-03-07 11:43:07,694 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 276.9694ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:43:11,268 [54   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:43:11,515 [54   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (244ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:43:11,517 [54   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:43:15,652 [46   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/RoleManage/GetRoleNum application/json 16
+INFO  2019-03-07 11:43:15,655 [53   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/RoleManage/GetRoles application/json 44
+WARN  2019-03-07 11:43:15,658 [46   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:43:15,684 [53   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:43:15,696 [46   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:43:15,697 [53   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:43:15,699 [46   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:43:15,701 [53   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:43:15,703 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetRoles", controller = "RoleManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles (IEManageSystem.Application)
+INFO  2019-03-07 11:43:15,709 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetRoleNum", controller = "RoleManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoleNum (IEManageSystem.Application)
+INFO  2019-03-07 11:43:15,837 [46   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:43:15,844 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoleNum (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.Dto.GetRoleNumInput) - Validation state: Valid
+INFO  2019-03-07 11:43:15,849 [53   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:43:15,853 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.Dto.GetRolesInput) - Validation state: Valid
+INFO  2019-03-07 11:43:15,863 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoleNum (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 17.9941ms.
+INFO  2019-03-07 11:43:15,864 [46   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoleNum is executed by user 1 in 22 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:43:15,866 [46   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:43:15,869 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoleNum (IEManageSystem.Application) in 157.0705ms
+INFO  2019-03-07 11:43:15,871 [46   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 234.5056ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:43:15,883 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 28.5924ms.
+INFO  2019-03-07 11:43:15,884 [53   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles is executed by user 1 in 33 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:43:15,886 [53   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:43:15,889 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles (IEManageSystem.Application) in 182.7931ms
+INFO  2019-03-07 11:43:15,895 [53   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 239.5255ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:43:17,508 [53   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/RoleManage/GetRoles application/json 31
+INFO  2019-03-07 11:43:17,509 [46   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PermissionManage/GetPermissions application/json 31
+WARN  2019-03-07 11:43:17,513 [46   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:43:17,558 [53   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:43:17,562 [46   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:43:17,563 [53   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:43:17,568 [46   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:43:17,569 [53   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:43:17,573 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetRoles", controller = "RoleManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles (IEManageSystem.Application)
+INFO  2019-03-07 11:43:17,581 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPermissions", controller = "PermissionManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application)
+INFO  2019-03-07 11:43:17,614 [46   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:43:17,618 [53   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:43:17,624 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.Dto.GetRolesInput) - Validation state: Valid
+INFO  2019-03-07 11:43:17,668 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 14.4435ms.
+INFO  2019-03-07 11:43:17,672 [53   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles is executed by user 1 in 53 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:43:17,676 [53   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:43:17,680 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles (IEManageSystem.Application) in 103.1588ms
+INFO  2019-03-07 11:43:17,692 [53   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 179.0638ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:43:17,713 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.Dto.GetPermissionsInput) - Validation state: Valid
+INFO  2019-03-07 11:43:17,758 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 41.6772ms.
+INFO  2019-03-07 11:43:17,759 [46   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions is executed by user 1 in 47 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:43:17,761 [46   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:43:17,766 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application) in 183.3821ms
+INFO  2019-03-07 11:43:17,770 [46   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 260.3226ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:43:19,380 [53   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/RoleManage/GetPermissions application/json 8
+WARN  2019-03-07 11:43:19,383 [53   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:43:19,385 [53   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:43:19,388 [53   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:43:19,394 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPermissions", controller = "RoleManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application)
+INFO  2019-03-07 11:43:19,602 [53   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:43:19,607 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.Dto.GetPermissionsInput) - Validation state: Valid
+INFO  2019-03-07 11:43:19,710 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 101.3309ms.
+INFO  2019-03-07 11:43:19,711 [46   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions is executed by user 1 in 106 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:43:19,713 [46   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:43:19,717 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application) in 320.698ms
+INFO  2019-03-07 11:43:19,722 [46   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 338.8155ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:43:21,256 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/RoleManage/GetPermissions application/json 11
+WARN  2019-03-07 11:43:21,258 [54   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:43:21,260 [54   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:43:21,263 [54   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:43:21,265 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPermissions", controller = "RoleManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application)
+INFO  2019-03-07 11:43:21,401 [54   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:43:21,405 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.Dto.GetPermissionsInput) - Validation state: Valid
+INFO  2019-03-07 11:43:21,459 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 52.6882ms.
+INFO  2019-03-07 11:43:21,460 [53   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions is executed by user 1 in 57 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:43:21,462 [53   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:43:21,465 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application) in 196.7859ms
+INFO  2019-03-07 11:43:21,470 [53   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 212.7714ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:43:22,828 [46   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/RoleManage/GetPermissions application/json 8
+WARN  2019-03-07 11:43:22,830 [46   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:43:22,832 [46   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:43:22,836 [46   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:43:22,839 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPermissions", controller = "RoleManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application)
+INFO  2019-03-07 11:43:23,050 [46   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:43:23,054 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.Dto.GetPermissionsInput) - Validation state: Valid
+INFO  2019-03-07 11:43:23,142 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 86.4777ms.
+INFO  2019-03-07 11:43:23,143 [54   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions is executed by user 1 in 91 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:43:23,145 [54   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:43:23,148 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application) in 305.3736ms
+INFO  2019-03-07 11:43:23,153 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 322.0429ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:43:25,711 [53   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/RoleManage/GetPermissions application/json 11
+WARN  2019-03-07 11:43:25,714 [53   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:43:25,715 [53   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:43:25,720 [53   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:43:25,723 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPermissions", controller = "RoleManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application)
+INFO  2019-03-07 11:43:25,885 [53   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:43:25,889 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.Dto.GetPermissionsInput) - Validation state: Valid
+INFO  2019-03-07 11:43:25,942 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 51.599ms.
+INFO  2019-03-07 11:43:25,943 [54   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions is executed by user 1 in 56 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:43:25,945 [54   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:43:25,948 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application) in 222.4731ms
+INFO  2019-03-07 11:43:25,951 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 239.1408ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:43:41,534 [54   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:43:41,763 [54   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (227ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:43:41,766 [54   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:44:11,769 [54   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:44:11,774 [54   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:44:11,776 [54   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:44:16,751 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/RoleManage/AddPermission application/json 34
+WARN  2019-03-07 11:44:16,758 [54   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:44:16,759 [54   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:44:16,762 [54   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:44:16,768 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "AddPermission", controller = "RoleManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.AddPermission (IEManageSystem.Application)
+INFO  2019-03-07 11:44:16,937 [54   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:44:16,947 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.AddPermission (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.Dto.AddPermissionInput) - Validation state: Valid
+INFO  2019-03-07 11:44:17,033 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.AddPermission (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 84.0296ms.
+INFO  2019-03-07 11:44:17,533 [58   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.AddPermission is executed by user 1 in 588 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:44:17,535 [58   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:44:17,537 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.AddPermission (IEManageSystem.Application) in 767.9599ms
+INFO  2019-03-07 11:44:17,539 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 813.8884ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:44:17,559 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/RoleManage/GetPermissions application/json 11
+WARN  2019-03-07 11:44:17,561 [58   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:44:17,562 [58   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:44:17,564 [58   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:44:17,567 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPermissions", controller = "RoleManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application)
+INFO  2019-03-07 11:44:17,782 [58   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:44:17,785 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.Dto.GetPermissionsInput) - Validation state: Valid
+INFO  2019-03-07 11:44:17,851 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 64.3903ms.
+INFO  2019-03-07 11:44:17,852 [54   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions is executed by user 1 in 69 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:44:17,853 [54   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:44:17,855 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application) in 286.8087ms
+INFO  2019-03-07 11:44:17,857 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 298.1688ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:44:27,991 [59   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/RoleManage/AddPermission application/json 34
+WARN  2019-03-07 11:44:27,996 [59   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:44:28,001 [59   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:44:28,005 [59   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:44:28,008 [59   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "AddPermission", controller = "RoleManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.AddPermission (IEManageSystem.Application)
+INFO  2019-03-07 11:44:28,276 [59   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:44:28,279 [59   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.AddPermission (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.Dto.AddPermissionInput) - Validation state: Valid
+INFO  2019-03-07 11:44:28,340 [59   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.AddPermission (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 58.9318ms.
+INFO  2019-03-07 11:44:28,369 [61   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.AddPermission is executed by user 1 in 91 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:44:28,371 [61   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:44:28,373 [61   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.AddPermission (IEManageSystem.Application) in 362.6835ms
+INFO  2019-03-07 11:44:28,375 [61   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 383.7434ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:44:28,378 [59   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/RoleManage/GetPermissions application/json 11
+WARN  2019-03-07 11:44:28,381 [59   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:44:28,384 [59   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:44:28,386 [59   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:44:28,389 [59   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPermissions", controller = "RoleManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application)
+INFO  2019-03-07 11:44:28,415 [59   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:44:28,419 [59   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.Dto.GetPermissionsInput) - Validation state: Valid
+INFO  2019-03-07 11:44:28,504 [59   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 80.5415ms.
+INFO  2019-03-07 11:44:28,504 [59   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions is executed by user 1 in 87 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:44:28,506 [59   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:44:28,508 [59   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application) in 117.2044ms
+INFO  2019-03-07 11:44:28,512 [59   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 132.1757ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:44:36,748 [60   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/RoleManage/AddPermission application/json 34
+WARN  2019-03-07 11:44:36,750 [60   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:44:36,752 [60   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:44:36,755 [60   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:44:36,757 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "AddPermission", controller = "RoleManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.AddPermission (IEManageSystem.Application)
+INFO  2019-03-07 11:44:36,929 [60   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:44:36,932 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.AddPermission (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.Dto.AddPermissionInput) - Validation state: Valid
+INFO  2019-03-07 11:44:37,000 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.AddPermission (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 66.4015ms.
+INFO  2019-03-07 11:44:37,048 [60   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.AddPermission is executed by user 1 in 118 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:44:37,051 [60   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:44:37,054 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.AddPermission (IEManageSystem.Application) in 293.8422ms
+INFO  2019-03-07 11:44:37,057 [60   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 307.9302ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:44:37,069 [61   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/RoleManage/GetPermissions application/json 11
+WARN  2019-03-07 11:44:37,071 [61   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:44:37,074 [61   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:44:37,076 [61   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:44:37,079 [61   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPermissions", controller = "RoleManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application)
+INFO  2019-03-07 11:44:37,183 [61   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:44:37,186 [61   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.Dto.GetPermissionsInput) - Validation state: Valid
+INFO  2019-03-07 11:44:37,219 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 30.9341ms.
+INFO  2019-03-07 11:44:37,220 [58   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions is executed by user 1 in 36 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:44:37,222 [58   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:44:37,224 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetPermissions (IEManageSystem.Application) in 143.7523ms
+INFO  2019-03-07 11:44:37,227 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 160.7234ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:44:41,784 [61   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:44:42,072 [61   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (286ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:44:42,074 [61   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:45:12,087 [61   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:45:12,092 [61   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:45:12,093 [61   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:45:15,222 [60   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PermissionManage/GetPermissions application/json 44
+INFO  2019-03-07 11:45:15,226 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PermissionManage/GetPermissionNum application/json 16
+WARN  2019-03-07 11:45:15,228 [60   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:15,232 [60   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:15,234 [65   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:15,240 [65   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:45:15,240 [60   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:45:15,243 [65   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:45:15,244 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPermissions", controller = "PermissionManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application)
+INFO  2019-03-07 11:45:15,255 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPermissionNum", controller = "PermissionManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissionNum (IEManageSystem.Application)
+INFO  2019-03-07 11:45:15,349 [65   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:45:15,354 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissionNum (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.Dto.GetPermissionNumInput) - Validation state: Valid
+INFO  2019-03-07 11:45:15,358 [60   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:45:15,361 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.Dto.GetPermissionsInput) - Validation state: Valid
+INFO  2019-03-07 11:45:15,365 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2.1252ms.
+INFO  2019-03-07 11:45:15,367 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissionNum (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 10.9875ms.
+INFO  2019-03-07 11:45:15,367 [60   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions is executed by user 1 in 8 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:45:15,367 [65   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissionNum is executed by user 1 in 15 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:45:15,369 [60   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:45:15,371 [65   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:45:15,373 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application) in 126.5781ms
+INFO  2019-03-07 11:45:15,396 [60   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 160.8885ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:45:15,398 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissionNum (IEManageSystem.Application) in 140.9802ms
+INFO  2019-03-07 11:45:15,416 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 175.8079ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:45:17,511 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PermissionManage/GetPermissions application/json 31
+INFO  2019-03-07 11:45:17,512 [60   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/RoleManage/GetRoles application/json 31
+WARN  2019-03-07 11:45:17,516 [65   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:17,523 [60   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:17,525 [65   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:17,525 [60   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:45:17,527 [60   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:45:17,528 [65   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:45:17,530 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetRoles", controller = "RoleManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles (IEManageSystem.Application)
+INFO  2019-03-07 11:45:17,532 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPermissions", controller = "PermissionManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application)
+INFO  2019-03-07 11:45:17,559 [65   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:45:17,561 [60   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:45:17,565 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.Dto.GetRolesInput) - Validation state: Valid
+INFO  2019-03-07 11:45:17,565 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.Dto.GetPermissionsInput) - Validation state: Valid
+INFO  2019-03-07 11:45:17,570 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2.2947ms.
+INFO  2019-03-07 11:45:17,571 [65   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions is executed by user 1 in 9 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:45:17,573 [65   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:45:17,574 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application) in 41.1611ms
+INFO  2019-03-07 11:45:17,576 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 73.9448ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:45:17,612 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 46.0826ms.
+INFO  2019-03-07 11:45:17,613 [60   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles is executed by user 1 in 51 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:45:17,614 [60   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:45:17,616 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Roles.RoleManageAppService.GetRoles (IEManageSystem.Application) in 83.5352ms
+INFO  2019-03-07 11:45:17,619 [60   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 107.0819ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:45:18,758 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PermissionManage/GetPermissions application/json 44
+INFO  2019-03-07 11:45:18,761 [61   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PermissionManage/GetPermissionNum application/json 16
+WARN  2019-03-07 11:45:18,765 [61   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:18,769 [65   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:18,773 [61   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:18,777 [65   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:45:18,778 [61   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:45:18,782 [61   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPermissionNum", controller = "PermissionManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissionNum (IEManageSystem.Application)
+INFO  2019-03-07 11:45:18,784 [65   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:45:18,791 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPermissions", controller = "PermissionManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application)
+INFO  2019-03-07 11:45:19,194 [61   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:45:19,199 [61   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissionNum (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.Dto.GetPermissionNumInput) - Validation state: Valid
+INFO  2019-03-07 11:45:19,203 [61   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissionNum (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2.4394ms.
+INFO  2019-03-07 11:45:19,204 [61   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissionNum is executed by user 1 in 8 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:45:19,207 [61   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:45:19,209 [61   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissionNum (IEManageSystem.Application) in 422.8841ms
+INFO  2019-03-07 11:45:19,212 [61   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 450.6561ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:45:19,216 [65   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:45:19,222 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.Dto.GetPermissionsInput) - Validation state: Valid
+INFO  2019-03-07 11:45:19,229 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 4.4997ms.
+INFO  2019-03-07 11:45:19,230 [65   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions is executed by user 1 in 12 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:45:19,234 [65   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:45:19,236 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application) in 442.9121ms
+INFO  2019-03-07 11:45:19,240 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 486.9226ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:45:23,471 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/ApiScopeManage/GetApiScopes application/json 2
+INFO  2019-03-07 11:45:23,474 [61   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PermissionManage/GetPermissions application/json 31
+WARN  2019-03-07 11:45:23,478 [65   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:23,479 [61   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:23,482 [65   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:23,490 [61   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:45:23,492 [65   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:45:23,514 [61   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:45:23,537 [61   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPermissions", controller = "PermissionManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application)
+INFO  2019-03-07 11:45:23,546 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetApiScopes", controller = "ApiScopeManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application)
+INFO  2019-03-07 11:45:23,595 [61   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:45:23,596 [65   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:45:23,599 [61   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.Dto.GetPermissionsInput) - Validation state: Valid
+INFO  2019-03-07 11:45:23,608 [61   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 7.0526ms.
+INFO  2019-03-07 11:45:23,614 [61   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions is executed by user 1 in 14 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:45:23,618 [61   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:45:23,620 [61   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.Permissions.PermissionManageAppService.GetPermissions (IEManageSystem.Application) in 80.5059ms
+INFO  2019-03-07 11:45:23,624 [61   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 150.087ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:45:23,671 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.Dto.GetApiScopesInput) - Validation state: Valid
+INFO  2019-03-07 11:45:23,685 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 12.1568ms.
+INFO  2019-03-07 11:45:23,685 [65   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes is executed by user 1 in 16 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:45:23,687 [65   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:45:23,691 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application) in 143.5031ms
+INFO  2019-03-07 11:45:23,694 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 224.2941ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:45:25,216 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/ApiScopeManage/GetApiScopes application/json 31
+WARN  2019-03-07 11:45:25,219 [65   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:25,223 [65   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:45:25,229 [65   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:45:25,233 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetApiScopes", controller = "ApiScopeManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application)
+INFO  2019-03-07 11:45:25,265 [65   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:45:25,273 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.Dto.GetApiScopesInput) - Validation state: Valid
+INFO  2019-03-07 11:45:25,279 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3.6956ms.
+INFO  2019-03-07 11:45:25,281 [65   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes is executed by user 1 in 12 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:45:25,284 [65   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:45:25,292 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application) in 51.3303ms
+INFO  2019-03-07 11:45:25,295 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 78.8104ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:45:28,779 [63   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/ApiScopeManage/GetApiScopes application/json 31
+WARN  2019-03-07 11:45:28,782 [63   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:28,785 [63   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:45:28,789 [63   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:45:28,796 [63   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetApiScopes", controller = "ApiScopeManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application)
+INFO  2019-03-07 11:45:28,823 [63   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:45:28,833 [63   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.Dto.GetApiScopesInput) - Validation state: Valid
+INFO  2019-03-07 11:45:28,838 [63   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2.6004ms.
+INFO  2019-03-07 11:45:28,839 [63   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes is executed by user 1 in 9 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:45:28,843 [63   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:45:28,845 [63   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application) in 47.0504ms
+INFO  2019-03-07 11:45:28,847 [63   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 69.266ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:45:30,595 [67   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/ApiScopeManage/GetApiScopes application/json 31
+WARN  2019-03-07 11:45:30,598 [67   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:30,600 [67   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:45:30,604 [67   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:45:30,607 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetApiScopes", controller = "ApiScopeManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application)
+INFO  2019-03-07 11:45:30,633 [67   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:45:30,638 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.Dto.GetApiScopesInput) - Validation state: Valid
+INFO  2019-03-07 11:45:30,645 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2.295ms.
+INFO  2019-03-07 11:45:30,646 [67   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes is executed by user 1 in 10 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:45:30,648 [67   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:45:30,654 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application) in 41.6802ms
+INFO  2019-03-07 11:45:30,661 [67   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 62.9956ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:45:32,766 [67   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/ApiScopeManage/GetApiScopes application/json 31
+WARN  2019-03-07 11:45:32,769 [67   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:32,771 [67   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:45:32,778 [67   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:45:32,783 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetApiScopes", controller = "ApiScopeManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application)
+INFO  2019-03-07 11:45:32,824 [67   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:45:32,832 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.Dto.GetApiScopesInput) - Validation state: Valid
+INFO  2019-03-07 11:45:32,839 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 4.0202ms.
+INFO  2019-03-07 11:45:32,840 [67   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes is executed by user 1 in 11 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:45:32,842 [67   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:45:32,848 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetApiScopes (IEManageSystem.Application) in 59.112ms
+INFO  2019-03-07 11:45:32,854 [67   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 84.4145ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:45:41,403 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/ApiScopeManage/GetManagePermissionsByName application/json 43
+WARN  2019-03-07 11:45:41,407 [65   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:41,408 [65   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:45:41,412 [65   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:45:41,418 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetManagePermissionsByName", controller = "ApiScopeManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetManagePermissionsByName (IEManageSystem.Application)
+INFO  2019-03-07 11:45:41,443 [65   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:45:41,451 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetManagePermissionsByName (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.Dto.GetManagePermissionsByNameInput) - Validation state: Valid
+INFO  2019-03-07 11:45:41,587 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetManagePermissionsByName (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 133.5278ms.
+INFO  2019-03-07 11:45:41,587 [65   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetManagePermissionsByName is executed by user 1 in 138 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:45:41,589 [65   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:45:41,593 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetManagePermissionsByName (IEManageSystem.Application) in 172.3278ms
+INFO  2019-03-07 11:45:41,595 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 191.3138ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:45:42,101 [65   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:45:42,106 [65   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:45:42,108 [65   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:45:44,341 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/ApiScopeManage/GetQueryPermissionsByName application/json 41
+WARN  2019-03-07 11:45:44,343 [65   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:44,345 [65   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:45:44,349 [65   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:45:44,354 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetQueryPermissionsByName", controller = "ApiScopeManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetQueryPermissionsByName (IEManageSystem.Application)
+INFO  2019-03-07 11:45:44,388 [65   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:45:44,393 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetQueryPermissionsByName (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.Dto.GetQueryPermissionsByNameInput) - Validation state: Valid
+INFO  2019-03-07 11:45:44,421 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetQueryPermissionsByName (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 26.3487ms.
+INFO  2019-03-07 11:45:44,422 [65   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetQueryPermissionsByName is executed by user 1 in 31 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:45:44,424 [65   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:45:44,428 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetQueryPermissionsByName (IEManageSystem.Application) in 71.6875ms
+INFO  2019-03-07 11:45:44,432 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 88.1074ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:45:45,442 [67   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/ApiScopeManage/GetQueryPermissionsByName application/json 41
+WARN  2019-03-07 11:45:45,445 [67   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:45,447 [67   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:45:45,450 [67   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:45:45,453 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetQueryPermissionsByName", controller = "ApiScopeManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetQueryPermissionsByName (IEManageSystem.Application)
+INFO  2019-03-07 11:45:45,476 [67   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:45:45,480 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetQueryPermissionsByName (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.Dto.GetQueryPermissionsByNameInput) - Validation state: Valid
+INFO  2019-03-07 11:45:45,491 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetQueryPermissionsByName (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 8.7441ms.
+INFO  2019-03-07 11:45:45,492 [67   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetQueryPermissionsByName is executed by user 1 in 13 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:45:45,494 [67   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:45:45,496 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetQueryPermissionsByName (IEManageSystem.Application) in 41.0291ms
+INFO  2019-03-07 11:45:45,500 [67   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 56.2877ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:45:46,600 [67   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/ApiScopeManage/GetManagePermissionsByName application/json 41
+INFO  2019-03-07 11:45:46,601 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/ApiScopeManage/GetQueryPermissionsByName application/json 43
+WARN  2019-03-07 11:45:46,605 [67   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:46,606 [65   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:46,609 [67   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:45:46,609 [65   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:45:46,614 [65   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:45:46,615 [67   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:45:46,619 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetManagePermissionsByName", controller = "ApiScopeManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetManagePermissionsByName (IEManageSystem.Application)
+INFO  2019-03-07 11:45:46,639 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetQueryPermissionsByName", controller = "ApiScopeManage"}. Executing action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetQueryPermissionsByName (IEManageSystem.Application)
+INFO  2019-03-07 11:45:46,685 [67   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:45:46,686 [65   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:45:46,690 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetQueryPermissionsByName (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.Dto.GetQueryPermissionsByNameInput) - Validation state: Valid
+INFO  2019-03-07 11:45:46,691 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetManagePermissionsByName (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.Dto.GetManagePermissionsByNameInput) - Validation state: Valid
+INFO  2019-03-07 11:45:46,723 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetQueryPermissionsByName (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 30.5498ms.
+INFO  2019-03-07 11:45:46,725 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetManagePermissionsByName (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 31.5961ms.
+INFO  2019-03-07 11:45:46,725 [65   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetQueryPermissionsByName is executed by user 1 in 38 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:45:46,725 [67   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetManagePermissionsByName is executed by user 1 in 38 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:45:46,727 [67   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:45:46,730 [65   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:45:46,734 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetManagePermissionsByName (IEManageSystem.Application) in 110.2903ms
+INFO  2019-03-07 11:45:46,768 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.AuthorizeManage.ApiScopes.ApiScopeManageAppService.GetQueryPermissionsByName (IEManageSystem.Application) in 91.7145ms
+INFO  2019-03-07 11:45:46,776 [67   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 172.577ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:45:46,777 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 169.9524ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:46:12,122 [67   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:46:12,126 [67   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:46:12,129 [67   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:46:40,109 [67   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/IdentityResourceManage/GetIdentityResourceNum application/json 16
+INFO  2019-03-07 11:46:40,114 [64   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/IdentityResourceManage/GetIdentityResources application/json 44
+WARN  2019-03-07 11:46:40,123 [67   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:46:40,125 [64   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:46:40,129 [67   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:46:40,130 [64   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:46:40,132 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/ClaimManage/GetWebClaimTypes  
+INFO  2019-03-07 11:46:40,134 [67   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:46:40,136 [64   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-03-07 11:46:40,137 [57   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:46:40,139 [57   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:46:40,166 [64   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetIdentityResources", controller = "IdentityResourceManage"}. Executing action IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages.IdentityResourceManageAppService.GetIdentityResources (IEManageSystem.Application)
+INFO  2019-03-07 11:46:40,168 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetWebClaimTypes", controller = "ClaimManage", area = ""}. Executing action IEManageSystem.Api.Controllers.ManageHome.OAuthManage.ClaimManageController.GetWebClaimTypes (IEManageSystem.Api)
+INFO  2019-03-07 11:46:40,171 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Api.Controllers.ManageHome.OAuthManage.ClaimManageController.GetWebClaimTypes (IEManageSystem.Api) - Validation state: Valid
+INFO  2019-03-07 11:46:40,173 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetIdentityResourceNum", controller = "IdentityResourceManage"}. Executing action IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages.IdentityResourceManageAppService.GetIdentityResourceNum (IEManageSystem.Application)
+INFO  2019-03-07 11:46:40,178 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Api.Controllers.ManageHome.OAuthManage.ClaimManageController.GetWebClaimTypes (IEManageSystem.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3.8384ms.
+INFO  2019-03-07 11:46:40,178 [57   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Api.Controllers.ManageHome.OAuthManage.ClaimManageController.GetWebClaimTypes is executed by an anonymous user in 8 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:46:40,180 [57   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:46:40,183 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Api.Controllers.ManageHome.OAuthManage.ClaimManageController.GetWebClaimTypes (IEManageSystem.Api) in 13.0856ms
+INFO  2019-03-07 11:46:40,186 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 58.0484ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:46:40,233 [67   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:46:40,234 [64   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:46:40,279 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages.IdentityResourceManageAppService.GetIdentityResourceNum (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages.Dto.GetIdentityResourceNumInput) - Validation state: Valid
+INFO  2019-03-07 11:46:40,282 [64   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages.IdentityResourceManageAppService.GetIdentityResources (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages.Dto.GetIdentityResourceInput) - Validation state: Valid
+INFO  2019-03-07 11:46:40,370 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages.IdentityResourceManageAppService.GetIdentityResourceNum (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 89.818ms.
+INFO  2019-03-07 11:46:40,375 [67   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages.IdentityResourceManageAppService.GetIdentityResourceNum is executed by user 1 in 98 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:46:40,376 [67   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:46:40,379 [67   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages.IdentityResourceManageAppService.GetIdentityResourceNum (IEManageSystem.Application) in 204.4891ms
+INFO  2019-03-07 11:46:40,381 [67   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 282.3407ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:46:40,504 [64   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages.IdentityResourceManageAppService.GetIdentityResources (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 220.7021ms.
+INFO  2019-03-07 11:46:40,506 [64   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages.IdentityResourceManageAppService.GetIdentityResources is executed by user 1 in 226 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:46:40,508 [64   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:46:40,514 [64   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages.IdentityResourceManageAppService.GetIdentityResources (IEManageSystem.Application) in 345.982ms
+INFO  2019-03-07 11:46:40,516 [64   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 416.5627ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:46:42,146 [57   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:46:42,150 [57   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:46:42,152 [57   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:47:02,641 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/ClientManage/GetClientGrantTypeGroupNames application/json 2
+INFO  2019-03-07 11:47:02,644 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/IdentityResourceManage/GetIdentityResources application/json 31
+INFO  2019-03-07 11:47:02,646 [56   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/ApiResourceManage/GetApiResources application/json 31
+WARN  2019-03-07 11:47:02,650 [58   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:47:02,673 [57   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:47:02,675 [58   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:47:02,678 [57   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:47:02,682 [62   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/ClientManage/GetClients application/json 44
+INFO  2019-03-07 11:47:02,686 [64   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/ClientManage/GetClientNum application/json 16
+INFO  2019-03-07 11:47:02,688 [58   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:47:02,690 [57   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-03-07 11:47:02,691 [62   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:47:02,695 [64   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:47:02,698 [62   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:47:02,702 [64   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:47:02,705 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetIdentityResources", controller = "IdentityResourceManage"}. Executing action IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages.IdentityResourceManageAppService.GetIdentityResources (IEManageSystem.Application)
+INFO  2019-03-07 11:47:02,706 [62   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:47:02,714 [64   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-03-07 11:47:02,721 [56   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:47:02,723 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetClientGrantTypeGroupNames", controller = "ClientManage", area = ""}. Executing action IEManageSystem.Api.Controllers.ManageHome.OAuthManage.ClientManageController.GetClientGrantTypeGroupNames (IEManageSystem.Api)
+INFO  2019-03-07 11:47:02,728 [62   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetClients", controller = "ClientManage"}. Executing action IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClients (IEManageSystem.Application)
+INFO  2019-03-07 11:47:02,731 [64   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetClientNum", controller = "ClientManage"}. Executing action IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClientNum (IEManageSystem.Application)
+INFO  2019-03-07 11:47:02,732 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Api.Controllers.ManageHome.OAuthManage.ClientManageController.GetClientGrantTypeGroupNames (IEManageSystem.Api) - Validation state: Valid
+WARN  2019-03-07 11:47:02,736 [56   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:47:02,740 [56   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:47:02,746 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Api.Controllers.ManageHome.OAuthManage.ClientManageController.GetClientGrantTypeGroupNames (IEManageSystem.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 8.8029ms.
+INFO  2019-03-07 11:47:02,746 [58   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Api.Controllers.ManageHome.OAuthManage.ClientManageController.GetClientGrantTypeGroupNames is executed by user 1 in 21 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:47:02,755 [58   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:47:02,758 [56   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetApiResources", controller = "ApiResourceManage"}. Executing action IEManageSystem.Services.ManageHome.OAuthManage.ApiResourceManages.ApiResourceManageAppService.GetApiResources (IEManageSystem.Application)
+INFO  2019-03-07 11:47:02,785 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Api.Controllers.ManageHome.OAuthManage.ClientManageController.GetClientGrantTypeGroupNames (IEManageSystem.Api) in 31.6601ms
+INFO  2019-03-07 11:47:02,789 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 178.0435ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:47:02,794 [57   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:47:02,822 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages.IdentityResourceManageAppService.GetIdentityResources (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages.Dto.GetIdentityResourceInput) - Validation state: Valid
+INFO  2019-03-07 11:47:02,823 [58   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLL2LPI1GQLJ", Request id "0HLL2LPI1GQLJ:00000002": the application completed without reading the entire request body.
+INFO  2019-03-07 11:47:02,824 [64   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:47:02,838 [62   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:47:02,868 [56   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:47:02,919 [64   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClientNum (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.Dto.GetClientNumInput) - Validation state: Valid
+INFO  2019-03-07 11:47:02,949 [62   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClients (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.Dto.GetClientsInput) - Validation state: Valid
+INFO  2019-03-07 11:47:02,999 [56   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.OAuthManage.ApiResourceManages.ApiResourceManageAppService.GetApiResources (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.OAuthManage.ApiResourceManages.Dto.GetApiResourceInput) - Validation state: Valid
+INFO  2019-03-07 11:47:03,101 [64   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClientNum (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 180.2171ms.
+INFO  2019-03-07 11:47:03,111 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages.IdentityResourceManageAppService.GetIdentityResources (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 287.1846ms.
+INFO  2019-03-07 11:47:03,112 [57   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages.IdentityResourceManageAppService.GetIdentityResources is executed by user 1 in 316 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:47:03,113 [57   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:47:03,115 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.OAuthManage.IdentityResourceManages.IdentityResourceManageAppService.GetIdentityResources (IEManageSystem.Application) in 406.2528ms
+INFO  2019-03-07 11:47:03,121 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 474.7345ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:47:03,138 [64   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClientNum is executed by user 1 in 223 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:47:03,139 [64   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:47:03,143 [64   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClientNum (IEManageSystem.Application) in 408.5847ms
+INFO  2019-03-07 11:47:03,148 [64   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 465.1355ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:47:03,184 [56   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.OAuthManage.ApiResourceManages.ApiResourceManageAppService.GetApiResources (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 182.662ms.
+INFO  2019-03-07 11:47:03,190 [56   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.OAuthManage.ApiResourceManages.ApiResourceManageAppService.GetApiResources is executed by user 1 in 215 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:47:03,191 [56   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:47:03,198 [56   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.OAuthManage.ApiResourceManages.ApiResourceManageAppService.GetApiResources (IEManageSystem.Application) in 432.9841ms
+INFO  2019-03-07 11:47:03,200 [56   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 555.1187ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:47:03,229 [62   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClients (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 279.0431ms.
+INFO  2019-03-07 11:47:03,234 [62   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClients is executed by user 1 in 289 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:47:03,235 [62   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:47:03,241 [62   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClients (IEManageSystem.Application) in 510.6836ms
+INFO  2019-03-07 11:47:03,245 [62   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 596.4722ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:47:12,164 [56   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:47:12,289 [56   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (122ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:47:12,292 [56   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:47:42,303 [62   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:47:42,307 [62   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:47:42,310 [62   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:47:49,648 [62   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/ClientManage/UpdateClient application/json 454
+WARN  2019-03-07 11:47:49,651 [62   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:47:49,654 [62   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:47:49,659 [62   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:47:49,665 [62   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "UpdateClient", controller = "ClientManage"}. Executing action IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.UpdateClient (IEManageSystem.Application)
+INFO  2019-03-07 11:47:49,749 [62   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:47:49,775 [62   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.UpdateClient (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.Dto.UpdateClientInput) - Validation state: Valid
+INFO  2019-03-07 11:47:50,025 [62   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.UpdateClient (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 247.9855ms.
+INFO  2019-03-07 11:47:50,498 [54   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.UpdateClient is executed by user 1 in 726 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:47:50,500 [54   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:47:50,503 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.UpdateClient (IEManageSystem.Application) in 835.6093ms
+INFO  2019-03-07 11:47:50,507 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 857.1931ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:47:50,518 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/ClientManage/GetClients application/json 44
+INFO  2019-03-07 11:47:50,519 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/ClientManage/GetClientNum application/json 16
+WARN  2019-03-07 11:47:50,520 [57   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:47:50,525 [58   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:47:50,527 [57   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-03-07 11:47:50,529 [58   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-07 11:47:50,530 [57   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:47:50,532 [58   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-03-07 11:47:50,534 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetClients", controller = "ClientManage"}. Executing action IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClients (IEManageSystem.Application)
+INFO  2019-03-07 11:47:50,536 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetClientNum", controller = "ClientManage"}. Executing action IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClientNum (IEManageSystem.Application)
+INFO  2019-03-07 11:47:50,543 [57   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:47:50,544 [58   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-03-07 11:47:50,548 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClients (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.Dto.GetClientsInput) - Validation state: Valid
+INFO  2019-03-07 11:47:50,549 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClientNum (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.Dto.GetClientNumInput) - Validation state: Valid
+INFO  2019-03-07 11:47:50,552 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClientNum (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 1.4318ms.
+INFO  2019-03-07 11:47:50,553 [58   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClientNum is executed by user 1 in 7 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:47:50,555 [58   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:47:50,560 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClients (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 5.8357ms.
+INFO  2019-03-07 11:47:50,562 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClientNum (IEManageSystem.Application) in 21.289ms
+INFO  2019-03-07 11:47:50,564 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 45.2111ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:47:50,565 [57   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClients is executed by user 1 in 19 ms from ::1 IP address with succeed.
+INFO  2019-03-07 11:47:50,567 [57   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-03-07 11:47:50,569 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.OAuthManage.ClientManages.ClientManageAppService.GetClients (IEManageSystem.Application) in 33.6493ms
+INFO  2019-03-07 11:47:50,573 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 53.9707ms 200 application/json; charset=utf-8
+INFO  2019-03-07 11:48:12,321 [52   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:48:12,325 [52   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:48:12,327 [52   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:48:42,330 [52   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:48:42,337 [52   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:48:42,339 [52   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-03-07 11:49:12,350 [51   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-03-07 11:49:12,354 [51   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-03-07 11:49:12,357 [51   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
