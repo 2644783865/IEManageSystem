@@ -1,28 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Abp.Dependency;
 using Abp.Domain.Uow;
 using Abp.Runtime.Session;
+using IdentityModel;
 using IdentityModel.Client;
 using IdentityServer4.Events;
 using IdentityServer4.Extensions;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
+using IEManageSystem.Api.Configuration;
 using IEManageSystem.Api.Help;
-using IEManageSystem.Api.Help.ClaimHelp;
 using IEManageSystem.Api.Models;
 using IEManageSystem.Api.Models.AccountModels;
+using IEManageSystem.Entitys.Authorization.Identitys;
 using IEManageSystem.Entitys.Authorization.LoginManagers;
+using IEManageSystem.JwtAuthentication.DomainModel;
 using IEManageSystem.Services.Accounts;
 using IEManageSystem.Services.Accounts.Dto;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using UtilityAction.ValidateFun;
 
 namespace IEManageSystem.Api.Controllers
@@ -40,12 +46,15 @@ namespace IEManageSystem.Api.Controllers
 
         private IAbpSession _AbpSession { get; set; }
 
+        private JwtTokenHandler _JwtTokenHandler { get; set; }
+
         public AccountController(
             IEventService events,
             IIdentityServerInteractionService interaction,
             ValidateCodeHelper validateCodeHelper,
             AccountAppService accountAppService,
-            IAbpSession abpSession)
+            IAbpSession abpSession,
+            JwtTokenHandler jwtTokenHandler)
         {
             _Events = events;
 
@@ -56,6 +65,8 @@ namespace IEManageSystem.Api.Controllers
             _AccountAppService = accountAppService;
 
             _AbpSession = abpSession;
+
+            _JwtTokenHandler = jwtTokenHandler;
         }
 
         /// <summary>
@@ -83,7 +94,6 @@ namespace IEManageSystem.Api.Controllers
             input.Surname = model.AccountID;
             input.UserName = model.AccountID;
             input.Password = model.Password;
-            input.EmailAddress = model.Email;
             input.TenantId = _AbpSession.TenantId;
 
             output = await _AccountAppService.Register(input);
@@ -126,44 +136,19 @@ namespace IEManageSystem.Api.Controllers
                 return new ApiResultDataModel() { IsSuccess = false, Message = "密码错误" };
             }
 
-            await SignInAsync(output.AbpLoginResult.User, model.RememberLogin);
+            IdentityUser user = output.AbpLoginResult.User;
 
-            // 确保returnUrl仍然有效，如果是这样重定向回授权端点或本地页面，只有当你想支持其他本地页面时才需要进行IsLocalUrl检查，否则IsValidReturnUrl会更严格
-            if (_Interaction.IsValidReturnUrl(model.ReturnUrl) || Url.IsLocalUrl(model.ReturnUrl))
-            {
-                return new ApiResultDataModel()
-                {
-                    IsSuccess = true,
-                    RedirectHref = model.ReturnUrl,
-                };
-            }
-
-            return new ApiResultDataModel() { IsSuccess = true };
-        }
-
-        /// <summary>
-        /// 执行站点登录
-        /// </summary>
-        /// <returns></returns>
-        private async Task SignInAsync(IdentityUser user, bool rememberLogin)
-        {
             // 触发IdentityService用户登录成功事件
             await _Events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id.ToString(), user.Name));
 
-            // 如果用户选择“记住我”，则仅在此设置明确的到期时间。
-            AuthenticationProperties props = null;
-            if (rememberLogin)
-            {
-                props = new AuthenticationProperties
-                {
-                    IsPersistent = true,
-                    ExpiresUtc = DateTimeOffset.UtcNow.Add(TimeSpan.FromDays(15))
-                };
-            };
-            var claims = new ClaimHelper().CreateClaimsForIdentityUser(user).ToArray();
+            string jwtToken = _JwtTokenHandler.CreateToken(user, WebConfiguration.SymmetricKey);
 
-            // 发出身份验证Cookie
-            await HttpContext.SignInAsync(user.Id.ToString(), user.Name, props, claims);
+            return new ApiResultDataModel() { IsSuccess = true, Value= new
+                {
+                    access_token = jwtToken,
+                    token_type = "Bearer"
+                }
+            };
         }
 
         /// <summary>

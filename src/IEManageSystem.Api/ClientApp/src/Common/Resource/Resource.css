@@ -1,0 +1,56 @@
+.data-list h6{
+    background: #f5f5f5;
+    padding: 0.3rem 0.67rem;
+    margin-bottom: 0px;
+    color: #6c757d;
+    font-size: 1rem;
+    border: 1px solid #d5d5d6;
+    border-radius: 0.33rem;
+}
+
+.data-list h6 input{
+    font-size: 0.8rem;
+    width: 15rem !important;
+}
+
+.data-list thead{
+    background-color: #00C5AD;
+    color: #fff;
+}
+
+.data-paging ul{
+    margin-bottom: 0px;
+}
+
+.data-paging li a{
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.data-paging li a:hover{
+    background-color: #fff;
+    color: #000;
+}
+
+.data-form .modal-body>div{
+    margin-bottom: 10px;
+}
+
+.data-form ul{
+    padding: 0px;
+    margin: 0px;
+}
+
+.data-form li{
+    list-style: none;
+    display: inline-block;
+    padding: 0rem 0.3rem 0rem 0.3rem;
+}
+
+.margin-buttom-0{
+    margin-bottom: 0rem !important;
+}
+
+.margin-buttom-10{
+    margin-bottom: 0.67rem !important;
+}

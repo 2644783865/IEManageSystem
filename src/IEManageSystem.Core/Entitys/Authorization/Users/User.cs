@@ -1,42 +1,44 @@
 ﻿using Abp.Domain.Entities;
+using IEManageSystem.Configuration;
+using IEManageSystem.Entitys.Authorization.Roles;
+using IEManageSystem.Entitys.Authorization.Users.Accounts;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.IO;
+using System.Linq;
 using System.Text;
+using UtilityAction.FileHandle;
 
 namespace IEManageSystem.Entitys.Authorization.Users
 {
     [Table("User")]
     public class User:Entity
     {
-        /// <summary>
-        /// 用户名
-        /// </summary>
-        [Required]
-        [MaxLength(15)]
-        [MinLength(6)]
-        public string UserName { get; set; }
+        protected User() {
+        }
 
-        /// <summary>
-        /// 密码
-        /// </summary>
-        [Required]
-        [MaxLength(60)]
-        [MinLength(6)]
-        public string Password { get; set; }
+        public User(string userName) {
+            Account = new Account(userName);
+        }
+
+        public User(Account account)
+        {
+            Account = account;
+        }
+
+        public Account Account { get; protected set; }
 
         /// <summary>
         /// 邮箱
         /// </summary>
-        [Required]
         [EmailAddress]
         public string EmailAddress { get; set; }
 
         /// <summary>
         /// 昵称
         /// </summary>
-        [Required]
         [MaxLength(20)]
         public string Name { get; set; }
 
@@ -47,15 +49,74 @@ namespace IEManageSystem.Entitys.Authorization.Users
         public string Phone { get; set; }
 
         /// <summary>
+        /// 个性签名
+        /// </summary>
+        public string PersonSignature { get; set; }
+
+        /// <summary>
         /// 头像
         /// </summary>
-        public string HeadSculpture { get; set; }
+        public string HeadSculpture { get; protected set; }
+
+        /// <summary>
+        /// 真实姓名
+        /// </summary>
+        public string RealName { get; set; }
+
+        /// <summary>
+        /// 身份证号
+        /// </summary>
+        public string IDNumber { get; set; }
+
+        /// <summary>
+        /// 地址
+        /// </summary>
+        public string Address { get; set; }
+
+        /// <summary>
+        /// 性别（true男，false女）
+        /// </summary>
+        public bool Sex { get; set; }
+
+        /// <summary>
+        /// 出生日期
+        /// </summary>
+        public DateTime BirthDate { get; set; }
 
         /// <summary>
         /// 权限
         /// </summary>
-        public string Role { get; set; }
+        public ICollection<UserRole> UserRoles { get; set; }
 
         public int? TenantId { get; set; }
+
+        public void AddRole(Role role)
+        {
+            UserRole userRole = new UserRole(this, role);
+
+            UserRoles.Add(userRole);
+        }
+
+        public void SetHeadSculpture(string base64Image)
+        {
+            string rootPath = AppConfigurations.RootPath;
+            string webPath = $"\\Sonarqube\\{Id}.png";
+
+            if (!string.IsNullOrEmpty(HeadSculpture))
+            {
+                File.Delete(rootPath + HeadSculpture);
+            }
+
+            string path = rootPath + webPath;
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+
+            ImageHandle.SaveImage(base64Image, path);
+
+            HeadSculpture = webPath;
+        }
     }
 }

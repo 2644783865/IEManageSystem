@@ -1,14 +1,18 @@
 ﻿using Abp.AutoMapper;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
-using IEIdentityServer.Core;
+using IEManageSystem.ApiAuthorization;
+using IEManageSystem.IdentityServer;
+using IEManageSystem.JwtAuthentication;
 
 namespace IEManageSystem
 {
     [DependsOn(
         typeof(IEManageSystemCoreModule), 
-        typeof(IEIdentityServerCoreModule),
-        typeof(AbpAutoMapperModule))]
+        typeof(IEIdentityServerModule),
+        typeof(AbpAutoMapperModule),
+        typeof(IEApiAuthorizationModule),
+        typeof(IEJwtAuthenticationModule))]
     public class IEManageSystemApplicationModule : AbpModule
     {
         public override void Initialize()

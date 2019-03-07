@@ -2,6 +2,7 @@
 using Abp.Runtime.Session;
 using IdentityServer4.Models;
 using IdentityServer4.Validation;
+using IEManageSystem.Entitys.Authorization.Identitys;
 using IEManageSystem.Entitys.Authorization.LoginManagers;
 using IEManageSystem.Services;
 using IEManageSystem.Services.Accounts;

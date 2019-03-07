@@ -11,14 +11,17 @@
     <RootNamespace>IEManageSystem</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\IEIdentityServer.Core\IEIdentityServer.Core.csproj" />
+    <Compile Remove="Dtos\Authorization\**" />
+    <EmbeddedResource Remove="Dtos\Authorization\**" />
+    <None Remove="Dtos\Authorization\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IEManageSystem.ApiAuthorization\IEManageSystem.ApiAuthorization.csproj" />
     <ProjectReference Include="..\IEManageSystem.Core\IEManageSystem.Core.csproj" />
+    <ProjectReference Include="..\IEManageSystem.IdentityServer\IEManageSystem.IdentityServer.csproj" />
+    <ProjectReference Include="..\IEManageSystem.JwtAuthentication\IEManageSystem.JwtAuthentication.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Abp.EntityFrameworkCore" Version="3.7.2" />
     <PackageReference Include="Abp.AutoMapper" Version="3.7.2" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dtos\Authorization\" />
   </ItemGroup>
 </Project>

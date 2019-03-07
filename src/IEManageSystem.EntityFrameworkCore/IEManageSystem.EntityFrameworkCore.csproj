@@ -20,6 +20,7 @@
     <None Remove="EntityConfigurations\**" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\IEManageSystem.ApiAuthorization\IEManageSystem.ApiAuthorization.csproj" />
     <ProjectReference Include="..\IEManageSystem.Core\IEManageSystem.Core.csproj" />
   </ItemGroup>
   <ItemGroup>

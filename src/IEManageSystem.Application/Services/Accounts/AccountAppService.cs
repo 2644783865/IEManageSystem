@@ -1,25 +1,27 @@
 using System.Threading.Tasks;
+using Abp.Application.Services;
 using Abp.Configuration;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
 using IEManageSystem.Entitys.Authorization.LoginManagers;
-using IEManageSystem.Entitys.Authorization.Users.UserManager;
+using IEManageSystem.Entitys.Authorization.Users;
 using IEManageSystem.Services.Accounts.Dto;
 
 namespace IEManageSystem.Services.Accounts
 {
+    [RemoteService(false)]
     public class AccountAppService : IEManageSystemAppServiceBase, IAccountAppService
     {
         private IAbpSession _AbpSession { get; set; }
 
         private LoginManager _LoginManager { get; set; }
 
-        private UserManager _UserManager { get; set; }
+        private RegisterManager _UserManager { get; set; }
 
         public AccountAppService(
             IAbpSession abpSession,
             LoginManager loginManager,
-            UserManager userManager)
+            RegisterManager userManager)
         {
             _AbpSession = abpSession;
 

@@ -14,6 +14,6 @@ namespace IEManageSystem.Dtos.IdentityService
         public string Name { get; set; }
         public string DisplayName { get; set; }
         public string Description { get; set; }
-        public List<ApiResourceClaim> UserClaims { get; set; }
+        public List<string> UserClaims { get; set; }
     }
 }
