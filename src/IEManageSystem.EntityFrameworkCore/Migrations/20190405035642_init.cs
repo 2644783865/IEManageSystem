@@ -38,6 +38,33 @@ namespace IEManageSystem.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CmsComponents",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CmsComponents", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Pages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: false),
+                    Discriminator = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pages", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Permission",
                 columns: table => new
                 {
@@ -121,6 +148,88 @@ namespace IEManageSystem.Migrations
                         name: "FK_ApiScope_ApiScopeNode_ApiQueryScopeId",
                         column: x => x.ApiQueryScopeId,
                         principalTable: "ApiScopeNode",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Menus",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    CompositeMenuId = table.Column<int>(nullable: true),
+                    Discriminator = table.Column<string>(nullable: false),
+                    PageId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Menus", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Menus_Pages_PageId",
+                        column: x => x.PageId,
+                        principalTable: "Pages",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Menus_Menus_CompositeMenuId",
+                        column: x => x.CompositeMenuId,
+                        principalTable: "Menus",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PageComponentBase",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    CmsComponentId = table.Column<int>(nullable: true),
+                    CompositeComponentId = table.Column<int>(nullable: true),
+                    Discriminator = table.Column<string>(nullable: false),
+                    PageBaseId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PageComponentBase", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PageComponentBase_CmsComponents_CmsComponentId",
+                        column: x => x.CmsComponentId,
+                        principalTable: "CmsComponents",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_PageComponentBase_PageComponentBase_CompositeComponentId",
+                        column: x => x.CompositeComponentId,
+                        principalTable: "PageComponentBase",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_PageComponentBase_Pages_PageBaseId",
+                        column: x => x.PageBaseId,
+                        principalTable: "Pages",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PageData",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    PageBaseId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PageData", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PageData_Pages_PageBaseId",
+                        column: x => x.PageBaseId,
+                        principalTable: "Pages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -225,6 +334,32 @@ namespace IEManageSystem.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ContentComponentData",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ContentLeafComponentId = table.Column<int>(nullable: true),
+                    PageDataId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ContentComponentData", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ContentComponentData_PageComponentBase_ContentLeafComponentId",
+                        column: x => x.ContentLeafComponentId,
+                        principalTable: "PageComponentBase",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ContentComponentData_PageData_PageDataId",
+                        column: x => x.PageDataId,
+                        principalTable: "PageData",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ApiSingleAction",
                 columns: table => new
                 {
@@ -276,6 +411,46 @@ namespace IEManageSystem.Migrations
                 column: "ApiScopeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ContentComponentData_ContentLeafComponentId",
+                table: "ContentComponentData",
+                column: "ContentLeafComponentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ContentComponentData_PageDataId",
+                table: "ContentComponentData",
+                column: "PageDataId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Menus_PageId",
+                table: "Menus",
+                column: "PageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Menus_CompositeMenuId",
+                table: "Menus",
+                column: "CompositeMenuId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PageComponentBase_CmsComponentId",
+                table: "PageComponentBase",
+                column: "CmsComponentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PageComponentBase_CompositeComponentId",
+                table: "PageComponentBase",
+                column: "CompositeComponentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PageComponentBase_PageBaseId",
+                table: "PageComponentBase",
+                column: "PageBaseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PageData_PageBaseId",
+                table: "PageData",
+                column: "PageBaseId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_RolePermission_PermissionId",
                 table: "RolePermission",
                 column: "PermissionId");
@@ -310,6 +485,12 @@ namespace IEManageSystem.Migrations
                 name: "ApiSingleAction");
 
             migrationBuilder.DropTable(
+                name: "ContentComponentData");
+
+            migrationBuilder.DropTable(
+                name: "Menus");
+
+            migrationBuilder.DropTable(
                 name: "RolePermission");
 
             migrationBuilder.DropTable(
@@ -317,6 +498,12 @@ namespace IEManageSystem.Migrations
 
             migrationBuilder.DropTable(
                 name: "ApiSingles");
+
+            migrationBuilder.DropTable(
+                name: "PageComponentBase");
+
+            migrationBuilder.DropTable(
+                name: "PageData");
 
             migrationBuilder.DropTable(
                 name: "Permission");
@@ -329,6 +516,12 @@ namespace IEManageSystem.Migrations
 
             migrationBuilder.DropTable(
                 name: "ApiScope");
+
+            migrationBuilder.DropTable(
+                name: "CmsComponents");
+
+            migrationBuilder.DropTable(
+                name: "Pages");
 
             migrationBuilder.DropTable(
                 name: "Account");

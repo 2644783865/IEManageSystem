@@ -17,6 +17,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IEManageSystem.ApiAuthorization\IEManageSystem.ApiAuthorization.csproj" />
+    <ProjectReference Include="..\IEManageSystem.CMS\IEManageSystem.CMS.csproj" />
     <ProjectReference Include="..\IEManageSystem.Core\IEManageSystem.Core.csproj" />
     <ProjectReference Include="..\IEManageSystem.IdentityServer\IEManageSystem.IdentityServer.csproj" />
     <ProjectReference Include="..\IEManageSystem.JwtAuthentication\IEManageSystem.JwtAuthentication.csproj" />

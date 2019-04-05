@@ -25,3 +25,5 @@
 /test/IEManageSystem.Tests/obj
 /test/IEManageSystem.Web.Tests/bin
 /test/IEManageSystem.Web.Tests/obj
+/src/IEManageSystem.CMS/bin/Debug/netcoreapp2.1
+/src/IEManageSystem.CMS/obj

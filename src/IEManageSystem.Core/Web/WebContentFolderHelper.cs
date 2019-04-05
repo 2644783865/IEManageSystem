@@ -29,7 +29,7 @@ namespace IEManageSystem
                 directoryInfo = directoryInfo.Parent;
             }
 
-            return Path.Combine(directoryInfo.FullName, $"src{Path.DirectorySeparatorChar}IEManageSystem.Web");
+            return Path.Combine(directoryInfo.FullName, $"src{Path.DirectorySeparatorChar}IEManageSystem.Api");
         }
 
         private static bool DirectoryContains(string directory, string fileName)
