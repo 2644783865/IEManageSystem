@@ -6,13 +6,22 @@ namespace IEManageSystem.Help.IEApiScopeHelp
 {
     public class IEApiScopeProvider
     {
+        // core域
         public const string AdminManage = "AuthorizeManage.AdminManage";
         public const string RoleManage = "AuthorizeManage.RoleManage";
         public const string PermissionManage = "AuthorizeManage.PermissionManage";
+
+        // api域
         public const string ApiScopeManage = "AuthorizeManage.ApiScopeManage";
+
+        // oauth域
         public const string IdentityResource = "OAuthManage.IdentityResource";
         public const string ApiResource = "OAuthManage.ApiResource";
         public const string Client = "OAuthManage.Client";
+
+        // cms域
+        public const string Menu = "CMSManage.Menu";
+
 
         public List<ApiScopeGroupDescribe> ApiScopeGroupDescribes { get; set; } = new List<ApiScopeGroupDescribe>();
 
@@ -62,6 +71,17 @@ namespace IEManageSystem.Help.IEApiScopeHelp
                         Name = Client,
                         DisplayName = "客户端"
                     },
+                }
+            });
+
+            ApiScopeGroupDescribes.Add(new ApiScopeGroupDescribe()
+            {
+                Name = "CMSManage",
+                ApiScopeDescribes = new List<ApiScopeDescribe>() {
+                    new ApiScopeDescribe(){
+                        Name = Menu,
+                        DisplayName = "菜单管理"
+                    }
                 }
             });
         }

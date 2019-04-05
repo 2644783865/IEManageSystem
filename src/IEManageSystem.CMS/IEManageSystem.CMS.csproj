@@ -8,4 +8,8 @@
     <ProjectReference Include="..\IEManageSystem.Core\IEManageSystem.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositorys\" />
+  </ItemGroup>
+
 </Project>
