@@ -12,5 +12,8 @@ export const ApiScope =
             IdentityResource: "OAuthManage.IdentityResource",
             ApiResource: "OAuthManage.ApiResource",
             Client: "OAuthManage.Client"
+        },
+        CMSManage:{
+            Menu:"CMSManage.Menu"
         }
     }

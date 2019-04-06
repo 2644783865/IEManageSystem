@@ -177,6 +177,22 @@ const menus =
                     ]
             }
         ]
+    },
+    {
+        id: "CMSManage",
+        text: "CMS管理",
+        url: "/ManageHome/CMSManage",
+        menuItems: [
+            {
+                id:"Menu",
+                text: "菜单管理",
+                url: "/ManageHome/CMSManage/Menu",
+                // accessScope:
+                //     [
+                //         { scopeName: ApiScope.CMSManage.Menu, scopeNodeType: ApiScopeNodeType.manage },
+                //     ]
+            }
+        ]
     }
 ];
 
