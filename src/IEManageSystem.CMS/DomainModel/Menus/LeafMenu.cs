@@ -7,7 +7,7 @@ namespace IEManageSystem.CMS.DomainModel.Menus
 {
     public class LeafMenu : MenuBase
     {
-        public LeafMenu(string name) : base(name)
+        public LeafMenu(string name, string displayName = null) : base(name, displayName ?? name)
         {
         }
 

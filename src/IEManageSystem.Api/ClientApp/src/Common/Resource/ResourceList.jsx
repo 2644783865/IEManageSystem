@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {ResourceDescribeValueType} from './ResourceDescribeValueType.js';
+import {ResourceDescribeValueType} from '../ResourceForm/ResourceDescribeValueType.js';
 
 export default class ResourceList extends React.Component
 {
