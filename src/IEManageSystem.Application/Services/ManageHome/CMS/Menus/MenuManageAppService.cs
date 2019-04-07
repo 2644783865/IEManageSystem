@@ -12,8 +12,8 @@ using IEManageSystem.Services.ManageHome.CMS.Menus.Dto;
 
 namespace IEManageSystem.Services.ManageHome.CMS.Menus
 {
-    [ApiAuthorization(IEApiScopeProvider.Menu)]
-    public class MenuManageAppService : IMenuManageAppService
+    // [ApiAuthorization(IEApiScopeProvider.Menu)]
+    public class MenuManageAppService : IEManageSystemAppServiceBase, IMenuManageAppService
     {
         private MenuManager _menuManager { get; set; }
 
@@ -25,7 +25,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Menus
             _menuManager = menuManager;
         }
 
-        [ApiAuthorizationQuery]
+        // [ApiAuthorizationQuery]
         public GetMenusOutput GetMenus(GetMenusInput input)
         {
             List<MenuBase> menus = _menuRepository.GetAllList();
@@ -63,6 +63,10 @@ namespace IEManageSystem.Services.ManageHome.CMS.Menus
 
             returnMenu.Menus = new List<MenuDto>();
             CompositeMenu compositeMenu = (CompositeMenu) menu;
+
+            if (compositeMenu.Menus == null) {
+                return returnMenu;
+            }
 
             foreach (var childMenu in compositeMenu.Menus)
             {
@@ -102,12 +106,12 @@ namespace IEManageSystem.Services.ManageHome.CMS.Menus
 
         public RemoveMenuOutput RemoveMenu(RemoveMenuInput input)
         {
-            _menuRepository.Delete(input.Id);
+            _menuManager.RemoveMenu(input.Id);
 
             return new RemoveMenuOutput();
         }
 
-        public UpdateMeunOutput UpdateMeun(UpdateMeunInput input)
+        public UpdateMenuOutput UpdateMenu(UpdateMenuInput input)
         {
             var menu = _menuRepository.FirstOrDefault(input.Id);
 
@@ -126,7 +130,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Menus
                 menu.Icon = input.Icon;
             }
 
-            return new UpdateMeunOutput();
+            return new UpdateMenuOutput();
         }
     }
 }

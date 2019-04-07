@@ -96,7 +96,7 @@ namespace IEManageSystem.Api.Startup
 
             services.AddScoped<ValidateCodeHelper>();
 
-            return services.AddAbp<IEManageSystemWebHostModule>(options =>
+            return services.AddAbp<IEManageSystemApiModule>(options =>
             {
                 options.IocManager.IocContainer.AddFacility<LoggingFacility>(
                     f => f.UseAbpLog4Net().WithConfig("log4net.config")
@@ -110,7 +110,7 @@ namespace IEManageSystem.Api.Startup
 
             InitializeDatabase(app);
 
-            app.UseDeveloperExceptionPage();
+            // app.UseDeveloperExceptionPage();
 
             // app.UseDatabaseErrorPage();
 
@@ -124,7 +124,7 @@ namespace IEManageSystem.Api.Startup
             //    app.UseExceptionHandler("/Error");
             //}
 
-            //app.UseExceptionHandleEx();
+            app.UseExceptionHandleEx();
 
             app.UseSession();
 

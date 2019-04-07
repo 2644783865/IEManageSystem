@@ -16,6 +16,6 @@ namespace IEManageSystem.Services.ManageHome.CMS.Menus
 
         RemoveMenuOutput RemoveMenu(RemoveMenuInput input);
 
-        UpdateMeunOutput UpdateMeun(UpdateMeunInput input);
+        UpdateMenuOutput UpdateMenu(UpdateMenuInput input);
     }
 }

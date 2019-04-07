@@ -140,7 +140,13 @@ namespace IEManageSystem.Migrations
                     b.Property<string>("Discriminator")
                         .IsRequired();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("DisplayName")
+                        .IsRequired();
+
+                    b.Property<string>("Icon");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("Id");
 

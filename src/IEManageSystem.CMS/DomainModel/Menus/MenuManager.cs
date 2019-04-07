@@ -74,5 +74,13 @@ namespace IEManageSystem.CMS.DomainModel.Menus
 
             menu.Name = name;
         }
+
+        public void RemoveMenu(int id) {
+            if (MenuRepository.Count(e => e.CompositeMenuId == id) > 0) {
+                throw new MessageException("无法移除菜单，请确保该菜单无子菜单");
+            }
+
+            MenuRepository.Delete(id);
+        }
     }
 }
