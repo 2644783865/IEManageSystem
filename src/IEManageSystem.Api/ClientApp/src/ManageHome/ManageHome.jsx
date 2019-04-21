@@ -10,6 +10,9 @@ import 'ToolLibrary/IETool.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Redirect, Link, Switch } from 'react-router-dom';
+import { createStore, combineReducers } from 'redux'
+import { Provider } from 'react-redux'
+import { app } from './Reducers'
 
 import MenuProvider from "./MenuProvider.js";
 import Nav from './Nav/Nav.jsx';
@@ -19,7 +22,9 @@ import NavTag from './NavTag/NavTag.jsx';
 
 require('./ManageHome.css');
 
-class UserHome extends React.Component {
+let store = createStore(app);
+
+class ManageHome extends React.Component {
     constructor(props) {
         super(props);
 
@@ -86,7 +91,9 @@ class UserHome extends React.Component {
 }
 
 ReactDOM.render(
-    <BrowserRouter>
-        <UserHome></UserHome>
-    </BrowserRouter>,
+    <Provider store={store}>
+        <BrowserRouter>
+            <ManageHome></ManageHome>
+        </BrowserRouter>
+    </Provider>,
     document.getElementById('UserHome'));

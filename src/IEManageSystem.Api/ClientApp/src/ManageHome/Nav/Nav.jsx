@@ -1,9 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Route, NavLink, Link, Switch } from 'react-router-dom';
 
 import './Nav.css';
-import MenuProvider from "../MenuProvider.js";
 import Logo from 'Logo/Logo.jsx';
 
 import DefaultAvatar from 'images/default_avatar.png';
