@@ -64,10 +64,7 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['es2017', 'react'],
-                    }
+                    loader: 'babel-loader'
                 },
                 exclude: /node_modules/
             },
@@ -92,10 +89,6 @@ module.exports = {
                     }
                   }
               ]
-            },
-            {
-                test: /\.(tpl|ejs)$/, 
-                loader: 'ejs'
             },
             {
                 test: /\.css$/, 
