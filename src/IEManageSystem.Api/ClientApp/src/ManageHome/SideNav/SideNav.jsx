@@ -1,7 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Route, NavLink, Link, Switch } from 'react-router-dom';
+import PropsTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+import { NavLink } from 'react-router-dom';
 import MenuTag from "./MenuTag/MenuTag.jsx";
+import { sideMenuSelect } from '../Actions'
 
 import './SideNav.css'
 
@@ -9,10 +12,9 @@ import DefaultAvatar from 'images/default_avatar.png';
 
 import Weather from 'Weather/Weather.jsx';
 
-export default class SideNav extends React.Component
+class SideNav extends React.Component
 {
     // props.selectTopMenu
-    // props.sideMenuSelect()
 	constructor(props){
 		super(props);
 
@@ -58,8 +60,7 @@ export default class SideNav extends React.Component
         for(let item in menuItems)
         {
             let icon = <span className={
-                                "oi padding-right-10 " + 
-                                (menuItems[item].icon === undefined ? "oi-tags leftmenu-icon-hide":menuItems[item].icon)
+                                "oi padding-right-10 " + (menuItems[item].icon || "oi-tags leftmenu-icon-hide")
                             } title="icon name" aria-hidden="true">
                         </span>
             let text = <span>{" " + menuItems[item].text}</span>;
@@ -72,7 +73,7 @@ export default class SideNav extends React.Component
                     <a href="javascript:void(0)" className="text-white" onClick={
                         event=>{
                             // 隐藏所有子菜单
-                            let lis = $(event.target).parents("ul").eq(0).children("li");
+                            let lis = $(event.currentTarget).parents("ul").eq(0).children("li");
                             lis.children("div").hide(500);
                             lis.children("a").find("span.oi-chevron-right").removeClass("rotate90");
 
@@ -96,7 +97,9 @@ export default class SideNav extends React.Component
             }
             else{
                 navLink = 
-                    <NavLink activeClassName="leftmenu_css_li_active" className="text-white" to={menuItems[item].url}>
+                    <NavLink to={menuItems[item].url} activeClassName="leftmenu_css_li_active" className="text-white" 
+                        onClick={()=>{this.props.sideMenuSelect(menuItems[item]);}}
+                    >
                         {icon}
                         {text}
                     </NavLink>;
@@ -139,8 +142,36 @@ export default class SideNav extends React.Component
                         {menus}
                     </div>
                 </div>
-                <Route path="/ManageHome/:menuId?/:menuItemId?" component={MenuTag} />
+                <MenuTag selectedSideMenu={this.props.selectedSideMenu} sideMenuSelect={this.props.sideMenuSelect} />
             </div>
         );
     }
 }
+
+SideNav.propTypes = {
+    selectTopMenu: PropsTypes.object.isRequired,
+    selectedSideMenu: PropsTypes.object,
+    sideMenuSelect: PropsTypes.func.isRequired
+}
+
+const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
+    return {
+        selectTopMenu: state.selectedTopMenu,
+        selectedSideMenu: state.selectedSideMenu
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        sideMenuSelect: (menu) => dispatch(sideMenuSelect(menu))
+    }
+}
+
+const SideNavContain = connect(
+    mapStateToProps, // 关于state
+    mapDispatchToProps, // 关于dispatch
+    undefined,
+    { pure:false }
+)(SideNav)
+
+export default SideNavContain;

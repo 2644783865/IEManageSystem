@@ -138,39 +138,6 @@ hr.dashed {
   border-style: dashed;
 }
 
-/* width */
-/* line 72, ../../scss/basestyle/style.scss */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-  border-radius: 100px;
-}
-
-/* Track */
-/* line 79, ../../scss/basestyle/style.scss */
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-/* Handle */
-/* line 84, ../../scss/basestyle/style.scss */
-::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 100px;
-  opacity: 0;
-}
-
-/* Handle on hover */
-/* line 91, ../../scss/basestyle/style.scss */
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.4);
-}
-
-/* line 96, ../../scss/basestyle/style.scss */
-::-webkit-scrollbar-thumb:hover {
-  display: block;
-}
-
 /* Setting Min Height for no contant page */
 /* line 105, ../../scss/basestyle/style.scss */
 .content {

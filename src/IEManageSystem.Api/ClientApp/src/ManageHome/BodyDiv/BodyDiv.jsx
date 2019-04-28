@@ -16,29 +16,6 @@ export default class BodyDiv extends React.Component
         super(props);
     }
 
-    shouldComponentUpdate(nextProps, nextState)
-    {
-        let menuId = nextProps.match.params.menuId;
-        
-        // 如果未传顶级菜单或顶级菜单为index，默认使用Index组件
-        if(menuId == undefined || menuId.toLowerCase() == "index"){
-            return true;
-        }
-
-        let menuItemId = nextProps.match.params.menuItemId;
-        if(menuItemId != undefined){
-            return true;
-        }
-
-        return false;
-    }
-
-    componentWillMount(){
-    }
-
-    componentWillUpdate(nextProps, nextState){
-    }
-
     render()
     {
         return(

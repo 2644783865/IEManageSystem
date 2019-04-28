@@ -1,8 +1,16 @@
-export const ADD_TODO = 'ADD_TODO'
-export function addTodo(text) 
+export const TopLevelMenusSelect = 'TopLevelMenusSelect'
+export function topLevelMenusSelect(menu) 
 {
   return {
-    type: ADD_TODO,
-    text
+    type: TopLevelMenusSelect,
+    menu
+  }
+}
+
+export const SideMenuSelect = 'SideMenuSelect';
+export function sideMenuSelect(menu){
+  return {
+    type: SideMenuSelect,
+    menu
   }
 }

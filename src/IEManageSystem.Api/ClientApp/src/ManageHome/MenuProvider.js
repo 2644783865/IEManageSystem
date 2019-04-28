@@ -8,7 +8,6 @@ const menus =
     {
         id: "Personal",
         text: "个人中心",
-        url: "/ManageHome/Personal",
         icon: "oi-person",
         default: true,
         menuItems: [
@@ -29,14 +28,12 @@ const menus =
     {
         id: "AuthorizeManage",
         text: "站点授权管理",
-        url: "/ManageHome/AuthorizeManage",
         icon: "oi-shield",
         menuItems: 
         [
             {
                 id:"Admin",
                 text: "管理员",
-                url: "/ManageHome/AuthorizeManage/Admin",
                 icon: "oi-people",
                 menuItems: [
                     {
@@ -72,7 +69,6 @@ const menus =
             {
                 id:"Role",
                 text: "角色",
-                url: "/ManageHome/AuthorizeManage/Role",
                 menuItems: [
                     {
                         id:"RoleManage",
@@ -108,7 +104,6 @@ const menus =
             {
                 id:"ApiScopeManage",
                 text: "功能域管理",
-                url: "/ManageHome/AuthorizeManage/ApiScopeManage",
                 icon: "oi-globe",
                 menuItems: [
                     {
@@ -147,7 +142,6 @@ const menus =
     {
         id: "OAuthManage",
         text: "OAuth认证管理",
-        url: "/ManageHome/OAuthManage",
         menuItems: [
             {
                 id:"IdentityResource",
@@ -187,10 +181,10 @@ const menus =
                 id:"Menu",
                 text: "菜单管理",
                 url: "/ManageHome/CMSManage/Menu",
-                // accessScope:
-                //     [
-                //         { scopeName: ApiScope.CMSManage.Menu, scopeNodeType: ApiScopeNodeType.manage },
-                //     ]
+                accessScope:
+                    [
+                        { scopeName: ApiScope.CMSManage.Menu, scopeNodeType: ApiScopeNodeType.manage },
+                    ]
             }
         ]
     }
@@ -200,7 +194,10 @@ var mainMenu = null;
 
 export default class MenuProvider
 {
-	constructor(){
+    constructor()
+    {
+        this.enableAuthorityFilter = false;
+
         if(mainMenu == null){
             this.apiScopeAuthorityManager = new ApiScopeAuthorityManager();
             mainMenu = this.createMenu({ menuItems: menus });
@@ -221,7 +218,8 @@ export default class MenuProvider
         menu.accessScope = menuData.accessScope;
 
         // 如果不允许访问这个菜单，则访问null
-        if(this.apiScopeAuthorityManager.isAllowAccessMenu(menu) == false){
+        if(this.apiScopeAuthorityManager.isAllowAccessMenu(menu) == false && this.enableAuthorityFilter == true)
+        {
             return null;
         }
 
@@ -252,116 +250,5 @@ export default class MenuProvider
     getTopLevelMenus()
     {
         return mainMenu.menuItems;
-    }
-
-    // 获取默认顶级菜单项
-    getDefaultTopLevelMenu()
-    {
-        for(let item in mainMenu.menuItems)
-        {
-            if(mainMenu.menuItems[item].default == true){
-                return mainMenu.menuItems[item];
-            }
-        }
-    }
-
-    // 获取菜单项
-    getMenuItem(menuIds)
-    {
-        let curMenu = mainMenu;
-
-        for(let item in menuIds)
-        {
-            curMenu = this._getChildMenu(curMenu, menuIds[item]);
-            if(curMenu == null){
-                return null;
-            }
-        }
-
-        return curMenu;
-    }
-
-    // 模糊匹配获取菜单完整路经
-    getMenuPath(menuIds)
-    {
-        return this.getMenuPathIteration(mainMenu, menuIds);
-    }
-
-    // 模糊匹配获取菜单完整路经
-    getMenuPathIteration(menu, menuIds)
-    {
-        let paths = new Array();
-
-        for(let item in menuIds)
-        {
-            let oldMenu = menu;
-            menu = this._getChildMenu(menu, menuIds[item]);
-
-            // 如果未找到菜单，则推测菜单可能属于下一级菜单
-            if(menu == null)
-            {
-                let newMenuIds = new Array();
-
-                for(let n = item; n < menuIds.length; n++)
-                {
-                    newMenuIds.push(menuIds[n]);
-                }
-
-                for(let itemChild in oldMenu.menuItems)
-                {
-                    let childPaths = this.getMenuPathIteration(oldMenu.menuItems[itemChild], newMenuIds);
-
-                    // 有找到
-                    if(childPaths.length > 0){
-                        paths.push(oldMenu.menuItems[itemChild].id);
-                        childPaths.map(childPath=>paths.push(childPath));
-
-                        return paths;
-                    }
-                }
-
-                return new Array();
-            }
-            else{
-                paths.push(menuIds[item]);
-            }
-        }
-
-        return paths;
-    }
-
-    // 获取子菜单
-    _getChildMenu(menu, menuId)
-    {
-        for(let item in menu.menuItems)
-        {
-            if(menu.menuItems[item].id == menuId){
-                return menu.menuItems[item];
-            }
-        }
-
-        // 如果菜单id为空，返回默认菜单
-        if(menuId == undefined || menuId == null)
-        {
-            for(let item in menu.menuItems)
-            {
-                if(menu.menuItems[item].default == true){
-                    return menu.menuItems[item];
-                }
-            }
-            return null;
-        }
-        
-        // 如果菜单id未index
-        if(menuId.toLowerCase() === "index"){
-            for(let item in menu.menuItems)
-            {
-                if(menu.menuItems[item].default == true){
-                    return menu.menuItems[item];
-                }
-            }
-        }
-
-        return null;
     }
 }

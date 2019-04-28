@@ -1,9 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, NavLink, Link, Switch, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { sideMenuSelect } from '../Actions'
+import { NavLink, withRouter } from 'react-router-dom';
 
 import './NavTag.css'
-import MenuProvider from "../MenuProvider.js";
 
 class NavTag extends React.Component{
     constructor(props) 
@@ -26,32 +27,17 @@ class NavTag extends React.Component{
 
     updateTag(props)
     {
-        if(props.match.params.menuId == undefined){
-            return;
-        }
-
-        let menuId = props.match.params.menuId;
-        let menuItemId = props.match.params.menuItemId;
-
-        let menuProvider = new MenuProvider();
-        let menuPaths = menuProvider.getMenuPath([menuId, menuItemId]);
-        let menuItem = menuProvider.getMenuItem(menuPaths);
-
-        if(menuItem == null){
-            return;
-        }
-
-        if(menuItem.menuItems.length > 0){
+        if(props.selectedSideMenu == null){
             return;
         }
         
         for(let item in this.menuItems){
-            if(this.menuItems[item].id == menuItem.id){
+            if(this.menuItems[item].id == props.selectedSideMenu.id){
                 return;
             }
         }
 
-        this.menuItems.push(menuItem);
+        this.menuItems.push(props.selectedSideMenu);
     }
 
     _rightClick(event){
@@ -100,8 +86,9 @@ class NavTag extends React.Component{
             lis.push(<li key={index+1} className="nav-item">
                         <a className={"nav-link nav-tag-noactive " + (curUrl==item.url?"active":"")} href="javascript:void(0)"
                             onClick={
-                                (e)=>{
+                                ()=>{
                                     this.props.history.push(item.url); 
+                                    this.props.sideMenuSelect(item);
                                 }
                             }
                         >
@@ -119,16 +106,18 @@ class NavTag extends React.Component{
                                         this.menuItems.splice(index, 1);
 
                                         // 如果当前标签没有被选中
-                                        if(!$(event.target).parents("a").eq(0).hasClass("active")){
+                                        if(!$(event.currentTarget).parents("a").eq(0).hasClass("active")){
                                             this.setState({});
                                             return false;
                                         }
 
                                         if(index == 0){
                                             this.props.history.push("/ManageHome/Index"); 
+                                            this.props.sideMenuSelect(null);
                                         }
 
                                         this.props.history.push(this.menuItems[index-1].url); 
+                                        this.props.sideMenuSelect(this.menuItems[index-1]);
                                     }
                                 }
                             ></span>
@@ -170,4 +159,28 @@ class NavTag extends React.Component{
     }
 }
 
-export default withRouter(NavTag);
+NavTag.propTypes = {
+    selectedSideMenu: PropTypes.object,
+    sideMenuSelect: PropTypes.func.isRequired
+}
+
+const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
+    return {
+        selectedSideMenu: state.selectedSideMenu
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        sideMenuSelect: (menu) => dispatch(sideMenuSelect(menu))
+    }
+}
+
+const NavTagContain = connect(
+    mapStateToProps, // 关于state
+    mapDispatchToProps, // 关于dispatch
+    undefined,
+    { pure:false }
+)(withRouter(NavTag))
+
+export default NavTagContain;

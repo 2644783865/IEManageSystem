@@ -3,3 +3,9 @@
 	overflow-y: auto;
 	flex-basis: 100%;
 }
+
+.content-container > div > div{
+	animation: toTop-fade-in 0.5s ease-out 0s 1 normal;
+    /* Safari 与 Chrome: */
+    -webkit-animation: toTop-fade-in 0.5s ease-out 0s 1 normal;
+}

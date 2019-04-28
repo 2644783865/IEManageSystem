@@ -1,11 +1,16 @@
 import React from 'react';
+import PropsTypes from 'prop-types';
 
 import './Nav.css';
 import Logo from 'Logo/Logo.jsx';
 
 import DefaultAvatar from 'images/default_avatar.png';
 
-export default class Nav extends React.Component
+import { connect } from 'react-redux';
+
+import { topLevelMenusSelect } from '../Actions';
+
+class Nav extends React.Component
 {
     // props.topLevelMenus
     // props.selectTopMenu
@@ -109,3 +114,29 @@ export default class Nav extends React.Component
         );
     }
 }
+
+Nav.propsTypes = {
+    topLevelMenus: PropsTypes.array.isRequired,
+    selectTopMenu: PropsTypes.object.isRequired,
+    topLevelMenusSelect: PropsTypes.func.isRequired
+}
+
+const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
+    return {
+        topLevelMenus: state.topLevelMenus,
+        selectTopMenu: state.selectedTopMenu,
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        topLevelMenusSelect: (menu) => { dispatch(topLevelMenusSelect(menu)) }
+    }
+}
+
+const NavContain = connect(
+    mapStateToProps, // 关于state
+    mapDispatchToProps // 关于dispatch
+)(Nav)
+
+export default NavContain;

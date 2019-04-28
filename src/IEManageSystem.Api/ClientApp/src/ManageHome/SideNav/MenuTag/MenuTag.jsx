@@ -1,12 +1,12 @@
 ﻿import React from 'react';
-import ReactDOM from 'react-dom';
-import { Route, NavLink, Link, Switch } from 'react-router-dom';
-import MenuProvider from "../../MenuProvider.js";
+import { NavLink } from 'react-router-dom';
 
 import "./MenuTag.css";
 
 export default class MenuTag extends React.Component
 {
+    // props.selectedSideMenu
+    // props.sideMenuSelect
     constructor(props)
     {
         super(props);
@@ -41,34 +41,21 @@ export default class MenuTag extends React.Component
         this.updateTag(nextProps);
     }
 
-    updateTag(props) {
-        if (props.match.params.menuId === undefined) {
-            return;
-        }
-
-        let menuId = props.match.params.menuId;
-        let menuItemId = props.match.params.menuItemId;
-
-        let menuProvider = new MenuProvider();
-        let menuPaths = menuProvider.getMenuPath([menuId, menuItemId]);
-        let menuItem = menuProvider.getMenuItem(menuPaths);
-
-        if (menuItem === null) {
-            return;
-        }
-
-        if (menuItem.menuItems.length > 0) {
+    updateTag(props) 
+    {
+        if(props.selectedSideMenu == null){
+            this.curMenu = null;
             return;
         }
 
         for (let item in this.menuItems)
         {
-            if (this.menuItems[item].id === menuItem.id) {
+            if (this.menuItems[item].id === props.selectedSideMenu.id) {
                 return;
             }
         }
 
-        this.curMenu = menuItem;
+        this.curMenu = props.selectedSideMenu;
     }
 
     _createMenus()
@@ -82,10 +69,12 @@ export default class MenuTag extends React.Component
                 <li key={item}>
                     <span className={
                         "oi padding-right-10 " +
-                        (menuItems[item].icon === undefined ? "oi-tags leftmenu-icon-hide" : menuItems[item].icon)
+                        (menuItems[item].icon || "oi-tags leftmenu-icon-hide")
                     } title="icon name" aria-hidden="true">
                     </span>
-                    <NavLink to={menuItems[item].url}>
+                    <NavLink to={menuItems[item].url} 
+                        onClick={()=>{this.props.sideMenuSelect(menuItems[item])}}
+                    >
                         {menuItems[item].text}
                     </NavLink>
                     <span className="oi oi-delete padding-left-10" title="icon name" aria-hidden="true"
