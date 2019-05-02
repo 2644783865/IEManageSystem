@@ -3,7 +3,7 @@ import { Switch, Route, NavLink } from 'react-router-dom';
 import UserInfo from "./UserInfo/UserInfo.jsx";
 import AccountSecurity from "./AccountSecurity/AccountSecurity.jsx";
 
-export default class BodyDiv extends React.Component
+export default class Personal extends React.Component
 {
     constructor(props)
     {

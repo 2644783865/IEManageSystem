@@ -1,7 +1,13 @@
 import MenuProvider from 'Core/Menu/MenuProvider'
 import { TopLevelMenusSelect, SideMenuSelect } from './Actions'
 
-const topLevelMenus = new MenuProvider().getTopLevelMenus();
+let topLevelMenus = null;
+
+function getTopLevelMenus(){
+    topLevelMenus = new MenuProvider().getTopLevelMenus();
+
+    return topLevelMenus;
+}
 
 function selectedTopMenu(state = topLevelMenus[0], action) 
 {
@@ -27,7 +33,7 @@ export function app(state = {}, action)
 {
     return Object.assign({}, state, 
     {
-        topLevelMenus: topLevelMenus,
+        topLevelMenus: topLevelMenus || getTopLevelMenus(),
         selectedTopMenu: selectedTopMenu(state.selectedTopMenu, action),
         selectedSideMenu: selectedSideMenu(state.selectedSideMenu, action)
     })
