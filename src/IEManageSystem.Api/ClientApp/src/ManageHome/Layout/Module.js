@@ -4,6 +4,8 @@ import CMSManage from 'CMSManage/Module'
 import OAuthManage from 'OAuthManage/Module'
 import Personal from 'Personal/Module'
 
+import { reducer } from './Reducers'
+
 export default class Module extends BaseModule
 {
     constructor(){
@@ -13,5 +15,7 @@ export default class Module extends BaseModule
         this.addDependModule(new AuthorizeManage());
         this.addDependModule(new OAuthManage());
         this.addDependModule(new CMSManage());
+
+        this.setReducer(reducer);
     }
 }

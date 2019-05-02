@@ -4,7 +4,6 @@ import App from './Layout/ManageHome.jsx'
 import { BrowserRouter } from 'react-router-dom';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import { app } from './Layout/Reducers'
 
 import Module from './Layout/Module'
 
@@ -13,7 +12,7 @@ module.preInitialize();
 module.initialize();
 module.postInitialize();
 
-let store = createStore(app);
+let store = createStore(module.getReducer());
 
 ReactDOM.render(
     <Provider store={store}>

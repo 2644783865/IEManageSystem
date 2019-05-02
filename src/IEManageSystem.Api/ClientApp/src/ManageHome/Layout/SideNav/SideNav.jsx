@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { NavLink } from 'react-router-dom';
 import MenuTag from "./MenuTag/MenuTag.jsx";
-import { sideMenuSelect } from '../Actions'
+import { sideMenuSelect } from 'Core/Actions'
 
 import './SideNav.css'
 

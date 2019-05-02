@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { sideMenuSelect } from '../Actions'
+import { sideMenuSelect } from 'Core/Actions'
 import { NavLink, withRouter } from 'react-router-dom';
 
 import './NavTag.css'

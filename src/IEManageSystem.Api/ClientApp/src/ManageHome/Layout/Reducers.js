@@ -1,5 +1,5 @@
 import MenuProvider from 'Core/Menu/MenuProvider'
-import { TopLevelMenusSelect, SideMenuSelect } from './Actions'
+import { TopLevelMenusSelect, SideMenuSelect } from 'Core/Actions'
 
 let topLevelMenus = null;
 
@@ -29,7 +29,7 @@ function selectedSideMenu(state = null, action){
     }
 }
 
-export function app(state = {}, action)
+export function reducer(state = {}, action)
 {
     return Object.assign({}, state, 
     {

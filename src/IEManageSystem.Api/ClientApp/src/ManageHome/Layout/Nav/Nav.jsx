@@ -8,7 +8,7 @@ import DefaultAvatar from 'images/default_avatar.png';
 
 import { connect } from 'react-redux';
 
-import { topLevelMenusSelect } from '../Actions';
+import { topLevelMenusSelect } from 'Core/Actions';
 
 class Nav extends React.Component
 {
