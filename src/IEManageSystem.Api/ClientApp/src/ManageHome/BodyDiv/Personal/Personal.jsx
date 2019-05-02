@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import UserInfo from "./UserInfo/UserInfo.jsx";
 import AccountSecurity from "./AccountSecurity/AccountSecurity.jsx";

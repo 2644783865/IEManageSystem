@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import UserInfoCss from './UserInfo.css';
+import './UserInfo.css';
 import imgAvatar from 'images/default_avatar.png';
 
 import ErrorModal from 'ErrorModal/ErrorModal.jsx';

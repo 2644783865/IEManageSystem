@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import ApiScopePermission from "./ApiScopePermission/ApiScopePermission.jsx";
 import Permission from "./Permission/Permission.jsx";

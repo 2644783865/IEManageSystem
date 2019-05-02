@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Resource from 'Resource/Resource.jsx';
 import Tab from 'Tab/Tab.jsx';
 

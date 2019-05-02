@@ -1,11 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import Client from "./Client/Client.jsx";
 import ApiResource from "./ApiResource/ApiResource.jsx";
 import IdentityResource from "./IdentityResource/IdentityResource.jsx";
 
-export default class BodyDiv extends React.Component
+export default class OAuthManage extends React.Component
 {
     constructor(props)
     {

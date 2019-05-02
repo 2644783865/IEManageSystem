@@ -1,7 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Switch, Route, NavLink } from 'react-router-dom';
-import BodyDivCss from './BodyDiv.css';
+import './BodyDiv.css';
 import OAuthManage from "./OAuthManage/OAuthManage.jsx";
 import Personal from "./Personal/Personal.jsx";
 import AuthorizeManage from "./AuthorizeManage/AuthorizeManage.jsx";

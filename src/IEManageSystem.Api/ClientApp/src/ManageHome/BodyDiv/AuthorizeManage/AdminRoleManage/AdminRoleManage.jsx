@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ResourceChildList from 'ResourceChildList/ResourceChildList.jsx';
 
 export default class AdminRoleManage extends React.Component
