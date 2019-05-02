@@ -1,10 +1,10 @@
 import React from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import './BodyDiv.css';
-import OAuthManage from "./OAuthManage/OAuthManage.jsx";
-import Personal from "./Personal/Personal.jsx";
-import AuthorizeManage from "./AuthorizeManage/AuthorizeManage.jsx";
-import CMSManage from "./CMSManage/CMSManage.jsx";
+import OAuthManage from "OAuthManage/OAuthManage.jsx";
+import Personal from "Personal/Personal.jsx";
+import AuthorizeManage from "AuthorizeManage/AuthorizeManage.jsx";
+import CMSManage from "CMSManage/CMSManage.jsx";
 
 import Index from "./Index/Index.jsx";
 
