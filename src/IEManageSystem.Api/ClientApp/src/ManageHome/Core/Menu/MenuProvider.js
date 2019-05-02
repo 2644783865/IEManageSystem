@@ -1,6 +1,6 @@
-import { ApiScope } from "./ApiScopeAuthority/ApiScope.js";
-import { ApiScopeNodeType } from "./ApiScopeAuthority/ApiScopeNodeType.js";
-import ApiScopeAuthorityManager from "./ApiScopeAuthority/ApiScopeAuthorityManager.js";
+import { ApiScope } from "../ApiScopeAuthority/ApiScope.js";
+import { ApiScopeNodeType } from "../ApiScopeAuthority/ApiScopeNodeType.js";
+import ApiScopeAuthorityManager from "../ApiScopeAuthority/ApiScopeAuthorityManager.js";
 import Menu from "./Menu.js";
 
 const menus = 

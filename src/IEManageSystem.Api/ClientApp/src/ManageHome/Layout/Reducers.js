@@ -1,4 +1,4 @@
-import MenuProvider from './MenuProvider'
+import MenuProvider from 'Core/Menu/MenuProvider'
 import { TopLevelMenusSelect, SideMenuSelect } from './Actions'
 
 const topLevelMenus = new MenuProvider().getTopLevelMenus();

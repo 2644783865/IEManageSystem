@@ -3,8 +3,8 @@ import Resource from 'Resource/Resource.jsx';
 import Tab from 'Tab/Tab.jsx';
 
 import "./MenuPermission.css";
-import MenuProvider from "Layout/MenuProvider.js";
-import {ApiScopeNodeType} from "Layout/ApiScopeAuthority/ApiScopeNodeType.js";
+import MenuProvider from "Core/Menu/MenuProvider.js";
+import {ApiScopeNodeType} from "Core/ApiScopeAuthority/ApiScopeNodeType.js";
 
 export default class MenuPermission extends React.Component
 {
