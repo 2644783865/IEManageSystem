@@ -8,11 +8,7 @@ import 'ielib';
 import 'ToolLibrary/IETool.js';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import { app } from './Reducers'
+import { Route } from 'react-router-dom';
 
 import Nav from './Nav/Nav.jsx';
 import SideNav from "./SideNav/SideNav.jsx";
@@ -21,9 +17,7 @@ import NavTag from './NavTag/NavTag.jsx';
 
 require('./ManageHome.css');
 
-let store = createStore(app);
-
-class ManageHome extends React.Component {
+export default class ManageHome extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -61,11 +55,3 @@ class ManageHome extends React.Component {
         );
     }
 }
-
-ReactDOM.render(
-    <Provider store={store}>
-        <BrowserRouter>
-            <ManageHome></ManageHome>
-        </BrowserRouter>
-    </Provider>,
-    document.getElementById('UserHome'));

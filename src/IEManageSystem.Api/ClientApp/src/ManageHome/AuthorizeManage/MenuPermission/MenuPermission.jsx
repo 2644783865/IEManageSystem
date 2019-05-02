@@ -20,8 +20,6 @@ export default class MenuPermission extends React.Component
 
 		this.selectMenuPermissions = [];
 
-		this
-
 		this.describes=[
 			{name:"id", isId:true, isAddShow:false, isEditShow:false, isLookupShow:false},
 			{name:"name", text:"权限名称", isName:true, isShowOnList:true, isEditCanEdit:false},
