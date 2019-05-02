@@ -2,6 +2,7 @@ import BaseModule from 'Core/BaseModule'
 import MenuProvider from 'Core/Menu/MenuProvider'
 import { ApiScope } from "Core/ApiScopeAuthority/ApiScope.js";
 import { ApiScopeNodeType } from "Core/ApiScopeAuthority/ApiScopeNodeType.js";
+import AuthorizeManage from "./AuthorizeManage.jsx";
 
 export default class Module extends BaseModule
 {
@@ -123,7 +124,9 @@ export default class Module extends BaseModule
                         ]
                     },
                 ]
-            }
+            },
+            "/ManageHome/AuthorizeManage",
+            AuthorizeManage
         );
     }
 }

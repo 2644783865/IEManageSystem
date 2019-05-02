@@ -3,6 +3,8 @@ import MenuProvider from 'Core/Menu/MenuProvider'
 import { ApiScope } from "Core/ApiScopeAuthority/ApiScope.js";
 import { ApiScopeNodeType } from "Core/ApiScopeAuthority/ApiScopeNodeType.js";
 
+import OAuthManage from "./OAuthManage.jsx";
+
 export default class Module extends BaseModule
 {
     initialize()
@@ -42,7 +44,9 @@ export default class Module extends BaseModule
                             ]
                     }
                 ]
-            }
+            },
+            "/ManageHome/OAuthManage",
+            OAuthManage
         );
     }
 }

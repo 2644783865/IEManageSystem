@@ -12,7 +12,7 @@ export default class MenuPermission extends React.Component
 	{
 		super(props);
 
-		this.mainMenu = new MenuProvider().getmainMenu();
+		this.topLevelMenus = new MenuProvider().getTopLevelMenus();
 
 		this.apiScopes = [];
 
@@ -187,7 +187,7 @@ export default class MenuPermission extends React.Component
     }
 
     render(){
-    	let ul = this._createMenusIteration(this.mainMenu);
+    	let ul = this._createMenusIteration({ menuItems: this.topLevelMenus });
 
     	let resources = [];
     	for(let item in this.selectMenuPermissions){

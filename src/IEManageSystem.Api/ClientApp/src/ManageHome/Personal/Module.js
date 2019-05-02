@@ -3,6 +3,8 @@ import MenuProvider from 'Core/Menu/MenuProvider'
 import { ApiScope } from "Core/ApiScopeAuthority/ApiScope.js";
 import { ApiScopeNodeType } from "Core/ApiScopeAuthority/ApiScopeNodeType.js";
 
+import Personal from './Personal.jsx';
+
 export default class Module extends BaseModule
 {
     initialize()
@@ -29,7 +31,9 @@ export default class Module extends BaseModule
                         icon: "oi-envelope-closed"
                     }
                 ]
-            }
+            },
+            "/ManageHome/Personal",
+            Personal
         );
     }
 }

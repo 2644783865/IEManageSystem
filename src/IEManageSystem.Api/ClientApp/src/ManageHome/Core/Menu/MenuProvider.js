@@ -1,15 +1,20 @@
 import ApiScopeAuthorityManager from "../ApiScopeAuthority/ApiScopeAuthorityManager.js";
 import Menu from "./Menu.js";
 
-var menus = [];
+var navMenuComponents = [];
 
 var mainMenu = null;
 
 export default class MenuProvider
 {
-    static registerMenu(menu)
+    // 注册导航栏菜单
+    static registerMenu(menu, beseUrl, component)
     {
-        menus.push(menu);
+        navMenuComponents.push({
+            menu, 
+            beseUrl, 
+            component
+        });
     }
 
     constructor()
@@ -18,7 +23,7 @@ export default class MenuProvider
 
         if(mainMenu == null){
             this.apiScopeAuthorityManager = new ApiScopeAuthorityManager();
-            mainMenu = this.createMenu({ menuItems: menus });
+            mainMenu = this.createMenu({ menuItems: navMenuComponents.map(item=>item.menu) });
             if(mainMenu == null){
                 mainMenu = new Menu();
             }
@@ -61,12 +66,12 @@ export default class MenuProvider
 		return menu;
 	}
 
-    getmainMenu(){
-        return mainMenu;
-    }
-
     getTopLevelMenus()
     {
         return mainMenu.menuItems;
+    }
+
+    getNavMenuComponents(){
+        return navMenuComponents;
     }
 }

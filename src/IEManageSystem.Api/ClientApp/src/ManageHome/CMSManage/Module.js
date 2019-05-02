@@ -3,6 +3,8 @@ import MenuProvider from 'Core/Menu/MenuProvider'
 import { ApiScope } from "Core/ApiScopeAuthority/ApiScope.js";
 import { ApiScopeNodeType } from "Core/ApiScopeAuthority/ApiScopeNodeType.js";
 
+import CMSManage from './CMSManage.jsx';
+
 export default class Module extends BaseModule
 {
     initialize()
@@ -25,7 +27,9 @@ export default class Module extends BaseModule
                             ]
                     }
                 ]
-            }
+            },
+            "/ManageHome/CMSManage",
+            CMSManage
         );
     }
 }
