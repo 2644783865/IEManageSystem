@@ -1,0 +1,37 @@
+.page-container{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding-top: 0.67rem;
+    border: 1px solid #cdcdcd;
+}
+
+.add-component{
+    display: flex;
+    height: 9rem;
+    box-shadow: 0px 0px 5px gray;
+    border-radius: 5px;
+    margin: 0rem 0.67rem 0rem 0.67rem;
+}
+
+.add-component-btn{
+    display: flex;
+    height: 9rem;
+    box-shadow: 0px 0px 5px gray;
+    border-radius: 5px;
+
+    color: #84b0b5;
+
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+}
+
+.add-component-btn:hover{
+    color: #fff;
+    background-color: #84b0b5;
+}
+
+.add-component-btn>span{
+    margin: auto;
+    font-size: 3rem;
+}

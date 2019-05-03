@@ -14,6 +14,7 @@ export const ApiScope =
             Client: "OAuthManage.Client"
         },
         CMSManage:{
-            Menu:"CMSManage.Menu"
+            Menu:"CMSManage.Menu",
+            Page:"CMSManage.Page"
         }
     }

@@ -156,8 +156,8 @@ SideNav.propTypes = {
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
     return {
-        selectTopMenu: state.selectedTopMenu,
-        selectedSideMenu: state.selectedSideMenu
+        selectTopMenu: state.layout.selectedTopMenu,
+        selectedSideMenu: state.layout.selectedSideMenu
     }
 }
 

@@ -4,6 +4,8 @@ import { ApiScope } from "Core/ApiScopeAuthority/ApiScope.js";
 import { ApiScopeNodeType } from "Core/ApiScopeAuthority/ApiScopeNodeType.js";
 
 import CMSManage from './CMSManage.jsx';
+import {reducer} from './Reducers'
+import ReducerProvider from 'Core/Reducers/ReducerProvider'
 
 export default class Module extends BaseModule
 {
@@ -25,11 +27,22 @@ export default class Module extends BaseModule
                             [
                                 { scopeName: ApiScope.CMSManage.Menu, scopeNodeType: ApiScopeNodeType.manage },
                             ]
+                    },
+                    {
+                        id:"Page",
+                        text: "页面管理",
+                        url: "/ManageHome/CMSManage/Page",
+                        accessScope:
+                            [
+                                { scopeName: ApiScope.CMSManage.Page, scopeNodeType: ApiScopeNodeType.manage },
+                            ]
                     }
                 ]
             },
             "/ManageHome/CMSManage",
             CMSManage
         );
+
+        new ReducerProvider().register(reducer);
     }
 }

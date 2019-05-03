@@ -6,13 +6,14 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 import Module from './Layout/Module'
+import ReducerProvider from 'Core/Reducers/ReducerProvider'
 
 let module = new Module();
 module.preInitialize();
 module.initialize();
 module.postInitialize();
 
-let store = createStore(module.getReducer());
+let store = createStore(new ReducerProvider().getRootReducer());
 
 ReactDOM.render(
     <Provider store={store}>

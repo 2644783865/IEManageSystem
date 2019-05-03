@@ -123,8 +123,8 @@ Nav.propsTypes = {
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
     return {
-        topLevelMenus: state.topLevelMenus,
-        selectTopMenu: state.selectedTopMenu,
+        topLevelMenus: state.layout.topLevelMenus,
+        selectTopMenu: state.layout.selectedTopMenu,
     }
 }
 

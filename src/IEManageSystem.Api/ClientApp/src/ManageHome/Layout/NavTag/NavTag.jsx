@@ -166,7 +166,7 @@ NavTag.propTypes = {
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
     return {
-        selectedSideMenu: state.selectedSideMenu
+        selectedSideMenu: state.layout.selectedSideMenu
     }
 }
 
