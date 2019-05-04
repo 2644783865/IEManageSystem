@@ -1,0 +1,13 @@
+.editableparentcom-btns{
+    position: absolute;
+}
+
+.editableparentcom-btns>button{
+    opacity: 0.2;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+}
+
+.editableparentcom-btns>button:hover{
+    opacity: 1;
+}

@@ -5,7 +5,7 @@ import './Tab.css';
 
 export default class Tab extends React.Component
 {
-    // props.tabs
+    // props.tabs       []
     // props.nameField
     // props.selectIndex
     // props.children

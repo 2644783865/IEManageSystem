@@ -1,16 +1,16 @@
 import React from 'react'
-import BaseComponent from '../BaseComponent.jsx'
+import BaseComponent from '../BaseComponent/BaseComponent.jsx'
 
 import './Container.css'
 
-class Container extends React.Component
+class Container extends BaseComponent
 {
     constructor(props){
         super(props);
     }
 
     render(){
-        return (<BaseComponent col={this.props.col} className="containercss">{ this.props.children }</BaseComponent>);
+        return (<div className="containercss"></div>);
     }
 }
 

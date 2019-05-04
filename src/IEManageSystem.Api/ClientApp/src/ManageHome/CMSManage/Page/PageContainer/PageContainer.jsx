@@ -5,30 +5,26 @@ import {connect} from 'react-redux'
 
 import './PageContainer.css'
 
-import ComponentFactory from '../Components/ComponentFactory'
+import EditableParentCom from './EditableParentCom/EditableParentCom.jsx'
 
-import Container from '../Components/Container/Container.jsx'
-import Text from '../Components/Text/Text.jsx'
+import { newPageAddComponent } from '../../Actions'
 
 class PageContainer extends React.Component
 {
     constructor(props){
         super(props);
-
-        this.componentNames = [];
     }
 
     render(){
-        let componentFactory = new ComponentFactory();
-
-        let components = this.componentNames.map(item => {
-            return componentFactory.getComponentForName(item);
-        });
-
         return (
             <div className="page-container col-md-10">
                 {
-                    components.map(item => <item.component />)
+                    this.props.pageComponents.map(item => 
+                    <EditableParentCom
+                        pageComponent={item}
+                    >
+                        <item.component />
+                    </EditableParentCom>)
                 }
                 <a className="col-md-1 add-component-btn" href="javascript:void(0)"
                     onClick={
@@ -37,8 +33,19 @@ class PageContainer extends React.Component
                                 return;
                             }
 
-                            this.componentNames.push(this.props.selectedComponent);
-                            this.setState({});
+                            var timetamp = Number(new Date());
+                            while(true){
+                                if(!this.props.pageComponents.some(item=> item.sign === timetamp))
+                                {
+                                    break;
+                                }
+
+                                timetamp = Number(new Date());
+                            }
+                            
+                            let pageComponent = { sign:timetamp, name:this.props.selectedComponent };
+
+                            this.props.addComponent(pageComponent);
                         }
                     }
                 >
@@ -50,16 +57,24 @@ class PageContainer extends React.Component
 }
 
 PageContainer.propTypes = {
-    selectedComponent: PropTypes.object
+    selectedComponent: PropTypes.string,
+    pageComponents: PropTypes.array,
+    addComponent: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
     return {
-        selectedComponent: state.page.selectedComponent
+        selectedComponent: state.page.newPageSelectedComponent,
+        pageComponents: state.page.newPageComponents
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        addComponent: (selectedComponent)=>{
+            dispatch(newPageAddComponent(selectedComponent));
+        }
+    }
 }
 
 const PageContainerContain = connect(

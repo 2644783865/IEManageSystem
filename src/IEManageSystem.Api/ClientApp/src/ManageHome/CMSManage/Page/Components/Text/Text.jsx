@@ -1,15 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import BaseComponent from '../BaseComponent.jsx'
+import BaseComponent from '../BaseComponent/BaseComponent.jsx'
 
-class Text extends React.Component
+class Text extends BaseComponent
 {
     constructor(props){
         super(props);
     }
 
     render(){
-        return (<BaseComponent col={this.props.col}><p>这是一段文本</p></BaseComponent>);
+        return (<p>这是一段文本</p>);
     }
 }
 

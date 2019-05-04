@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { selectComponent } from '../../Actions'
+import { newPageSelectComponent } from '../../Actions'
 import { connect } from 'react-redux';
 
 import './ComponentTool.css'
@@ -42,13 +42,13 @@ ComponentTool.defaultProps = {
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
     return {
-        selectedComponent: state.page.selectedComponent
+        selectedComponent: state.page.newPageSelectedComponent
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        selectComponent: (componentName) => { dispatch(selectComponent(componentName)) }
+        selectComponent: (componentName) => { dispatch(newPageSelectComponent(componentName)) }
     }
 }
 
