@@ -3,7 +3,9 @@
     flex-wrap: wrap;
     align-content: flex-start;
     padding-top: 0.67rem;
-    border: 1px solid #cdcdcd;
+    /* border: 1px solid #cdcdcd; */
+    padding-left: 0.33rem;
+    padding-right: 0.33rem;
 }
 
 .add-component{

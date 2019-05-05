@@ -1,7 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux'
+
 import Tab from 'Tab/Tab.jsx'
 
-export default class EditFrame extends React.Component 
+import { newPageEditComponent } from '../../../Actions'
+
+class EditFrame extends React.Component 
 {
     constructor(props) {
         super(props);
@@ -10,6 +15,9 @@ export default class EditFrame extends React.Component
         this.nameField = "text";
         this.selectIndex = 0;
 
+        this.newPageComponent = {...{}, ...this.props.pageComponent};
+
+        this.submit = this.submit.bind(this);
     }
 
     componentDidMount() {
@@ -34,6 +42,11 @@ export default class EditFrame extends React.Component
         $("#EditFrame").hide(500);
     }
 
+    submit(){
+        this.hideModal();
+        this.props.editComponent(this.newPageComponent);
+    }
+
     render() {
         return (
             <div className="">
@@ -55,7 +68,28 @@ export default class EditFrame extends React.Component
                                     <div>
                                         <label>请输入1~12网格宽度：</label>
                                         <div className="input-group mb-3">
-                                            <input type="text" className="form-control" placeholder="网格宽度" />
+                                            <input defaultValue={this.props.pageComponent.col} type="text" className="form-control" placeholder="网格宽度" 
+                                                onChange={
+                                                    (event)=>{
+                                                        this.newPageComponent.col = event.target.value;
+                                                    }
+                                                }
+                                            />
+                                            <div className="input-group-append">
+                                                <span className="input-group-text">网格宽度</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label>请输入组件高度（rem）：</label>
+                                        <div className="input-group mb-3">
+                                            <input defaultValue={this.props.pageComponent.height} type="text" className="form-control" placeholder="网格宽度" 
+                                                onChange={
+                                                    (event)=>{
+                                                        this.newPageComponent.height = event.target.value;
+                                                    }
+                                                }
+                                            />
                                             <div className="input-group-append">
                                                 <span className="input-group-text">网格宽度</span>
                                             </div>
@@ -76,3 +110,10 @@ export default class EditFrame extends React.Component
         );
     }
 }
+
+EditFrame.propTypes = {
+    pageComponent: PropTypes.object.isRequired,
+    editComponent: PropTypes.func.isRequired
+}
+
+export default EditFrame

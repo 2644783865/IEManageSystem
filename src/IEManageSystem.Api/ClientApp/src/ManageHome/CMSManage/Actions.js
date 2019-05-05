@@ -7,7 +7,7 @@ export function newPageSelectComponent(componentName)
   }
 }
 
-// PageComponent={ sign=0, name="组件名" }
+// PageComponent={ sign=0, name="组件名", col, height }
 export const NewPageAddComponent = 'NewPageAddComponent'
 export function newPageAddComponent(pageComponent) 
 {
@@ -22,6 +22,15 @@ export function newPageRemoveComponent(pageComponent)
 {
   return {
     type: NewPageRemoveComponent,
+    pageComponent
+  }
+}
+
+export const NewPageEditComponent = "NewPageEditComponent"
+export function newPageEditComponent(pageComponent) 
+{
+  return {
+    type: NewPageEditComponent,
     pageComponent
   }
 }

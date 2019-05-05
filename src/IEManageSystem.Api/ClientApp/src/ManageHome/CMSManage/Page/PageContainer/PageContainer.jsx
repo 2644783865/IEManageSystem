@@ -23,34 +23,36 @@ class PageContainer extends React.Component
                     <EditableParentCom
                         pageComponent={item}
                     >
-                        <item.component />
                     </EditableParentCom>)
                 }
-                <a className="col-md-1 add-component-btn" href="javascript:void(0)"
-                    onClick={
-                        ()=>{
-                            if( !this.props.selectedComponent ){
-                                return;
-                            }
-
-                            var timetamp = Number(new Date());
-                            while(true){
-                                if(!this.props.pageComponents.some(item=> item.sign === timetamp))
-                                {
-                                    break;
+                <div className="col-md-2 padding-0">
+                    <a className="add-component-btn" href="javascript:void(0)"
+                        onClick={
+                            ()=>{
+                                if( !this.props.selectedComponent ){
+                                    return;
                                 }
 
-                                timetamp = Number(new Date());
-                            }
-                            
-                            let pageComponent = { sign:timetamp, name:this.props.selectedComponent };
+                                var timetamp = Number(new Date());
+                                while(true){
+                                    if(!this.props.pageComponents.some(item=> item.sign === timetamp))
+                                    {
+                                        break;
+                                    }
 
-                            this.props.addComponent(pageComponent);
+                                    timetamp = Number(new Date());
+                                }
+                                
+                                let pageComponent = { sign:timetamp, name:this.props.selectedComponent };
+
+                                this.props.addComponent(pageComponent);
+                            }
                         }
-                    }
-                >
-                    <span class="oi oi-plus" title="icon name" aria-hidden="true"></span>
-                </a>
+                    >
+                        <span class="oi oi-plus" title="icon name" aria-hidden="true"></span>
+                    </a>
+                </div>
+                
             </div>
         );
     }
@@ -71,8 +73,8 @@ const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的prop
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        addComponent: (selectedComponent)=>{
-            dispatch(newPageAddComponent(selectedComponent));
+        addComponent: (pageComponent)=>{
+            dispatch(newPageAddComponent(pageComponent));
         }
     }
 }
