@@ -1,5 +1,30 @@
 .editableparentcom{
     padding: 0rem;
+    display: flex;
+    justify-content:space-between;
+    border: 1px solid #0f8f9c;
+    padding: 0.33rem;
+    margin-bottom: 2rem;
+}
+
+.editableparentcom .editableparentcom-btns{
+    z-index: 0;
+}
+
+.editableparentcom .editableparentcom .editableparentcom-btns{
+    z-index: 1;
+}
+
+.editableparentcom .editableparentcom .editableparentcom .editableparentcom-btns{
+    z-index: 2;
+}
+
+.editableparentcom .editableparentcom .editableparentcom .editableparentcom .editableparentcom-btns{
+    z-index: 3;
+}
+
+.editableparentcom .editableparentcom .editableparentcom .editableparentcom .editableparentcom .editableparentcom-btns{
+    z-index: 4;
 }
 
 .editableparentcom:hover>.editableparentcom-btns>button{
@@ -7,7 +32,9 @@
 }
 
 .editableparentcom-btns{
-    position: absolute;
+    width: 0px;
+    left: -3rem;
+    position: relative;
 }
 
 .editableparentcom-btns>button{

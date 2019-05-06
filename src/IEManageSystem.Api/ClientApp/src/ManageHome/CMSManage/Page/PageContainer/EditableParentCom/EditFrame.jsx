@@ -18,6 +18,8 @@ class EditFrame extends React.Component
         this.newPageComponent = {...{}, ...this.props.pageComponent};
 
         this.submit = this.submit.bind(this);
+        this.showModal = this.showModal.bind(this);
+        this.hideModal = this.hideModal.bind(this);
     }
 
     componentDidMount() {
@@ -31,15 +33,15 @@ class EditFrame extends React.Component
     showModal() {
         $("body").addClass("modal-open");
         $("body").append('<div class="modal-backdrop fade show"></div>');
-        $("#EditFrame").addClass("show");
-        $("#EditFrame").show(500);
+        $(`#${this.newPageComponent.sign}`).addClass("show");
+        $(`#${this.newPageComponent.sign}`).show(500);
     }
 
     hideModal() {
         $("body").removeClass("modal-open");
         $("div.modal-backdrop").remove();
-        $("#EditFrame").removeClass("show");
-        $("#EditFrame").hide(500);
+        $(`#${this.newPageComponent.sign}`).removeClass("show");
+        $(`#${this.newPageComponent.sign}`).hide(500);
     }
 
     submit(){
@@ -50,7 +52,7 @@ class EditFrame extends React.Component
     render() {
         return (
             <div className="">
-                <div className="modal fade data-form" id="EditFrame">
+                <div className="modal fade data-form" id={this.newPageComponent.sign}>
                     <div className="modal-dialog modal-lg">
                         <div className="modal-content">
                             <div className="modal-header bg-info text-white">
@@ -100,7 +102,7 @@ class EditFrame extends React.Component
 
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-info" onClick={this.submit}>提交</button>
-                                <button id="dataFormCloseBtn" type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.hideModal}>关闭</button>
+                                <button type="button" className="btn btn-secondary" onClick={this.hideModal}>关闭</button>
                             </div>
 
                         </div>

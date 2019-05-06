@@ -38,6 +38,7 @@ class EditableParentCom extends React.Component
         if(pageComponent.childPageComponent){
             childrens = pageComponent.childPageComponent.map(item => (
             <EditableParentCom
+                selectedComponent={this.props.selectedComponent}
                 pageComponent={item}
                 removeComponent={this.removeChildComponent}
                 editComponent={this.editChildComponent}
@@ -67,7 +68,7 @@ class EditableParentCom extends React.Component
     editChildComponent(pageComponent){
         this.props.pageComponent.childPageComponent = 
         this.props.pageComponent.childPageComponent.map(item => {
-            if(item.sign == action.pageComponent.sign){
+            if(item.sign == pageComponent.sign){
                 return pageComponent;
             }
             return item;
@@ -99,14 +100,23 @@ class EditableParentCom extends React.Component
     render(){
         let pageComponent = this.props.pageComponent;
 
-        this.style = {
-            height: `${this.props.pageComponent.height || 9}rem`
+        this.style = 
+        {
+            minHeight: "9rem"
+        }
+
+        if(this.props.pageComponent.height){
+            this.style.height = `${this.props.pageComponent.height}rem`;
         }
 
         let component = new ComponentFactory().getComponentForName(pageComponent.name);
 
         return (
             <div style={this.style} className={`editableparentcom col-md-${ pageComponent.col || 12 }`}>
+                <div className="w-100">
+                    { this.createChildrenComponent(pageComponent) }
+                    { this.state.openEdit && <EditFrame pageComponent={pageComponent} editComponent={this.editComponent}></EditFrame> }
+                </div>
                 <div className="editableparentcom-btns">
                     <button type="button" class="btn btn-danger btn-sm"
                         onClick={
@@ -132,8 +142,6 @@ class EditableParentCom extends React.Component
                         <span class="oi oi-plus" title="icon name" aria-hidden="true"></span>
                     </button>}
                 </div>
-                { this.state.openEdit && <EditFrame pageComponent={pageComponent} editComponent={this.editComponent}></EditFrame> }
-                { this.createChildrenComponent(pageComponent) }
             </div>
         );
     }
