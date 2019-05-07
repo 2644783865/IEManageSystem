@@ -97,6 +97,21 @@ class EditFrame extends React.Component
                                             </div>
                                         </div>
                                     </div>
+                                    <div>
+                                        <label>请输入内边距（rem）：</label>
+                                        <div className="input-group mb-3">
+                                            <input defaultValue={this.props.pageComponent.padding} type="text" className="form-control" placeholder="网格宽度" 
+                                                onChange={
+                                                    (event)=>{
+                                                        this.newPageComponent.padding = event.target.value;
+                                                    }
+                                                }
+                                            />
+                                            <div className="input-group-append">
+                                                <span className="input-group-text">网格宽度</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </Tab>
                             </div>
 

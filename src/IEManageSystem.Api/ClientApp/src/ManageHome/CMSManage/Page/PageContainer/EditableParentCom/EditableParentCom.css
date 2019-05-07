@@ -3,28 +3,27 @@
     display: flex;
     justify-content:space-between;
     border: 1px solid #0f8f9c;
-    padding: 0.33rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
 }
 
 .editableparentcom .editableparentcom-btns{
-    z-index: 0;
+    z-index: 990;
 }
 
 .editableparentcom .editableparentcom .editableparentcom-btns{
-    z-index: 1;
+    z-index: 991;
 }
 
 .editableparentcom .editableparentcom .editableparentcom .editableparentcom-btns{
-    z-index: 2;
+    z-index: 992;
 }
 
 .editableparentcom .editableparentcom .editableparentcom .editableparentcom .editableparentcom-btns{
-    z-index: 3;
+    z-index: 993;
 }
 
 .editableparentcom .editableparentcom .editableparentcom .editableparentcom .editableparentcom .editableparentcom-btns{
-    z-index: 4;
+    z-index: 994;
 }
 
 .editableparentcom:hover>.editableparentcom-btns>button{

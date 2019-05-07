@@ -33,7 +33,7 @@ function newPageComponents(state = [], action){
     }
 }
 
-// PageComponent={ sign=0, name="组件名", col, height, childPageComponent }
+// PageComponent={ sign=0, name="组件名", col, height, padding, childPageComponent }
 export function reducer(state, action)
 {
     state.page = state.page || {};

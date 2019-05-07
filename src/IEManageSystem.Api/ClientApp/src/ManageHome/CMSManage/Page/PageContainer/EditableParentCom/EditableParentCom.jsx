@@ -102,11 +102,18 @@ class EditableParentCom extends React.Component
 
         this.style = 
         {
-            minHeight: "9rem"
+            minHeight: "9rem",
+            padding: "0.33rem"
         }
 
-        if(this.props.pageComponent.height){
+        if(this.props.pageComponent.height)
+        {
             this.style.height = `${this.props.pageComponent.height}rem`;
+        }
+
+        if(this.props.pageComponent.padding)
+        {
+            this.style.padding = `${this.props.pageComponent.padding}rem`;
         }
 
         let component = new ComponentFactory().getComponentForName(pageComponent.name);
