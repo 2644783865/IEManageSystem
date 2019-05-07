@@ -4,6 +4,10 @@ import BaseComponent from '../BaseComponent/BaseComponent.jsx'
 
 class Text extends BaseComponent
 {
+    static preview(){
+        return (<p>文本框</p>);
+    }
+
     constructor(props){
         super(props);
     }

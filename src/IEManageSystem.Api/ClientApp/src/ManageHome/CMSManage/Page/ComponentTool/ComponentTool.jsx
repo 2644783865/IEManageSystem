@@ -23,7 +23,7 @@ class ComponentTool extends React.Component{
                         }
                     }
                 >
-                    <item.component col={12} />
+                    {item.component.preview()}
                 </ComponentFrame>
                 )
             }

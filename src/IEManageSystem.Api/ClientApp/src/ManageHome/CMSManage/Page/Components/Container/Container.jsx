@@ -5,6 +5,10 @@ import './Container.css'
 
 class Container extends BaseContainerComponent
 {
+    static preview(){
+        return (<p>容器组件</p>);
+    }
+
     constructor(props){
         super(props);
     }
