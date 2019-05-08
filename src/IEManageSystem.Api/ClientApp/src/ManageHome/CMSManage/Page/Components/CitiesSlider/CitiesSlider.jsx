@@ -7,7 +7,12 @@ import SliderDefault1 from './slider-default1.jpg'
 import SliderDefault2 from './slider-default2.jpg'
 import SliderDefault3 from './slider-default3.jpg'
 
+// 幻灯片
 class CitiesSlider extends BaseComponent {
+    static preview(){
+        return (<p>幻灯片</p>);
+    }
+
     constructor(props) {
         super(props);
 
