@@ -17,9 +17,16 @@ import NavTag from './NavTag/NavTag.jsx';
 
 require('./ManageHome.css');
 
+import { Animate } from 'react-move'
+import { easeExpOut } from 'd3-ease'
+
 export default class ManageHome extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            open: true,
+        }
     }
 
     render() {
@@ -28,10 +35,36 @@ export default class ManageHome extends React.Component {
                 <Nav />
                 <div className="d-flex flex-grow-1 overflow-hidden-y w-100">
                     <div className="d-flex w-100">
-                        <div className="col-md-2 h-100 padding-0">
-                            <SideNav />
+                        <Animate
+                            start={() => ({
+                                x: 17,
+                            })}
+
+                            update={() => ({
+                                x: [this.state.open ? 17 : 0],
+                                timing: { duration: 750, ease: easeExpOut },
+                            })}
+                        >
+                            {(state) => {
+                                const { x } = state
+
+                                return (
+                                    <div className="h-100 padding-0 d-flex sidenavdiv flex-shrink-0" style={{
+                                        width: `${x}%`
+                                    }}>
+                                        <SideNav />
+                                    </div>
+                                )
+                            }}
+                        </Animate>
+                        <div className="sidenavhide-btn">
+                            <button className="btn btn-outline-info"
+                                onClick={() => {
+                                    this.setState({ open: !this.state.open });
+                                }}
+                            >||</button>
                         </div>
-                        <div className="col-md-10 h-100 padding-0 d-flex flex-column">
+                        <div className="h-100 padding-0 d-flex flex-column flex-grow-1">
                             <div className="flex-shrink-0">
                                 <NavTag />
                             </div>

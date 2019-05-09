@@ -41,3 +41,29 @@ a:hover{
 .nav-bottom {
     font-size:0.9rem;
 }
+
+.sidenavdiv{
+    overflow: hidden;
+}
+
+.sidenavhide-btn{
+    width: 0rem;
+    height: 100%;
+    display: flex;
+}
+
+.sidenavhide-btn>button{
+    transform: perspective(200px) rotateY(30deg);
+    -webkit-transform: perspective(200px) rotateY(30deg); /* Safari 与 Chrome */
+
+    height: 10rem;
+    margin: auto;
+    z-index: 999;
+    padding-left: 0.33rem;
+    padding-right: 0.33rem;
+    background-color: #119ba9;
+    position: relative;
+    color: #fff;
+    left:-1px;
+    top:-2rem;
+}

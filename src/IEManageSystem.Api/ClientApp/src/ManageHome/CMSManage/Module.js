@@ -36,6 +36,15 @@ export default class Module extends BaseModule
                             [
                                 { scopeName: ApiScope.CMSManage.Page, scopeNodeType: ApiScopeNodeType.manage },
                             ]
+                    },
+                    {
+                        id:"TestPage",
+                        text: "测试页面",
+                        url: "/ManageHome/CMSManage/TestPage",
+                        accessScope:
+                            [
+                                { scopeName: ApiScope.CMSManage.Page, scopeNodeType: ApiScopeNodeType.manage },
+                            ]
                     }
                 ]
             },
