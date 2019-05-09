@@ -55,7 +55,7 @@ class CitiesSlider extends BaseComponent {
     render() {
         const { activeSlide, prevSlide, sliderReady } = this.state;
         return (
-            <div className="slider s--ready">
+            <div className={"slider" + (sliderReady && " s--ready")}>
                 {/* <p className="slider__top-heading">Travelers</p> */}
                 <div className="slider__slides">
                     {this.props.slides.map((slide, index) => (
