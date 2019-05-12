@@ -2,7 +2,7 @@
     padding: 0rem;
     height: 100%;
     padding-top: 0.625rem;
-    background-color: #119ba9;
+    background-color: #00214080;;
     /*background-color: #0c6d77;*/
 }
 
@@ -29,6 +29,7 @@
 .leftmenu-menu 
 {
     overflow-x: hidden;
+    height: 1px;
 }
 
     .leftmenu-menu > div 
@@ -38,12 +39,8 @@
         margin-right: -18px;
     }
 
-    .leftmenu-menu ul {
-        background-color: #04b0c1;
-    }
-
 .leftmenu_css_li {
-    background-color: #0f8f9c;
+    background-color: #3b7790;
     position: relative;
     display: block;
     margin-bottom: -1px;
@@ -57,7 +54,7 @@
 }
 
     .leftmenu_css_li .leftmenu_css_li{
-        background-color: #0c6d77;
+        background-color: #275d71;
     }
 
     .leftmenu_css_li .leftmenu_css_li a{

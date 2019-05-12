@@ -12,7 +12,8 @@ import ComponentFactory from '../Components/ComponentFactory'
 
 class ComponentTool extends React.Component{
     render(){
-        return (<div className="component-tool col-md-2">
+        return (<div className="component-tool">
+            <div>
             {new ComponentFactory().getComponents()
                 .map(item => 
                 <ComponentFrame 
@@ -27,6 +28,7 @@ class ComponentTool extends React.Component{
                 </ComponentFrame>
                 )
             }
+            </div>
         </div>);
     }
 }
