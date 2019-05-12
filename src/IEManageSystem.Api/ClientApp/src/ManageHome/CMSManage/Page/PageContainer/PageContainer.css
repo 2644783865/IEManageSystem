@@ -14,7 +14,8 @@
     flex-grow: 0;
     flex-shrink: 0;
     padding: 0.33rem 0.67rem;
-    border-radius: 0.5rem 0rem 0rem 0.5rem;
+    border-radius: 0rem 0rem 0.5rem 0.5rem;
+    border: 1px solid #ffffff80;
 }
 
 .page-container-header>.input-group{
@@ -23,6 +24,21 @@
 
 .page-container-header>.input-group .input-group-text{
     background-color: #5a8e9a;
+}
+
+.page-container-header-hidebtn{
+    height: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.page-container-header-hidebtn>button{
+    width: 10rem;
+    transform: perspective(100px) rotateX(-45deg);
+    -webkit-transform: perspective(100px) rotateX(-45deg); /* Safari 与 Chrome */
+    z-index: 900;
+    padding: 0px;
+    flex-shrink: 0;
 }
 
 .page-container-body{
@@ -37,6 +53,7 @@
     padding-right: 0.33rem;
     overflow-y: scroll;
     margin-right: -18px;
+    overflow-x: hidden;
 }
 
 .add-component{

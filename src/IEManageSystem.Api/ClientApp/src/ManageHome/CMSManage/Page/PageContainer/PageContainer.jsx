@@ -30,7 +30,24 @@ class PageContainer extends React.Component {
                             <span className="input-group-text text-white">页面名称</span>
                         </div>
                     </div>
-                    <button className="btn btn-info padding-left-10 padding-right-10">提交页面</button>
+                    <div>
+                        <button className="btn btn-info padding-left-10 padding-right-10"
+                            onClick={
+                                ()=>{
+                                    let myEvent = new Event('resize');
+                                    window.dispatchEvent(myEvent);
+                                }
+                            }
+                        >重新渲染</button>
+                        <button className="btn btn-info padding-left-10 padding-right-10">提交页面</button>
+                    </div>
+                </div>
+                <div className="page-container-header-hidebtn">
+                    <button className="btn btn-info"
+                        onClick={()=>{
+                            $(".page-container-header").slideToggle(300);
+                        }}
+                    >==</button>
                 </div>
                 <div className="page-container-body">
                     {
@@ -95,7 +112,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
 const PageContainerContain = connect(
     mapStateToProps, // 关于state
-    mapDispatchToProps // 关于dispatch
+    mapDispatchToProps,
+    undefined,
+    { pure: false }
 )(PageContainer)
 
 export default PageContainerContain;

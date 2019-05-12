@@ -64,7 +64,7 @@ export default class ManageHome extends React.Component {
                                 }}
                             >||</button>
                         </div>
-                        <div className="h-100 padding-0 d-flex flex-column flex-grow-1">
+                        <div className="h-100 padding-0 right-content">
                             <div className="flex-shrink-0">
                                 <NavTag />
                             </div>
