@@ -60,3 +60,7 @@
     .userinfo-radio > label {
         margin: 0px;
     }
+
+    .userinfo-transparent{
+        background-color: #ffffff00;
+    }

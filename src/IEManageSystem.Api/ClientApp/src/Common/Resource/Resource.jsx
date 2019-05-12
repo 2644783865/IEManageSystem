@@ -31,6 +31,7 @@ export default class Resource extends React.Component
 	// props.updateResource()  更新数据接口
 	// props.deleteResource()  删除数据接口
 	// props.setResourceRef()  设置当前组件的引用
+	// props.customizeOperateBtns	自定义操作按钮组件
 	// props.hideAdd = false
 	// props.hideEdit = false
 	// props.hideDelete = false
@@ -158,7 +159,8 @@ export default class Resource extends React.Component
                     resourceDeleteClick={ resource=>this._resourceOperationClick(operationState.delete, resource) }
                     resourceLookupClick={ resource=>this._resourceOperationClick(operationState.lookup, resource) }
                     hideEdit={this.props.hideEdit}
-                    hideDelete={this.props.hideDelete}
+					hideDelete={this.props.hideDelete}
+					customizeOperateBtns={this.props.customizeOperateBtns}
                     />;
 
         let paging = <Paging 

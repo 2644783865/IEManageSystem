@@ -11,6 +11,7 @@ export default class ResourceList extends React.Component
     // props.resourceLookupClick()
     // props.hideEdit
     // props.hideDelete
+    // props.customizeOperateBtns	自定义操作按钮组件
 	constructor(props){
 		super(props);
 
@@ -108,6 +109,7 @@ export default class ResourceList extends React.Component
                             {this.props.hideDelete != true && <button type="button" className="btn btn-danger"
                                                             onClick={()=>this.props.resourceDeleteClick(resource)}>
                                                             <span class="oi oi-trash" title="icon name" aria-hidden="true"></span>删除</button>}
+                            {this.props.customizeOperateBtns}
                         </div>
                     </td>
                 </tr>);

@@ -147,7 +147,7 @@ export default class AccountSecurity extends React.Component {
                             <p className="card-text">{this.state.personSignature}</p>
                         </div>
                     </div>
-                    <div className="card text-white flex-grow-1">
+                    <div className="card text-white flex-grow-1 userinfo-transparent">
                         <div className="card-body">
                             <div className="input-group mb-3 w-75 float-left">
                                 <div className="input-group-prepend userinfo-lable">
