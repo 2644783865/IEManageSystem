@@ -6,7 +6,7 @@ using System.Text;
 
 namespace IEManageSystem.CMS.DomainModel.Pages
 {
-    public abstract class PageBase:Entity
+    public abstract class PageBase : Entity
     {
         public PageBase(string name)
         {
@@ -15,6 +15,10 @@ namespace IEManageSystem.CMS.DomainModel.Pages
 
         [Required]
         public string Name { get; protected set; }
+
+        public string DisplayName { get; set; }
+
+        public string Description { get; set; }
 
         public ICollection<PageComponentBase> PageComponents { get; set; }
 

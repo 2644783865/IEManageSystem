@@ -97,8 +97,8 @@ PageContainer.propTypes = {
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
     return {
-        selectedComponent: state.page.newPageSelectedComponent,
-        pageComponents: state.page.newPageComponents
+        selectedComponent: state.cms.newPageSelectedComponent,
+        pageComponents: state.cms.newPageComponents
     }
 }
 

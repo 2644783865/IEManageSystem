@@ -17,10 +17,10 @@ export default class BodyDiv extends React.Component
         return(
             <div className="content-container">
                 <Switch>
-                    <Route exact path="/ManageHome" component={Index} />
-                    <Route exact path="/ManageHome/Index" component={Index} />
+                    <Route key={0} exact path="/ManageHome" component={Index} />
+                    <Route key={1} exact path="/ManageHome/Index" component={Index} />
                     {new MenuProvider().getNavMenuComponents().map(
-                        item => <Route path={item.beseUrl} component={item.component} />)}
+                        (item, index) => <Route key={2+index} path={item.beseUrl} component={item.component} />)}
                 </Switch>
             </div>
         );

@@ -182,8 +182,12 @@ namespace IEManageSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Description");
+
                     b.Property<string>("Discriminator")
                         .IsRequired();
+
+                    b.Property<string>("DisplayName");
 
                     b.Property<string>("Name")
                         .IsRequired();

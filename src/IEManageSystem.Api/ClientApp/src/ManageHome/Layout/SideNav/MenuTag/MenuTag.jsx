@@ -104,7 +104,7 @@ export default class MenuTag extends React.Component
         return (
             <div className="d-flex justify-content-between align-items-center flex-shrink-0 leftmenu-menutag">
                 <div className="text-white">
-                    <span class="oi oi-tags padding-left-10 padding-right-10" title="icon name" aria-hidden="true"></span>
+                    <span className="oi oi-tags padding-left-10 padding-right-10" title="icon name" aria-hidden="true"></span>
                     <span>
                         菜单书签
                             </span>
@@ -146,7 +146,7 @@ export default class MenuTag extends React.Component
                                         }
                                     }
                                 >
-                                    <span class="oi oi-plus" title="icon name" aria-hidden="true"></span>
+                                    <span className="oi oi-plus" title="icon name" aria-hidden="true"></span>
                                 </button>
                             </div>
                         </div>

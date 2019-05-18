@@ -1,7 +1,13 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
+import { connect } from 'react-redux'
+
 import Resource from 'Resource/Resource.jsx';
 
-export default class PageManage extends React.Component{
+import { pagesFetch, pageNumFetch, pageAddFetch, pageDeleteFetch } from '../Actions'
+
+class PageManage extends React.Component{
     constructor(props){
         super(props);
 
@@ -14,96 +20,89 @@ export default class PageManage extends React.Component{
 
 		this.resourceChild = null;
 
-        this.submitBackcall = this.submitBackcall.bind(this);
-    	this.deleteResource = this.deleteResource.bind(this);
+		this.deleteResource = this.deleteResource.bind(this);
+		this.addResource = this.addResource.bind(this);
     	this.freshenResources = this.freshenResources.bind(this);
     }
 
     componentDidMount(){
-		this.getResourceList(this.resourceChild.pageIndex, this.resourceChild.pageSize, this.resourceChild.searchKey);
-        this.getResourceNum(this.resourceChild.searchKey);
+		this.props.pagesFetch(this.resourceChild.pageIndex, this.resourceChild.pageSize, this.resourceChild.searchKey);
+        this.props.pageNumFetch(this.resourceChild.searchKey);
 	}
 
-	// 提交回调
-	submitBackcall(data)
+	componentWillUpdate(nextProps)
 	{
-        this.resourceChild.hideLoadingModal();
+		// if(nextProps.isFetch){
+		// 	this.resourceChild.showLoadingModal();
+		// }
+		// else{
+		// 	this.resourceChild.hideLoadingModal();
+		// }
 
-	    if(data.isSuccess == true)
-	    {
-            this.getResourceList(this.resourceChild.pageIndex, this.resourceChild.pageSize, this.resourceChild.searchKey);
-            this.getResourceNum(this.resourceChild.searchKey);
-	    }
-	    else{
-            this.resourceChild.showErrorModal("提交表单错误", data.message);
-	    }
+		this.resourceChild.resetResources(nextProps.pages, nextProps.pageIndex);
+		this.resourceChild.resetResourceNum(nextProps.pageNum);
 	}
 
 	// Resource组件删除资源通知
 	deleteResource(resource){
-        this.resourceChild.showLoadingModal();
-		let postData = {
-	      id: resource.id
-	    };
+        this.props.pageDeleteFetch(resource);
+	}
 
-        IETool.ieAjax({
-	      url: "/api/ApiResourceManage/DeleteApiResource",
-	      type: 'post',
-	      data: JSON.stringify(postData),
-	      contentType: 'application/json',
-	      dataType: 'json',
-	      success: this.submitBackcall
-	    });
+	// Resource组件添加资源通知
+	addResource(resource){
+        this.props.pageAddFetch(resource);
 	}
 
 	// Resource组件刷新资源通知
 	freshenResources(pageIndex, pageSize, searchKey){
-		this.getResourceList(pageIndex, pageSize, searchKey);
-		this.getResourceNum(searchKey);
+		this.props.pagesFetch(pageIndex, pageSize, searchKey);
+		this.props.pageNumFetch(searchKey);
 	}
 
     // 获取资源列表
 	getResourceList(pageIndex, pageSize, searchKey){
-		let postData = {
-            pageIndex: pageIndex,
-            pageSize: pageSize,
-            searchKey: searchKey
-        };
+		this.props.pagesFetch(pageIndex, pageSize, searchKey);
+		// let postData = {
+        //     pageIndex: pageIndex,
+        //     pageSize: pageSize,
+        //     searchKey: searchKey
+        // };
 
-        IETool.ieAjax({
-			url: "/api/ApiResourceManage/GetApiResources",
-            type: 'post',
-            data: JSON.stringify(postData),
-            contentType: 'application/json',
-            dataType: 'json',
-            success: function(data){
-		        if(data.isSuccess == true)
-		        {
-		        	this.resourceChild.resetResources(data.value.apiResources, pageIndex);
-		        }
-		    }.bind(this)
-		});
+        // IETool.ieAjax({
+		// 	url: "/api/PageManage/GetPages",
+        //     type: 'post',
+        //     data: JSON.stringify(postData),
+        //     contentType: 'application/json',
+        //     dataType: 'json',
+        //     success: function(data){
+		//         if(data.isSuccess == true)
+		//         {
+		//         	this.resourceChild.resetResources(data.value.pages, pageIndex);
+		//         }
+		//     }.bind(this)
+		// });
 	}
 
     // 获取资源数量
     getResourceNum(searchKey){
-        let postData = {
-        	searchKey:searchKey
-        };
+		this.props.pageNumFetch(searchKey);
+        // let postData = {
+        // 	searchKey:searchKey
+        // };
 
-        IETool.ieAjax({
-            url: "/api/ApiResourceManage/GetApiResourceNum",
-            type: 'post',
-            data: JSON.stringify(postData),
-            contentType: 'application/json',
-            dataType: 'json',
-            success: function(data){
-		        if(data.isSuccess == true)
-		        {
-		        	this.resourceChild.resetResourceNum(data.value.resourceNum);
-		        }
-		    }.bind(this)
-        });
+        // IETool.ieAjax({
+        //     url: "/api/PageManage/GetPageNum",
+        //     type: 'post',
+        //     data: JSON.stringify(postData),
+        //     contentType: 'application/json',
+        //     dataType: 'json',
+        //     success: function(data){
+		//         if(data.isSuccess == true)
+		//         {
+		//         	this.resourceChild.resetResourceNum(data.value.pageNum);
+		//         }
+		//     }.bind(this)
+        // });
     }
 
 	render(){
@@ -128,11 +127,12 @@ export default class PageManage extends React.Component{
 				<Resource
                 title="页面管理"
                 resources={testResources}
-                hideAdd={true}
+                // hideAdd={true}
                 hideEdit={true}
 				describes={this.describes}
 				freshenResources={this.freshenResources}
 				deleteResource={this.deleteResource}
+				addResource={this.addResource}
                 setResourceRef={(ref)=>{this.resourceChild = ref}} 
                 customizeOperateBtns={customizeOperateBtns}
                 />
@@ -140,3 +140,41 @@ export default class PageManage extends React.Component{
 		);
 	}
 } 
+
+PageManage.propsTypes = {
+	pages: PropTypes.array.isRequired,
+	pageNum: PropTypes.number.isRequired,
+	pageIndex: PropTypes.number.isRequired,
+	isFetch: PropTypes.bool.isRequired,
+	pagesFetch: PropTypes.func.isRequired,
+	pageNumFetch: PropTypes.func.isRequired,
+	pageAddFetch: PropTypes.func.isRequired,
+	pageDeleteFetch: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
+    return {
+		pages: state.cms.page.pages,
+		pageNum: state.cms.page.pageNum,
+		pageIndex: state.cms.page.pageIndex,
+		isFetch: state.cms.page.isFetch,
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+		pagesFetch: (pageIndex, pageSize, searchKey) => { dispatch(pagesFetch(pageIndex, pageSize, searchKey)) },
+		pageNumFetch: (searchKey) => { dispatch(pageNumFetch(searchKey)) },
+		pageAddFetch: (resource) => { dispatch(pageAddFetch(resource)) },
+		pageDeleteFetch: (resource) => { dispatch(pageDeleteFetch(resource)) }
+    }
+}
+
+const Contain = connect(
+    mapStateToProps, // 关于state
+    mapDispatchToProps,
+    undefined,
+    { pure: false }
+)(PageManage)
+
+export default Contain;
