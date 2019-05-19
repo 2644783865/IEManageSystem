@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { sideMenuSelect } from 'Core/Actions'
 import { NavLink, withRouter } from 'react-router-dom';
+
+import {LayoutRedux} from '../LayoutRedux'
 
 import './NavTag.css'
 
@@ -166,7 +167,7 @@ NavTag.propTypes = {
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
     return {
-        selectedSideMenu: state.layout.selectedSideMenu
+        selectedSideMenu: state.selectedSideMenu
     }
 }
 
@@ -176,7 +177,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-const NavTagContain = connect(
+const NavTagContain = LayoutRedux.connect(
     mapStateToProps, // 关于state
     mapDispatchToProps, // 关于dispatch
     undefined,

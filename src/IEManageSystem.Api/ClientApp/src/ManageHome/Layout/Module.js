@@ -5,7 +5,8 @@ import OAuthManage from 'OAuthManage/Module'
 import Personal from 'Personal/Module'
 
 import { reducer } from './Reducers'
-import ReducerProvider from 'Core/Reducers/ReducerProvider'
+import {LayoutRedux} from './LayoutRedux'
+import {RootRedux} from 'Core/IEReduxs/RootRedux'
 
 export default class Module extends BaseModule
 {
@@ -17,6 +18,7 @@ export default class Module extends BaseModule
         this.addDependModule(new OAuthManage());
         this.addDependModule(new CMSManage());
 
-        new ReducerProvider().register(reducer);
+        LayoutRedux.setReducer(reducer);
+        RootRedux.register(LayoutRedux);
     }
 }

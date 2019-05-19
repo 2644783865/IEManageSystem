@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { newPageSelectComponent } from '../../Actions'
-import { connect } from 'react-redux';
+import { CmsRedux } from '../../CmsRedux'
 
 import './ComponentTool.css'
 
@@ -44,7 +44,7 @@ ComponentTool.defaultProps = {
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
     return {
-        selectedComponent: state.cms.newPageSelectedComponent
+        selectedComponent: state.newPageSelectedComponent
     }
 }
 
@@ -54,7 +54,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-const ComponentToolContain = connect(
+const ComponentToolContain = CmsRedux.connect(
     mapStateToProps, // 关于state
     mapDispatchToProps // 关于dispatch
 )(ComponentTool)

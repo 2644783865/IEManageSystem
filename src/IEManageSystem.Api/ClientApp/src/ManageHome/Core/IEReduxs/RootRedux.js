@@ -1,20 +1,20 @@
 import BaseIERedux from './BaseIERedux'
 
-export default RootRedux = new RootRedux();
-
-class RootRedux extends BaseIERedux
+class Redux extends BaseIERedux
 {
     getReducer()
     {
         return (state = {}, action)=>
         {
-            let newstate = {};
+            let newstate = state;
 
             this.ieRedux.forEach(item => {
-                newstate = {...newstate, ...item.reducer(state, action)}
+                newstate = item.callReducer(newstate, action)
             })
 
             return newstate
         }
     }
 }
+
+export const RootRedux = new Redux();

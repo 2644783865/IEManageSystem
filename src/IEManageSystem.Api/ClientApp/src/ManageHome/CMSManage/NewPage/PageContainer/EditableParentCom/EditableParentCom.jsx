@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
+import { CmsRedux } from '../../../CmsRedux'
 
 import './EditableParentCom.css'
 
@@ -166,7 +166,7 @@ EditableParentCom.defaultProps = {
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
     return {
-        selectedComponent: state.cms.newPageSelectedComponent
+        selectedComponent: state.newPageSelectedComponent
     }
 }
 
@@ -181,7 +181,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-const EditableParentComContain = connect(
+const EditableParentComContain = CmsRedux.connect(
     mapStateToProps, // 关于state
     mapDispatchToProps,
     undefined,

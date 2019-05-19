@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { connect } from 'react-redux'
+import { CmsRedux } from '../../CmsRedux'
 
 import './PageContainer.css'
 
@@ -97,8 +97,8 @@ PageContainer.propTypes = {
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
     return {
-        selectedComponent: state.cms.newPageSelectedComponent,
-        pageComponents: state.cms.newPageComponents
+        selectedComponent: state.newPageSelectedComponent,
+        pageComponents: state.newPageComponents
     }
 }
 
@@ -110,7 +110,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-const PageContainerContain = connect(
+const PageContainerContain = CmsRedux.connect(
     mapStateToProps, // 关于state
     mapDispatchToProps,
     undefined,

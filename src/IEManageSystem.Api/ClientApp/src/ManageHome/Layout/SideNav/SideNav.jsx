@@ -1,7 +1,5 @@
 import React from 'react';
 import PropsTypes from 'prop-types';
-import { connect } from 'react-redux';
-
 import { NavLink } from 'react-router-dom';
 import MenuTag from "./MenuTag/MenuTag.jsx";
 import { sideMenuSelect } from 'Core/Actions'
@@ -11,6 +9,8 @@ import './SideNav.css'
 import DefaultAvatar from 'images/default_avatar.png';
 
 import Weather from 'Weather/Weather.jsx';
+
+import {LayoutRedux} from '../LayoutRedux'
 
 class SideNav extends React.Component
 {
@@ -156,8 +156,8 @@ SideNav.propTypes = {
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
     return {
-        selectTopMenu: state.layout.selectedTopMenu,
-        selectedSideMenu: state.layout.selectedSideMenu
+        selectTopMenu: state.selectedTopMenu,
+        selectedSideMenu: state.selectedSideMenu
     }
 }
 
@@ -167,7 +167,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-const SideNavContain = connect(
+const SideNavContain = LayoutRedux.connect(
     mapStateToProps, // 关于state
     mapDispatchToProps, // 关于dispatch
     undefined,

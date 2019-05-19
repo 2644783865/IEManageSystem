@@ -5,7 +5,8 @@ import { ApiScopeNodeType } from "Core/ApiScopeAuthority/ApiScopeNodeType.js";
 
 import CMSManage from './CMSManage.jsx';
 import { reducer } from './Reducers'
-import ReducerProvider from 'Core/Reducers/ReducerProvider'
+import {CmsRedux} from './CmsRedux'
+import {RootRedux} from 'Core/IEReduxs/RootRedux'
 
 export default class Module extends BaseModule {
     initialize() {
@@ -68,6 +69,7 @@ export default class Module extends BaseModule {
             CMSManage
         );
 
-        new ReducerProvider().register(reducer);
+        CmsRedux.setReducer(reducer);
+        RootRedux.register(CmsRedux);
     }
 }

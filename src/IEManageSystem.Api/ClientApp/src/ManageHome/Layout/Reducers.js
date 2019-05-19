@@ -29,16 +29,12 @@ function selectedSideMenu(state = null, action){
     }
 }
 
-export function reducer(state, action)
+export function reducer(state = {}, action)
 {
-    state.layout = state.layout || {};
-
     return Object.assign({}, state, 
     {
-        layout: {
-            topLevelMenus: topLevelMenus || getTopLevelMenus(),
-            selectedTopMenu: selectedTopMenu(state.layout.selectedTopMenu, action),
-            selectedSideMenu: selectedSideMenu(state.layout.selectedSideMenu, action)
-        }
+        topLevelMenus: topLevelMenus || getTopLevelMenus(),
+        selectedTopMenu: selectedTopMenu(state.selectedTopMenu, action),
+        selectedSideMenu: selectedSideMenu(state.selectedSideMenu, action)
     })
 }

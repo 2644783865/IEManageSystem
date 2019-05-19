@@ -31,19 +31,19 @@ export default class BaseIERedux
         let ieMapDispatchToProps = (dispatch, ownProps) => 
         {
             let iedispatch = (action)=>{
-                dispatch({...action, ...{stateType: stateType}});
+                return dispatch({...action, ...{stateType: stateType}});
             }
-            mapDispatchToProps(iedispatch, ownProps)
+            return mapDispatchToProps(iedispatch, ownProps)
         }
         
-        connect(ieMapStateToProps, ieMapDispatchToProps, mergeProps, options)
+        return connect(ieMapStateToProps, ieMapDispatchToProps, mergeProps, options)
     }
 
     register(baseIERedux){
         this.ieRedux.push(baseIERedux);
     }
 
-    reducer(state, action)
+    callReducer(state, action)
     {
         let stateType = this.getStateType();
         if(!stateType){
@@ -67,7 +67,7 @@ export default class BaseIERedux
             let newstate = {};
 
             this.ieRedux.forEach(item => {
-                newstate = {...newstate, ...item.reducer(state, action)}
+                newstate = {...newstate, ...item.callReducer(state, action)}
             })
 
             return {

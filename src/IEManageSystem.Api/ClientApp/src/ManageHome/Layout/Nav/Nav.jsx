@@ -6,7 +6,7 @@ import Logo from 'Logo/Logo.jsx';
 
 import DefaultAvatar from 'images/default_avatar.png';
 
-import { connect } from 'react-redux';
+import {LayoutRedux} from '../LayoutRedux'
 
 import { topLevelMenusSelect } from 'Core/Actions';
 
@@ -123,8 +123,8 @@ Nav.propsTypes = {
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
     return {
-        topLevelMenus: state.layout.topLevelMenus,
-        selectTopMenu: state.layout.selectedTopMenu,
+        topLevelMenus: state.topLevelMenus,
+        selectTopMenu: state.selectedTopMenu,
     }
 }
 
@@ -134,7 +134,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-const NavContain = connect(
+const NavContain = LayoutRedux.connect(
     mapStateToProps, // 关于state
     mapDispatchToProps // 关于dispatch
 )(Nav)

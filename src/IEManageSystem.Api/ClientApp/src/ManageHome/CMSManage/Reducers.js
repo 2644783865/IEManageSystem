@@ -91,18 +91,12 @@ function page(state = {
 }
 
 // PageComponent={ sign=0, name="组件名", col, height, padding, childPageComponent }
-export function reducer(state, action)
+export function reducer(state = {}, action)
 {
-    state.cms = state.cms || {};
-
-    let curState = state.cms;
-
     return Object.assign({}, state, 
     {
-        cms: {
-            newPageSelectedComponent: componentOperate(curState.newPageSelectedComponent, action),
-            newPageComponents: newPageComponents(curState.newPageComponents, action),
-            page:page(curState.page, action)
-        }
+        newPageSelectedComponent: componentOperate(state.newPageSelectedComponent, action),
+        newPageComponents: newPageComponents(state.newPageComponents, action),
+        page:page(state.page, action)
     })
 }
