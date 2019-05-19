@@ -1,5 +1,5 @@
 import MenuProvider from 'Core/Menu/MenuProvider'
-import { TopLevelMenusSelect, SideMenuSelect } from 'Core/Actions'
+import { TopLevelMenusSelect, SideMenuSelect } from './Actions'
 
 let topLevelMenus = null;
 

@@ -8,7 +8,7 @@ import DefaultAvatar from 'images/default_avatar.png';
 
 import {LayoutRedux} from '../LayoutRedux'
 
-import { topLevelMenusSelect } from 'Core/Actions';
+import { topLevelMenusSelect } from '../Actions';
 
 class Nav extends React.Component
 {

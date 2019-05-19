@@ -2,7 +2,7 @@ import React from 'react';
 import PropsTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import MenuTag from "./MenuTag/MenuTag.jsx";
-import { sideMenuSelect } from 'Core/Actions'
+import { sideMenuSelect } from '../Actions'
 
 import './SideNav.css'
 

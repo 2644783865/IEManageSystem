@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import { sideMenuSelect } from 'Core/Actions'
+import { sideMenuSelect } from '../Actions'
 import { NavLink, withRouter } from 'react-router-dom';
 
 import {LayoutRedux} from '../LayoutRedux'
