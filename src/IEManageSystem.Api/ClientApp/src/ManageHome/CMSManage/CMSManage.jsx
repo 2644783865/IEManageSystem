@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Menu from "./Menu/Menu.jsx";
-import Page from "./NewPage/NewPage.jsx"
+import PageComponent from "./PageComponent/PageComponent.jsx"
 import PageManage from './PageManage/PageManage.jsx'
 import TestPage from "./TestPage/TestPage.jsx";
 
@@ -16,7 +16,7 @@ export default class CMSManage extends React.Component{
         <div className="w-100 h-100 overflow-auto-y">
             <Switch>
                 <Route path="/ManageHome/CMSManage/Menu" component={Menu} />
-                <Route path="/ManageHome/CMSManage/NewPage" component={Page} />
+                <Route path="/ManageHome/CMSManage/PageComponent" component={PageComponent} />
                 <Route path="/ManageHome/CMSManage/PageManage" component={PageManage} />
                 <Route path="/ManageHome/CMSManage/TestPage" component={TestPage} />
             </Switch>

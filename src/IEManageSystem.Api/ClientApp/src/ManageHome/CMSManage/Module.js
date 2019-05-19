@@ -40,9 +40,9 @@ export default class Module extends BaseModule {
                                 url: "/ManageHome/CMSManage/PageManage"
                             },
                             {
-                                id: "NewPage",
-                                text: "新建页面",
-                                url: "/ManageHome/CMSManage/NewPage",
+                                id: "PageComponent",
+                                text: "页面组件",
+                                url: "/ManageHome/CMSManage/PageComponent",
                                 accessScope:
                                     [
                                         { scopeName: ApiScope.CMSManage.Page, scopeNodeType: ApiScopeNodeType.manage },
