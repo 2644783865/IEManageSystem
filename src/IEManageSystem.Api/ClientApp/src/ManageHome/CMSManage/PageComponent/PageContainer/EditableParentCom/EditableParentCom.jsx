@@ -166,7 +166,7 @@ EditableParentCom.defaultProps = {
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
     return {
-        selectedComponent: state.newPageSelectedComponent
+        selectedComponent: state.PageComponent.SelectedComponent
     }
 }
 

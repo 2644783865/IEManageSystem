@@ -22,7 +22,7 @@ function componentOperate(state, action){
     }
 }
 
-function newPageComponents(state = [], action){
+function Components(state = [], action){
     switch(action.type){
         case NewPageAddComponent:
             return [...state, action.pageComponent]
@@ -91,12 +91,16 @@ function page(state = {
 }
 
 // PageComponent={ sign=0, name="组件名", col, height, padding, childPageComponent }
-export function reducer(state = {}, action)
+export function reducer(state = {
+    PageComponent:{}
+}, action)
 {
     return Object.assign({}, state, 
     {
-        newPageSelectedComponent: componentOperate(state.newPageSelectedComponent, action),
-        newPageComponents: newPageComponents(state.newPageComponents, action),
+        PageComponent:{
+            SelectedComponent: componentOperate(state.PageComponent.SelectedComponent, action),
+            Components: Components(state.PageComponent.Components, action),
+        },
         page:page(state.page, action)
     })
 }
