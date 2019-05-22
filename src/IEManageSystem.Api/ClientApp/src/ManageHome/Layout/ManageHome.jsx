@@ -15,6 +15,9 @@ import SideNav from "./SideNav/SideNav.jsx";
 import BodyDiv from './BodyDiv/BodyDiv.jsx';
 import NavTag from './NavTag/NavTag.jsx';
 
+import ErrorModal from 'ErrorModal/ErrorModal.jsx';
+import LoadingModal from 'LoadingModal/LoadingModal.jsx';
+
 require('./ManageHome.css');
 
 import { Animate } from 'react-move'
@@ -84,6 +87,8 @@ export default class ManageHome extends React.Component {
                         </div>
                     </div>
                 </div>
+                <ErrorModal />
+                <LoadingModal />
             </div>
         );
     }

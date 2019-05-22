@@ -10,6 +10,7 @@ import { createLogger } from 'redux-logger'
 
 import Module from './Layout/Module'
 import {RootRedux} from 'Core/IEReduxs/RootRedux'
+import MiddlewareFactory from 'Core/MiddlewareFactory'
 
 let module = new Module();
 module.preInitialize();
@@ -21,7 +22,8 @@ let store = createStore(
     RootRedux.getReducer(),
     applyMiddleware(
         thunkMiddleware, // 这里添加了一个thunk中间件，他会处理thunk action
-        loggerMiddleware // 一个很便捷的 middleware，用来打印 action 日志
+        loggerMiddleware, // 一个很便捷的 middleware，用来打印 action 日志
+        ...(new MiddlewareFactory().getMiddlewares())
   ));
 
 ReactDOM.render(

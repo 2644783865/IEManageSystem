@@ -7,6 +7,8 @@ import Personal from 'Personal/Module'
 import { reducer } from './Reducers'
 import {LayoutRedux} from './LayoutRedux'
 import {RootRedux} from 'Core/IEReduxs/RootRedux'
+import MiddlewareFactory from 'Core/MiddlewareFactory'
+import {fecth} from './Middlewares'
 
 export default class Module extends BaseModule
 {
@@ -20,5 +22,6 @@ export default class Module extends BaseModule
 
         LayoutRedux.setReducer(reducer);
         RootRedux.register(LayoutRedux);
+        new MiddlewareFactory().register(fecth);
     }
 }

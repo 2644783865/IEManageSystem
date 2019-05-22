@@ -1,3 +1,5 @@
+import {request,receive} from 'Core/Reducers/Actions'
+
 export const NewPageSelectComponent = 'NewPageSelectComponent'
 export function newPageSelectComponent(componentName) {
   return {
@@ -33,20 +35,20 @@ export function newPageEditComponent(pageComponent) {
 
 export const PagesRequest = "PagesRequest"
 function pagesRequest(pageIndex, pageSize, searchKey) {
-  return {
+  return request({
     type: PagesRequest,
     pageIndex,
     pageSize,
     searchKey
-  }
+  })
 }
 
 export const PagesReceive = "PagesReceive"
 function pagesReceive(data) {
-  return {
+  return receive({
     type: PagesReceive,
     data
-  }
+  })
 }
 
 // 请求页面数据action
@@ -68,8 +70,13 @@ export function pagesFetch(pageIndex, pageSize, searchKey) {
       },
       body: JSON.stringify(postData)
     }).then(
-      response => response.json(),
-      error => console.log('An error occurred.', error)
+      response => {
+        if(response.status == 404){
+          return null;
+        }
+        return response.json()
+      },
+      error => dispatch(pagesReceive(error))
     ).then(
       data => dispatch(pagesReceive(data))	// dispatch 响应动作
     )
@@ -78,18 +85,18 @@ export function pagesFetch(pageIndex, pageSize, searchKey) {
 
 export const PageNumRequest = "PageNumRequest"
 function pageNumRequest(searchKey){
-  return {
+  return request({
     type: PageNumRequest,
     searchKey
-  }
+  })
 }
 
 export const PageNumReceive = "PageNumReceive"
 function pageNumReceive(data){
-  return {
+  return receive({
     type: PageNumReceive,
     data
-  }
+  })
 }
 
 export function pageNumFetch(searchKey){
@@ -108,8 +115,13 @@ export function pageNumFetch(searchKey){
       },
       body: JSON.stringify(postData)
     }).then(
-      response => response.json(),
-      error => console.log('An error occurred.', error)
+      response => {
+        if(response.status == 404){
+          return null;
+        }
+        return response.json()
+      },
+      error => dispatch(pageNumReceive(error))
     ).then(
       data => dispatch(pageNumReceive(data))	// dispatch 响应动作
     )
@@ -118,17 +130,17 @@ export function pageNumFetch(searchKey){
 
 export const PageAddRequest = "PageAddRequest"
 function pageAddRequest(resource){
-  return {
+  return request({
     type: PageAddRequest,
     resource
-  }
+  })
 }
 
 export const PageAddReceive = "PageAddReceive"
 function pageAddReceive(data){
-  return {
+  return receive({
     type: PageAddReceive
-  }
+  })
 }
 
 export function pageAddFetch(resource){
@@ -145,8 +157,13 @@ export function pageAddFetch(resource){
       },
       body: JSON.stringify(postData)
     }).then(
-      response => response.json(),
-      error => console.log('An error occurred.', error)
+      response => {
+        if(response.status == 404){
+          return null;
+        }
+        return response.json()
+      },
+      error => dispatch(pageAddReceive(error))
     ).then(
       data => dispatch(pageAddReceive(data))	// dispatch 响应动作
     )
@@ -155,17 +172,17 @@ export function pageAddFetch(resource){
 
 export const PageDeleteRequest = "PageDeleteRequest"
 function pageDeleteRequest(resource){
-  return {
+  return request({
     type: PageDeleteRequest,
     resource
-  }
+  })
 }
 
 export const PageDeleteReceive = "PageDeleteReceive"
 function pageDeleteReceive(data){
-  return {
+  return receive({
     type: PageDeleteReceive
-  }
+  })
 }
 
 export function pageDeleteFetch(resource){
@@ -184,8 +201,13 @@ export function pageDeleteFetch(resource){
       },
       body: JSON.stringify(postData)
     }).then(
-      response => response.json(),
-      error => console.log('An error occurred.', error)
+      response => {
+        if(response.status == 404){
+          return null;
+        }
+        return response.json()
+      },
+      error => dispatch(pageDeleteReceive(error))
     ).then(
       data => dispatch(pageDeleteReceive(data))	// dispatch 响应动作
     )
