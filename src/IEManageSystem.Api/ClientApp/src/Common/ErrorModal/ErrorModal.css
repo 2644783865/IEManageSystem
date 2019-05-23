@@ -1,0 +1,9 @@
+.errormodal{
+    background-color: #44444442;
+}
+
+.errormodal .modal-content{
+    background-color: #204f619e;
+    color: #fff;
+    top: 2rem;
+}

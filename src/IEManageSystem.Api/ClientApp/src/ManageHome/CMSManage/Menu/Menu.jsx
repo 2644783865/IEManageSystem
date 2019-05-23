@@ -35,7 +35,12 @@ export default class Menu extends React.Component{
             parentMenuId: null,
             operateState: operateState.none,
             currentMenu: null,
-            loadingModalShow: false
+            loadingModalShow: false,
+            errorInfo: {
+                show: false,
+                title: "",
+                message: ""
+            }
         };
 
         this.submitBackcall = this.submitBackcall.bind(this);
@@ -60,7 +65,22 @@ export default class Menu extends React.Component{
             this.getMenus();
 	    }
 	    else{
-            ErrorModal.showErrorModal("提交表单错误", data.message);
+            this.setState({
+                errorInfo: {
+                    show: true,
+                    title: "提交表单错误",
+                    message: data.message
+                }
+            })
+    
+            setTimeout(
+                ()=>this.setState({
+                    errorInfo: {
+                        show: false,
+                        title: "提交表单错误",
+                        message: data.message
+                    }
+                }), 2000)
 	    }
 	}
 
@@ -200,7 +220,11 @@ export default class Menu extends React.Component{
 
         return (
             <div className="col-md-12">
-                <ErrorModal />
+                <ErrorModal
+					show={this.state.errorInfo.show}
+					title={this.state.errorInfo.title}
+					message={this.state.errorInfo.message}
+				/>
                 <LoadingModal show={this.state.loadingModalShow} />
                 <div className='swanky_wrapper'>
                     { this.state.menus.map(item => this.createRootMenu(item)) }

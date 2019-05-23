@@ -1,44 +1,51 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { Animate } from 'react-move'
+import { easeExpOut } from 'd3-ease'
 
-export default class ErrorModal extends React.Component
-{
-	constructor(props){
-		super(props);
-	}
+import './ErrorModal.css'
 
-  static showErrorModal(title, message){
-    $("#ResourceErrorBtn").click();
-    $("#ResourceErrorTitle").text(title);
-    $("#ResourceErrorText").text(message);
-    // setTimeout('$("#ResourceErrorText").text("")',3000);
+export default class ErrorModal extends React.Component {
+  // props.show bool
+  // props.title
+  // props.message
+  constructor(props) {
+    super(props);
   }
-	
-	render(){
-		return (
-          <div>
-            <button id="ResourceErrorBtn" className="btn" data-toggle="modal" data-target="#ResourceError"  hidden="hidden"></button>
-            <div className="modal fade data-delete" id="ResourceError">
+
+  render() {
+    return (
+      <Animate
+        start={() => ({
+          x: 0,
+        })}
+
+        update={() => ({
+          x: [this.props.show ? 1 : 0],
+          timing: { duration: 750, ease: easeExpOut },
+        })}
+      >
+        {(state) => {
+          const { x } = state;
+
+          return (
+            <div className="modal fade errormodal" style={{ opacity: `${x}`, display: x!=0 ? "block" : "none" }}>
               <div className="modal-dialog">
                 <div className="modal-content">
-             
+
                   <div className="modal-header">
-                    <h4 id="ResourceErrorTitle" className="modal-title"></h4>
-                    <button type="button" className="close" data-dismiss="modal">&times;</button>
+                    <h4 className="modal-title">{this.props.title}</h4>
                   </div>
-             
-                  <div id="ResourceErrorText" className="modal-body">
-                    
+
+                  <div className="modal-body">
+                    {this.props.message}
                   </div>
-             
-                  <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">关闭</button>
-                  </div>
-             
+
                 </div>
               </div>
             </div>
-          </div>
-		);
-	}
+          )
+        }}
+      </Animate>
+    )
+  }
 }

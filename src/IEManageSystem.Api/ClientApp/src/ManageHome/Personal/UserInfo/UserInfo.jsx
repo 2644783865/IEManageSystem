@@ -32,7 +32,12 @@ export default class UserInfo extends React.Component
             sex: false,
             birthDate: "",
             birthDateReadonly: true,
-            loadingModalShow: false
+            loadingModalShow: false,
+            errorInfo: {
+                show: false,
+                title: "",
+                message: ""
+            }
         };
 
         this._readFile = this._readFile.bind(this);
@@ -99,7 +104,22 @@ export default class UserInfo extends React.Component
 			        });
                 }
                 else {
-                    ErrorModal.showErrorModal("获取用户信息错误", data.message);
+                    this.setState({
+                        errorInfo: {
+                            show: true,
+                            title: "获取用户信息错误",
+                            message: data.message
+                        }
+                    })
+            
+                    setTimeout(
+                        ()=>this.setState({
+                            errorInfo: {
+                                show: false,
+                                title: "获取用户信息错误",
+                                message: data.message
+                            }
+                        }), 2000)
                 }
             }.bind(this),
         });
@@ -136,7 +156,22 @@ export default class UserInfo extends React.Component
                     this._getUserInfo();
                 }
                 else {
-                    ErrorModal.showErrorModal("表单提交错误", data.message);
+                    this.setState({
+                        errorInfo: {
+                            show: true,
+                            title: "表单提交错误",
+                            message: data.message
+                        }
+                    })
+            
+                    setTimeout(
+                        ()=>this.setState({
+                            errorInfo: {
+                                show: false,
+                                title: "表单提交错误",
+                                message: data.message
+                            }
+                        }), 2000)
                 }
             }.bind(this),
         });
@@ -368,7 +403,11 @@ export default class UserInfo extends React.Component
                     <button className="btn btn-info float-right" type="button" onClick={this._setUserInfo}>提交修改</button>
                     <button className="btn btn-secondary float-right mr-3" type="button" onClick={this._getUserInfo}>取消修改</button>
                 </div>
-                <ErrorModal />
+                <ErrorModal
+					show={this.state.errorInfo.show}
+					title={this.state.errorInfo.title}
+					message={this.state.errorInfo.message}
+				/>
                 <LoadingModal show={this.state.loadingModalShow} />
 	        </div>
         );

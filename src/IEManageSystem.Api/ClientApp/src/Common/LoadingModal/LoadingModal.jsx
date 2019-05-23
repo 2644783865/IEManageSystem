@@ -26,7 +26,7 @@ export default class LoadingModal extends React.Component {
           const { x } = state;
 
           return (
-            <div className="modal fade show" style={{opacity: `${x}`, display:this.props.show?"block":"none"}}>
+            <div className="modal fade show" style={{opacity: `${x}`, display:x!=0?"block":"none"}}>
               <div className="modal-dialog">
                 <div className="modal-content background-transparent">
                   <div className="modal-body d-flex justify-content-center">

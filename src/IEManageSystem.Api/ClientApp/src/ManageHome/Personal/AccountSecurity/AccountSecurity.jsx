@@ -25,7 +25,12 @@ export default class AccountSecurity extends React.Component {
             answerReadonly: true,
             oldPassword: "",
             newPassword: "",
-            loadingModalShow: false
+            loadingModalShow: false,
+            errorInfo: {
+                show: false,
+                title: "",
+                message: ""
+            }
         };
 
         this._getUserInfo = this._getUserInfo.bind(this);
@@ -70,7 +75,22 @@ export default class AccountSecurity extends React.Component {
                     });
                 }
                 else {
-                    ErrorModal.showErrorModal("获取用户信息错误", data.message);
+                    this.setState({
+                        errorInfo: {
+                            show: true,
+                            title: "获取用户信息错误",
+                            message: data.message
+                        }
+                    })
+            
+                    setTimeout(
+                        ()=>this.setState({
+                            errorInfo: {
+                                show: false,
+                                title: "获取用户信息错误",
+                                message: data.message
+                            }
+                        }), 2000)
                 }
             }.bind(this),
         });
@@ -99,7 +119,22 @@ export default class AccountSecurity extends React.Component {
                     return;
                 }
                 else {
-                    ErrorModal.showErrorModal("表单提交错误", data.message);
+                    this.setState({
+                        errorInfo: {
+                            show: true,
+                            title: "表单提交错误",
+                            message: data.message
+                        }
+                    })
+            
+                    setTimeout(
+                        ()=>this.setState({
+                            errorInfo: {
+                                show: false,
+                                title: "表单提交错误",
+                                message: data.message
+                            }
+                        }), 2000)
                 }
             }.bind(this),
         });
@@ -127,7 +162,22 @@ export default class AccountSecurity extends React.Component {
                     return;
                 }
                 else {
-                    ErrorModal.showErrorModal("表单提交错误", data.message);
+                    this.setState({
+                        errorInfo: {
+                            show: true,
+                            title: "表单提交错误",
+                            message: data.message
+                        }
+                    })
+            
+                    setTimeout(
+                        ()=>this.setState({
+                            errorInfo: {
+                                show: false,
+                                title: "表单提交错误",
+                                message: data.message
+                            }
+                        }), 2000)
                 }
             }.bind(this),
         });
@@ -290,7 +340,11 @@ export default class AccountSecurity extends React.Component {
                         </div>
                     </div>
                 </div>
-                <ErrorModal />
+                <ErrorModal
+					show={this.state.errorInfo.show}
+					title={this.state.errorInfo.title}
+					message={this.state.errorInfo.message}
+				/>
                 <LoadingModal show={this.state.loadingModalShow} />
             </div>
         );
