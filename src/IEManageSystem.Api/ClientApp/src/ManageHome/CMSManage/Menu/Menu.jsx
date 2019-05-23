@@ -34,7 +34,8 @@ export default class Menu extends React.Component{
             menus: [],
             parentMenuId: null,
             operateState: operateState.none,
-            currentMenu: null
+            currentMenu: null,
+            loadingModalShow: false
         };
 
         this.submitBackcall = this.submitBackcall.bind(this);
@@ -52,7 +53,7 @@ export default class Menu extends React.Component{
 
     // 提交回调
 	submitBackcall(data){
-        LoadingModal.hideModal();
+        this.setState({loadingModalShow: false});
 
 	    if(data.isSuccess == true)
 	    {
@@ -84,7 +85,7 @@ export default class Menu extends React.Component{
     }
 
     addMenu(resource){
-        LoadingModal.showModal();
+        this.setState({loadingModalShow:true})
 
         let postData = resource;
         postData.parentMenuId = this.state.parentMenuId;
@@ -109,7 +110,7 @@ export default class Menu extends React.Component{
     }
 
     deleteMenu(resource){
-        LoadingModal.showModal();
+        this.setState({loadingModalShow:true});
 
         let postData = resource;
 
@@ -124,7 +125,7 @@ export default class Menu extends React.Component{
     }
 
     updateMenu(resource){
-        LoadingModal.showModal();
+        this.setState({loadingModalShow:true});
 
         let postData = resource;
 
@@ -200,7 +201,7 @@ export default class Menu extends React.Component{
         return (
             <div className="col-md-12">
                 <ErrorModal />
-                <LoadingModal />
+                <LoadingModal show={this.state.loadingModalShow} />
                 <div className='swanky_wrapper'>
                     { this.state.menus.map(item => this.createRootMenu(item)) }
                     <div>

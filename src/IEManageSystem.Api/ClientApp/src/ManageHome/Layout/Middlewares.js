@@ -9,7 +9,6 @@ export const fecth = store => next => action =>
     {
         fecthSign++;
         if(fecthSign > 0){
-            LoadingModal.showModal();
         }
     }
 
@@ -17,7 +16,6 @@ export const fecth = store => next => action =>
     {
         fecthSign--;
         if(fecthSign == 0){
-            LoadingModal.hideModal();
         }
     }
     

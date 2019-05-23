@@ -32,6 +32,7 @@ export default class UserInfo extends React.Component
             sex: false,
             birthDate: "",
             birthDateReadonly: true,
+            loadingModalShow: false
         };
 
         this._readFile = this._readFile.bind(this);
@@ -106,7 +107,7 @@ export default class UserInfo extends React.Component
 
     _setUserInfo()
     {
-        LoadingModal.showModal();
+        this.setState({loadingModalShow:true})
 
     	let postData = {
     		userName:this.state.userName,
@@ -129,7 +130,7 @@ export default class UserInfo extends React.Component
             contentType: 'application/json',
             dataType: 'json',
             success: function (data) {
-                LoadingModal.hideModal();
+                this.setState({loadingModalShow:false})
 
                 if (data.isSuccess === true) {
                     this._getUserInfo();
@@ -368,7 +369,7 @@ export default class UserInfo extends React.Component
                     <button className="btn btn-secondary float-right mr-3" type="button" onClick={this._getUserInfo}>取消修改</button>
                 </div>
                 <ErrorModal />
-                <LoadingModal />
+                <LoadingModal show={this.state.loadingModalShow} />
 	        </div>
         );
     }

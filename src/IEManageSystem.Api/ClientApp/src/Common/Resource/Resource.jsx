@@ -57,7 +57,8 @@ export default class Resource extends React.Component
 			resourceNum: 0,
 			curResource: null,
 			pageNum: 0,
-			operationState: operationState.none
+			operationState: operationState.none,
+			loadingModalShow: false
 		};
 
 		this._pageIndexChange = this._pageIndexChange.bind(this);
@@ -94,12 +95,13 @@ export default class Resource extends React.Component
 		})
 	}
 
-	showLoadingModal(){
-		LoadingModal.showModal();
+	showLoadingModal()
+	{
+		this.setState({loadingModalShow: true});
 	}
 
 	hideLoadingModal(){
-		LoadingModal.hideModal();
+		this.setState({loadingModalShow: false});
 	}
 
 	showErrorModal(title, message){
@@ -174,7 +176,7 @@ export default class Resource extends React.Component
         return (
 			<div className="w-100 h-100 d-flex flex-column">
 				<ErrorModal />
-                <LoadingModal />
+                <LoadingModal show={this.state.loadingModalShow} />
 	            {resourceList}
 	            {paging}
 	            { this.state.operationState == operationState.add && 

@@ -24,7 +24,8 @@ export default class AccountSecurity extends React.Component {
             answer: "",
             answerReadonly: true,
             oldPassword: "",
-            newPassword: ""
+            newPassword: "",
+            loadingModalShow: false
         };
 
         this._getUserInfo = this._getUserInfo.bind(this);
@@ -77,7 +78,7 @@ export default class AccountSecurity extends React.Component {
 
     _setSafetyProblem()
     {
-        LoadingModal.showModal();
+        this.setState({loadingModalShow:true})
 
         let postData = {
             problem: this.state.problem,
@@ -92,7 +93,7 @@ export default class AccountSecurity extends React.Component {
             dataType: 'json',
             success: function (data)
             {
-                LoadingModal.hideModal();
+                this.setState({loadingModalShow:true})
 
                 if (data.isSuccess === true) {
                     return;
@@ -106,7 +107,7 @@ export default class AccountSecurity extends React.Component {
 
     _setPassage()
     {
-        LoadingModal.showModal();
+        this.setState({loadingModalShow:true})
 
         let postData = {
             oldPassword: this.state.oldPassword,
@@ -120,7 +121,7 @@ export default class AccountSecurity extends React.Component {
             contentType: 'application/json',
             dataType: 'json',
             success: function (data) {
-                LoadingModal.hideModal();
+                this.setState({loadingModalShow:false})
 
                 if (data.isSuccess === true) {
                     return;
@@ -290,7 +291,7 @@ export default class AccountSecurity extends React.Component {
                     </div>
                 </div>
                 <ErrorModal />
-                <LoadingModal />
+                <LoadingModal show={this.state.loadingModalShow} />
             </div>
         );
     }
