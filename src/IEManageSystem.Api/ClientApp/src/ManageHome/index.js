@@ -7,15 +7,12 @@ import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 
-
-import Module from './Layout/Module'
+import ModuleFactory from 'Core/Modules/ModuleFactory'
 import {RootRedux} from 'Core/IEReduxs/RootRedux'
 import MiddlewareFactory from 'Core/MiddlewareFactory'
 
-let module = new Module();
-module.preInitialize();
-module.initialize();
-module.postInitialize();
+let moduleFactory = new ModuleFactory();
+moduleFactory.init();
 
 const loggerMiddleware = createLogger()
 let store = createStore(

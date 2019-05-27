@@ -1,4 +1,5 @@
-import BaseModule from 'Core/BaseModule'
+import BaseModule from 'Core/Modules/BaseModule'
+import ModuleFactory from 'Core/Modules/ModuleFactory'
 import MenuProvider from 'Core/Menu/MenuProvider'
 import { ApiScope } from "Core/ApiScopeAuthority/ApiScope.js";
 import { ApiScopeNodeType } from "Core/ApiScopeAuthority/ApiScopeNodeType.js";
@@ -7,11 +8,10 @@ import CMSManage from './CMSManage.jsx';
 import { reducer } from './Reducers'
 import {CmsRedux} from './CmsRedux'
 import {RootRedux} from 'Core/IEReduxs/RootRedux'
+import 'Core/Module'
 
-export default class Module extends BaseModule {
+class Module extends BaseModule {
     initialize() {
-        super.initialize();
-
         MenuProvider.registerMenu(
             {
                 id: "CMSManage",
@@ -73,3 +73,7 @@ export default class Module extends BaseModule {
         RootRedux.register(CmsRedux);
     }
 }
+
+new ModuleFactory().register(new Module(), "CMSManageModule", [
+    "CoreModule"
+]);

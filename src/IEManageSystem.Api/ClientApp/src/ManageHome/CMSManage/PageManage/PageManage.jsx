@@ -32,13 +32,6 @@ class PageManage extends React.Component{
 
 	componentWillUpdate(nextProps)
 	{
-		// if(nextProps.isFetch){
-		// 	this.resourceChild.showLoadingModal();
-		// }
-		// else{
-		// 	this.resourceChild.hideLoadingModal();
-		// }
-
 		this.resourceChild.resetResources(nextProps.pages, nextProps.pageIndex);
 		this.resourceChild.resetResourceNum(nextProps.pageNum);
 	}
@@ -62,47 +55,11 @@ class PageManage extends React.Component{
     // 获取资源列表
 	getResourceList(pageIndex, pageSize, searchKey){
 		this.props.pagesFetch(pageIndex, pageSize, searchKey);
-		// let postData = {
-        //     pageIndex: pageIndex,
-        //     pageSize: pageSize,
-        //     searchKey: searchKey
-        // };
-
-        // IETool.ieAjax({
-		// 	url: "/api/PageManage/GetPages",
-        //     type: 'post',
-        //     data: JSON.stringify(postData),
-        //     contentType: 'application/json',
-        //     dataType: 'json',
-        //     success: function(data){
-		//         if(data.isSuccess == true)
-		//         {
-		//         	this.resourceChild.resetResources(data.value.pages, pageIndex);
-		//         }
-		//     }.bind(this)
-		// });
 	}
 
     // 获取资源数量
     getResourceNum(searchKey){
 		this.props.pageNumFetch(searchKey);
-        // let postData = {
-        // 	searchKey:searchKey
-        // };
-
-        // IETool.ieAjax({
-        //     url: "/api/PageManage/GetPageNum",
-        //     type: 'post',
-        //     data: JSON.stringify(postData),
-        //     contentType: 'application/json',
-        //     dataType: 'json',
-        //     success: function(data){
-		//         if(data.isSuccess == true)
-		//         {
-		//         	this.resourceChild.resetResourceNum(data.value.pageNum);
-		//         }
-		//     }.bind(this)
-        // });
     }
 
 	render(){
@@ -145,7 +102,6 @@ PageManage.propsTypes = {
 	pages: PropTypes.array.isRequired,
 	pageNum: PropTypes.number.isRequired,
 	pageIndex: PropTypes.number.isRequired,
-	isFetch: PropTypes.bool.isRequired,
 	pagesFetch: PropTypes.func.isRequired,
 	pageNumFetch: PropTypes.func.isRequired,
 	pageAddFetch: PropTypes.func.isRequired,
@@ -156,8 +112,7 @@ const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的prop
     return {
 		pages: state.cms.page.pages,
 		pageNum: state.cms.page.pageNum,
-		pageIndex: state.cms.page.pageIndex,
-		isFetch: state.cms.page.isFetch,
+		pageIndex: state.cms.page.pageIndex
     }
 }
 

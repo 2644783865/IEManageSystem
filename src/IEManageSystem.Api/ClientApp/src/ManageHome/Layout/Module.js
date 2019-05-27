@@ -1,27 +1,28 @@
-import BaseModule from 'Core/BaseModule'
-import AuthorizeManage from 'AuthorizeManage/Module'
-import CMSManage from 'CMSManage/Module'
-import OAuthManage from 'OAuthManage/Module'
-import Personal from 'Personal/Module'
+import BaseModule from 'Core/Modules/BaseModule'
+import ModuleFactory from 'Core/Modules/ModuleFactory'
+
+import 'Core/Module'
+import 'Personal/Module'
+import 'OAuthManage/Module'
+import 'AuthorizeManage/Module'
+import 'CMSManage/Module'
 
 import { reducer } from './Reducers'
 import {LayoutRedux} from './LayoutRedux'
 import {RootRedux} from 'Core/IEReduxs/RootRedux'
-import MiddlewareFactory from 'Core/MiddlewareFactory'
-import {fecth} from './Middlewares'
 
-export default class Module extends BaseModule
+class Module extends BaseModule
 {
-    constructor(){
-        super();
-
-        this.addDependModule(new Personal());
-        this.addDependModule(new AuthorizeManage());
-        this.addDependModule(new OAuthManage());
-        this.addDependModule(new CMSManage());
-
+    initialize(){
         LayoutRedux.setReducer(reducer);
         RootRedux.register(LayoutRedux);
-        new MiddlewareFactory().register(fecth);
     }
 }
+
+new ModuleFactory().register(new Module(), "LayoutModule", [
+    "AuthorizeManageModule",
+    "CMSManageModule",
+    "OAuthManageModule",
+    "PersonalModule",
+    "CoreModule"
+]);

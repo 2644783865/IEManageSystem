@@ -4,7 +4,15 @@ class Redux extends BaseIERedux
 {
     getReducer()
     {
-        return (state = {}, action)=>
+        return (state = {
+            fecth:{
+                fecthSign: 0,
+                isFecth: false,
+                isSuccess: true,
+                error: null,
+                isAuthorize: true
+            }
+        }, action)=>
         {
             let newstate = state;
 

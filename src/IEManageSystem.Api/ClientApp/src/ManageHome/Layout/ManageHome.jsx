@@ -15,6 +15,8 @@ import SideNav from "./SideNav/SideNav.jsx";
 import BodyDiv from './BodyDiv/BodyDiv.jsx';
 import NavTag from './NavTag/NavTag.jsx';
 
+import 'Layout/Module'
+
 require('./ManageHome.css');
 
 import { Animate } from 'react-move'

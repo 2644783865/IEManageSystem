@@ -1,16 +1,14 @@
-import BaseModule from 'Core/BaseModule'
+import BaseModule from 'Core/Modules/BaseModule'
+import ModuleFactory from 'Core/Modules/ModuleFactory'
 import MenuProvider from 'Core/Menu/MenuProvider'
-import { ApiScope } from "Core/ApiScopeAuthority/ApiScope.js";
-import { ApiScopeNodeType } from "Core/ApiScopeAuthority/ApiScopeNodeType.js";
+import 'Core/Module'
 
 import Personal from './Personal.jsx';
 
-export default class Module extends BaseModule
+class Module extends BaseModule
 {
     initialize()
     {
-        super.initialize();
-
         MenuProvider.registerMenu(
             {
                 id: "Personal",
@@ -37,3 +35,7 @@ export default class Module extends BaseModule
         );
     }
 }
+
+new ModuleFactory().register(new Module(), "PersonalModule", [
+    "CoreModule"
+]);

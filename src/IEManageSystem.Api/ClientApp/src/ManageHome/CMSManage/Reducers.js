@@ -3,13 +3,9 @@ import {
     NewPageAddComponent, 
     NewPageRemoveComponent, 
     NewPageEditComponent,
-    PagesRequest,
     PagesReceive,
-    PageNumRequest,
     PageNumReceive,
-    PageAddRequest,
     PageAddReceive,
-    PageDeleteRequest,
     PageDeleteReceive} from './Actions'
 
 
@@ -41,50 +37,26 @@ function Components(state = [], action){
     }
 }
 
-// 请求页面数据Reducer
+// 页面Reducer
 function page(state = {
     pages:[],
     pageNum:0,
-    pageIndex: 1,
-    isFetch:false
+    pageIndex: 1
 }, action)
 {
     switch(action.type){
-        case PagesRequest:
-            return {...state, ...{
-                pageIndex: action.pageIndex,
-                isFetch:true
-            }};
         case PagesReceive:
             return {...state, ...{
-                pages:action.data.value.pages,
-                isFetch:false
-            }};
-        case PageNumRequest:
-            return {...state, ...{
-                isFetch:true
+                pages:action.data
             }};
         case PageNumReceive:
             return {...state, ...{
-                pageNum:action.data.value.pageNum,
-                isFetch:false
-            }};
-        case PageAddRequest:
-            return {...state, ...{
-                isFetch:true
+                pageNum:action.data
             }};
         case PageAddReceive:
-            return {...state, ...{
-                isFetch:false
-            }};
-        case PageDeleteRequest:
-            return {...state, ...{
-                isFetch:true
-            }};
+            return state
         case PageDeleteReceive:
-            return {...state, ...{
-                isFetch:false
-            }};
+            return state
         default:
             return state;
     }
