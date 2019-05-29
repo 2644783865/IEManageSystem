@@ -36,10 +36,10 @@ export default class Preview extends React.Component
                     <span className="padding-left-10">{this.props.title}</span>
                 </h6>
                 <h6 id="previewSearch" className="preview-search">
-                    <div className="input-group mb-3">
+                    <div className="input-group">
                         <input type="text" className="form-control" placeholder="Search" />
                         <div className="input-group-append">
-                            <button className="btn btn-outline-secondary btn-sm" type="submit">
+                            <button className="btn btn-outline-secondary btn-sm text-white" type="submit">
                                 <span className="oi oi-magnifying-glass" title="icon name" aria-hidden="true"></span>
                             </button> 
                         </div>
