@@ -9,10 +9,10 @@ function request(postData) {
 }
 
 // 生成错误action
-export const Error = "IEFecth_Error"
+export const ErrorAction = "IEFecth_Error"
 function error(errorMessage) {
   return {
-    type: Error,
+    type: ErrorAction,
     error: errorMessage,
     isFetch: false,
   }
@@ -38,7 +38,7 @@ export function createIEThunkAction(url, postData, receiveActionFun) {
     }).then(
       response => {
         if (response.status >= 200 && response.status < 300) {
-          return response.json().value;
+          return response.json();
         }
 
         const error = new Error(response.statusText);
@@ -56,7 +56,7 @@ export function createIEThunkAction(url, postData, receiveActionFun) {
     ).then(
       value => dispatch(receive(receiveActionFun(value)))  // dispatch 响应动作
     ).catch(
-      error => dispatch(error(error.statusText))
+      errorData => dispatch(error(errorData.statusText))
     )
   }
 }

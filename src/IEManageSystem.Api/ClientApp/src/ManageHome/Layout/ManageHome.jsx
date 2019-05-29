@@ -22,6 +22,9 @@ require('./ManageHome.css');
 import { Animate } from 'react-move'
 import { easeExpOut } from 'd3-ease'
 
+import Loading from './Parts/Loading.jsx'
+import Error from './Parts/Error.jsx'
+
 export default class ManageHome extends React.Component {
     constructor(props) {
         super(props);
@@ -86,6 +89,8 @@ export default class ManageHome extends React.Component {
                         </div>
                     </div>
                 </div>
+                <Loading />
+                <Error />
             </div>
         );
     }

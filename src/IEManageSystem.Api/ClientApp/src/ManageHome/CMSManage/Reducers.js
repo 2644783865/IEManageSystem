@@ -47,11 +47,11 @@ function page(state = {
     switch(action.type){
         case PagesReceive:
             return {...state, ...{
-                pages:action.data
+                pages:action.data.pages
             }};
         case PageNumReceive:
             return {...state, ...{
-                pageNum:action.data
+                pageNum:action.data.pageNum
             }};
         case PageAddReceive:
             return state
