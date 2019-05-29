@@ -18,6 +18,15 @@ function error(errorMessage) {
   }
 }
 
+// 清理错误
+export const ClearError = "IEFecth_ClearError"
+export function clearError(errorMessage) {
+  return {
+    type: ClearError,
+    isFetch: false,
+  }
+}
+
 // 对响应action进行包装
 function receive(action) {
   return { ...action, ...{ isFetch: false } }
@@ -56,7 +65,7 @@ export function createIEThunkAction(url, postData, receiveActionFun) {
     ).then(
       value => dispatch(receive(receiveActionFun(value)))  // dispatch 响应动作
     ).catch(
-      errorData => dispatch(error(errorData.statusText))
+      errorData => dispatch(error(errorData.message))
     )
   }
 }

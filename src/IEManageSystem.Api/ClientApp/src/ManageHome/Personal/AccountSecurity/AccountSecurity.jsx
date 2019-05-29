@@ -82,15 +82,6 @@ export default class AccountSecurity extends React.Component {
                             message: data.message
                         }
                     })
-            
-                    setTimeout(
-                        ()=>this.setState({
-                            errorInfo: {
-                                show: false,
-                                title: "获取用户信息错误",
-                                message: data.message
-                            }
-                        }), 2000)
                 }
             }.bind(this),
         });
@@ -126,15 +117,6 @@ export default class AccountSecurity extends React.Component {
                             message: data.message
                         }
                     })
-            
-                    setTimeout(
-                        ()=>this.setState({
-                            errorInfo: {
-                                show: false,
-                                title: "表单提交错误",
-                                message: data.message
-                            }
-                        }), 2000)
                 }
             }.bind(this),
         });
@@ -169,15 +151,6 @@ export default class AccountSecurity extends React.Component {
                             message: data.message
                         }
                     })
-            
-                    setTimeout(
-                        ()=>this.setState({
-                            errorInfo: {
-                                show: false,
-                                title: "表单提交错误",
-                                message: data.message
-                            }
-                        }), 2000)
                 }
             }.bind(this),
         });
@@ -343,7 +316,18 @@ export default class AccountSecurity extends React.Component {
                 <ErrorModal
 					show={this.state.errorInfo.show}
 					title={this.state.errorInfo.title}
-					message={this.state.errorInfo.message}
+                    message={this.state.errorInfo.message}
+                    close={
+						() => {
+							this.setState({
+								errorInfo: {
+									show: false,
+									title: this.state.errorInfo.title,
+									message: message
+								}
+							})
+						}
+					}
 				/>
                 <LoadingModal show={this.state.loadingModalShow} />
             </div>

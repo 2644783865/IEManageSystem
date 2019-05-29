@@ -72,15 +72,6 @@ export default class Menu extends React.Component{
                     message: data.message
                 }
             })
-    
-            setTimeout(
-                ()=>this.setState({
-                    errorInfo: {
-                        show: false,
-                        title: "提交表单错误",
-                        message: data.message
-                    }
-                }), 2000)
 	    }
 	}
 
@@ -223,7 +214,18 @@ export default class Menu extends React.Component{
                 <ErrorModal
 					show={this.state.errorInfo.show}
 					title={this.state.errorInfo.title}
-					message={this.state.errorInfo.message}
+                    message={this.state.errorInfo.message}
+                    close={
+						() => {
+							this.setState({
+								errorInfo: {
+									show: false,
+									title: this.state.errorInfo.title,
+									message: message
+								}
+							})
+						}
+					}
 				/>
                 <LoadingModal show={this.state.loadingModalShow} />
                 <div className='swanky_wrapper'>

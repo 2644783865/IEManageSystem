@@ -8,6 +8,7 @@ export default class ErrorModal extends React.Component {
   // props.show bool
   // props.title
   // props.message
+  // props.close    fun
   constructor(props) {
     super(props);
   }
@@ -33,7 +34,10 @@ export default class ErrorModal extends React.Component {
                 <div className="modal-content">
 
                   <div className="modal-header">
-                    <h4 className="modal-title">{this.props.title}</h4>
+                    <h5 className="modal-title">{this.props.title}</h5>
+                    <button type="button" class="close text-white" onClick={
+                      ()=>this.props.close()
+                    }>&times;</button>
                   </div>
 
                   <div className="modal-body">

@@ -113,15 +113,6 @@ export default class Resource extends React.Component {
 				message: message
 			}
 		})
-
-		setTimeout(
-			()=>this.setState({
-				errorInfo: {
-					show: false,
-					title: title,
-					message: message
-				}
-			}), 2000)
 	}
 
 	// 搜索单击
@@ -190,6 +181,17 @@ export default class Resource extends React.Component {
 					show={this.state.errorInfo.show}
 					title={this.state.errorInfo.title}
 					message={this.state.errorInfo.message}
+					close={
+						() => {
+							this.setState({
+								errorInfo: {
+									show: false,
+									title: this.state.errorInfo.title,
+									message: message
+								}
+							})
+						}
+					}
 				/>
 				<LoadingModal show={this.state.loadingModalShow} />
 				{resourceList}

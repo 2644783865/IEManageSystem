@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import ErrorModal from 'ErrorModal/ErrorModal.jsx';
 
+import {clearError} from 'Core/Reducers/Actions'
+
 import { connect } from 'react-redux'
 
 class Error extends React.Component {
@@ -19,19 +21,20 @@ class Error extends React.Component {
 
     render() 
     {
-        if(this.state.show == true){
-            setTimeout(
-                ()=>this.setState({
-                    show: false
-                }), 2000
-            )
-        }
+        // if(this.state.show == true){
+        //     setTimeout(
+        //         ()=>this.setState({
+        //             show: false
+        //         }), 2000
+        //     )
+        // }
             
         return (
             <ErrorModal
                 show={this.state.show}
                 title="发生了一个错误"
                 message={this.props.error}
+                close={this.props.close}
             />)
     }
 }
@@ -50,6 +53,7 @@ const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的prop
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
+        close: ()=>{ dispatch(clearError()) }
     }
 }
 
