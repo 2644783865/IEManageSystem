@@ -1,131 +1,39 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {createChart} from './utils.js';
 import Calendar from 'Calendar/Calendar.jsx';
+
+import Curved from './Curved.jsx'
+import Columnrange from './Columnrange.jsx'
+import Sunburst from './Sunburst.jsx'
+import Bubble from './Bubble.jsx'
 
 import './style.css';
 
-export default class Index extends React.Component
-{
-    constructor(props)
-    {
+export default class Index extends React.Component {
+    constructor(props) {
         super(props);
     }
 
-    componentDidMount(){
-      createChart();
-    }
-
-    componentDidUpdate(){
-      createChart();
-    }
-
-    render()
-    {
-        return(
-        <div className="content-area"> 
+    render() {
+        return (
+            <div className="content-area">
                 <div className="row">
-                    <div className="col-md-6 col-xl-3">
-                        <div className="card mb-sm-4 mb-3">
-                            <div className="card-body p-0">
-                                <div className="p-3 pl-4">
-                                    <div className="media align-items-center">
-                                        <div className="media-body">
-                                            <small className="text-muted weight-300">Products Sales</small>
-                                            <p className="m-0 weight-400">$ 45,867,210.00</p>
-                                        </div>
-                                        <span className="dropdown"> <a href="#" className="text-muted" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span className="material-icons">more_vert</span> </a>
-                                            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                                <a className="dropdown-item" href="#">Daily</a>
-                                                <a className="dropdown-item" href="#">Weekly</a>
-                                                <a className="dropdown-item" href="#">Monthly</a>
-                                                <a className="dropdown-item" href="#">Yearly</a>
-                                            </div> </span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <canvas id="chart-2"></canvas>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="col-md-4">
+                        <Curved />
                     </div>
-                    <div className="col-md-6 col-xl-3">
-                        <div className="card mb-sm-4 mb-3">
-                            <div className="card-body p-0">
-                                <div className="p-3 pl-4">
-                                    <div className="media align-items-center">
-                                        <div className="media-body">
-                                            <small className="text-muted weight-300">WoW Revenue</small>
-                                            <p className="m-0 weight-400">$ 91,271,543.00</p>
-                                        </div>
-                                        <span className="dropdown"> <a href="#" className="text-muted" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span className="material-icons">more_vert</span> </a>
-                                            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                                <a className="dropdown-item" href="#">Daily</a>
-                                                <a className="dropdown-item" href="#">Weekly</a>
-                                                <a className="dropdown-item" href="#">Monthly</a>
-                                                <a className="dropdown-item" href="#">Yearly</a>
-                                            </div> </span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <canvas id="chart-3"></canvas>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="col-md-4">
+                        <Columnrange />
                     </div>
-                    <div className="col-md-6 col-xl-3">
-                        <div className="card mb-sm-4 mb-3">
-                            <div className="card-body p-0">
-                                <div className="p-3 pl-4">
-                                    <div className="media align-items-center">
-                                        <div className="media-body">
-                                            <small className="text-muted weight-300">All Transactions</small>
-                                            <p className="m-0 weight-400">% 43.91 - 47.25</p>
-                                        </div>
-                                        <span className="dropdown"> <a href="#" className="text-muted" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span className="material-icons">more_vert</span> </a>
-                                            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                                <a className="dropdown-item" href="#">Daily</a>
-                                                <a className="dropdown-item" href="#">Weekly</a>
-                                                <a className="dropdown-item" href="#">Monthly</a>
-                                                <a className="dropdown-item" href="#">Yearly</a>
-                                            </div> </span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <canvas id="chart-4"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-6 col-xl-3">
-                        <div className="card mb-sm-4 mb-3">
-                            <div className="card-body p-0">
-                                <div className="p-3 pl-4">
-                                    <div className="media align-items-center">
-                                        <div className="media-body">
-                                            <small className="text-muted weight-300">Churned Users</small>
-                                            <p className="m-0 weight-400">59,182,921</p>
-                                        </div>
-                                        <span className="dropdown"> <a href="#" className="text-muted" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span className="material-icons">more_vert</span> </a>
-                                            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                                <a className="dropdown-item" href="#">Daily</a>
-                                                <a className="dropdown-item" href="#">Weekly</a>
-                                                <a className="dropdown-item" href="#">Monthly</a>
-                                                <a className="dropdown-item" href="#">Yearly</a>
-                                            </div> </span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <canvas id="chart-5"></canvas>
-                                </div>
-                            </div>
-                        </div>
+                    {/* <div className="col-md-6">
+                        <Sunburst />
+                    </div> */}
+                    <div className="col-md-4">
+                        <Bubble />
                     </div>
                 </div>
                 <div className="row ">
-                    <div className="col-lg-8 mb-4">
-                        <div className="card h-100">
-                            <div className="card-body  table-responsive p-0">
+                    <div className="col-lg-7 mb-4">
+                        <div className="card bg-secondary text-white">
+                            <div className="card-body table-responsive p-0">
                                 <table className="table  m-0">
                                     <thead>
                                         <tr>
@@ -189,68 +97,13 @@ export default class Index extends React.Component
                                             <td className="align-middle"><span className="material-icons align-middle md-18 text-success">expand_less</span> 1.3 Mins</td>
                                             <td className="align-middle text-right">@mdo</td>
                                         </tr>
-                                        <tr>
-                                            <td className=" align-middle text-center"> <span className="user-initials bg-info-light25 text-info">AR</span> </td>
-                                            <td className="align-middle"> <small className="text-muted weight-300">Annie Roughton</small>
-                                                <div>
-                                                    <a href="#" className="weight-400">manu.akshay@love.com</a>
-                                                </div> </td>
-                                            <td className="align-middle"> <small className="text-muted weight-300">Green Bay</small>
-                                                <div className="weight-400">
-                                                    848 Tail Ends Road
-                    </div> </td>
-                                            <td className="align-middle"><span className="material-icons align-middle md-18 text-success">expand_less</span> 45 Sec</td>
-                                            <td className="align-middle text-right">@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <td className=" align-middle text-center"> <span className="user-initials bg-danger-light25 text-danger">LE</span> </td>
-                                            <td className="align-middle"> <small className="text-muted weight-300">LoriH Edenfield</small>
-                                                <div>
-                                                    <a href="#" className="weight-400">haan_dougla10@hotmail.com</a>
-                                                </div> </td>
-                                            <td className="align-middle"> <small className="text-muted weight-300">Newark</small>
-                                                <div className="weight-400">
-                                                    49 Spring Haven Trail
-                    </div> </td>
-                                            <td className="align-middle"><span className="material-icons align-middle md-18 text-danger">expand_more</span> 2.32 Mins</td>
-                                            <td className="align-middle text-right">@mdo</td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-4 mb-4">
-                        <div className="card h-100">
-                            <div className="card-header bg-white">
-                                Money Analysis
-               </div>
-                            <div className="card-body ">
-                                <h3 className="weight-400 text-center mb-0"><span className="material-icons mr-2 text-success">arrow_upward</span>$73,239.00</h3>
-                                <p className="text-muted text-center">Lorem ipsum dolor sit amet</p>
-                                <canvas id="chart-doughnut" height="200"></canvas>
-                                <div className="row mt-4">
-                                    <div className="col">
-                                        <small>Europe</small>
-                                        <div className="progress mt-1" style={{ height: "6px" }}>
-                                            <div className="progress-bar" role="progressbar" style={{ width: "35%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div className="col">
-                                        <small>Asia</small>
-                                        <div className="progress mt-1" style={{ height: "6px" }}>
-                                            <div className="progress-bar bg-warning" role="progressbar" style={{ width: "75%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div className="col">
-                                        <small>Other</small>
-                                        <div className="progress mt-1" style={{ height: "6px" }}>
-                                            <div className="progress-bar bg-danger" role="progressbar" style={{ width: "45%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="col-lg-5 mb-4">
+                        <Sunburst />
                     </div>
                 </div>
                 <div className="row">
@@ -368,8 +221,8 @@ export default class Index extends React.Component
                     <div className="col-lg-8">
                         <Calendar />
                     </div>
-                </div> 
-          </div>
+                </div>
+            </div>
         );
     }
 }

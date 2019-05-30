@@ -3,8 +3,8 @@ import ModuleFactory from 'Core/Modules/ModuleFactory'
 
 import 'Core/Module'
 import 'Personal/Module'
-import 'OAuthManage/Module'
 import 'AuthorizeManage/Module'
+import 'OAuthManage/Module'
 import 'CMSManage/Module'
 
 import { reducer } from './Reducers'

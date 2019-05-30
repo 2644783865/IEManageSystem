@@ -30,7 +30,6 @@ module.exports = {
             'window.$':'jquery',
             'window.jQuery':'jquery',
             Popper: 'popper',
-            Chart: 'chart',
             Cookie: "cookie",
             IELib: "ielib",
             IETool: 'ToolLibrary/IETool.js'
