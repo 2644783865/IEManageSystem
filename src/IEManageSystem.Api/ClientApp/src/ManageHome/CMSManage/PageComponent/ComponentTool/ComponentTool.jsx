@@ -17,10 +17,10 @@ class ComponentTool extends React.Component{
             {new ComponentFactory().getComponents()
                 .map(item => 
                 <ComponentFrame 
-                    active={ this.props.selectedComponent == item.name }
+                    active={ this.props.selectedComponent.name == item.name }
                     componentOnClick={
                         ()=>{
-                            this.props.selectComponent(item.name);
+                            this.props.selectComponent(item);
                         }
                     }
                 >

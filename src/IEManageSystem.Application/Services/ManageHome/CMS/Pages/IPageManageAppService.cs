@@ -9,10 +9,14 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
     {
         GetPagesOutput GetPages(GetPagesInput input);
 
-        GetPageNumOutput GetPageNum(GetPageNumInput input);
+        GetPageOutput GetPage(GetPageInput input);
 
         AddContentPageOutput AddContentPage(AddContentPageInput input);
 
         AddStaticPageOutput AddStaticPage(AddStaticPageInput input);
+
+        DeletePageOutput DeletePage(DeletePageInput input);
+
+        UpdatePageOutput UpdatePage(UpdatePageInput input);
     }
 }

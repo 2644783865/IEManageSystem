@@ -91,7 +91,7 @@ class EditableParentCom extends React.Component
             timetamp = Number(new Date());
         }
                                 
-        let pageComponent = { sign:timetamp, name:this.props.selectedComponent };
+        let pageComponent = { sign:timetamp, name:this.props.selectedComponent.name };
         this.props.pageComponent.childPageComponent.push(pageComponent);
 
         this.editComponent(this.props.pageComponent);

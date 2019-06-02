@@ -31,6 +31,9 @@ export default class BaseIERedux
         let ieMapDispatchToProps = (dispatch, ownProps) => 
         {
             let iedispatch = (action)=>{
+                if (typeof action === "function") {		
+                    return dispatch(action);
+                }
                 return dispatch({...action, ...{stateType: stateType}});
             }
             return mapDispatchToProps(iedispatch, ownProps)

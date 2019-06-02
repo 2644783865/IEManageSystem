@@ -4,12 +4,12 @@ import {
     NewPageRemoveComponent, 
     NewPageEditComponent,
     PagesReceive,
-    PageNumReceive,
     PageAddReceive,
-    PageDeleteReceive} from './Actions'
+    PageDeleteReceive,
+    PageUpdateReceive} from './Actions'
 
 
-function componentOperate(state, action){
+function componentOperate(state = {}, action){
     switch(action.type){
         case NewPageSelectComponent:
             return action.componentName
@@ -41,22 +41,29 @@ function Components(state = [], action){
 function page(state = {
     pages:[],
     pageNum:0,
-    pageIndex: 1
+    pageIndex: 1,
+    pagesDidInvalidate: false
 }, action)
 {
     switch(action.type){
         case PagesReceive:
             return {...state, ...{
-                pages:action.data.pages
-            }};
-        case PageNumReceive:
-            return {...state, ...{
-                pageNum:action.data.pageNum
+                pages:action.data.pages,
+                pageNum:action.data.pageNum,
+                pagesDidInvalidate: false
             }};
         case PageAddReceive:
-            return state
+            return {...state, ...{
+                pagesDidInvalidate: true,
+            }};
         case PageDeleteReceive:
-            return state
+            return {...state, ...{
+                pagesDidInvalidate: true,
+            }};
+        case PageUpdateReceive:
+            return {...state, ...{
+                pagesDidInvalidate: true,
+            }};
         default:
             return state;
     }

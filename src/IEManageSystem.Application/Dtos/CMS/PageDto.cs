@@ -9,7 +9,9 @@ namespace IEManageSystem.Dtos.CMS
     [AutoMap(typeof(PageBase))]
     public class PageDto
     {
-        public string Name { get; protected set; }
+        public int Id { get; set; }
+
+        public string Name { get; set; }
 
         public string DisplayName { get; set; }
 

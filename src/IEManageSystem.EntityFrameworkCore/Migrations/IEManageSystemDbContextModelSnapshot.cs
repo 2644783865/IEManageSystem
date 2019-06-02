@@ -207,14 +207,22 @@ namespace IEManageSystem.Migrations
 
                     b.Property<int?>("CmsComponentId");
 
+                    b.Property<string>("Col");
+
                     b.Property<int?>("CompositeComponentId");
 
                     b.Property<string>("Discriminator")
                         .IsRequired();
 
+                    b.Property<string>("Height");
+
                     b.Property<string>("Name");
 
+                    b.Property<string>("Padding");
+
                     b.Property<int?>("PageBaseId");
+
+                    b.Property<string>("Sign");
 
                     b.HasKey("Id");
 

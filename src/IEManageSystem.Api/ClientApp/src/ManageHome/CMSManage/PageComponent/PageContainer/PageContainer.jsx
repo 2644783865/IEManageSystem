@@ -12,22 +12,61 @@ import { newPageAddComponent } from '../../Actions'
 class PageContainer extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            name: "",
+            displayName: "",
+            description: ""
+        }
+
+        this.getPage(props.pageId);
     }
 
-    render() {
+    getPage(id){
+        let postData = {
+        	id: id
+        };
+
+        IETool.ieAjax({
+            url: "/api/PageManage/GetPage",
+            type: 'post',
+            data: JSON.stringify(postData),
+            contentType: 'application/json',
+            dataType: 'json',
+            success: function(data){
+		        if(data.isSuccess == true)
+		        {
+		        	this.setState({
+                        name: data.value.page.name,
+                        displayName: data.value.page.displayName,
+                        description: data.value.page.description
+                    })
+		        }
+		    }.bind(this)
+        });
+    }
+
+    render() 
+    {
         return (
             <div className="page-container">
                 <div className="page-container-header">
                     <div className="input-group">
-                        <input type="text" className="form-control" placeholder="" />
+                        <input value={this.state.displayName} type="text" className="form-control" placeholder="" />
                         <div className="input-group-append">
-                            <span className="input-group-text text-white">页面显示名称</span>
+                            <span className="input-group-text text-white">显示名称</span>
                         </div>
                     </div>
                     <div className="input-group">
-                        <input type="text" className="form-control" placeholder="" />
+                        <input value={this.state.name} type="text" className="form-control" placeholder="" />
                         <div className="input-group-append">
-                            <span className="input-group-text text-white">页面名称</span>
+                            <span className="input-group-text text-white">名称</span>
+                        </div>
+                    </div>
+                    <div className="input-group">
+                        <input value={this.state.description} type="text" className="form-control" placeholder="" />
+                        <div className="input-group-append">
+                            <span className="input-group-text text-white">描述</span>
                         </div>
                     </div>
                     <div>
@@ -61,7 +100,7 @@ class PageContainer extends React.Component {
                         <a className="add-component-btn" href="javascript:void(0)"
                             onClick={
                                 () => {
-                                    if (!this.props.selectedComponent) {
+                                    if (!this.props.selectedComponent.name) {
                                         return;
                                     }
 
@@ -74,7 +113,10 @@ class PageContainer extends React.Component {
                                         timetamp = Number(new Date());
                                     }
 
-                                    let pageComponent = { sign: timetamp, name: this.props.selectedComponent };
+                                    let pageComponent = { 
+                                        sign: timetamp, 
+                                        name: this.props.selectedComponent.name,
+                                    };
 
                                     this.props.addComponent(pageComponent);
                                 }
@@ -90,15 +132,17 @@ class PageContainer extends React.Component {
 }
 
 PageContainer.propTypes = {
-    selectedComponent: PropTypes.string,
+    selectedComponent: PropTypes.isRequired,
     pageComponents: PropTypes.array,
-    addComponent: PropTypes.func.isRequired
+    page: PropTypes.object.isRequired,
+    addComponent: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
     return {
         selectedComponent: state.PageComponent.SelectedComponent,
-        pageComponents: state.PageComponent.Components
+        pageComponents: state.PageComponent.Components,
+        pageId: ownProps.pageId
     }
 }
 

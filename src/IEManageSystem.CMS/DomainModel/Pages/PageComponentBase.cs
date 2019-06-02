@@ -13,6 +13,14 @@ namespace IEManageSystem.CMS.DomainModel.Pages
 
         public string Name { get; protected set; }
 
+        public string Sign { get; set; }
+
+        public string Col { get; set; }
+
+        public string Height { get; set; }
+
+        public string Padding { get; set; }
+
         public CmsComponent CmsComponent { get; set; }
     }
 }

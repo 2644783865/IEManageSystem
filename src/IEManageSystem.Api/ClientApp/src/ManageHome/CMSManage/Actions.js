@@ -51,22 +51,6 @@ export function pagesFetch(pageIndex, pageSize, searchKey) {
   );
 }
 
-export const PageNumReceive = "PageNumReceive"
-export function pageNumFetch(searchKey) {
-  let postData = {
-    searchKey: searchKey
-  };
-
-  return createIEThunkAction(
-    "/api/PageManage/GetPageNum",
-    postData,
-    data => ({
-      type: PageNumReceive,
-      data
-    })
-  );
-}
-
 export const PageAddReceive = "PageAddReceive"
 export function pageAddFetch(resource) {
   let postData = resource;
@@ -87,10 +71,23 @@ export function pageDeleteFetch(resource) {
   };
 
   return createIEThunkAction(
-    "/api/PageManage/DeleteContentPage",
+    "/api/PageManage/DeletePage",
     postData,
     data => ({
       type: PageDeleteReceive
+    })
+  );
+}
+
+export const PageUpdateReceive = "PageUpdateReceive"
+export function pageUpdateFetch(resource) {
+  let postData = resource;
+
+  return createIEThunkAction(
+    "/api/PageManage/UpdatePage",
+    postData,
+    data => ({
+      type: PageUpdateReceive
     })
   );
 }

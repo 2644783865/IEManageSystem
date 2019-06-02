@@ -1,11 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
-import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom';
+import {CmsRedux} from 'CMSManage/CmsRedux'
 
 import Resource from 'Resource/Resource.jsx';
 
-import { pagesFetch, pageNumFetch, pageAddFetch, pageDeleteFetch } from '../Actions'
+import { pagesFetch, pageAddFetch, pageDeleteFetch, pageUpdateFetch } from '../Actions'
+
+// props.resource
+function EditComponent(props) 
+{
+	return (
+	<NavLink className="btn btn-outline-secondary" 
+		to={`/ManageHome/CMSManage/PageComponent/${props.resource.id}`}
+	>
+		<span class="oi oi-pencil" title="icon name" aria-hidden="true"></span>{" 编辑组件"}
+	</NavLink>);
+}
 
 class PageManage extends React.Component{
     constructor(props){
@@ -22,18 +33,22 @@ class PageManage extends React.Component{
 
 		this.deleteResource = this.deleteResource.bind(this);
 		this.addResource = this.addResource.bind(this);
+		this.updateResource = this.updateResource.bind(this);
     	this.freshenResources = this.freshenResources.bind(this);
     }
 
     componentDidMount(){
 		this.props.pagesFetch(this.resourceChild.pageIndex, this.resourceChild.pageSize, this.resourceChild.searchKey);
-        this.props.pageNumFetch(this.resourceChild.searchKey);
 	}
 
 	componentWillUpdate(nextProps)
 	{
 		this.resourceChild.resetResources(nextProps.pages, nextProps.pageIndex);
 		this.resourceChild.resetResourceNum(nextProps.pageNum);
+
+		if(nextProps.pagesDidInvalidate){
+			this.props.pagesFetch(this.resourceChild.pageIndex, this.resourceChild.pageSize, this.resourceChild.searchKey);
+		}
 	}
 
 	// Resource组件删除资源通知
@@ -46,10 +61,14 @@ class PageManage extends React.Component{
         this.props.pageAddFetch(resource);
 	}
 
+	// Resource组件更新资源通知
+	updateResource(resource){
+		this.props.pageUpdateFetch(resource);
+	}
+
 	// Resource组件刷新资源通知
 	freshenResources(pageIndex, pageSize, searchKey){
 		this.props.pagesFetch(pageIndex, pageSize, searchKey);
-		this.props.pageNumFetch(searchKey);
 	}
 
     // 获取资源列表
@@ -57,22 +76,19 @@ class PageManage extends React.Component{
 		this.props.pagesFetch(pageIndex, pageSize, searchKey);
 	}
 
-    // 获取资源数量
-    getResourceNum(searchKey){
-		this.props.pageNumFetch(searchKey);
-    }
-
 	render(){
         let customizeOperateBtns = [];
-        customizeOperateBtns.push(
-            <button className="btn btn-primary">
-                <span class="oi oi-pencil" title="icon name" aria-hidden="true"></span>编辑
-            </button>
-        );
-
-        let testResources = [
+        customizeOperateBtns.push(EditComponent);
+		
+		let testResources = [
             {
                 id: 1,
+                name: "TestPage",
+                displayName: "测试页面",
+                description: "这是一个测试页面"
+			},
+			{
+                id: 2,
                 name: "TestPage",
                 displayName: "测试页面",
                 description: "这是一个测试页面"
@@ -85,11 +101,12 @@ class PageManage extends React.Component{
                 title="页面管理"
                 resources={testResources}
                 // hideAdd={true}
-                hideEdit={true}
+                // hideEdit={true}
 				describes={this.describes}
 				freshenResources={this.freshenResources}
 				deleteResource={this.deleteResource}
 				addResource={this.addResource}
+				updateResource={this.updateResource}
                 setResourceRef={(ref)=>{this.resourceChild = ref}} 
                 customizeOperateBtns={customizeOperateBtns}
                 />
@@ -103,33 +120,34 @@ PageManage.propsTypes = {
 	pageNum: PropTypes.number.isRequired,
 	pageIndex: PropTypes.number.isRequired,
 	pagesFetch: PropTypes.func.isRequired,
-	pageNumFetch: PropTypes.func.isRequired,
 	pageAddFetch: PropTypes.func.isRequired,
 	pageDeleteFetch: PropTypes.func.isRequired,
+	pageUpdateFetch: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
     return {
-		pages: state.cms.page.pages,
-		pageNum: state.cms.page.pageNum,
-		pageIndex: state.cms.page.pageIndex
+		pages: state.page.pages,
+		pageNum: state.page.pageNum,
+		pageIndex: state.page.pageIndex,
+		pagesDidInvalidate: state.page.pagesDidInvalidate
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
 		pagesFetch: (pageIndex, pageSize, searchKey) => { dispatch(pagesFetch(pageIndex, pageSize, searchKey)) },
-		pageNumFetch: (searchKey) => { dispatch(pageNumFetch(searchKey)) },
 		pageAddFetch: (resource) => { dispatch(pageAddFetch(resource)) },
-		pageDeleteFetch: (resource) => { dispatch(pageDeleteFetch(resource)) }
+		pageDeleteFetch: (resource) => { dispatch(pageDeleteFetch(resource)) },
+		pageUpdateFetch: (resource) => { dispatch(pageUpdateFetch(resource)) }
     }
 }
 
-const Contain = connect(
+const Contain = CmsRedux.connect(
     mapStateToProps, // 关于state
     mapDispatchToProps,
-    undefined,
-    { pure: false }
+    // undefined,
+    // { pure: false }
 )(PageManage)
 
 export default Contain;

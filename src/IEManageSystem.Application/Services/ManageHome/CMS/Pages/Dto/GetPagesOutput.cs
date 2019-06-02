@@ -9,5 +9,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages.Dto
     public class GetPagesOutput:OutputDtoBase
     {
         public List<PageDto> Pages { get; set; }
+
+        public int PageNum { get; set; }
     }
 }
