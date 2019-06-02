@@ -108,19 +108,12 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
             }
 
             List<PageComponentDto> dtos = new List<PageComponentDto>();
-            foreach (var item in page.PageComponents) {
+            foreach (var item in page.PageComponents.Where(e => e.CompositeComponentId == null)) {
                 dtos.Add(CreatePageComponentDto(item));
             }
 
             return new GetPageComponentOutput() { PageComponents = dtos };
         }
-
-        //private PageComponentBase GetPageAndComponent(int id)
-        //{
-        //    _repository.GetAllIncluding(e => e.PageComponents).FirstOrDefault(e => e.Id == id);
-
-
-        //}
 
         private PageComponentDto CreatePageComponentDto(PageComponentBase page)
         {
@@ -142,7 +135,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
                         childs.Add(CreatePageComponentDto(item));
                     }
                 }
-
+                dto.PageComponents = childs;
                 dto.ComponentType = "CompositeComponent";
             }
             else
@@ -156,23 +149,22 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
         public UpdatePageComponentOutput UpdatePageComponent(UpdatePageComponentInput input)
         {
             var page = _repository.GetAllIncluding(e => e.PageComponents).FirstOrDefault(e => e.Id == input.Id);
+            page.PageComponents.Clear();
 
             List<PageComponentBase> pageComponents = new List<PageComponentBase>();
             foreach (var item in input.PageComponents) {
-                pageComponents.Add(CreatePageComponent(item));
+                pageComponents.Add(CreatePageComponent(item, page));
             }
-
-            page.PageComponents = pageComponents;
 
             return new UpdatePageComponentOutput();
         }
 
-        private PageComponentBase CreatePageComponent(PageComponentDto dto)
+        private PageComponentBase CreatePageComponent(PageComponentDto dto, PageBase page)
         {
             List<PageComponentBase> childPageComponents = new List<PageComponentBase>();
             if (dto.PageComponents != null) {
                 foreach (var item in dto.PageComponents) {
-                    childPageComponents.Add(CreatePageComponent(item));
+                    childPageComponents.Add(CreatePageComponent(item, page));
                 }
             }
 
@@ -193,6 +185,8 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
             pageComponent.Col = dto.Col;
             pageComponent.Height = dto.Height;
             pageComponent.Padding = dto.Padding;
+
+            page.PageComponents.Add(pageComponent);
 
             return pageComponent;
         }

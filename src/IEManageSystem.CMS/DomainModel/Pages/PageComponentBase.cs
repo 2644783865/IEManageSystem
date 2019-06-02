@@ -11,6 +11,8 @@ namespace IEManageSystem.CMS.DomainModel.Pages
             Name = name;
         }
 
+        public int? CompositeComponentId { get; protected set; }
+
         public string Name { get; protected set; }
 
         public string Sign { get; set; }
