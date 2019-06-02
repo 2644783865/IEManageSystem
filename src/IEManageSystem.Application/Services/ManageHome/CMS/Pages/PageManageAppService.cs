@@ -94,5 +94,107 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
             return new UpdatePageOutput();
         }
+
+        public GetPageComponentOutput GetPageComponent(GetPageComponentInput input)
+        {
+            var page = _repository.GetAllIncluding(e => e.PageComponents).FirstOrDefault(e => e.Id == input.Id);
+
+            if (page == null) {
+                throw new MessageException("未找到页面");
+            }
+
+            if (page.PageComponents == null) {
+                return new GetPageComponentOutput() { PageComponents = new List<PageComponentDto>() };
+            }
+
+            List<PageComponentDto> dtos = new List<PageComponentDto>();
+            foreach (var item in page.PageComponents) {
+                dtos.Add(CreatePageComponentDto(item));
+            }
+
+            return new GetPageComponentOutput() { PageComponents = dtos };
+        }
+
+        //private PageComponentBase GetPageAndComponent(int id)
+        //{
+        //    _repository.GetAllIncluding(e => e.PageComponents).FirstOrDefault(e => e.Id == id);
+
+
+        //}
+
+        private PageComponentDto CreatePageComponentDto(PageComponentBase page)
+        {
+            PageComponentDto dto = new PageComponentDto();
+
+            dto.Name = page.Name;
+            dto.Sign = page.Sign;
+            dto.Col = page.Col;
+            dto.Height = page.Height;
+            dto.Padding = page.Padding;
+
+            if (page is CompositeComponent)
+            {
+                List<PageComponentDto> childs = new List<PageComponentDto>();
+                var concrete = (CompositeComponent)page;
+
+                if (concrete.PageComponents != null) {
+                    foreach (var item in concrete.PageComponents) {
+                        childs.Add(CreatePageComponentDto(item));
+                    }
+                }
+
+                dto.ComponentType = "CompositeComponent";
+            }
+            else
+            {
+                dto.ComponentType = "ContentLeafComponent";
+            }
+
+            return dto;
+        }
+
+        public UpdatePageComponentOutput UpdatePageComponent(UpdatePageComponentInput input)
+        {
+            var page = _repository.GetAllIncluding(e => e.PageComponents).FirstOrDefault(e => e.Id == input.Id);
+
+            List<PageComponentBase> pageComponents = new List<PageComponentBase>();
+            foreach (var item in input.PageComponents) {
+                pageComponents.Add(CreatePageComponent(item));
+            }
+
+            page.PageComponents = pageComponents;
+
+            return new UpdatePageComponentOutput();
+        }
+
+        private PageComponentBase CreatePageComponent(PageComponentDto dto)
+        {
+            List<PageComponentBase> childPageComponents = new List<PageComponentBase>();
+            if (dto.PageComponents != null) {
+                foreach (var item in dto.PageComponents) {
+                    childPageComponents.Add(CreatePageComponent(item));
+                }
+            }
+
+            PageComponentBase pageComponent = null;
+
+            if (dto.ComponentType == "CompositeComponent")
+            {
+                pageComponent = new CompositeComponent(dto.Name) {
+                    PageComponents = childPageComponents
+                };
+            }
+            else
+            {
+                pageComponent = new ContentLeafComponent(dto.Name);
+            }
+
+            pageComponent.Sign = dto.Sign;
+            pageComponent.Col = dto.Col;
+            pageComponent.Height = dto.Height;
+            pageComponent.Padding = dto.Padding;
+
+            return pageComponent;
+        }
     }
 }

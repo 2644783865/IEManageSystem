@@ -6,7 +6,8 @@ import {
     PagesReceive,
     PageAddReceive,
     PageDeleteReceive,
-    PageUpdateReceive} from './Actions'
+    PageUpdateReceive,
+    PageComponentReceive} from './Actions'
 
 
 function componentOperate(state = {}, action){
@@ -32,6 +33,8 @@ function Components(state = [], action){
                 return item;
             })
             return newState
+        case PageComponentReceive:
+            return action.data.pageComponents
         default:
             return state;
     }
@@ -69,7 +72,7 @@ function page(state = {
     }
 }
 
-// PageComponent={ sign=0, name="组件名", col, height, padding, childPageComponent }
+// PageComponent={ sign=0, name="组件名", col, height, padding, pageComponents }
 export function reducer(state = {
     PageComponent:{}
 }, action)

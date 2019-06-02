@@ -91,3 +91,35 @@ export function pageUpdateFetch(resource) {
     })
   );
 }
+
+export const PageComponentReceive = "PageComponentReceive"
+export function pageComponentFetch(id){
+  let postData = {
+    id: id
+  };
+
+  return createIEThunkAction(
+    "/api/PageManage/GetPageComponent",
+    postData,
+    data => ({
+      type: PageComponentReceive,
+      data
+    })
+  );
+}
+
+export const PageComponentUpdateReceive = "PageComponentUpdateReceive"
+export function pageComponentUpdateFetch(id, components) {
+  let postData = {
+    id: id,
+    pageComponents: components
+  };
+
+  return createIEThunkAction(
+    "/api/PageManage/UpdatePageComponent",
+    postData,
+    data => ({
+      type: PageComponentUpdateReceive
+    })
+  );
+}

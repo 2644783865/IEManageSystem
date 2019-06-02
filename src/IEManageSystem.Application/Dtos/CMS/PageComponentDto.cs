@@ -8,7 +8,7 @@ namespace IEManageSystem.Dtos.CMS
     //[AutoMap()]
     public class PageComponentDto
     {
-        public string Name { get; protected set; }
+        public string Name { get; set; }
 
         public string Sign { get; set; }
 

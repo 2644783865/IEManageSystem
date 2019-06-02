@@ -18,5 +18,9 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
         DeletePageOutput DeletePage(DeletePageInput input);
 
         UpdatePageOutput UpdatePage(UpdatePageInput input);
+
+        GetPageComponentOutput GetPageComponent(GetPageComponentInput input);
+
+        UpdatePageComponentOutput UpdatePageComponent(UpdatePageComponentInput input);
     }
 }

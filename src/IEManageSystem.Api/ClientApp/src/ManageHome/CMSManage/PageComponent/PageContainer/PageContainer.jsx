@@ -7,7 +7,7 @@ import './PageContainer.css'
 
 import EditableParentCom from './EditableParentCom/EditableParentCom.jsx'
 
-import { newPageAddComponent } from '../../Actions'
+import { newPageAddComponent, pageComponentUpdateFetch, pageComponentFetch } from '../../Actions'
 
 class PageContainer extends React.Component {
     constructor(props) {
@@ -20,6 +20,10 @@ class PageContainer extends React.Component {
         }
 
         this.getPage(props.pageId);
+        
+        this.submitPage = this.submitPage.bind(this);
+
+        this.props.pageComponentFetch(props.pageId);
     }
 
     getPage(id){
@@ -44,6 +48,13 @@ class PageContainer extends React.Component {
 		        }
 		    }.bind(this)
         });
+    }
+
+    submitPage(){
+        this.props.pageComponentUpdateFetch(
+            this.props.pageId,
+            this.props.pageComponents
+        );
     }
 
     render() 
@@ -78,7 +89,9 @@ class PageContainer extends React.Component {
                                 }
                             }
                         >重新渲染</button>
-                        <button className="btn btn-info padding-left-10 padding-right-10">提交页面</button>
+                        <button className="btn btn-info padding-left-10 padding-right-10"
+                            onClick={this.submitPage}
+                        >提交页面</button>
                     </div>
                 </div>
                 <div className="page-container-header-hidebtn">
@@ -113,9 +126,18 @@ class PageContainer extends React.Component {
                                         timetamp = Number(new Date());
                                     }
 
+                                    let componentType = "";
+                                    if(this.props.selectedComponent.component.isBaseContainerComponent){
+                                        componentType = "CompositeComponent";
+                                    }
+                                    else{
+                                        componentType = "ContentLeafComponent"
+                                    }
+
                                     let pageComponent = { 
                                         sign: timetamp, 
                                         name: this.props.selectedComponent.name,
+                                        componentType: componentType
                                     };
 
                                     this.props.addComponent(pageComponent);
@@ -134,8 +156,10 @@ class PageContainer extends React.Component {
 PageContainer.propTypes = {
     selectedComponent: PropTypes.isRequired,
     pageComponents: PropTypes.array,
-    page: PropTypes.object.isRequired,
+    pageId: PropTypes.object.isRequired,
     addComponent: PropTypes.func.isRequired,
+    pageComponentUpdateFetch: PropTypes.func.isRequired,
+    pageComponentFetch: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
@@ -150,6 +174,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         addComponent: (pageComponent) => {
             dispatch(newPageAddComponent(pageComponent));
+        },
+        pageComponentUpdateFetch: (id, components) => {
+            dispatch(pageComponentUpdateFetch(id, components));
+        },
+        pageComponentFetch:(id) => {
+            dispatch(pageComponentFetch(id));
         }
     }
 }
