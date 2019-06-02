@@ -220,7 +220,7 @@ namespace IEManageSystem.Migrations
 
                     b.Property<string>("Padding");
 
-                    b.Property<int?>("PageBaseId");
+                    b.Property<int>("PageId");
 
                     b.Property<string>("Sign");
 
@@ -230,7 +230,7 @@ namespace IEManageSystem.Migrations
 
                     b.HasIndex("CompositeComponentId");
 
-                    b.HasIndex("PageBaseId");
+                    b.HasIndex("PageId");
 
                     b.ToTable("PageComponentBase");
 
@@ -541,9 +541,10 @@ namespace IEManageSystem.Migrations
                         .WithMany("PageComponents")
                         .HasForeignKey("CompositeComponentId");
 
-                    b.HasOne("IEManageSystem.CMS.DomainModel.Pages.PageBase")
+                    b.HasOne("IEManageSystem.CMS.DomainModel.Pages.PageBase", "Page")
                         .WithMany("PageComponents")
-                        .HasForeignKey("PageBaseId");
+                        .HasForeignKey("PageId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Pages.PageData", b =>

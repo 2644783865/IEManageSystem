@@ -1,6 +1,7 @@
 ﻿using Abp.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace IEManageSystem.CMS.DomainModel.Pages
@@ -24,5 +25,10 @@ namespace IEManageSystem.CMS.DomainModel.Pages
         public string Padding { get; set; }
 
         public CmsComponent CmsComponent { get; set; }
+
+        public PageBase Page { get; set; }
+
+        [ForeignKey("Page")]
+        public int PageId { get; set; }
     }
 }
