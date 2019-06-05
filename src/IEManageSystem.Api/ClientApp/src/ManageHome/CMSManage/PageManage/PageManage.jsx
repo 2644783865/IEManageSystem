@@ -71,11 +71,6 @@ class PageManage extends React.Component{
 		this.props.pagesFetch(pageIndex, pageSize, searchKey);
 	}
 
-    // 获取资源列表
-	getResourceList(pageIndex, pageSize, searchKey){
-		this.props.pagesFetch(pageIndex, pageSize, searchKey);
-	}
-
 	render(){
         let customizeOperateBtns = [];
         customizeOperateBtns.push(EditComponent);

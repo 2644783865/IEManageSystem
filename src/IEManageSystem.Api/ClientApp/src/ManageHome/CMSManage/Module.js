@@ -40,13 +40,9 @@ class Module extends BaseModule {
                                 url: "/ManageHome/CMSManage/PageManage"
                             },
                             {
-                                id: "PageComponent",
-                                text: "页面组件",
-                                url: "/ManageHome/CMSManage/PageComponent",
-                                accessScope:
-                                    [
-                                        { scopeName: ApiScope.CMSManage.Page, scopeNodeType: ApiScopeNodeType.manage },
-                                    ]
+                                id: "PageData",
+                                text: "页面数据",
+                                url: "/ManageHome/CMSManage/PageData"
                             }
                         ],
                         accessScope:

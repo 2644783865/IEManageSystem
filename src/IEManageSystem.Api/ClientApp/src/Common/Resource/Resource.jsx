@@ -31,6 +31,7 @@ export default class Resource extends React.Component {
 	// props.deleteResource()  删除数据接口
 	// props.setResourceRef()  设置当前组件的引用
 	// props.customizeOperateBtns	自定义操作按钮组件
+	// props.customizeBottomOperateBtns	自定义底部操作按钮组件
 	// props.hideAdd = false
 	// props.hideEdit = false
 	// props.hideDelete = false
@@ -173,7 +174,8 @@ export default class Resource extends React.Component {
 			hidePadding={this.props.hidePadding}
 			pageNum={this.state.pageNum}
 			pageIndex={this.pageIndex}
-			pageIndexChange={this._pageIndexChange} />;
+			pageIndexChange={this._pageIndexChange}
+			customizeBottomOperateBtns={this.props.customizeBottomOperateBtns} />;
 
 		return (
 			<div className="w-100 h-100 d-flex flex-column">
