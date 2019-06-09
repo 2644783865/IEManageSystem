@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { CmsRedux } from '../../CmsRedux'
+import { CmsRedux } from 'CMSManage/CmsRedux'
 
 import './PageContainer.css'
 
-import EditableParentCom from './EditableParentCom/EditableParentCom.jsx'
+import EditableParentCom from 'CMSManage/Component/ParentComponent/EditableParentCom/EditableParentCom.jsx'
 
-import { newPageAddComponent, pageComponentUpdateFetch, pageComponentFetch } from '../../Actions'
+import { newPageAddComponent, pageComponentUpdateFetch, pageComponentFetch } from 'CMSManage/Actions'
 
 class PageContainer extends React.Component {
     constructor(props) {

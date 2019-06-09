@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux'
 
 import Tab from 'Tab/Tab.jsx'
-
-import { newPageEditComponent } from '../../../Actions'
 
 class EditFrame extends React.Component 
 {

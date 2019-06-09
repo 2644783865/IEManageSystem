@@ -9,7 +9,9 @@ import EditFrame from './EditFrame.jsx'
 import ComponentFactory from '../../Components/ComponentFactory'
 import { newPageRemoveComponent, newPageEditComponent } from '../../../Actions'
 
-class EditableParentCom extends React.Component {
+import BaseParentComponent from '../BaseParentComponent.jsx'
+
+class EditableParentCom extends BaseParentComponent {
     constructor(props) {
         super(props);
 
@@ -17,7 +19,6 @@ class EditableParentCom extends React.Component {
             openEdit: false
         }
 
-        this.createChildrenComponent = this.createChildrenComponent.bind(this);
         this.removeComponent = this.removeComponent.bind(this);
         this.editComponent = this.editComponent.bind(this);
         this.removeChildComponent = this.removeChildComponent.bind(this);
@@ -29,7 +30,9 @@ class EditableParentCom extends React.Component {
         this.state.openEdit = false;
     }
 
-    createChildrenComponent(pageComponent) {
+    createChildrenComponent() {
+        let pageComponent = this.props.pageComponent;
+
         let component = new ComponentFactory().getComponentForName(pageComponent.name);
         let childrens = null;
 
@@ -106,35 +109,22 @@ class EditableParentCom extends React.Component {
         this.editComponent(this.props.pageComponent);
     }
 
-    render() {
-        let pageComponent = this.props.pageComponent;
+    getTools()
+    {
+        let component = new ComponentFactory().getComponentForName(this.props.pageComponent.name);
 
-        this.style =
-            {
-                minHeight: "9rem",
-                padding: "0.33rem"
-            }
-
-        if (this.props.pageComponent.height) {
-            this.style.height = `${this.props.pageComponent.height}rem`;
+        let tools = [];
+        if(this.state.openEdit){
+            tools.push(<EditFrame 
+                pageComponent={this.props.pageComponent} 
+                editComponent={this.editComponent}
+            ></EditFrame>);
         }
-
-        if (this.props.pageComponent.padding) {
-            this.style.padding = `${this.props.pageComponent.padding}rem`;
-        }
-
-        let component = new ComponentFactory().getComponentForName(pageComponent.name);
-
-        return (
-            <div style={this.style} className={`editableparentcom col-md-${pageComponent.col || 12}`}>
-                <div className="w-100">
-                    {this.createChildrenComponent(pageComponent)}
-                </div>
-                {this.state.openEdit && <EditFrame pageComponent={pageComponent} editComponent={this.editComponent}></EditFrame>}
-                <div className="editableparentcom-btns">
+        tools.push(
+            <div className="editableparentcom-btns">
                     <button type="button" class="btn btn-danger btn-sm"
                         onClick={
-                            () => { this.removeComponent(pageComponent) }
+                            () => { this.removeComponent(this.props.pageComponent) }
                         }
                     >
                         <span class="oi oi-trash" title="icon name" aria-hidden="true"></span>
@@ -156,6 +146,19 @@ class EditableParentCom extends React.Component {
                             <span class="oi oi-plus" title="icon name" aria-hidden="true"></span>
                         </button>}
                 </div>
+        );
+
+        return tools;
+    }
+
+    render() 
+    {
+        return (
+            <div style={this.getStyle()} className={`editableparentcom ${this.getClassName()}`}>
+                <div className="w-100">
+                    {this.createChildrenComponent()}
+                </div>
+                {this.getTools()}
             </div>
         );
     }

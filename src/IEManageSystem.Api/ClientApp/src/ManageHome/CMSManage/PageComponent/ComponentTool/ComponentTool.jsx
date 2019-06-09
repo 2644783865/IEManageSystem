@@ -1,14 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { newPageSelectComponent } from '../../Actions'
-import { CmsRedux } from '../../CmsRedux'
+import { newPageSelectComponent } from 'CMSManage/Actions'
+import { CmsRedux } from 'CMSManage/CmsRedux'
 
 import './ComponentTool.css'
 
 import ComponentFrame from './ComponentFrame.jsx'
-
-import ComponentFactory from '../Components/ComponentFactory'
+import ComponentFactory from 'CMSManage/Component/Components/ComponentFactory'
 
 class ComponentTool extends React.Component{
     render(){
