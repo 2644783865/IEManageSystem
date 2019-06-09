@@ -210,3 +210,22 @@ export function componentDatasFetch(pageId, pageDataId){
     })
   );
 }
+
+export const ComponentDataUpdateReceive = "ComponentDataUpdateReceive"
+export function componentDataUpdateFetch(pageId, pageDataId, componentDatas)
+{
+  let postData = {
+    pageId: pageId,
+    pageDataId: pageDataId,
+    componentDatas: componentDatas
+  };
+
+  return createIEThunkAction(
+    "/api/PageManage/UpdateComponentData",
+    postData,
+    data => ({
+      type: ComponentDataUpdateReceive,
+      data
+    })
+  );
+}

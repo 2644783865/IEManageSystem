@@ -241,7 +241,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
             Expression<Func<PageBase, object>>[] propertySelectors = new Expression<Func<PageBase, object>>[]
             {
                 e=>e.PageDatas,
-                e=>e.PageComponents
+                e=>e.PageDatas.SelectMany(ie=>ie.ContentComponentDatas)
             };
             var page = _repository.GetAllIncluding(propertySelectors).FirstOrDefault(e => e.Id == input.PageId);
 
@@ -251,6 +251,35 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
             {
                 ComponentDatas = AutoMapper.Mapper.Map<List<ContentComponentDataDto>>(pageData.ContentComponentDatas)
             };
+        }
+
+        public UpdateComponentDataOutput UpdateComponentData(UpdateComponentDataInput input)
+        {
+            Expression<Func<PageBase, object>>[] propertySelectors = new Expression<Func<PageBase, object>>[]
+            {
+                e=>e.PageDatas,
+                e=>e.PageDatas.SelectMany(ie=>ie.ContentComponentDatas)
+            };
+            var page = _repository.GetAllIncluding(propertySelectors).FirstOrDefault(e => e.Id == input.PageId);
+
+            var pageData = page.PageDatas.FirstOrDefault(e => e.Id == input.PageDataId);
+
+            List<ContentComponentData> contentComponentDatas = new List<ContentComponentData>();
+            foreach (var item in input.ComponentDatas)
+            {
+                contentComponentDatas.Add(new ContentComponentData() {
+                    Sign = item.Sign,
+                    Field1 = item.Field1,
+                    Field2 = item.Field2,
+                    Field3 = item.Field3,
+                    Field4 = item.Field4,
+                    Field5 = item.Field5,
+                });
+            }
+
+            pageData.ContentComponentDatas = contentComponentDatas;
+
+            return new UpdateComponentDataOutput();
         }
     }
 }

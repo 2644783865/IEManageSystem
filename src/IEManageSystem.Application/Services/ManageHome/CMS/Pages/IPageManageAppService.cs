@@ -32,5 +32,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
         DeletePageDataOutput DeletePageData(DeletePageDataInput input);
 
         GetComponentDataOutput GetComponentDatas(GetComponentDataInput input);
+
+        UpdateComponentDataOutput UpdateComponentData(UpdateComponentDataInput input);
     }
 }

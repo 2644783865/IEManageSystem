@@ -4,14 +4,16 @@ using IEManageSystem.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace IEManageSystem.Migrations
 {
     [DbContext(typeof(IEManageSystemDbContext))]
-    partial class IEManageSystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190609132322_update_ContentComponentData")]
+    partial class update_ContentComponentData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -176,8 +178,6 @@ namespace IEManageSystem.Migrations
                     b.Property<string>("Field5");
 
                     b.Property<int?>("PageDataId");
-
-                    b.Property<string>("Sign");
 
                     b.HasKey("Id");
 

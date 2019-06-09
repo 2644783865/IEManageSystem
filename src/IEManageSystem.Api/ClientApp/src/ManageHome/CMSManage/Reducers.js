@@ -12,7 +12,8 @@ import {
     PageDataAddReceive,
     PageDataUpdateReceive,
     PageDataDeleteReceive,
-    ComponentDatasReceive} from './Actions'
+    ComponentDatasReceive,
+    ComponentDataUpdateReceive} from './Actions'
 
 
 function componentOperate(state = {}, action){
@@ -118,6 +119,10 @@ function componentData(state = {
             return {...state, ...{
                 componentDatas: action.data.componentDatas,
                 componentDatasDidInvalidate: false
+            }}
+        case ComponentDataUpdateReceive:
+            return {...state, ...{
+                componentDatasDidInvalidate: true
             }}
         default:
             return state;
