@@ -5703,3 +5703,855 @@ FROM [PersistedGrants] AS [x]
 WHERE [x].[Expiration] < GETUTCDATE()
 ORDER BY [x].[Key]
 INFO  2019-06-08 17:06:43,357 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+DEBUG 2019-06-09 17:23:53,851 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-06-09 17:23:53,982 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-06-09 17:23:53,992 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.Api.Startup.IEManageSystemApiModule, IEManageSystem.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-09 17:23:53,994 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IEManageSystemApplicationModule, IEManageSystem.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-09 17:23:53,995 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IEManageSystemCoreModule, IEManageSystem.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-09 17:23:53,995 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IdentityServer.IEIdentityServerModule, IEManageSystem.IdentityServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-09 17:23:53,995 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-09 17:23:53,995 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-09 17:23:53,996 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.ApiAuthorization.IEApiAuthorizationModule, IEManageSystem.ApiAuthorization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-09 17:23:53,996 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.JwtAuthentication.IEJwtAuthenticationModule, IEManageSystem.JwtAuthentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-09 17:23:53,996 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.CMS.IEManageSystemCMSModule, IEManageSystem.CMS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-09 17:23:53,996 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.EntityFrameworkCore.IEManageSystemEntityFrameworkCoreModule, IEManageSystem.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-09 17:23:53,996 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-09 17:23:53,996 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-09 17:23:53,997 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IdentityServerEF.IEIdentityServerEFModule, IEManageSystem.IdentityServerEF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-09 17:23:53,997 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-09 17:23:53,997 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-09 17:23:53,999 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-06-09 17:23:54,452 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: IEManageSystem.EntityFrameworkCore.IEManageSystemDbContext, IEManageSystem.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-09 17:23:54,586 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2019-06-09 17:23:54,700 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-06-09 17:23:54,732 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: IEManageSystem
+DEBUG 2019-06-09 17:23:54,775 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-06-09 17:23:55,184 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-06-09 17:24:06,435 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 19 classes define auto mapping attributes
+DEBUG 2019-06-09 17:24:06,435 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ApiResourceClaimDto
+DEBUG 2019-06-09 17:24:06,439 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ApiResourceDto
+DEBUG 2019-06-09 17:24:06,439 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ClientDto
+DEBUG 2019-06-09 17:24:06,439 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ClientGrantTypeDto
+DEBUG 2019-06-09 17:24:06,439 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ClientPostLogoutRedirectUriDto
+DEBUG 2019-06-09 17:24:06,439 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ClientRedirectUriDto
+DEBUG 2019-06-09 17:24:06,440 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ClientScopeDto
+DEBUG 2019-06-09 17:24:06,440 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ClientSecretDto
+DEBUG 2019-06-09 17:24:06,440 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.IdentityClaimDto
+DEBUG 2019-06-09 17:24:06,440 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.IdentityResourceDto
+DEBUG 2019-06-09 17:24:06,440 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.Core.PermissionDto
+DEBUG 2019-06-09 17:24:06,440 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.Core.RoleDto
+DEBUG 2019-06-09 17:24:06,440 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.Core.Users.AccountDto
+DEBUG 2019-06-09 17:24:06,440 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.Core.Users.SafetyProblemDto
+DEBUG 2019-06-09 17:24:06,440 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.Core.Users.UserDto
+DEBUG 2019-06-09 17:24:06,440 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.CMS.ContentComponentDataDto
+DEBUG 2019-06-09 17:24:06,440 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.CMS.PageDataDto
+DEBUG 2019-06-09 17:24:06,440 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.CMS.PageDto
+DEBUG 2019-06-09 17:24:06,440 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.ApiAuthorization.ApiScopeDto
+INFO  2019-06-09 17:24:07,776 [1    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:24:07,852 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (57ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+INFO  2019-06-09 17:24:07,856 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+INFO  2019-06-09 17:24:07,864 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+INFO  2019-06-09 17:24:07,881 [1    ] Microsoft.EntityFrameworkCore.Migrations - No migrations were applied. The database is already up to date.
+INFO  2019-06-09 17:24:08,021 [1    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'ConfigurationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:24:08,037 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+INFO  2019-06-09 17:24:08,044 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+INFO  2019-06-09 17:24:08,058 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+INFO  2019-06-09 17:24:08,062 [1    ] Microsoft.EntityFrameworkCore.Migrations - No migrations were applied. The database is already up to date.
+INFO  2019-06-09 17:24:08,101 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (22ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Clients] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+INFO  2019-06-09 17:24:08,118 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [IdentityResources] AS [i])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+INFO  2019-06-09 17:24:08,137 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ApiResources] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+DEBUG 2019-06-09 17:24:08,194 [1    ] IdentityServer4.Startup                  - Using Bearer as default scheme for authentication
+DEBUG 2019-06-09 17:24:08,196 [1    ] IdentityServer4.Startup                  - Using idsrv as default scheme for sign-in
+DEBUG 2019-06-09 17:24:08,198 [1    ] IdentityServer4.Startup                  - Using idsrv as default scheme for sign-out
+DEBUG 2019-06-09 17:24:08,200 [1    ] IdentityServer4.Startup                  - Using Bearer as default scheme for challenge
+DEBUG 2019-06-09 17:24:08,202 [1    ] IdentityServer4.Startup                  - Using Bearer as default scheme for forbid
+DEBUG 2019-06-09 17:24:08,735 [1    ] tityServer4.EntityFramework.TokenCleanup - Starting token cleanup
+INFO  2019-06-09 17:24:09,176 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2019-06-09 17:24:09,181 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
+WARN  2019-06-09 17:24:09,347 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2019-06-09 17:24:09,367 [10   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+INFO  2019-06-09 17:24:09,374 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 200.2175ms 200 
+WARN  2019-06-09 17:24:09,405 [10   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:09,407 [10   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:09,638 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/index.html'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\index.html'
+INFO  2019-06-09 17:24:09,645 [4    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/home.bundle.js  
+WARN  2019-06-09 17:24:09,652 [4    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:09,656 [4    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:09,671 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 506.9691ms 200 text/html
+INFO  2019-06-09 17:24:09,793 [4    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/home.bundle.js'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\home.bundle.js'
+INFO  2019-06-09 17:24:09,799 [4    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 150.1126ms 200 application/javascript
+INFO  2019-06-09 17:24:10,162 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/Menu/GetMenus application/json 2
+WARN  2019-06-09 17:24:10,167 [10   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:10,171 [10   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:10,192 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/fonts/3cf97837524dd7445e9d1462e3c4afe2.woff  
+WARN  2019-06-09 17:24:10,206 [11   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:10,242 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/97ac31b8fc52e9e7187109e47b105cad.png  
+WARN  2019-06-09 17:24:10,250 [11   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:10,254 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:10,256 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/5dfddd62b20673f22e7356e07b288bcd.png  
+INFO  2019-06-09 17:24:10,265 [11   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/fonts/3cf97837524dd7445e9d1462e3c4afe2.woff'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\fonts\3cf97837524dd7445e9d1462e3c4afe2.woff'
+WARN  2019-06-09 17:24:10,272 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:10,277 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 77.672ms 200 application/font-woff
+WARN  2019-06-09 17:24:10,278 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:10,295 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:10,459 [11   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/5dfddd62b20673f22e7356e07b288bcd.png'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\5dfddd62b20673f22e7356e07b288bcd.png'
+INFO  2019-06-09 17:24:10,472 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/97ac31b8fc52e9e7187109e47b105cad.png'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\97ac31b8fc52e9e7187109e47b105cad.png'
+INFO  2019-06-09 17:24:10,487 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 213.4618ms 200 image/png
+INFO  2019-06-09 17:24:10,492 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 281.8137ms 200 image/png
+INFO  2019-06-09 17:24:10,500 [10   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-09 17:24:10,610 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/favicon.ico  
+WARN  2019-06-09 17:24:10,613 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:10,616 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:11,148 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 535.5345ms 404 
+INFO  2019-06-09 17:24:11,245 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetMenus", controller = "Menu"}. Executing action IEManageSystem.Services.Home.Menus.MenuAppService.GetMenus (IEManageSystem.Application)
+INFO  2019-06-09 17:24:11,726 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.Home.Menus.MenuAppService.GetMenus (IEManageSystem.Application) with arguments (IEManageSystem.Services.Home.Menus.Dto.GetMenusInput) - Validation state: Valid
+INFO  2019-06-09 17:24:11,754 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.Home.Menus.MenuAppService.GetMenus (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 25.1747ms.
+INFO  2019-06-09 17:24:11,774 [10   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.Home.Menus.MenuAppService.GetMenus is executed by user 1 in 61 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:24:11,810 [10   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:24:11,851 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.Home.Menus.MenuAppService.GetMenus (IEManageSystem.Application) in 599.6554ms
+INFO  2019-06-09 17:24:11,861 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1699.8085ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:24:33,214 [4    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/favicon.ico  
+WARN  2019-06-09 17:24:33,216 [4    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:33,218 [4    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:33,220 [4    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 8.4163ms 404 
+INFO  2019-06-09 17:24:34,205 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/ManageHome/  
+WARN  2019-06-09 17:24:34,208 [10   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:34,210 [10   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:34,216 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/ManageHome/Index.html'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\ManageHome\Index.html'
+INFO  2019-06-09 17:24:34,219 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 13.0804ms 200 text/html
+INFO  2019-06-09 17:24:34,231 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/adminiHome.bundle.js  
+WARN  2019-06-09 17:24:34,233 [10   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:34,238 [10   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:34,864 [4    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/adminiHome.bundle.js'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\adminiHome.bundle.js'
+INFO  2019-06-09 17:24:34,869 [4    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 635.7572ms 200 application/javascript
+INFO  2019-06-09 17:24:35,518 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserScopeAccessAuthorities application/json 2
+WARN  2019-06-09 17:24:35,520 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:35,522 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:35,526 [7    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-09 17:24:35,546 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetUserScopeAccessAuthorities", controller = "User", area = ""}. Executing action IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api)
+INFO  2019-06-09 17:24:35,593 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api) with arguments (IEManageSystem.Api.Controllers.Users.Dto.GetUserScopeAccessAuthoritiesInput) - Validation state: Valid
+INFO  2019-06-09 17:24:36,019 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 424.4036ms.
+INFO  2019-06-09 17:24:36,035 [7    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities is executed by user 1 in 445 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:24:36,039 [7    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:24:36,054 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api) in 505.0816ms
+INFO  2019-06-09 17:24:36,058 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 539.0195ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:24:36,076 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserInfo application/json 2
+WARN  2019-06-09 17:24:36,079 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:36,081 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:36,083 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/5dfddd62b20673f22e7356e07b288bcd.png  
+WARN  2019-06-09 17:24:36,086 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:36,087 [6    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-06-09 17:24:36,090 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:36,094 [7    ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/images/5dfddd62b20673f22e7356e07b288bcd.png was not modified
+INFO  2019-06-09 17:24:36,097 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserInfo application/json 2
+WARN  2019-06-09 17:24:36,099 [10   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:36,103 [10   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:36,105 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 20.3417ms 304 image/png
+INFO  2019-06-09 17:24:36,108 [10   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-09 17:24:36,111 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUserInfo", controller = "User"}. Executing action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application)
+INFO  2019-06-09 17:24:36,116 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUserInfo", controller = "User"}. Executing action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application)
+INFO  2019-06-09 17:24:36,147 [10   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-06-09 17:24:36,149 [6    ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-06-09 17:24:36,154 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) with arguments (IEManageSystem.Services.Users.Dto.GetUserInfoInput) - Validation state: Valid
+INFO  2019-06-09 17:24:36,157 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) with arguments (IEManageSystem.Services.Users.Dto.GetUserInfoInput) - Validation state: Valid
+INFO  2019-06-09 17:24:36,187 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/231ab726f5f19d7437869e17c11b6ed7.JPEG  
+WARN  2019-06-09 17:24:36,190 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:36,194 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:36,236 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/fonts/3cf97837524dd7445e9d1462e3c4afe2.woff  
+INFO  2019-06-09 17:24:36,239 [15   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/231ab726f5f19d7437869e17c11b6ed7.JPEG'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\231ab726f5f19d7437869e17c11b6ed7.JPEG'
+INFO  2019-06-09 17:24:36,246 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 54.6538ms 200 image/jpeg
+WARN  2019-06-09 17:24:36,247 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:36,252 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:36,266 [7    ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/fonts/3cf97837524dd7445e9d1462e3c4afe2.woff was not modified
+INFO  2019-06-09 17:24:36,288 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 65.5651ms 304 application/font-woff
+INFO  2019-06-09 17:24:36,398 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 240.1362ms.
+INFO  2019-06-09 17:24:36,399 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 237.2342ms.
+INFO  2019-06-09 17:24:36,425 [10   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.Users.UserAppService.GetUserInfo is executed by user 1 in 272 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:24:36,425 [6    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.Users.UserAppService.GetUserInfo is executed by user 1 in 274 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:24:36,427 [10   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:24:36,430 [6    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:24:36,451 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) in 327.3852ms
+INFO  2019-06-09 17:24:36,459 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) in 332.8372ms
+INFO  2019-06-09 17:24:36,463 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 356.8526ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:24:36,518 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 388.625ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:24:36,526 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/a5e81f19cf2c587876fd1bb08ae0249f.png  
+WARN  2019-06-09 17:24:36,547 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:36,550 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:36,555 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/a5e81f19cf2c587876fd1bb08ae0249f.png'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\a5e81f19cf2c587876fd1bb08ae0249f.png'
+INFO  2019-06-09 17:24:36,558 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 36.7144ms 200 image/png
+INFO  2019-06-09 17:24:36,818 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/c9682b735f190eb9d071ed3d090723ec.svg  
+WARN  2019-06-09 17:24:36,822 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:36,827 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:36,833 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/c9682b735f190eb9d071ed3d090723ec.svg'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\c9682b735f190eb9d071ed3d090723ec.svg'
+INFO  2019-06-09 17:24:36,837 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 17.9046ms 200 image/svg+xml
+INFO  2019-06-09 17:24:38,749 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:24:38,784 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:24:38,789 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:24:43,761 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPages application/json 44
+WARN  2019-06-09 17:24:43,769 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:43,771 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:43,795 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPages", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application)
+INFO  2019-06-09 17:24:44,195 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPagesInput) - Validation state: Valid
+INFO  2019-06-09 17:24:44,235 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 32.8846ms.
+INFO  2019-06-09 17:24:44,240 [6    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages is executed by an anonymous user in 48 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:24:44,244 [6    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:24:44,253 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application) in 451.7908ms
+INFO  2019-06-09 17:24:44,256 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 496.0077ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:24:47,574 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPage application/json 10
+INFO  2019-06-09 17:24:47,576 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPageComponent application/json 10
+WARN  2019-06-09 17:24:47,582 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:47,583 [16   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:47,589 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:47,590 [16   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:47,602 [6    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-09 17:24:47,604 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPageComponent", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application)
+INFO  2019-06-09 17:24:47,608 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPage", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPage (IEManageSystem.Application)
+INFO  2019-06-09 17:24:47,616 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPage (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPageInput) - Validation state: Valid
+INFO  2019-06-09 17:24:47,619 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPageComponentInput) - Validation state: Valid
+INFO  2019-06-09 17:24:47,639 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPage (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 19.2477ms.
+INFO  2019-06-09 17:24:47,640 [6    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPage is executed by user 1 in 28 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:24:47,642 [6    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:24:47,646 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPage (IEManageSystem.Application) in 35.2225ms
+INFO  2019-06-09 17:24:47,655 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 76.7062ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:24:47,724 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 102.667ms.
+INFO  2019-06-09 17:24:47,735 [16   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent is executed by an anonymous user in 124 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:24:47,738 [16   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:24:47,748 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application) in 140.1271ms
+INFO  2019-06-09 17:24:47,763 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 176.5598ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:24:47,795 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/f7f3ce3fd039702a3b46fcbcff155466.jpg  
+INFO  2019-06-09 17:24:47,834 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/d73dd0b67391a113150eb5661f8ff00d.jpg  
+INFO  2019-06-09 17:24:47,837 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/79a9052d0abb7d5cbc8c123cc5dfece5.jpg  
+WARN  2019-06-09 17:24:47,841 [16   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:47,845 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:47,847 [10   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:47,850 [16   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:47,852 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:47,854 [10   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:47,860 [15   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/f7f3ce3fd039702a3b46fcbcff155466.jpg'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\f7f3ce3fd039702a3b46fcbcff155466.jpg'
+INFO  2019-06-09 17:24:47,863 [25   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/d73dd0b67391a113150eb5661f8ff00d.jpg'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\d73dd0b67391a113150eb5661f8ff00d.jpg'
+INFO  2019-06-09 17:24:47,894 [22   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/79a9052d0abb7d5cbc8c123cc5dfece5.jpg'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\79a9052d0abb7d5cbc8c123cc5dfece5.jpg'
+INFO  2019-06-09 17:24:47,901 [22   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 100.5921ms 200 image/jpeg
+INFO  2019-06-09 17:24:47,904 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 109.2692ms 200 image/jpeg
+INFO  2019-06-09 17:24:47,906 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 109.2842ms 200 image/jpeg
+INFO  2019-06-09 17:24:52,708 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPages application/json 44
+WARN  2019-06-09 17:24:52,721 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:52,724 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:52,730 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPages", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application)
+INFO  2019-06-09 17:24:52,734 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPagesInput) - Validation state: Valid
+INFO  2019-06-09 17:24:52,741 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 4.4522ms.
+INFO  2019-06-09 17:24:52,742 [7    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages is executed by an anonymous user in 10 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:24:52,745 [7    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:24:52,748 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application) in 14.0083ms
+INFO  2019-06-09 17:24:52,752 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 42.8423ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:24:54,230 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPageDatas application/json 57
+WARN  2019-06-09 17:24:54,234 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:54,236 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:54,245 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPageDatas", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application)
+INFO  2019-06-09 17:24:54,256 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPageDatasInput) - Validation state: Valid
+INFO  2019-06-09 17:24:54,296 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 38.127ms.
+INFO  2019-06-09 17:24:54,302 [6    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas is executed by an anonymous user in 50 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:24:54,305 [6    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:24:54,313 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application) in 63.8825ms
+INFO  2019-06-09 17:24:54,317 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 85.8181ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:24:56,410 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPage application/json 10
+INFO  2019-06-09 17:24:56,415 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPageComponent application/json 10
+WARN  2019-06-09 17:24:56,423 [26   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:56,427 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:56,433 [26   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:24:56,437 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:24:56,442 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPageComponent", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application)
+INFO  2019-06-09 17:24:56,447 [6    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-09 17:24:56,452 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPageComponentInput) - Validation state: Valid
+INFO  2019-06-09 17:24:56,480 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPage", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPage (IEManageSystem.Application)
+INFO  2019-06-09 17:24:56,486 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPage (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPageInput) - Validation state: Valid
+INFO  2019-06-09 17:24:56,561 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 31.5622ms.
+INFO  2019-06-09 17:24:56,568 [26   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent is executed by an anonymous user in 120 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:24:56,571 [26   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:24:56,577 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application) in 129.4476ms
+INFO  2019-06-09 17:24:56,583 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPage (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 14.9045ms.
+INFO  2019-06-09 17:24:56,585 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 169.2787ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:24:56,587 [6    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPage is executed by user 1 in 104 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:24:56,592 [6    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:24:56,597 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPage (IEManageSystem.Application) in 111.0922ms
+INFO  2019-06-09 17:24:56,600 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 191.8203ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:25:01,746 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPageDatas application/json 57
+WARN  2019-06-09 17:25:01,748 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:25:01,750 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:25:01,754 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPageDatas", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application)
+INFO  2019-06-09 17:25:01,759 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPageDatasInput) - Validation state: Valid
+INFO  2019-06-09 17:25:01,764 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2.2687ms.
+INFO  2019-06-09 17:25:01,765 [7    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas is executed by an anonymous user in 9 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:25:01,767 [7    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:25:01,770 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application) in 13.1915ms
+INFO  2019-06-09 17:25:01,783 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 26.6415ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:25:08,795 [7    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:25:08,799 [7    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:25:08,801 [7    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:25:38,814 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:25:38,816 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:25:38,818 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:26:08,827 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:26:08,831 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:26:08,834 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:26:38,837 [7    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:26:38,840 [7    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:26:38,842 [7    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:27:08,857 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:27:08,859 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:27:08,861 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:27:38,873 [17   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:27:38,876 [17   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:27:38,878 [17   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:28:08,885 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:28:08,888 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:28:08,890 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:28:38,904 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:28:38,907 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:28:38,909 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:29:08,917 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:29:08,920 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:29:08,922 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:29:38,934 [38   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:29:38,937 [38   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:29:38,938 [38   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:30:08,949 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:30:08,951 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:30:08,953 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:30:38,968 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:30:38,971 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:30:38,973 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:31:08,987 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:31:08,989 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:31:08,991 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:31:38,999 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:31:39,001 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:31:39,003 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:32:09,016 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:32:09,019 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:32:09,020 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:32:39,037 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:32:39,040 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:32:39,043 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:33:09,057 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:33:09,060 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:33:09,062 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:33:39,076 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:33:39,078 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:33:39,080 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:34:09,093 [30   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:34:09,096 [30   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:34:09,097 [30   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:34:39,158 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:34:39,165 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:34:39,168 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:35:09,174 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:35:09,243 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (66ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:35:09,246 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:35:39,259 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:35:39,262 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:35:39,264 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:36:09,276 [42   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:36:09,279 [42   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:36:09,282 [42   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:36:39,293 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:36:39,295 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:36:39,297 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:37:09,312 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:37:09,316 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:37:09,320 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:37:39,322 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:37:39,325 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:37:39,327 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:38:09,344 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:38:09,351 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:38:09,354 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:38:39,368 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:38:39,370 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:38:39,372 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:39:09,376 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:39:09,381 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:39:09,385 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:39:36,299 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/ManageHome/CMSManage/PageData/1  
+WARN  2019-06-09 17:39:36,301 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:39:36,304 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:39:36,314 [49   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/ManageHome/Index.html'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\ManageHome\Index.html'
+INFO  2019-06-09 17:39:36,316 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 17.1264ms 200 text/html
+INFO  2019-06-09 17:39:36,340 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/adminiHome.bundle.js  
+WARN  2019-06-09 17:39:36,343 [52   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:39:36,345 [52   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:39:36,885 [50   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/adminiHome.bundle.js'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\adminiHome.bundle.js'
+INFO  2019-06-09 17:39:36,890 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 553.3106ms 200 application/javascript
+INFO  2019-06-09 17:39:38,074 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserScopeAccessAuthorities application/json 2
+WARN  2019-06-09 17:39:38,076 [52   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:39:38,079 [52   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:39:38,082 [52   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-09 17:39:38,087 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetUserScopeAccessAuthorities", controller = "User", area = ""}. Executing action IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api)
+INFO  2019-06-09 17:39:38,093 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api) with arguments (IEManageSystem.Api.Controllers.Users.Dto.GetUserScopeAccessAuthoritiesInput) - Validation state: Valid
+INFO  2019-06-09 17:39:38,107 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 13.0287ms.
+INFO  2019-06-09 17:39:38,110 [52   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities is executed by user 1 in 20 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:39:38,112 [52   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:39:38,115 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api) in 25.9549ms
+INFO  2019-06-09 17:39:38,118 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 43.9793ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:39:38,150 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserInfo application/json 2
+WARN  2019-06-09 17:39:38,154 [52   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:39:38,158 [52   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:39:38,162 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/5dfddd62b20673f22e7356e07b288bcd.png  
+INFO  2019-06-09 17:39:38,164 [52   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-06-09 17:39:38,169 [50   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:39:38,171 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/a5e81f19cf2c587876fd1bb08ae0249f.png  
+WARN  2019-06-09 17:39:38,179 [50   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:39:38,181 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUserInfo", controller = "User"}. Executing action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application)
+WARN  2019-06-09 17:39:38,185 [55   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:39:38,188 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserInfo application/json 2
+WARN  2019-06-09 17:39:38,192 [55   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:39:38,196 [54   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:39:38,201 [52   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+WARN  2019-06-09 17:39:38,207 [54   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:39:38,219 [49   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/a5e81f19cf2c587876fd1bb08ae0249f.png'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\a5e81f19cf2c587876fd1bb08ae0249f.png'
+INFO  2019-06-09 17:39:38,223 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) with arguments (IEManageSystem.Services.Users.Dto.GetUserInfoInput) - Validation state: Valid
+INFO  2019-06-09 17:39:38,227 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 54.8938ms 200 image/png
+INFO  2019-06-09 17:39:38,235 [54   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-09 17:39:38,248 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 13.0844ms.
+INFO  2019-06-09 17:39:38,250 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUserInfo", controller = "User"}. Executing action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application)
+INFO  2019-06-09 17:39:38,252 [52   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.Users.UserAppService.GetUserInfo is executed by user 1 in 47 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:39:38,254 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPageDatas application/json 57
+INFO  2019-06-09 17:39:38,256 [52   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+WARN  2019-06-09 17:39:38,268 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:39:38,270 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) in 74.8706ms
+WARN  2019-06-09 17:39:38,281 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:39:38,286 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 124.3434ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:39:38,289 [54   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-06-09 17:39:38,295 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/231ab726f5f19d7437869e17c11b6ed7.JPEG  
+WARN  2019-06-09 17:39:38,303 [52   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:39:38,308 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPageDatas", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application)
+WARN  2019-06-09 17:39:38,329 [52   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:39:38,314 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) with arguments (IEManageSystem.Services.Users.Dto.GetUserInfoInput) - Validation state: Valid
+INFO  2019-06-09 17:39:38,334 [62   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/fonts/3cf97837524dd7445e9d1462e3c4afe2.woff  
+INFO  2019-06-09 17:39:38,345 [63   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/5dfddd62b20673f22e7356e07b288bcd.png'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\5dfddd62b20673f22e7356e07b288bcd.png'
+WARN  2019-06-09 17:39:38,357 [62   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:39:38,363 [63   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 190.7482ms 200 image/png
+INFO  2019-06-09 17:39:38,371 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 11.4712ms.
+INFO  2019-06-09 17:39:38,379 [54   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.Users.UserAppService.GetUserInfo is executed by user 1 in 76 ms from ::1 IP address with succeed.
+WARN  2019-06-09 17:39:38,444 [62   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:39:38,451 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPageDatasInput) - Validation state: Valid
+INFO  2019-06-09 17:39:38,454 [54   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:39:38,458 [58   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/231ab726f5f19d7437869e17c11b6ed7.JPEG'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\231ab726f5f19d7437869e17c11b6ed7.JPEG'
+INFO  2019-06-09 17:39:38,465 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) in 203.3625ms
+INFO  2019-06-09 17:39:38,475 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 172.1733ms 200 image/jpeg
+INFO  2019-06-09 17:39:38,478 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 282.7131ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:39:38,482 [63   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/fonts/3cf97837524dd7445e9d1462e3c4afe2.woff'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\fonts\3cf97837524dd7445e9d1462e3c4afe2.woff'
+INFO  2019-06-09 17:39:38,494 [63   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 184.0207ms 200 application/font-woff
+INFO  2019-06-09 17:39:38,498 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 43.8439ms.
+INFO  2019-06-09 17:39:38,500 [6    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas is executed by an anonymous user in 129 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:39:38,504 [6    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:39:38,507 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application) in 154.9254ms
+INFO  2019-06-09 17:39:38,511 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 259.963ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:39:38,529 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/c9682b735f190eb9d071ed3d090723ec.svg  
+WARN  2019-06-09 17:39:38,531 [49   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:39:38,543 [49   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:39:38,555 [50   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/c9682b735f190eb9d071ed3d090723ec.svg'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\c9682b735f190eb9d071ed3d090723ec.svg'
+INFO  2019-06-09 17:39:38,559 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 28.4673ms 200 image/svg+xml
+INFO  2019-06-09 17:39:38,614 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/favicon.ico  
+WARN  2019-06-09 17:39:38,618 [50   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:39:38,624 [50   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:39:38,637 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 15.3186ms 404 
+INFO  2019-06-09 17:39:39,392 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:39:39,396 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:39:39,398 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:40:09,438 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:40:09,445 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:40:09,447 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:40:22,051 [60   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/ManageHome/CMSManage/PageData/1  
+WARN  2019-06-09 17:40:22,054 [60   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:40:22,056 [60   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:40:22,062 [60   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/ManageHome/Index.html'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\ManageHome\Index.html'
+INFO  2019-06-09 17:40:22,065 [60   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 13.0728ms 200 text/html
+INFO  2019-06-09 17:40:22,111 [60   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/adminiHome.bundle.js  
+WARN  2019-06-09 17:40:22,116 [60   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:40:22,125 [60   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:40:22,543 [77   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/adminiHome.bundle.js'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\adminiHome.bundle.js'
+INFO  2019-06-09 17:40:22,547 [77   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 446.7587ms 200 application/javascript
+INFO  2019-06-09 17:40:23,472 [60   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserScopeAccessAuthorities application/json 2
+WARN  2019-06-09 17:40:23,476 [60   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:40:23,479 [60   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:40:23,481 [60   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-09 17:40:23,484 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetUserScopeAccessAuthorities", controller = "User", area = ""}. Executing action IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api)
+INFO  2019-06-09 17:40:23,491 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api) with arguments (IEManageSystem.Api.Controllers.Users.Dto.GetUserScopeAccessAuthoritiesInput) - Validation state: Valid
+INFO  2019-06-09 17:40:23,499 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 5.5008ms.
+INFO  2019-06-09 17:40:23,502 [60   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities is executed by user 1 in 14 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:40:23,505 [60   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:40:23,508 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api) in 20.3525ms
+INFO  2019-06-09 17:40:23,511 [60   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 40.444ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:40:23,542 [59   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserInfo application/json 2
+WARN  2019-06-09 17:40:23,545 [59   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:40:23,547 [59   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:40:23,550 [59   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-09 17:40:23,610 [60   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/5dfddd62b20673f22e7356e07b288bcd.png  
+INFO  2019-06-09 17:40:23,611 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserInfo application/json 2
+INFO  2019-06-09 17:40:23,614 [59   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUserInfo", controller = "User"}. Executing action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application)
+WARN  2019-06-09 17:40:23,616 [60   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:40:23,620 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:40:23,623 [60   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:40:23,625 [77   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/a5e81f19cf2c587876fd1bb08ae0249f.png  
+WARN  2019-06-09 17:40:23,628 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:40:23,630 [59   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+WARN  2019-06-09 17:40:23,632 [77   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:40:23,638 [77   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:40:23,641 [60   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPageDatas application/json 57
+INFO  2019-06-09 17:40:23,644 [6    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-09 17:40:23,645 [59   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) with arguments (IEManageSystem.Services.Users.Dto.GetUserInfoInput) - Validation state: Valid
+WARN  2019-06-09 17:40:23,649 [60   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:40:23,651 [77   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/a5e81f19cf2c587876fd1bb08ae0249f.png'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\a5e81f19cf2c587876fd1bb08ae0249f.png'
+WARN  2019-06-09 17:40:23,654 [60   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:40:23,657 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUserInfo", controller = "User"}. Executing action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application)
+INFO  2019-06-09 17:40:23,661 [59   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 10.9064ms.
+INFO  2019-06-09 17:40:23,658 [77   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 42.9232ms 200 image/png
+INFO  2019-06-09 17:40:23,665 [59   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.Users.UserAppService.GetUserInfo is executed by user 1 in 26 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:40:23,665 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPageDatas", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application)
+INFO  2019-06-09 17:40:23,669 [59   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:40:23,674 [77   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/231ab726f5f19d7437869e17c11b6ed7.JPEG  
+INFO  2019-06-09 17:40:23,676 [59   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) in 55.9298ms
+INFO  2019-06-09 17:40:23,681 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPageDatasInput) - Validation state: Valid
+INFO  2019-06-09 17:40:23,682 [59   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 138.1494ms 200 application/json; charset=utf-8
+WARN  2019-06-09 17:40:23,685 [77   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:40:23,689 [6    ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-06-09 17:40:23,695 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/fonts/3cf97837524dd7445e9d1462e3c4afe2.woff  
+INFO  2019-06-09 17:40:23,698 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 13.1743ms.
+INFO  2019-06-09 17:40:23,702 [60   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas is executed by an anonymous user in 31 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:40:23,702 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) with arguments (IEManageSystem.Services.Users.Dto.GetUserInfoInput) - Validation state: Valid
+WARN  2019-06-09 17:40:23,705 [70   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:40:23,710 [77   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:40:23,717 [60   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+WARN  2019-06-09 17:40:23,724 [70   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:40:23,734 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application) in 50.6932ms
+INFO  2019-06-09 17:40:23,789 [75   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/231ab726f5f19d7437869e17c11b6ed7.JPEG'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\231ab726f5f19d7437869e17c11b6ed7.JPEG'
+INFO  2019-06-09 17:40:23,800 [60   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 107.5103ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:40:23,810 [70   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/fonts/3cf97837524dd7445e9d1462e3c4afe2.woff'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\fonts\3cf97837524dd7445e9d1462e3c4afe2.woff'
+INFO  2019-06-09 17:40:23,828 [74   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/5dfddd62b20673f22e7356e07b288bcd.png'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\5dfddd62b20673f22e7356e07b288bcd.png'
+INFO  2019-06-09 17:40:23,836 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 127.4429ms 200 application/font-woff
+INFO  2019-06-09 17:40:23,858 [74   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 280.7202ms 200 image/png
+INFO  2019-06-09 17:40:23,861 [75   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 125.0132ms 200 image/jpeg
+INFO  2019-06-09 17:40:23,866 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 160.0268ms.
+INFO  2019-06-09 17:40:23,867 [6    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.Users.UserAppService.GetUserInfo is executed by user 1 in 173 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:40:23,882 [6    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:40:23,888 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) in 218.2957ms
+INFO  2019-06-09 17:40:23,910 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 280.7925ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:40:23,926 [76   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/c9682b735f190eb9d071ed3d090723ec.svg  
+WARN  2019-06-09 17:40:23,932 [76   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:40:23,936 [76   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:40:23,942 [76   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/c9682b735f190eb9d071ed3d090723ec.svg'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\c9682b735f190eb9d071ed3d090723ec.svg'
+INFO  2019-06-09 17:40:23,967 [76   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 36.3595ms 200 image/svg+xml
+INFO  2019-06-09 17:40:23,999 [76   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/favicon.ico  
+WARN  2019-06-09 17:40:24,002 [76   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:40:24,005 [76   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:40:24,021 [76   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 21.7925ms 404 
+INFO  2019-06-09 17:40:39,465 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:40:39,468 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:40:39,470 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:41:09,479 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:41:09,486 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:41:09,488 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:41:39,512 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:41:39,515 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:41:39,518 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:42:09,552 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:42:09,560 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-09 17:42:09,563 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-09 17:42:39,546 [95   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/ManageHome/CMSManage/PageData/1  
+WARN  2019-06-09 17:42:39,553 [95   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:42:39,556 [95   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:39,607 [95   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/ManageHome/Index.html'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\ManageHome\Index.html'
+INFO  2019-06-09 17:42:39,613 [98   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-09 17:42:39,614 [95   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 69.8618ms 200 text/html
+INFO  2019-06-09 17:42:39,625 [95   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/adminiHome.bundle.js  
+INFO  2019-06-09 17:42:39,629 [98   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+WARN  2019-06-09 17:42:39,632 [95   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:39,636 [98   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+WARN  2019-06-09 17:42:39,640 [95   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:40,372 [96   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/adminiHome.bundle.js'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\adminiHome.bundle.js'
+INFO  2019-06-09 17:42:40,376 [96   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 758.4479ms 200 application/javascript
+INFO  2019-06-09 17:42:41,301 [90   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserScopeAccessAuthorities application/json 2
+WARN  2019-06-09 17:42:41,304 [90   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:42:41,307 [90   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:41,310 [90   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-09 17:42:41,314 [90   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetUserScopeAccessAuthorities", controller = "User", area = ""}. Executing action IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api)
+INFO  2019-06-09 17:42:41,319 [90   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api) with arguments (IEManageSystem.Api.Controllers.Users.Dto.GetUserScopeAccessAuthoritiesInput) - Validation state: Valid
+INFO  2019-06-09 17:42:41,327 [90   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 5.2139ms.
+INFO  2019-06-09 17:42:41,331 [90   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities is executed by user 1 in 13 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:42:41,333 [90   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:42:41,338 [90   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api) in 19.5515ms
+INFO  2019-06-09 17:42:41,346 [90   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 39.2158ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:42:41,375 [90   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserInfo application/json 2
+WARN  2019-06-09 17:42:41,380 [90   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:41,386 [92   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/5dfddd62b20673f22e7356e07b288bcd.png  
+WARN  2019-06-09 17:42:41,390 [90   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:42:41,392 [92   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:42:41,401 [92   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:41,407 [90   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-09 17:42:41,411 [96   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserInfo application/json 2
+INFO  2019-06-09 17:42:41,433 [90   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUserInfo", controller = "User"}. Executing action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application)
+WARN  2019-06-09 17:42:41,440 [96   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:41,448 [90   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+WARN  2019-06-09 17:42:41,454 [96   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:41,458 [97   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/a5e81f19cf2c587876fd1bb08ae0249f.png  
+INFO  2019-06-09 17:42:41,468 [90   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) with arguments (IEManageSystem.Services.Users.Dto.GetUserInfoInput) - Validation state: Valid
+INFO  2019-06-09 17:42:41,476 [96   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-06-09 17:42:41,482 [97   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:41,489 [90   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 8.662ms.
+INFO  2019-06-09 17:42:41,490 [90   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.Users.UserAppService.GetUserInfo is executed by user 1 in 36 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:42:41,492 [96   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUserInfo", controller = "User"}. Executing action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application)
+INFO  2019-06-09 17:42:41,500 [90   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:42:41,509 [96   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-06-09 17:42:41,514 [90   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) in 68.4873ms
+WARN  2019-06-09 17:42:41,523 [97   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:41,532 [90   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 142.5914ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:42:41,543 [96   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) with arguments (IEManageSystem.Services.Users.Dto.GetUserInfoInput) - Validation state: Valid
+INFO  2019-06-09 17:42:41,579 [90   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/fonts/3cf97837524dd7445e9d1462e3c4afe2.woff  
+INFO  2019-06-09 17:42:41,605 [96   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 28.5552ms.
+INFO  2019-06-09 17:42:41,607 [96   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.Users.UserAppService.GetUserInfo is executed by user 1 in 92 ms from ::1 IP address with succeed.
+WARN  2019-06-09 17:42:41,610 [90   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:41,614 [96   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+WARN  2019-06-09 17:42:41,622 [90   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:41,634 [96   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) in 120.4519ms
+INFO  2019-06-09 17:42:41,650 [97   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/a5e81f19cf2c587876fd1bb08ae0249f.png'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\a5e81f19cf2c587876fd1bb08ae0249f.png'
+INFO  2019-06-09 17:42:41,670 [90   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/fonts/3cf97837524dd7445e9d1462e3c4afe2.woff'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\fonts\3cf97837524dd7445e9d1462e3c4afe2.woff'
+INFO  2019-06-09 17:42:41,683 [96   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 234.5423ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:42:41,724 [90   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 138.1729ms 200 application/font-woff
+INFO  2019-06-09 17:42:41,755 [97   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 257.9214ms 200 image/png
+INFO  2019-06-09 17:42:41,762 [99   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/231ab726f5f19d7437869e17c11b6ed7.JPEG  
+INFO  2019-06-09 17:42:41,806 [93   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/5dfddd62b20673f22e7356e07b288bcd.png'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\5dfddd62b20673f22e7356e07b288bcd.png'
+INFO  2019-06-09 17:42:41,813 [97   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/c9682b735f190eb9d071ed3d090723ec.svg  
+INFO  2019-06-09 17:42:41,891 [93   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 429.9449ms 200 image/png
+WARN  2019-06-09 17:42:41,898 [97   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:42:41,905 [99   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:42:41,910 [97   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:42:41,916 [99   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:41,931 [95   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPageDatas application/json 57
+INFO  2019-06-09 17:42:41,938 [99   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/c9682b735f190eb9d071ed3d090723ec.svg'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\c9682b735f190eb9d071ed3d090723ec.svg'
+WARN  2019-06-09 17:42:41,949 [95   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:41,965 [99   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 172.026ms 200 image/svg+xml
+WARN  2019-06-09 17:42:41,973 [95   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:41,987 [95   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPageDatas", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application)
+INFO  2019-06-09 17:42:41,996 [98   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/231ab726f5f19d7437869e17c11b6ed7.JPEG'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\231ab726f5f19d7437869e17c11b6ed7.JPEG'
+INFO  2019-06-09 17:42:42,049 [98   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 465.9333ms 200 image/jpeg
+INFO  2019-06-09 17:42:42,062 [95   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPageDatasInput) - Validation state: Valid
+INFO  2019-06-09 17:42:42,073 [95   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 5.3543ms.
+INFO  2019-06-09 17:42:42,075 [95   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas is executed by an anonymous user in 79 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:42:42,077 [98   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/favicon.ico  
+INFO  2019-06-09 17:42:42,079 [95   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+WARN  2019-06-09 17:42:42,090 [98   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:42,092 [95   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application) in 94.7439ms
+WARN  2019-06-09 17:42:42,102 [98   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:42,115 [95   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 599.7402ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:42:42,121 [98   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 29.6075ms 404 
+INFO  2019-06-09 17:42:47,620 [84   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPageComponent application/json 10
+WARN  2019-06-09 17:42:47,629 [84   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:42:47,632 [84   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:47,637 [84   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPageComponent", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application)
+INFO  2019-06-09 17:42:47,642 [84   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPageComponentInput) - Validation state: Valid
+INFO  2019-06-09 17:42:47,647 [84   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 1.969ms.
+INFO  2019-06-09 17:42:47,648 [84   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent is executed by an anonymous user in 9 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:42:47,650 [84   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:42:47,657 [84   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application) in 13.7204ms
+INFO  2019-06-09 17:42:47,664 [84   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 42.0803ms 200 application/json; charset=utf-8
+INFO  2019-06-09 17:42:47,705 [84   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/d73dd0b67391a113150eb5661f8ff00d.jpg  
+INFO  2019-06-09 17:42:47,707 [98   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/79a9052d0abb7d5cbc8c123cc5dfece5.jpg  
+WARN  2019-06-09 17:42:47,709 [84   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:42:47,724 [98   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:42:47,739 [84   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:42:47,742 [98   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:47,747 [95   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/f7f3ce3fd039702a3b46fcbcff155466.jpg  
+INFO  2019-06-09 17:42:47,762 [84   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/d73dd0b67391a113150eb5661f8ff00d.jpg'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\d73dd0b67391a113150eb5661f8ff00d.jpg'
+INFO  2019-06-09 17:42:47,771 [98   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/79a9052d0abb7d5cbc8c123cc5dfece5.jpg'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\79a9052d0abb7d5cbc8c123cc5dfece5.jpg'
+INFO  2019-06-09 17:42:47,777 [84   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 72.8701ms 200 image/jpeg
+INFO  2019-06-09 17:42:47,780 [98   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 74.9039ms 200 image/jpeg
+WARN  2019-06-09 17:42:47,782 [95   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:42:47,785 [95   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:47,809 [90   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/images/f7f3ce3fd039702a3b46fcbcff155466.jpg'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\js\images\f7f3ce3fd039702a3b46fcbcff155466.jpg'
+INFO  2019-06-09 17:42:47,816 [90   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 110.7686ms 200 image/jpeg
+INFO  2019-06-09 17:42:55,753 [85   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPageDatas application/json 57
+WARN  2019-06-09 17:42:55,757 [85   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-09 17:42:55,760 [85   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-09 17:42:55,765 [85   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPageDatas", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application)
+INFO  2019-06-09 17:42:55,771 [85   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPageDatasInput) - Validation state: Valid
+INFO  2019-06-09 17:42:55,778 [85   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 4.4764ms.
+INFO  2019-06-09 17:42:55,778 [85   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas is executed by an anonymous user in 12 ms from ::1 IP address with succeed.
+INFO  2019-06-09 17:42:55,781 [85   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-09 17:42:55,784 [85   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageDatas (IEManageSystem.Application) in 16.0757ms
+INFO  2019-06-09 17:42:55,788 [85   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 35.374ms 200 application/json; charset=utf-8

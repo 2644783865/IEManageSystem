@@ -7,27 +7,6 @@ import Resource from 'Resource/Resource.jsx';
 
 import { pageDatasFetch, pageDataDeleteFetch, pageDataAddFetch, pageDataUpdateFetch } from '../Actions'
 
-// props.resource
-function EditPageData(props) 
-{
-	return (
-	<NavLink className="btn btn-outline-secondary" 
-		to={`/ManageHome/CMSManage/PageComponent/${props.resource.id}`}
-	>
-		<span class="oi oi-pencil" title="icon name" aria-hidden="true"></span>{" 编辑文章"}
-	</NavLink>);
-}
-
-function LookupPageData(props) 
-{
-	return (
-	<NavLink className="btn btn-outline-secondary" 
-		to={`/ManageHome/CMSManage/PageComponent/${props.resource.id}`}
-	>
-		<span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>{" 浏览"}
-	</NavLink>);
-}
-
 class PageData extends React.Component{
     constructor(props){
         super(props);
@@ -82,8 +61,22 @@ class PageData extends React.Component{
 
 	render(){
         let customizeOperateBtns = [];
-        customizeOperateBtns.push(EditPageData);
-        customizeOperateBtns.push(LookupPageData);
+        customizeOperateBtns.push((props)=>{
+			return (
+			<NavLink className="btn btn-outline-secondary" 
+				to={`/ManageHome/CMSManage/ComponentData/${this.props.pageId}/${props.resource.id}`}
+			>
+				<span class="oi oi-pencil" title="icon name" aria-hidden="true"></span>{" 编辑文章"}
+			</NavLink>);
+		});
+        customizeOperateBtns.push((props)=>{
+			return (
+			<NavLink className="btn btn-outline-secondary" 
+				to={`/ManageHome/CMSManage/ComponentData/${this.props.pageId}/${props.resource.id}`}
+			>
+				<span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>{" 浏览"}
+			</NavLink>);
+		});
 
         let customizeBottomOperateBtns = [];
         // customizeBottomOperateBtns.push(<button type="button" className="btn btn-info" >+发布新文章</button>);

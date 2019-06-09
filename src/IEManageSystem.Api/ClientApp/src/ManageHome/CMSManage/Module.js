@@ -38,11 +38,6 @@ class Module extends BaseModule {
                                 id: "PageManage",
                                 text: "页面管理",
                                 url: "/ManageHome/CMSManage/PageManage"
-                            },
-                            {
-                                id: "ComponentData",
-                                text: "组件数据",
-                                url: "/ManageHome/CMSManage/ComponentData"
                             }
                         ],
                         accessScope:
