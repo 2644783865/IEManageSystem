@@ -7,7 +7,12 @@ import {
     PageAddReceive,
     PageDeleteReceive,
     PageUpdateReceive,
-    PageComponentReceive} from './Actions'
+    PageComponentReceive,
+    PageDatasReceive,
+    PageDataAddReceive,
+    PageDataUpdateReceive,
+    PageDataDeleteReceive,
+    ComponentDatasReceive} from './Actions'
 
 
 function componentOperate(state = {}, action){
@@ -72,6 +77,53 @@ function page(state = {
     }
 }
 
+function pageData(state = {
+    pageDatas:[],
+    pageDataNum: 0,
+    pageDataIndex: 1,
+    pageDatasDidInvalidate: false
+}, action){
+    switch(action.type)
+    {
+        case PageDatasReceive:
+            return {...state, ...{
+                pageDatas: action.data.pageDatas,
+                pageDataNum: action.data.pageDataNum,
+                pageDatasDidInvalidate: false
+            }}
+        case PageDataAddReceive:
+            return {...state, ...{
+                pageDatasDidInvalidate: true
+            }}
+        case PageDataUpdateReceive:
+            return {...state, ...{
+                pageDatasDidInvalidate: true
+            }}
+        case PageDataDeleteReceive:
+            return {...state, ...{
+                pageDatasDidInvalidate: true
+            }}
+        default:
+            return state;
+    }
+}
+
+function componentData(state = {
+    componentDatas:[],
+    componentDatasDidInvalidate: false
+}, action){
+    switch(action.type)
+    {
+        case ComponentDatasReceive:
+            return {...state, ...{
+                componentDatas: action.data.componentDatas,
+                componentDatasDidInvalidate: false
+            }}
+        default:
+            return state;
+    }
+}
+
 // PageComponent={ sign=0, name="组件名", col, height, padding, pageComponents }
 export function reducer(state = {
     PageComponent:{}
@@ -83,6 +135,8 @@ export function reducer(state = {
             SelectedComponent: componentOperate(state.PageComponent.SelectedComponent, action),
             Components: Components(state.PageComponent.Components, action),
         },
-        page:page(state.page, action)
+        page:page(state.page, action),
+        pageData:pageData(state.pageData, action),
+        componentData: componentData(state.componentData, action)
     })
 }

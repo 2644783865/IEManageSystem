@@ -22,5 +22,15 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
         GetPageComponentOutput GetPageComponent(GetPageComponentInput input);
 
         UpdatePageComponentOutput UpdatePageComponent(UpdatePageComponentInput input);
+
+        GetPageDatasOutput GetPageDatas(GetPageDatasInput input);
+
+        AddPageDataOutput AddPageData(AddPageDataInput input);
+
+        UpdatePageDataOutput UpdatePageData(UpdatePageDataInput input);
+
+        DeletePageDataOutput DeletePageData(DeletePageDataInput input);
+
+        GetComponentDataOutput GetComponentDatas(GetComponentDataInput input);
     }
 }

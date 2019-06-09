@@ -18,6 +18,15 @@ function EditComponent(props)
 	</NavLink>);
 }
 
+function EditPageData(props){
+	return (
+		<NavLink className="btn btn-outline-secondary" 
+			to={`/ManageHome/CMSManage/PageData/${props.resource.id}`}
+		>
+			<span class="oi oi-pencil" title="icon name" aria-hidden="true"></span>{" 管理文章"}
+		</NavLink>);
+}
+
 class PageManage extends React.Component{
     constructor(props){
         super(props);
@@ -73,7 +82,8 @@ class PageManage extends React.Component{
 
 	render(){
         let customizeOperateBtns = [];
-        customizeOperateBtns.push(EditComponent);
+		customizeOperateBtns.push(EditComponent);
+		customizeOperateBtns.push(EditPageData);
 		
 		let testResources = [
             {

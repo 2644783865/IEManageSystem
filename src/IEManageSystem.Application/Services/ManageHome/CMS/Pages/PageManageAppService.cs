@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using Abp.Domain.Repositories;
 using IEManageSystem.CMS.DomainModel.Pages;
@@ -189,6 +190,67 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
             page.PageComponents.Add(pageComponent);
 
             return pageComponent;
+        }
+
+        public GetPageDatasOutput GetPageDatas(GetPageDatasInput input)
+        {
+            var page = _repository.GetAllIncluding(e => e.PageDatas).FirstOrDefault(e => e.Id == input.PageId);
+
+            return new GetPageDatasOutput() {
+                PageDatas = AutoMapper.Mapper.Map<List<PageDataDto>>(page.PageDatas),
+                PageDataNum = page.PageDatas.Count
+            };
+        }
+
+        public AddPageDataOutput AddPageData(AddPageDataInput input)
+        {
+            PageData pageData = new PageData() {
+                Name = input.Name,
+                Title = input.Title
+            };
+
+            var page = _repository.GetAllIncluding(e => e.PageDatas).FirstOrDefault(e => e.Id == input.PageId);
+            page.PageDatas.Add(pageData);
+
+            return new AddPageDataOutput();
+        }
+
+        public UpdatePageDataOutput UpdatePageData(UpdatePageDataInput input)
+        {
+            var page = _repository.GetAllIncluding(e => e.PageDatas).FirstOrDefault(e => e.Id == input.PageId);
+
+            var pageData = page.PageDatas.FirstOrDefault(e => e.Id == input.Id);
+            pageData.Name = input.Name;
+            pageData.Title = input.Title;
+
+            return new UpdatePageDataOutput();
+        }
+
+        public DeletePageDataOutput DeletePageData(DeletePageDataInput input)
+        {
+            var page = _repository.GetAllIncluding(e => e.PageDatas).FirstOrDefault(e => e.Id == input.PageId);
+
+            var pageData = page.PageDatas.FirstOrDefault(e=>e.Id == input.Id);
+            page.PageDatas.Remove(pageData);
+
+            return new DeletePageDataOutput();
+        }
+
+        public GetComponentDataOutput GetComponentDatas(GetComponentDataInput input)
+        {
+            Expression<Func<PageBase, object>>[] propertySelectors = new Expression<Func<PageBase, object>>[]
+            {
+                e=>e.PageDatas,
+                e=>e.PageComponents
+            };
+            var page = _repository.GetAllIncluding(propertySelectors).FirstOrDefault(e => e.Id == input.PageId);
+
+            var pageData = page.PageDatas.FirstOrDefault(e => e.Id == input.PageDataId);
+
+            return new GetComponentDataOutput()
+            {
+                ComponentDatas = AutoMapper.Mapper.Map<List<ContentComponentDataDto>>(pageData.ContentComponentDatas)
+            };
         }
     }
 }

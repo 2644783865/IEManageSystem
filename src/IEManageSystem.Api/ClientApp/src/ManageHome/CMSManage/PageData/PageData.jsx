@@ -5,7 +5,7 @@ import {CmsRedux} from 'CMSManage/CmsRedux'
 
 import Resource from 'Resource/Resource.jsx';
 
-import {  } from '../Actions'
+import { pageDatasFetch, pageDataDeleteFetch, pageDataAddFetch, pageDataUpdateFetch } from '../Actions'
 
 // props.resource
 function EditPageData(props) 
@@ -35,38 +35,49 @@ class PageData extends React.Component{
         this.describes=[
 			{name:"id", isId:true, isAddShow:false, isEditShow:false, isLookupShow:false},
 			{name:"name", text:"文章名称", isName:true, isShowOnList:true},
-			{name:"displayName", text:"显示名称", isShowOnList:true},
-			{name:"description", text:"文章描述", isShowOnList:true}
+			{name:"title", text:"标题", isShowOnList:true}
 		];
 
 		this.resourceChild = null;
 
 		this.deleteResource = this.deleteResource.bind(this);
+		this.addResource = this.addResource.bind(this)
+		this.updateResource = this.updateResource.bind(this);
     	this.freshenResources = this.freshenResources.bind(this);
     }
 
     componentDidMount(){
-		this.props.postsFecth(this.resourceChild.pageIndex, this.resourceChild.pageSize, this.resourceChild.searchKey);
+		this.props.pageDatasFecth(this.resourceChild.pageIndex, this.resourceChild.pageSize, this.resourceChild.searchKey, this.props.pageId);
 	}
 
 	componentWillUpdate(nextProps)
 	{
-		this.resourceChild.resetResources(nextProps.posts, nextProps.postIndex);
-		this.resourceChild.resetResourceNum(nextProps.postNum);
+		this.resourceChild.resetResources(nextProps.pageDatas, nextProps.pageDataIndex);
+		this.resourceChild.resetResourceNum(nextProps.pageDataNum);
 
-		if(nextProps.postsDidInvalidate){
-			this.props.postsFecth(this.resourceChild.pageIndex, this.resourceChild.pageSize, this.resourceChild.searchKey);
+		if(nextProps.pageDatasDidInvalidate == true){
+			this.props.pageDatasFecth(this.resourceChild.pageIndex, this.resourceChild.pageSize, this.resourceChild.searchKey, this.props.pageId);
 		}
 	}
 
 	// Resource组件删除资源通知
 	deleteResource(resource){
-        this.props.postDeleteFecth(resource);
+        this.props.pageDataDeleteFecth(resource, this.props.pageId);
+	}
+
+	// Resource组件添加资源通知
+	addResource(resource){
+        this.props.pageDataAddFetch(resource, this.props.pageId);
+	}
+
+	// Resource组件更新资源通知
+	updateResource(resource){
+		this.props.pageDataUpdateFetch(resource, this.props.pageId);
 	}
 
 	// Resource组件刷新资源通知
 	freshenResources(pageIndex, pageSize, searchKey){
-		this.props.postsFecth(pageIndex, pageSize, searchKey);
+		this.props.pageDatasFecth(pageIndex, pageSize, searchKey, this.props.pageId);
 	}
 
 	render(){
@@ -75,22 +86,14 @@ class PageData extends React.Component{
         customizeOperateBtns.push(LookupPageData);
 
         let customizeBottomOperateBtns = [];
-        customizeBottomOperateBtns.push(
-            <button type="button" className="btn btn-info" >+发布新文章</button>);
+        // customizeBottomOperateBtns.push(<button type="button" className="btn btn-info" >+发布新文章</button>);
 		
 		let testResources = [
             {
                 id: 1,
-                name: "TestPage",
-                displayName: "测试页面",
-                description: "这是一个测试页面"
-			},
-			{
-                id: 2,
-                name: "TestPage",
-                displayName: "测试页面",
-                description: "这是一个测试页面"
-            }
+                name: "TestPost",
+                title: "测试文章"
+			}
         ];
 
 		return(
@@ -98,13 +101,13 @@ class PageData extends React.Component{
 				<Resource
                 title="文章管理"
                 resources={testResources}
-                hideAdd={true}
-                hideEdit={true}
+                // hideAdd={true}
+                // hideEdit={true}
 				describes={this.describes}
 				freshenResources={this.freshenResources}
 				deleteResource={this.deleteResource}
-				//addResource={this.addResource}
-				//updateResource={this.updateResource}
+				addResource={this.addResource}
+				updateResource={this.updateResource}
                 setResourceRef={(ref)=>{this.resourceChild = ref}} 
                 customizeOperateBtns={customizeOperateBtns}
                 customizeBottomOperateBtns={customizeBottomOperateBtns}
@@ -115,24 +118,41 @@ class PageData extends React.Component{
 } 
 
 PageData.propsTypes = {
-    page: PropTypes.object.isRequired,
-    posts: PropTypes.array.isRequired,
-    postIndex: PropTypes.number.isRequired,
-    postNum: PropTypes.number.isRequired,
-    postsDidInvalidate: PropTypes.bool.isRequired,
-    postsFecth: PropTypes.func.isRequired,
-    postDeleteFecth: PropTypes.func.isRequired
+    pageId: PropTypes.number.isRequired,
+    pageDatas: PropTypes.array.isRequired,
+    pageDataIndex: PropTypes.number.isRequired,
+    pageDataNum: PropTypes.number.isRequired,
+    pageDatasDidInvalidate: PropTypes.bool.isRequired,
+    pageDatasFecth: PropTypes.func.isRequired,
+	pageDataDeleteFecth: PropTypes.func.isRequired,
+	pageDataAddFetch: PropTypes.func.isRequired,
+	pageDataUpdateFetch: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
     return {
+		pageId: ownProps.match.params.pageId,
+		pageDatas: state.pageData.pageDatas,
+		pageDataIndex: state.pageData.pageDataIndex,
+		pageDataNum: state.pageData.pageDataNum,
+		pageDatasDidInvalidate: state.pageData.pageDatasDidInvalidate
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        postsFecth: (pageIndex, pageSize, searchKey) => {  },
-		postDeleteFecth: (resource) => {  }
+        pageDatasFecth: (pageIndex, pageSize, searchKey, pageId) => {  
+			dispatch(pageDatasFetch(pageIndex, pageSize, searchKey, pageId))
+		},
+		pageDataDeleteFecth: (resource, pageId) => {
+			dispatch(pageDataDeleteFetch(resource, pageId))
+		},
+		pageDataAddFetch: (resource, pageId) => {
+			dispatch(pageDataAddFetch(resource, pageId))
+		},
+		pageDataUpdateFetch: (resource, pageId)=>{
+			dispatch(pageDataUpdateFetch(resource, pageId))
+		}
     }
 }
 

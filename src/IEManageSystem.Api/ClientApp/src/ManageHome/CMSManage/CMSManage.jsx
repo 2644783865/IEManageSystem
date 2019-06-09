@@ -4,6 +4,7 @@ import Menu from "./Menu/Menu.jsx";
 import PageComponent from "./PageComponent/PageComponent.jsx"
 import PageManage from './PageManage/PageManage.jsx'
 import PageData from './PageData/PageData.jsx'
+import ComponentData from './ComponentData/ComponentData.jsx'
 import TestPage from "./TestPage/TestPage.jsx";
 
 export default class CMSManage extends React.Component{
@@ -19,7 +20,8 @@ export default class CMSManage extends React.Component{
                 <Route path="/ManageHome/CMSManage/Menu" component={Menu} />
                 <Route path="/ManageHome/CMSManage/PageManage" component={PageManage} />
                 <Route path="/ManageHome/CMSManage/PageComponent/:pageId" component={PageComponent} />
-                <Route path="/ManageHome/CMSManage/PageData" component={PageData} />
+                <Route path="/ManageHome/CMSManage/PageData/:pageId" component={PageData} />
+                <Route path="/ManageHome/CMSManage/ComponentData/:pageId/:pageDataId" component={ComponentData} />
                 <Route path="/ManageHome/CMSManage/TestPage" component={TestPage} />
             </Switch>
         </div>);

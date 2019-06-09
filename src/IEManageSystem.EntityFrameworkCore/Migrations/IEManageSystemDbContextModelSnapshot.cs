@@ -243,7 +243,11 @@ namespace IEManageSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Name");
+
                     b.Property<int?>("PageBaseId");
+
+                    b.Property<string>("Title");
 
                     b.HasKey("Id");
 

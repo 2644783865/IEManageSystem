@@ -129,8 +129,8 @@ class EditableParentCom extends React.Component {
             <div style={this.style} className={`editableparentcom col-md-${pageComponent.col || 12}`}>
                 <div className="w-100">
                     {this.createChildrenComponent(pageComponent)}
-                    {this.state.openEdit && <EditFrame pageComponent={pageComponent} editComponent={this.editComponent}></EditFrame>}
                 </div>
+                {this.state.openEdit && <EditFrame pageComponent={pageComponent} editComponent={this.editComponent}></EditFrame>}
                 <div className="editableparentcom-btns">
                     <button type="button" class="btn btn-danger btn-sm"
                         onClick={

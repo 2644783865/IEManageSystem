@@ -123,3 +123,90 @@ export function pageComponentUpdateFetch(id, components) {
     })
   );
 }
+
+export const PageDatasReceive = "PageDatasReceive"
+export function pageDatasFetch(pageIndex, pageSize, searchKey, pageId){
+  let postData = {
+    pageIndex: pageIndex,
+    pageSize: pageSize,
+    searchKey: searchKey,
+    pageId: pageId
+  };
+
+  return createIEThunkAction(
+    "/api/PageManage/GetPageDatas",
+    postData,
+    data => ({
+      type: PageDatasReceive,
+      data
+    })
+  );
+}
+
+export const PageDataAddReceive = "PageDataAddReceive"
+export function pageDataAddFetch(resource, pageId)
+{
+  let postData = {...resource, ...{
+    pageId:pageId
+  }};
+
+  return createIEThunkAction(
+    "/api/PageManage/AddPageData",
+    postData,
+    data => ({
+      type: PageDataAddReceive,
+      data
+    })
+  );
+}
+
+export const PageDataUpdateReceive = "PageDataUpdateReceive"
+export function pageDataUpdateFetch(resource, pageId){
+  let postData = {...resource, ...{
+    pageId:pageId
+  }};
+
+  return createIEThunkAction(
+    "/api/PageManage/UpdatePageData",
+    postData,
+    data => ({
+      type: PageDataUpdateReceive,
+      data
+    })
+  );
+}
+
+
+export const PageDataDeleteReceive = "PageDataDeleteReceive"
+export function pageDataDeleteFetch(resource, pageId){
+  let postData = {
+    id: resource.id,
+    pageId: pageId
+  };
+
+  return createIEThunkAction(
+    "/api/PageManage/DeletePageData",
+    postData,
+    data => ({
+      type: PageDataDeleteReceive,
+      data
+    })
+  );
+}
+
+export const ComponentDatasReceive = "ComponentDatasReceive"
+export function componentDatasFetch(pageId, pageDataId){
+  let postData = {
+    pageId: pageId,
+    pageDataId: pageDataId
+  };
+
+  return createIEThunkAction(
+    "/api/PageManage/GetComponentDatas",
+    postData,
+    data => ({
+      type: ComponentDatasReceive,
+      data
+    })
+  );
+}

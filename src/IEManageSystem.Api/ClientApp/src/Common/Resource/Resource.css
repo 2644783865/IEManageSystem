@@ -5,7 +5,7 @@
     color: #6c757d;
     font-size: 1rem;
     border: 1px solid #d5d5d6;
-    border-radius: 0.33rem;
+    border-radius: 0.33rem 0.33rem 0rem 0rem;
 }
 
 .data-list h6 input{
@@ -13,9 +13,17 @@
     width: 15rem !important;
 }
 
+.data-list table{
+    /* table-layout: fixed; */
+}
+
 .data-list thead{
     background-color: #5d6b79;
     color: #fff;
+}
+
+.data-list thead th{
+    border: 0px;
 }
 
 .data-paging ul{
