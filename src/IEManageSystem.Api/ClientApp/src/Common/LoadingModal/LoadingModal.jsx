@@ -1,6 +1,5 @@
 import React from 'react';
-import { Animate } from 'react-move'
-import { easeExpOut } from 'd3-ease'
+import Modal from 'Modal/Modal.jsx'
 
 import './LoadingModal.css';
 
@@ -11,23 +10,10 @@ export default class LoadingModal extends React.Component {
   }
 
   render() {
-    return (
-      <Animate
-        start={() => ({
-          x: 0,
-        })}
-
-        update={() => ({
-          x: [this.props.show ? 1 : 0],
-          timing: { duration: 750, ease: easeExpOut },
-        })}
-      >
-        {(state) => {
-          const { x } = state;
-
-          return (
-            <div className="modal fade show" style={{opacity: `${x}`, display:x!=0?"block":"none"}}>
-              <div className="modal-dialog">
+    return (<Modal
+      show={this.props.show}
+    >
+      <div className="modal-dialog">
                 <div className="modal-content background-transparent">
                   <div className="modal-body d-flex justify-content-center">
                     <div className="loading-animation">
@@ -40,10 +26,6 @@ export default class LoadingModal extends React.Component {
 
                 </div>
               </div>
-            </div>
-          )
-        }}
-      </Animate>
-    )
+    </Modal>);
   }
 }

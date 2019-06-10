@@ -6,9 +6,15 @@ import BaseParentComponent from '../BaseParentComponent.jsx'
 
 import ComponentFactory from '../../Components/ComponentFactory'
 
+import EditFrame from './EditFrame.jsx'
+
 class ParentComponent extends BaseParentComponent {
     constructor(props) {
         super(props);
+
+        this.state = {
+            show: false
+        }
     }
 
     createChildrenComponent() 
@@ -30,6 +36,35 @@ class ParentComponent extends BaseParentComponent {
         return (<component.component>{childrens}</component.component>)
     }
 
+    getTools()
+    {
+        let pageComponent = this.props.pageComponent;
+        let component = new ComponentFactory().getComponentForName(pageComponent.name);
+        if(component.component.isBaseContainerComponent){
+            return;
+        }
+
+        let tools = [];
+        tools.push(
+            <EditFrame
+                show={this.state.show}
+                close={()=>{this.setState({show: false})}}
+            ></EditFrame>);
+        tools.push(
+            <div className="parentcomponent-btns">
+                    <button type="button" class="btn btn-info btn-sm"
+                        onClick={
+                            () => { this.setState({ show: true }) }
+                        }
+                    >
+                        <span class="oi oi-pencil" title="icon name" aria-hidden="true"></span>
+                    </button>
+                </div>
+        );
+
+        return tools;
+    }
+
     render() 
     {
         return (
@@ -37,6 +72,7 @@ class ParentComponent extends BaseParentComponent {
                 <div className="w-100">
                     {this.createChildrenComponent()}
                 </div>
+                {this.getTools()}
             </div>
         );
     }
