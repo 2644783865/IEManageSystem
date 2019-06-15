@@ -13,6 +13,7 @@ class BaseComponent extends React.Component
 }
 
 BaseComponent.propTypes = {
+    componentData: PropTypes.object
 }
 
 BaseComponent.defaultProps = {

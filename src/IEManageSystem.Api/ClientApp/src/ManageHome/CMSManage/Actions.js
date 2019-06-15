@@ -229,3 +229,12 @@ export function componentDataUpdateFetch(pageId, pageDataId, componentDatas)
     })
   );
 }
+
+export const ComponentDataUpdate = "ComponentDataUpdate"
+export function componentDataUpdate(resource)
+{
+  return {
+    type: ComponentDataUpdate,
+    resource
+  }
+}

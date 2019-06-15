@@ -5,6 +5,7 @@ import Modal from 'Modal/Modal.jsx'
 
 import Tab from 'Tab/Tab.jsx'
 
+// props.submit
 // props.close    fun
 class EditFrame extends React.Component 
 {
@@ -15,16 +16,51 @@ class EditFrame extends React.Component
         this.nameField = "text";
         this.selectIndex = 0;
 
-        this.newPageComponent = {...{}, ...this.props.pageComponent};
+        let componentData = this.props.componentData;
+        if(componentData == null || componentData == undefined){
+            componentData = {}
+        }
+
+        this.state = {
+            field1: componentData.field1,
+            field2: componentData.field2,
+            field3: componentData.field3,
+            field4: componentData.field4,
+            field5: componentData.field5,
+        };
 
         this.submit = this.submit.bind(this);
     }
 
-    submit(){
-        this.props.close();
+    componentWillUpdate(nextProps)
+    {
+        let componentData = nextProps.componentData;
+        if(componentData == null || componentData){
+            componentData = {}
+        }
+
+        this.state = {
+            field1: componentData.field1,
+            field2: componentData.field2,
+            field3: componentData.field3,
+            field4: componentData.field4,
+            field5: componentData.field5,
+        };
     }
 
-    render() {
+    submit(){
+        this.props.submit({
+            sign: this.props.pageComponent.sign,
+            field1: this.state.field1,
+            field2: this.state.field2,
+            field3: this.state.field3,
+            field4: this.state.field4,
+            field5: this.state.field5,
+        });
+    }
+
+    render() 
+    {
         return (
             <Modal
                 show={this.props.show}
@@ -46,14 +82,75 @@ class EditFrame extends React.Component
                                     <div>
                                         <label>请输入数据1：</label>
                                         <div className="input-group mb-3">
-                                            <input defaultValue={""} type="text" className="form-control" placeholder="数据1" 
+                                            <input value={this.state.field1} type="text" className="form-control" placeholder="数据1" 
                                                 onChange={
                                                     (event)=>{
+                                                        this.setState({field1: event.target.value});
                                                     }
                                                 }
                                             />
                                             <div className="input-group-append">
                                                 <span className="input-group-text">数据1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label>请输入数据2：</label>
+                                        <div className="input-group mb-3">
+                                            <input value={this.state.field2} type="text" className="form-control" placeholder="数据2" 
+                                                onChange={
+                                                    (event)=>{
+                                                        this.setState({field2: event.target.value});
+                                                    }
+                                                }
+                                            />
+                                            <div className="input-group-append">
+                                                <span className="input-group-text">数据2</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label>请输入数据3：</label>
+                                        <div className="input-group mb-3">
+                                            <input value={this.state.field3} type="text" className="form-control" placeholder="数据3" 
+                                                onChange={
+                                                    (event)=>{
+                                                        this.setState({field3: event.target.value});
+                                                    }
+                                                }
+                                            />
+                                            <div className="input-group-append">
+                                                <span className="input-group-text">数据3</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label>请输入数据4：</label>
+                                        <div className="input-group mb-3">
+                                            <input value={this.state.field4} type="text" className="form-control" placeholder="数据4" 
+                                                onChange={
+                                                    (event)=>{
+                                                        this.setState({field4: event.target.value});
+                                                    }
+                                                }
+                                            />
+                                            <div className="input-group-append">
+                                                <span className="input-group-text">数据4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label>请输入数据5：</label>
+                                        <div className="input-group mb-3">
+                                            <input value={this.state.field5} type="text" className="form-control" placeholder="数据5" 
+                                                onChange={
+                                                    (event)=>{
+                                                        this.setState({field5: event.target.value});
+                                                    }
+                                                }
+                                            />
+                                            <div className="input-group-append">
+                                                <span className="input-group-text">数据5</span>
                                             </div>
                                         </div>
                                     </div>
@@ -74,7 +171,10 @@ class EditFrame extends React.Component
 
 EditFrame.propTypes = {
     show: PropTypes.bool.isRequired,
-    close: PropTypes.func.isRequired
+    close: PropTypes.func.isRequired,
+    submit: PropTypes.func.isRequired,
+    pageComponent: PropTypes.object.isRequired,
+    componentData: PropTypes.object
 }
 
 export default EditFrame

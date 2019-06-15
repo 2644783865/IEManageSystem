@@ -13,7 +13,8 @@ import {
     PageDataUpdateReceive,
     PageDataDeleteReceive,
     ComponentDatasReceive,
-    ComponentDataUpdateReceive} from './Actions'
+    ComponentDataUpdateReceive,
+    ComponentDataUpdate} from './Actions'
 
 
 function componentOperate(state = {}, action){
@@ -123,6 +124,18 @@ function componentData(state = {
         case ComponentDataUpdateReceive:
             return {...state, ...{
                 componentDatasDidInvalidate: true
+            }}
+        case ComponentDataUpdate:
+            let index = state.componentDatas.findIndex(e=>e.sign == action.resource.sign);
+            if(index == -1){
+                state.componentDatas.push(action.resource);
+            }
+            else{
+                state.componentDatas[index] = action.resource;
+            }
+            
+            return {...state, ...{
+                componentDatas: state.componentDatas
             }}
         default:
             return state;

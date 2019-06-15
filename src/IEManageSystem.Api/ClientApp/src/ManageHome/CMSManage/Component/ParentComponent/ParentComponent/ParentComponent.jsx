@@ -15,6 +15,17 @@ class ParentComponent extends BaseParentComponent {
         this.state = {
             show: false
         }
+
+        this.submit = this.submit.bind(this);
+    }
+
+    getComponentData(){
+        return this.props.componentDatas.find(e=>e.sign==pageComponent.sign)
+    }
+
+    submit(resource){
+        this.props.componentDataUpdate(resource);
+        this.setState({show: false});
     }
 
     createChildrenComponent() 
@@ -28,12 +39,17 @@ class ParentComponent extends BaseParentComponent {
             childrens = pageComponent.pageComponents.map(item => (
                 <ParentComponent
                     pageComponent={item}
+                    componentDataUpdate={this.props.componentDataUpdate}
+                    componentDatas={this.props.componentDatas}
                 >
                 </ParentComponent>)
             );
         }
 
-        return (<component.component>{childrens}</component.component>)
+        return (
+            <component.component
+                componentData={this.getComponentData()}
+            >{childrens}</component.component>)
     }
 
     getTools()
@@ -49,6 +65,9 @@ class ParentComponent extends BaseParentComponent {
             <EditFrame
                 show={this.state.show}
                 close={()=>{this.setState({show: false})}}
+                submit={this.submit}
+                pageComponent={pageComponent}
+                componentData={this.getComponentData()}
             ></EditFrame>);
         tools.push(
             <div className="parentcomponent-btns">
@@ -79,7 +98,9 @@ class ParentComponent extends BaseParentComponent {
 }
 
 ParentComponent.propTypes = {
-    pageComponent: PropTypes.object.isRequired
+    pageComponent: PropTypes.object.isRequired,
+    componentDataUpdate: PropTypes.func.isRequired,
+    componentDatas: PropTypes.array
 }
 
 ParentComponent.defaultProps = {

@@ -5,8 +5,8 @@ import { CmsRedux } from 'CMSManage/CmsRedux'
 
 import './ComponentData.css'
 
-import { pageComponentFetch, componentDatasFetch, componentDataUpdateFetch } from 'CMSManage/Actions'
-import ParentCom from 'CMSManage/Component/ParentComponent/ParentComponent/ParentComponent.jsx'
+import { pageComponentFetch, componentDatasFetch, componentDataUpdateFetch, componentDataUpdate } from 'CMSManage/Actions'
+import ParentComponent from 'CMSManage/Component/ParentComponent/ParentComponent/ParentComponent.jsx'
 
 class ComponentData extends React.Component {
     constructor(props) {
@@ -55,10 +55,12 @@ class ComponentData extends React.Component {
                 <div className="page-container-body">
                     {
                         components.map(item =>
-                            <ParentCom
+                            <ParentComponent
                                 pageComponent={item}
+                                componentDataUpdate={this.props.componentDataUpdate}
+                                componentDatas={this.props.componentDatas}
                             >
-                            </ParentCom>)
+                            </ParentComponent>)
                     }
                 </div>
             </div>
@@ -74,7 +76,8 @@ ComponentData.propTypes = {
     pageDataId: PropTypes.string.isRequired,
     pageComponentFetch: PropTypes.func.isRequired,
     componentDatasFetch: PropTypes.func.isRequired,
-    componentDataUpdateFetch: PropTypes.func.isRequired
+    componentDataUpdateFetch: PropTypes.func.isRequired,
+    componentDataUpdate: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
@@ -97,6 +100,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         componentDataUpdateFetch:(pageId, pageDataId, componentDatas) => {
             dispatch(componentDataUpdateFetch(pageId, pageDataId, componentDatas));
+        },
+        componentDataUpdate: (resource) => {
+            dispatch(componentDataUpdate(resource));
         }
     }
 }
