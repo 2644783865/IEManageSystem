@@ -11,10 +11,10 @@ import 'cookie';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import Logo from 'Logo/Logo.jsx';
+import { Route, BrowserRouter } from "react-router-dom";
 
 import Menu from "./Menu/Menu.jsx";
+import PageContainer from './PageContainer/PageContainer.jsx'
 
 require('./Index.css');
 
@@ -54,6 +54,7 @@ class Home extends React.Component{
         <div className="w-100 h-100">
             <Menu />
             <div className="h-100 d-flex">
+                <Route path="/:pageId/:pageDataId" component={PageContainer} />
             </div>
             <nav className="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
                 <small className="text-white">
@@ -68,6 +69,8 @@ class Home extends React.Component{
     }
 }
 
-ReactDOM.render( 
-    <Home /> , 
+ReactDOM.render(
+    <BrowserRouter>
+        <Home />
+    </BrowserRouter>, 
     document.getElementById('Home') );

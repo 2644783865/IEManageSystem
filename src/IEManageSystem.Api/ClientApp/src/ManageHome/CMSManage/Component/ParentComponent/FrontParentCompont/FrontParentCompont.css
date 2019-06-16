@@ -1,0 +1,7 @@
+.parentcomponent{
+    padding: 0rem;
+    display: flex;
+    justify-content:space-between;
+    border: 1px solid #dee2e6;
+    margin-bottom: 1.2rem;
+}
