@@ -2,6 +2,7 @@
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Castle.MicroKernel.Registration;
+using IEManageSystem.Repositorys;
 
 namespace IEManageSystem.EntityFrameworkCore
 {
@@ -13,6 +14,11 @@ namespace IEManageSystem.EntityFrameworkCore
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(typeof(IEManageSystemEntityFrameworkCoreModule).GetAssembly());
+
+            IocManager.IocContainer.Register(
+                // 泛型注册，IRepositoryEx<> 接口使用 RepositoryEx<> 实例
+                Component.For(typeof(IEfRepository<,>)).ImplementedBy(typeof(EfRepository<,>)).LifestyleTransient()
+            );
         }
     }
 }

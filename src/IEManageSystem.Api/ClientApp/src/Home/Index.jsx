@@ -13,6 +13,7 @@ import React from 'react';
 import { Route } from "react-router-dom";
 
 import Nav from "./Nav/Nav.jsx";
+import Menu from './Menu/Menu.jsx'
 import PageContainer from './PageContainer/PageContainer.jsx'
 
 require('./Index.css');
@@ -52,8 +53,9 @@ export default class Home extends React.Component{
         return (
         <div className="w-100 h-100">
             <Nav />
-            <div className="h-100 d-flex">
-                <Route path="/:pageId/:pageDataId" component={PageContainer} />
+            <div className="h-100 d-flex container-front">
+                <Menu />
+                <Route path="/Page/:pageId/:pageDataId" component={PageContainer} />
             </div>
             <nav className="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
                 <small className="text-white">

@@ -7,16 +7,17 @@ using Abp.Domain.Repositories;
 using IEManageSystem.CMS.DomainModel.Pages;
 using IEManageSystem.Dtos.CMS;
 using IEManageSystem.Help.Exceptions;
+using IEManageSystem.Repositorys;
 using IEManageSystem.Services.ManageHome.CMS.Pages.Dto;
 
 namespace IEManageSystem.Services.ManageHome.CMS.Pages
 {
     public class PageManageAppService : IEManageSystemAppServiceBase, IPageManageAppService
     {
-        private IRepository<PageBase> _repository { get; set; }
+        private IEfRepository<PageBase, int> _repository { get; set; }
 
         public PageManageAppService(
-            IRepository<PageBase> repository
+            IEfRepository<PageBase, int> repository
             )
         {
             _repository = repository;
@@ -238,12 +239,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
         public GetComponentDataOutput GetComponentDatas(GetComponentDataInput input)
         {
-            Expression<Func<PageBase, object>>[] propertySelectors = new Expression<Func<PageBase, object>>[]
-            {
-                e=>e.PageDatas,
-                e=>e.PageDatas.SelectMany(ie=>ie.ContentComponentDatas)
-            };
-            var page = _repository.GetAllIncluding(propertySelectors).FirstOrDefault(e => e.Id == input.PageId);
+            var page = _repository.ThenInclude(e => e.PageDatas, e => e.ContentComponentDatas).FirstOrDefault(e => e.Id == input.PageId);
 
             var pageData = page.PageDatas.FirstOrDefault(e => e.Id == input.PageDataId);
 
@@ -255,12 +251,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
         public UpdateComponentDataOutput UpdateComponentData(UpdateComponentDataInput input)
         {
-            Expression<Func<PageBase, object>>[] propertySelectors = new Expression<Func<PageBase, object>>[]
-            {
-                e=>e.PageDatas,
-                e=>e.PageDatas.SelectMany(ie=>ie.ContentComponentDatas)
-            };
-            var page = _repository.GetAllIncluding(propertySelectors).FirstOrDefault(e => e.Id == input.PageId);
+            var page = _repository.ThenInclude(e => e.PageDatas, e => e.ContentComponentDatas).FirstOrDefault(e => e.Id == input.PageId);
 
             var pageData = page.PageDatas.FirstOrDefault(e => e.Id == input.PageDataId);
 

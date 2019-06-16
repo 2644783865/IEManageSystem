@@ -136,9 +136,14 @@ namespace IEManageSystem.Api.Startup
             {
                 string requestPath = context.Request.Path.Value;
 
-                if (requestPath.StartsWith("/ManageHome/"))
+                if (requestPath.StartsWith("/ManageHome/", StringComparison.OrdinalIgnoreCase))
                 {
-                    context.Request.Path = new PathString("/ManageHome/Index.html");
+                    context.Request.Path = new PathString("/Index.html");
+                }
+
+                if (requestPath.StartsWith("/Page/", StringComparison.OrdinalIgnoreCase))
+                {
+                    context.Request.Path = new PathString("/Index.html");
                 }
 
                 await next.Invoke();
