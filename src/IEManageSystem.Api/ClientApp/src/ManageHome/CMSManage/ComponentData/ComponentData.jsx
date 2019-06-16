@@ -51,6 +51,11 @@ class ComponentData extends React.Component {
                     componentType: "ContentLeafComponent",
                     name: "Clock",
                     sign: 1560170670390
+                },
+                {
+                    componentType: "ContentLeafComponent",
+                    name: "Donut",
+                    sign: 1560170670391
                 }
             ]
         }
