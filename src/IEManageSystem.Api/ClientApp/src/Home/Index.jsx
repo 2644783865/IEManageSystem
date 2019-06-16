@@ -10,15 +10,14 @@ import 'iemedia';
 import 'cookie';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Route, BrowserRouter } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 import Menu from "./Menu/Menu.jsx";
 import PageContainer from './PageContainer/PageContainer.jsx'
 
 require('./Index.css');
 
-class Home extends React.Component{
+export default class Home extends React.Component{
     constructor(props) {
         super(props);
     }
@@ -68,9 +67,3 @@ class Home extends React.Component{
         );
     }
 }
-
-ReactDOM.render(
-    <BrowserRouter>
-        <Home />
-    </BrowserRouter>, 
-    document.getElementById('Home') );

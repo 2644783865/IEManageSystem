@@ -13,8 +13,6 @@ class FrontParentCompont extends BaseParentComponent {
         this.state = {
             show: false
         }
-
-        this.submit = this.submit.bind(this);
     }
 
     getComponentData(){

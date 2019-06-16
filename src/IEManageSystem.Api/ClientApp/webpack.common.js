@@ -14,8 +14,7 @@ module.exports = {
     entry: { 
         account:__dirname + "/src/Account/account.jsx",
         consent:__dirname + "/src/Consent/consent.jsx",
-        adminiHome:__dirname + "/src/ManageHome/index.js",
-        home:__dirname + "/src/Home/Index.jsx"
+        index:__dirname + "/src/index.js",
     },
     output: {
         path: __dirname + "/build/js",
@@ -48,16 +47,10 @@ module.exports = {
             chunks: ['consent']
         }),
         new HtmlWebpackPlugin({
-            filename: __dirname + '/build/ManageHome/Index.html',
-            template: __dirname + '/src/ManageHome/Index.html', // html模板路径,模板路径是支持传参调用loader的,
-            inject: 'body', //打包之后的js插入的位置，true/'head'/'body'/false,
-            chunks: ['adminiHome', "weatherExport"]
-        }),
-        new HtmlWebpackPlugin({
             filename: __dirname + '/build/Index.html',
-            template: __dirname + '/src/Home/Index.html', // html模板路径,模板路径是支持传参调用loader的,
+            template: __dirname + '/src/Index.html', // html模板路径,模板路径是支持传参调用loader的,
             inject: 'body', //打包之后的js插入的位置，true/'head'/'body'/false,
-            chunks: ['home']
+            chunks: ['index', "weatherExport"]
         }),
         new BomPlugin(true, /\.(cshtml)$/),//解决cshtml中文乱码的问题
     ],
