@@ -1,9 +1,9 @@
 import React from "react";
 
 import Logo from 'Logo/Logo.jsx';
-import './Menu.css';
+import './Nav.css';
 
-export default class Menu extends React.Component{
+export default class Nav extends React.Component{
     constructor(props){
         super(props);
 

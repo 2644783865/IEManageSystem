@@ -12,7 +12,7 @@ import 'cookie';
 import React from 'react';
 import { Route } from "react-router-dom";
 
-import Menu from "./Menu/Menu.jsx";
+import Nav from "./Nav/Nav.jsx";
 import PageContainer from './PageContainer/PageContainer.jsx'
 
 require('./Index.css');
@@ -51,7 +51,7 @@ export default class Home extends React.Component{
     {
         return (
         <div className="w-100 h-100">
-            <Menu />
+            <Nav />
             <div className="h-100 d-flex">
                 <Route path="/:pageId/:pageDataId" component={PageContainer} />
             </div>
