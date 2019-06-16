@@ -16,10 +16,10 @@ import {
 } from "bizcharts";
 import DataSet from "@antv/data-set";
 
-import BaseComponent from '../BaseComponent/BaseComponent.jsx'
+import BaseLeafComponent from '../BaseComponent/BaseLeafComponent.jsx'
 
 // 环图
-class Donut extends BaseComponent {
+class Donut extends BaseLeafComponent {
     static preview() {
         return (<p>环图</p>);
     }

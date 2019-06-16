@@ -16,10 +16,10 @@ import {
 } from "bizcharts";
 import DataSet from "@antv/data-set";
 
-import BaseComponent from '../BaseComponent/BaseComponent.jsx'
+import BaseLeafComponent from '../BaseComponent/BaseLeafComponent.jsx'
 
 // 柱状图
-class Groupedcolumn extends BaseComponent {
+class Groupedcolumn extends BaseLeafComponent {
     static preview() {
         return (<p>柱状图</p>);
     }

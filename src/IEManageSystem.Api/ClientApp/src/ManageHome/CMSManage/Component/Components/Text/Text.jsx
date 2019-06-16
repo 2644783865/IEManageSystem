@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import BaseComponent from '../BaseComponent/BaseComponent.jsx'
+import BaseLeafComponent from '../BaseComponent/BaseLeafComponent.jsx'
 
-class Text extends BaseComponent
+class Text extends BaseLeafComponent
 {
     static preview(){
         return (<p>文本框</p>);
@@ -34,7 +34,7 @@ class Text extends BaseComponent
     }
 }
 
-BaseComponent.defaultProps = {
+Text.defaultProps = {
     col: 3
 };
 

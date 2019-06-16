@@ -16,7 +16,7 @@ import {
 } from "bizcharts";
 import DataSet from "@antv/data-set";
 
-import BaseComponent from '../BaseComponent/BaseComponent.jsx'
+import BaseLeafComponent from '../BaseComponent/BaseLeafComponent.jsx'
 
 // props.fieldValue
 // props.setFieldValue
@@ -76,7 +76,7 @@ class CustomizeField extends React.Component {
 }
 
 // 日常作息可视图
-class Clock extends BaseComponent {
+class Clock extends BaseLeafComponent {
     static preview() {
         return (<p>日常作息可视图</p>);
     }
