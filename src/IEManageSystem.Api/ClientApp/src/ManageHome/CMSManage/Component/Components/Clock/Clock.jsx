@@ -19,9 +19,6 @@ import DataSet from "@antv/data-set";
 
 import BaseLeafComponent from '../BaseComponent/BaseLeafComponent/BaseLeafComponent.jsx'
 
-// props.text
-// props.fieldValue
-// props.setFieldValue
 class CustomizeField extends React.Component {
     constructor(props) {
         super(props)
@@ -118,40 +115,58 @@ class Clock extends BaseLeafComponent {
             as: "percent"
         });
 
-        const userData = [
-            {
-                type: "睡眠",
-                value: 70
-            },
-            {
-                type: "淡茶 & 烟斗 & 冥想",
-                value: 10
-            },
-            {
-                type: "写作",
-                value: 10
-            },
-            {
-                type: "教课",
-                value: 40
-            },
-            {
-                type: "酒吧吃肉配红酒",
-                value: 40
-            },
-            {
-                type: "散步",
-                value: 10
-            },
-            {
-                type: "拜访约瑟夫",
-                value: 30
-            },
-            {
-                type: "阅读",
-                value: 30
+        let userData = [];
+        if(this.props.componentData != null && this.props.componentData != undefined)
+        {
+            let parse = (field)=>{
+                let parseData = JSON.parse(field)
+
+                return {
+                    type: parseData.type,
+                    value: parseInt(parseData.value)
+                }
+            };
+
+            if(this.props.componentData.field1){
+                userData.push(parse(this.props.componentData.field1));
             }
-        ];
+            if(this.props.componentData.field2){
+                userData.push(parse(this.props.componentData.field2));
+            }
+            if(this.props.componentData.field3){
+                userData.push(parse(this.props.componentData.field3));
+            }
+            if(this.props.componentData.field4){
+                userData.push(parse(this.props.componentData.field4));
+            }
+            if(this.props.componentData.field5){
+                userData.push(parse(this.props.componentData.field5));
+            }
+        }
+        else{
+            userData = [
+                {
+                    type: "睡眠",
+                    value: 8
+                },
+                {
+                    type: "上班",
+                    value: 8
+                },
+                {
+                    type: "午休",
+                    value: 2
+                },
+                {
+                    type: "娱乐",
+                    value: 4
+                },
+                {
+                    type: "学习",
+                    value: 2
+                }
+            ];
+        }
         const userDv = new DataView();
         userDv.source(userData).transform({
             type: "percent",
