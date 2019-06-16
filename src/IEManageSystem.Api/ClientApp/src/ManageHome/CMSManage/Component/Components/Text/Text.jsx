@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import BaseLeafComponent from '../BaseComponent/BaseLeafComponent.jsx'
+import BaseLeafComponent from '../BaseComponent/BaseLeafComponent/BaseLeafComponent.jsx'
 
 class Text extends BaseLeafComponent
 {

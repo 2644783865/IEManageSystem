@@ -1,5 +1,5 @@
 import React from 'react'
-import BaseComponent from '../BaseComponent/BaseComponent.jsx'
+import BaseComponent from '../BaseComponent/BaseLeafComponent/BaseLeafComponent.jsx'
 
 import './CitiesSlider.css'
 

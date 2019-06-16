@@ -16,7 +16,7 @@ import {
 } from "bizcharts";
 import DataSet from "@antv/data-set";
 
-import BaseLeafComponent from '../BaseComponent/BaseLeafComponent.jsx'
+import BaseLeafComponent from '../BaseComponent/BaseLeafComponent/BaseLeafComponent.jsx'
 
 // props.fieldValue
 // props.setFieldValue

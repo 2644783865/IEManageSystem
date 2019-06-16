@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import BaseComponent from './BaseComponent.jsx'
+import BaseComponent from '../BaseComponent.jsx'
 
 class BaseLeafComponent extends BaseComponent {
     static getConfig() {
