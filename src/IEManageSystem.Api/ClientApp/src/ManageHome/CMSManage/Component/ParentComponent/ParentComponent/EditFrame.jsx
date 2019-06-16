@@ -31,19 +31,19 @@ class EditFrame extends React.Component {
         this.submit = this.submit.bind(this);
     }
 
-    componentWillUpdate(nextProps) {
+    componentWillReceiveProps(nextProps) {
         let componentData = nextProps.componentData;
-        if (componentData == null || componentData) {
+        if (componentData == null || !componentData) {
             componentData = {}
         }
 
-        this.state = {
+        this.setState({
             field1: componentData.field1,
             field2: componentData.field2,
             field3: componentData.field3,
             field4: componentData.field4,
             field5: componentData.field5,
-        };
+        });
     }
 
     submit() {
@@ -77,122 +77,35 @@ class EditFrame extends React.Component {
                                 selectOnclick={() => { }}
                             >
                                 {
-                                    this.props.config.field1.customizeField ?
-                                        <this.props.config.field1.customizeField
-                                            fieldValue={this.state.field1}
-                                            setFieldValue={(fieldValue) => { this.setState({ field1: fieldValue }) }}
-                                        /> :
-                                        (
-                                            this.props.config.field1.show &&
-                                            <div>
-                                                <label>{this.props.config.field1.text}</label>
-                                                <div className="input-group mb-3">
-                                                    <input value={this.state.field1} type="text" className="form-control" placeholder={`请输入${this.props.config.field1.text}`}
-                                                        onChange={
-                                                            (event) => {
-                                                                this.setState({ field1: event.target.value });
-                                                            }
-                                                        }
-                                                    />
-                                                    <div className="input-group-append">
-                                                        <span className="input-group-text">{this.props.config.field1.text}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        )
-                                }
+                                    this.props.config.field1 &&
+                                    <this.props.config.field1
+                                        fieldValue={this.state.field1}
+                                        setFieldValue={(fieldValue) => { this.setState({ field1: fieldValue }) }}
+                                    />}
                                 {
-                                    this.props.config.field2.customizeField ?
-                                        <this.props.config.field2.customizeField
-                                            fieldValue={this.state.field2}
-                                            setFieldValue={(fieldValue) => { this.setState({ field2: fieldValue }) }}
-                                        /> :
-                                        (this.props.config.field2.show &&
-                                            <div>
-                                                <label>{this.props.config.field2.text}</label>
-                                                <div className="input-group mb-3">
-                                                    <input value={this.state.field2} type="text" className="form-control" placeholder={`请输入${this.props.config.field2.text}`}
-                                                        onChange={
-                                                            (event) => {
-                                                                this.setState({ field2: event.target.value });
-                                                            }
-                                                        }
-                                                    />
-                                                    <div className="input-group-append">
-                                                        <span className="input-group-text">{this.props.config.field2.text}</span>
-                                                    </div>
-                                                </div>
-                                            </div>)
-                                }
+                                    this.props.config.field2 &&
+                                    <this.props.config.field2
+                                        fieldValue={this.state.field2}
+                                        setFieldValue={(fieldValue) => { this.setState({ field2: fieldValue }) }}
+                                    />}
                                 {
-                                    this.props.config.field3.customizeField ?
-                                        <this.props.config.field3.customizeField
-                                            fieldValue={this.state.field3}
-                                            setFieldValue={(fieldValue) => { this.setState({ field3: fieldValue }) }}
-                                        /> :
-                                        (this.props.config.field3.show &&
-                                            <div>
-                                                <label>{this.props.config.field3.text}</label>
-                                                <div className="input-group mb-3">
-                                                    <input value={this.state.field3} type="text" className="form-control" placeholder={`请输入${this.props.config.field3.text}`}
-                                                        onChange={
-                                                            (event) => {
-                                                                this.setState({ field3: event.target.value });
-                                                            }
-                                                        }
-                                                    />
-                                                    <div className="input-group-append">
-                                                        <span className="input-group-text">{this.props.config.field3.text}</span>
-                                                    </div>
-                                                </div>
-                                            </div>)
-                                }
+                                    this.props.config.field3 &&
+                                    <this.props.config.field3
+                                        fieldValue={this.state.field3}
+                                        setFieldValue={(fieldValue) => { this.setState({ field3: fieldValue }) }}
+                                    />}
                                 {
-                                    this.props.config.field4.customizeField ?
-                                        <this.props.config.field4.customizeField
-                                            fieldValue={this.state.field4}
-                                            setFieldValue={(fieldValue) => { this.setState({ field4: fieldValue }) }}
-                                        /> :
-                                        (this.props.config.field4.show &&
-                                            <div>
-                                                <label>{this.props.config.field4.text}</label>
-                                                <div className="input-group mb-3">
-                                                    <input value={this.state.field4} type="text" className="form-control" placeholder={`请输入${this.props.config.field4.text}`}
-                                                        onChange={
-                                                            (event) => {
-                                                                this.setState({ field4: event.target.value });
-                                                            }
-                                                        }
-                                                    />
-                                                    <div className="input-group-append">
-                                                        <span className="input-group-text">{this.props.config.field4.text}</span>
-                                                    </div>
-                                                </div>
-                                            </div>)
-                                }
+                                    this.props.config.field4 &&
+                                    <this.props.config.field4
+                                        fieldValue={this.state.field4}
+                                        setFieldValue={(fieldValue) => { this.setState({ field4: fieldValue }) }}
+                                    />}
                                 {
-                                    this.props.config.field5.customizeField ?
-                                        <this.props.config.field5.customizeField
-                                            fieldValue={this.state.field5}
-                                            setFieldValue={(fieldValue) => { this.setState({ field5: fieldValue }) }}
-                                        /> :
-                                        (this.props.config.field5.show &&
-                                            <div>
-                                                <label>{this.props.config.field5.text}</label>
-                                                <div className="input-group mb-3">
-                                                    <input value={this.state.field5} type="text" className="form-control" placeholder={`请输入${this.props.config.field5.text}`}
-                                                        onChange={
-                                                            (event) => {
-                                                                this.setState({ field5: event.target.value });
-                                                            }
-                                                        }
-                                                    />
-                                                    <div className="input-group-append">
-                                                        <span className="input-group-text">{this.props.config.field5.text}</span>
-                                                    </div>
-                                                </div>
-                                            </div>)
-                                }
+                                    this.props.config.field5 &&
+                                    <this.props.config.field5
+                                        fieldValue={this.state.field5}
+                                        setFieldValue={(fieldValue) => { this.setState({ field5: fieldValue }) }}
+                                    />}
                             </Tab>
                         </div>
 

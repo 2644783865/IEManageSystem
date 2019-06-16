@@ -3,14 +3,20 @@ import PropTypes from 'prop-types'
 
 import BaseComponent from '../BaseComponent.jsx'
 
+import BaseField from './BaseField.jsx'
+
 class BaseLeafComponent extends BaseComponent {
+    static getBaseField(props, text){
+        return (<BaseField text={text} fieldValue={props.fieldValue} setFieldValue={props.setFieldValue} />);
+    }
+
     static getConfig() {
         return {
-            field1: { text: "字段1", show: true },
-            field2: { text: "字段2", show: true },
-            field3: { text: "字段3", show: true },
-            field4: { text: "字段4", show: true },
-            field5: { text: "字段5", show: true },
+            field1: (props) => this.getBaseField(props, "字段1"),
+            field2: (props) => this.getBaseField(props, "字段2"),
+            field3: (props) => this.getBaseField(props, "字段3"),
+            field4: (props) => this.getBaseField(props, "字段4"),
+            field5: (props) => this.getBaseField(props, "字段5"),
         };
     }
 

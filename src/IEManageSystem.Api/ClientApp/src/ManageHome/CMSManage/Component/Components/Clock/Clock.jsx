@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {
     G2,
     Chart,
@@ -18,6 +19,7 @@ import DataSet from "@antv/data-set";
 
 import BaseLeafComponent from '../BaseComponent/BaseLeafComponent/BaseLeafComponent.jsx'
 
+// props.text
 // props.fieldValue
 // props.setFieldValue
 class CustomizeField extends React.Component {
@@ -41,7 +43,7 @@ class CustomizeField extends React.Component {
     render() {
         return (
             <div>
-                <label>日常作息项</label>
+                <label>{this.props.text}</label>
                 <div>
                     <div className="input-group mb-3 col-md-6 float-left">
                         <input value={this.type} type="text" className="form-control" placeholder={`请输入类型`}
@@ -75,6 +77,12 @@ class CustomizeField extends React.Component {
     }
 }
 
+CustomizeField.propTypes = {
+    text: PropTypes.string.isRequired,
+    fieldValue: PropTypes.string,
+    setFieldValue: PropTypes.func.isRequired
+}
+
 // 日常作息可视图
 class Clock extends BaseLeafComponent {
     static preview() {
@@ -83,11 +91,11 @@ class Clock extends BaseLeafComponent {
 
     static getConfig() {
         return {
-            field1: { text: "字段1", show: true, customizeField: CustomizeField },
-            field2: { text: "字段2", show: true, customizeField: CustomizeField },
-            field3: { text: "字段3", show: true, customizeField: CustomizeField },
-            field4: { text: "字段4", show: true, customizeField: CustomizeField },
-            field5: { text: "字段5", show: true, customizeField: CustomizeField },
+            field1: (props) => <CustomizeField text="字段1" fieldValue={props.fieldValue} setFieldValue={props.setFieldValue} />,
+            field2: (props) => <CustomizeField text="字段2" fieldValue={props.fieldValue} setFieldValue={props.setFieldValue} />,
+            field3: (props) => <CustomizeField text="字段3" fieldValue={props.fieldValue} setFieldValue={props.setFieldValue} />,
+            field4: (props) => <CustomizeField text="字段4" fieldValue={props.fieldValue} setFieldValue={props.setFieldValue} />,
+            field5: (props) => <CustomizeField text="字段5" fieldValue={props.fieldValue} setFieldValue={props.setFieldValue} />,
         };
     }
 

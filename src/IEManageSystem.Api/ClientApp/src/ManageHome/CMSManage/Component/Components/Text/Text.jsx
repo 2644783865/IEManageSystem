@@ -10,11 +10,7 @@ class Text extends BaseLeafComponent
 
     static getConfig(){
         return {
-            field1: {text: "文本", show: true},
-            field2: {text: "字段2", show: false},
-            field3: {text: "字段3", show: false},
-            field4: {text: "字段4", show: false},
-            field5: {text: "字段5", show: false},
+            field1: (props) => this.getBaseField(props, "文本"),
         };
     }
 
