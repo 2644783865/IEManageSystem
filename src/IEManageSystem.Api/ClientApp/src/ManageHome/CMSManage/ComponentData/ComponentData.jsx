@@ -56,6 +56,11 @@ class ComponentData extends React.Component {
                     componentType: "ContentLeafComponent",
                     name: "Donut",
                     sign: 1560170670391
+                },
+                {
+                    componentType: "ContentLeafComponent",
+                    name: "Groupedcolumn",
+                    sign: 1560170670392
                 }
             ]
         }
