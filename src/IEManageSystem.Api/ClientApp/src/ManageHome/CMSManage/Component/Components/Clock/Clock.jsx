@@ -18,32 +18,89 @@ import DataSet from "@antv/data-set";
 
 import BaseComponent from '../BaseComponent/BaseComponent.jsx'
 
+// props.fieldValue
+// props.setFieldValue
+class CustomizeField extends React.Component {
+    constructor(props) {
+        super(props)
+
+        let fieldValue = props.fieldValue ? JSON.parse(props.fieldValue) : {};
+        this.type = fieldValue.type;
+        this.value = fieldValue.value;
+    }
+
+    setFieldValue() {
+        let fieldValue = {
+            type: this.type,
+            value: this.value
+        };
+
+        this.props.setFieldValue(JSON.stringify(fieldValue));
+    }
+
+    render() {
+        return (
+            <div>
+                <label>日常作息项</label>
+                <div>
+                    <div className="input-group mb-3 col-md-6 float-left">
+                        <input value={this.type} type="text" className="form-control" placeholder={`请输入类型`}
+                            onChange={
+                                (event) => {
+                                    this.type = event.target.value;
+                                    this.setFieldValue();
+                                }
+                            }
+                        />
+                        <div className="input-group-append">
+                            <span className="input-group-text">类型</span>
+                        </div>
+                    </div>
+                    <div className="input-group mb-3 col-md-6 float-left">
+                        <input value={this.value} type="text" className="form-control" placeholder={`请输入占比（1~24）`}
+                            onChange={
+                                (event) => {
+                                    this.value = event.target.value;
+                                    this.setFieldValue();
+                                }
+                            }
+                        />
+                        <div className="input-group-append">
+                            <span className="input-group-text">占比</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
+
 // 日常作息可视图
 class Clock extends BaseComponent {
     static preview() {
         return (<p>日常作息可视图</p>);
     }
+
+    static getConfig() {
+        return {
+            field1: { text: "字段1", show: true, customizeField: CustomizeField },
+            field2: { text: "字段2", show: true, customizeField: CustomizeField },
+            field3: { text: "字段3", show: true, customizeField: CustomizeField },
+            field4: { text: "字段4", show: true, customizeField: CustomizeField },
+            field5: { text: "字段5", show: true, customizeField: CustomizeField },
+        };
+    }
+
     render() {
         const { Text } = Guide;
-        const text = [
-            "MIDNIGHT",
-            "3 AM",
-            "6 AM",
-            "9 AM",
-            "NOON",
-            "3 PM",
-            "6 PM",
-            "9 PM"
-        ];
-        const data = [];
 
+        const data = [];
         for (let i = 0; i < 24; i++) {
             const item = {};
             item.type = i + "";
             item.value = 10;
             data.push(item);
         }
-
         const { DataView } = DataSet;
         const dv = new DataView();
         dv.source(data).transform({
@@ -52,6 +109,7 @@ class Clock extends BaseComponent {
             dimension: "type",
             as: "percent"
         });
+
         const userData = [
             {
                 type: "睡眠",
@@ -124,59 +182,6 @@ class Clock extends BaseComponent {
                                     lineHeight: "240px",
                                     fontSize: "48",
                                     fill: "#262626",
-                                    textAlign: "center"
-                                }}
-                            />
-                        </Guide>
-                    </View>
-                    <View data={data}>
-                        <Coord type="polar" innerRadius={0.9} />
-                        <Geom
-                            type="interval"
-                            position="type*value"
-                            color="#444"
-                            size={[
-                                "type",
-                                function (val) {
-                                    if (val % 3 === 0) {
-                                        return 4;
-                                    } else {
-                                        return 0;
-                                    }
-                                }
-                            ]}
-                            style={{
-                                stroke: "#444",
-                                lineWidth: 1
-                            }}
-                        >
-                            <Label
-                                content={[
-                                    "type",
-                                    function (val) {
-                                        if (val % 3 === 0) {
-                                            return text[val / 3];
-                                        }
-
-                                        return "";
-                                    }
-                                ]}
-                                offset={15}
-                                textStyle={{
-                                    fontSize: 12,
-                                    fontWeight: "bold",
-                                    fill: "#bfbfbf"
-                                }}
-                            />
-                        </Geom>
-                        <Guide>
-                            <Text
-                                position={["50%", "50%"]}
-                                content="24 hours"
-                                style={{
-                                    lineHeight: "240px",
-                                    fontSize: "48",
-                                    fill: "#609064",
                                     textAlign: "center"
                                 }}
                             />

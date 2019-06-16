@@ -13,6 +13,16 @@ class CitiesSlider extends BaseComponent {
         return (<p>幻灯片</p>);
     }
 
+    static getConfig(){
+        return {
+            field1: {text: "幻灯片1", show: true},
+            field2: {text: "幻灯片2", show: true},
+            field3: {text: "幻灯片3", show: true},
+            field4: {text: "幻灯片4", show: true},
+            field5: {text: "幻灯片5", show: true},
+        };
+    }
+
     constructor(props) {
         super(props);
 

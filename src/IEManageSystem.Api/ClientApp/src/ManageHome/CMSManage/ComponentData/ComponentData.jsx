@@ -46,6 +46,11 @@ class ComponentData extends React.Component {
                         }
                     ],
                     sign: 1560170696487
+                },
+                {
+                    componentType: "ContentLeafComponent",
+                    name: "Clock",
+                    sign: 1560170670390
                 }
             ]
         }

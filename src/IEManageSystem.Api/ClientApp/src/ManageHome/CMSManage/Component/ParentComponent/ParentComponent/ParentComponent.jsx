@@ -20,7 +20,7 @@ class ParentComponent extends BaseParentComponent {
     }
 
     getComponentData(){
-        return this.props.componentDatas.find(e=>e.sign==pageComponent.sign)
+        return this.props.componentDatas.find(e=>e.sign==this.props.pageComponent.sign)
     }
 
     submit(resource){
@@ -68,6 +68,7 @@ class ParentComponent extends BaseParentComponent {
                 submit={this.submit}
                 pageComponent={pageComponent}
                 componentData={this.getComponentData()}
+                config={component.component.getConfig()}
             ></EditFrame>);
         tools.push(
             <div className="parentcomponent-btns">
