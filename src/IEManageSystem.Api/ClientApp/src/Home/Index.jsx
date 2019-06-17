@@ -53,9 +53,13 @@ export default class Home extends React.Component{
         return (
         <div className="w-100 h-100">
             <Nav />
-            <div className="h-100 d-flex container-front">
-                <Menu />
-                <Route path="/Page/:pageId/:pageDataId" component={PageContainer} />
+            <div className="front-container">
+                <div>
+                    <div className="container-fluid">
+                        <Menu />
+                        <Route path="/Page/:pageId/:pageDataId" component={PageContainer} />
+                    </div>
+                </div>
             </div>
             <nav className="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
                 <small className="text-white">

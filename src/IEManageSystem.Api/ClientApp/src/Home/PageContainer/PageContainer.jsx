@@ -16,18 +16,15 @@ class PageContainer extends React.Component {
         this.props.componentDatasFetch(this.props.pageId, this.props.pageDataId);
     }
 
-    componentWillUpdate(nextProps)
-    {
-        if(nextProps.componentDatasDidInvalidate)
-        {
+    componentWillUpdate(nextProps) {
+        if (nextProps.componentDatasDidInvalidate) {
             this.props.componentDatasFetch(this.props.pageId, this.props.pageDataId);
         }
     }
 
-    render() 
-    {
+    render() {
         let components = this.props.pageComponents;
-        if(components.length == 0){
+        if (components.length == 0) {
             components = [
                 {
                     componentType: "ContentLeafComponent",
@@ -66,17 +63,15 @@ class PageContainer extends React.Component {
         }
 
         return (
-            <div className="page-container">
-                <div className="page-container-body">
-                    {
-                        components.map(item =>
-                            <FrontParentCompont
-                                pageComponent={item}
-                                componentDatas={this.props.componentDatas}
-                            >
-                            </FrontParentCompont>)
-                    }
-                </div>
+            <div className="front-page-container">
+                {
+                    components.map(item =>
+                        <FrontParentCompont
+                            pageComponent={item}
+                            componentDatas={this.props.componentDatas}
+                        >
+                        </FrontParentCompont>)
+                }
             </div>
         );
     }
@@ -104,10 +99,10 @@ const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的prop
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        pageComponentFetch:(id) => {
+        pageComponentFetch: (id) => {
             dispatch(pageComponentFetch(id));
         },
-        componentDatasFetch:(pageId, pageDataId) => {
+        componentDatasFetch: (pageId, pageDataId) => {
             dispatch(componentDatasFetch(pageId, pageDataId));
         }
     }

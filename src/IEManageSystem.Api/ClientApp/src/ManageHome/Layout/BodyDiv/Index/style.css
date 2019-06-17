@@ -1,3 +1,7 @@
+.content-area{
+  overflow: hidden;
+}
+
 
 /* placement = right, left, center */
 /* alignment = top, bottom */

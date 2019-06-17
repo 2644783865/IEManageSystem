@@ -4,6 +4,7 @@
 ![image](img/show2.png)
 ![image](img/show3.png)
 ![image](img/show4.png)
+![image](img/show5.png)
 
 项目介绍：
 	分支dev1.0_c为个人开发分支，功能最新，bug也多

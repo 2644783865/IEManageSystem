@@ -2,19 +2,34 @@ import React from "react";
 
 import './Menu.css';
 
-export default class Nav extends React.Component{
-    constructor(props){
+export default class Nav extends React.Component {
+    constructor(props) {
         super(props);
 
         this.state = {
-            menus: []
+            menus: [{
+                name: "home",
+                displayName: "首页",
+                icon: "oi-home",
+                menus: []
+            }, {
+                name: "post",
+                displayName: "技术文档",
+                menus: [{
+                    name: "web",
+                    displayName: "站点技术",
+                }, {
+                    name: "dosktop",
+                    displayName: "桌面应用",
+                }]
+            }]
         };
 
         this.getMenus = this.getMenus.bind(this);
         this.getMenus();
     }
 
-    getMenus(){
+    getMenus() {
         let postData = {
 
         };
@@ -25,38 +40,39 @@ export default class Nav extends React.Component{
             data: JSON.stringify(postData),
             contentType: 'application/json',
             dataType: 'json',
-            success: function(data){
-		        if(data.isSuccess == true)
-		        {
-                    this.setState({menus:data.value.menus});
-		        }
-		    }.bind(this)
+            success: function (data) {
+                if (data.isSuccess == true) {
+                    this.setState({ menus: data.value.menus });
+                }
+            }.bind(this)
         });
     }
 
-    createRootMenu(menu)
-    {
+    createRootMenu(menu) {
         let childsMenus = menu.menus || [];
 
         return (
-        <div>
             <label for='Dashboard'>
-                <div className="swanky_wrapper__title">
-                    <span>{menu.displayName}</span>
-                    <div className='lil_arrow'></div>
+                <div className="front-swanky-wrapper__title">
+                    <div>
+                        <span className={ "oi padding-right-10 " + menu.icon } title="icon name" aria-hidden="true"></span>
+                        <span>{menu.displayName}</span>
+                    </div>
+                    {
+                        childsMenus.length != 0 && <div className='lil_arrow'></div>
+                    }
                 </div>
-                <div className='swanky_wrapper__content'>
+                <div className='front-swanky-wrapper__content'>
                     <ul>
-                        {childsMenus.map( item => (<li>{item.displayName}</li>) )}
+                        {childsMenus.map(item => (<li>{item.displayName}</li>))}
                     </ul>
                 </div>
-            </label>
-        </div>);
+            </label>);
     }
 
-    render(){
+    render() {
         return (
-            <div className='swanky_wrapper'>
+            <div className='front-swanky-wrapper'>
                 {this.state.menus.map(item => this.createRootMenu(item))}
             </div>
         );

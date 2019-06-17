@@ -6,8 +6,8 @@ import { ApiScopeNodeType } from "Core/ApiScopeAuthority/ApiScopeNodeType.js";
 
 import CMSManage from './CMSManage.jsx';
 import { reducer } from './Reducers'
-import {CmsRedux} from './CmsRedux'
-import {RootRedux} from 'Core/IEReduxs/RootRedux'
+import { CmsRedux } from './CmsRedux'
+import { RootRedux } from 'Core/IEReduxs/RootRedux'
 import 'Core/Module'
 
 class Module extends BaseModule {
@@ -30,16 +30,11 @@ class Module extends BaseModule {
                             ]
                     },
                     {
-                        id: "Page",
-                        text: "站点页面",
+
+                        id: "PageManage",
+                        text: "页面管理",
                         icon: "oi-file",
-                        menuItems: [
-                            {
-                                id: "PageManage",
-                                text: "页面管理",
-                                url: "/ManageHome/CMSManage/PageManage"
-                            }
-                        ],
+                        url: "/ManageHome/CMSManage/PageManage",
                         accessScope:
                             [
                                 { scopeName: ApiScope.CMSManage.Page, scopeNodeType: ApiScopeNodeType.manage },
