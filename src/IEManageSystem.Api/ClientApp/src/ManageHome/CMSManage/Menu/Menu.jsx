@@ -1,7 +1,7 @@
 import React from "react";
 import ResourceForm from 'ResourceForm/ResourceForm.jsx';
 import Describe from 'ResourceForm/Describe.js';
-import {ResourceDescribeValueType} from 'ResourceForm/ResourceDescribeValueType.js';
+import { ResourceDescribeValueType } from 'ResourceForm/ResourceDescribeValueType.js';
 
 import ErrorModal from 'ErrorModal/ErrorModal.jsx';
 import LoadingModal from 'LoadingModal/LoadingModal.jsx';
@@ -10,28 +10,43 @@ import ConfirmBox from 'ConfirmBox/ConfirmBox.jsx';
 import "./Menu.css";
 
 const operateState = {
-    add:"add",
-    update:"update",
-    delete:"delete",
-    none:"none"
+    add: "add",
+    update: "update",
+    delete: "delete",
+    none: "none"
 };
 
-export default class Menu extends React.Component{
-    constructor(props){
+export default class Menu extends React.Component {
+    constructor(props) {
         super(props);
 
         this.describes = [];
 
         [
-            {name:"name", text:"菜单名", isId:false, isName:false, isEditCanEdit:false, valueType:ResourceDescribeValueType.text, col:12},
-            {name:"displayName", text:"显示名称", isId:false, isName:false, isEditCanEdit:false, valueType:ResourceDescribeValueType.text, col:12},
-            {name:"icon", text:"图标", isId:false, isName:false, isEditCanEdit:false, valueType:ResourceDescribeValueType.text, col:12},
+            { name: "name", text: "菜单名", isId: false, isName: false, isEditCanEdit: false, valueType: ResourceDescribeValueType.text, col: 12 },
+            { name: "displayName", text: "显示名称", isId: false, isName: false, isEditCanEdit: false, valueType: ResourceDescribeValueType.text, col: 12 },
+            { name: "icon", text: "图标", isId: false, isName: false, isEditCanEdit: false, valueType: ResourceDescribeValueType.text, col: 12 },
         ].forEach(element => {
             this.describes.push(new Describe(element));
         });
 
         this.state = {
-            menus: [],
+            menus: [{
+                name: "home",
+                displayName: "首页",
+                icon: "oi-home",
+                menus: []
+            }, {
+                name: "post",
+                displayName: "技术文档",
+                menus: [{
+                    name: "web",
+                    displayName: "站点技术",
+                }, {
+                    name: "dosktop",
+                    displayName: "桌面应用",
+                }]
+            }],
             parentMenuId: null,
             operateState: operateState.none,
             currentMenu: null,
@@ -52,19 +67,18 @@ export default class Menu extends React.Component{
         this.getMenus();
     }
 
-    componentDidUpdate(){
+    componentDidUpdate() {
         this.state.operateState = operateState.none;
     }
 
     // 提交回调
-	submitBackcall(data){
-        this.setState({loadingModalShow: false});
+    submitBackcall(data) {
+        this.setState({ loadingModalShow: false });
 
-	    if(data.isSuccess == true)
-	    {
+        if (data.isSuccess == true) {
             this.getMenus();
-	    }
-	    else{
+        }
+        else {
             this.setState({
                 errorInfo: {
                     show: true,
@@ -72,10 +86,10 @@ export default class Menu extends React.Component{
                     message: data.message
                 }
             })
-	    }
-	}
+        }
+    }
 
-    getMenus(){
+    getMenus() {
         let postData = {
 
         };
@@ -86,29 +100,28 @@ export default class Menu extends React.Component{
             data: JSON.stringify(postData),
             contentType: 'application/json',
             dataType: 'json',
-            success: function(data){
-		        if(data.isSuccess == true)
-		        {
-                    this.setState({menus:data.value.menus});
-		        }
-		    }.bind(this)
+            success: function (data) {
+                if (data.isSuccess == true) {
+                    this.setState({ menus: data.value.menus });
+                }
+            }.bind(this)
         });
     }
 
-    addMenu(resource){
-        this.setState({loadingModalShow:true})
+    addMenu(resource) {
+        this.setState({ loadingModalShow: true })
 
         let postData = resource;
         postData.parentMenuId = this.state.parentMenuId;
 
         let url = null;
-        if(this.state.parentMenuId == null){
+        if (this.state.parentMenuId == null) {
             url = "/api/MenuManage/AddCompositeMenu";
         }
-        else{
+        else {
             url = "/api/MenuManage/AddLeafMenu";
         }
-        
+
 
         IETool.ieAjax({
             url: url,
@@ -120,8 +133,8 @@ export default class Menu extends React.Component{
         });
     }
 
-    deleteMenu(resource){
-        this.setState({loadingModalShow:true});
+    deleteMenu(resource) {
+        this.setState({ loadingModalShow: true });
 
         let postData = resource;
 
@@ -135,8 +148,8 @@ export default class Menu extends React.Component{
         });
     }
 
-    updateMenu(resource){
-        this.setState({loadingModalShow:true});
+    updateMenu(resource) {
+        this.setState({ loadingModalShow: true });
 
         let postData = resource;
 
@@ -150,8 +163,7 @@ export default class Menu extends React.Component{
         });
     }
 
-    createRootMenu(menu)
-    {
+    createRootMenu(menu) {
         let childsMenus = menu.menus || [];
 
         return (
@@ -175,26 +187,26 @@ export default class Menu extends React.Component{
                     </div>
                     <div className='swanky_wrapper__content'>
                         <ul>
-                            { childsMenus.map(item => (
+                            {childsMenus.map(item => (
                                 <li>
-                                    <a  href="javescript:void(0);"
+                                    <a href="javescript:void(0);"
                                         onClick={
-                                            ()=>{this.setState({operateState:operateState.update, currentMenu:item})}
+                                            () => { this.setState({ operateState: operateState.update, currentMenu: item }) }
                                         }
                                     ><span class="oi oi-pencil padding-right-10" title="icon name" aria-hidden="true"></span></a>
-                                    <a  href="javescript:void(0);"
+                                    <a href="javescript:void(0);"
                                         onClick={
-                                            ()=>{this.setState({operateState:operateState.delete, currentMenu:item})}
+                                            () => { this.setState({ operateState: operateState.delete, currentMenu: item }) }
                                         }
                                     ><span class="oi oi-trash padding-right-10" title="icon name" aria-hidden="true"></span></a>
                                     <span>{item.displayName}</span>
-                                </li>) ) 
+                                </li>))
                             }
                             <li className="bg-success">
                                 <a className="text-white w-100" href="javescript:void(0);"
                                     onClick={
-                                        ()=>{
-                                            this.setState({operateState:operateState.add, parentMenuId:menu.id});
+                                        () => {
+                                            this.setState({ operateState: operateState.add, parentMenuId: menu.id });
                                         }
                                     }
                                 >+Add</a>
@@ -206,37 +218,37 @@ export default class Menu extends React.Component{
         );
     }
 
-    render(){
+    render() {
         let result = null;
 
         return (
             <div className="col-md-12">
                 <ErrorModal
-					show={this.state.errorInfo.show}
-					title={this.state.errorInfo.title}
+                    show={this.state.errorInfo.show}
+                    title={this.state.errorInfo.title}
                     message={this.state.errorInfo.message}
                     close={
-						() => {
-							this.setState({
-								errorInfo: {
-									show: false,
-									title: this.state.errorInfo.title,
-									message: message
-								}
-							})
-						}
-					}
-				/>
+                        () => {
+                            this.setState({
+                                errorInfo: {
+                                    show: false,
+                                    title: this.state.errorInfo.title,
+                                    message: this.state.errorInfo.message
+                                }
+                            })
+                        }
+                    }
+                />
                 <LoadingModal show={this.state.loadingModalShow} />
                 <div className='swanky_wrapper'>
-                    { this.state.menus.map(item => this.createRootMenu(item)) }
+                    {this.state.menus.map(item => this.createRootMenu(item))}
                     <div>
                         <label className="bg-success">
                             <div className="swanky_wrapper__title">
                                 <a className="text-white w-100" href="javescript:void(0);"
                                     onClick={
-                                        ()=>{
-                                            this.setState({operateState:operateState.add, parentMenuId: null});
+                                        () => {
+                                            this.setState({ operateState: operateState.add, parentMenuId: null });
                                         }
                                     }
                                 >+Add</a>
@@ -245,27 +257,27 @@ export default class Menu extends React.Component{
                     </div>
                 </div>
                 {
-                    this.state.operateState == operateState.add && 
-                    <ResourceForm 
-	            	title="添加菜单"
-	            	describes={ this.describes }
-	            	resource={ {} } 
-	            	resourceUpdate={resource=>this.addMenu(resource)} />
+                    this.state.operateState == operateState.add &&
+                    <ResourceForm
+                        title="添加菜单"
+                        describes={this.describes}
+                        resource={{}}
+                        resourceUpdate={resource => this.addMenu(resource)} />
                 }
                 {
-                    this.state.operateState == operateState.update && 
-                    <ResourceForm 
-	            	title="编辑菜单"
-	            	describes={ this.describes }
-	            	resource={ this.state.currentMenu } 
-	            	resourceUpdate={resource=>this.updateMenu(resource)} />
+                    this.state.operateState == operateState.update &&
+                    <ResourceForm
+                        title="编辑菜单"
+                        describes={this.describes}
+                        resource={this.state.currentMenu}
+                        resourceUpdate={resource => this.updateMenu(resource)} />
                 }
                 {
-                    this.state.operateState == operateState.delete && 
-                    <ConfirmBox 
-                    title="删除菜单"
-                    text="确定删除菜单吗？"
-                    backcall={()=>{this.deleteMenu(this.state.currentMenu)}}
+                    this.state.operateState == operateState.delete &&
+                    <ConfirmBox
+                        title="删除菜单"
+                        text="确定删除菜单吗？"
+                        backcall={() => { this.deleteMenu(this.state.currentMenu) }}
                     />
                 }
             </div>

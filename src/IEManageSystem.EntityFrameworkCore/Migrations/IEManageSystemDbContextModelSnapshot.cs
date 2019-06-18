@@ -175,7 +175,7 @@ namespace IEManageSystem.Migrations
 
                     b.Property<string>("Field5");
 
-                    b.Property<int?>("PageDataId");
+                    b.Property<int>("PageDataId");
 
                     b.Property<string>("Sign");
 
@@ -542,9 +542,10 @@ namespace IEManageSystem.Migrations
                         .WithMany("ContentComponentDatas")
                         .HasForeignKey("ContentLeafComponentId");
 
-                    b.HasOne("IEManageSystem.CMS.DomainModel.Pages.PageData")
+                    b.HasOne("IEManageSystem.CMS.DomainModel.Pages.PageData", "PageData")
                         .WithMany("ContentComponentDatas")
-                        .HasForeignKey("PageDataId");
+                        .HasForeignKey("PageDataId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Pages.PageComponentBase", b =>

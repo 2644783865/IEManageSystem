@@ -110,9 +110,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
 const Contain = CmsRedux.connect(
     mapStateToProps, // 关于state
-    mapDispatchToProps,
-    undefined,
-    { pure: false }
+    mapDispatchToProps
 )(PageContainer)
 
 export default Contain;

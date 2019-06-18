@@ -45,7 +45,7 @@ class FrontParentCompont extends BaseParentComponent {
     render() 
     {
         return (
-            <div style={this.getStyle()} className={`parentcomponent ${this.getClassName()}`}>
+            <div style={this.getStyle()} className={`front-parentcomponent ${this.getClassName()}`}>
                 <div className="w-100">
                     {this.createChildrenComponent()}
                 </div>

@@ -16,18 +16,15 @@ class ComponentData extends React.Component {
         this.props.componentDatasFetch(this.props.pageId, this.props.pageDataId);
     }
 
-    componentWillUpdate(nextProps)
-    {
-        if(nextProps.componentDatasDidInvalidate)
-        {
+    componentWillUpdate(nextProps) {
+        if (nextProps.componentDatasDidInvalidate) {
             this.props.componentDatasFetch(this.props.pageId, this.props.pageDataId);
         }
     }
 
-    render() 
-    {
+    render() {
         let components = this.props.pageComponents;
-        if(components.length == 0){
+        if (components.length == 0) {
             components = [
                 {
                     componentType: "ContentLeafComponent",
@@ -67,6 +64,24 @@ class ComponentData extends React.Component {
 
         return (
             <div className="page-container">
+                <div className="">
+                    <button type="button" className="btn btn-warning mr-2"
+                        onClick={()=>this.props.componentDatasFetch(this.props.pageId, this.props.pageDataId)}
+                    >
+                        取消修改
+                        <span className="oi padding-left-10 oi-action-undo" title="icon name" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" className="btn btn-info"
+                        onClick={
+                            ()=>{
+                                this.props.componentDataUpdateFetch(this.props.pageId, this.props.pageDataId, this.props.componentDatas);
+                            }
+                        }
+                    >
+                        提交文章
+                        <span className="oi padding-left-10 oi-cloud-upload" title="icon name" aria-hidden="true"></span>
+                    </button>
+                </div>
                 <div className="page-container-body">
                     {
                         components.map(item =>
@@ -107,13 +122,13 @@ const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的prop
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        pageComponentFetch:(id) => {
+        pageComponentFetch: (id) => {
             dispatch(pageComponentFetch(id));
         },
-        componentDatasFetch:(pageId, pageDataId) => {
+        componentDatasFetch: (pageId, pageDataId) => {
             dispatch(componentDatasFetch(pageId, pageDataId));
         },
-        componentDataUpdateFetch:(pageId, pageDataId, componentDatas) => {
+        componentDataUpdateFetch: (pageId, pageDataId, componentDatas) => {
             dispatch(componentDataUpdateFetch(pageId, pageDataId, componentDatas));
         },
         componentDataUpdate: (resource) => {
@@ -124,9 +139,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
 const ComponentDataContain = CmsRedux.connect(
     mapStateToProps, // 关于state
-    mapDispatchToProps,
-    undefined,
-    { pure: false }
+    mapDispatchToProps
 )(ComponentData)
 
 export default ComponentDataContain;
