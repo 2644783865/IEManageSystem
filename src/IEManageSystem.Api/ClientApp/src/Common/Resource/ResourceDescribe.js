@@ -14,7 +14,7 @@ export default class ResourceDescribe
 	//	isLookupShow=true,  是否显示在查看上
 	// 	isId=true,  是否是Id字段
 	// 	isName=true,  是否是名称字段
-	// 	valueType="",  字段类型
+	// 	valueType="",  字段类型	ResourceDescribeValueType
 	// 	valueTexts=[{value:"", text:""}],  如果字段为单选或复选时需指定
 	//	col=12  网格长度
 	// }]

@@ -33,7 +33,37 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
             pages = pages.Skip((input.PageIndex - 1) * input.PageSize).Take(input.PageSize);
 
-            return new GetPagesOutput() { PageNum = pageNum, Pages = AutoMapper.Mapper.Map<List<PageDto>>(pages.ToList()) };
+            return new GetPagesOutput() {
+                PageNum = pageNum,
+                Pages = CreatePageDtos(pages.ToList())
+            };
+        }
+
+        private List<PageDto> CreatePageDtos(List<PageBase> pageBases)
+        {
+            List<PageDto> pageDtos = new List<PageDto>();
+
+            foreach (var page in pageBases)
+            {
+                var pageDto = new PageDto();
+                pageDto.Id = page.Id;
+                pageDto.Name = page.Name;
+                pageDto.DisplayName = page.DisplayName;
+                pageDto.Description = page.Description;
+
+                if (page is StaticPage)
+                {
+                    pageDto.PageType = "StaticPage";
+                }
+                else if(page is ContentPage)
+                {
+                    pageDto.PageType = "ContentPage";
+                }
+
+                pageDtos.Add(pageDto);
+            }
+
+            return pageDtos;
         }
 
         private IEnumerable<PageBase> GetPagesForSearchKey(string searchKey)

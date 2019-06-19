@@ -4,7 +4,8 @@ import {
     NewPageRemoveComponent, 
     NewPageEditComponent,
     PagesReceive,
-    PageAddReceive,
+    ContentPageAddReceive,
+    StaticPageAddReceive,
     PageDeleteReceive,
     PageUpdateReceive,
     PageComponentReceive,
@@ -62,7 +63,11 @@ function page(state = {
                 pageNum:action.data.pageNum,
                 pagesDidInvalidate: false
             }};
-        case PageAddReceive:
+        case ContentPageAddReceive:
+            return {...state, ...{
+                pagesDidInvalidate: true,
+            }};
+        case StaticPageAddReceive:
             return {...state, ...{
                 pagesDidInvalidate: true,
             }};

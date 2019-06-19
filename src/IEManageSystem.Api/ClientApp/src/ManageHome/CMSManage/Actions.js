@@ -51,15 +51,28 @@ export function pagesFetch(pageIndex, pageSize, searchKey) {
   );
 }
 
-export const PageAddReceive = "PageAddReceive"
-export function pageAddFetch(resource) {
+export const ContentPageAddReceive = "ContentPageAddReceive"
+export function contentPageAddFetch(resource) {
   let postData = resource;
 
   return createIEThunkAction(
     "/api/PageManage/AddContentPage",
     postData,
     data => ({
-      type: PageAddReceive
+      type: ContentPageAddReceive
+    })
+  );
+}
+
+export const StaticPageAddReceive = "StaticPageAddReceive"
+export function staticPageAddFetch(resource) {
+  let postData = resource;
+
+  return createIEThunkAction(
+    "/api/PageManage/AddStaticPage",
+    postData,
+    data => ({
+      type: StaticPageAddReceive
     })
   );
 }

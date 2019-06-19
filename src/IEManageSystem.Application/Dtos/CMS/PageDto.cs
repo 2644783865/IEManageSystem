@@ -16,5 +16,10 @@ namespace IEManageSystem.Dtos.CMS
         public string DisplayName { get; set; }
 
         public string Description { get; set; }
+
+        /// <summary>
+        /// StaticPage || ContentPage
+        /// </summary>
+        public string PageType { get; set; }
     }
 }

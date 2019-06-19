@@ -4,8 +4,8 @@ import { NavLink } from 'react-router-dom';
 import {CmsRedux} from 'CMSManage/CmsRedux'
 
 import Resource from 'Resource/Resource.jsx';
-
-import { pagesFetch, pageAddFetch, pageDeleteFetch, pageUpdateFetch } from '../Actions'
+import {ResourceDescribeValueType} from 'ResourceForm/ResourceDescribeValueType'
+import { pagesFetch, contentPageAddFetch, staticPageAddFetch, pageDeleteFetch, pageUpdateFetch } from '../Actions'
 
 // props.resource
 function EditComponent(props) 
@@ -27,6 +27,11 @@ function EditPageData(props){
 		</NavLink>);
 }
 
+const pageType = {
+	StaticPage: "StaticPage",
+	ContentPage: "ContentPage"
+}
+
 class PageManage extends React.Component{
     constructor(props){
         super(props);
@@ -35,7 +40,12 @@ class PageManage extends React.Component{
 			{name:"id", isId:true, isAddShow:false, isEditShow:false, isLookupShow:false},
 			{name:"name", text:"页面名称", isName:true, isShowOnList:true},
 			{name:"displayName", text:"显示名称", isShowOnList:true},
-			{name:"description", text:"页面描述", isShowOnList:true}
+			{name:"description", text:"页面描述", isShowOnList:true},
+			{name:"pageType", text:"页面类型", isShowOnList:true, 
+				valueType:ResourceDescribeValueType.radio,
+				valueTexts: [{value:pageType.StaticPage, text:"单篇页面"}, {value:pageType.ContentPage, text:"文章页面"}],
+				isEditCanEdit: false
+			}
 		];
 
 		this.resourceChild = null;
@@ -67,7 +77,14 @@ class PageManage extends React.Component{
 
 	// Resource组件添加资源通知
 	addResource(resource){
-        this.props.pageAddFetch(resource);
+		if(resource.pageType == pageType.ContentPage)
+		{
+			this.props.contentPageAddFetch(resource);
+		}
+		else if(resource.pageType == pageType.StaticPage)
+		{
+			this.props.staticPageAddFetch(resource);
+		}
 	}
 
 	// Resource组件更新资源通知
@@ -125,7 +142,8 @@ PageManage.propsTypes = {
 	pageNum: PropTypes.number.isRequired,
 	pageIndex: PropTypes.number.isRequired,
 	pagesFetch: PropTypes.func.isRequired,
-	pageAddFetch: PropTypes.func.isRequired,
+	contentPageAddFetch: PropTypes.func.isRequired,
+	staticPageAddFetch: PropTypes.func.isRequired,
 	pageDeleteFetch: PropTypes.func.isRequired,
 	pageUpdateFetch: PropTypes.func.isRequired,
 }
@@ -142,7 +160,8 @@ const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的prop
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
 		pagesFetch: (pageIndex, pageSize, searchKey) => { dispatch(pagesFetch(pageIndex, pageSize, searchKey)) },
-		pageAddFetch: (resource) => { dispatch(pageAddFetch(resource)) },
+		contentPageAddFetch: (resource) => { dispatch(contentPageAddFetch(resource)) },
+		staticPageAddFetch: (resource) => { dispatch(staticPageAddFetch(resource)) },
 		pageDeleteFetch: (resource) => { dispatch(pageDeleteFetch(resource)) },
 		pageUpdateFetch: (resource) => { dispatch(pageUpdateFetch(resource)) }
     }
