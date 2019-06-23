@@ -7,6 +7,11 @@ import Resource from 'Resource/Resource.jsx';
 import {ResourceDescribeValueType} from 'ResourceForm/ResourceDescribeValueType'
 import { pagesFetch, contentPageAddFetch, staticPageAddFetch, pageDeleteFetch, pageUpdateFetch } from '../Actions'
 
+const pageType = {
+	StaticPage: "StaticPage",
+	ContentPage: "ContentPage"
+}
+
 // props.resource
 function EditComponent(props) 
 {
@@ -19,17 +24,22 @@ function EditComponent(props)
 }
 
 function EditPageData(props){
+	let data = props.resource.pageType == pageType.ContentPage ?
+		{
+			url: `/ManageHome/CMSManage/PageData/${props.resource.id}`,
+			text: " 管理文章"
+		}:
+		{
+			url: `/ManageHome/CMSManage/ComponentData/${props.resource.id}`,
+			text: " 管理页面"
+		}
+
 	return (
 		<NavLink className="btn btn-outline-secondary" 
-			to={`/ManageHome/CMSManage/PageData/${props.resource.id}`}
+			to={`${data.url}`}
 		>
-			<span class="oi oi-pencil" title="icon name" aria-hidden="true"></span>{" 管理文章"}
+			<span class="oi oi-pencil" title="icon name" aria-hidden="true"></span>{` ${data.text}`}
 		</NavLink>);
-}
-
-const pageType = {
-	StaticPage: "StaticPage",
-	ContentPage: "ContentPage"
 }
 
 class PageManage extends React.Component{

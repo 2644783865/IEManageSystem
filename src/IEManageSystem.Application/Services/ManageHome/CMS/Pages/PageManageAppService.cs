@@ -101,6 +101,14 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
             page.Description = input.Description;
 
+            PageData pageData = new PageData()
+            {
+                Name = input.Name,
+                Title = input.DisplayName
+            };
+
+            page.PageDatas = new List<PageData>() { pageData };
+
             _repository.Insert(page);
 
             return new AddStaticPageOutput();
@@ -271,7 +279,15 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
         {
             var page = _repository.ThenInclude(e => e.PageDatas, e => e.ContentComponentDatas).FirstOrDefault(e => e.Id == input.PageId);
 
-            var pageData = page.PageDatas.FirstOrDefault(e => e.Id == input.PageDataId);
+            PageData pageData = null;
+            if (page is StaticPage)
+            {
+                pageData = page.PageDatas.FirstOrDefault();
+            }
+            else
+            {
+                pageData = page.PageDatas.FirstOrDefault(e => e.Id == input.PageDataId);
+            }
 
             return new GetComponentDataOutput()
             {
@@ -283,7 +299,15 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
         {
             var page = _repository.ThenInclude(e => e.PageDatas, e => e.ContentComponentDatas).FirstOrDefault(e => e.Id == input.PageId);
 
-            var pageData = page.PageDatas.FirstOrDefault(e => e.Id == input.PageDataId);
+            PageData pageData = null;
+            if (page is StaticPage)
+            {
+                pageData = page.PageDatas.FirstOrDefault();
+            }
+            else
+            {
+                pageData = page.PageDatas.FirstOrDefault(e => e.Id == input.PageDataId);
+            }
 
             List<ContentComponentData> contentComponentDatas = new List<ContentComponentData>();
             foreach (var item in input.ComponentDatas)

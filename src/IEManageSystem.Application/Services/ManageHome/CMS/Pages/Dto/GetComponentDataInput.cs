@@ -8,6 +8,6 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages.Dto
     {
         public int PageId { get; set; }
 
-        public int PageDataId { get; set; }
+        public int? PageDataId { get; set; }
     }
 }

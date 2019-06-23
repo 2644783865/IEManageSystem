@@ -21,7 +21,7 @@ export default class CMSManage extends React.Component{
                 <Route path="/ManageHome/CMSManage/PageManage" component={PageManage} />
                 <Route path="/ManageHome/CMSManage/PageComponent/:pageId" component={PageComponent} />
                 <Route path="/ManageHome/CMSManage/PageData/:pageId" component={PageData} />
-                <Route path="/ManageHome/CMSManage/ComponentData/:pageId/:pageDataId" component={ComponentData} />
+                <Route path="/ManageHome/CMSManage/ComponentData/:pageId/:pageDataId?" component={ComponentData} />
                 <Route path="/ManageHome/CMSManage/TestPage" component={TestPage} />
             </Switch>
         </div>);
