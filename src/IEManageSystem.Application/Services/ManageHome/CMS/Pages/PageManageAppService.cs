@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using Abp.Domain.Repositories;
 using IEManageSystem.CMS.DomainModel.Pages;
+using IEManageSystem.CMS.Repositorys;
 using IEManageSystem.Dtos.CMS;
 using IEManageSystem.Help.Exceptions;
 using IEManageSystem.Repositorys;
@@ -14,10 +15,10 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 {
     public class PageManageAppService : IEManageSystemAppServiceBase, IPageManageAppService
     {
-        private IEfRepository<PageBase, int> _repository { get; set; }
+        private IPageRepository _repository { get; set; }
 
         public PageManageAppService(
-            IEfRepository<PageBase, int> repository
+            IPageRepository repository
             )
         {
             _repository = repository;
@@ -88,28 +89,26 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
             page.Description = input.Description;
 
-            _repository.Insert(page);
+            _repository.AddPage(page);
 
             return new AddContentPageOutput();
         }
 
         public AddStaticPageOutput AddStaticPage(AddStaticPageInput input)
         {
-            StaticPage page = new StaticPage(input.Name);
-
-            page.DisplayName = input.DisplayName;
-
-            page.Description = input.Description;
-
             PageData pageData = new PageData()
             {
                 Name = input.Name,
                 Title = input.DisplayName
             };
 
-            page.PageDatas = new List<PageData>() { pageData };
+            StaticPage page = new StaticPage(input.Name, pageData);
 
-            _repository.Insert(page);
+            page.DisplayName = input.DisplayName;
+
+            page.Description = input.Description;
+
+            _repository.AddPage(page);
 
             return new AddStaticPageOutput();
         }
@@ -249,7 +248,11 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
             };
 
             var page = _repository.GetAllIncluding(e => e.PageDatas).FirstOrDefault(e => e.Id == input.PageId);
-            page.PageDatas.Add(pageData);
+            if (page is StaticPage) {
+                throw new MessageException("无法为单页添加文章");
+            }
+
+            ((ContentPage) page).AddPageData(pageData);
 
             return new AddPageDataOutput();
         }
@@ -258,8 +261,15 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
         {
             var page = _repository.GetAllIncluding(e => e.PageDatas).FirstOrDefault(e => e.Id == input.PageId);
 
+            if (page is StaticPage)
+            {
+                throw new MessageException("无法更改单页文章");
+            }
+
+            var contentPage = (ContentPage) page;
+            contentPage.SetPageDataName(input.Id, input.Name);
+
             var pageData = page.PageDatas.FirstOrDefault(e => e.Id == input.Id);
-            pageData.Name = input.Name;
             pageData.Title = input.Title;
 
             return new UpdatePageDataOutput();
@@ -277,17 +287,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
         public GetComponentDataOutput GetComponentDatas(GetComponentDataInput input)
         {
-            var page = _repository.ThenInclude(e => e.PageDatas, e => e.ContentComponentDatas).FirstOrDefault(e => e.Id == input.PageId);
-
-            PageData pageData = null;
-            if (page is StaticPage)
-            {
-                pageData = page.PageDatas.FirstOrDefault();
-            }
-            else
-            {
-                pageData = page.PageDatas.FirstOrDefault(e => e.Id == input.PageDataId);
-            }
+            var pageData = _repository.GetPageDataIncludeComponentDatas(input.PageId, input.PageDataId);
 
             return new GetComponentDataOutput()
             {
@@ -297,18 +297,6 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
         public UpdateComponentDataOutput UpdateComponentData(UpdateComponentDataInput input)
         {
-            var page = _repository.ThenInclude(e => e.PageDatas, e => e.ContentComponentDatas).FirstOrDefault(e => e.Id == input.PageId);
-
-            PageData pageData = null;
-            if (page is StaticPage)
-            {
-                pageData = page.PageDatas.FirstOrDefault();
-            }
-            else
-            {
-                pageData = page.PageDatas.FirstOrDefault(e => e.Id == input.PageDataId);
-            }
-
             List<ContentComponentData> contentComponentDatas = new List<ContentComponentData>();
             foreach (var item in input.ComponentDatas)
             {
@@ -322,7 +310,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
                 });
             }
 
-            pageData.ContentComponentDatas = contentComponentDatas;
+            _repository.SetContentComponentDatas(input.PageId, input.PageDataId, contentComponentDatas);
 
             return new UpdateComponentDataOutput();
         }
