@@ -20293,3 +20293,576 @@ FROM [PersistedGrants] AS [x]
 WHERE [x].[Expiration] < GETUTCDATE()
 ORDER BY [x].[Key]
 INFO  2019-06-23 11:41:54,102 [60   ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+DEBUG 2019-06-23 17:23:16,823 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-06-23 17:23:16,878 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-06-23 17:23:16,888 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.Api.Startup.IEManageSystemApiModule, IEManageSystem.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:23:16,891 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IEManageSystemApplicationModule, IEManageSystem.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:23:16,891 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IEManageSystemCoreModule, IEManageSystem.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:23:16,891 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IdentityServer.IEIdentityServerModule, IEManageSystem.IdentityServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:23:16,892 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:23:16,892 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:23:16,892 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.ApiAuthorization.IEApiAuthorizationModule, IEManageSystem.ApiAuthorization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:23:16,892 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.JwtAuthentication.IEJwtAuthenticationModule, IEManageSystem.JwtAuthentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:23:16,892 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.CMS.IEManageSystemCMSModule, IEManageSystem.CMS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:23:16,893 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.EntityFrameworkCore.IEManageSystemEntityFrameworkCoreModule, IEManageSystem.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:23:16,893 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:23:16,893 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:23:16,893 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IdentityServerEF.IEIdentityServerEFModule, IEManageSystem.IdentityServerEF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:23:16,894 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:23:16,894 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:23:16,897 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-06-23 17:23:17,175 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: IEManageSystem.EntityFrameworkCore.IEManageSystemDbContext, IEManageSystem.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:23:17,283 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2019-06-23 17:23:17,353 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-06-23 17:23:17,384 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: IEManageSystem
+DEBUG 2019-06-23 17:23:17,414 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-06-23 17:23:17,639 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+FATAL 2019-06-23 17:24:28,283 [1    ] Abp.AbpBootstrapper                      - System.InvalidOperationException: No suitable constructor found for entity type 'StaticPage'. The following parameters could not be bound to properties of the entity: 'pageData'.
+   at Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal.ConstructorBindingConvention.Apply(InternalModelBuilder modelBuilder)
+   at Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal.ConventionDispatcher.ImmediateConventionScope.OnModelBuilt(InternalModelBuilder modelBuilder)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.CreateModel(DbContext context, IConventionSetBuilder conventionSetBuilder, IModelValidator validator)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.CreateModel()
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.get_Model()
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.Internal.InternalAccessorExtensions.GetService[TService](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.get_ExecutionStrategyFactory()
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.CreateExecutionStrategy()
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.BeginTransaction(DatabaseFacade databaseFacade, IsolationLevel isolationLevel)
+   at Abp.EntityFrameworkCore.Uow.DbContextEfCoreTransactionStrategy.CreateDbContext[TDbContext](String connectionString, IDbContextResolver dbContextResolver) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\DbContextEfCoreTransactionStrategy.cs:line 38
+   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.GetOrCreateDbContext[TDbContext](Nullable`1 multiTenancySide) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\EfCoreUnitOfWork.cs:line 116
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.get_Table() in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 39
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.GetAllIncluding(Expression`1[] propertySelectors) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 88
+   at Abp.Domain.Repositories.AbpRepositoryBase`2.Count() in D:\Github\aspnetboilerplate\src\Abp\Domain\Repositories\AbpRepositoryBase.cs:line 224
+   at Castle.Proxies.Invocations.IRepository`2_Count.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.PerformSyncUow(IInvocation invocation, UnitOfWorkOptions options) in D:\Github\aspnetboilerplate\src\Abp\Domain\Uow\UnitOfWorkInterceptor.cs:line 68
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.IRepository`1Proxy.Count()
+   at IEManageSystem.Entitys.Authorization.InitializeSuperAdmin.Initialize() in E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Core\Entitys\Authorization\InitializeSuperAdmin.cs:line 42
+   at IEManageSystem.IEManageSystemCoreModule.PostInitialize() in E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Core\IEManageSystemCoreModule.cs:line 28
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Abp.AbpBootstrapper.Initialize() in D:\Github\aspnetboilerplate\src\Abp\AbpBootstrapper.cs:line 155
+System.InvalidOperationException: No suitable constructor found for entity type 'StaticPage'. The following parameters could not be bound to properties of the entity: 'pageData'.
+   at Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal.ConstructorBindingConvention.Apply(InternalModelBuilder modelBuilder)
+   at Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal.ConventionDispatcher.ImmediateConventionScope.OnModelBuilt(InternalModelBuilder modelBuilder)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.CreateModel(DbContext context, IConventionSetBuilder conventionSetBuilder, IModelValidator validator)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.CreateModel()
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.get_Model()
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.Internal.InternalAccessorExtensions.GetService[TService](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.get_ExecutionStrategyFactory()
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.CreateExecutionStrategy()
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.BeginTransaction(DatabaseFacade databaseFacade, IsolationLevel isolationLevel)
+   at Abp.EntityFrameworkCore.Uow.DbContextEfCoreTransactionStrategy.CreateDbContext[TDbContext](String connectionString, IDbContextResolver dbContextResolver) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\DbContextEfCoreTransactionStrategy.cs:line 38
+   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.GetOrCreateDbContext[TDbContext](Nullable`1 multiTenancySide) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\EfCoreUnitOfWork.cs:line 116
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.get_Table() in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 39
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.GetAllIncluding(Expression`1[] propertySelectors) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 88
+   at Abp.Domain.Repositories.AbpRepositoryBase`2.Count() in D:\Github\aspnetboilerplate\src\Abp\Domain\Repositories\AbpRepositoryBase.cs:line 224
+   at Castle.Proxies.Invocations.IRepository`2_Count.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.PerformSyncUow(IInvocation invocation, UnitOfWorkOptions options) in D:\Github\aspnetboilerplate\src\Abp\Domain\Uow\UnitOfWorkInterceptor.cs:line 68
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.IRepository`1Proxy.Count()
+   at IEManageSystem.Entitys.Authorization.InitializeSuperAdmin.Initialize() in E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Core\Entitys\Authorization\InitializeSuperAdmin.cs:line 42
+   at IEManageSystem.IEManageSystemCoreModule.PostInitialize() in E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Core\IEManageSystemCoreModule.cs:line 28
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Abp.AbpBootstrapper.Initialize() in D:\Github\aspnetboilerplate\src\Abp\AbpBootstrapper.cs:line 155
+DEBUG 2019-06-23 17:24:36,445 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-06-23 17:24:36,467 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-06-23 17:24:36,476 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.Api.Startup.IEManageSystemApiModule, IEManageSystem.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:24:36,479 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IEManageSystemApplicationModule, IEManageSystem.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:24:36,479 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IEManageSystemCoreModule, IEManageSystem.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:24:36,479 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IdentityServer.IEIdentityServerModule, IEManageSystem.IdentityServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:24:36,480 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:24:36,480 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:24:36,480 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.ApiAuthorization.IEApiAuthorizationModule, IEManageSystem.ApiAuthorization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:24:36,480 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.JwtAuthentication.IEJwtAuthenticationModule, IEManageSystem.JwtAuthentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:24:36,481 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.CMS.IEManageSystemCMSModule, IEManageSystem.CMS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:24:36,481 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.EntityFrameworkCore.IEManageSystemEntityFrameworkCoreModule, IEManageSystem.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:24:36,481 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:24:36,481 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:24:36,481 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IdentityServerEF.IEIdentityServerEFModule, IEManageSystem.IdentityServerEF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:24:36,481 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:24:36,482 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:24:36,484 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-06-23 17:24:36,664 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: IEManageSystem.EntityFrameworkCore.IEManageSystemDbContext, IEManageSystem.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:24:36,762 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2019-06-23 17:24:36,822 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-06-23 17:24:36,854 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: IEManageSystem
+DEBUG 2019-06-23 17:24:36,882 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-06-23 17:24:37,021 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+FATAL 2019-06-23 17:24:37,871 [1    ] Abp.AbpBootstrapper                      - System.InvalidOperationException: No suitable constructor found for entity type 'StaticPage'. The following parameters could not be bound to properties of the entity: 'pageData'.
+   at Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal.ConstructorBindingConvention.Apply(InternalModelBuilder modelBuilder)
+   at Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal.ConventionDispatcher.ImmediateConventionScope.OnModelBuilt(InternalModelBuilder modelBuilder)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.CreateModel(DbContext context, IConventionSetBuilder conventionSetBuilder, IModelValidator validator)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.CreateModel()
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.get_Model()
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.Internal.InternalAccessorExtensions.GetService[TService](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.get_ExecutionStrategyFactory()
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.CreateExecutionStrategy()
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.BeginTransaction(DatabaseFacade databaseFacade, IsolationLevel isolationLevel)
+   at Abp.EntityFrameworkCore.Uow.DbContextEfCoreTransactionStrategy.CreateDbContext[TDbContext](String connectionString, IDbContextResolver dbContextResolver) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\DbContextEfCoreTransactionStrategy.cs:line 38
+   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.GetOrCreateDbContext[TDbContext](Nullable`1 multiTenancySide) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\EfCoreUnitOfWork.cs:line 116
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.get_Table() in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 39
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.GetAllIncluding(Expression`1[] propertySelectors) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 88
+   at Abp.Domain.Repositories.AbpRepositoryBase`2.Count() in D:\Github\aspnetboilerplate\src\Abp\Domain\Repositories\AbpRepositoryBase.cs:line 224
+   at Castle.Proxies.Invocations.IRepository`2_Count.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.PerformSyncUow(IInvocation invocation, UnitOfWorkOptions options) in D:\Github\aspnetboilerplate\src\Abp\Domain\Uow\UnitOfWorkInterceptor.cs:line 68
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.IRepository`1Proxy.Count()
+   at IEManageSystem.Entitys.Authorization.InitializeSuperAdmin.Initialize() in E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Core\Entitys\Authorization\InitializeSuperAdmin.cs:line 42
+   at IEManageSystem.IEManageSystemCoreModule.PostInitialize() in E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Core\IEManageSystemCoreModule.cs:line 28
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Abp.AbpBootstrapper.Initialize() in D:\Github\aspnetboilerplate\src\Abp\AbpBootstrapper.cs:line 155
+System.InvalidOperationException: No suitable constructor found for entity type 'StaticPage'. The following parameters could not be bound to properties of the entity: 'pageData'.
+   at Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal.ConstructorBindingConvention.Apply(InternalModelBuilder modelBuilder)
+   at Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal.ConventionDispatcher.ImmediateConventionScope.OnModelBuilt(InternalModelBuilder modelBuilder)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.CreateModel(DbContext context, IConventionSetBuilder conventionSetBuilder, IModelValidator validator)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.CreateModel()
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.get_Model()
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.Internal.InternalAccessorExtensions.GetService[TService](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.get_ExecutionStrategyFactory()
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.CreateExecutionStrategy()
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.BeginTransaction(DatabaseFacade databaseFacade, IsolationLevel isolationLevel)
+   at Abp.EntityFrameworkCore.Uow.DbContextEfCoreTransactionStrategy.CreateDbContext[TDbContext](String connectionString, IDbContextResolver dbContextResolver) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\DbContextEfCoreTransactionStrategy.cs:line 38
+   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.GetOrCreateDbContext[TDbContext](Nullable`1 multiTenancySide) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\EfCoreUnitOfWork.cs:line 116
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.get_Table() in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 39
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.GetAllIncluding(Expression`1[] propertySelectors) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 88
+   at Abp.Domain.Repositories.AbpRepositoryBase`2.Count() in D:\Github\aspnetboilerplate\src\Abp\Domain\Repositories\AbpRepositoryBase.cs:line 224
+   at Castle.Proxies.Invocations.IRepository`2_Count.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.PerformSyncUow(IInvocation invocation, UnitOfWorkOptions options) in D:\Github\aspnetboilerplate\src\Abp\Domain\Uow\UnitOfWorkInterceptor.cs:line 68
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.IRepository`1Proxy.Count()
+   at IEManageSystem.Entitys.Authorization.InitializeSuperAdmin.Initialize() in E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Core\Entitys\Authorization\InitializeSuperAdmin.cs:line 42
+   at IEManageSystem.IEManageSystemCoreModule.PostInitialize() in E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Core\IEManageSystemCoreModule.cs:line 28
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Abp.AbpBootstrapper.Initialize() in D:\Github\aspnetboilerplate\src\Abp\AbpBootstrapper.cs:line 155
+FATAL 2019-06-23 17:24:37,971 [1    ] soft.AspNetCore.Hosting.Internal.WebHost - Application startup exception
+System.InvalidOperationException: No suitable constructor found for entity type 'StaticPage'. The following parameters could not be bound to properties of the entity: 'pageData'.
+   at Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal.ConstructorBindingConvention.Apply(InternalModelBuilder modelBuilder)
+   at Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal.ConventionDispatcher.ImmediateConventionScope.OnModelBuilt(InternalModelBuilder modelBuilder)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.CreateModel(DbContext context, IConventionSetBuilder conventionSetBuilder, IModelValidator validator)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.CreateModel()
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.get_Model()
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.Internal.InternalAccessorExtensions.GetService[TService](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.get_ExecutionStrategyFactory()
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.CreateExecutionStrategy()
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.BeginTransaction(DatabaseFacade databaseFacade, IsolationLevel isolationLevel)
+   at Abp.EntityFrameworkCore.Uow.DbContextEfCoreTransactionStrategy.CreateDbContext[TDbContext](String connectionString, IDbContextResolver dbContextResolver) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\DbContextEfCoreTransactionStrategy.cs:line 38
+   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.GetOrCreateDbContext[TDbContext](Nullable`1 multiTenancySide) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\EfCoreUnitOfWork.cs:line 116
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.get_Table() in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 39
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.GetAllIncluding(Expression`1[] propertySelectors) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 88
+   at Abp.Domain.Repositories.AbpRepositoryBase`2.Count() in D:\Github\aspnetboilerplate\src\Abp\Domain\Repositories\AbpRepositoryBase.cs:line 224
+   at Castle.Proxies.Invocations.IRepository`2_Count.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.PerformSyncUow(IInvocation invocation, UnitOfWorkOptions options) in D:\Github\aspnetboilerplate\src\Abp\Domain\Uow\UnitOfWorkInterceptor.cs:line 68
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.IRepository`1Proxy.Count()
+   at IEManageSystem.Entitys.Authorization.InitializeSuperAdmin.Initialize() in E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Core\Entitys\Authorization\InitializeSuperAdmin.cs:line 42
+   at IEManageSystem.IEManageSystemCoreModule.PostInitialize() in E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Core\IEManageSystemCoreModule.cs:line 28
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Abp.AbpBootstrapper.Initialize() in D:\Github\aspnetboilerplate\src\Abp\AbpBootstrapper.cs:line 155
+   at Abp.AspNetCore.AbpApplicationBuilderExtensions.InitializeAbp(IApplicationBuilder app) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\AbpApplicationBuilderExtensions.cs:line 67
+   at Abp.AspNetCore.AbpApplicationBuilderExtensions.UseAbp(IApplicationBuilder app, Action`1 optionsAction) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\AbpApplicationBuilderExtensions.cs:line 38
+   at IEManageSystem.Api.Startup.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) in E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\Startup\Startup.cs:line 109
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+DEBUG 2019-06-23 17:24:38,037 [1    ] tityServer4.EntityFramework.TokenCleanup - Starting token cleanup
+INFO  2019-06-23 17:24:38,286 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2019-06-23 17:24:38,479 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 191.3629ms 500 text/html; charset=utf-8
+INFO  2019-06-23 17:25:08,283 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-23 17:25:12,511 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (85ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-23 17:25:12,549 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-23 17:25:42,566 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-23 17:25:42,581 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-23 17:25:42,581 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+DEBUG 2019-06-23 17:26:00,759 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-06-23 17:26:00,826 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-06-23 17:26:00,838 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.Api.Startup.IEManageSystemApiModule, IEManageSystem.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:26:00,840 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IEManageSystemApplicationModule, IEManageSystem.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:26:00,841 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IEManageSystemCoreModule, IEManageSystem.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:26:00,841 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IdentityServer.IEIdentityServerModule, IEManageSystem.IdentityServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:26:00,841 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:26:00,841 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:26:00,842 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.ApiAuthorization.IEApiAuthorizationModule, IEManageSystem.ApiAuthorization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:26:00,842 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.JwtAuthentication.IEJwtAuthenticationModule, IEManageSystem.JwtAuthentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:26:00,842 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.CMS.IEManageSystemCMSModule, IEManageSystem.CMS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:26:00,842 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.EntityFrameworkCore.IEManageSystemEntityFrameworkCoreModule, IEManageSystem.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:26:00,842 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:26:00,843 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:26:00,843 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: IEManageSystem.IdentityServerEF.IEIdentityServerEFModule, IEManageSystem.IdentityServerEF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:26:00,843 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:26:00,843 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:26:00,846 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-06-23 17:26:01,150 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: IEManageSystem.EntityFrameworkCore.IEManageSystemDbContext, IEManageSystem.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-23 17:26:01,271 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2019-06-23 17:26:01,336 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-06-23 17:26:01,368 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: IEManageSystem
+DEBUG 2019-06-23 17:26:01,399 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-06-23 17:26:01,653 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-06-23 17:26:06,729 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 19 classes define auto mapping attributes
+DEBUG 2019-06-23 17:26:06,729 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ApiResourceClaimDto
+DEBUG 2019-06-23 17:26:06,733 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ApiResourceDto
+DEBUG 2019-06-23 17:26:06,733 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ClientDto
+DEBUG 2019-06-23 17:26:06,733 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ClientGrantTypeDto
+DEBUG 2019-06-23 17:26:06,733 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ClientPostLogoutRedirectUriDto
+DEBUG 2019-06-23 17:26:06,733 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ClientRedirectUriDto
+DEBUG 2019-06-23 17:26:06,733 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ClientScopeDto
+DEBUG 2019-06-23 17:26:06,733 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.ClientSecretDto
+DEBUG 2019-06-23 17:26:06,733 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.IdentityClaimDto
+DEBUG 2019-06-23 17:26:06,733 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.IdentityService.IdentityResourceDto
+DEBUG 2019-06-23 17:26:06,733 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.Core.PermissionDto
+DEBUG 2019-06-23 17:26:06,733 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.Core.RoleDto
+DEBUG 2019-06-23 17:26:06,733 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.Core.Users.AccountDto
+DEBUG 2019-06-23 17:26:06,733 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.Core.Users.SafetyProblemDto
+DEBUG 2019-06-23 17:26:06,733 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.Core.Users.UserDto
+DEBUG 2019-06-23 17:26:06,733 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.CMS.ContentComponentDataDto
+DEBUG 2019-06-23 17:26:06,733 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.CMS.PageDataDto
+DEBUG 2019-06-23 17:26:06,733 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.CMS.PageDto
+DEBUG 2019-06-23 17:26:06,733 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - IEManageSystem.Dtos.ApiAuthorization.ApiScopeDto
+INFO  2019-06-23 17:26:07,817 [1    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-23 17:26:07,863 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (27ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+INFO  2019-06-23 17:26:07,867 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+INFO  2019-06-23 17:26:07,874 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+INFO  2019-06-23 17:26:07,892 [1    ] Microsoft.EntityFrameworkCore.Migrations - No migrations were applied. The database is already up to date.
+INFO  2019-06-23 17:26:08,032 [1    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'ConfigurationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-23 17:26:08,037 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+INFO  2019-06-23 17:26:08,042 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+INFO  2019-06-23 17:26:08,047 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+INFO  2019-06-23 17:26:08,050 [1    ] Microsoft.EntityFrameworkCore.Migrations - No migrations were applied. The database is already up to date.
+INFO  2019-06-23 17:26:08,123 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (31ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Clients] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+INFO  2019-06-23 17:26:08,165 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [IdentityResources] AS [i])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+INFO  2019-06-23 17:26:08,181 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ApiResources] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+DEBUG 2019-06-23 17:26:08,228 [1    ] IdentityServer4.Startup                  - Using Bearer as default scheme for authentication
+DEBUG 2019-06-23 17:26:08,231 [1    ] IdentityServer4.Startup                  - Using idsrv as default scheme for sign-in
+DEBUG 2019-06-23 17:26:08,236 [1    ] IdentityServer4.Startup                  - Using idsrv as default scheme for sign-out
+DEBUG 2019-06-23 17:26:08,243 [1    ] IdentityServer4.Startup                  - Using Bearer as default scheme for challenge
+DEBUG 2019-06-23 17:26:08,246 [1    ] IdentityServer4.Startup                  - Using Bearer as default scheme for forbid
+DEBUG 2019-06-23 17:26:08,733 [1    ] tityServer4.EntityFramework.TokenCleanup - Starting token cleanup
+INFO  2019-06-23 17:26:08,993 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:21021/  0
+INFO  2019-06-23 17:26:08,995 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2019-06-23 17:26:09,113 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 116.7784ms 200 
+WARN  2019-06-23 17:26:09,130 [6    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2019-06-23 17:26:09,156 [6    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2019-06-23 17:26:09,205 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:09,209 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:09,473 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/index.html'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\index.html'
+INFO  2019-06-23 17:26:09,481 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/index.bundle.js  
+WARN  2019-06-23 17:26:09,489 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:09,494 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:09,517 [6    ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/index.bundle.js was not modified
+INFO  2019-06-23 17:26:09,593 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 551.4717ms 200 text/html
+INFO  2019-06-23 17:26:09,594 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 58.2252ms 304 application/javascript
+INFO  2019-06-23 17:26:10,235 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserScopeAccessAuthorities application/json 2
+WARN  2019-06-23 17:26:10,238 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:10,241 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:10,330 [7    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-23 17:26:10,751 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetUserScopeAccessAuthorities", controller = "User", area = ""}. Executing action IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api)
+INFO  2019-06-23 17:26:11,026 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api) with arguments (IEManageSystem.Api.Controllers.Users.Dto.GetUserScopeAccessAuthoritiesInput) - Validation state: Valid
+INFO  2019-06-23 17:26:11,507 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 476.6233ms.
+INFO  2019-06-23 17:26:11,537 [7    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities is executed by user 1 in 522 ms from ::1 IP address with succeed.
+INFO  2019-06-23 17:26:11,575 [7    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-23 17:26:11,625 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api) in 868.5159ms
+INFO  2019-06-23 17:26:11,632 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1394.9989ms 200 application/json; charset=utf-8
+INFO  2019-06-23 17:26:11,661 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/Menu/GetMenus application/json 2
+WARN  2019-06-23 17:26:11,663 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:11,666 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:11,670 [7    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-23 17:26:11,678 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/5dfddd62b20673f22e7356e07b288bcd.png  
+INFO  2019-06-23 17:26:11,681 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetMenus", controller = "Menu"}. Executing action IEManageSystem.Services.Home.Menus.MenuAppService.GetMenus (IEManageSystem.Application)
+WARN  2019-06-23 17:26:11,684 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:11,693 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:11,699 [6    ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/images/5dfddd62b20673f22e7356e07b288bcd.png was not modified
+INFO  2019-06-23 17:26:11,707 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 24.8982ms 304 image/png
+INFO  2019-06-23 17:26:11,825 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/97ac31b8fc52e9e7187109e47b105cad.png  
+WARN  2019-06-23 17:26:11,839 [11   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:11,842 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/fonts/3cf97837524dd7445e9d1462e3c4afe2.woff  
+WARN  2019-06-23 17:26:11,845 [11   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:11,848 [12   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:11,853 [12   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:11,854 [11   ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/images/97ac31b8fc52e9e7187109e47b105cad.png was not modified
+INFO  2019-06-23 17:26:11,860 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 35.1242ms 304 image/png
+INFO  2019-06-23 17:26:11,861 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/fonts/3cf97837524dd7445e9d1462e3c4afe2.woff was not modified
+INFO  2019-06-23 17:26:11,865 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 35.1611ms 304 application/font-woff
+INFO  2019-06-23 17:26:11,934 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.Home.Menus.MenuAppService.GetMenus (IEManageSystem.Application) with arguments (IEManageSystem.Services.Home.Menus.Dto.GetMenusInput) - Validation state: Valid
+INFO  2019-06-23 17:26:12,003 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.Home.Menus.MenuAppService.GetMenus (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 66.9505ms.
+INFO  2019-06-23 17:26:12,015 [7    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.Home.Menus.MenuAppService.GetMenus is executed by user 1 in 83 ms from ::1 IP address with succeed.
+INFO  2019-06-23 17:26:12,017 [7    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-23 17:26:12,028 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.Home.Menus.MenuAppService.GetMenus (IEManageSystem.Application) in 343.973ms
+INFO  2019-06-23 17:26:12,037 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 370.4543ms 200 application/json; charset=utf-8
+INFO  2019-06-23 17:26:38,761 [7    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-23 17:26:38,791 [7    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-23 17:26:38,797 [7    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
+INFO  2019-06-23 17:26:40,009 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/favicon.ico  
+WARN  2019-06-23 17:26:40,011 [14   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:40,015 [14   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:40,029 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 19.4694ms 404 
+INFO  2019-06-23 17:26:40,957 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/ManageHome/  
+WARN  2019-06-23 17:26:40,961 [14   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:40,963 [14   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:40,969 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/Index.html'. Physical path: 'E:\Visual Studio\Project\IEManageSystem\src\IEManageSystem.Api\ClientApp\build\Index.html'
+INFO  2019-06-23 17:26:40,972 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 13.6676ms 200 text/html
+INFO  2019-06-23 17:26:41,115 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserScopeAccessAuthorities application/json 2
+WARN  2019-06-23 17:26:41,118 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:41,121 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:41,124 [6    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-23 17:26:41,129 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetUserScopeAccessAuthorities", controller = "User", area = ""}. Executing action IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api)
+INFO  2019-06-23 17:26:41,134 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api) with arguments (IEManageSystem.Api.Controllers.Users.Dto.GetUserScopeAccessAuthoritiesInput) - Validation state: Valid
+INFO  2019-06-23 17:26:41,139 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3.5278ms.
+INFO  2019-06-23 17:26:41,141 [6    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities is executed by user 1 in 8 ms from ::1 IP address with succeed.
+INFO  2019-06-23 17:26:41,143 [6    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-23 17:26:41,145 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Api.Controllers.Users.UserController.GetUserScopeAccessAuthorities (IEManageSystem.Api) in 14.3153ms
+INFO  2019-06-23 17:26:41,148 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 33.4824ms 200 application/json; charset=utf-8
+INFO  2019-06-23 17:26:41,162 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserInfo application/json 2
+WARN  2019-06-23 17:26:41,165 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:41,167 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:41,170 [6    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-23 17:26:41,173 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/User/GetUserInfo application/json 2
+WARN  2019-06-23 17:26:41,176 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:41,179 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:41,183 [7    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-23 17:26:41,185 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUserInfo", controller = "User"}. Executing action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application)
+INFO  2019-06-23 17:26:41,192 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUserInfo", controller = "User"}. Executing action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application)
+INFO  2019-06-23 17:26:41,224 [7    ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-06-23 17:26:41,226 [6    ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2019-06-23 17:26:41,271 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) with arguments (IEManageSystem.Services.Users.Dto.GetUserInfoInput) - Validation state: Valid
+INFO  2019-06-23 17:26:41,273 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) with arguments (IEManageSystem.Services.Users.Dto.GetUserInfoInput) - Validation state: Valid
+INFO  2019-06-23 17:26:41,302 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/231ab726f5f19d7437869e17c11b6ed7.JPEG  
+WARN  2019-06-23 17:26:41,305 [11   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:41,307 [11   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:41,311 [11   ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/images/231ab726f5f19d7437869e17c11b6ed7.JPEG was not modified
+INFO  2019-06-23 17:26:41,355 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 16.4165ms 304 image/jpeg
+INFO  2019-06-23 17:26:41,607 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/a5e81f19cf2c587876fd1bb08ae0249f.png  
+WARN  2019-06-23 17:26:41,610 [11   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:41,613 [11   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:41,618 [11   ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/images/a5e81f19cf2c587876fd1bb08ae0249f.png was not modified
+INFO  2019-06-23 17:26:41,623 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 13.3477ms 304 image/png
+INFO  2019-06-23 17:26:41,639 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 363.7635ms.
+INFO  2019-06-23 17:26:41,645 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 367.7258ms.
+INFO  2019-06-23 17:26:41,673 [6    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.Users.UserAppService.GetUserInfo is executed by user 1 in 406 ms from ::1 IP address with succeed.
+INFO  2019-06-23 17:26:41,675 [7    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.Users.UserAppService.GetUserInfo is executed by user 1 in 407 ms from ::1 IP address with succeed.
+INFO  2019-06-23 17:26:41,677 [6    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-23 17:26:41,682 [7    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-23 17:26:41,701 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) in 511.5746ms
+INFO  2019-06-23 17:26:41,704 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.Users.UserAppService.GetUserInfo (IEManageSystem.Application) in 505.3365ms
+INFO  2019-06-23 17:26:41,711 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 532.6401ms 200 application/json; charset=utf-8
+INFO  2019-06-23 17:26:41,712 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 543.8947ms 200 application/json; charset=utf-8
+INFO  2019-06-23 17:26:42,226 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/f18f5b1a6c92d88998f07c07fccf1c23.svg  
+WARN  2019-06-23 17:26:42,229 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:42,233 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:42,235 [6    ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/images/f18f5b1a6c92d88998f07c07fccf1c23.svg was not modified
+INFO  2019-06-23 17:26:42,259 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 12.2969ms 304 image/svg+xml
+INFO  2019-06-23 17:26:47,335 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPages application/json 44
+WARN  2019-06-23 17:26:47,337 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:47,339 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:47,343 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPages", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application)
+INFO  2019-06-23 17:26:47,689 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPagesInput) - Validation state: Valid
+INFO  2019-06-23 17:26:47,713 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 22.8749ms.
+INFO  2019-06-23 17:26:47,718 [7    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages is executed by an anonymous user in 32 ms from ::1 IP address with succeed.
+INFO  2019-06-23 17:26:47,720 [7    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-23 17:26:47,728 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application) in 382.5215ms
+INFO  2019-06-23 17:26:47,730 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 396.552ms 200 application/json; charset=utf-8
+INFO  2019-06-23 17:26:50,612 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetComponentDatas application/json 17
+INFO  2019-06-23 17:26:50,614 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPageComponent application/json 13
+WARN  2019-06-23 17:26:50,616 [13   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:50,619 [14   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:50,621 [13   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:50,623 [14   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:50,627 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPageComponent", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application)
+INFO  2019-06-23 17:26:50,629 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetComponentDatas", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetComponentDatas (IEManageSystem.Application)
+INFO  2019-06-23 17:26:50,639 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPageComponentInput) - Validation state: Valid
+INFO  2019-06-23 17:26:50,642 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetComponentDatas (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetComponentDataInput) - Validation state: Valid
+INFO  2019-06-23 17:26:50,692 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/d73dd0b67391a113150eb5661f8ff00d.jpg  
+WARN  2019-06-23 17:26:50,706 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:50,706 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/f7f3ce3fd039702a3b46fcbcff155466.jpg  
+INFO  2019-06-23 17:26:50,711 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/js/images/79a9052d0abb7d5cbc8c123cc5dfece5.jpg  
+WARN  2019-06-23 17:26:50,714 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:50,721 [11   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:50,724 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:50,747 [6    ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/images/d73dd0b67391a113150eb5661f8ff00d.jpg was not modified
+WARN  2019-06-23 17:26:50,772 [11   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:50,775 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:50,780 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 85.7967ms 304 image/jpeg
+INFO  2019-06-23 17:26:50,782 [11   ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/images/f7f3ce3fd039702a3b46fcbcff155466.jpg was not modified
+INFO  2019-06-23 17:26:50,787 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 139.139ms.
+INFO  2019-06-23 17:26:50,789 [7    ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/images/79a9052d0abb7d5cbc8c123cc5dfece5.jpg was not modified
+INFO  2019-06-23 17:26:50,790 [13   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent is executed by an anonymous user in 156 ms from ::1 IP address with succeed.
+INFO  2019-06-23 17:26:50,793 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 88.0445ms 304 image/jpeg
+INFO  2019-06-23 17:26:50,795 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 86.3494ms 304 image/jpeg
+INFO  2019-06-23 17:26:50,801 [13   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-23 17:26:50,805 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetComponentDatas (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 159.608ms.
+INFO  2019-06-23 17:26:50,809 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application) in 179.0697ms
+INFO  2019-06-23 17:26:50,813 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 199.8571ms 200 application/json; charset=utf-8
+INFO  2019-06-23 17:26:50,814 [14   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetComponentDatas is executed by an anonymous user in 175 ms from ::1 IP address with succeed.
+INFO  2019-06-23 17:26:50,816 [14   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-23 17:26:50,822 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetComponentDatas (IEManageSystem.Application) in 190.743ms
+INFO  2019-06-23 17:26:50,824 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 211.8826ms 200 application/json; charset=utf-8
+INFO  2019-06-23 17:26:53,698 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPages application/json 44
+WARN  2019-06-23 17:26:53,703 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:53,707 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:53,710 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPages", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application)
+INFO  2019-06-23 17:26:53,714 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPagesInput) - Validation state: Valid
+INFO  2019-06-23 17:26:53,718 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 1.5974ms.
+INFO  2019-06-23 17:26:53,719 [7    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages is executed by an anonymous user in 8 ms from ::1 IP address with succeed.
+INFO  2019-06-23 17:26:53,722 [7    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-23 17:26:53,725 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application) in 12.3478ms
+INFO  2019-06-23 17:26:53,727 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 30.7486ms 200 application/json; charset=utf-8
+INFO  2019-06-23 17:26:54,999 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPage application/json 13
+INFO  2019-06-23 17:26:55,001 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPageComponent application/json 13
+WARN  2019-06-23 17:26:55,003 [11   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:55,006 [14   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:55,008 [11   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:55,009 [14   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:55,011 [11   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-23 17:26:55,014 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPageComponent", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application)
+INFO  2019-06-23 17:26:55,017 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPage", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPage (IEManageSystem.Application)
+INFO  2019-06-23 17:26:55,022 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPageComponentInput) - Validation state: Valid
+INFO  2019-06-23 17:26:55,030 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPage (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPageInput) - Validation state: Valid
+INFO  2019-06-23 17:26:55,042 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 8.5064ms.
+INFO  2019-06-23 17:26:55,048 [14   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent is executed by an anonymous user in 30 ms from ::1 IP address with succeed.
+INFO  2019-06-23 17:26:55,060 [14   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-23 17:26:55,065 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPage (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 28.9925ms.
+INFO  2019-06-23 17:26:55,068 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application) in 46.6687ms
+INFO  2019-06-23 17:26:55,071 [11   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPage is executed by user 1 in 47 ms from ::1 IP address with succeed.
+INFO  2019-06-23 17:26:55,088 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 71.0823ms 200 application/json; charset=utf-8
+INFO  2019-06-23 17:26:55,090 [11   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-23 17:26:55,096 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPage (IEManageSystem.Application) in 73.7281ms
+INFO  2019-06-23 17:26:55,103 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 102.0508ms 200 application/json; charset=utf-8
+INFO  2019-06-23 17:26:57,978 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPages application/json 44
+WARN  2019-06-23 17:26:57,981 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:57,987 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:57,991 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPages", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application)
+INFO  2019-06-23 17:26:57,995 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPagesInput) - Validation state: Valid
+INFO  2019-06-23 17:26:58,001 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 1.8899ms.
+INFO  2019-06-23 17:26:58,002 [6    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages is executed by an anonymous user in 9 ms from ::1 IP address with succeed.
+INFO  2019-06-23 17:26:58,007 [6    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-23 17:26:58,012 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application) in 15.7342ms
+INFO  2019-06-23 17:26:58,020 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 36.9506ms 200 application/json; charset=utf-8
+INFO  2019-06-23 17:26:59,617 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPageComponent application/json 13
+INFO  2019-06-23 17:26:59,618 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetComponentDatas application/json 17
+WARN  2019-06-23 17:26:59,620 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:59,624 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:59,624 [13   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:26:59,626 [13   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:26:59,629 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPageComponent", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application)
+INFO  2019-06-23 17:26:59,631 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetComponentDatas", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetComponentDatas (IEManageSystem.Application)
+INFO  2019-06-23 17:26:59,636 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetComponentDatas (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetComponentDataInput) - Validation state: Valid
+INFO  2019-06-23 17:26:59,638 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPageComponentInput) - Validation state: Valid
+INFO  2019-06-23 17:26:59,644 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3.3199ms.
+INFO  2019-06-23 17:26:59,645 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetComponentDatas (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 6.0171ms.
+INFO  2019-06-23 17:26:59,646 [6    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent is executed by an anonymous user in 13 ms from ::1 IP address with succeed.
+INFO  2019-06-23 17:26:59,650 [13   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetComponentDatas is executed by an anonymous user in 17 ms from ::1 IP address with succeed.
+INFO  2019-06-23 17:26:59,651 [6    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-23 17:26:59,653 [13   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-23 17:26:59,659 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPageComponent (IEManageSystem.Application) in 22.6282ms
+INFO  2019-06-23 17:26:59,661 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetComponentDatas (IEManageSystem.Application) in 23.2037ms
+INFO  2019-06-23 17:26:59,669 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 51.8078ms 200 application/json; charset=utf-8
+INFO  2019-06-23 17:26:59,672 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 49.3995ms 200 application/json; charset=utf-8
+INFO  2019-06-23 17:27:01,603 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/PageManage/GetPages application/json 44
+WARN  2019-06-23 17:27:01,605 [13   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-06-23 17:27:01,608 [13   ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-06-23 17:27:01,611 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetPages", controller = "PageManage"}. Executing action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application)
+INFO  2019-06-23 17:27:01,621 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application) with arguments (IEManageSystem.Services.ManageHome.CMS.Pages.Dto.GetPagesInput) - Validation state: Valid
+INFO  2019-06-23 17:27:01,628 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3.5709ms.
+INFO  2019-06-23 17:27:01,628 [13   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages is executed by an anonymous user in 16 ms from ::1 IP address with succeed.
+INFO  2019-06-23 17:27:01,643 [13   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'IEManageSystem.Api.Models.ApiResultDataModel'.
+INFO  2019-06-23 17:27:01,671 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action IEManageSystem.Services.ManageHome.CMS.Pages.PageManageAppService.GetPages (IEManageSystem.Application) in 31.7402ms
+INFO  2019-06-23 17:27:01,679 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 72.06ms 200 application/json; charset=utf-8
+INFO  2019-06-23 17:27:08,812 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 2.1.0-rtm-30799 initialized 'PersistedGrantDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+INFO  2019-06-23 17:27:08,817 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [x].[Key], [x].[ClientId], [x].[CreationTime], [x].[Data], [x].[Expiration], [x].[SubjectId], [x].[Type]
+FROM [PersistedGrants] AS [x]
+WHERE [x].[Expiration] < GETUTCDATE()
+ORDER BY [x].[Key]
+INFO  2019-06-23 17:27:08,819 [6    ] tityServer4.EntityFramework.TokenCleanup - Clearing 0 tokens
