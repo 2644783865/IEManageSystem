@@ -6,8 +6,8 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages.Dto
 {
     public class GetComponentDataInput
     {
-        public int PageId { get; set; }
+        public string PageName { get; set; }
 
-        public int? PageDataId { get; set; }
+        public string PageDataName { get; set; }
     }
 }

@@ -19,9 +19,9 @@ export default class CMSManage extends React.Component{
             <Switch>
                 <Route path="/ManageHome/CMSManage/Menu" component={Menu} />
                 <Route path="/ManageHome/CMSManage/PageManage" component={PageManage} />
-                <Route path="/ManageHome/CMSManage/PageComponent/:pageId" component={PageComponent} />
-                <Route path="/ManageHome/CMSManage/PageData/:pageId" component={PageData} />
-                <Route path="/ManageHome/CMSManage/ComponentData/:pageId/:pageDataId?" component={ComponentData} />
+                <Route path="/ManageHome/CMSManage/PageComponent/:pageName" component={PageComponent} />
+                <Route path="/ManageHome/CMSManage/PageData/:pageName" component={PageData} />
+                <Route path="/ManageHome/CMSManage/ComponentData/:pageName/:pageDataName?" component={ComponentData} />
                 <Route path="/ManageHome/CMSManage/TestPage" component={TestPage} />
             </Switch>
         </div>);

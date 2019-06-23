@@ -13,7 +13,7 @@ export default class PageComponent extends React.Component{
     render(){
         return (<div className="page">
             <ComponentTool />
-            <PageContainer pageId={this.props.match.params.pageId} />
+            <PageContainer pageName={this.props.match.params.pageName} />
         </div>);
     }
 }

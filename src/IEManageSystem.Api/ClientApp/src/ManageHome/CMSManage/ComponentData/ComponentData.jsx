@@ -12,13 +12,13 @@ class ComponentData extends React.Component {
     constructor(props) {
         super(props);
 
-        this.props.pageComponentFetch(this.props.pageId);
-        this.props.componentDatasFetch(this.props.pageId, this.props.pageDataId);
+        this.props.pageComponentFetch(this.props.pageName);
+        this.props.componentDatasFetch(this.props.pageName, this.props.pageDataName);
     }
 
     componentWillUpdate(nextProps) {
         if (nextProps.componentDatasDidInvalidate) {
-            this.props.componentDatasFetch(this.props.pageId, this.props.pageDataId);
+            this.props.componentDatasFetch(this.props.pageName, this.props.pageDataName);
         }
     }
 
@@ -66,7 +66,7 @@ class ComponentData extends React.Component {
             <div className="page-container">
                 <div className="">
                     <button type="button" className="btn btn-warning mr-2"
-                        onClick={()=>this.props.componentDatasFetch(this.props.pageId, this.props.pageDataId)}
+                        onClick={()=>this.props.componentDatasFetch(this.props.pageName, this.props.pageDataName)}
                     >
                         取消修改
                         <span className="oi padding-left-10 oi-action-undo" title="icon name" aria-hidden="true"></span>
@@ -74,7 +74,7 @@ class ComponentData extends React.Component {
                     <button type="button" className="btn btn-info"
                         onClick={
                             ()=>{
-                                this.props.componentDataUpdateFetch(this.props.pageId, this.props.pageDataId, this.props.componentDatas);
+                                this.props.componentDataUpdateFetch(this.props.pageName, this.props.pageDataName, this.props.componentDatas);
                             }
                         }
                     >
@@ -102,8 +102,8 @@ ComponentData.propTypes = {
     pageComponents: PropTypes.array,
     componentDatas: PropTypes.array,
     componentDatasDidInvalidate: PropTypes.bool.isRequired,
-    pageId: PropTypes.string.isRequired,
-    pageDataId: PropTypes.string.isRequired,
+    pageName: PropTypes.string.isRequired,
+    pageDataName: PropTypes.string.isRequired,
     pageComponentFetch: PropTypes.func.isRequired,
     componentDatasFetch: PropTypes.func.isRequired,
     componentDataUpdateFetch: PropTypes.func.isRequired,
@@ -115,21 +115,21 @@ const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的prop
         pageComponents: state.PageComponent.Components,
         componentDatas: state.componentData.componentDatas,
         componentDatasDidInvalidate: state.componentData.componentDatasDidInvalidate,
-        pageId: ownProps.match.params.pageId,
-        pageDataId: ownProps.match.params.pageDataId
+        pageName: ownProps.match.params.pageName,
+        pageDataName: ownProps.match.params.pageDataName
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        pageComponentFetch: (id) => {
-            dispatch(pageComponentFetch(id));
+        pageComponentFetch: (name) => {
+            dispatch(pageComponentFetch(name));
         },
-        componentDatasFetch: (pageId, pageDataId) => {
-            dispatch(componentDatasFetch(pageId, pageDataId));
+        componentDatasFetch: (pageName, pageDataName) => {
+            dispatch(componentDatasFetch(pageName, pageDataName));
         },
-        componentDataUpdateFetch: (pageId, pageDataId, componentDatas) => {
-            dispatch(componentDataUpdateFetch(pageId, pageDataId, componentDatas));
+        componentDataUpdateFetch: (pageName, pageDataName, componentDatas) => {
+            dispatch(componentDataUpdateFetch(pageName, pageDataName, componentDatas));
         },
         componentDataUpdate: (resource) => {
             dispatch(componentDataUpdate(resource));

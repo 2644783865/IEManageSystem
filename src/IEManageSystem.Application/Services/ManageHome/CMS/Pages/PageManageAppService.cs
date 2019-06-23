@@ -76,7 +76,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
         public GetPageOutput GetPage(GetPageInput input)
         {
-            var page = _repository.FirstOrDefault(input.Id);
+            var page = _repository.FirstOrDefault(item=>item.Name == input.Name);
 
             return new GetPageOutput() { Page = AutoMapper.Mapper.Map<PageDto>(page) };
         }
@@ -115,14 +115,14 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
         public DeletePageOutput DeletePage(DeletePageInput input)
         {
-            _repository.Delete(input.Id);
+            _repository.Delete(item=>item.Name == input.Name);
 
             return new DeletePageOutput();
         }
 
         public UpdatePageOutput UpdatePage(UpdatePageInput input)
         {
-            var page = _repository.FirstOrDefault(input.Id);
+            var page = _repository.FirstOrDefault(item=>item.Name == input.Name);
 
             if (page == null) {
                 throw new MessageException("未找到页面");
@@ -136,7 +136,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
         public GetPageComponentOutput GetPageComponent(GetPageComponentInput input)
         {
-            var page = _repository.GetAllIncluding(e => e.PageComponents).FirstOrDefault(e => e.Id == input.Id);
+            var page = _repository.GetAllIncluding(e => e.PageComponents).FirstOrDefault(e => e.Name == input.Name);
 
             if (page == null) {
                 throw new MessageException("未找到页面");
@@ -187,7 +187,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
         public UpdatePageComponentOutput UpdatePageComponent(UpdatePageComponentInput input)
         {
-            var page = _repository.GetAllIncluding(e => e.PageComponents).FirstOrDefault(e => e.Id == input.Id);
+            var page = _repository.GetAllIncluding(e => e.PageComponents).FirstOrDefault(e => e.Name == input.Name);
             page.PageComponents.Clear();
 
             List<PageComponentBase> pageComponents = new List<PageComponentBase>();
@@ -232,7 +232,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
         public GetPageDatasOutput GetPageDatas(GetPageDatasInput input)
         {
-            var page = _repository.GetAllIncluding(e => e.PageDatas).FirstOrDefault(e => e.Id == input.PageId);
+            var page = _repository.GetAllIncluding(e => e.PageDatas).FirstOrDefault(e => e.Name == input.PageName);
 
             return new GetPageDatasOutput() {
                 PageDatas = AutoMapper.Mapper.Map<List<PageDataDto>>(page.PageDatas),
@@ -247,7 +247,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
                 Title = input.Title
             };
 
-            var page = _repository.GetAllIncluding(e => e.PageDatas).FirstOrDefault(e => e.Id == input.PageId);
+            var page = _repository.GetAllIncluding(e => e.PageDatas).FirstOrDefault(e => e.Name == input.PageName);
             if (page is StaticPage) {
                 throw new MessageException("无法为单页添加文章");
             }
@@ -259,7 +259,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
         public UpdatePageDataOutput UpdatePageData(UpdatePageDataInput input)
         {
-            var page = _repository.GetAllIncluding(e => e.PageDatas).FirstOrDefault(e => e.Id == input.PageId);
+            var page = _repository.GetAllIncluding(e => e.PageDatas).FirstOrDefault(e => e.Name == input.PageName);
 
             if (page is StaticPage)
             {
@@ -277,9 +277,9 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
         public DeletePageDataOutput DeletePageData(DeletePageDataInput input)
         {
-            var page = _repository.GetAllIncluding(e => e.PageDatas).FirstOrDefault(e => e.Id == input.PageId);
+            var page = _repository.GetAllIncluding(e => e.PageDatas).FirstOrDefault(e => e.Name == input.PageName);
 
-            var pageData = page.PageDatas.FirstOrDefault(e=>e.Id == input.Id);
+            var pageData = page.PageDatas.FirstOrDefault(e=>e.Name == input.Name);
             page.PageDatas.Remove(pageData);
 
             return new DeletePageDataOutput();
@@ -287,7 +287,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
         public GetComponentDataOutput GetComponentDatas(GetComponentDataInput input)
         {
-            var pageData = _repository.GetPageDataIncludeComponentDatas(input.PageId, input.PageDataId);
+            var pageData = _repository.GetPageDataIncludeComponentDatas(input.PageName, input.PageDataName);
 
             return new GetComponentDataOutput()
             {
@@ -310,7 +310,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
                 });
             }
 
-            _repository.SetContentComponentDatas(input.PageId, input.PageDataId, contentComponentDatas);
+            _repository.SetContentComponentDatas(input.PageName, input.PageDataName, contentComponentDatas);
 
             return new UpdateComponentDataOutput();
         }

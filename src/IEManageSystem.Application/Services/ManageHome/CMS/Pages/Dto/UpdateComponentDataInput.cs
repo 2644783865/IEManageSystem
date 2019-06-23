@@ -7,9 +7,9 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages.Dto
 {
     public class UpdateComponentDataInput
     {
-        public int PageId { get; set; }
+        public string PageName { get; set; }
 
-        public int? PageDataId { get; set; }
+        public string PageDataName { get; set; }
 
         public List<ContentComponentDataDto> ComponentDatas { get; set; }
     }

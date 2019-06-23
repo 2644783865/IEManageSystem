@@ -25,9 +25,9 @@ namespace IEManageSystem.Repositorys.CMSRepositorys
             Insert(page);
         }
 
-        public PageData GetPageDataIncludeComponentDatas(int pageId, int? pageDataId)
+        public PageData GetPageDataIncludeComponentDatas(string pageName, string pageDataName)
         {
-            var page = ThenInclude(e => e.PageDatas, e => e.ContentComponentDatas).FirstOrDefault(e => e.Id == pageId);
+            var page = ThenInclude(e => e.PageDatas, e => e.ContentComponentDatas).FirstOrDefault(e => e.Name == pageName);
 
             PageData pageData = null;
             if (page is StaticPage)
@@ -36,15 +36,15 @@ namespace IEManageSystem.Repositorys.CMSRepositorys
             }
             else
             {
-                pageData = page.PageDatas.FirstOrDefault(e => e.Id == pageDataId);
+                pageData = page.PageDatas.FirstOrDefault(e => e.Name == pageDataName);
             }
 
             return pageData;
         }
 
-        public void SetContentComponentDatas(int pageId, int? pageDataId, List<ContentComponentData> contentComponentDatas)
+        public void SetContentComponentDatas(string pageName, string pageDataName, List<ContentComponentData> contentComponentDatas)
         {
-            var pageData = GetPageDataIncludeComponentDatas(pageId, pageDataId);
+            var pageData = GetPageDataIncludeComponentDatas(pageName, pageDataName);
 
             pageData.ContentComponentDatas = contentComponentDatas;
         }

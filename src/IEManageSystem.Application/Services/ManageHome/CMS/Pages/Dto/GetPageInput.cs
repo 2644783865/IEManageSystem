@@ -6,6 +6,6 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages.Dto
 {
     public class GetPageInput
     {
-        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -6,6 +6,6 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages.Dto
 {
     public class DeletePageInput
     {
-        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

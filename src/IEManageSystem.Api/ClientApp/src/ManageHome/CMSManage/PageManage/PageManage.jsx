@@ -17,7 +17,7 @@ function EditComponent(props)
 {
 	return (
 	<NavLink className="btn btn-outline-secondary" 
-		to={`/ManageHome/CMSManage/PageComponent/${props.resource.id}`}
+		to={`/ManageHome/CMSManage/PageComponent/${props.resource.name}`}
 	>
 		<span class="oi oi-pencil" title="icon name" aria-hidden="true"></span>{" 编辑组件"}
 	</NavLink>);
@@ -26,11 +26,11 @@ function EditComponent(props)
 function EditPageData(props){
 	let data = props.resource.pageType == pageType.ContentPage ?
 		{
-			url: `/ManageHome/CMSManage/PageData/${props.resource.id}`,
+			url: `/ManageHome/CMSManage/PageData/${props.resource.name}`,
 			text: " 管理文章"
 		}:
 		{
-			url: `/ManageHome/CMSManage/ComponentData/${props.resource.id}`,
+			url: `/ManageHome/CMSManage/ComponentData/${props.resource.name}`,
 			text: " 管理页面"
 		}
 

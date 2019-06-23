@@ -10,8 +10,8 @@ namespace IEManageSystem.CMS.Repositorys
     {
         void AddPage(PageBase page);
 
-        PageData GetPageDataIncludeComponentDatas(int pageId, int? pageDataId);
+        PageData GetPageDataIncludeComponentDatas(string pageName, string pageDataName);
 
-        void SetContentComponentDatas(int pageId, int? pageDataId, List<ContentComponentData> contentComponentDatas);
+        void SetContentComponentDatas(string pageName, string pageDataName, List<ContentComponentData> contentComponentDatas);
     }
 }

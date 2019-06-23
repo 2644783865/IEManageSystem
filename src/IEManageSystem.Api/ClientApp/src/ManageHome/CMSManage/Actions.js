@@ -80,7 +80,7 @@ export function staticPageAddFetch(resource) {
 export const PageDeleteReceive = "PageDeleteReceive"
 export function pageDeleteFetch(resource) {
   let postData = {
-    id: resource.id
+    name: resource.name
   };
 
   return createIEThunkAction(
@@ -106,9 +106,9 @@ export function pageUpdateFetch(resource) {
 }
 
 export const PageComponentReceive = "PageComponentReceive"
-export function pageComponentFetch(id){
+export function pageComponentFetch(name){
   let postData = {
-    id: id
+    name: name
   };
 
   return createIEThunkAction(
@@ -122,9 +122,9 @@ export function pageComponentFetch(id){
 }
 
 export const PageComponentUpdateReceive = "PageComponentUpdateReceive"
-export function pageComponentUpdateFetch(id, components) {
+export function pageComponentUpdateFetch(name, components) {
   let postData = {
-    id: id,
+    name: name,
     pageComponents: components
   };
 
@@ -138,12 +138,12 @@ export function pageComponentUpdateFetch(id, components) {
 }
 
 export const PageDatasReceive = "PageDatasReceive"
-export function pageDatasFetch(pageIndex, pageSize, searchKey, pageId){
+export function pageDatasFetch(pageIndex, pageSize, searchKey, pageName){
   let postData = {
     pageIndex: pageIndex,
     pageSize: pageSize,
     searchKey: searchKey,
-    pageId: pageId
+    pageName: pageName
   };
 
   return createIEThunkAction(
@@ -157,10 +157,10 @@ export function pageDatasFetch(pageIndex, pageSize, searchKey, pageId){
 }
 
 export const PageDataAddReceive = "PageDataAddReceive"
-export function pageDataAddFetch(resource, pageId)
+export function pageDataAddFetch(resource, pageName)
 {
   let postData = {...resource, ...{
-    pageId:pageId
+    pageName:pageName
   }};
 
   return createIEThunkAction(
@@ -174,9 +174,9 @@ export function pageDataAddFetch(resource, pageId)
 }
 
 export const PageDataUpdateReceive = "PageDataUpdateReceive"
-export function pageDataUpdateFetch(resource, pageId){
+export function pageDataUpdateFetch(resource, pageName){
   let postData = {...resource, ...{
-    pageId:pageId
+    pageName:pageName
   }};
 
   return createIEThunkAction(
@@ -191,10 +191,10 @@ export function pageDataUpdateFetch(resource, pageId){
 
 
 export const PageDataDeleteReceive = "PageDataDeleteReceive"
-export function pageDataDeleteFetch(resource, pageId){
+export function pageDataDeleteFetch(resource, pageName){
   let postData = {
-    id: resource.id,
-    pageId: pageId
+    name: resource.name,
+    pageName: pageName
   };
 
   return createIEThunkAction(
@@ -208,10 +208,10 @@ export function pageDataDeleteFetch(resource, pageId){
 }
 
 export const ComponentDatasReceive = "ComponentDatasReceive"
-export function componentDatasFetch(pageId, pageDataId){
+export function componentDatasFetch(pageName, pageDataName){
   let postData = {
-    pageId: pageId,
-    pageDataId: pageDataId
+    pageName: pageName,
+    pageDataName: pageDataName
   };
 
   return createIEThunkAction(
@@ -225,11 +225,11 @@ export function componentDatasFetch(pageId, pageDataId){
 }
 
 export const ComponentDataUpdateReceive = "ComponentDataUpdateReceive"
-export function componentDataUpdateFetch(pageId, pageDataId, componentDatas)
+export function componentDataUpdateFetch(pageName, pageDataName, componentDatas)
 {
   let postData = {
-    pageId: pageId,
-    pageDataId: pageDataId,
+    pageName: pageName,
+    pageDataName: pageDataName,
     componentDatas: componentDatas
   };
 

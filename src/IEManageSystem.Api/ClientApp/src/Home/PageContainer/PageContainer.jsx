@@ -12,13 +12,13 @@ class PageContainer extends React.Component {
     constructor(props) {
         super(props);
 
-        this.props.pageComponentFetch(this.props.pageId);
-        this.props.componentDatasFetch(this.props.pageId, this.props.pageDataId);
+        this.props.pageComponentFetch(this.props.pageName);
+        this.props.componentDatasFetch(this.props.pageName, this.props.pageDataName);
     }
 
     componentWillUpdate(nextProps) {
         if (nextProps.componentDatasDidInvalidate) {
-            this.props.componentDatasFetch(this.props.pageId, this.props.pageDataId);
+            this.props.componentDatasFetch(this.props.pageName, this.props.pageDataName);
         }
     }
 
@@ -81,8 +81,8 @@ PageContainer.propTypes = {
     pageComponents: PropTypes.array,
     componentDatas: PropTypes.array,
     componentDatasDidInvalidate: PropTypes.bool.isRequired,
-    pageId: PropTypes.string.isRequired,
-    pageDataId: PropTypes.string.isRequired,
+    pageName: PropTypes.string.isRequired,
+    pageDataName: PropTypes.string.isRequired,
     pageComponentFetch: PropTypes.func.isRequired,
     componentDatasFetch: PropTypes.func.isRequired
 }
@@ -92,18 +92,18 @@ const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的prop
         pageComponents: state.PageComponent.Components,
         componentDatas: state.componentData.componentDatas,
         componentDatasDidInvalidate: state.componentData.componentDatasDidInvalidate,
-        pageId: ownProps.match.params.pageId,
-        pageDataId: ownProps.match.params.pageDataId
+        pageName: ownProps.match.params.pageName,
+        pageDataName: ownProps.match.params.pageDataName
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        pageComponentFetch: (id) => {
-            dispatch(pageComponentFetch(id));
+        pageComponentFetch: (name) => {
+            dispatch(pageComponentFetch(name));
         },
-        componentDatasFetch: (pageId, pageDataId) => {
-            dispatch(componentDatasFetch(pageId, pageDataId));
+        componentDatasFetch: (pageName, pageDataName) => {
+            dispatch(componentDatasFetch(pageName, pageDataName));
         }
     }
 }

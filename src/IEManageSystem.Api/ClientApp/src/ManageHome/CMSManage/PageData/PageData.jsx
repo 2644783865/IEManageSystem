@@ -26,7 +26,7 @@ class PageData extends React.Component{
     }
 
     componentDidMount(){
-		this.props.pageDatasFecth(this.resourceChild.pageIndex, this.resourceChild.pageSize, this.resourceChild.searchKey, this.props.pageId);
+		this.props.pageDatasFecth(this.resourceChild.pageIndex, this.resourceChild.pageSize, this.resourceChild.searchKey, this.props.pageName);
 	}
 
 	componentWillUpdate(nextProps)
@@ -35,28 +35,28 @@ class PageData extends React.Component{
 		this.resourceChild.resetResourceNum(nextProps.pageDataNum);
 
 		if(nextProps.pageDatasDidInvalidate == true){
-			this.props.pageDatasFecth(this.resourceChild.pageIndex, this.resourceChild.pageSize, this.resourceChild.searchKey, this.props.pageId);
+			this.props.pageDatasFecth(this.resourceChild.pageIndex, this.resourceChild.pageSize, this.resourceChild.searchKey, this.props.pageName);
 		}
 	}
 
 	// Resource组件删除资源通知
 	deleteResource(resource){
-        this.props.pageDataDeleteFecth(resource, this.props.pageId);
+        this.props.pageDataDeleteFecth(resource, this.props.pageName);
 	}
 
 	// Resource组件添加资源通知
 	addResource(resource){
-        this.props.pageDataAddFetch(resource, this.props.pageId);
+        this.props.pageDataAddFetch(resource, this.props.pageName);
 	}
 
 	// Resource组件更新资源通知
 	updateResource(resource){
-		this.props.pageDataUpdateFetch(resource, this.props.pageId);
+		this.props.pageDataUpdateFetch(resource, this.props.pageName);
 	}
 
 	// Resource组件刷新资源通知
 	freshenResources(pageIndex, pageSize, searchKey){
-		this.props.pageDatasFecth(pageIndex, pageSize, searchKey, this.props.pageId);
+		this.props.pageDatasFecth(pageIndex, pageSize, searchKey, this.props.pageName);
 	}
 
 	render(){
@@ -64,7 +64,7 @@ class PageData extends React.Component{
         customizeOperateBtns.push((props)=>{
 			return (
 			<NavLink className="btn btn-outline-secondary" 
-				to={`/ManageHome/CMSManage/ComponentData/${this.props.pageId}/${props.resource.id}`}
+				to={`/ManageHome/CMSManage/ComponentData/${this.props.pageName}/${props.resource.name}`}
 			>
 				<span class="oi oi-pencil" title="icon name" aria-hidden="true"></span>{" 编辑文章"}
 			</NavLink>);
@@ -72,7 +72,7 @@ class PageData extends React.Component{
         customizeOperateBtns.push((props)=>{
 			return (
 			<NavLink className="btn btn-outline-secondary" 
-				to={`/ManageHome/CMSManage/ComponentData/${this.props.pageId}/${props.resource.id}`}
+				to={`/ManageHome/CMSManage/ComponentData/${this.props.pageName}/${props.resource.name}`}
 			>
 				<span class="oi oi-zoom-in" title="icon name" aria-hidden="true"></span>{" 浏览"}
 			</NavLink>);
@@ -111,7 +111,7 @@ class PageData extends React.Component{
 } 
 
 PageData.propsTypes = {
-    pageId: PropTypes.number.isRequired,
+    pageName: PropTypes.number.isRequired,
     pageDatas: PropTypes.array.isRequired,
     pageDataIndex: PropTypes.number.isRequired,
     pageDataNum: PropTypes.number.isRequired,
@@ -124,7 +124,7 @@ PageData.propsTypes = {
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
     return {
-		pageId: ownProps.match.params.pageId,
+		pageName: ownProps.match.params.pageName,
 		pageDatas: state.pageData.pageDatas,
 		pageDataIndex: state.pageData.pageDataIndex,
 		pageDataNum: state.pageData.pageDataNum,
@@ -134,17 +134,17 @@ const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的prop
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        pageDatasFecth: (pageIndex, pageSize, searchKey, pageId) => {  
-			dispatch(pageDatasFetch(pageIndex, pageSize, searchKey, pageId))
+        pageDatasFecth: (pageIndex, pageSize, searchKey, pageName) => {  
+			dispatch(pageDatasFetch(pageIndex, pageSize, searchKey, pageName))
 		},
-		pageDataDeleteFecth: (resource, pageId) => {
-			dispatch(pageDataDeleteFetch(resource, pageId))
+		pageDataDeleteFecth: (resource, pageName) => {
+			dispatch(pageDataDeleteFetch(resource, pageName))
 		},
-		pageDataAddFetch: (resource, pageId) => {
-			dispatch(pageDataAddFetch(resource, pageId))
+		pageDataAddFetch: (resource, pageName) => {
+			dispatch(pageDataAddFetch(resource, pageName))
 		},
-		pageDataUpdateFetch: (resource, pageId)=>{
-			dispatch(pageDataUpdateFetch(resource, pageId))
+		pageDataUpdateFetch: (resource, pageName)=>{
+			dispatch(pageDataUpdateFetch(resource, pageName))
 		}
     }
 }

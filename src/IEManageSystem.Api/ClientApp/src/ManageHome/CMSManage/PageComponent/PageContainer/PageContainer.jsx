@@ -19,11 +19,11 @@ class PageContainer extends React.Component {
             description: ""
         }
 
-        this.getPage(props.pageId);
+        this.getPage(props.pageName);
         
         this.submitPage = this.submitPage.bind(this);
 
-        this.props.pageComponentFetch(props.pageId);
+        this.props.pageComponentFetch(props.pageName);
     }
 
     getPage(id){
@@ -52,7 +52,7 @@ class PageContainer extends React.Component {
 
     submitPage(){
         this.props.pageComponentUpdateFetch(
-            this.props.pageId,
+            this.props.pageName,
             this.props.pageComponents
         );
     }
@@ -156,7 +156,7 @@ class PageContainer extends React.Component {
 PageContainer.propTypes = {
     selectedComponent: PropTypes.isRequired,
     pageComponents: PropTypes.array,
-    pageId: PropTypes.object.isRequired,
+    pageName: PropTypes.object.isRequired,
     addComponent: PropTypes.func.isRequired,
     pageComponentUpdateFetch: PropTypes.func.isRequired,
     pageComponentFetch: PropTypes.func.isRequired
@@ -166,7 +166,7 @@ const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的prop
     return {
         selectedComponent: state.PageComponent.SelectedComponent,
         pageComponents: state.PageComponent.Components,
-        pageId: ownProps.pageId
+        pageName: ownProps.pageName
     }
 }
 
@@ -175,11 +175,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         addComponent: (pageComponent) => {
             dispatch(newPageAddComponent(pageComponent));
         },
-        pageComponentUpdateFetch: (id, components) => {
-            dispatch(pageComponentUpdateFetch(id, components));
+        pageComponentUpdateFetch: (name, components) => {
+            dispatch(pageComponentUpdateFetch(name, components));
         },
-        pageComponentFetch:(id) => {
-            dispatch(pageComponentFetch(id));
+        pageComponentFetch:(name) => {
+            dispatch(pageComponentFetch(name));
         }
     }
 }

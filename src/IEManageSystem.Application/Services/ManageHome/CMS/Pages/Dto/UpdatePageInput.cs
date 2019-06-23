@@ -8,9 +8,6 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages.Dto
     public class UpdatePageInput
     {
         [Required]
-        public int Id { get; set; }
-
-        [Required]
         public string Name { get; set; }
 
         public string DisplayName { get; set; }

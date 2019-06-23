@@ -6,7 +6,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages.Dto
 {
     public class AddPageDataInput
     {
-        public int PageId { get; set; }
+        public string PageName { get; set; }
 
         public string Name { get; set; }
 

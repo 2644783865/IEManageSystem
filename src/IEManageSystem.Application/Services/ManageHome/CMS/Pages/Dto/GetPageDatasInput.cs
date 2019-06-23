@@ -15,6 +15,6 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages.Dto
 
         public string SearchKey { get; set; }
 
-        public int PageId { get; set; }
+        public string PageName { get; set; }
     }
 }
