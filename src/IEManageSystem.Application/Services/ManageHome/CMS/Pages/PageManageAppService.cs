@@ -115,7 +115,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
         public DeletePageOutput DeletePage(DeletePageInput input)
         {
-            _repository.Delete(item=>item.Name == input.Name);
+            _repository.DeletePage(input.Name);
 
             return new DeletePageOutput();
         }

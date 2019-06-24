@@ -12,6 +12,8 @@ namespace IEManageSystem.Repositorys.CMSRepositorys
 {
     public class PageRepository : EfRepository<PageBase, int>, IPageRepository
     {
+        public const string HomeName = "home";
+
         public PageRepository(IDbContextProvider<IEManageSystemDbContext> dbContextProvider) : base(dbContextProvider)
         {
         }
@@ -23,6 +25,15 @@ namespace IEManageSystem.Repositorys.CMSRepositorys
             }
 
             Insert(page);
+        }
+
+        public void DeletePage(string name)
+        {
+            if (name.ToLower() == HomeName) {
+                throw new MessageException("不能删除主页");
+            }
+
+            Delete(item => item.Name == name);
         }
 
         public PageData GetPageDataIncludeComponentDatas(string pageName, string pageDataName)

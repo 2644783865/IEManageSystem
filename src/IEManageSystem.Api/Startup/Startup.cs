@@ -136,12 +136,10 @@ namespace IEManageSystem.Api.Startup
             {
                 string requestPath = context.Request.Path.Value;
 
-                if (requestPath.StartsWith("/ManageHome/", StringComparison.OrdinalIgnoreCase))
-                {
-                    context.Request.Path = new PathString("/Index.html");
-                }
-
-                if (requestPath.StartsWith("/Page/", StringComparison.OrdinalIgnoreCase))
+                if (
+                    requestPath.StartsWith("/ManageHome/", StringComparison.OrdinalIgnoreCase)||
+                    requestPath.StartsWith("/Page/", StringComparison.OrdinalIgnoreCase)||
+                    requestPath.StartsWith("/Home/", StringComparison.OrdinalIgnoreCase))
                 {
                     context.Request.Path = new PathString("/Index.html");
                 }

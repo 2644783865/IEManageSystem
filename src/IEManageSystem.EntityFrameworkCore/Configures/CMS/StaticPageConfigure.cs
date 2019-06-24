@@ -12,6 +12,10 @@ namespace IEManageSystem.Configures.CMS
         public void Configure(EntityTypeBuilder<StaticPage> builder)
         {
             builder.HasBaseType<PageBase>();
+
+            builder.HasData(new StaticPage[] {
+                new StaticPage("Home", new PageData(){ Name="Home", Title="首页" })
+            });
         }
     }
 }
