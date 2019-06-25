@@ -13,8 +13,13 @@ namespace IEManageSystem.Configures.CMS
         {
             builder.HasBaseType<PageBase>();
 
-            builder.HasData(new StaticPage[] {
-                new StaticPage("Home", new PageData(){ Name="Home", Title="首页" })
+            builder.HasData(new
+            {
+                Id = 1,
+                Name = "Home",
+                DisplayName = "首页",
+                Description = "这是一个首页",
+                Discriminator = "StaticPage"
             });
         }
     }

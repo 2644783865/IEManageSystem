@@ -35,7 +35,8 @@ namespace IEManageSystem.EntityFrameworkCore
 
             // 配置CMS
             modelBuilder.ApplyConfiguration(new StaticPageConfigure());
-            modelBuilder.ApplyConfiguration(new ContentPageConfigure());
+            modelBuilder.ApplyConfiguration(new ContentPageConfigure()); 
+            modelBuilder.ApplyConfiguration(new PageDataConfigure());
             modelBuilder.ApplyConfiguration(new CompositeComponentConfigure());
             modelBuilder.ApplyConfiguration(new ContentLeafComponentConfigure());
             modelBuilder.ApplyConfiguration(new PageLeafComponentConfigure());

@@ -266,6 +266,10 @@ namespace IEManageSystem.Migrations
                     b.HasIndex("PageBaseId");
 
                     b.ToTable("PageData");
+
+                    b.HasData(
+                        new { Id = 1, Name = "Home", PageBaseId = 1, Title = "首页" }
+                    );
                 });
 
             modelBuilder.Entity("IEManageSystem.Entitys.Authorization.Permissions.Permission", b =>
@@ -425,6 +429,12 @@ namespace IEManageSystem.Migrations
                     b.ToTable("CompositeMenu");
 
                     b.HasDiscriminator().HasValue("CompositeMenu");
+
+                    b.HasData(
+                        new { Id = 1, Discriminator = "CompositeMenu", DisplayName = "首页", Icon = "oi-home", Name = "Home" },
+                        new { Id = 2, Discriminator = "CompositeMenu", DisplayName = "游戏", Icon = "oi-dial", Name = "Game" },
+                        new { Id = 3, Discriminator = "CompositeMenu", DisplayName = "技术文档", Icon = "oi-document", Name = "Document" }
+                    );
                 });
 
             modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Menus.LeafMenu", b =>
@@ -438,6 +448,13 @@ namespace IEManageSystem.Migrations
                     b.ToTable("LeafMenu");
 
                     b.HasDiscriminator().HasValue("LeafMenu");
+
+                    b.HasData(
+                        new { Id = 101, CompositeMenuId = 2, Discriminator = "LeafMenu", DisplayName = "主机游戏", Name = "PCGame" },
+                        new { Id = 102, CompositeMenuId = 2, Discriminator = "LeafMenu", DisplayName = "手机游戏", Name = "PhoneGame" },
+                        new { Id = 103, CompositeMenuId = 3, Discriminator = "LeafMenu", DisplayName = "站点技术", Name = "Web" },
+                        new { Id = 104, CompositeMenuId = 3, Discriminator = "LeafMenu", DisplayName = "桌面开发", Name = "Desktop" }
+                    );
                 });
 
             modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Pages.ContentPage", b =>
@@ -458,6 +475,10 @@ namespace IEManageSystem.Migrations
                     b.ToTable("StaticPage");
 
                     b.HasDiscriminator().HasValue("StaticPage");
+
+                    b.HasData(
+                        new { Id = 1, Description = "这是一个首页", Discriminator = "StaticPage", DisplayName = "首页", Name = "Home" }
+                    );
                 });
 
             modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Pages.CompositeComponent", b =>

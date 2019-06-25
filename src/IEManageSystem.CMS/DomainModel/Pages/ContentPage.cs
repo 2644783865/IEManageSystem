@@ -30,5 +30,12 @@ namespace IEManageSystem.CMS.DomainModel.Pages
 
             pageData.Name = Name;
         }
+
+        public void SetPageDataTitle(int pageDataId, string title)
+        {
+            var pageData = PageDatas.FirstOrDefault(e => e.Id == pageDataId);
+
+            pageData.Title = title;
+        }
     }
 }

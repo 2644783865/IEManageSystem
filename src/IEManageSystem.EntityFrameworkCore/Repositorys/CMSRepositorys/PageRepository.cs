@@ -18,24 +18,6 @@ namespace IEManageSystem.Repositorys.CMSRepositorys
         {
         }
 
-        public void AddPage(PageBase page)
-        {
-            if (GetAll().Any(e => e.Name == page.Name)) {
-                throw new MessageException($"已存在名为{page.Name}的页面，请重新命名");
-            }
-
-            Insert(page);
-        }
-
-        public void DeletePage(string name)
-        {
-            if (name.ToLower() == HomeName) {
-                throw new MessageException("不能删除主页");
-            }
-
-            Delete(item => item.Name == name);
-        }
-
         public PageData GetPageDataIncludeComponentDatas(string pageName, string pageDataName)
         {
             var page = ThenInclude(e => e.PageDatas, e => e.ContentComponentDatas).FirstOrDefault(e => e.Name == pageName);

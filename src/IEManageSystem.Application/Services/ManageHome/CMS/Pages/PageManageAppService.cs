@@ -15,13 +15,15 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 {
     public class PageManageAppService : IEManageSystemAppServiceBase, IPageManageAppService
     {
-        private IPageRepository _repository { get; set; }
+        private PageManager _pageManager { get; set; }
+
+        private IPageRepository _repository => _pageManager.PageRepository;
 
         public PageManageAppService(
-            IPageRepository repository
+            PageManager pageManager
             )
         {
-            _repository = repository;
+            _pageManager = pageManager;
         }
 
         public GetPagesOutput GetPages(GetPagesInput input)
@@ -89,7 +91,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
             page.Description = input.Description;
 
-            _repository.AddPage(page);
+            _pageManager.AddPage(page);
 
             return new AddContentPageOutput();
         }
@@ -108,14 +110,14 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
             page.Description = input.Description;
 
-            _repository.AddPage(page);
+            _pageManager.AddPage(page);
 
             return new AddStaticPageOutput();
         }
 
         public DeletePageOutput DeletePage(DeletePageInput input)
         {
-            _repository.DeletePage(input.Name);
+            _pageManager.DeletePage(input.Name);
 
             return new DeletePageOutput();
         }
@@ -136,18 +138,8 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
         public GetPageComponentOutput GetPageComponent(GetPageComponentInput input)
         {
-            var page = _repository.GetAllIncluding(e => e.PageComponents).FirstOrDefault(e => e.Name == input.Name);
-
-            if (page == null) {
-                throw new MessageException("未找到页面");
-            }
-
-            if (page.PageComponents == null) {
-                return new GetPageComponentOutput() { PageComponents = new List<PageComponentDto>() };
-            }
-
             List<PageComponentDto> dtos = new List<PageComponentDto>();
-            foreach (var item in page.PageComponents.Where(e => e.CompositeComponentId == null)) {
+            foreach (var item in _pageManager.GetPageComponents(input.Name)) {
                 dtos.Add(CreatePageComponentDto(item));
             }
 
@@ -187,23 +179,22 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
         public UpdatePageComponentOutput UpdatePageComponent(UpdatePageComponentInput input)
         {
-            var page = _repository.GetAllIncluding(e => e.PageComponents).FirstOrDefault(e => e.Name == input.Name);
-            page.PageComponents.Clear();
-
             List<PageComponentBase> pageComponents = new List<PageComponentBase>();
             foreach (var item in input.PageComponents) {
-                pageComponents.Add(CreatePageComponent(item, page));
+                pageComponents.Add(CreatePageComponent(item));
             }
+
+            _pageManager.UpdatePageComponents(input.Name, pageComponents);
 
             return new UpdatePageComponentOutput();
         }
 
-        private PageComponentBase CreatePageComponent(PageComponentDto dto, PageBase page)
+        private PageComponentBase CreatePageComponent(PageComponentDto dto)
         {
             List<PageComponentBase> childPageComponents = new List<PageComponentBase>();
             if (dto.PageComponents != null) {
                 foreach (var item in dto.PageComponents) {
-                    childPageComponents.Add(CreatePageComponent(item, page));
+                    childPageComponents.Add(CreatePageComponent(item));
                 }
             }
 
@@ -225,8 +216,6 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
             pageComponent.Height = dto.Height;
             pageComponent.Padding = dto.Padding;
 
-            page.PageComponents.Add(pageComponent);
-
             return pageComponent;
         }
 
@@ -247,12 +236,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
                 Title = input.Title
             };
 
-            var page = _repository.GetAllIncluding(e => e.PageDatas).FirstOrDefault(e => e.Name == input.PageName);
-            if (page is StaticPage) {
-                throw new MessageException("无法为单页添加文章");
-            }
-
-            ((ContentPage) page).AddPageData(pageData);
+            _pageManager.AddPageData(input.PageName, pageData);
 
             return new AddPageDataOutput();
         }
@@ -268,9 +252,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
 
             var contentPage = (ContentPage) page;
             contentPage.SetPageDataName(input.Id, input.Name);
-
-            var pageData = page.PageDatas.FirstOrDefault(e => e.Id == input.Id);
-            pageData.Title = input.Title;
+            contentPage.SetPageDataTitle(input.Id, input.Title);
 
             return new UpdatePageDataOutput();
         }
