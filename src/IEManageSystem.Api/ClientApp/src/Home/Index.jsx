@@ -57,7 +57,7 @@ export default class Home extends React.Component{
                 <div>
                     <div className="container-fluid">
                         <Menu />
-                        <Route path="/Page/:pageName/:pageDataName" component={PageContainer} />
+                        <Route path="/Page/:pageName/:pageDataName?" component={PageContainer} />
                     </div>
                 </div>
             </div>

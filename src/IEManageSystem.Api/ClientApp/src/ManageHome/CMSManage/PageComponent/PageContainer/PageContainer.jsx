@@ -62,26 +62,26 @@ class PageContainer extends React.Component {
         return (
             <div className="page-container">
                 <div className="page-container-header">
-                    <div className="input-group">
-                        <input value={this.state.displayName} type="text" className="form-control" placeholder="" />
+                    <div className="input-group shadow-sm">
+                        <input value={this.state.displayName} type="text" className="form-control bg-transparent" placeholder="" />
                         <div className="input-group-append">
                             <span className="input-group-text text-white">显示名称</span>
                         </div>
                     </div>
-                    <div className="input-group">
-                        <input value={this.state.name} type="text" className="form-control" placeholder="" />
+                    <div className="input-group shadow-sm">
+                        <input value={this.state.name} type="text" className="form-control bg-transparent" placeholder="" />
                         <div className="input-group-append">
                             <span className="input-group-text text-white">名称</span>
                         </div>
                     </div>
-                    <div className="input-group">
-                        <input value={this.state.description} type="text" className="form-control" placeholder="" />
+                    <div className="input-group shadow-sm">
+                        <input value={this.state.description} type="text" className="form-control bg-transparent" placeholder="" />
                         <div className="input-group-append">
                             <span className="input-group-text text-white">描述</span>
                         </div>
                     </div>
                     <div>
-                        <button className="btn btn-info padding-left-10 padding-right-10"
+                        <button className="btn btn-info padding-left-10 padding-right-10 shadow-sm"
                             onClick={
                                 ()=>{
                                     let myEvent = new Event('resize');
@@ -89,7 +89,7 @@ class PageContainer extends React.Component {
                                 }
                             }
                         >重新渲染</button>
-                        <button className="btn btn-info padding-left-10 padding-right-10"
+                        <button className="btn btn-info padding-left-10 padding-right-10 shadow-sm"
                             onClick={this.submitPage}
                         >提交页面</button>
                     </div>

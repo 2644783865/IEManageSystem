@@ -111,27 +111,12 @@ class PageManage extends React.Component{
         let customizeOperateBtns = [];
 		customizeOperateBtns.push(EditComponent);
 		customizeOperateBtns.push(EditPageData);
-		
-		let testResources = [
-            {
-                id: 1,
-                name: "TestPage",
-                displayName: "测试页面",
-                description: "这是一个测试页面"
-			},
-			{
-                id: 2,
-                name: "TestPage",
-                displayName: "测试页面",
-                description: "这是一个测试页面"
-            }
-        ];
 
 		return(
 			<div className="col-md-12">
 				<Resource
                 title="页面管理"
-                resources={testResources}
+                // resources={testResources}
                 // hideAdd={true}
                 // hideEdit={true}
 				describes={this.describes}
