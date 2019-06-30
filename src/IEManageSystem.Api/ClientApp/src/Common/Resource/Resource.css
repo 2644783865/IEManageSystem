@@ -4,7 +4,6 @@
     margin-bottom: 0px;
     color: #6c757d;
     font-size: 1rem;
-    border: 1px solid #d5d5d6;
     border-radius: 0.33rem 0.33rem 0rem 0rem;
 }
 
@@ -24,6 +23,10 @@
 
 .data-list thead th{
     border: 0px;
+}
+
+.data-list td{
+    border-color: #ffffff40;
 }
 
 .data-paging ul{

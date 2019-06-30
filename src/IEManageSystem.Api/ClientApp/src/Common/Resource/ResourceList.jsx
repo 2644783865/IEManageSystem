@@ -136,7 +136,7 @@ export default class ResourceList extends React.Component
 
 		return (
 		    <div className="data-list w-100">
-                <h6 className="d-flex justify-content-between">
+                <h6 className="d-flex justify-content-between shadow">
                     <span className="mt-auto mb-auto">
                         <span class="oi oi-list" title="icon name" aria-hidden="true"></span> {" "+this.props.title} 列表
                     </span>
@@ -151,7 +151,7 @@ export default class ResourceList extends React.Component
                         </div>
                     </span>
                 </h6>
-                <table className="table table-hover table-striped">
+                <table className="table table-hover table-striped shadow">
                     <thead>
                         { resourceHeadTr }
                     </thead>

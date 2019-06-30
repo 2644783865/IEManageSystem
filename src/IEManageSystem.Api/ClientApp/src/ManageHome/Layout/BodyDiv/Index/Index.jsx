@@ -5,6 +5,7 @@ import Curved from './Curved.jsx'
 import Columnrange from './Columnrange.jsx'
 import Sunburst from './Sunburst.jsx'
 import Bubble from './Bubble.jsx'
+import ResourceTable from './ResourceTable'
 
 import './style.css';
 
@@ -31,76 +32,8 @@ export default class Index extends React.Component {
                     </div>
                 </div>
                 <div className="row ">
-                    <div className="col-lg-7 mb-4">
-                        <div className="card bg-secondary text-white">
-                            <div className="card-body table-responsive p-0">
-                                <table className="table  m-0">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" width="1" className="border-top-0">#</th>
-                                            <th scope="col" className="border-top-0">Full Name</th>
-                                            <th scope="col" className="border-top-0">Address</th>
-                                            <th scope="col" className="border-top-0">Avg. Session</th>
-                                            <th scope="col" className="border-top-0 text-right">Username</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td className=" align-middle text-center"> <span className="user-initials bg-success-light25 text-success">MD</span> </td>
-                                            <td className="align-middle"> <small className="text-muted weight-300">Mark Doessy</small>
-                                                <div>
-                                                    <a href="#" className="weight-400">mark.doessy@gmail.com</a>
-                                                </div> </td>
-                                            <td className="align-middle"> <small className="text-muted weight-300">New York</small>
-                                                <div className="weight-400">
-                                                    591 Valley Drive, Philadelphia
-                    </div> </td>
-                                            <td className="align-middle"><span className="material-icons align-middle md-18 text-danger">expand_more</span> 32 Sec</td>
-                                            <td className="align-middle text-right">@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <td className=" align-middle text-center"> <span className="user-initials bg-danger-light25 text-danger">AK</span> </td>
-                                            <td className="align-middle"> <small className="text-muted weight-300">Akshay Kumar</small>
-                                                <div>
-                                                    <a href="#" className="weight-400">akshay.azaste@gmail.com</a>
-                                                </div> </td>
-                                            <td className="align-middle"> <small className="text-muted weight-300">Philadelphia</small>
-                                                <div className="weight-400">
-                                                    3318 Lilac Lane
-                    </div> </td>
-                                            <td className="align-middle"><span className="material-icons align-middle md-18 text-success">expand_less</span> 12 Sec</td>
-                                            <td className="align-middle text-right">@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <td className=" align-middle text-center"> <span className="user-initials bg-warning-light25 text-warning">GT</span> </td>
-                                            <td className="align-middle"> <small className="text-muted weight-300">Giselle K Trivett</small>
-                                                <div>
-                                                    <a href="#" className="weight-400">willy_dicki@yahoo.com</a>
-                                                </div> </td>
-                                            <td className="align-middle"> <small className="text-muted weight-300">Indianapolis</small>
-                                                <div className="weight-400">
-                                                    2961 Clay Street,
-                    </div> </td>
-                                            <td className="align-middle"><span className="material-icons align-middle md-18 text-success">expand_less</span> 5.4 Mins</td>
-                                            <td className="align-middle text-right">@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <td className=" align-middle text-center"> <span className="user-initials bg-primary-light25 text-primary">DG</span> </td>
-                                            <td className="align-middle"> <small className="text-muted weight-300">David Gonsalves</small>
-                                                <div>
-                                                    <a href="#" className="weight-400">wilburn.magg@yahoo.com</a>
-                                                </div> </td>
-                                            <td className="align-middle"> <small className="text-muted weight-300">London</small>
-                                                <div className="weight-400">
-                                                    9009 Lorem Drive, Elphia
-                    </div> </td>
-                                            <td className="align-middle"><span className="material-icons align-middle md-18 text-success">expand_less</span> 1.3 Mins</td>
-                                            <td className="align-middle text-right">@mdo</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                    <div className="col-lg-7 mb-4" style={{}}>
+                        <ResourceTable />
                     </div>
                     <div className="col-lg-5 mb-4">
                         <Sunburst />
@@ -111,7 +44,7 @@ export default class Index extends React.Component {
                         <div className="card mb-4">
                             <div className="card-header bg-white">
                                 Tasks in progress
-               </div>
+                            </div>
                             <div className="card-body">
                                 <p className="">Team Task Completed <small className="text-muted">75% completed</small></p>
                                 <div className="progress">
@@ -136,7 +69,7 @@ export default class Index extends React.Component {
                         <div className="card mb-lg-0 mb-4">
                             <div className="card-header bg-white">
                                 Recent Activites
-               </div>
+                            </div>
                             <div className="card-body">
                                 <ul className="list-unstyled recent-activites">
                                     <li> <span className="activity-icon border-primary"></span>
