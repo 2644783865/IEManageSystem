@@ -55,9 +55,11 @@ export default class Resource extends React.Component {
 			{
 				resources: this.props.resources == undefined ? [] : this.props.resources,
 				resourceNum: 0,
-				curResource: null,
+				curResource: {},
 				pageNum: 0,
 				operationState: operationState.none,
+				fromModalShow: false,
+				deleteModalShow: false,
 				loadingModalShow: false,
 				errorInfo: {
 					show: false,
@@ -76,7 +78,6 @@ export default class Resource extends React.Component {
 	}
 
 	componentDidUpdate() {
-		this.state.operationState = operationState.none;
 	}
 
 	// 重新设置资源（由父组件调用）
@@ -130,14 +131,21 @@ export default class Resource extends React.Component {
 	}
 
 	// 操作按钮点击
-	_resourceOperationClick(operation, resource) {
-		this.setState({ operationState: operation });
-
-		if (resource != undefined) {
-			this.setState({ curResource: resource });
+	_resourceOperationClick(operation, resource) 
+	{
+		if(operation == operationState.delete){
+			this.setState({ 
+				operationState: operation, 
+				deleteModalShow: true, 
+				curResource: resource || {}
+			});
 		}
-		else {
-			this.setState({ curResource: null });
+		else{
+			this.setState({ 
+				operationState: operation, 
+				fromModalShow: true, 
+				curResource: resource || {}
+			});
 		}
 	}
 
@@ -152,6 +160,7 @@ export default class Resource extends React.Component {
 		else if (operation == operationState.delete) {
 			this.props.deleteResource(resource);
 		}
+		this.setState({fromModalShow: false});
 	}
 
 	render() {
@@ -177,6 +186,17 @@ export default class Resource extends React.Component {
 			pageIndexChange={this._pageIndexChange}
 			customizeBottomOperateBtns={this.props.customizeBottomOperateBtns} />;
 
+		let describes
+		if(this.state.operationState == operationState.add){
+			describes = this._resourceDescribe.getDescribesOfAdd();
+		}
+		else if(this.state.operationState == operationState.edit){
+			describes = this._resourceDescribe.getDescribesOfEdit();
+		}
+		else if(this.state.operationState == operationState.lookup){
+			describes = this._resourceDescribe.getDescribesOfLookup();
+		}
+
 		return (
 			<div className="w-100 h-100 d-flex flex-column">
 				<ErrorModal
@@ -198,30 +218,20 @@ export default class Resource extends React.Component {
 				<LoadingModal show={this.state.loadingModalShow} />
 				{resourceList}
 				{paging}
-				{this.state.operationState == operationState.add &&
-					<ResourceForm
+				<ResourceForm
 						title={this.props.title}
-						describes={this._resourceDescribe.getDescribesOfAdd()}
+						describes={describes}
 						resource={this.state.curResource}
-						resourceUpdate={resource => this._resourceUpdate(operationState.add, resource)} />}
-				{this.state.operationState == operationState.edit &&
-					<ResourceForm
-						title={this.props.title}
-						describes={this._resourceDescribe.getDescribesOfEdit()}
-						resource={this.state.curResource}
-						resourceUpdate={resource => this._resourceUpdate(operationState.edit, resource)} />}
-				{this.state.operationState == operationState.lookup &&
-					<ResourceForm
-						title={this.props.title}
-						isHideSubmit={true}
-						describes={this._resourceDescribe.getDescribesOfLookup()}
-						resource={this.state.curResource} />}
-				{this.state.operationState == operationState.delete &&
-					<ResourceDelete
+						resourceUpdate={resource => this._resourceUpdate(this.state.operationState, resource)}
+						show={this.state.fromModalShow}
+						close={()=>{this.setState({fromModalShow:false})}} />
+				<ResourceDelete
 						title={this.props.title}
 						nameDescribe={this._resourceDescribe.nameDescribes}
 						resource={this.state.curResource}
-						resourceUpdate={resource => this._resourceUpdate(operationState.delete, resource)} />}
+						resourceUpdate={resource => this._resourceUpdate(operationState.delete, resource)}
+						show={this.state.deleteModalShow}
+						close={()=>{this.setState({deleteModalShow:false})}} />
 			</div>
 		);
 	}

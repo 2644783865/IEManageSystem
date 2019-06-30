@@ -1,10 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { ResourceDescribeValueType } from './ResourceDescribeValueType.js';
 import FormRadio from './FormRadio.jsx';
 import FormCheck from './FormCheck.jsx';
 import TextGroup from './TextGroup.jsx';
 import Text from './Text.jsx';
+import Modal from 'Modal/Modal.jsx'
+import './ResourceForm.css'
 
 export default class ResourceForm extends React.Component {
     // props.title
@@ -12,6 +13,8 @@ export default class ResourceForm extends React.Component {
     // props.describes  资源描述
     // props.isHideSubmit  是否隐藏提交按钮
     // props.resourceUpdate()  提交回调函数
+    // props.close()
+    // props.show
     constructor(props) {
         super(props);
 
@@ -24,30 +27,8 @@ export default class ResourceForm extends React.Component {
         this.initClient(this.props.resource);
     }
 
-    componentDidMount() {
-        // $("#dataFormBtn").click();
-        this.showModal();
-    }
-
     componentWillReceiveProps(nextProps) {
-        // $("#dataFormBtn").click();
-        this.showModal();
-
         this.initClient(nextProps.resource);
-    }
-
-    showModal() {
-        $("body").addClass("modal-open");
-        $("body").append('<div class="modal-backdrop fade show"></div>');
-        $("#dataForm").addClass("show");
-        $("#dataForm").show(500);
-    }
-
-    hideModal() {
-        $("body").removeClass("modal-open");
-        $("div.modal-backdrop").remove();
-        $("#dataForm").removeClass("show");
-        $("#dataForm").hide(500);
     }
 
     initClient(inputResource) {
@@ -78,9 +59,7 @@ export default class ResourceForm extends React.Component {
 
     // 提交
     submit() {
-        this.hideModal();
         this.props.resourceUpdate(this.resource);
-        // $("#dataFormCloseBtn").click();
     }
 
     createElement(describe) {
@@ -148,32 +127,32 @@ export default class ResourceForm extends React.Component {
         }
 
         return (
-            <div className="">
-                <div className="modal fade data-form" id="dataForm">
-                    <div className="modal-dialog modal-lg">
-                        <div className="modal-content">
-                            <div className="modal-header bg-info text-white">
-                                <h4 className="modal-title">{this.props.title}信息</h4>
-                                <button type="button" className="close" data-dismiss="modal" onClick={this.hideModal}>&times;</button>
-                            </div>
-
-                            <div className="modal-body jumbotron">
-                                {elements}
-                            </div>
-
-                            <div className="modal-footer">
-                                <span id="dataFormError" className="text-danger"></span>
-                                {
-                                    !this.props.isHideSubmit &&
-                                    <button type="button" className="btn btn-info" onClick={this.submit}>提交</button>
-                                }
-                                <button id="dataFormCloseBtn" type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.hideModal}>关闭</button>
-                            </div>
-
+            <Modal
+                show={this.props.show}
+            >
+                <div className="modal-dialog modal-lg">
+                    <div className="modal-content data-form">
+                        <div className="modal-header bg-info text-white">
+                            <h4 className="modal-title">{this.props.title}信息</h4>
+                            <button type="button" className="close" onClick={this.props.close}>&times;</button>
                         </div>
+
+                        <div className="modal-body jumbotron">
+                            {elements}
+                        </div>
+
+                        <div className="modal-footer">
+                            <span id="dataFormError" className="text-danger"></span>
+                            {
+                                !this.props.isHideSubmit &&
+                                <button type="button" className="btn btn-info" onClick={this.submit}>提交</button>
+                            }
+                            <button type="button" className="btn btn-secondary" onClick={this.props.close}>关闭</button>
+                        </div>
+
                     </div>
                 </div>
-            </div>
+            </Modal>
         );
     }
 }

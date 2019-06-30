@@ -50,7 +50,9 @@ export default class Menu extends React.Component {
             parentMenuId: null,
             operateState: operateState.none,
             currentMenu: null,
+            fromModalShow: false,
             loadingModalShow: false,
+            confirmBoxShow: false,
             errorInfo: {
                 show: false,
                 title: "",
@@ -68,7 +70,6 @@ export default class Menu extends React.Component {
     }
 
     componentDidUpdate() {
-        this.state.operateState = operateState.none;
     }
 
     // 提交回调
@@ -109,7 +110,7 @@ export default class Menu extends React.Component {
     }
 
     addMenu(resource) {
-        this.setState({ loadingModalShow: true })
+        this.setState({ loadingModalShow: true, fromModalShow: false });
 
         let postData = resource;
         postData.parentMenuId = this.state.parentMenuId;
@@ -149,7 +150,7 @@ export default class Menu extends React.Component {
     }
 
     updateMenu(resource) {
-        this.setState({ loadingModalShow: true });
+        this.setState({ loadingModalShow: true, fromModalShow: false });
 
         let postData = resource;
 
@@ -173,12 +174,12 @@ export default class Menu extends React.Component {
                         <div>
                             <a href="javescript:void(0);"
                                 onClick={
-                                    () => { this.setState({ operateState: operateState.update, currentMenu: menu }) }
+                                    () => { this.setState({ operateState: operateState.update, currentMenu: menu, fromModalShow: true }) }
                                 }
                             ><span class="oi oi-pencil padding-right-10" title="icon name" aria-hidden="true"></span></a>
                             <a href="javescript:void(0);"
                                 onClick={
-                                    () => { this.setState({ operateState: operateState.delete, currentMenu: menu }) }
+                                    () => { this.setState({ operateState: operateState.delete, currentMenu: menu, confirmBoxShow: true }) }
                                 }
                             ><span class="oi oi-trash padding-right-10" title="icon name" aria-hidden="true"></span></a>
                             <span>{menu.displayName}</span>
@@ -191,12 +192,12 @@ export default class Menu extends React.Component {
                                 <li>
                                     <a href="javescript:void(0);"
                                         onClick={
-                                            () => { this.setState({ operateState: operateState.update, currentMenu: item }) }
+                                            () => { this.setState({ operateState: operateState.update, currentMenu: item, fromModalShow: true }) }
                                         }
                                     ><span class="oi oi-pencil padding-right-10" title="icon name" aria-hidden="true"></span></a>
                                     <a href="javescript:void(0);"
                                         onClick={
-                                            () => { this.setState({ operateState: operateState.delete, currentMenu: item }) }
+                                            () => { this.setState({ operateState: operateState.delete, currentMenu: item, confirmBoxShow: true }) }
                                         }
                                     ><span class="oi oi-trash padding-right-10" title="icon name" aria-hidden="true"></span></a>
                                     <span>{item.displayName}</span>
@@ -206,7 +207,7 @@ export default class Menu extends React.Component {
                                 <a className="text-white w-100" href="javescript:void(0);"
                                     onClick={
                                         () => {
-                                            this.setState({ operateState: operateState.add, parentMenuId: menu.id });
+                                            this.setState({ operateState: operateState.add, parentMenuId: menu.id, fromModalShow: true });
                                         }
                                     }
                                 >+Add</a>
@@ -219,7 +220,16 @@ export default class Menu extends React.Component {
     }
 
     render() {
-        let result = null;
+        let resourceUpdate
+        let resource
+        if(this.state.operateState == operateState.add){
+            resourceUpdate = resource => this.addMenu(resource);
+            resource = {};
+        }
+        else if(this.state.operateState == operateState.update){
+            resourceUpdate = resource => this.updateMenu(resource);
+            resource = this.state.currentMenu;
+        }
 
         return (
             <div className="col-md-12">
@@ -248,7 +258,7 @@ export default class Menu extends React.Component {
                                 <a className="text-white w-100" href="javescript:void(0);"
                                     onClick={
                                         () => {
-                                            this.setState({ operateState: operateState.add, parentMenuId: null });
+                                            this.setState({ operateState: operateState.add, parentMenuId: null, fromModalShow: true });
                                         }
                                     }
                                 >+Add</a>
@@ -256,30 +266,21 @@ export default class Menu extends React.Component {
                         </label>
                     </div>
                 </div>
-                {
-                    this.state.operateState == operateState.add &&
-                    <ResourceForm
-                        title="添加菜单"
-                        describes={this.describes}
-                        resource={{}}
-                        resourceUpdate={resource => this.addMenu(resource)} />
-                }
-                {
-                    this.state.operateState == operateState.update &&
-                    <ResourceForm
+                <ResourceForm
                         title="编辑菜单"
                         describes={this.describes}
-                        resource={this.state.currentMenu}
-                        resourceUpdate={resource => this.updateMenu(resource)} />
-                }
-                {
-                    this.state.operateState == operateState.delete &&
-                    <ConfirmBox
+                        resource={resource}
+                        resourceUpdate={resourceUpdate}
+                        show={this.state.fromModalShow}
+                        close={()=>{this.setState({fromModalShow: false})}}
+                    />
+                <ConfirmBox
                         title="删除菜单"
                         text="确定删除菜单吗？"
                         backcall={() => { this.deleteMenu(this.state.currentMenu) }}
+                        show={this.state.confirmBoxShow}
+                        close={()=>{this.setState({confirmBoxShow: false})}}
                     />
-                }
             </div>
         );
     }
