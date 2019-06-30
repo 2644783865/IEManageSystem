@@ -2,7 +2,6 @@ import 'bootstrap';
 import 'bootstrapcss';
 import 'bootstrapcssicon';
 import 'commoncss';
-import 'iemedia';
 import 'cookie';
 import 'ielib';
 import 'ToolLibrary/IETool.js';
@@ -38,7 +37,14 @@ export default class ManageHome extends React.Component {
         return (
             <div className="container-fluid h-100">
                 <div className="manage-home d-flex flex-column h-100">
-                    <Nav />
+                    <Nav 
+                        sideNavState={this.state.open}
+                        setSideNavState={(open)=>{
+                            this.setState({
+                                open: open
+                            })
+                        }}
+                    />
                     <div className="d-flex flex-grow-1 overflow-hidden-y w-100">
                         <div className="d-flex w-100">
                             <Animate
@@ -63,13 +69,6 @@ export default class ManageHome extends React.Component {
                                     )
                                 }}
                             </Animate>
-                            <div className="sidenavhide-btn">
-                                <button className="btn btn-outline-info"
-                                    onClick={() => {
-                                        this.setState({ open: !this.state.open });
-                                    }}
-                                >||</button>
-                            </div>
                             <div className="h-100 padding-0 right-content">
                                 <div className="flex-shrink-0">
                                     <NavTag />

@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import ListBtn from 'ListBtn';
 import "./MenuTag.css";
 
 export default class MenuTag extends React.Component
@@ -10,6 +11,10 @@ export default class MenuTag extends React.Component
     constructor(props)
     {
         super(props);
+
+        this.state = {
+            listBtnOpen: false
+        }
 
         this.curMenu = null;
         this.menuItems = null;
@@ -111,20 +116,26 @@ export default class MenuTag extends React.Component
                 </div>
                 <div className="d-flex">
                     <div>
-                        <button className="leftmenu-menutag-btn" onClick={
-                            (event) => {
-                                if ($(event.currentTarget).hasClass('on')) {
-                                    event.currentTarget.classList.remove('on');
-                                    $(".menutag-menu").hide(300);
+                        <ListBtn
+                            open={this.state.listBtnOpen} 
+                            className="float-right" 
+                            onClick={
+                                (event) => {
+                                    if(this.state.listBtnOpen){
+                                        $(".menutag-menu").hide(300);
+                                        this.setState({
+                                            listBtnOpen: !this.state.listBtnOpen
+                                        })
+                                    }
+                                    else{
+                                        $(".menutag-menu").show(300);
+                                        this.setState({
+                                            listBtnOpen: !this.state.listBtnOpen
+                                        })
+                                    }
                                 }
-                                else {
-                                    event.currentTarget.classList.add('on');
-                                    $(".menutag-menu").show(300);
-                                }
-                            }
-                        }>
-                            <span></span><span></span><span></span>
-                        </button>
+                            } 
+                        />
                     </div>
                     <div className="menutag-menu hide">
                         <div className="d-flex align-items-center">

@@ -96,7 +96,7 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['.js',"*",".css"],
+        extensions: ['.js','.jsx',"*",".css"],
         modules:[libPath, commonPath, ManageHomePath, nodeModPath],
         alias: pathMap
     }

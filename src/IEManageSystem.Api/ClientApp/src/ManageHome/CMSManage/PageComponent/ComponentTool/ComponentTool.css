@@ -12,7 +12,7 @@
 .component-tool>div {
     height: 100%;
     overflow-y: scroll;
-    margin-right: -18px;
+    margin-right: -1.5rem;
     padding: 0rem 0.33rem 0rem 0.33rem;
 }
 

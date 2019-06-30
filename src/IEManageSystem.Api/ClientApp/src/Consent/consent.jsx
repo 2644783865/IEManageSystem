@@ -6,7 +6,6 @@ import 'bootstrap';
 import 'bootstrapcss';
 import 'bootstrapcssicon';
 import 'commoncss';
-import 'iemedia';
 import 'cookie';
 
 import "./consent.css";

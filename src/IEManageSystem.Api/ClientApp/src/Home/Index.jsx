@@ -5,7 +5,6 @@ import 'bootstrapcssicon';
 import 'mousewheel';
 
 import 'commoncss';
-import 'iemedia';
 
 import 'cookie';
 
