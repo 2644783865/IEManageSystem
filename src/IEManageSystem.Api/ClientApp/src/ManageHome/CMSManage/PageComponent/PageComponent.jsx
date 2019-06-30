@@ -20,11 +20,11 @@ export default class PageComponent extends React.Component {
         return (<div className="pagecomponent">
             <Animate
                 start={() => ({
-                    x: 17,
+                    x: 15,
                 })}
 
                 update={() => ({
-                    x: [this.state.open ? 17 : 3],
+                    x: [this.state.open ? 15 : 3],
                     timing: { duration: 750, ease: easeExpOut },
                 })}
             >
@@ -49,7 +49,7 @@ export default class PageComponent extends React.Component {
                             </button>
                             <div class="pagecomponent-left-toolcontain"
                                 style={{
-                                    width: `${100*(x-3)/14}%`
+                                    width: `${100*(x-3)/12}%`
                                 }}
                             >
                                 <ComponentTool />

@@ -20,7 +20,7 @@
     width: 55%;
 }
 .weather-temperature{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #ffffff;
     flex-grow:1;
 }

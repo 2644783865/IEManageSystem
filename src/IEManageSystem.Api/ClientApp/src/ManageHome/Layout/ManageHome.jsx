@@ -49,11 +49,11 @@ export default class ManageHome extends React.Component {
                         <div className="d-flex w-100">
                             <Animate
                                 start={() => ({
-                                    x: 17,
+                                    x: 16,
                                 })}
 
                                 update={() => ({
-                                    x: [this.state.open ? 17 : 0],
+                                    x: [this.state.open ? 16 : 0],
                                     timing: { duration: 750, ease: easeExpOut },
                                 })}
                             >
