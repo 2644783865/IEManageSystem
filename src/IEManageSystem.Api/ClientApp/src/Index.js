@@ -36,7 +36,7 @@ ReactDOM.render(
     document.getElementById('Home'));
 
 let width = document.body.clientWidth
-let fontsize = parseInt(width / 110);
+let fontsize = parseInt(width / 113);
 document.documentElement.style.fontSize = fontsize + "px";
 document.body.style.fontSize = fontsize + "px";
 
