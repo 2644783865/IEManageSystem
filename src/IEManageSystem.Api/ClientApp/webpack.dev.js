@@ -11,7 +11,7 @@ module.exports = merge(common, {
         historyApiFallback: {
             //使用正则匹配命中路由
             rewrites: [
-                {from: /^\/ManageHome/, to: '/ManageHome/Index.html'},
+                {from: /^\//, to: '/Index.html'},
             ]
         }
     }

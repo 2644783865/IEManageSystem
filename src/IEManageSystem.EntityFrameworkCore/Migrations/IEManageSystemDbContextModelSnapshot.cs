@@ -115,6 +115,163 @@ namespace IEManageSystem.Migrations
                     b.ToTable("ApiSingleAction");
                 });
 
+            modelBuilder.Entity("IEManageSystem.CMS.DomainModel.CmsComponent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CmsComponents");
+                });
+
+            modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Menus.MenuBase", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CompositeMenuId");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired();
+
+                    b.Property<string>("Icon");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompositeMenuId");
+
+                    b.ToTable("Menus");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("MenuBase");
+                });
+
+            modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Pages.ContentComponentData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ContentLeafComponentId");
+
+                    b.Property<string>("Field1");
+
+                    b.Property<string>("Field2");
+
+                    b.Property<string>("Field3");
+
+                    b.Property<string>("Field4");
+
+                    b.Property<string>("Field5");
+
+                    b.Property<int>("PageDataId");
+
+                    b.Property<string>("Sign");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ContentLeafComponentId");
+
+                    b.HasIndex("PageDataId");
+
+                    b.ToTable("ContentComponentData");
+                });
+
+            modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Pages.PageBase", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
+                    b.Property<string>("DisplayName");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Pages");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("PageBase");
+                });
+
+            modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Pages.PageComponentBase", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CmsComponentId");
+
+                    b.Property<string>("Col");
+
+                    b.Property<int?>("CompositeComponentId");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
+                    b.Property<string>("Height");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Padding");
+
+                    b.Property<int>("PageId");
+
+                    b.Property<string>("Sign");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CmsComponentId");
+
+                    b.HasIndex("CompositeComponentId");
+
+                    b.HasIndex("PageId");
+
+                    b.ToTable("PageComponentBase");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("PageComponentBase");
+                });
+
+            modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Pages.PageData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.Property<int?>("PageBaseId");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PageBaseId");
+
+                    b.ToTable("PageData");
+
+                    b.HasData(
+                        new { Id = 1, Name = "Home", PageBaseId = 1, Title = "首页" }
+                    );
+                });
+
             modelBuilder.Entity("IEManageSystem.Entitys.Authorization.Permissions.Permission", b =>
                 {
                     b.Property<int>("Id")
@@ -264,6 +421,96 @@ namespace IEManageSystem.Migrations
                     b.HasDiscriminator().HasValue("ApiQueryScope");
                 });
 
+            modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Menus.CompositeMenu", b =>
+                {
+                    b.HasBaseType("IEManageSystem.CMS.DomainModel.Menus.MenuBase");
+
+
+                    b.ToTable("CompositeMenu");
+
+                    b.HasDiscriminator().HasValue("CompositeMenu");
+
+                    b.HasData(
+                        new { Id = 1, Discriminator = "CompositeMenu", DisplayName = "首页", Icon = "oi-home", Name = "Home" },
+                        new { Id = 2, Discriminator = "CompositeMenu", DisplayName = "游戏", Icon = "oi-dial", Name = "Game" },
+                        new { Id = 3, Discriminator = "CompositeMenu", DisplayName = "技术文档", Icon = "oi-document", Name = "Document" }
+                    );
+                });
+
+            modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Menus.LeafMenu", b =>
+                {
+                    b.HasBaseType("IEManageSystem.CMS.DomainModel.Menus.MenuBase");
+
+                    b.Property<int?>("PageId");
+
+                    b.HasIndex("PageId");
+
+                    b.ToTable("LeafMenu");
+
+                    b.HasDiscriminator().HasValue("LeafMenu");
+
+                    b.HasData(
+                        new { Id = 101, CompositeMenuId = 2, Discriminator = "LeafMenu", DisplayName = "主机游戏", Name = "PCGame" },
+                        new { Id = 102, CompositeMenuId = 2, Discriminator = "LeafMenu", DisplayName = "手机游戏", Name = "PhoneGame" },
+                        new { Id = 103, CompositeMenuId = 3, Discriminator = "LeafMenu", DisplayName = "站点技术", Name = "Web" },
+                        new { Id = 104, CompositeMenuId = 3, Discriminator = "LeafMenu", DisplayName = "桌面开发", Name = "Desktop" }
+                    );
+                });
+
+            modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Pages.ContentPage", b =>
+                {
+                    b.HasBaseType("IEManageSystem.CMS.DomainModel.Pages.PageBase");
+
+
+                    b.ToTable("ContentPage");
+
+                    b.HasDiscriminator().HasValue("ContentPage");
+                });
+
+            modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Pages.StaticPage", b =>
+                {
+                    b.HasBaseType("IEManageSystem.CMS.DomainModel.Pages.PageBase");
+
+
+                    b.ToTable("StaticPage");
+
+                    b.HasDiscriminator().HasValue("StaticPage");
+
+                    b.HasData(
+                        new { Id = 1, Description = "这是一个首页", Discriminator = "StaticPage", DisplayName = "首页", Name = "Home" }
+                    );
+                });
+
+            modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Pages.CompositeComponent", b =>
+                {
+                    b.HasBaseType("IEManageSystem.CMS.DomainModel.Pages.PageComponentBase");
+
+
+                    b.ToTable("CompositeComponent");
+
+                    b.HasDiscriminator().HasValue("CompositeComponent");
+                });
+
+            modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Pages.ContentLeafComponent", b =>
+                {
+                    b.HasBaseType("IEManageSystem.CMS.DomainModel.Pages.PageComponentBase");
+
+
+                    b.ToTable("ContentLeafComponent");
+
+                    b.HasDiscriminator().HasValue("ContentLeafComponent");
+                });
+
+            modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Pages.PageLeafComponent", b =>
+                {
+                    b.HasBaseType("IEManageSystem.CMS.DomainModel.Pages.PageComponentBase");
+
+
+                    b.ToTable("PageLeafComponent");
+
+                    b.HasDiscriminator().HasValue("PageLeafComponent");
+                });
+
             modelBuilder.Entity("IEManageSystem.ApiAuthorization.DomainModel.ApiScopes.ApiScope", b =>
                 {
                     b.HasOne("IEManageSystem.ApiAuthorization.DomainModel.ApiScopes.AuthorizationNodes.ApiManageScope", "ApiManageScope")
@@ -301,6 +548,48 @@ namespace IEManageSystem.Migrations
                         .WithMany("ApiSingleActions")
                         .HasForeignKey("ApiSingleId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Menus.MenuBase", b =>
+                {
+                    b.HasOne("IEManageSystem.CMS.DomainModel.Menus.CompositeMenu")
+                        .WithMany("Menus")
+                        .HasForeignKey("CompositeMenuId");
+                });
+
+            modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Pages.ContentComponentData", b =>
+                {
+                    b.HasOne("IEManageSystem.CMS.DomainModel.Pages.ContentLeafComponent")
+                        .WithMany("ContentComponentDatas")
+                        .HasForeignKey("ContentLeafComponentId");
+
+                    b.HasOne("IEManageSystem.CMS.DomainModel.Pages.PageData", "PageData")
+                        .WithMany("ContentComponentDatas")
+                        .HasForeignKey("PageDataId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Pages.PageComponentBase", b =>
+                {
+                    b.HasOne("IEManageSystem.CMS.DomainModel.CmsComponent", "CmsComponent")
+                        .WithMany()
+                        .HasForeignKey("CmsComponentId");
+
+                    b.HasOne("IEManageSystem.CMS.DomainModel.Pages.CompositeComponent")
+                        .WithMany("PageComponents")
+                        .HasForeignKey("CompositeComponentId");
+
+                    b.HasOne("IEManageSystem.CMS.DomainModel.Pages.PageBase", "Page")
+                        .WithMany("PageComponents")
+                        .HasForeignKey("PageId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Pages.PageData", b =>
+                {
+                    b.HasOne("IEManageSystem.CMS.DomainModel.Pages.PageBase")
+                        .WithMany("PageDatas")
+                        .HasForeignKey("PageBaseId");
                 });
 
             modelBuilder.Entity("IEManageSystem.Entitys.Authorization.Roles.RolePermission", b =>
@@ -357,6 +646,13 @@ namespace IEManageSystem.Migrations
                         .WithMany("UserRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("IEManageSystem.CMS.DomainModel.Menus.LeafMenu", b =>
+                {
+                    b.HasOne("IEManageSystem.CMS.DomainModel.Pages.PageBase", "Page")
+                        .WithMany()
+                        .HasForeignKey("PageId");
                 });
 #pragma warning restore 612, 618
         }

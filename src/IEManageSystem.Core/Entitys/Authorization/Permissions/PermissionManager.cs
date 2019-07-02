@@ -18,6 +18,12 @@ namespace IEManageSystem.Entitys.Authorization.Permissions
             PermissionRepository = permissionRepository;
         }
 
+        public Permission SuperPermission => PermissionRepository.FirstOrDefault(e => e.Name == Permission.SuperPermissionName);
+
+        public Permission AdminPermission => PermissionRepository.FirstOrDefault(e => e.Name == Permission.AdminPermissionName);
+
+        public Permission UserPermission => PermissionRepository.FirstOrDefault(e => e.Name == Permission.UserPermissionName);
+
         public void Create(Permission permission)
         {
             if (PermissionRepository.GetAll().Any(e => e.Name == permission.Name))

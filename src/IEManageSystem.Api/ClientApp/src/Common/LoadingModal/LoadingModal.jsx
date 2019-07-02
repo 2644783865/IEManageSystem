@@ -1,33 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import Modal from 'Modal/Modal.jsx'
+
 import './LoadingModal.css';
 
-export default class LoadingModal extends React.Component
-{
-  constructor(props){
+// props.show bool
+export default class LoadingModal extends React.Component {
+  constructor(props) {
     super(props);
   }
 
-  static showModal(){
-    $("body").addClass("modal-open");
-    $("body").append('<div class="modal-backdrop fade show"></div>');
-    $("#resourceLoading").addClass("show");
-    $("#resourceLoading").fadeToggle(500);
-  }
-
-  static hideModal(){
-    $("body").removeClass("modal-open");
-    $("div.modal-backdrop").remove();
-    $("#resourceLoading").removeClass("show");
-    $("#resourceLoading").fadeToggle(500);
-  }
-  
-  render(){
-    return (
-            <div className="modal fade show" id="resourceLoading">
-              <div className="modal-dialog">
+  render() {
+    return (<Modal
+      show={this.props.show}
+    >
+      <div className="modal-dialog">
                 <div className="modal-content background-transparent">
-             
                   <div className="modal-body d-flex justify-content-center">
                     <div className="loading-animation">
                       <span className="oi oi-aperture" title="icon name" aria-hidden="true"></span>
@@ -36,10 +23,9 @@ export default class LoadingModal extends React.Component
                       正在努力加载中。。。
                     </span>
                   </div>
-             
+
                 </div>
               </div>
-            </div>
-    );
+    </Modal>);
   }
 }

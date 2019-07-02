@@ -1,9 +1,13 @@
 # IEManageSystem
+项目演示地址：http://iemanagesystem.azurewebsites.net/Account/
+账号：admini
+密码：123456
 项目截图如下：
 ![image](img/show1.png)
 ![image](img/show2.png)
 ![image](img/show3.png)
 ![image](img/show4.png)
+![image](img/show5.png)
 
 项目介绍：
 	分支dev1.0_c为个人开发分支，功能最新，bug也多

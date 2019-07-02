@@ -1,10 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 export default class Paging extends React.Component
 {
 	// props.hideAdd
 	// props.hidePadding
+	// props.customizeBottomOperateBtns
 	constructor(props){
 		super(props);
 	}
@@ -43,7 +43,8 @@ export default class Paging extends React.Component
                         {lis}
                     </ul>
                 }
-                {this.props.hideAdd != true && <button type="button" className="btn btn-info" onClick={this.props.resourceAddClick}>+添加</button>}
+				{this.props.hideAdd != true && <button type="button" className="btn btn-info" onClick={this.props.resourceAddClick}>+添加</button>}
+				{this.props.customizeBottomOperateBtns}
             </div>
 		);
 	}

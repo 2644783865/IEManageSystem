@@ -100,6 +100,11 @@ namespace IEManageSystem.ApiAuthorization.DomainModel.ApiScopes
             }
         }
 
+        public void RemoveAllApiScope()
+        {
+            ApiScopeRepository.Delete((entity) => true);
+        }
+
         public IQueryable<ApiScope> GetApiScopes() => ApiScopeRepository.GetAll();
 
         public IQueryable<ApiScope> GetApiScopes(Expression<Func<ApiScope, object>>[] propertySelectors)

@@ -1,7 +1,11 @@
 ﻿using Abp.EntityFrameworkCore;
 using IEManageSystem.ApiAuthorization.DomainModel.ApiScopes;
 using IEManageSystem.ApiAuthorization.DomainModel.ApiSingles;
+using IEManageSystem.CMS.DomainModel;
+using IEManageSystem.CMS.DomainModel.Menus;
+using IEManageSystem.CMS.DomainModel.Pages;
 using IEManageSystem.Configures.ApiAuthorization;
+using IEManageSystem.Configures.CMS;
 using IEManageSystem.Configures.Core;
 using IEManageSystem.Entitys.Authorization;
 using IEManageSystem.Entitys.Authorization.Permissions;
@@ -22,9 +26,22 @@ namespace IEManageSystem.EntityFrameworkCore
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // 配置Api认证
             modelBuilder.ApplyConfiguration(new ApiScopeNodeConfigure());
+
+            // 配置Core
             modelBuilder.ApplyConfiguration(new UserConfigure());
             modelBuilder.ApplyConfiguration(new AccountConfigure());
+
+            // 配置CMS
+            modelBuilder.ApplyConfiguration(new StaticPageConfigure());
+            modelBuilder.ApplyConfiguration(new ContentPageConfigure()); 
+            modelBuilder.ApplyConfiguration(new PageDataConfigure());
+            modelBuilder.ApplyConfiguration(new CompositeComponentConfigure());
+            modelBuilder.ApplyConfiguration(new ContentLeafComponentConfigure());
+            modelBuilder.ApplyConfiguration(new PageLeafComponentConfigure());
+            modelBuilder.ApplyConfiguration(new LeafMenuConfigure());
+            modelBuilder.ApplyConfiguration(new CompositeMenuConfigure());
 
             base.OnModelCreating(modelBuilder);
         }
@@ -38,5 +55,11 @@ namespace IEManageSystem.EntityFrameworkCore
         public DbSet<ApiScope> ApiScopes { get; set; }
 
         public DbSet<ApiSingle> ApiSingles { get; set; }
+
+        public DbSet<CmsComponent> CmsComponents { get; set; }
+
+        public DbSet<PageBase> Pages { get; set; }
+
+        public DbSet<MenuBase> Menus { get; set; }
     }
 }

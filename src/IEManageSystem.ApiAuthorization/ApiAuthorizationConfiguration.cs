@@ -60,14 +60,6 @@ namespace IEManageSystem.ApiAuthorization
         private void RegisterApiSingleByType(Type controllerType)
         {
             string controllerName = controllerType.Name;
-            //if (Regex.IsMatch(controllerType.Name, "AppService$"))
-            //{
-            //    controllerName = Regex.Replace(controllerType.Name, "AppService$", "");
-            //}
-            //else if (Regex.IsMatch(controllerType.Name, "Controller$"))
-            //{
-            //    controllerName = Regex.Replace(controllerType.Name, "Controller$", "");
-            //}
 
             // 如果api已注册过，则返回
             if (_apiSingleManager.ApiSingleRepository.FirstOrDefault(e => e.Name == controllerName) != null) {

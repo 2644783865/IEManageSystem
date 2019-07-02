@@ -1,7 +1,10 @@
 var path = require("path");
 var pathMap = require('./src/pathmap.json');
+
+// 路径
 var libPath = path.resolve('./src/lib');
 var commonPath = path.resolve('./src/Common');
+var ManageHomePath = path.resolve('./src/ManageHome');
 var nodeModPath = path.resolve(__dirname, './node_modules');
 
 const webpack = require('webpack');
@@ -11,8 +14,7 @@ module.exports = {
     entry: { 
         account:__dirname + "/src/Account/account.jsx",
         consent:__dirname + "/src/Consent/consent.jsx",
-        adminiHome:__dirname + "/src/ManageHome/ManageHome.jsx",
-        home:__dirname + "/src/Home/Index.jsx"
+        index:__dirname + "/src/index.js",
     },
     output: {
         path: __dirname + "/build/js",
@@ -27,7 +29,6 @@ module.exports = {
             'window.$':'jquery',
             'window.jQuery':'jquery',
             Popper: 'popper',
-            Chart: 'chart',
             Cookie: "cookie",
             IELib: "ielib",
             IETool: 'ToolLibrary/IETool.js'
@@ -46,16 +47,10 @@ module.exports = {
             chunks: ['consent']
         }),
         new HtmlWebpackPlugin({
-            filename: __dirname + '/build/ManageHome/Index.html',
-            template: __dirname + '/src/ManageHome/ManageHome.html', // html模板路径,模板路径是支持传参调用loader的,
-            inject: 'body', //打包之后的js插入的位置，true/'head'/'body'/false,
-            chunks: ['adminiHome', "weatherExport"]
-        }),
-        new HtmlWebpackPlugin({
             filename: __dirname + '/build/Index.html',
-            template: __dirname + '/src/Home/Index.html', // html模板路径,模板路径是支持传参调用loader的,
+            template: __dirname + '/src/Index.html', // html模板路径,模板路径是支持传参调用loader的,
             inject: 'body', //打包之后的js插入的位置，true/'head'/'body'/false,
-            chunks: ['home']
+            chunks: ['index', "weatherExport"]
         }),
         new BomPlugin(true, /\.(cshtml)$/),//解决cshtml中文乱码的问题
     ],
@@ -64,10 +59,7 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['es2017', 'react'],
-                    }
+                    loader: 'babel-loader'
                 },
                 exclude: /node_modules/
             },
@@ -94,10 +86,6 @@ module.exports = {
               ]
             },
             {
-                test: /\.(tpl|ejs)$/, 
-                loader: 'ejs'
-            },
-            {
                 test: /\.css$/, 
                 loader: 'style-loader!css-loader'
             },
@@ -108,8 +96,8 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['.js',"*",".css"],
-        modules:[libPath, commonPath, nodeModPath],
+        extensions: ['.js','.jsx',"*",".css"],
+        modules:[libPath, commonPath, ManageHomePath, nodeModPath],
         alias: pathMap
     }
 }

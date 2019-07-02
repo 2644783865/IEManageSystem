@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {ResourceDescribeValueType} from './ResourceDescribeValueType.js';
+import {ResourceDescribeValueType} from '../ResourceForm/ResourceDescribeValueType.js';
 
 export default class ResourceList extends React.Component
 {
@@ -12,6 +11,7 @@ export default class ResourceList extends React.Component
     // props.resourceLookupClick()
     // props.hideEdit
     // props.hideDelete
+    // props.customizeOperateBtns	自定义操作按钮组件
 	constructor(props){
 		super(props);
 
@@ -109,6 +109,9 @@ export default class ResourceList extends React.Component
                             {this.props.hideDelete != true && <button type="button" className="btn btn-danger"
                                                             onClick={()=>this.props.resourceDeleteClick(resource)}>
                                                             <span class="oi oi-trash" title="icon name" aria-hidden="true"></span>删除</button>}
+                            {this.props.customizeOperateBtns && this.props.customizeOperateBtns.map(
+                                Item=><Item resource={resource}></Item>
+                            )}
                         </div>
                     </td>
                 </tr>);
@@ -133,7 +136,7 @@ export default class ResourceList extends React.Component
 
 		return (
 		    <div className="data-list w-100">
-                <h6 className="d-flex justify-content-between">
+                <h6 className="d-flex justify-content-between shadow">
                     <span className="mt-auto mb-auto">
                         <span class="oi oi-list" title="icon name" aria-hidden="true"></span> {" "+this.props.title} 列表
                     </span>
@@ -148,7 +151,7 @@ export default class ResourceList extends React.Component
                         </div>
                     </span>
                 </h6>
-                <table className="table table-hover table-striped">
+                <table className="table table-hover table-striped shadow">
                     <thead>
                         { resourceHeadTr }
                     </thead>

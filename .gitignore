@@ -25,3 +25,10 @@
 /test/IEManageSystem.Tests/obj
 /test/IEManageSystem.Web.Tests/bin
 /test/IEManageSystem.Web.Tests/obj
+/src/IEManageSystem.CMS/bin/Debug/netcoreapp2.1
+/src/IEManageSystem.CMS/obj
+/src/IEManageSystem.Api/Properties/PublishProfiles
+/src/IEManageSystem.Api/.filenesting.json
+/src/IEManageSystem.CMS/bin/Release/netcoreapp2.1
+/src/IEManageSystem.JwtAuthentication/bin/Release/netcoreapp2.1
+/src/IEManageSystem.JwtAuthentication/obj/Release/netcoreapp2.1

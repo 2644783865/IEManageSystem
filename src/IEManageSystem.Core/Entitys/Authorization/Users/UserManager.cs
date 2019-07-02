@@ -19,19 +19,21 @@ namespace IEManageSystem.Entitys.Authorization.Users
 
         private IUnitOfWorkManager _unitOfWorkManager { get; set; }
 
-        private IRepository<Role> _roleRepository { get; set; }
+        private RoleManager _roleManager { get; set; }
+
+        private IRepository<Role> _roleRepository => _roleManager.RoleRepository;
 
         public bool AutoSaveChanges { get; set; } = true;
 
         public UserManager(
             IRepository<User> userRepository,
-            IRepository<Role> roleRepository,
+            RoleManager roleManager,
             IUnitOfWorkManager unitOfWorkManager
             )
         {
             UserRepository = userRepository;
 
-            _roleRepository = roleRepository;
+            _roleManager = roleManager;
 
             _unitOfWorkManager = unitOfWorkManager;
         }
@@ -108,6 +110,8 @@ namespace IEManageSystem.Entitys.Authorization.Users
                 Name = !string.IsNullOrEmpty(name) ? name : userName,
                 TenantId = tenantId
             };
+
+            user.AddRole(_roleManager.User);
 
             UserRepository.Insert(user);
             await SaveChanges();

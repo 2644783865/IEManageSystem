@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Abp.Auditing;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
+using IEManageSystem.ApiAuthorization;
 using IEManageSystem.Dtos.Core;
 using IEManageSystem.Dtos.Core.Users;
 using IEManageSystem.Entitys.Authorization;
@@ -14,12 +15,14 @@ using IEManageSystem.Entitys.Authorization.LoginManagers;
 using IEManageSystem.Entitys.Authorization.Users;
 using IEManageSystem.Entitys.Authorization.Users.Accounts;
 using IEManageSystem.Help.Exceptions;
+using IEManageSystem.Help.IEApiScopeHelp;
 using IEManageSystem.Services.Users.Dto;
 using Microsoft.AspNetCore.Authorization;
 
 namespace IEManageSystem.Services.Users
 {
     [Authorize]
+    [ApiAuthorization(IEApiScopeProvider.User)]
     public class UserAppService : IEManageSystemAppServiceBase, IUserAppService
     {
         private IAbpSession _abpSession { get; set; }
@@ -101,6 +104,7 @@ namespace IEManageSystem.Services.Users
             return new SetUserInfoOutput();
         }
 
+        [ApiAuthorizationQuery]
         public async Task<GetUserInfoOutput> GetUserInfo(GetUserInfoInput input)
         {
             Expression<Func<User, object>>[] propertySelectors = new Expression<Func<User, object>>[] {

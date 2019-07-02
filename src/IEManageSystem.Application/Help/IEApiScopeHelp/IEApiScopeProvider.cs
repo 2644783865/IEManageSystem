@@ -6,13 +6,26 @@ namespace IEManageSystem.Help.IEApiScopeHelp
 {
     public class IEApiScopeProvider
     {
+        // personal
+        public const string User = "Personal.User";
+
+        // core域
         public const string AdminManage = "AuthorizeManage.AdminManage";
         public const string RoleManage = "AuthorizeManage.RoleManage";
         public const string PermissionManage = "AuthorizeManage.PermissionManage";
+
+        // api域
         public const string ApiScopeManage = "AuthorizeManage.ApiScopeManage";
+
+        // oauth域
         public const string IdentityResource = "OAuthManage.IdentityResource";
         public const string ApiResource = "OAuthManage.ApiResource";
         public const string Client = "OAuthManage.Client";
+
+        // cms域
+        public const string Menu = "CMSManage.Menu";
+        public const string Page = "CMSManage.Page";
+
 
         public List<ApiScopeGroupDescribe> ApiScopeGroupDescribes { get; set; } = new List<ApiScopeGroupDescribe>();
 
@@ -23,6 +36,16 @@ namespace IEManageSystem.Help.IEApiScopeHelp
 
         protected void ApiScopeProvide()
         {
+            ApiScopeGroupDescribes.Add(new ApiScopeGroupDescribe() {
+                Name = "Personal",
+                ApiScopeDescribes = new List<ApiScopeDescribe>() {
+                    new ApiScopeDescribe(){
+                        Name = User,
+                        DisplayName = "用户信息"
+                    }
+                }
+            });
+
             ApiScopeGroupDescribes.Add(new ApiScopeGroupDescribe()
             {
                 Name = "AuthorizeManage",
@@ -62,6 +85,21 @@ namespace IEManageSystem.Help.IEApiScopeHelp
                         Name = Client,
                         DisplayName = "客户端"
                     },
+                }
+            });
+
+            ApiScopeGroupDescribes.Add(new ApiScopeGroupDescribe()
+            {
+                Name = "CMSManage",
+                ApiScopeDescribes = new List<ApiScopeDescribe>() {
+                    new ApiScopeDescribe(){
+                        Name = Menu,
+                        DisplayName = "菜单管理"
+                    },
+                    new ApiScopeDescribe(){
+                        Name = Page,
+                        DisplayName = "页面管理"
+                    }
                 }
             });
         }

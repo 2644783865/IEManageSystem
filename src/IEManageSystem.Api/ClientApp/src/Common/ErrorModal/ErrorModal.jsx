@@ -1,44 +1,37 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import Modal from 'Modal/Modal.jsx'
 
-export default class ErrorModal extends React.Component
-{
-	constructor(props){
-		super(props);
-	}
+import './ErrorModal.css'
 
-  static showErrorModal(title, message){
-    $("#ResourceErrorBtn").click();
-    $("#ResourceErrorTitle").text(title);
-    $("#ResourceErrorText").text(message);
-    // setTimeout('$("#ResourceErrorText").text("")',3000);
+export default class ErrorModal extends React.Component {
+  // props.show bool
+  // props.title
+  // props.message
+  // props.close    fun
+  constructor(props) {
+    super(props);
   }
-	
-	render(){
-		return (
-          <div>
-            <button id="ResourceErrorBtn" className="btn" data-toggle="modal" data-target="#ResourceError"  hidden="hidden"></button>
-            <div className="modal fade data-delete" id="ResourceError">
-              <div className="modal-dialog">
+
+  render() {
+    return (<Modal
+      show={this.props.show}
+    >
+      <div className="modal-dialog errormodal">
                 <div className="modal-content">
-             
+
                   <div className="modal-header">
-                    <h4 id="ResourceErrorTitle" className="modal-title"></h4>
-                    <button type="button" className="close" data-dismiss="modal">&times;</button>
+                    <h5 className="modal-title">{this.props.title}</h5>
+                    <button type="button" class="close text-white" onClick={
+                      ()=>this.props.close()
+                    }>&times;</button>
                   </div>
-             
-                  <div id="ResourceErrorText" className="modal-body">
-                    
+
+                  <div className="modal-body">
+                    {this.props.message}
                   </div>
-             
-                  <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">关闭</button>
-                  </div>
-             
+
                 </div>
               </div>
-            </div>
-          </div>
-		);
-	}
+    </Modal>);
+  }
 }
