@@ -42,25 +42,29 @@ class ComponentTool extends React.Component
             let childComponents = childs.map(item => this.createComponent(item))
             components = components.filter(e => e.componentType != componentType.name)
 
-            return (<li class="component-tool-item" id={componentType.name}>
-                <a href="javascript:void(0)" class="btn"
+            return (<li className="component-tool-item" id={componentType.name}>
+                <a href="javascript:void(0)"
                     onClick={()=>{this.setState({activeIndex: index})}}
                 >
-                    {componentType.text}
+                    <span className={`oi ${componentType.icon}`} title="icon name" aria-hidden="true"></span>
+                    <span className="ml-1">{componentType.text}</span>
                 </a>
-                <div class={`subMenu ${this.state.activeIndex == index && "subMenu-active"}`}>
+                <div className={`subMenu ${this.state.activeIndex == index && "subMenu-active"}`}>
                     {childComponents}
                 </div>
             </li>);
         });
-
+        // 
         let otherIndex = list.length;
         list.push(
-            <li class="component-tool-item" id="other">
-                <a href="javascript:void(0)" class="btn"
+            <li className="component-tool-item" id="other">
+                <a href="javascript:void(0)"
                     onClick={()=>{this.setState({activeIndex: otherIndex})}}
-                >其他组件</a>
-                <div class={`subMenu ${this.state.activeIndex == otherIndex && "subMenu-active"}`}>
+                >
+                    <span className={`oi oi-puzzle-piece`} title="icon name" aria-hidden="true"></span>
+                    <span className="ml-1">其他组件</span>
+                </a>
+                <div className={`subMenu ${this.state.activeIndex == otherIndex && "subMenu-active"}`}>
                     {components.map(item=> this.createComponent(item))}
                 </div>
             </li>

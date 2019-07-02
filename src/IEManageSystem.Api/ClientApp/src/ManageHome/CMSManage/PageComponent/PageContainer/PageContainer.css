@@ -25,6 +25,11 @@
     background-color: #5a8e9a;
 }
 
+.page-container-header>.input-group input,
+.page-container-header>.input-group span {
+    border: 0rem;
+}
+
 .page-container-header-hidebtn {
     height: 0px;
     display: flex;

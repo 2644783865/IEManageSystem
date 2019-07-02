@@ -81,17 +81,23 @@ class PageContainer extends React.Component {
                         </div>
                     </div>
                     <div>
-                        <button className="btn btn-info padding-left-10 padding-right-10 shadow-sm"
+                        <button className="btn btn-warning padding-left-10 padding-right-10 shadow-sm"
                             onClick={
                                 ()=>{
                                     let myEvent = new Event('resize');
                                     window.dispatchEvent(myEvent);
                                 }
                             }
-                        >重新渲染</button>
+                        >
+                            <span class="oi oi-loop-circular mr-1" title="icon name" aria-hidden="true"></span>
+                            重新渲染
+                        </button>
                         <button className="btn btn-info padding-left-10 padding-right-10 shadow-sm"
                             onClick={this.submitPage}
-                        >提交页面</button>
+                        >
+                            <span class="oi oi-cloud-upload mr-1" title="icon name" aria-hidden="true"></span>
+                            提交页面
+                        </button>
                     </div>
                 </div>
                 <div className="page-container-header-hidebtn">

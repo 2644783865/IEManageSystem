@@ -18,9 +18,8 @@
 
 .component-frame {
     width: 100%;
-    height: 8rem;
-    margin: 0.33rem 0rem 0rem 0rem;
-    background-color: #fff;
+    height: 6rem;
+    background-color: #fff0;
 }
 
 .component-tool-list {
@@ -40,28 +39,28 @@
 }
 
 .component-tool-item>a {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 1rem;
     background-color: #586675;
     color: #fff;
+    font-size: .9rem;
     position: relative;
 }
 
 .component-tool-item>.subMenu {
     background: #273057;
     overflow: hidden;
-    position: relative;
-    left: -5rem;
-    transition: left 0.7s;
-    display: none
+    max-height: 0rem;
+    transition: all 0.7s;
 }
 
 .component-tool-item>.subMenu>a {
     display: block;
-    padding: 15px 20px;
+    padding: .5rem 1rem;
     color: #fff;
-    font-size: 14px;
-    border-bottom: 1px solid #394c7f;
+    /* border-bottom: 1px solid #394c7f; */
     position: relative;
 }
 
@@ -72,7 +71,7 @@
     background: linear-gradient(to bottom, #273057 0%, #273057 50%, #394c7f 51%, #394c7f 100%);
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#273057', endColorstr='#394c7f', GradientType=0);
     transition: all 0.3s;
-    border-bottom: 1px solid #394c7f;
+    /* border-bottom: 1px solid #394c7f; */
 }
 
 .component-tool-item>.subMenu>a:last-child {
@@ -80,6 +79,5 @@
 }
 
 .component-tool-item>.subMenu-active {
-    display: block;
-    left: 0rem;
+    max-height: 40rem;
 }
