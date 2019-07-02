@@ -1,4 +1,7 @@
 # IEManageSystem
+项目演示地址：http://iemanagesystem.azurewebsites.net/Account/
+账号：admini
+密码：123456
 项目截图如下：
 ![image](img/show1.png)
 ![image](img/show2.png)
