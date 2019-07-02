@@ -12,7 +12,7 @@ using IEManageSystem.Services.ManageHome.CMS.Menus.Dto;
 
 namespace IEManageSystem.Services.ManageHome.CMS.Menus
 {
-    // [ApiAuthorization(IEApiScopeProvider.Menu)]
+    [ApiAuthorization(IEApiScopeProvider.Menu)]
     public class MenuManageAppService : IEManageSystemAppServiceBase, IMenuManageAppService
     {
         private MenuManager _menuManager { get; set; }
@@ -25,7 +25,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Menus
             _menuManager = menuManager;
         }
 
-        // [ApiAuthorizationQuery]
+        [ApiAuthorizationQuery]
         public GetMenusOutput GetMenus(GetMenusInput input)
         {
             List<MenuBase> menus = _menuRepository.GetAllList();

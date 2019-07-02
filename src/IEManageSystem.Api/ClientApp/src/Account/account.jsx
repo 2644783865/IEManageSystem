@@ -27,3 +27,17 @@ ReactDOM.render(
 </div>,
 document.getElementById('Reactele')
 );
+
+let width = document.body.clientWidth
+let fontsize = parseInt(width / 113);
+document.documentElement.style.fontSize = fontsize + "px";
+document.body.style.fontSize = fontsize + "px";
+
+(function () {
+    window.onresize = function () {
+        let width = document.body.clientWidth
+        let fontsize = parseInt(width / 110);
+        document.documentElement.style.fontSize = fontsize + "px";
+        document.body.style.fontSize = fontsize + "px";
+    };
+})();

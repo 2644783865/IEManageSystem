@@ -33,6 +33,12 @@ namespace IEManageSystem.Entitys.Authorization.Roles
             _unitOfWorkManager = unitOfWorkManager;
         }
 
+        public Role SuperAdmin => RoleRepository.FirstOrDefault(e => e.Name == Role.SuperAdminName);
+
+        public Role Admin => RoleRepository.FirstOrDefault(e => e.Name == Role.AdminName);
+
+        public Role User => RoleRepository.FirstOrDefault(e => e.Name == Role.UserName);
+
         protected Task SaveChanges()
         {
             if (!AutoSaveChanges || _unitOfWorkManager.Current == null)

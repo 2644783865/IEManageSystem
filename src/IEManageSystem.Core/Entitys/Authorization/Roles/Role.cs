@@ -11,9 +11,17 @@ namespace IEManageSystem.Entitys.Authorization.Roles
     [Table("Role")]
     public class Role : Entity
     {
-        public static Role SuperAdmin { get { return new Role("SuperAdmin") { DisplayName = "超级管理员", Describe = "拥有站点最高权限" }; } }
+        public const string SuperAdminName = "SuperAdmin";
 
-        public static Role Admin { get { return new Role("Admin") { DisplayName = "管理员", Describe = "站点管理员" }; } }
+        public static Role SuperAdmin { get { return new Role(SuperAdminName) { DisplayName = "超级管理员", Describe = "拥有站点最高权限" }; } }
+
+        public const string AdminName = "Admin";
+
+        public static Role Admin { get { return new Role(AdminName) { DisplayName = "管理员", Describe = "站点管理员" }; } }
+
+        public const string UserName = "User";
+
+        public static Role User { get { return new Role(UserName) { DisplayName = "用户", Describe = "站点用户" }; } }
 
         protected Role() {
         }

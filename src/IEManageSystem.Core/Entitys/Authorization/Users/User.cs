@@ -94,6 +94,10 @@ namespace IEManageSystem.Entitys.Authorization.Users
         {
             UserRole userRole = new UserRole(this, role);
 
+            if (UserRoles == null) {
+                UserRoles = new List<UserRole>();
+            }
+
             UserRoles.Add(userRole);
         }
 

@@ -13,16 +13,18 @@ namespace IEManageSystem.Entitys.Authorization.Users
 {
     public class AdminManager:IDomainService
     {
-        private IRepository<Role> _roleRepository { get; set; }
+        private RoleManager _roleManager { get; set; }
+
+        private IRepository<Role> _roleRepository => _roleManager.RoleRepository;
 
         private UserManager _userManager { get; set; }
 
         public AdminManager(
             UserManager userManager,
-            IRepository<Role> roleRepository)
+            RoleManager roleManager)
         {
             _userManager = userManager;
-            _roleRepository = roleRepository;
+            _roleManager = roleManager;
         }
 
         private IQueryable<User> _getAdmins(Expression<Func<User, object>>[] propertySelectors = null)
@@ -47,7 +49,7 @@ namespace IEManageSystem.Entitys.Authorization.Users
         {
             var user = await  _userManager.CreateUser(userName, password, name, tenantId);
 
-            _userManager.AddUserRole(user, Role.Admin);
+            user.AddRole(_roleManager.Admin);
 
             return user;
         }

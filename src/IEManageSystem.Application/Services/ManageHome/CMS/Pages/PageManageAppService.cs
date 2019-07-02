@@ -4,15 +4,18 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using Abp.Domain.Repositories;
+using IEManageSystem.ApiAuthorization;
 using IEManageSystem.CMS.DomainModel.Pages;
 using IEManageSystem.CMS.Repositorys;
 using IEManageSystem.Dtos.CMS;
 using IEManageSystem.Help.Exceptions;
+using IEManageSystem.Help.IEApiScopeHelp;
 using IEManageSystem.Repositorys;
 using IEManageSystem.Services.ManageHome.CMS.Pages.Dto;
 
 namespace IEManageSystem.Services.ManageHome.CMS.Pages
 {
+    [ApiAuthorization(IEApiScopeProvider.Page)]
     public class PageManageAppService : IEManageSystemAppServiceBase, IPageManageAppService
     {
         private PageManager _pageManager { get; set; }
@@ -26,6 +29,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
             _pageManager = pageManager;
         }
 
+        [ApiAuthorizationQuery]
         public GetPagesOutput GetPages(GetPagesInput input)
         {
             IEnumerable<PageBase> pages = string.IsNullOrEmpty(input.SearchKey)?
@@ -76,6 +80,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
             );
         }
 
+        [ApiAuthorizationQuery]
         public GetPageOutput GetPage(GetPageInput input)
         {
             var page = _repository.FirstOrDefault(item=>item.Name == input.Name);
@@ -136,6 +141,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
             return new UpdatePageOutput();
         }
 
+        [ApiAuthorizationQuery]
         public GetPageComponentOutput GetPageComponent(GetPageComponentInput input)
         {
             List<PageComponentDto> dtos = new List<PageComponentDto>();
@@ -219,6 +225,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
             return pageComponent;
         }
 
+        [ApiAuthorizationQuery]
         public GetPageDatasOutput GetPageDatas(GetPageDatasInput input)
         {
             var page = _repository.GetAllIncluding(e => e.PageDatas).FirstOrDefault(e => e.Name == input.PageName);
@@ -267,6 +274,7 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
             return new DeletePageDataOutput();
         }
 
+        [ApiAuthorizationQuery]
         public GetComponentDataOutput GetComponentDatas(GetComponentDataInput input)
         {
             var pageData = _repository.GetPageDataIncludeComponentDatas(input.PageName, input.PageDataName);

@@ -76,7 +76,7 @@ namespace IEManageSystem.Services.ManageHome.OAuthManage.ApiResourceManages
             return new GetApiResourceNumOutput() { ResourceNum = resourceNum };
         }
 
-        public IEnumerable<ApiResource> FiltersResources(IEnumerable<ApiResource> apiResources, string searchKey)
+        private IEnumerable<ApiResource> FiltersResources(IEnumerable<ApiResource> apiResources, string searchKey)
         {
             if (!string.IsNullOrWhiteSpace(searchKey))
                 apiResources = apiResources.Where(e =>

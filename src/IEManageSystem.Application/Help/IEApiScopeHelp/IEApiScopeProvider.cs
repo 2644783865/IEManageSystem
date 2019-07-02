@@ -6,6 +6,9 @@ namespace IEManageSystem.Help.IEApiScopeHelp
 {
     public class IEApiScopeProvider
     {
+        // personal
+        public const string User = "Personal.User";
+
         // core域
         public const string AdminManage = "AuthorizeManage.AdminManage";
         public const string RoleManage = "AuthorizeManage.RoleManage";
@@ -21,6 +24,7 @@ namespace IEManageSystem.Help.IEApiScopeHelp
 
         // cms域
         public const string Menu = "CMSManage.Menu";
+        public const string Page = "CMSManage.Page";
 
 
         public List<ApiScopeGroupDescribe> ApiScopeGroupDescribes { get; set; } = new List<ApiScopeGroupDescribe>();
@@ -32,6 +36,16 @@ namespace IEManageSystem.Help.IEApiScopeHelp
 
         protected void ApiScopeProvide()
         {
+            ApiScopeGroupDescribes.Add(new ApiScopeGroupDescribe() {
+                Name = "Personal",
+                ApiScopeDescribes = new List<ApiScopeDescribe>() {
+                    new ApiScopeDescribe(){
+                        Name = User,
+                        DisplayName = "用户信息"
+                    }
+                }
+            });
+
             ApiScopeGroupDescribes.Add(new ApiScopeGroupDescribe()
             {
                 Name = "AuthorizeManage",
@@ -81,6 +95,10 @@ namespace IEManageSystem.Help.IEApiScopeHelp
                     new ApiScopeDescribe(){
                         Name = Menu,
                         DisplayName = "菜单管理"
+                    },
+                    new ApiScopeDescribe(){
+                        Name = Page,
+                        DisplayName = "页面管理"
                     }
                 }
             });
