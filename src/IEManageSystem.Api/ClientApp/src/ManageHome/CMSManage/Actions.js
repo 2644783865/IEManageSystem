@@ -42,7 +42,7 @@ export function pagesFetch(pageIndex, pageSize, searchKey) {
   };
 
   return createIEThunkAction(
-    "/api/PageManage/GetPages",
+    "/api/PageQuery/GetPages",
     postData,
     data => ({
       type: PagesReceive,
@@ -112,7 +112,7 @@ export function pageComponentFetch(name){
   };
 
   return createIEThunkAction(
-    "/api/PageManage/GetPageComponent",
+    "/api/PageQuery/GetPageComponent",
     postData,
     data => ({
       type: PageComponentReceive,
@@ -147,7 +147,7 @@ export function pageDatasFetch(pageIndex, pageSize, searchKey, pageName){
   };
 
   return createIEThunkAction(
-    "/api/PageManage/GetPageDatas",
+    "/api/PageQuery/GetPageDatas",
     postData,
     data => ({
       type: PageDatasReceive,
@@ -215,7 +215,7 @@ export function componentDatasFetch(pageName, pageDataName){
   };
 
   return createIEThunkAction(
-    "/api/PageManage/GetComponentDatas",
+    "/api/PageQuery/GetComponentDatas",
     postData,
     data => ({
       type: ComponentDatasReceive,
