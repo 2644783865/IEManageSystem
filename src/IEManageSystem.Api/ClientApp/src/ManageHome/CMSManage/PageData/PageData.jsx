@@ -81,19 +81,19 @@ class PageData extends React.Component{
         let customizeBottomOperateBtns = [];
         // customizeBottomOperateBtns.push(<button type="button" className="btn btn-info" >+发布新文章</button>);
 		
-		let testResources = [
-            {
-                id: 1,
-                name: "TestPost",
-                title: "测试文章"
-			}
-        ];
+		// let testResources = [
+        //     {
+        //         id: 1,
+        //         name: "TestPost",
+        //         title: "测试文章"
+		// 	}
+        // ];
 
 		return(
 			<div className="col-md-12">
 				<Resource
                 title="文章管理"
-                resources={testResources}
+                // resources={testResources}
                 // hideAdd={true}
                 // hideEdit={true}
 				describes={this.describes}

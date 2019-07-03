@@ -1,4 +1,5 @@
 ﻿using IEManageSystem.ApiAuthorization.Authorizations;
+using IEManageSystem.ApiAuthorization.Exceptions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -32,7 +33,8 @@ namespace IEManageSystem.ApiAuthorization
 
             if (!authorizationResult.Succeeded)
             {
-                context.Result = new ForbidResult();
+                throw new UnauthorizedException("未授权操作");
+                // context.Result = new ForbidResult();
             }
         }
     }

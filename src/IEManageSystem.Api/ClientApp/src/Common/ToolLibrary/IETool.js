@@ -21,6 +21,11 @@ export function setToken(token)
     $.cookie('ie_token', token, { expires: 7, path: '/' });
 }
 
+export function getToken()
+{
+    return $.cookie('ie_token');
+}
+
 export function clearToken() {
     $.cookie('ie_token', null, { expires: 0, path: '/' });
 }

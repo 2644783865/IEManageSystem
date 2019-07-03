@@ -9,7 +9,7 @@ import 'commoncss';
 import 'cookie';
 
 import React from 'react';
-import { Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import Nav from "./Nav/Nav.jsx";
 import Menu from './Menu/Menu.jsx'
@@ -56,7 +56,11 @@ export default class Home extends React.Component{
                 <div>
                     <div className="container-fluid">
                         <Menu />
-                        <Route path="/Page/:pageName/:pageDataName?" component={PageContainer} />
+                        <Switch>
+                            <Route exact path="/Page/:pageName?/:pageDataName?" component={PageContainer} />
+                            <Route exact path="/" component={PageContainer} />
+                        </Switch>
+                        
                     </div>
                 </div>
             </div>

@@ -37,10 +37,13 @@ export function createIEThunkAction(url, postData, receiveActionFun) {
   return function (dispatch) {
     dispatch(request(postData));
 
+    let token = IETool.getToken();
+
     return fetch(url, {
       method: 'post',
       type: "json",
       headers: {
+        'Authorization': "Bearer " + token || "",
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(postData)

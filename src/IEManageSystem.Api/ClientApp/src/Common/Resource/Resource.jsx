@@ -209,7 +209,7 @@ export default class Resource extends React.Component {
 								errorInfo: {
 									show: false,
 									title: this.state.errorInfo.title,
-									message: message
+									message: this.state.errorInfo.message
 								}
 							})
 						}

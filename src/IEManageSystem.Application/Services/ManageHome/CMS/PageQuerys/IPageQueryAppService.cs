@@ -1,11 +1,12 @@
-﻿using IEManageSystem.Services.ManageHome.CMS.PageQuerys.Dto;
+﻿using Abp.Application.Services;
+using IEManageSystem.Services.ManageHome.CMS.PageQuerys.Dto;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace IEManageSystem.Services.ManageHome.CMS.PageQuerys
 {
-    public interface IPageQueryAppService
+    public interface IPageQueryAppService: IApplicationService
     {
         GetPagesOutput GetPages(GetPagesInput input);
 

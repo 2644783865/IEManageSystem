@@ -9,6 +9,7 @@ using Abp.Runtime.Validation;
 using Abp.Web.Models;
 using Castle.Core.Logging;
 using IEManageSystem.Api.Models;
+using IEManageSystem.ApiAuthorization.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
@@ -58,6 +59,20 @@ namespace IEManageSystem.Web.Filters
             EventBus.Trigger(this, new AbpHandledExceptionData(context.Exception));
 
             context.Exception = null; //Handled!
+        }
+
+        protected virtual IActionResult HandleException(ExceptionContext context)
+        {
+            if (context.Exception is UnauthorizedException)
+            {
+                return new ObjectResult(
+                    new ApiResultDataModel(false) { Message = context.Exception.Message }
+                );
+            }
+
+            return new ObjectResult(
+                new ApiResultDataModel(false) { Message = context.Exception.Message }
+            );
         }
 
         /// <summary>

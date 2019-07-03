@@ -24,43 +24,6 @@ class PageContainer extends React.Component {
 
     render() {
         let components = this.props.pageComponents;
-        if (components.length == 0) {
-            components = [
-                {
-                    componentType: "ContentLeafComponent",
-                    height: "18",
-                    name: "CitiesSlider",
-                    sign: 1560170670361
-                },
-                {
-                    componentType: "CompositeComponent",
-                    name: "Container",
-                    pageComponents: [
-                        {
-                            componentType: "ContentLeafComponent",
-                            name: "Text",
-                            sign: 1560170698807
-                        }
-                    ],
-                    sign: 1560170696487
-                },
-                {
-                    componentType: "ContentLeafComponent",
-                    name: "Clock",
-                    sign: 1560170670390
-                },
-                {
-                    componentType: "ContentLeafComponent",
-                    name: "Donut",
-                    sign: 1560170670391
-                },
-                {
-                    componentType: "ContentLeafComponent",
-                    name: "Groupedcolumn",
-                    sign: 1560170670392
-                }
-            ]
-        }
 
         return (
             <div className="front-page-container">
@@ -85,6 +48,10 @@ PageContainer.propTypes = {
     pageDataName: PropTypes.string.isRequired,
     pageComponentFetch: PropTypes.func.isRequired,
     componentDatasFetch: PropTypes.func.isRequired
+}
+
+PageContainer.defaultProps = {
+    pageName: "Home"
 }
 
 const mapStateToProps = (state, ownProps) => { // ownProps为当前组件的props
