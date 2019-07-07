@@ -100,6 +100,9 @@ namespace IEManageSystem.Services.ManageHome.CMS.PageQuerys
             dto.Col = page.Col;
             dto.Height = page.Height;
             dto.Padding = page.Padding;
+            dto.Margin = page.Margin;
+            dto.BackgroundColor = page.BackgroundColor;
+            dto.ClassName = page.ClassName;
 
             if (page is CompositeComponent)
             {
