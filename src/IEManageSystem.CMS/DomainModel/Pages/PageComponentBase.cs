@@ -32,6 +32,8 @@ namespace IEManageSystem.CMS.DomainModel.Pages
 
         public CmsComponent CmsComponent { get; set; }
 
+        public ICollection<PageComponentSetting> PageComponentSettings { get; set; }
+
         public PageBase Page { get; set; }
 
         [ForeignKey("Page")]

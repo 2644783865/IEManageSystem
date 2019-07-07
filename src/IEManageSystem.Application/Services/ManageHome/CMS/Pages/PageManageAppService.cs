@@ -124,6 +124,22 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
             pageComponent.BackgroundColor = dto.BackgroundColor;
             pageComponent.ClassName = dto.ClassName;
 
+            var pageComponentSettings = new List<PageComponentSetting>();
+            foreach (var item in dto.PageComponentSettings) {
+                PageComponentSetting pageComponentSetting = new PageComponentSetting()
+                {
+                    Name = item.Name,
+                    DisplayName = item.DisplayName,
+                    Field1 = item.Field1,
+                    Field2 = item.Field2,
+                    Field3 = item.Field3,
+                    Field4 = item.Field4,
+                    Field5 = item.Field5
+                };
+                pageComponentSettings.Add(pageComponentSetting);
+            }
+            pageComponent.PageComponentSettings = pageComponentSettings;
+
             return pageComponent;
         }
 

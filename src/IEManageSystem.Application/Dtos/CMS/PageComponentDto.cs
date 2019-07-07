@@ -29,6 +29,8 @@ namespace IEManageSystem.Dtos.CMS
         /// </summary>
         public string ComponentType { get; set; }
 
+        public List<PageComponentSettingDto> PageComponentSettings { get; set; }
+
         public List<PageComponentDto> PageComponents { get; set; }
     }
 }

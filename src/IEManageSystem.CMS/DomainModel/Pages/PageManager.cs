@@ -41,7 +41,7 @@ namespace IEManageSystem.CMS.DomainModel.Pages
 
         public List<PageComponentBase> GetPageComponents(string name)
         {
-            var page = PageRepository.GetAllIncluding(e => e.PageComponents).FirstOrDefault(e => e.Name == name);
+            var page = PageRepository.ThenInclude(e => e.PageComponents, e => e.PageComponentSettings).FirstOrDefault(e => e.Name == name);
 
             if (page == null)
             {

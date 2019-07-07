@@ -103,6 +103,21 @@ namespace IEManageSystem.Services.ManageHome.CMS.PageQuerys
             dto.Margin = page.Margin;
             dto.BackgroundColor = page.BackgroundColor;
             dto.ClassName = page.ClassName;
+            dto.PageComponentSettings = new List<PageComponentSettingDto>();
+
+            foreach (var item in page.PageComponentSettings) {
+                PageComponentSettingDto pageComponentSetting = new PageComponentSettingDto() {
+                    Name = item.Name,
+                    DisplayName = item.DisplayName,
+                    Field1 = item.Field1,
+                    Field2 = item.Field2,
+                    Field3  = item.Field3,
+                    Field4 = item.Field4,
+                    Field5 = item.Field5
+                };
+
+                dto.PageComponentSettings.Add(pageComponentSetting);
+            }
 
             if (page is CompositeComponent)
             {
