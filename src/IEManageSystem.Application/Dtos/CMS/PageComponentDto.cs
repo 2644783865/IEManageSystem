@@ -18,6 +18,12 @@ namespace IEManageSystem.Dtos.CMS
 
         public string Padding { get; set; }
 
+        public string Margin { get; set; }
+
+        public string BackgroundColor { get; set; }
+
+        public string ClassName { get; set; }
+
         /// <summary>
         /// CompositeComponent, ContentLeafComponent
         /// </summary>

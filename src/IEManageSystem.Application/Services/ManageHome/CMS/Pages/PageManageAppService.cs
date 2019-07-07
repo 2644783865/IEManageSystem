@@ -120,6 +120,9 @@ namespace IEManageSystem.Services.ManageHome.CMS.Pages
             pageComponent.Col = dto.Col;
             pageComponent.Height = dto.Height;
             pageComponent.Padding = dto.Padding;
+            pageComponent.Margin = dto.Margin;
+            pageComponent.BackgroundColor = dto.BackgroundColor;
+            pageComponent.ClassName = dto.ClassName;
 
             return pageComponent;
         }

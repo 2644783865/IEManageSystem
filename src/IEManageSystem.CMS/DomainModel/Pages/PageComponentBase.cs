@@ -24,6 +24,12 @@ namespace IEManageSystem.CMS.DomainModel.Pages
 
         public string Padding { get; set; }
 
+        public string Margin { get; set; }
+
+        public string BackgroundColor { get; set; }
+
+        public string ClassName { get; set; }
+
         public CmsComponent CmsComponent { get; set; }
 
         public PageBase Page { get; set; }

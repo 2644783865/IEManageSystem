@@ -1,0 +1,12 @@
+{
+    "GetPageComponent":{
+        "pageComponents": [{
+            "name": "CitiesSlider",
+            "sign": "1",
+            "col": "12",
+            "height": "27rem",
+            "padding": "0rem",
+            "componentType": "ContentLeafComponent"
+        }]
+    }
+}

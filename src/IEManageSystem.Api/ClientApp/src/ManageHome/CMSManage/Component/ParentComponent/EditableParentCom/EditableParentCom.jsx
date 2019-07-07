@@ -26,10 +26,6 @@ class EditableParentCom extends BaseParentComponent {
         this.addChildComponent = this.addChildComponent.bind(this);
     }
 
-    componentDidUpdate() {
-        this.state.openEdit = false;
-    }
-
     createChildrenComponent() {
         let pageComponent = this.props.pageComponent;
 
@@ -114,12 +110,12 @@ class EditableParentCom extends BaseParentComponent {
         let component = new ComponentFactory().getComponentForName(this.props.pageComponent.name);
 
         let tools = [];
-        if(this.state.openEdit){
-            tools.push(<EditFrame 
-                pageComponent={this.props.pageComponent} 
-                editComponent={this.editComponent}
-            ></EditFrame>);
-        }
+        tools.push(<EditFrame 
+            pageComponent={this.props.pageComponent} 
+            editComponent={this.editComponent}
+            show={this.state.openEdit}
+            close={()=>{this.setState({openEdit: false})}}
+        ></EditFrame>);
         tools.push(
             <div className="editableparentcom-btns">
                     <button type="button" class="btn btn-danger btn-sm"
