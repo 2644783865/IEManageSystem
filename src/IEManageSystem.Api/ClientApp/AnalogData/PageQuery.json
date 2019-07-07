@@ -6,7 +6,11 @@
             "col": "12",
             "height": "27rem",
             "padding": "0rem",
-            "componentType": "ContentLeafComponent"
+            "componentType": "ContentLeafComponent",
+            "pageComponentSettings": [{
+                "name": "otherSetting",
+                "field1": "配置1"
+            }]
         }]
     }
 }

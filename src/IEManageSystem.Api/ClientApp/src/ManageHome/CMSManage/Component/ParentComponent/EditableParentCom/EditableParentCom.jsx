@@ -107,11 +107,12 @@ class EditableParentCom extends BaseParentComponent {
 
     getTools()
     {
-        let component = new ComponentFactory().getComponentForName(this.props.pageComponent.name);
+        let componentObject = new ComponentFactory().getComponentForName(this.props.pageComponent.name);
 
         let tools = [];
         tools.push(<EditFrame 
             pageComponent={this.props.pageComponent} 
+            pageComponentSettingConfigs={componentObject.component.pageComponentSettingConfigs()}
             editComponent={this.editComponent}
             show={this.state.openEdit}
             close={()=>{this.setState({openEdit: false})}}
@@ -133,7 +134,7 @@ class EditableParentCom extends BaseParentComponent {
                         <span class="oi oi-pencil" title="icon name" aria-hidden="true"></span>
                     </button>
                     {
-                        component.component.isBaseContainerComponent &&
+                        componentObject.component.isBaseContainerComponent &&
                         <button type="button" class="btn btn-success btn-sm"
                             onClick={
                                 () => { this.addChildComponent() }
