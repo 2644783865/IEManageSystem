@@ -137,7 +137,8 @@ class EditFrame extends React.Component {
         this.nameField = "text";
 
         this.state = {
-            selectIndex: 0
+            selectIndex: 0,
+            newPageComponent: { ...{}, ...this.props.pageComponent }
         }
 
         let index = 1
@@ -146,23 +147,21 @@ class EditFrame extends React.Component {
             index++;
         });
 
-        this.newPageComponent = { ...{}, ...this.props.pageComponent };
-
         this.submit = this.submit.bind(this);
     }
 
     submit() {
         this.props.close();
-        this.props.editComponent(this.newPageComponent);
+        this.props.editComponent(this.state.newPageComponent);
     }
 
     render() {
         let ContentComponent
         if (this.state.selectIndex == 0) {
             ContentComponent = <BaseSetting
-                pageComponentSetting={this.newPageComponent}
+                pageComponentSetting={this.state.newPageComponent}
                 setPageComponentSetting={(d) => {
-                    this.newPageComponent = d
+                    this.setState({newPageComponent: d})
                 }}
             />
         }
@@ -170,18 +169,19 @@ class EditFrame extends React.Component {
             // 设置对象
             let objectConfig = this.props.pageComponentSettingConfigs[this.state.selectIndex - 1];
             // 设置数据
-            let pageComponentSetting = this.newPageComponent.pageComponentSettings.find(item=>item.name == objectConfig.name) || {}
+            let pageComponentSetting = this.state.newPageComponent.pageComponentSettings.find(item=>item.name == objectConfig.name) || {}
             // 设置使用组件
             let Component = objectConfig.component;
             ContentComponent = <Component 
                 pageComponentSetting={pageComponentSetting}
                 setPageComponentSetting={(d) => {
-                    let data = this.newPageComponent.pageComponentSettings.find(item=>item.name == objectConfig.name)
+                    let data = this.state.newPageComponent.pageComponentSettings.find(item=>item.name == objectConfig.name)
                     data.field1 = d.field1
                     data.field2 = d.field2
                     data.field3 = d.field3
                     data.field4 = d.field4
                     data.field5 = d.field5
+                    this.setState({});
                 }}
             />
         }
