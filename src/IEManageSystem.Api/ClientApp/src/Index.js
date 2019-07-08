@@ -12,6 +12,8 @@ import ModuleFactory from 'Core/Modules/ModuleFactory'
 import { RootRedux } from 'Core/IEReduxs/RootRedux'
 import MiddlewareFactory from 'Core/MiddlewareFactory'
 
+import 'css/simple-btn.css'
+
 let moduleFactory = new ModuleFactory();
 moduleFactory.init();
 
@@ -36,14 +38,14 @@ ReactDOM.render(
     document.getElementById('Home'));
 
 let width = document.body.clientWidth
-let fontsize = parseInt(width / 113);
+let fontsize = parseInt(width / 124);
 document.documentElement.style.fontSize = fontsize + "px";
 document.body.style.fontSize = fontsize + "px";
 
 (function () {
     window.onresize = function () {
         let width = document.body.clientWidth
-        let fontsize = parseInt(width / 110);
+        let fontsize = parseInt(width / 124);
         document.documentElement.style.fontSize = fontsize + "px";
         document.body.style.fontSize = fontsize + "px";
     };

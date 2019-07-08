@@ -69,17 +69,17 @@ class NavTag extends React.Component {
     render() {
         let lis = new Array();
         lis.push(<li key={0} className="nav-item">
-            <NavLink className="nav-tag-noactive" to="/ManageHome/Index" activeClassName="nav-tag-active">
-                <span className="oi oi-home" title="icon name" aria-hidden="true"></span>
-                后台首页
-                        </NavLink>
+            <NavLink className="btn-bubble" to="/ManageHome/Index" activeClassName="btn-bubble-active">
+                <span><span className="oi oi-home mr-2" title="icon name" aria-hidden="true"></span></span>
+                <span>{"后台首页"}</span>
+            </NavLink>
         </li>);
 
         var curUrl = this.props.location.pathname;
 
         this.menuItems.map((item, index) => {
             lis.push(<li key={index + 1} className="nav-item">
-                <a className={"nav-tag-noactive " + (curUrl == item.url ? "nav-tag-active" : "")} href="javascript:void(0)"
+                <a className={"btn-bubble " + (curUrl == item.url ? "btn-bubble-active" : "")} href="javascript:void(0)"
                     onClick={
                         () => {
                             this.props.history.push(item.url);
@@ -87,35 +87,40 @@ class NavTag extends React.Component {
                         }
                     }
                 >
-                    <span className={
-                        "oi padding-right-10 " +
-                        (item.icon == undefined ? "" : item.icon)
-                    } title="icon name" aria-hidden="true">
+                    <span>
+                        <span className={
+                            "oi mr-2 " +
+                            (item.icon == undefined ? "" : item.icon)
+                        } title="icon name" aria-hidden="true">
+                        </span>
                     </span>
-                    {item.text}
-                    <span className="oi oi-delete nav-tag-deleteicon" title="icon name" aria-hidden="true"
-                        onClick={
-                            (event) => {
-                                event.stopPropagation();//阻止事件冒泡即可
+                    <span>{item.text}</span>
+                    <span className="float-right">
+                        <span className="oi oi-delete nav-tag-deleteicon" title="icon name" aria-hidden="true"
+                            onClick={
+                                (event) => {
+                                    event.stopPropagation();//阻止事件冒泡即可
 
-                                this.menuItems.splice(index, 1);
+                                    this.menuItems.splice(index, 1);
 
-                                // 如果当前标签没有被选中
-                                if (!$(event.currentTarget).parents("a").eq(0).hasClass("nav-tag-active")) {
-                                    this.setState({});
-                                    return false;
+                                    // 如果当前标签没有被选中
+                                    if (!$(event.currentTarget).parents("a").eq(0).hasClass("nav-tag-active")) {
+                                        this.setState({});
+                                        return false;
+                                    }
+
+                                    if (index == 0) {
+                                        this.props.history.push("/ManageHome/Index");
+                                        this.props.sideMenuSelect(null);
+                                    }
+
+                                    this.props.history.push(this.menuItems[index - 1].url);
+                                    this.props.sideMenuSelect(this.menuItems[index - 1]);
                                 }
-
-                                if (index == 0) {
-                                    this.props.history.push("/ManageHome/Index");
-                                    this.props.sideMenuSelect(null);
-                                }
-
-                                this.props.history.push(this.menuItems[index - 1].url);
-                                this.props.sideMenuSelect(this.menuItems[index - 1]);
                             }
-                        }
-                    ></span>
+                        ></span>
+                    </span>
+
                 </a>
             </li>);
         });
